@@ -164,7 +164,7 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldRequireFailu
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1527318-gesturerecognizer?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldRequireFailureOfGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), objc.Ptr(gestureRecognizer), objc.Ptr(otherGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRequireFailureOfGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }
 
@@ -176,7 +176,7 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldReceiveTouch
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/2544787-gesturerecognizer?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldReceiveTouch(gestureRecognizer GestureRecognizer, touch Touch) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldReceiveTouch:"), objc.Ptr(gestureRecognizer), objc.Ptr(touch))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldReceiveTouch:"), gestureRecognizer, touch)
 	return rv
 }
 
@@ -188,7 +188,7 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldRecognizeSim
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529773-gesturerecognizer?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldRecognizeSimultaneouslyWithGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), objc.Ptr(gestureRecognizer), objc.Ptr(otherGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldRecognizeSimultaneouslyWithGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldAttemptToRec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1529420-gesturerecognizer?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldAttemptToRecognizeWithEvent(gestureRecognizer GestureRecognizer, event Event) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), objc.Ptr(gestureRecognizer), objc.Ptr(event))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldAttemptToRecognizeWithEvent:"), gestureRecognizer, event)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldBegin() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535463-gesturerecognizershouldbegin?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldBegin(gestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizerShouldBegin:"), objc.Ptr(gestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizerShouldBegin:"), gestureRecognizer)
 	return rv
 }
 
@@ -224,6 +224,6 @@ func (g_ GestureRecognizerDelegateObject) HasGestureRecognizerShouldBeRequiredTo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizerdelegate/1535422-gesturerecognizer?language=objc
 func (g_ GestureRecognizerDelegateObject) GestureRecognizerShouldBeRequiredToFailByGestureRecognizer(gestureRecognizer GestureRecognizer, otherGestureRecognizer GestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), objc.Ptr(gestureRecognizer), objc.Ptr(otherGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("gestureRecognizer:shouldBeRequiredToFailByGestureRecognizer:"), gestureRecognizer, otherGestureRecognizer)
 	return rv
 }

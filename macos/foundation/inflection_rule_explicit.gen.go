@@ -35,7 +35,7 @@ func InflectionRuleExplicitFrom(ptr unsafe.Pointer) InflectionRuleExplicit {
 }
 
 func (i_ InflectionRuleExplicit) InitWithMorphology(morphology IMorphology) InflectionRuleExplicit {
-	rv := objc.Call[InflectionRuleExplicit](i_, objc.Sel("initWithMorphology:"), objc.Ptr(morphology))
+	rv := objc.Call[InflectionRuleExplicit](i_, objc.Sel("initWithMorphology:"), morphology)
 	return rv
 }
 

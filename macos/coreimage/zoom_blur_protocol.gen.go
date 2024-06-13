@@ -20,11 +20,11 @@ type PZoomBlur interface {
 	HasInputImage() bool
 
 	// optional
-	SetAmount(value float64)
+	SetAmount(value float32)
 	HasSetAmount() bool
 
 	// optional
-	Amount() float64
+	Amount() float32
 	HasAmount() bool
 
 	// optional
@@ -52,7 +52,7 @@ func (z_ ZoomBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cizoomblur/3228843-inputimage?language=objc
 func (z_ ZoomBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](z_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](z_, objc.Sel("setInputImage:"), value)
 }
 
 func (z_ ZoomBlurObject) HasInputImage() bool {
@@ -74,7 +74,7 @@ func (z_ ZoomBlurObject) HasSetAmount() bool {
 // The zoom-in amount. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cizoomblur/3228841-amount?language=objc
-func (z_ ZoomBlurObject) SetAmount(value float64) {
+func (z_ ZoomBlurObject) SetAmount(value float32) {
 	objc.Call[objc.Void](z_, objc.Sel("setAmount:"), value)
 }
 
@@ -85,8 +85,8 @@ func (z_ ZoomBlurObject) HasAmount() bool {
 // The zoom-in amount. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cizoomblur/3228841-amount?language=objc
-func (z_ ZoomBlurObject) Amount() float64 {
-	rv := objc.Call[float64](z_, objc.Sel("amount"))
+func (z_ ZoomBlurObject) Amount() float32 {
+	rv := objc.Call[float32](z_, objc.Sel("amount"))
 	return rv
 }
 

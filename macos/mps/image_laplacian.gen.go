@@ -19,8 +19,8 @@ type _ImageLaplacianClass struct {
 // An interface definition for the [ImageLaplacian] class.
 type IImageLaplacian interface {
 	IUnaryImageKernel
-	Bias() float64
-	SetBias(value float64)
+	Bias() float32
+	SetBias(value float32)
 }
 
 // An optimized Laplacian filter, provided for ease of use. [Full Topic]
@@ -89,14 +89,14 @@ func ImageLaplacian_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice
 // The value added to a convolved pixel before it is converted back to its intended storage format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagelaplacian/1648929-bias?language=objc
-func (i_ ImageLaplacian) Bias() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("bias"))
+func (i_ ImageLaplacian) Bias() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("bias"))
 	return rv
 }
 
 // The value added to a convolved pixel before it is converted back to its intended storage format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagelaplacian/1648929-bias?language=objc
-func (i_ ImageLaplacian) SetBias(value float64) {
+func (i_ ImageLaplacian) SetBias(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setBias:"), value)
 }

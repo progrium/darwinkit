@@ -122,7 +122,7 @@ func (l_ LengthFormatter) NumberFormatter() NumberFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslengthformatter/1417778-numberformatter?language=objc
 func (l_ LengthFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.Call[objc.Void](l_, objc.Sel("setNumberFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setNumberFormatter:"), value)
 }
 
 // The unit style used by this formatter. [Full Topic]

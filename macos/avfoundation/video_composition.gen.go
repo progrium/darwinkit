@@ -28,7 +28,7 @@ type IVideoComposition interface {
 	ColorYCbCrMatrix() string
 	ColorPrimaries() string
 	Instructions() []objc.Object
-	RenderScale() float64
+	RenderScale() float32
 	CustomVideoCompositorClass() objc.Class
 	ColorTransferFunction() string
 	SourceSampleDataTrackIDs() []foundation.Number
@@ -126,8 +126,8 @@ func (v_ VideoComposition) Instructions() []objc.Object {
 // The scale at which the video composition should render. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocomposition/1615786-renderscale?language=objc
-func (v_ VideoComposition) RenderScale() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("renderScale"))
+func (v_ VideoComposition) RenderScale() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("renderScale"))
 	return rv
 }
 

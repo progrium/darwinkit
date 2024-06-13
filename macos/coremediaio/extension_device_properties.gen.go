@@ -95,7 +95,7 @@ func (e_ ExtensionDeviceProperties) Init() ExtensionDeviceProperties {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915844-setpropertystate?language=objc
 func (e_ ExtensionDeviceProperties) SetPropertyStateForProperty(propertyState IExtensionPropertyState, property ExtensionProperty) {
-	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), objc.Ptr(propertyState), property)
+	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), propertyState, property)
 }
 
 // The transport type of the device, such as USB or HDMI. [Full Topic]
@@ -110,7 +110,7 @@ func (e_ ExtensionDeviceProperties) TransportType() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915846-transporttype?language=objc
 func (e_ ExtensionDeviceProperties) SetTransportType(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setTransportType:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setTransportType:"), value)
 }
 
 // A Boolean value that indicates whether the device is in a suspended state. [Full Topic]
@@ -125,7 +125,7 @@ func (e_ ExtensionDeviceProperties) Suspended() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondeviceproperties/3915845-suspended?language=objc
 func (e_ ExtensionDeviceProperties) SetSuspended(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSuspended:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSuspended:"), value)
 }
 
 // A dictionary of properties for a device. [Full Topic]

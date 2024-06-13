@@ -254,7 +254,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldHasMenuForRepresentedObject() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1533494-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldHasMenuForRepresentedObject(tokenField TokenField, representedObject objc.Object) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenField:hasMenuForRepresentedObject:"), objc.Ptr(tokenField), representedObject)
+	rv := objc.Call[bool](t_, objc.Sel("tokenField:hasMenuForRepresentedObject:"), tokenField, representedObject)
 	return rv
 }
 
@@ -266,7 +266,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldRepresentedObjectForEditingStrin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1527909-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldRepresentedObjectForEditingString(tokenField TokenField, editingString string) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("tokenField:representedObjectForEditingString:"), objc.Ptr(tokenField), editingString)
+	rv := objc.Call[objc.Object](t_, objc.Sel("tokenField:representedObjectForEditingString:"), tokenField, editingString)
 	return rv
 }
 
@@ -278,7 +278,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldMenuForRepresentedObject() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1528750-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldMenuForRepresentedObject(tokenField TokenField, representedObject objc.Object) Menu {
-	rv := objc.Call[Menu](t_, objc.Sel("tokenField:menuForRepresentedObject:"), objc.Ptr(tokenField), representedObject)
+	rv := objc.Call[Menu](t_, objc.Sel("tokenField:menuForRepresentedObject:"), tokenField, representedObject)
 	return rv
 }
 
@@ -290,7 +290,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldShouldAddObjectsAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1524376-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldShouldAddObjectsAtIndex(tokenField TokenField, tokens []objc.Object, index uint) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:shouldAddObjects:atIndex:"), objc.Ptr(tokenField), tokens, index)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:shouldAddObjects:atIndex:"), tokenField, tokens, index)
 	return rv
 }
 
@@ -302,7 +302,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldEditingStringForRepresentedObjec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1524432-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldEditingStringForRepresentedObject(tokenField TokenField, representedObject objc.Object) string {
-	rv := objc.Call[string](t_, objc.Sel("tokenField:editingStringForRepresentedObject:"), objc.Ptr(tokenField), representedObject)
+	rv := objc.Call[string](t_, objc.Sel("tokenField:editingStringForRepresentedObject:"), tokenField, representedObject)
 	return rv
 }
 
@@ -314,7 +314,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldCompletionsForSubstringIndexOfTo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1532474-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenField TokenField, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), objc.Ptr(tokenField), substring, tokenIndex, selectedIndex)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), tokenField, substring, tokenIndex, selectedIndex)
 	return rv
 }
 
@@ -326,7 +326,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldDisplayStringForRepresentedObjec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1526020-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldDisplayStringForRepresentedObject(tokenField TokenField, representedObject objc.Object) string {
-	rv := objc.Call[string](t_, objc.Sel("tokenField:displayStringForRepresentedObject:"), objc.Ptr(tokenField), representedObject)
+	rv := objc.Call[string](t_, objc.Sel("tokenField:displayStringForRepresentedObject:"), tokenField, representedObject)
 	return rv
 }
 
@@ -338,7 +338,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldStyleForRepresentedObject() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1530203-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldStyleForRepresentedObject(tokenField TokenField, representedObject objc.Object) TokenStyle {
-	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenField:styleForRepresentedObject:"), objc.Ptr(tokenField), representedObject)
+	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenField:styleForRepresentedObject:"), tokenField, representedObject)
 	return rv
 }
 
@@ -350,7 +350,7 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldWriteRepresentedObjectsToPastebo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1528190-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldWriteRepresentedObjectsToPasteboard(tokenField TokenField, objects []objc.Object, pboard Pasteboard) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenField:writeRepresentedObjects:toPasteboard:"), objc.Ptr(tokenField), objects, objc.Ptr(pboard))
+	rv := objc.Call[bool](t_, objc.Sel("tokenField:writeRepresentedObjects:toPasteboard:"), tokenField, objects, pboard)
 	return rv
 }
 
@@ -362,6 +362,6 @@ func (t_ TokenFieldDelegateObject) HasTokenFieldReadFromPasteboard() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfielddelegate/1529534-tokenfield?language=objc
 func (t_ TokenFieldDelegateObject) TokenFieldReadFromPasteboard(tokenField TokenField, pboard Pasteboard) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:readFromPasteboard:"), objc.Ptr(tokenField), objc.Ptr(pboard))
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenField:readFromPasteboard:"), tokenField, pboard)
 	return rv
 }

@@ -143,7 +143,7 @@ func (r_ RuleEditorDelegateObject) HasRuleEditorDisplayValueForCriterionInRow() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditordelegate/1534788-ruleeditor?language=objc
 func (r_ RuleEditorDelegateObject) RuleEditorDisplayValueForCriterionInRow(editor RuleEditor, criterion objc.Object, row int) objc.Object {
-	rv := objc.Call[objc.Object](r_, objc.Sel("ruleEditor:displayValueForCriterion:inRow:"), objc.Ptr(editor), criterion, row)
+	rv := objc.Call[objc.Object](r_, objc.Sel("ruleEditor:displayValueForCriterion:inRow:"), editor, criterion, row)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (r_ RuleEditorDelegateObject) HasRuleEditorPredicatePartsForCriterionWithDi
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditordelegate/1526667-ruleeditor?language=objc
 func (r_ RuleEditorDelegateObject) RuleEditorPredicatePartsForCriterionWithDisplayValueInRow(editor RuleEditor, criterion objc.Object, value objc.Object, row int) map[RuleEditorPredicatePartKey]objc.Object {
-	rv := objc.Call[map[RuleEditorPredicatePartKey]objc.Object](r_, objc.Sel("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), objc.Ptr(editor), criterion, value, row)
+	rv := objc.Call[map[RuleEditorPredicatePartKey]objc.Object](r_, objc.Sel("ruleEditor:predicatePartsForCriterion:withDisplayValue:inRow:"), editor, criterion, value, row)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (r_ RuleEditorDelegateObject) HasRuleEditorNumberOfChildrenForCriterionWith
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditordelegate/1535329-ruleeditor?language=objc
 func (r_ RuleEditorDelegateObject) RuleEditorNumberOfChildrenForCriterionWithRowType(editor RuleEditor, criterion objc.Object, rowType RuleEditorRowType) int {
-	rv := objc.Call[int](r_, objc.Sel("ruleEditor:numberOfChildrenForCriterion:withRowType:"), objc.Ptr(editor), criterion, rowType)
+	rv := objc.Call[int](r_, objc.Sel("ruleEditor:numberOfChildrenForCriterion:withRowType:"), editor, criterion, rowType)
 	return rv
 }
 
@@ -179,7 +179,7 @@ func (r_ RuleEditorDelegateObject) HasRuleEditorChildForCriterionWithRowType() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditordelegate/1527259-ruleeditor?language=objc
 func (r_ RuleEditorDelegateObject) RuleEditorChildForCriterionWithRowType(editor RuleEditor, index int, criterion objc.Object, rowType RuleEditorRowType) objc.Object {
-	rv := objc.Call[objc.Object](r_, objc.Sel("ruleEditor:child:forCriterion:withRowType:"), objc.Ptr(editor), index, criterion, rowType)
+	rv := objc.Call[objc.Object](r_, objc.Sel("ruleEditor:child:forCriterion:withRowType:"), editor, index, criterion, rowType)
 	return rv
 }
 
@@ -191,5 +191,5 @@ func (r_ RuleEditorDelegateObject) HasRuleEditorRowsDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditordelegate/1533292-ruleeditorrowsdidchange?language=objc
 func (r_ RuleEditorDelegateObject) RuleEditorRowsDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](r_, objc.Sel("ruleEditorRowsDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](r_, objc.Sel("ruleEditorRowsDidChange:"), notification)
 }

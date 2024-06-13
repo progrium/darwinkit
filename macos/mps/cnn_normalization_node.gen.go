@@ -18,12 +18,12 @@ type _CNNNormalizationNodeClass struct {
 // An interface definition for the [CNNNormalizationNode] class.
 type ICNNNormalizationNode interface {
 	INNFilterNode
-	Beta() float64
-	SetBeta(value float64)
-	Alpha() float64
-	SetAlpha(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Beta() float32
+	SetBeta(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
+	Delta() float32
+	SetDelta(value float32)
 }
 
 // Virtual base class for CNN normalization nodes. [Full Topic]
@@ -40,7 +40,7 @@ func CNNNormalizationNodeFrom(ptr unsafe.Pointer) CNNNormalizationNode {
 }
 
 func (c_ CNNNormalizationNode) InitWithSource(sourceNode INNImageNode) CNNNormalizationNode {
-	rv := objc.Call[CNNNormalizationNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNormalizationNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -54,7 +54,7 @@ func NewCNNNormalizationNodeWithSource(sourceNode INNImageNode) CNNNormalization
 }
 
 func (cc _CNNNormalizationNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNormalizationNode {
-	rv := objc.Call[CNNNormalizationNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNormalizationNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -88,44 +88,44 @@ func (c_ CNNNormalizationNode) Init() CNNNormalizationNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866497-beta?language=objc
-func (c_ CNNNormalizationNode) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNNormalizationNode) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866497-beta?language=objc
-func (c_ CNNNormalizationNode) SetBeta(value float64) {
+func (c_ CNNNormalizationNode) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866474-alpha?language=objc
-func (c_ CNNNormalizationNode) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNNormalizationNode) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866474-alpha?language=objc
-func (c_ CNNNormalizationNode) SetAlpha(value float64) {
+func (c_ CNNNormalizationNode) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866482-delta?language=objc
-func (c_ CNNNormalizationNode) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNNormalizationNode) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnnormalizationnode/2866482-delta?language=objc
-func (c_ CNNNormalizationNode) SetDelta(value float64) {
+func (c_ CNNNormalizationNode) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }

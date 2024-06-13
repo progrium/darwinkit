@@ -39,7 +39,7 @@ func CursorFrom(ptr unsafe.Pointer) Cursor {
 }
 
 func (c_ Cursor) InitWithImageHotSpot(newImage IImage, point foundation.Point) Cursor {
-	rv := objc.Call[Cursor](c_, objc.Sel("initWithImage:hotSpot:"), objc.Ptr(newImage), point)
+	rv := objc.Call[Cursor](c_, objc.Sel("initWithImage:hotSpot:"), newImage, point)
 	return rv
 }
 

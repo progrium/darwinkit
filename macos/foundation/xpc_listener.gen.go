@@ -146,7 +146,7 @@ func (x_ XPCListener) SetDelegate(value PXPCListenerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistener/1408939-delegate?language=objc
 func (x_ XPCListener) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Returns an endpoint object that may be sent over an existing connection. [Full Topic]

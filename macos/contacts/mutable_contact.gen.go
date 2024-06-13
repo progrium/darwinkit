@@ -141,7 +141,7 @@ func (m_ MutableContact) SetSocialProfiles(value []ILabeledValue) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablecontact/1403236-birthday?language=objc
 func (m_ MutableContact) SetBirthday(value foundation.IDateComponents) {
-	objc.Call[objc.Void](m_, objc.Sel("setBirthday:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setBirthday:"), value)
 }
 
 // The name suffix of the contact. [Full Topic]
@@ -239,7 +239,7 @@ func (m_ MutableContact) SetDates(value []ILabeledValue) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnmutablecontact/1402994-nongregorianbirthday?language=objc
 func (m_ MutableContact) SetNonGregorianBirthday(value foundation.IDateComponents) {
-	objc.Call[objc.Void](m_, objc.Sel("setNonGregorianBirthday:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setNonGregorianBirthday:"), value)
 }
 
 // The name of the department associated with the contact. [Full Topic]

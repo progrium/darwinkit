@@ -39,7 +39,7 @@ func URLResponseFrom(ptr unsafe.Pointer) URLResponse {
 }
 
 func (u_ URLResponse) InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) URLResponse {
-	rv := objc.Call[URLResponse](u_, objc.Sel("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), objc.Ptr(URL), MIMEType, length, name)
+	rv := objc.Call[URLResponse](u_, objc.Sel("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), URL, MIMEType, length, name)
 	return rv
 }
 

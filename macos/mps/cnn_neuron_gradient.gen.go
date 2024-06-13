@@ -19,11 +19,11 @@ type _CNNNeuronGradientClass struct {
 // An interface definition for the [CNNNeuronGradient] class.
 type ICNNNeuronGradient interface {
 	ICNNGradientKernel
-	C() float64
+	C() float32
 	Data() []byte
-	B() float64
+	B() float32
 	NeuronType() CNNNeuronType
-	A() float64
+	A() float32
 }
 
 // A gradient neuron filter. [Full Topic]
@@ -41,7 +41,7 @@ func CNNNeuronGradientFrom(ptr unsafe.Pointer) CNNNeuronGradient {
 
 func (c_ CNNNeuronGradient) InitWithDeviceNeuronDescriptor(device metal.PDevice, neuronDescriptor INNNeuronDescriptor) CNNNeuronGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNeuronGradient](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, objc.Ptr(neuronDescriptor))
+	rv := objc.Call[CNNNeuronGradient](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, neuronDescriptor)
 	return rv
 }
 
@@ -107,8 +107,8 @@ func CNNNeuronGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDev
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneurongradient/2942310-c?language=objc
-func (c_ CNNNeuronGradient) C() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("c"))
+func (c_ CNNNeuronGradient) C() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("c"))
 	return rv
 }
 
@@ -123,8 +123,8 @@ func (c_ CNNNeuronGradient) Data() []byte {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneurongradient/2942313-b?language=objc
-func (c_ CNNNeuronGradient) B() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("b"))
+func (c_ CNNNeuronGradient) B() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("b"))
 	return rv
 }
 
@@ -139,7 +139,7 @@ func (c_ CNNNeuronGradient) NeuronType() CNNNeuronType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneurongradient/2942312-a?language=objc
-func (c_ CNNNeuronGradient) A() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("a"))
+func (c_ CNNNeuronGradient) A() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("a"))
 	return rv
 }

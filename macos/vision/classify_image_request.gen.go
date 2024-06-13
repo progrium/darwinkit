@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _ClassifyImageRequestClass struct {
 // An interface definition for the [ClassifyImageRequest] class.
 type IClassifyImageRequest interface {
 	IImageBasedRequest
-	SupportedIdentifiersAndReturnError(error foundation.IError) []string
+	SupportedIdentifiersAndReturnError(error unsafe.Pointer) []string
 }
 
 // A request to classify an image. [Full Topic]
@@ -72,7 +71,7 @@ func NewClassifyImageRequestWithCompletionHandler(completionHandler RequestCompl
 // Returns the classification identifiers that the request supports in its current configuration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnclassifyimagerequest/3750957-supportedidentifiersandreturnerr?language=objc
-func (c_ ClassifyImageRequest) SupportedIdentifiersAndReturnError(error foundation.IError) []string {
-	rv := objc.Call[[]string](c_, objc.Sel("supportedIdentifiersAndReturnError:"), objc.Ptr(error))
+func (c_ ClassifyImageRequest) SupportedIdentifiersAndReturnError(error unsafe.Pointer) []string {
+	rv := objc.Call[[]string](c_, objc.Sel("supportedIdentifiersAndReturnError:"), error)
 	return rv
 }

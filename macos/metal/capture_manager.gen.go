@@ -5,7 +5,6 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -24,7 +23,7 @@ type ICaptureManager interface {
 	NewCaptureScopeWithDeviceObject(deviceObject objc.IObject) CaptureScopeObject
 	NewCaptureScopeWithCommandQueue(commandQueue PCommandQueue) CaptureScopeObject
 	NewCaptureScopeWithCommandQueueObject(commandQueueObject objc.IObject) CaptureScopeObject
-	StartCaptureWithDescriptorError(descriptor ICaptureDescriptor, error foundation.IError) bool
+	StartCaptureWithDescriptorError(descriptor ICaptureDescriptor, error unsafe.Pointer) bool
 	SupportsDestination(destination CaptureDestination) bool
 	IsCapturing() bool
 	DefaultCaptureScope() CaptureScopeObject
@@ -85,7 +84,7 @@ func (c_ CaptureManager) NewCaptureScopeWithDevice(device PDevice) CaptureScopeO
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturemanager/2869719-newcapturescopewithdevice?language=objc
 func (c_ CaptureManager) NewCaptureScopeWithDeviceObject(deviceObject objc.IObject) CaptureScopeObject {
-	rv := objc.Call[CaptureScopeObject](c_, objc.Sel("newCaptureScopeWithDevice:"), objc.Ptr(deviceObject))
+	rv := objc.Call[CaptureScopeObject](c_, objc.Sel("newCaptureScopeWithDevice:"), deviceObject)
 	return rv
 }
 
@@ -117,15 +116,15 @@ func (c_ CaptureManager) NewCaptureScopeWithCommandQueue(commandQueue PCommandQu
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturemanager/2869732-newcapturescopewithcommandqueue?language=objc
 func (c_ CaptureManager) NewCaptureScopeWithCommandQueueObject(commandQueueObject objc.IObject) CaptureScopeObject {
-	rv := objc.Call[CaptureScopeObject](c_, objc.Sel("newCaptureScopeWithCommandQueue:"), objc.Ptr(commandQueueObject))
+	rv := objc.Call[CaptureScopeObject](c_, objc.Sel("newCaptureScopeWithCommandQueue:"), commandQueueObject)
 	return rv
 }
 
 // Starts capturing any of your app’s Metal commands, with the capture session defined by a descriptor object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturemanager/3237259-startcapturewithdescriptor?language=objc
-func (c_ CaptureManager) StartCaptureWithDescriptorError(descriptor ICaptureDescriptor, error foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("startCaptureWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (c_ CaptureManager) StartCaptureWithDescriptorError(descriptor ICaptureDescriptor, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("startCaptureWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -165,5 +164,5 @@ func (c_ CaptureManager) SetDefaultCaptureScope(value PCaptureScope) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturemanager/2887120-defaultcapturescope?language=objc
 func (c_ CaptureManager) SetDefaultCaptureScopeObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDefaultCaptureScope:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDefaultCaptureScope:"), valueObject)
 }

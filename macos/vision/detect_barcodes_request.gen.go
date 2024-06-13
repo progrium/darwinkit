@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _DetectBarcodesRequestClass struct {
 // An interface definition for the [DetectBarcodesRequest] class.
 type IDetectBarcodesRequest interface {
 	IImageBasedRequest
-	SupportedSymbologiesAndReturnError(error foundation.IError) []BarcodeSymbology
+	SupportedSymbologiesAndReturnError(error unsafe.Pointer) []BarcodeSymbology
 	Symbologies() []BarcodeSymbology
 	SetSymbologies(value []BarcodeSymbology)
 }
@@ -74,8 +73,8 @@ func NewDetectBarcodesRequestWithCompletionHandler(completionHandler RequestComp
 // Returns the barcode symbologies that the request supports. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectbarcodesrequest/3750959-supportedsymbologiesandreturnerr?language=objc
-func (d_ DetectBarcodesRequest) SupportedSymbologiesAndReturnError(error foundation.IError) []BarcodeSymbology {
-	rv := objc.Call[[]BarcodeSymbology](d_, objc.Sel("supportedSymbologiesAndReturnError:"), objc.Ptr(error))
+func (d_ DetectBarcodesRequest) SupportedSymbologiesAndReturnError(error unsafe.Pointer) []BarcodeSymbology {
+	rv := objc.Call[[]BarcodeSymbology](d_, objc.Sel("supportedSymbologiesAndReturnError:"), error)
 	return rv
 }
 

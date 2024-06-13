@@ -79,7 +79,7 @@ func PDFPanel_Panel() PDFPanel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfpanel/1529098-beginsheetwithpdfinfo?language=objc
 func (p_ PDFPanel) BeginSheetWithPDFInfoModalForWindowCompletionHandler(pdfInfo IPDFInfo, docWindow IWindow, completionHandler func(arg0 int)) {
-	objc.Call[objc.Void](p_, objc.Sel("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), objc.Ptr(pdfInfo), objc.Ptr(docWindow), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("beginSheetWithPDFInfo:modalForWindow:completionHandler:"), pdfInfo, docWindow, completionHandler)
 }
 
 // A set of configuration options that determine the accessory views the PDF panel should display. [Full Topic]
@@ -124,5 +124,5 @@ func (p_ PDFPanel) AccessoryController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfpanel/1524637-accessorycontroller?language=objc
 func (p_ PDFPanel) SetAccessoryController(value IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("setAccessoryController:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setAccessoryController:"), value)
 }

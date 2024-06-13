@@ -80,7 +80,7 @@ func (s_ SampleCursor) Init() SampleCursor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursor/1390608-comparepositionindecodeorderwith?language=objc
 func (s_ SampleCursor) ComparePositionInDecodeOrderWithPositionOfCursor(cursor ISampleCursor) foundation.ComparisonResult {
-	rv := objc.Call[foundation.ComparisonResult](s_, objc.Sel("comparePositionInDecodeOrderWithPositionOfCursor:"), objc.Ptr(cursor))
+	rv := objc.Call[foundation.ComparisonResult](s_, objc.Sel("comparePositionInDecodeOrderWithPositionOfCursor:"), cursor)
 	return rv
 }
 
@@ -88,7 +88,7 @@ func (s_ SampleCursor) ComparePositionInDecodeOrderWithPositionOfCursor(cursor I
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursor/1386558-sampleswithearlierdecodetimestam?language=objc
 func (s_ SampleCursor) SamplesWithEarlierDecodeTimeStampsMayHaveLaterPresentationTimeStampsThanCursor(cursor ISampleCursor) bool {
-	rv := objc.Call[bool](s_, objc.Sel("samplesWithEarlierDecodeTimeStampsMayHaveLaterPresentationTimeStampsThanCursor:"), objc.Ptr(cursor))
+	rv := objc.Call[bool](s_, objc.Sel("samplesWithEarlierDecodeTimeStampsMayHaveLaterPresentationTimeStampsThanCursor:"), cursor)
 	return rv
 }
 
@@ -128,7 +128,7 @@ func (s_ SampleCursor) StepInDecodeOrderByCount(stepCount int64) int64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplecursor/1390029-sampleswithlaterdecodetimestamps?language=objc
 func (s_ SampleCursor) SamplesWithLaterDecodeTimeStampsMayHaveEarlierPresentationTimeStampsThanCursor(cursor ISampleCursor) bool {
-	rv := objc.Call[bool](s_, objc.Sel("samplesWithLaterDecodeTimeStampsMayHaveEarlierPresentationTimeStampsThanCursor:"), objc.Ptr(cursor))
+	rv := objc.Call[bool](s_, objc.Sel("samplesWithLaterDecodeTimeStampsMayHaveEarlierPresentationTimeStampsThanCursor:"), cursor)
 	return rv
 }
 

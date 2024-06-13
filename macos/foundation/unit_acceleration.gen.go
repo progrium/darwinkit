@@ -54,7 +54,7 @@ func (u_ UnitAcceleration) Init() UnitAcceleration {
 }
 
 func (u_ UnitAcceleration) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAcceleration {
-	rv := objc.Call[UnitAcceleration](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitAcceleration](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

@@ -110,5 +110,5 @@ func (c_ ComputePassSampleBufferAttachmentDescriptor) SetSampleBuffer(value PCou
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptor/3564439-samplebuffer?language=objc
 func (c_ ComputePassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setSampleBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setSampleBuffer:"), valueObject)
 }

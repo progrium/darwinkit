@@ -129,7 +129,7 @@ func (o_ OutlineView) ItemAtRow(row int) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1527168-removeitemsatindexes?language=objc
 func (o_ OutlineView) RemoveItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](o_, objc.Sel("removeItemsAtIndexes:inParent:withAnimation:"), objc.Ptr(indexes), parent, animationOptions)
+	objc.Call[objc.Void](o_, objc.Sel("removeItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
 }
 
 // Returns the row associated with a given item. [Full Topic]
@@ -182,7 +182,7 @@ func (o_ OutlineView) ReloadItem(item objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1528656-insertitemsatindexes?language=objc
 func (o_ OutlineView) InsertItemsAtIndexesInParentWithAnimation(indexes foundation.IIndexSet, parent objc.IObject, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](o_, objc.Sel("insertItemsAtIndexes:inParent:withAnimation:"), objc.Ptr(indexes), parent, animationOptions)
+	objc.Call[objc.Void](o_, objc.Sel("insertItemsAtIndexes:inParent:withAnimation:"), indexes, parent, animationOptions)
 }
 
 // Returns the number of children for the specified parent item. [Full Topic]
@@ -325,7 +325,7 @@ func (o_ OutlineView) OutlineTableColumn() TableColumn {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineview/1533581-outlinetablecolumn?language=objc
 func (o_ OutlineView) SetOutlineTableColumn(value ITableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("setOutlineTableColumn:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setOutlineTableColumn:"), value)
 }
 
 // A Boolean value that indicates whether the outline view resizes its outline column when the user expands or collapses items. [Full Topic]

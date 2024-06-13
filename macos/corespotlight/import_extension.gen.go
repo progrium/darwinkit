@@ -19,7 +19,7 @@ type _ImportExtensionClass struct {
 // An interface definition for the [ImportExtension] class.
 type IImportExtension interface {
 	objc.IObject
-	UpdateAttributesForFileAtURLError(attributes ISearchableItemAttributeSet, contentURL foundation.IURL, error foundation.IError) bool
+	UpdateAttributesForFileAtURLError(attributes ISearchableItemAttributeSet, contentURL foundation.IURL, error unsafe.Pointer) bool
 }
 
 // An object that provides searchable attributes for file types that the app supports. [Full Topic]
@@ -58,7 +58,7 @@ func (i_ ImportExtension) Init() ImportExtension {
 // Provides searchable attributes for a file at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/csimportextension/3752010-updateattributes?language=objc
-func (i_ ImportExtension) UpdateAttributesForFileAtURLError(attributes ISearchableItemAttributeSet, contentURL foundation.IURL, error foundation.IError) bool {
-	rv := objc.Call[bool](i_, objc.Sel("updateAttributes:forFileAtURL:error:"), objc.Ptr(attributes), objc.Ptr(contentURL), objc.Ptr(error))
+func (i_ ImportExtension) UpdateAttributesForFileAtURLError(attributes ISearchableItemAttributeSet, contentURL foundation.IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](i_, objc.Sel("updateAttributes:forFileAtURL:error:"), attributes, contentURL, error)
 	return rv
 }

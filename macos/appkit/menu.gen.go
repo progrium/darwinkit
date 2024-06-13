@@ -154,21 +154,21 @@ func (m_ Menu) CancelTrackingWithoutAnimation() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518201-insertitem?language=objc
 func (m_ Menu) InsertItemAtIndex(newItem IMenuItem, index int) {
-	objc.Call[objc.Void](m_, objc.Sel("insertItem:atIndex:"), objc.Ptr(newItem), index)
+	objc.Call[objc.Void](m_, objc.Sel("insertItem:atIndex:"), newItem, index)
 }
 
 // Assigns a menu to be a submenu of the menu controlled by a given menu item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518194-setsubmenu?language=objc
 func (m_ Menu) SetSubmenuForItem(menu IMenu, item IMenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("setSubmenu:forItem:"), objc.Ptr(menu), objc.Ptr(item))
+	objc.Call[objc.Void](m_, objc.Sel("setSubmenu:forItem:"), menu, item)
 }
 
 // Pops up the menu at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518212-popupmenupositioningitem?language=objc
 func (m_ Menu) PopUpMenuPositioningItemAtLocationInView(item IMenuItem, location foundation.Point, view IView) bool {
-	rv := objc.Call[bool](m_, objc.Sel("popUpMenuPositioningItem:atLocation:inView:"), objc.Ptr(item), location, objc.Ptr(view))
+	rv := objc.Call[bool](m_, objc.Sel("popUpMenuPositioningItem:atLocation:inView:"), item, location, view)
 	return rv
 }
 
@@ -184,7 +184,7 @@ func (m_ Menu) IndexOfItemWithTitle(title string) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518165-popupcontextmenu?language=objc
 func (mc _MenuClass) PopUpContextMenuWithEventForViewWithFont(menu IMenu, event IEvent, view IView, font IFont) {
-	objc.Call[objc.Void](mc, objc.Sel("popUpContextMenu:withEvent:forView:withFont:"), objc.Ptr(menu), objc.Ptr(event), objc.Ptr(view), objc.Ptr(font))
+	objc.Call[objc.Void](mc, objc.Sel("popUpContextMenu:withEvent:forView:withFont:"), menu, event, view, font)
 }
 
 // Displays a contextual menu over a view for an event using a specified font. [Full Topic]
@@ -198,7 +198,7 @@ func Menu_PopUpContextMenuWithEventForViewWithFont(menu IMenu, event IEvent, vie
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518216-indexofitemwithsubmenu?language=objc
 func (m_ Menu) IndexOfItemWithSubmenu(submenu IMenu) int {
-	rv := objc.Call[int](m_, objc.Sel("indexOfItemWithSubmenu:"), objc.Ptr(submenu))
+	rv := objc.Call[int](m_, objc.Sel("indexOfItemWithSubmenu:"), submenu)
 	return rv
 }
 
@@ -236,7 +236,7 @@ func (m_ Menu) AddItemWithTitleActionKeyEquivalent(string_ string, selector objc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518176-additem?language=objc
 func (m_ Menu) AddItem(newItem IMenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("addItem:"), objc.Ptr(newItem))
+	objc.Call[objc.Void](m_, objc.Sel("addItem:"), newItem)
 }
 
 // Returns the index of the first menu item in the menu that has a specified action and target. [Full Topic]
@@ -258,7 +258,7 @@ func (m_ Menu) PerformActionForItemAtIndex(index int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518198-performkeyequivalent?language=objc
 func (m_ Menu) PerformKeyEquivalent(event IEvent) bool {
-	rv := objc.Call[bool](m_, objc.Sel("performKeyEquivalent:"), objc.Ptr(event))
+	rv := objc.Call[bool](m_, objc.Sel("performKeyEquivalent:"), event)
 	return rv
 }
 
@@ -266,7 +266,7 @@ func (m_ Menu) PerformKeyEquivalent(event IEvent) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518178-indexofitem?language=objc
 func (m_ Menu) IndexOfItem(item IMenuItem) int {
-	rv := objc.Call[int](m_, objc.Sel("indexOfItem:"), objc.Ptr(item))
+	rv := objc.Call[int](m_, objc.Sel("indexOfItem:"), item)
 	return rv
 }
 
@@ -281,7 +281,7 @@ func (m_ Menu) RemoveItemAtIndex(index int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518257-removeitem?language=objc
 func (m_ Menu) RemoveItem(item IMenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("removeItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](m_, objc.Sel("removeItem:"), item)
 }
 
 // Sets whether the menu bar is visible and selectable by the user. [Full Topic]
@@ -317,7 +317,7 @@ func (m_ Menu) SubmenuAction(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518170-popupcontextmenu?language=objc
 func (mc _MenuClass) PopUpContextMenuWithEventForView(menu IMenu, event IEvent, view IView) {
-	objc.Call[objc.Void](mc, objc.Sel("popUpContextMenu:withEvent:forView:"), objc.Ptr(menu), objc.Ptr(event), objc.Ptr(view))
+	objc.Call[objc.Void](mc, objc.Sel("popUpContextMenu:withEvent:forView:"), menu, event, view)
 }
 
 // Displays a contextual menu over a view for an event. [Full Topic]
@@ -331,7 +331,7 @@ func Menu_PopUpContextMenuWithEventForView(menu IMenu, event IEvent, view IView)
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518154-itemchanged?language=objc
 func (m_ Menu) ItemChanged(item IMenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("itemChanged:"), objc.Ptr(item))
+	objc.Call[objc.Void](m_, objc.Sel("itemChanged:"), item)
 }
 
 // Returns the first menu item in the menu with the specified tag. [Full Topic]
@@ -407,7 +407,7 @@ func (m_ Menu) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518230-font?language=objc
 func (m_ Menu) SetFont(value IFont) {
-	objc.Call[objc.Void](m_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setFont:"), value)
 }
 
 // The size of the menu in screen coordinates [Full Topic]
@@ -438,7 +438,7 @@ func (m_ Menu) Supermenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518204-supermenu?language=objc
 func (m_ Menu) SetSupermenu(value IMenu) {
-	objc.Call[objc.Void](m_, objc.Sel("setSupermenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setSupermenu:"), value)
 }
 
 // Indicates whether the menu displays the state column. [Full Topic]
@@ -507,7 +507,7 @@ func (m_ Menu) SetDelegate(value PMenuDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenu/1518169-delegate?language=objc
 func (m_ Menu) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Indicates whether the menu automatically enables and disables its menu items. [Full Topic]

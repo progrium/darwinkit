@@ -77,7 +77,7 @@ func (p_ PlayerPlaybackCoordinatorDelegateObject) HasPlaybackCoordinatorIntersti
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate/3920458-playbackcoordinator?language=objc
 func (p_ PlayerPlaybackCoordinatorDelegateObject) PlaybackCoordinatorInterstitialTimeRangesForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) []foundation.Value {
-	rv := objc.Call[[]foundation.Value](p_, objc.Sel("playbackCoordinator:interstitialTimeRangesForPlayerItem:"), objc.Ptr(coordinator), objc.Ptr(playerItem))
+	rv := objc.Call[[]foundation.Value](p_, objc.Sel("playbackCoordinator:interstitialTimeRangesForPlayerItem:"), coordinator, playerItem)
 	return rv
 }
 
@@ -89,6 +89,6 @@ func (p_ PlayerPlaybackCoordinatorDelegateObject) HasPlaybackCoordinatorIdentifi
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinatordelegate/3750304-playbackcoordinator?language=objc
 func (p_ PlayerPlaybackCoordinatorDelegateObject) PlaybackCoordinatorIdentifierForPlayerItem(coordinator PlayerPlaybackCoordinator, playerItem PlayerItem) string {
-	rv := objc.Call[string](p_, objc.Sel("playbackCoordinator:identifierForPlayerItem:"), objc.Ptr(coordinator), objc.Ptr(playerItem))
+	rv := objc.Call[string](p_, objc.Sel("playbackCoordinator:identifierForPlayerItem:"), coordinator, playerItem)
 	return rv
 }

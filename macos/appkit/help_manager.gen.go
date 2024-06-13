@@ -95,7 +95,7 @@ func (h_ HelpManager) ShowContextHelpForObjectLocationHint(object objc.IObject, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500914-registerbooksinbundle?language=objc
 func (h_ HelpManager) RegisterBooksInBundle(bundle foundation.IBundle) bool {
-	rv := objc.Call[bool](h_, objc.Sel("registerBooksInBundle:"), objc.Ptr(bundle))
+	rv := objc.Call[bool](h_, objc.Sel("registerBooksInBundle:"), bundle)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (h_ HelpManager) RegisterBooksInBundle(bundle foundation.IBundle) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nshelpmanager/1500921-setcontexthelp?language=objc
 func (h_ HelpManager) SetContextHelpForObject(attrString foundation.IAttributedString, object objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("setContextHelp:forObject:"), objc.Ptr(attrString), object)
+	objc.Call[objc.Void](h_, objc.Sel("setContextHelp:forObject:"), attrString, object)
 }
 
 // Removes the association between an object and its context-sensitive help. [Full Topic]

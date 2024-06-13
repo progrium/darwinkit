@@ -84,7 +84,7 @@ func (t_ TableViewRowAction) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/2177311-image?language=objc
 func (t_ TableViewRowAction) SetImage(value IImage) {
-	objc.Call[objc.Void](t_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }
 
 // The background color of the action button. [Full Topic]
@@ -99,7 +99,7 @@ func (t_ TableViewRowAction) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewrowaction/1401984-backgroundcolor?language=objc
 func (t_ TableViewRowAction) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The title of the action button. [Full Topic]

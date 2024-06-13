@@ -175,7 +175,7 @@ func (g_ GridView) InsertRowAtIndexWithViews(index int, views []IView) GridRow {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639661-indexofrow?language=objc
 func (g_ GridView) IndexOfRow(row IGridRow) int {
-	rv := objc.Call[int](g_, objc.Sel("indexOfRow:"), objc.Ptr(row))
+	rv := objc.Call[int](g_, objc.Sel("indexOfRow:"), row)
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (g_ GridView) IndexOfRow(row IGridRow) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639667-indexofcolumn?language=objc
 func (g_ GridView) IndexOfColumn(column IGridColumn) int {
-	rv := objc.Call[int](g_, objc.Sel("indexOfColumn:"), objc.Ptr(column))
+	rv := objc.Call[int](g_, objc.Sel("indexOfColumn:"), column)
 	return rv
 }
 
@@ -215,7 +215,7 @@ func (g_ GridView) CellAtColumnIndexRowIndex(columnIndex int, rowIndex int) Grid
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridview/1639703-cellforview?language=objc
 func (g_ GridView) CellForView(view IView) GridCell {
-	rv := objc.Call[GridCell](g_, objc.Sel("cellForView:"), objc.Ptr(view))
+	rv := objc.Call[GridCell](g_, objc.Sel("cellForView:"), view)
 	return rv
 }
 

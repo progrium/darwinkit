@@ -137,7 +137,7 @@ func (n_ NinePartTiledObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cinineparttiled/3600185-inputimage?language=objc
 func (n_ NinePartTiledObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), value)
 }
 
 func (n_ NinePartTiledObject) HasInputImage() bool {

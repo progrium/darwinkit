@@ -35,7 +35,7 @@ func NetworkConnectionFrom(ptr unsafe.Pointer) NetworkConnection {
 }
 
 func (nc _NetworkConnectionClass) ConnectionWithHost(host INetworkHost) NetworkConnection {
-	rv := objc.Call[NetworkConnection](nc, objc.Sel("connectionWithHost:"), objc.Ptr(host))
+	rv := objc.Call[NetworkConnection](nc, objc.Sel("connectionWithHost:"), host)
 	return rv
 }
 

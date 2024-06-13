@@ -251,7 +251,7 @@ func (s_ SegmentedControl) MenuForSegment(segment int) Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1525540-setimage?language=objc
 func (s_ SegmentedControl) SetImageForSegment(image IImage, segment int) {
-	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), objc.Ptr(image), segment)
+	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), image, segment)
 }
 
 //	[Full Topic]
@@ -280,7 +280,7 @@ func (s_ SegmentedControl) SelectSegmentWithTag(tag int) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/1528853-setmenu?language=objc
 func (s_ SegmentedControl) SetMenuForSegment(menu IMenu, segment int) {
-	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), objc.Ptr(menu), segment)
+	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), menu, segment)
 }
 
 // Returns the width of the specified segment. [Full Topic]
@@ -379,7 +379,7 @@ func (s_ SegmentedControl) SelectedSegmentBezelColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcontrol/2561002-selectedsegmentbezelcolor?language=objc
 func (s_ SegmentedControl) SetSelectedSegmentBezelColor(value IColor) {
-	objc.Call[objc.Void](s_, objc.Sel("setSelectedSegmentBezelColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSelectedSegmentBezelColor:"), value)
 }
 
 //	[Full Topic]

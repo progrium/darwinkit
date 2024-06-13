@@ -88,7 +88,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCGImageOptions(cgImage 
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), objc.Ptr(imageURL), options, completionHandler)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), imageURL, options, completionHandler)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedImageDataOptionsComplet
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), objc.Ptr(ciImage), options, completionHandler)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), ciImage, options, completionHandler)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCIImageOptionsCompletio
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:orientation:options:"), objc.Ptr(ciImage), orientation, options)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:orientation:options:"), ciImage, orientation, options)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCIImageOrientationOptio
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:orientation:options:"), objc.Ptr(imageURL), orientation, options)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:orientation:options:"), imageURL, orientation, options)
 	return rv
 }
 
@@ -242,7 +242,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedImageURLOrientationOpti
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), objc.Ptr(ciImage), orientation, options, completionHandler)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), ciImage, orientation, options, completionHandler)
 	return rv
 }
 
@@ -298,7 +298,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCMSampleBufferOptions(s
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), objc.Ptr(imageURL), orientation, options, completionHandler)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), imageURL, orientation, options, completionHandler)
 	return rv
 }
 
@@ -326,7 +326,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCMSampleBufferOrientati
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedCIImageOptions(ciImage coreimage.IImage, options map[ImageOption]objc.IObject) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:options:"), objc.Ptr(ciImage), options)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedCIImage:options:"), ciImage, options)
 	return rv
 }
 
@@ -382,7 +382,7 @@ func NewTranslationalImageRegistrationRequestWithTargetedCVPixelBufferOrientatio
 }
 
 func (t_ TranslationalImageRegistrationRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) TranslationalImageRegistrationRequest {
-	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:options:"), objc.Ptr(imageURL), options)
+	rv := objc.Call[TranslationalImageRegistrationRequest](t_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
 	return rv
 }
 

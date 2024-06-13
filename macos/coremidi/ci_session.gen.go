@@ -19,9 +19,9 @@ type _CISessionClass struct {
 // An interface definition for the [CISession] class.
 type ICISession interface {
 	objc.IObject
-	DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError foundation.IError) bool
+	DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool
 	SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool
-	EnableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError foundation.IError) bool
+	EnableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool
 	ProfileStateForChannel(channel ChannelNumber) CIProfileState
 	DeviceInfo() CIDeviceInfo
 	MidiDestination() EntityRef
@@ -49,7 +49,7 @@ func CISessionFrom(ptr unsafe.Pointer) CISession {
 }
 
 func (c_ CISession) InitWithDiscoveredNodeDataReadyHandlerDisconnectHandler(discoveredNode ICIDiscoveredNode, handler func(), disconnectHandler CISessionDisconnectBlock) CISession {
-	rv := objc.Call[CISession](c_, objc.Sel("initWithDiscoveredNode:dataReadyHandler:disconnectHandler:"), objc.Ptr(discoveredNode), handler, disconnectHandler)
+	rv := objc.Call[CISession](c_, objc.Sel("initWithDiscoveredNode:dataReadyHandler:disconnectHandler:"), discoveredNode, handler, disconnectHandler)
 	return rv
 }
 
@@ -85,8 +85,8 @@ func (c_ CISession) Init() CISession {
 // Performs an asynchronous request to disable a profile for a specific MIDI channel number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977116-disableprofile?language=objc
-func (c_ CISession) DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("disableProfile:onChannel:error:"), objc.Ptr(profile), channel, objc.Ptr(outError))
+func (c_ CISession) DisableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("disableProfile:onChannel:error:"), profile, channel, outError)
 	return rv
 }
 
@@ -94,15 +94,15 @@ func (c_ CISession) DisableProfileOnChannelError(profile ICIProfile, channel Cha
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/3553276-sendprofile?language=objc
 func (c_ CISession) SendProfileOnChannelProfileData(profile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool {
-	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), objc.Ptr(profile), channel, profileSpecificData)
+	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), profile, channel, profileSpecificData)
 	return rv
 }
 
 // Performs an asynchronous request to enable a profile for a specific MIDI channel number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midicisession/2977117-enableprofile?language=objc
-func (c_ CISession) EnableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("enableProfile:onChannel:error:"), objc.Ptr(profile), channel, objc.Ptr(outError))
+func (c_ CISession) EnableProfileOnChannelError(profile ICIProfile, channel ChannelNumber, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("enableProfile:onChannel:error:"), profile, channel, outError)
 	return rv
 }
 

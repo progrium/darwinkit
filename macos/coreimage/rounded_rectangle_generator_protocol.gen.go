@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator?language=objc
 type PRoundedRectangleGenerator interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -51,7 +51,7 @@ func (r_ RoundedRectangleGeneratorObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator/3338739-radius?language=objc
-func (r_ RoundedRectangleGeneratorObject) SetRadius(value float64) {
+func (r_ RoundedRectangleGeneratorObject) SetRadius(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setRadius:"), value)
 }
 
@@ -62,8 +62,8 @@ func (r_ RoundedRectangleGeneratorObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator/3338739-radius?language=objc
-func (r_ RoundedRectangleGeneratorObject) Radius() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("radius"))
+func (r_ RoundedRectangleGeneratorObject) Radius() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("radius"))
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (r_ RoundedRectangleGeneratorObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciroundedrectanglegenerator/3338737-color?language=objc
 func (r_ RoundedRectangleGeneratorObject) SetColor(value Color) {
-	objc.Call[objc.Void](r_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setColor:"), value)
 }
 
 func (r_ RoundedRectangleGeneratorObject) HasColor() bool {

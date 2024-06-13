@@ -66,14 +66,14 @@ func (cc _CapturePhotoOutputClass) Alloc() CapturePhotoOutput {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
 func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegate(settings ICapturePhotoSettings, delegate PCapturePhotoCaptureDelegate) {
 	po1 := objc.WrapAsProtocol("AVCapturePhotoCaptureDelegate", delegate)
-	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), objc.Ptr(settings), po1)
+	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, po1)
 }
 
 // Initiates a photo capture using the specified settings. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotooutput/1648765-capturephotowithsettings?language=objc
 func (c_ CapturePhotoOutput) CapturePhotoWithSettingsDelegateObject(settings ICapturePhotoSettings, delegateObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), objc.Ptr(settings), objc.Ptr(delegateObject))
+	objc.Call[objc.Void](c_, objc.Sel("capturePhotoWithSettings:delegate:"), settings, delegateObject)
 }
 
 // Returns the list of uncompressed pixel formats supported for photo data in the specified file type. [Full Topic]

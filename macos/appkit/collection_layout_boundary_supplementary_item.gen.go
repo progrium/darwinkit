@@ -41,7 +41,7 @@ func CollectionLayoutBoundarySupplementaryItemFrom(ptr unsafe.Pointer) Collectio
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSizeElementKindAlignment(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), objc.Ptr(layoutSize), elementKind, alignment)
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:"), layoutSize, elementKind, alignment)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func CollectionLayoutBoundarySupplementaryItem_BoundarySupplementaryItemWithLayo
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) BoundarySupplementaryItemWithLayoutSizeElementKindAlignmentAbsoluteOffset(layoutSize ICollectionLayoutSize, elementKind string, alignment RectAlignment, absoluteOffset foundation.Point) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), objc.Ptr(layoutSize), elementKind, alignment, absoluteOffset)
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("boundarySupplementaryItemWithLayoutSize:elementKind:alignment:absoluteOffset:"), layoutSize, elementKind, alignment, absoluteOffset)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (c_ CollectionLayoutBoundarySupplementaryItem) Init() CollectionLayoutBound
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), objc.Ptr(layoutSize), elementKind, objc.Ptr(containerAnchor))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:"), layoutSize, elementKind, containerAnchor)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeEl
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) SupplementaryItemWithLayoutSizeElementKindContainerAnchorItemAnchor(layoutSize ICollectionLayoutSize, elementKind string, containerAnchor ICollectionLayoutAnchor, itemAnchor ICollectionLayoutAnchor) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), objc.Ptr(layoutSize), elementKind, objc.Ptr(containerAnchor), objc.Ptr(itemAnchor))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("supplementaryItemWithLayoutSize:elementKind:containerAnchor:itemAnchor:"), layoutSize, elementKind, containerAnchor, itemAnchor)
 	return rv
 }
 
@@ -109,7 +109,7 @@ func CollectionLayoutBoundarySupplementaryItem_SupplementaryItemWithLayoutSizeEl
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
@@ -121,7 +121,7 @@ func CollectionLayoutBoundarySupplementaryItem_ItemWithLayoutSize(layoutSize ICo
 }
 
 func (cc _CollectionLayoutBoundarySupplementaryItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutBoundarySupplementaryItem {
-	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), objc.Ptr(layoutSize), supplementaryItems)
+	rv := objc.Call[CollectionLayoutBoundarySupplementaryItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 

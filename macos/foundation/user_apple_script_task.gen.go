@@ -54,15 +54,15 @@ func (u_ UserAppleScriptTask) Init() UserAppleScriptTask {
 	return rv
 }
 
-func (u_ UserAppleScriptTask) InitWithURLError(url IURL, error IError) UserAppleScriptTask {
-	rv := objc.Call[UserAppleScriptTask](u_, objc.Sel("initWithURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (u_ UserAppleScriptTask) InitWithURLError(url IURL, error unsafe.Pointer) UserAppleScriptTask {
+	rv := objc.Call[UserAppleScriptTask](u_, objc.Sel("initWithURL:error:"), url, error)
 	return rv
 }
 
 // Return a user script task instance given a URL for a script file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttask/1409998-initwithurl?language=objc
-func NewUserAppleScriptTaskWithURLError(url IURL, error IError) UserAppleScriptTask {
+func NewUserAppleScriptTaskWithURLError(url IURL, error unsafe.Pointer) UserAppleScriptTask {
 	instance := UserAppleScriptTaskClass.Alloc().InitWithURLError(url, error)
 	instance.Autorelease()
 	return instance
@@ -72,5 +72,5 @@ func NewUserAppleScriptTaskWithURLError(url IURL, error IError) UserAppleScriptT
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserapplescripttask/1416515-executewithappleevent?language=objc
 func (u_ UserAppleScriptTask) ExecuteWithAppleEventCompletionHandler(event IAppleEventDescriptor, handler UserAppleScriptTaskCompletionHandler) {
-	objc.Call[objc.Void](u_, objc.Sel("executeWithAppleEvent:completionHandler:"), objc.Ptr(event), handler)
+	objc.Call[objc.Void](u_, objc.Sel("executeWithAppleEvent:completionHandler:"), event, handler)
 }

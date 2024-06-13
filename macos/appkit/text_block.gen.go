@@ -86,7 +86,7 @@ func (t_ TextBlock) BorderColorForEdge(edge foundation.RectEdge) Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1531424-drawbackgroundwithframe?language=objc
 func (t_ TextBlock) DrawBackgroundWithFrameInViewCharacterRangeLayoutManager(frameRect foundation.Rect, controlView IView, charRange foundation.Range, layoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundWithFrame:inView:characterRange:layoutManager:"), frameRect, objc.Ptr(controlView), charRange, objc.Ptr(layoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundWithFrame:inView:characterRange:layoutManager:"), frameRect, controlView, charRange, layoutManager)
 }
 
 // Returns the value of the specified text block dimension. [Full Topic]
@@ -101,7 +101,7 @@ func (t_ TextBlock) ValueForDimension(dimension TextBlockDimension) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1529881-setbordercolor?language=objc
 func (t_ TextBlock) SetBorderColorForEdge(color IColor, edge foundation.RectEdge) {
-	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:forEdge:"), objc.Ptr(color), edge)
+	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:forEdge:"), color, edge)
 }
 
 // Returns the value type of an edge of a specified layer of the text block. [Full Topic]
@@ -131,14 +131,14 @@ func (t_ TextBlock) WidthForLayerEdge(layer TextBlockLayer, edge foundation.Rect
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1531850-setbordercolor?language=objc
 func (t_ TextBlock) SetBorderColor(color IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:"), objc.Ptr(color))
+	objc.Call[objc.Void](t_, objc.Sel("setBorderColor:"), color)
 }
 
 // Returns the rectangle within which glyphs should be laid out for the specified arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1527965-rectforlayoutatpoint?language=objc
 func (t_ TextBlock) RectForLayoutAtPointInRectTextContainerCharacterRange(startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, objc.Ptr(textContainer), charRange)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForLayoutAtPoint:inRect:textContainer:characterRange:"), startingPoint, rect, textContainer, charRange)
 	return rv
 }
 
@@ -168,7 +168,7 @@ func (t_ TextBlock) ValueTypeForDimension(dimension TextBlockDimension) TextBloc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1532041-boundsrectforcontentrect?language=objc
 func (t_ TextBlock) BoundsRectForContentRectInRectTextContainerCharacterRange(contentRect foundation.Rect, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundsRectForContentRect:inRect:textContainer:characterRange:"), contentRect, rect, objc.Ptr(textContainer), charRange)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundsRectForContentRect:inRect:textContainer:characterRange:"), contentRect, rect, textContainer, charRange)
 	return rv
 }
 
@@ -207,7 +207,7 @@ func (t_ TextBlock) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextblock/1527300-backgroundcolor?language=objc
 func (t_ TextBlock) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The vertical alignment of the text block. [Full Topic]

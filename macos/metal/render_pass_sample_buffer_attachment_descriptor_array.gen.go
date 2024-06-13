@@ -59,7 +59,7 @@ func (r_ RenderPassSampleBufferAttachmentDescriptorArray) Init() RenderPassSampl
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptorarray/3081755-setobject?language=objc
 func (r_ RenderPassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IRenderPassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }
 
 // Returns the descriptor object for the specified sample buffer attachment. [Full Topic]

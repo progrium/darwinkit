@@ -66,7 +66,7 @@ func (p_ PersonNameComponentsFormatter) Init() PersonNameComponentsFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408243-stringfrompersonnamecomponents?language=objc
 func (p_ PersonNameComponentsFormatter) StringFromPersonNameComponents(components IPersonNameComponents) string {
-	rv := objc.Call[string](p_, objc.Sel("stringFromPersonNameComponents:"), objc.Ptr(components))
+	rv := objc.Call[string](p_, objc.Sel("stringFromPersonNameComponents:"), components)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (p_ PersonNameComponentsFormatter) StringFromPersonNameComponents(component
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408258-localizedstringfrompersonnamecom?language=objc
 func (pc _PersonNameComponentsFormatterClass) LocalizedStringFromPersonNameComponentsStyleOptions(components IPersonNameComponents, nameFormatStyle PersonNameComponentsFormatterStyle, nameOptions PersonNameComponentsFormatterOptions) string {
-	rv := objc.Call[string](pc, objc.Sel("localizedStringFromPersonNameComponents:style:options:"), objc.Ptr(components), nameFormatStyle, nameOptions)
+	rv := objc.Call[string](pc, objc.Sel("localizedStringFromPersonNameComponents:style:options:"), components, nameFormatStyle, nameOptions)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (p_ PersonNameComponentsFormatter) PersonNameComponentsFromString(string_ s
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/1408241-annotatedstringfrompersonnamecom?language=objc
 func (p_ PersonNameComponentsFormatter) AnnotatedStringFromPersonNameComponents(components IPersonNameComponents) AttributedString {
-	rv := objc.Call[AttributedString](p_, objc.Sel("annotatedStringFromPersonNameComponents:"), objc.Ptr(components))
+	rv := objc.Call[AttributedString](p_, objc.Sel("annotatedStringFromPersonNameComponents:"), components)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (p_ PersonNameComponentsFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponentsformatter/3850507-locale?language=objc
 func (p_ PersonNameComponentsFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](p_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setLocale:"), value)
 }
 
 // The formatting style of the receiver. [Full Topic]

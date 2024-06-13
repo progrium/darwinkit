@@ -186,7 +186,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidRemoveServiceMo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1412917-netservicebrowser?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidRemoveServiceMoreComing(browser NetServiceBrowser, service NetService, moreComing bool) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didRemoveService:moreComing:"), objc.Ptr(browser), objc.Ptr(service), moreComing)
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didRemoveService:moreComing:"), browser, service, moreComing)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidNotSearch() bool {
@@ -197,7 +197,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidNotSearch() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1410567-netservicebrowser?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidNotSearch(browser NetServiceBrowser, errorDict map[string]Number) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didNotSearch:"), objc.Ptr(browser), errorDict)
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didNotSearch:"), browser, errorDict)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserWillSearch() bool {
@@ -208,7 +208,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserWillSearch() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1408173-netservicebrowserwillsearch?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserWillSearch(browser NetServiceBrowser) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowserWillSearch:"), objc.Ptr(browser))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowserWillSearch:"), browser)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidFindDomainMoreComing() bool {
@@ -219,7 +219,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidFindDomainMoreC
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1407204-netservicebrowser?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidFindDomainMoreComing(browser NetServiceBrowser, domainString string, moreComing bool) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didFindDomain:moreComing:"), objc.Ptr(browser), domainString, moreComing)
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didFindDomain:moreComing:"), browser, domainString, moreComing)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidStopSearch() bool {
@@ -230,7 +230,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidStopSearch() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1418341-netservicebrowserdidstopsearch?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidStopSearch(browser NetServiceBrowser) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowserDidStopSearch:"), objc.Ptr(browser))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowserDidStopSearch:"), browser)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidRemoveDomainMoreComing() bool {
@@ -241,7 +241,7 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidRemoveDomainMor
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1412712-netservicebrowser?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidRemoveDomainMoreComing(browser NetServiceBrowser, domainString string, moreComing bool) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didRemoveDomain:moreComing:"), objc.Ptr(browser), domainString, moreComing)
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didRemoveDomain:moreComing:"), browser, domainString, moreComing)
 }
 
 func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidFindServiceMoreComing() bool {
@@ -252,5 +252,5 @@ func (n_ NetServiceBrowserDelegateObject) HasNetServiceBrowserDidFindServiceMore
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicebrowserdelegate/1417979-netservicebrowser?language=objc
 func (n_ NetServiceBrowserDelegateObject) NetServiceBrowserDidFindServiceMoreComing(browser NetServiceBrowser, service NetService, moreComing bool) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didFindService:moreComing:"), objc.Ptr(browser), objc.Ptr(service), moreComing)
+	objc.Call[objc.Void](n_, objc.Sel("netServiceBrowser:didFindService:moreComing:"), browser, service, moreComing)
 }

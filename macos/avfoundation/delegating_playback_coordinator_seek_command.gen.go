@@ -23,7 +23,7 @@ type IDelegatingPlaybackCoordinatorSeekCommand interface {
 	ItemTime() coremedia.Time
 	CompletionDueDate() foundation.Date
 	ShouldBufferInAnticipationOfPlayback() bool
-	AnticipatedPlaybackRate() float64
+	AnticipatedPlaybackRate() float32
 }
 
 // A command that indicates to seek to a new time in the item timeline. [Full Topic]
@@ -86,7 +86,7 @@ func (d_ DelegatingPlaybackCoordinatorSeekCommand) ShouldBufferInAnticipationOfP
 // The rate at which the coordinator expects playback to resume. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorseekcommand/3750279-anticipatedplaybackrate?language=objc
-func (d_ DelegatingPlaybackCoordinatorSeekCommand) AnticipatedPlaybackRate() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("anticipatedPlaybackRate"))
+func (d_ DelegatingPlaybackCoordinatorSeekCommand) AnticipatedPlaybackRate() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("anticipatedPlaybackRate"))
 	return rv
 }

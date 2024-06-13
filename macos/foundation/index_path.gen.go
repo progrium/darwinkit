@@ -147,7 +147,7 @@ func IndexPath_IndexPathForItemInSection(item int, section int) IndexPath {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexpath/1407552-compare?language=objc
 func (i_ IndexPath) Compare(otherObject IIndexPath) ComparisonResult {
-	rv := objc.Call[ComparisonResult](i_, objc.Sel("compare:"), objc.Ptr(otherObject))
+	rv := objc.Call[ComparisonResult](i_, objc.Sel("compare:"), otherObject)
 	return rv
 }
 

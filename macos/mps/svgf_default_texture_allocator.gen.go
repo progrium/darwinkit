@@ -102,7 +102,7 @@ func (s_ SVGFDefaultTextureAllocator) ReturnTexture(texture metal.PTexture) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdefaulttextureallocator/3242899-returntexture?language=objc
 func (s_ SVGFDefaultTextureAllocator) ReturnTextureObject(textureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), objc.Ptr(textureObject))
+	objc.Call[objc.Void](s_, objc.Sel("returnTexture:"), textureObject)
 }
 
 //	[Full Topic]

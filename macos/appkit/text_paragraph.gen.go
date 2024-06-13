@@ -38,7 +38,7 @@ func TextParagraphFrom(ptr unsafe.Pointer) TextParagraph {
 }
 
 func (t_ TextParagraph) InitWithAttributedString(attributedString foundation.IAttributedString) TextParagraph {
-	rv := objc.Call[TextParagraph](t_, objc.Sel("initWithAttributedString:"), objc.Ptr(attributedString))
+	rv := objc.Call[TextParagraph](t_, objc.Sel("initWithAttributedString:"), attributedString)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func (t_ TextParagraph) Init() TextParagraph {
 }
 
 func (t_ TextParagraph) InitWithTextContentManager(textContentManager ITextContentManager) TextParagraph {
-	rv := objc.Call[TextParagraph](t_, objc.Sel("initWithTextContentManager:"), objc.Ptr(textContentManager))
+	rv := objc.Call[TextParagraph](t_, objc.Sel("initWithTextContentManager:"), textContentManager)
 	return rv
 }
 

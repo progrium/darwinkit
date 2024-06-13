@@ -41,7 +41,7 @@ func PlayerLooperFrom(ptr unsafe.Pointer) PlayerLooper {
 }
 
 func (pc _PlayerLooperClass) PlayerLooperWithPlayerTemplateItem(player IQueuePlayer, itemToLoop IPlayerItem) PlayerLooper {
-	rv := objc.Call[PlayerLooper](pc, objc.Sel("playerLooperWithPlayer:templateItem:"), objc.Ptr(player), objc.Ptr(itemToLoop))
+	rv := objc.Call[PlayerLooper](pc, objc.Sel("playerLooperWithPlayer:templateItem:"), player, itemToLoop)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func PlayerLooper_PlayerLooperWithPlayerTemplateItem(player IQueuePlayer, itemTo
 }
 
 func (pc _PlayerLooperClass) PlayerLooperWithPlayerTemplateItemTimeRange(player IQueuePlayer, itemToLoop IPlayerItem, loopRange coremedia.TimeRange) PlayerLooper {
-	rv := objc.Call[PlayerLooper](pc, objc.Sel("playerLooperWithPlayer:templateItem:timeRange:"), objc.Ptr(player), objc.Ptr(itemToLoop), loopRange)
+	rv := objc.Call[PlayerLooper](pc, objc.Sel("playerLooperWithPlayer:templateItem:timeRange:"), player, itemToLoop, loopRange)
 	return rv
 }
 
@@ -65,7 +65,7 @@ func PlayerLooper_PlayerLooperWithPlayerTemplateItemTimeRange(player IQueuePlaye
 }
 
 func (p_ PlayerLooper) InitWithPlayerTemplateItemTimeRange(player IQueuePlayer, itemToLoop IPlayerItem, loopRange coremedia.TimeRange) PlayerLooper {
-	rv := objc.Call[PlayerLooper](p_, objc.Sel("initWithPlayer:templateItem:timeRange:"), objc.Ptr(player), objc.Ptr(itemToLoop), loopRange)
+	rv := objc.Call[PlayerLooper](p_, objc.Sel("initWithPlayer:templateItem:timeRange:"), player, itemToLoop, loopRange)
 	return rv
 }
 

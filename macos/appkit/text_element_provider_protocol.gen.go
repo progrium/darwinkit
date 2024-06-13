@@ -67,7 +67,7 @@ func (t_ TextElementProviderObject) HasAdjustedRangeFromRangeForEditingTextSelec
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3852573-adjustedrangefromrange?language=objc
 func (t_ TextElementProviderObject) AdjustedRangeFromRangeForEditingTextSelection(textRange TextRange, forEditingTextSelection bool) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), objc.Ptr(textRange), forEditingTextSelection)
+	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func (t_ TextElementProviderObject) HasReplaceContentsInRangeWithTextElements() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelementprovider/3809948-replacecontentsinrange?language=objc
 func (t_ TextElementProviderObject) ReplaceContentsInRangeWithTextElements(range_ TextRange, textElements []TextElement) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), objc.Ptr(range_), textElements)
+	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), range_, textElements)
 }
 
 func (t_ TextElementProviderObject) HasOffsetFromLocationToLocation() bool {

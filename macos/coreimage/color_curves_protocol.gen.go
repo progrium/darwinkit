@@ -83,7 +83,7 @@ func (c_ ColorCurvesObject) HasSetCurvesDomain() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228152-curvesdomain?language=objc
 func (c_ ColorCurvesObject) SetCurvesDomain(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setCurvesDomain:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setCurvesDomain:"), value)
 }
 
 func (c_ ColorCurvesObject) HasCurvesDomain() bool {
@@ -106,7 +106,7 @@ func (c_ ColorCurvesObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcurves/3228153-inputimage?language=objc
 func (c_ ColorCurvesObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorCurvesObject) HasInputImage() bool {

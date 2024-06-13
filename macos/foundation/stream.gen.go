@@ -97,14 +97,14 @@ func (s_ Stream) Open() {
 // Creates and returns by reference a bound pair of input and output streams. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1412683-getboundstreamswithbuffersize?language=objc
-func (sc _StreamClass) GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint, inputStream IInputStream, outputStream IOutputStream) {
-	objc.Call[objc.Void](sc, objc.Sel("getBoundStreamsWithBufferSize:inputStream:outputStream:"), bufferSize, objc.Ptr(inputStream), objc.Ptr(outputStream))
+func (sc _StreamClass) GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint, inputStream unsafe.Pointer, outputStream unsafe.Pointer) {
+	objc.Call[objc.Void](sc, objc.Sel("getBoundStreamsWithBufferSize:inputStream:outputStream:"), bufferSize, inputStream, outputStream)
 }
 
 // Creates and returns by reference a bound pair of input and output streams. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1412683-getboundstreamswithbuffersize?language=objc
-func Stream_GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint, inputStream IInputStream, outputStream IOutputStream) {
+func Stream_GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint, inputStream unsafe.Pointer, outputStream unsafe.Pointer) {
 	StreamClass.GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize, inputStream, outputStream)
 }
 
@@ -112,14 +112,14 @@ func Stream_GetBoundStreamsWithBufferSizeInputStreamOutputStream(bufferSize uint
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1411285-removefromrunloop?language=objc
 func (s_ Stream) RemoveFromRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](s_, objc.Sel("removeFromRunLoop:forMode:"), objc.Ptr(aRunLoop), mode)
+	objc.Call[objc.Void](s_, objc.Sel("removeFromRunLoop:forMode:"), aRunLoop, mode)
 }
 
 // Schedules the receiver on a given run loop in a given mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1417370-scheduleinrunloop?language=objc
 func (s_ Stream) ScheduleInRunLoopForMode(aRunLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](s_, objc.Sel("scheduleInRunLoop:forMode:"), objc.Ptr(aRunLoop), mode)
+	objc.Call[objc.Void](s_, objc.Sel("scheduleInRunLoop:forMode:"), aRunLoop, mode)
 }
 
 // Returns the receiver’s status. [Full Topic]
@@ -158,5 +158,5 @@ func (s_ Stream) SetDelegate(value PStreamDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstream/1418423-delegate?language=objc
 func (s_ Stream) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }

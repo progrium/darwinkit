@@ -58,7 +58,7 @@ func RecordFrom(ptr unsafe.Pointer) Record {
 }
 
 func (r_ Record) InitWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Record {
-	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:recordID:"), recordType, objc.Ptr(recordID))
+	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:recordID:"), recordType, recordID)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewRecordWithRecordType(recordType RecordType) Record {
 }
 
 func (r_ Record) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Record {
-	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:zoneID:"), recordType, objc.Ptr(zoneID))
+	rv := objc.Call[Record](r_, objc.Sel("initWithRecordType:zoneID:"), recordType, zoneID)
 	return rv
 }
 
@@ -123,14 +123,14 @@ func (r_ Record) Init() Record {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462200-encodesystemfieldswithcoder?language=objc
 func (r_ Record) EncodeSystemFieldsWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeSystemFieldsWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSystemFieldsWithCoder:"), coder)
 }
 
 // Creates and sets a reference object for a parent from the parent’s record ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690508-setparentreferencefromrecordid?language=objc
 func (r_ Record) SetParentReferenceFromRecordID(parentRecordID IRecordID) {
-	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecordID:"), objc.Ptr(parentRecordID))
+	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecordID:"), parentRecordID)
 }
 
 // Returns an array of keys with recent changes to their values. [Full Topic]
@@ -153,7 +153,7 @@ func (r_ Record) AllTokens() []string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1690507-setparentreferencefromrecord?language=objc
 func (r_ Record) SetParentReferenceFromRecord(parentRecord IRecord) {
-	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecord:"), objc.Ptr(parentRecord))
+	objc.Call[objc.Void](r_, objc.Sel("setParentReferenceFromRecord:"), parentRecord)
 }
 
 // Returns the object that the record stores for the specified key. [Full Topic]
@@ -176,7 +176,7 @@ func (r_ Record) SetObjectForKeyedSubscript(object PRecordValue, key RecordField
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462221-setobject?language=objc
 func (r_ Record) SetObjectObjectForKeyedSubscript(objectObject objc.IObject, key RecordFieldKey) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:forKeyedSubscript:"), objc.Ptr(objectObject), key)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:forKeyedSubscript:"), objectObject, key)
 }
 
 // Returns an array of the record’s keys. [Full Topic]
@@ -207,7 +207,7 @@ func (r_ Record) SetObjectForKey(object PRecordValue, key RecordFieldKey) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1462231-setobject?language=objc
 func (r_ Record) SetObjectObjectForKey(objectObject objc.IObject, key RecordFieldKey) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:forKey:"), objc.Ptr(objectObject), key)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:forKey:"), objectObject, key)
 }
 
 // The ID of the user who creates the record. [Full Topic]
@@ -278,7 +278,7 @@ func (r_ Record) Parent() Reference {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckrecord/1640527-parent?language=objc
 func (r_ Record) SetParent(value IReference) {
-	objc.Call[objc.Void](r_, objc.Sel("setParent:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setParent:"), value)
 }
 
 // The value that your app defines to identify the type of record. [Full Topic]

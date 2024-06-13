@@ -41,7 +41,7 @@ func NetworkHostFrom(ptr unsafe.Pointer) NetworkHost {
 }
 
 func (nc _NetworkHostClass) HostWithNameNetService(name string, netService foundation.INetService) NetworkHost {
-	rv := objc.Call[NetworkHost](nc, objc.Sel("hostWithName:netService:"), name, objc.Ptr(netService))
+	rv := objc.Call[NetworkHost](nc, objc.Sel("hostWithName:netService:"), name, netService)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func (n_ NetworkHost) Init() NetworkHost {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworkhost/1619372-hassameaddressas?language=objc
 func (n_ NetworkHost) HasSameAddressAs(other INetworkHost) bool {
-	rv := objc.Call[bool](n_, objc.Sel("hasSameAddressAs:"), objc.Ptr(other))
+	rv := objc.Call[bool](n_, objc.Sel("hasSameAddressAs:"), other)
 	return rv
 }
 

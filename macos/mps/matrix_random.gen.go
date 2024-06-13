@@ -99,14 +99,14 @@ func NewMatrixRandomWithDevice(device metal.PDevice) MatrixRandom {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3325839-encodetocommandbuffer?language=objc
 func (m_ MatrixRandom) EncodeToCommandBufferDestinationMatrix(commandBuffer metal.PCommandBuffer, destinationMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationMatrix:"), po0, objc.Ptr(destinationMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationMatrix:"), po0, destinationMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3325839-encodetocommandbuffer?language=objc
 func (m_ MatrixRandom) EncodeToCommandBufferObjectDestinationMatrix(commandBufferObject objc.IObject, destinationMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(destinationMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationMatrix:"), commandBufferObject, destinationMatrix)
 }
 
 //	[Full Topic]
@@ -114,14 +114,14 @@ func (m_ MatrixRandom) EncodeToCommandBufferObjectDestinationMatrix(commandBuffe
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242851-encodetocommandbuffer?language=objc
 func (m_ MatrixRandom) EncodeToCommandBufferDestinationVector(commandBuffer metal.PCommandBuffer, destinationVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), po0, objc.Ptr(destinationVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), po0, destinationVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandom/3242851-encodetocommandbuffer?language=objc
 func (m_ MatrixRandom) EncodeToCommandBufferObjectDestinationVector(commandBufferObject objc.IObject, destinationVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), objc.Ptr(commandBufferObject), objc.Ptr(destinationVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:destinationVector:"), commandBufferObject, destinationVector)
 }
 
 //	[Full Topic]

@@ -84,7 +84,7 @@ func (m_ ModelConfiguration) SetPreferredMetalDevice(value metal.PDevice) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmodelconfiguration/3222915-preferredmetaldevice?language=objc
 func (m_ ModelConfiguration) SetPreferredMetalDeviceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setPreferredMetalDevice:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setPreferredMetalDevice:"), valueObject)
 }
 
 // A dictionary of configuration settings your app can override when loading a model. [Full Topic]

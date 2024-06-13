@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur?language=objc
 type PBoxBlur interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (b_ BoxBlurObject) HasSetRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
-func (b_ BoxBlurObject) SetRadius(value float64) {
+func (b_ BoxBlurObject) SetRadius(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
 }
 
@@ -53,8 +53,8 @@ func (b_ BoxBlurObject) HasRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228095-radius?language=objc
-func (b_ BoxBlurObject) Radius() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("radius"))
+func (b_ BoxBlurObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (b_ BoxBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciboxblur/3228094-inputimage?language=objc
 func (b_ BoxBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BoxBlurObject) HasInputImage() bool {

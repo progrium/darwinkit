@@ -54,6 +54,6 @@ func (x_ XPCListenerDelegateObject) HasListenerShouldAcceptNewConnection() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpclistenerdelegate/1410381-listener?language=objc
 func (x_ XPCListenerDelegateObject) ListenerShouldAcceptNewConnection(listener XPCListener, newConnection XPCConnection) bool {
-	rv := objc.Call[bool](x_, objc.Sel("listener:shouldAcceptNewConnection:"), objc.Ptr(listener), objc.Ptr(newConnection))
+	rv := objc.Call[bool](x_, objc.Sel("listener:shouldAcceptNewConnection:"), listener, newConnection)
 	return rv
 }

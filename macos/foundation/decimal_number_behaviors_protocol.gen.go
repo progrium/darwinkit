@@ -63,6 +63,6 @@ func (d_ DecimalNumberBehaviorsObject) HasExceptionDuringOperationErrorLeftOpera
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumberbehaviors/1411766-exceptionduringoperation?language=objc
 func (d_ DecimalNumberBehaviorsObject) ExceptionDuringOperationErrorLeftOperandRightOperand(operation objc.Selector, error CalculationError, leftOperand DecimalNumber, rightOperand DecimalNumber) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("exceptionDuringOperation:error:leftOperand:rightOperand:"), operation, error, objc.Ptr(leftOperand), objc.Ptr(rightOperand))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("exceptionDuringOperation:error:leftOperand:rightOperand:"), operation, error, leftOperand, rightOperand)
 	return rv
 }

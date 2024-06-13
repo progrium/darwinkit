@@ -3,7 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -16,7 +17,7 @@ type PAsynchronousKeyValueLoading interface {
 	HasLoadValuesAsynchronouslyForKeysCompletionHandler() bool
 
 	// optional
-	StatusOfValueForKeyError(key string, outError foundation.Error) KeyValueStatus
+	StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus
 	HasStatusOfValueForKeyError() bool
 }
 
@@ -46,7 +47,7 @@ func (a_ AsynchronousKeyValueLoadingObject) HasStatusOfValueForKeyError() bool {
 // Returns a status that indicates whether a property value is immediately available without blocking the calling thread. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronouskeyvalueloading/1386816-statusofvalueforkey?language=objc
-func (a_ AsynchronousKeyValueLoadingObject) StatusOfValueForKeyError(key string, outError foundation.Error) KeyValueStatus {
-	rv := objc.Call[KeyValueStatus](a_, objc.Sel("statusOfValueForKey:error:"), key, objc.Ptr(outError))
+func (a_ AsynchronousKeyValueLoadingObject) StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus {
+	rv := objc.Call[KeyValueStatus](a_, objc.Sel("statusOfValueForKey:error:"), key, outError)
 	return rv
 }

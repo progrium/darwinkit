@@ -3,6 +3,8 @@
 package appkit
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -32,7 +34,7 @@ type PMenuDelegate interface {
 	HasMenuWillHighlightItem() bool
 
 	// optional
-	MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target objc.Object, action objc.Selector) bool
+	MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool
 	HasMenuHasKeyEquivalentForEventTargetAction() bool
 
 	// optional
@@ -51,7 +53,7 @@ type MenuDelegate struct {
 	_MenuNeedsUpdate                          func(menu Menu)
 	_MenuWillOpen                             func(menu Menu)
 	_MenuWillHighlightItem                    func(menu Menu, item MenuItem)
-	_MenuHasKeyEquivalentForEventTargetAction func(menu Menu, event Event, target objc.Object, action objc.Selector) bool
+	_MenuHasKeyEquivalentForEventTargetAction func(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool
 	_ConfinementRectForMenuOnScreen           func(menu Menu, screen Screen) foundation.Rect
 	_MenuUpdateItemAtIndexShouldCancel        func(menu Menu, item MenuItem, index int, shouldCancel bool) bool
 }
@@ -148,14 +150,14 @@ func (di *MenuDelegate) HasMenuHasKeyEquivalentForEventTargetAction() bool {
 // Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
-func (di *MenuDelegate) SetMenuHasKeyEquivalentForEventTargetAction(f func(menu Menu, event Event, target objc.Object, action objc.Selector) bool) {
+func (di *MenuDelegate) SetMenuHasKeyEquivalentForEventTargetAction(f func(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool) {
 	di._MenuHasKeyEquivalentForEventTargetAction = f
 }
 
 // Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
-func (di *MenuDelegate) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target objc.Object, action objc.Selector) bool {
+func (di *MenuDelegate) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool {
 	return di._MenuHasKeyEquivalentForEventTargetAction(menu, event, target, action)
 }
 func (di *MenuDelegate) HasConfinementRectForMenuOnScreen() bool {
@@ -209,7 +211,7 @@ func (m_ MenuDelegateObject) HasNumberOfItemsInMenu() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518242-numberofitemsinmenu?language=objc
 func (m_ MenuDelegateObject) NumberOfItemsInMenu(menu Menu) int {
-	rv := objc.Call[int](m_, objc.Sel("numberOfItemsInMenu:"), objc.Ptr(menu))
+	rv := objc.Call[int](m_, objc.Sel("numberOfItemsInMenu:"), menu)
 	return rv
 }
 
@@ -221,7 +223,7 @@ func (m_ MenuDelegateObject) HasMenuDidClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518167-menudidclose?language=objc
 func (m_ MenuDelegateObject) MenuDidClose(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuDidClose:"), objc.Ptr(menu))
+	objc.Call[objc.Void](m_, objc.Sel("menuDidClose:"), menu)
 }
 
 func (m_ MenuDelegateObject) HasMenuNeedsUpdate() bool {
@@ -232,7 +234,7 @@ func (m_ MenuDelegateObject) HasMenuNeedsUpdate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518235-menuneedsupdate?language=objc
 func (m_ MenuDelegateObject) MenuNeedsUpdate(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuNeedsUpdate:"), objc.Ptr(menu))
+	objc.Call[objc.Void](m_, objc.Sel("menuNeedsUpdate:"), menu)
 }
 
 func (m_ MenuDelegateObject) HasMenuWillOpen() bool {
@@ -243,7 +245,7 @@ func (m_ MenuDelegateObject) HasMenuWillOpen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518156-menuwillopen?language=objc
 func (m_ MenuDelegateObject) MenuWillOpen(menu Menu) {
-	objc.Call[objc.Void](m_, objc.Sel("menuWillOpen:"), objc.Ptr(menu))
+	objc.Call[objc.Void](m_, objc.Sel("menuWillOpen:"), menu)
 }
 
 func (m_ MenuDelegateObject) HasMenuWillHighlightItem() bool {
@@ -254,7 +256,7 @@ func (m_ MenuDelegateObject) HasMenuWillHighlightItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518260-menu?language=objc
 func (m_ MenuDelegateObject) MenuWillHighlightItem(menu Menu, item MenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("menu:willHighlightItem:"), objc.Ptr(menu), objc.Ptr(item))
+	objc.Call[objc.Void](m_, objc.Sel("menu:willHighlightItem:"), menu, item)
 }
 
 func (m_ MenuDelegateObject) HasMenuHasKeyEquivalentForEventTargetAction() bool {
@@ -264,8 +266,8 @@ func (m_ MenuDelegateObject) HasMenuHasKeyEquivalentForEventTargetAction() bool 
 // Invoked to allow the delegate to return the target and action for a key-down event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518211-menuhaskeyequivalent?language=objc
-func (m_ MenuDelegateObject) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target objc.Object, action objc.Selector) bool {
-	rv := objc.Call[bool](m_, objc.Sel("menuHasKeyEquivalent:forEvent:target:action:"), objc.Ptr(menu), objc.Ptr(event), target, action)
+func (m_ MenuDelegateObject) MenuHasKeyEquivalentForEventTargetAction(menu Menu, event Event, target unsafe.Pointer, action unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("menuHasKeyEquivalent:forEvent:target:action:"), menu, event, target, action)
 	return rv
 }
 
@@ -277,7 +279,7 @@ func (m_ MenuDelegateObject) HasConfinementRectForMenuOnScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518247-confinementrectformenu?language=objc
 func (m_ MenuDelegateObject) ConfinementRectForMenuOnScreen(menu Menu, screen Screen) foundation.Rect {
-	rv := objc.Call[foundation.Rect](m_, objc.Sel("confinementRectForMenu:onScreen:"), objc.Ptr(menu), objc.Ptr(screen))
+	rv := objc.Call[foundation.Rect](m_, objc.Sel("confinementRectForMenu:onScreen:"), menu, screen)
 	return rv
 }
 
@@ -289,6 +291,6 @@ func (m_ MenuDelegateObject) HasMenuUpdateItemAtIndexShouldCancel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenudelegate/1518256-menu?language=objc
 func (m_ MenuDelegateObject) MenuUpdateItemAtIndexShouldCancel(menu Menu, item MenuItem, index int, shouldCancel bool) bool {
-	rv := objc.Call[bool](m_, objc.Sel("menu:updateItem:atIndex:shouldCancel:"), objc.Ptr(menu), objc.Ptr(item), index, shouldCancel)
+	rv := objc.Call[bool](m_, objc.Sel("menu:updateItem:atIndex:shouldCancel:"), menu, item, index, shouldCancel)
 	return rv
 }

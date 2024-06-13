@@ -94,7 +94,7 @@ func (p_ PersonNameComponents) PhoneticRepresentation() PersonNameComponents {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspersonnamecomponents/1412193-phoneticrepresentation?language=objc
 func (p_ PersonNameComponents) SetPhoneticRepresentation(value IPersonNameComponents) {
-	objc.Call[objc.Void](p_, objc.Sel("setPhoneticRepresentation:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPhoneticRepresentation:"), value)
 }
 
 // Secondary name bestowed upon an individual to differentiate them from others that have the same given name (for example, “Maple”). [Full Topic]

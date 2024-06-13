@@ -231,7 +231,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionContentKeyRequestD
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799201-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionContentKeyRequestDidFailWithError(session ContentKeySession, keyRequest ContentKeyRequest, err foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:contentKeyRequest:didFailWithError:"), objc.Ptr(session), objc.Ptr(keyRequest), objc.Ptr(err))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:contentKeyRequest:didFailWithError:"), session, keyRequest, err)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvideContentKeyRequest() bool {
@@ -242,7 +242,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvideContentK
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799204-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionDidProvideContentKeyRequest(session ContentKeySession, keyRequest ContentKeyRequest) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideContentKeyRequest:"), objc.Ptr(session), objc.Ptr(keyRequest))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideContentKeyRequest:"), session, keyRequest)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidUpdatePersistableContentKeyForContentKeyIdentifier() bool {
@@ -253,7 +253,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidUpdatePersistab
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2881821-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionDidUpdatePersistableContentKeyForContentKeyIdentifier(session ContentKeySession, persistableContentKey []byte, keyIdentifier objc.Object) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didUpdatePersistableContentKey:forContentKeyIdentifier:"), objc.Ptr(session), persistableContentKey, keyIdentifier)
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didUpdatePersistableContentKey:forContentKeyIdentifier:"), session, persistableContentKey, keyIdentifier)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvideRenewingContentKeyRequest() bool {
@@ -264,7 +264,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvideRenewing
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799168-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionDidProvideRenewingContentKeyRequest(session ContentKeySession, keyRequest ContentKeyRequest) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideRenewingContentKeyRequest:"), objc.Ptr(session), objc.Ptr(keyRequest))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideRenewingContentKeyRequest:"), session, keyRequest)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvidePersistableContentKeyRequest() bool {
@@ -275,7 +275,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidProvidePersista
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799200-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionDidProvidePersistableContentKeyRequest(session ContentKeySession, keyRequest PersistableContentKeyRequest) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvidePersistableContentKeyRequest:"), objc.Ptr(session), objc.Ptr(keyRequest))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvidePersistableContentKeyRequest:"), session, keyRequest)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidGenerateExpiredSessionReport() bool {
@@ -286,7 +286,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionDidGenerateExpired
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2966513-contentkeysessiondidgenerateexpi?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionDidGenerateExpiredSessionReport(session ContentKeySession) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySessionDidGenerateExpiredSessionReport:"), objc.Ptr(session))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySessionDidGenerateExpiredSessionReport:"), session)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionContentProtectionSessionIdentifierDidChange() bool {
@@ -297,7 +297,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionContentProtectionS
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799160-contentkeysessioncontentprotecti?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionContentProtectionSessionIdentifierDidChange(session ContentKeySession) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySessionContentProtectionSessionIdentifierDidChange:"), objc.Ptr(session))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySessionContentProtectionSessionIdentifierDidChange:"), session)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionContentKeyRequestDidSucceed() bool {
@@ -308,7 +308,7 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionContentKeyRequestD
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2966512-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionContentKeyRequestDidSucceed(session ContentKeySession, keyRequest ContentKeyRequest) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:contentKeyRequestDidSucceed:"), objc.Ptr(session), objc.Ptr(keyRequest))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:contentKeyRequestDidSucceed:"), session, keyRequest)
 }
 
 func (c_ ContentKeySessionDelegateObject) HasContentKeySessionShouldRetryContentKeyRequestReason() bool {
@@ -319,6 +319,6 @@ func (c_ ContentKeySessionDelegateObject) HasContentKeySessionShouldRetryContent
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysessiondelegate/2799210-contentkeysession?language=objc
 func (c_ ContentKeySessionDelegateObject) ContentKeySessionShouldRetryContentKeyRequestReason(session ContentKeySession, keyRequest ContentKeyRequest, retryReason ContentKeyRequestRetryReason) bool {
-	rv := objc.Call[bool](c_, objc.Sel("contentKeySession:shouldRetryContentKeyRequest:reason:"), objc.Ptr(session), objc.Ptr(keyRequest), retryReason)
+	rv := objc.Call[bool](c_, objc.Sel("contentKeySession:shouldRetryContentKeyRequest:reason:"), session, keyRequest, retryReason)
 	return rv
 }

@@ -187,7 +187,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerDidTransitionToObject() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435021-pagecontroller?language=objc
 func (p_ PageControllerDelegateObject) PageControllerDidTransitionToObject(pageController PageController, object objc.Object) {
-	objc.Call[objc.Void](p_, objc.Sel("pageController:didTransitionToObject:"), objc.Ptr(pageController), object)
+	objc.Call[objc.Void](p_, objc.Sel("pageController:didTransitionToObject:"), pageController, object)
 }
 
 func (p_ PageControllerDelegateObject) HasPageControllerDidEndLiveTransition() bool {
@@ -198,7 +198,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerDidEndLiveTransition() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434985-pagecontrollerdidendlivetransiti?language=objc
 func (p_ PageControllerDelegateObject) PageControllerDidEndLiveTransition(pageController PageController) {
-	objc.Call[objc.Void](p_, objc.Sel("pageControllerDidEndLiveTransition:"), objc.Ptr(pageController))
+	objc.Call[objc.Void](p_, objc.Sel("pageControllerDidEndLiveTransition:"), pageController)
 }
 
 func (p_ PageControllerDelegateObject) HasPageControllerIdentifierForObject() bool {
@@ -209,7 +209,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerIdentifierForObject() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435007-pagecontroller?language=objc
 func (p_ PageControllerDelegateObject) PageControllerIdentifierForObject(pageController PageController, object objc.Object) PageControllerObjectIdentifier {
-	rv := objc.Call[PageControllerObjectIdentifier](p_, objc.Sel("pageController:identifierForObject:"), objc.Ptr(pageController), object)
+	rv := objc.Call[PageControllerObjectIdentifier](p_, objc.Sel("pageController:identifierForObject:"), pageController, object)
 	return rv
 }
 
@@ -221,7 +221,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerWillStartLiveTransition(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435009-pagecontrollerwillstartlivetrans?language=objc
 func (p_ PageControllerDelegateObject) PageControllerWillStartLiveTransition(pageController PageController) {
-	objc.Call[objc.Void](p_, objc.Sel("pageControllerWillStartLiveTransition:"), objc.Ptr(pageController))
+	objc.Call[objc.Void](p_, objc.Sel("pageControllerWillStartLiveTransition:"), pageController)
 }
 
 func (p_ PageControllerDelegateObject) HasPageControllerFrameForObject() bool {
@@ -232,7 +232,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerFrameForObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434992-pagecontroller?language=objc
 func (p_ PageControllerDelegateObject) PageControllerFrameForObject(pageController PageController, object objc.Object) foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("pageController:frameForObject:"), objc.Ptr(pageController), object)
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("pageController:frameForObject:"), pageController, object)
 	return rv
 }
 
@@ -244,7 +244,7 @@ func (p_ PageControllerDelegateObject) HasPageControllerViewControllerForIdentif
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1435015-pagecontroller?language=objc
 func (p_ PageControllerDelegateObject) PageControllerViewControllerForIdentifier(pageController PageController, identifier PageControllerObjectIdentifier) ViewController {
-	rv := objc.Call[ViewController](p_, objc.Sel("pageController:viewControllerForIdentifier:"), objc.Ptr(pageController), identifier)
+	rv := objc.Call[ViewController](p_, objc.Sel("pageController:viewControllerForIdentifier:"), pageController, identifier)
 	return rv
 }
 
@@ -256,5 +256,5 @@ func (p_ PageControllerDelegateObject) HasPageControllerPrepareViewControllerWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontrollerdelegate/1434983-pagecontroller?language=objc
 func (p_ PageControllerDelegateObject) PageControllerPrepareViewControllerWithObject(pageController PageController, viewController ViewController, object objc.Object) {
-	objc.Call[objc.Void](p_, objc.Sel("pageController:prepareViewController:withObject:"), objc.Ptr(pageController), objc.Ptr(viewController), object)
+	objc.Call[objc.Void](p_, objc.Sel("pageController:prepareViewController:withObject:"), pageController, viewController, object)
 }

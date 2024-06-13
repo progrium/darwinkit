@@ -55,7 +55,7 @@ func (n_ NNLanczosScaleNode) Init() NNLanczosScaleNode {
 }
 
 func (n_ NNLanczosScaleNode) InitWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
-	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func NewNNLanczosScaleNodeWithSourceOutputSize(sourceNode INNImageNode, size met
 
 func (n_ NNLanczosScaleNode) InitWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNLanczosScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func NewNNLanczosScaleNodeWithSourceTransformProviderOutputSize(sourceNode INNIm
 }
 
 func (nc _NNLanczosScaleNodeClass) NodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNLanczosScaleNode {
-	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func NNLanczosScaleNode_NodeWithSourceOutputSize(sourceNode INNImageNode, size m
 
 func (nc _NNLanczosScaleNodeClass) NodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNLanczosScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNLanczosScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 

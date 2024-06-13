@@ -85,7 +85,7 @@ func (o_ Operation) Main() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1412859-adddependency?language=objc
 func (o_ Operation) AddDependency(op IOperation) {
-	objc.Call[objc.Void](o_, objc.Sel("addDependency:"), objc.Ptr(op))
+	objc.Call[objc.Void](o_, objc.Sel("addDependency:"), op)
 }
 
 // Blocks execution of the current thread until the operation object finishes its task. [Full Topic]
@@ -113,7 +113,7 @@ func (o_ Operation) Start() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperation/1414945-removedependency?language=objc
 func (o_ Operation) RemoveDependency(op IOperation) {
-	objc.Call[objc.Void](o_, objc.Sel("removeDependency:"), objc.Ptr(op))
+	objc.Call[objc.Void](o_, objc.Sel("removeDependency:"), op)
 }
 
 // The block to execute after the operation’s main task is completed. [Full Topic]

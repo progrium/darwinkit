@@ -70,16 +70,16 @@ func (c_ CNNFullyConnected) Init() CNNFullyConnected {
 	return rv
 }
 
-func (c_ CNNFullyConnected) InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float64, biasTerms *float64, flags CNNConvolutionFlags) CNNFullyConnected {
+func (c_ CNNFullyConnected) InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float32, biasTerms *float32, flags CNNConvolutionFlags) CNNFullyConnected {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNFullyConnected](c_, objc.Sel("initWithDevice:convolutionDescriptor:kernelWeights:biasTerms:flags:"), po0, objc.Ptr(convolutionDescriptor), kernelWeights, biasTerms, flags)
+	rv := objc.Call[CNNFullyConnected](c_, objc.Sel("initWithDevice:convolutionDescriptor:kernelWeights:biasTerms:flags:"), po0, convolutionDescriptor, kernelWeights, biasTerms, flags)
 	return rv
 }
 
 // Initializes a convolution kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolution/1648861-initwithdevice?language=objc
-func NewCNNFullyConnectedWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float64, biasTerms *float64, flags CNNConvolutionFlags) CNNFullyConnected {
+func NewCNNFullyConnectedWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float32, biasTerms *float32, flags CNNConvolutionFlags) CNNFullyConnected {
 	instance := CNNFullyConnectedClass.Alloc().InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device, convolutionDescriptor, kernelWeights, biasTerms, flags)
 	instance.Autorelease()
 	return instance

@@ -36,7 +36,7 @@ func MatrixRandomPhiloxFrom(ptr unsafe.Pointer) MatrixRandomPhilox {
 
 func (m_ MatrixRandomPhilox) InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomPhilox {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomPhilox](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, objc.Ptr(distributionDescriptor))
+	rv := objc.Call[MatrixRandomPhilox](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, distributionDescriptor)
 	return rv
 }
 

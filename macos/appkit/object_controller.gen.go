@@ -23,7 +23,7 @@ type IObjectController interface {
 	DefaultFetchRequest() coredata.FetchRequest
 	PrepareContent()
 	Remove(sender objc.IObject) objc.Object
-	FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error foundation.IError) bool
+	FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool
 	RemoveObject(object objc.IObject)
 	NewObject() objc.Object
 	Add(sender objc.IObject) objc.Object
@@ -126,8 +126,8 @@ func (o_ ObjectController) Remove(sender objc.IObject) objc.Object {
 // Subclasses should override this method to customize a fetch request, for example to specify fetch limits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1531782-fetchwithrequest?language=objc
-func (o_ ObjectController) FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error foundation.IError) bool {
-	rv := objc.Call[bool](o_, objc.Sel("fetchWithRequest:merge:error:"), objc.Ptr(fetchRequest), merge, objc.Ptr(error))
+func (o_ ObjectController) FetchWithRequestMergeError(fetchRequest coredata.IFetchRequest, merge bool, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](o_, objc.Sel("fetchWithRequest:merge:error:"), fetchRequest, merge, error)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (o_ ObjectController) ValidateUserInterfaceItem(item PValidatedUserInterfac
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1534469-validateuserinterfaceitem?language=objc
 func (o_ ObjectController) ValidateUserInterfaceItemObject(itemObject objc.IObject) bool {
-	rv := objc.Call[bool](o_, objc.Sel("validateUserInterfaceItem:"), objc.Ptr(itemObject))
+	rv := objc.Call[bool](o_, objc.Sel("validateUserInterfaceItem:"), itemObject)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (o_ ObjectController) ObjectClass() objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1535459-objectclass?language=objc
 func (o_ ObjectController) SetObjectClass(value objc.IClass) {
-	objc.Call[objc.Void](o_, objc.Sel("setObjectClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setObjectClass:"), value)
 }
 
 // A Boolean that shows whether the receiver automatically creates and inserts new content objects automatically when loading from a nib file. [Full Topic]
@@ -258,7 +258,7 @@ func (o_ ObjectController) FetchPredicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1533545-fetchpredicate?language=objc
 func (o_ ObjectController) SetFetchPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](o_, objc.Sel("setFetchPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setFetchPredicate:"), value)
 }
 
 // A Boolean that indicates whether the receiver uses lazy fetching. [Full Topic]
@@ -303,7 +303,7 @@ func (o_ ObjectController) ManagedObjectContext() coredata.ManagedObjectContext 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsobjectcontroller/1530382-managedobjectcontext?language=objc
 func (o_ ObjectController) SetManagedObjectContext(value coredata.IManagedObjectContext) {
-	objc.Call[objc.Void](o_, objc.Sel("setManagedObjectContext:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setManagedObjectContext:"), value)
 }
 
 // An array of all objects to be affected by editing. [Full Topic]

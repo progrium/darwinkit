@@ -84,7 +84,7 @@ func NewCaptureViewWithFrame(frameRect foundation.Rect) CaptureView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avcaptureview/1519163-setsession?language=objc
 func (c_ CaptureView) SetSessionShowVideoPreviewShowAudioPreview(session avfoundation.ICaptureSession, showVideoPreview bool, showAudioPreview bool) {
-	objc.Call[objc.Void](c_, objc.Sel("setSession:showVideoPreview:showAudioPreview:"), objc.Ptr(session), showVideoPreview, showAudioPreview)
+	objc.Call[objc.Void](c_, objc.Sel("setSession:showVideoPreview:showAudioPreview:"), session, showVideoPreview, showAudioPreview)
 }
 
 // The capture file output used to record media data. [Full Topic]
@@ -154,5 +154,5 @@ func (c_ CaptureView) SetDelegate(value PCaptureViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avcaptureview/1519144-delegate?language=objc
 func (c_ CaptureView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }

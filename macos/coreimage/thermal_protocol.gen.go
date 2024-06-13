@@ -35,7 +35,7 @@ func (t_ ThermalObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cithermal/3228790-inputimage?language=objc
 func (t_ ThermalObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ ThermalObject) HasInputImage() bool {

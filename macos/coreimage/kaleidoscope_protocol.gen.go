@@ -20,11 +20,11 @@ type PKaleidoscope interface {
 	HasCenter() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -82,7 +82,7 @@ func (k_ KaleidoscopeObject) HasSetAngle() bool {
 // The angle of the reflection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
-func (k_ KaleidoscopeObject) SetAngle(value float64) {
+func (k_ KaleidoscopeObject) SetAngle(value float32) {
 	objc.Call[objc.Void](k_, objc.Sel("setAngle:"), value)
 }
 
@@ -93,8 +93,8 @@ func (k_ KaleidoscopeObject) HasAngle() bool {
 // The angle of the reflection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228508-angle?language=objc
-func (k_ KaleidoscopeObject) Angle() float64 {
-	rv := objc.Call[float64](k_, objc.Sel("angle"))
+func (k_ KaleidoscopeObject) Angle() float32 {
+	rv := objc.Call[float32](k_, objc.Sel("angle"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (k_ KaleidoscopeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikaleidoscope/3228511-inputimage?language=objc
 func (k_ KaleidoscopeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](k_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](k_, objc.Sel("setInputImage:"), value)
 }
 
 func (k_ KaleidoscopeObject) HasInputImage() bool {

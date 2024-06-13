@@ -45,29 +45,29 @@ func AssetReaderFrom(ptr unsafe.Pointer) AssetReader {
 	}
 }
 
-func (a_ AssetReader) InitWithAssetError(asset IAsset, outError foundation.IError) AssetReader {
-	rv := objc.Call[AssetReader](a_, objc.Sel("initWithAsset:error:"), objc.Ptr(asset), objc.Ptr(outError))
+func (a_ AssetReader) InitWithAssetError(asset IAsset, outError unsafe.Pointer) AssetReader {
+	rv := objc.Call[AssetReader](a_, objc.Sel("initWithAsset:error:"), asset, outError)
 	return rv
 }
 
 // Creates an object to read media data from an asset. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1385593-initwithasset?language=objc
-func NewAssetReaderWithAssetError(asset IAsset, outError foundation.IError) AssetReader {
+func NewAssetReaderWithAssetError(asset IAsset, outError unsafe.Pointer) AssetReader {
 	instance := AssetReaderClass.Alloc().InitWithAssetError(asset, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (ac _AssetReaderClass) AssetReaderWithAssetError(asset IAsset, outError foundation.IError) AssetReader {
-	rv := objc.Call[AssetReader](ac, objc.Sel("assetReaderWithAsset:error:"), objc.Ptr(asset), objc.Ptr(outError))
+func (ac _AssetReaderClass) AssetReaderWithAssetError(asset IAsset, outError unsafe.Pointer) AssetReader {
+	rv := objc.Call[AssetReader](ac, objc.Sel("assetReaderWithAsset:error:"), asset, outError)
 	return rv
 }
 
 // Returns a new object to read media data from an asset. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1420148-assetreaderwithasset?language=objc
-func AssetReader_AssetReaderWithAssetError(asset IAsset, outError foundation.IError) AssetReader {
+func AssetReader_AssetReaderWithAssetError(asset IAsset, outError unsafe.Pointer) AssetReader {
 	return AssetReaderClass.AssetReaderWithAssetError(asset, outError)
 }
 
@@ -103,7 +103,7 @@ func (a_ AssetReader) StartReading() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1390110-addoutput?language=objc
 func (a_ AssetReader) AddOutput(output IAssetReaderOutput) {
-	objc.Call[objc.Void](a_, objc.Sel("addOutput:"), objc.Ptr(output))
+	objc.Call[objc.Void](a_, objc.Sel("addOutput:"), output)
 }
 
 // Cancels any background work and stops the reader’s outputs from reading more samples. [Full Topic]
@@ -117,7 +117,7 @@ func (a_ AssetReader) CancelReading() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreader/1387485-canaddoutput?language=objc
 func (a_ AssetReader) CanAddOutput(output IAssetReaderOutput) bool {
-	rv := objc.Call[bool](a_, objc.Sel("canAddOutput:"), objc.Ptr(output))
+	rv := objc.Call[bool](a_, objc.Sel("canAddOutput:"), output)
 	return rv
 }
 

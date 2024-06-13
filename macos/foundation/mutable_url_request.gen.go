@@ -72,7 +72,7 @@ func (m_ MutableURLRequest) Init() MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) RequestWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.Call[MutableURLRequest](mc, objc.Sel("requestWithURL:cachePolicy:timeoutInterval:"), objc.Ptr(URL), cachePolicy, timeoutInterval)
+	rv := objc.Call[MutableURLRequest](mc, objc.Sel("requestWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func MutableURLRequest_RequestWithURLCachePolicyTimeoutInterval(URL IURL, cacheP
 }
 
 func (m_ MutableURLRequest) InitWithURL(URL IURL) MutableURLRequest {
-	rv := objc.Call[MutableURLRequest](m_, objc.Sel("initWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[MutableURLRequest](m_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func NewMutableURLRequestWithURL(URL IURL) MutableURLRequest {
 }
 
 func (mc _MutableURLRequestClass) RequestWithURL(URL IURL) MutableURLRequest {
-	rv := objc.Call[MutableURLRequest](mc, objc.Sel("requestWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[MutableURLRequest](mc, objc.Sel("requestWithURL:"), URL)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func MutableURLRequest_RequestWithURL(URL IURL) MutableURLRequest {
 }
 
 func (m_ MutableURLRequest) InitWithURLCachePolicyTimeoutInterval(URL IURL, cachePolicy URLRequestCachePolicy, timeoutInterval TimeInterval) MutableURLRequest {
-	rv := objc.Call[MutableURLRequest](m_, objc.Sel("initWithURL:cachePolicy:timeoutInterval:"), objc.Ptr(URL), cachePolicy, timeoutInterval)
+	rv := objc.Call[MutableURLRequest](m_, objc.Sel("initWithURL:cachePolicy:timeoutInterval:"), URL, cachePolicy, timeoutInterval)
 	return rv
 }
 
@@ -148,7 +148,7 @@ func (m_ MutableURLRequest) SetHTTPShouldHandleCookies(value bool) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1410342-url?language=objc
 func (m_ MutableURLRequest) SetURL(value IURL) {
-	objc.Call[objc.Void](m_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setURL:"), value)
 }
 
 //	[Full Topic]
@@ -197,7 +197,7 @@ func (m_ MutableURLRequest) SetHTTPBody(value []byte) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1415630-maindocumenturl?language=objc
 func (m_ MutableURLRequest) SetMainDocumentURL(value IURL) {
-	objc.Call[objc.Void](m_, objc.Sel("setMainDocumentURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMainDocumentURL:"), value)
 }
 
 // The request’s timeout interval, in seconds. [Full Topic]
@@ -246,5 +246,5 @@ func (m_ MutableURLRequest) SetAllowsConstrainedNetworkAccess(value bool) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableurlrequest/1409529-httpbodystream?language=objc
 func (m_ MutableURLRequest) SetHTTPBodyStream(value IInputStream) {
-	objc.Call[objc.Void](m_, objc.Sel("setHTTPBodyStream:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setHTTPBodyStream:"), value)
 }

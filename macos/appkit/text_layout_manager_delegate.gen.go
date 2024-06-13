@@ -100,7 +100,7 @@ func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerTextLayoutFragment
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3810024-textlayoutmanager?language=objc
 func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerTextLayoutFragmentForLocationInTextElement(textLayoutManager TextLayoutManager, location TextLocationObject, textElement TextElement) TextLayoutFragment {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("textLayoutManager:textLayoutFragmentForLocation:inTextElement:"), objc.Ptr(textLayoutManager), po1, objc.Ptr(textElement))
+	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("textLayoutManager:textLayoutFragmentForLocation:inTextElement:"), textLayoutManager, po1, textElement)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerShouldBreakLineBef
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3810021-textlayoutmanager?language=objc
 func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerShouldBreakLineBeforeLocationHyphenating(textLayoutManager TextLayoutManager, location TextLocationObject, hyphenating bool) bool {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[bool](t_, objc.Sel("textLayoutManager:shouldBreakLineBeforeLocation:hyphenating:"), objc.Ptr(textLayoutManager), po1, hyphenating)
+	rv := objc.Call[bool](t_, objc.Sel("textLayoutManager:shouldBreakLineBeforeLocation:hyphenating:"), textLayoutManager, po1, hyphenating)
 	return rv
 }
 
@@ -126,6 +126,6 @@ func (t_ TextLayoutManagerDelegateObject) HasTextLayoutManagerRenderingAttribute
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanagerdelegate/3824749-textlayoutmanager?language=objc
 func (t_ TextLayoutManagerDelegateObject) TextLayoutManagerRenderingAttributesForLinkAtLocationDefaultAttributes(textLayoutManager TextLayoutManager, link objc.Object, location TextLocationObject, renderingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
 	po2 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textLayoutManager:renderingAttributesForLink:atLocation:defaultAttributes:"), objc.Ptr(textLayoutManager), link, po2, renderingAttributes)
+	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textLayoutManager:renderingAttributesForLink:atLocation:defaultAttributes:"), textLayoutManager, link, po2, renderingAttributes)
 	return rv
 }

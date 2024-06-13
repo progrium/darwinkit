@@ -64,7 +64,7 @@ func RulerViewFrom(ptr unsafe.Pointer) RulerView {
 }
 
 func (r_ RulerView) InitWithScrollViewOrientation(scrollView IScrollView, orientation RulerOrientation) RulerView {
-	rv := objc.Call[RulerView](r_, objc.Sel("initWithScrollView:orientation:"), objc.Ptr(scrollView), orientation)
+	rv := objc.Call[RulerView](r_, objc.Sel("initWithScrollView:orientation:"), scrollView, orientation)
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (r_ RulerView) InvalidateHashMarks() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1524916-addmarker?language=objc
 func (r_ RulerView) AddMarker(marker IRulerMarker) {
-	objc.Call[objc.Void](r_, objc.Sel("addMarker:"), objc.Ptr(marker))
+	objc.Call[objc.Void](r_, objc.Sel("addMarker:"), marker)
 }
 
 // Registers a new unit of measurement with the NSRulerView class, making it available to all instances of NSRulerView. [Full Topic]
@@ -164,7 +164,7 @@ func (r_ RulerView) MoveRulerlineFromLocationToLocation(oldLocation float64, new
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1535375-trackmarker?language=objc
 func (r_ RulerView) TrackMarkerWithMouseEvent(marker IRulerMarker, event IEvent) bool {
-	rv := objc.Call[bool](r_, objc.Sel("trackMarker:withMouseEvent:"), objc.Ptr(marker), objc.Ptr(event))
+	rv := objc.Call[bool](r_, objc.Sel("trackMarker:withMouseEvent:"), marker, event)
 	return rv
 }
 
@@ -172,7 +172,7 @@ func (r_ RulerView) TrackMarkerWithMouseEvent(marker IRulerMarker, event IEvent)
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1528230-removemarker?language=objc
 func (r_ RulerView) RemoveMarker(marker IRulerMarker) {
-	objc.Call[objc.Void](r_, objc.Sel("removeMarker:"), objc.Ptr(marker))
+	objc.Call[objc.Void](r_, objc.Sel("removeMarker:"), marker)
 }
 
 // The orientation of the receiver to orientation. [Full Topic]
@@ -202,7 +202,7 @@ func (r_ RulerView) ScrollView() ScrollView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1533741-scrollview?language=objc
 func (r_ RulerView) SetScrollView(value IScrollView) {
-	objc.Call[objc.Void](r_, objc.Sel("setScrollView:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setScrollView:"), value)
 }
 
 // The receiver’s ruler markers to markers, removing any existing ruler markers and not consulting with the client view about the new markers. [Full Topic]
@@ -247,7 +247,7 @@ func (r_ RulerView) ClientView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1533483-clientview?language=objc
 func (r_ RulerView) SetClientView(value IView) {
-	objc.Call[objc.Void](r_, objc.Sel("setClientView:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setClientView:"), value)
 }
 
 // The receiver’s accessory view to aView. [Full Topic]
@@ -262,7 +262,7 @@ func (r_ RulerView) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulerview/1532804-accessoryview?language=objc
 func (r_ RulerView) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](r_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setAccessoryView:"), value)
 }
 
 // The thickness of the area where ruler hash marks and labels are drawn. [Full Topic]

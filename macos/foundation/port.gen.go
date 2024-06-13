@@ -83,28 +83,28 @@ func (p_ Port) SetDelegate(anObject PPortDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399527-setdelegate?language=objc
 func (p_ Port) SetDelegateObject(anObjectObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(anObjectObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), anObjectObject)
 }
 
 // This method should be implemented by a subclass to set up monitoring of a port when added to a given run loop in a given input mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399517-scheduleinrunloop?language=objc
 func (p_ Port) ScheduleInRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](p_, objc.Sel("scheduleInRunLoop:forMode:"), objc.Ptr(runLoop), mode)
+	objc.Call[objc.Void](p_, objc.Sel("scheduleInRunLoop:forMode:"), runLoop, mode)
 }
 
 // This method should be implemented by a subclass to stop monitoring of a port when removed from a give run loop in a given input mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399525-removefromrunloop?language=objc
 func (p_ Port) RemoveFromRunLoopForMode(runLoop IRunLoop, mode RunLoopMode) {
-	objc.Call[objc.Void](p_, objc.Sel("removeFromRunLoop:forMode:"), objc.Ptr(runLoop), mode)
+	objc.Call[objc.Void](p_, objc.Sel("removeFromRunLoop:forMode:"), runLoop, mode)
 }
 
 // This method is provided for subclasses that have custom types of NSPort. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399537-sendbeforedate?language=objc
 func (p_ Port) SendBeforeDateComponentsFromReserved(limitDate IDate, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool {
-	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:components:from:reserved:"), objc.Ptr(limitDate), objc.Ptr(components), objc.Ptr(receivePort), headerSpaceReserved)
+	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:components:from:reserved:"), limitDate, components, receivePort, headerSpaceReserved)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (p_ Port) SendBeforeDateComponentsFromReserved(limitDate IDate, components 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsport/1399482-sendbeforedate?language=objc
 func (p_ Port) SendBeforeDateMsgidComponentsFromReserved(limitDate IDate, msgID uint, components IMutableArray, receivePort IPort, headerSpaceReserved uint) bool {
-	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:msgid:components:from:reserved:"), objc.Ptr(limitDate), msgID, objc.Ptr(components), objc.Ptr(receivePort), headerSpaceReserved)
+	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:msgid:components:from:reserved:"), limitDate, msgID, components, receivePort, headerSpaceReserved)
 	return rv
 }
 

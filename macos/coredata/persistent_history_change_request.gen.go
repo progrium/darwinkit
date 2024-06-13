@@ -40,7 +40,7 @@ func PersistentHistoryChangeRequestFrom(ptr unsafe.Pointer) PersistentHistoryCha
 }
 
 func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterTransaction:"), objc.Ptr(transaction))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterTransaction:"), transaction)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func PersistentHistoryChangeRequest_FetchHistoryAfterTransaction(transaction IPe
 }
 
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeDate(date foundation.IDate) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeDate:"), objc.Ptr(date))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeDate:"), date)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func PersistentHistoryChangeRequest_DeleteHistoryBeforeDate(date foundation.IDat
 }
 
 func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterToken:"), objc.Ptr(token))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterToken:"), token)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func PersistentHistoryChangeRequest_FetchHistoryAfterToken(token IPersistentHist
 }
 
 func (pc _PersistentHistoryChangeRequestClass) FetchHistoryAfterDate(date foundation.IDate) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterDate:"), objc.Ptr(date))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryAfterDate:"), date)
 	return rv
 }
 
@@ -88,7 +88,7 @@ func PersistentHistoryChangeRequest_FetchHistoryAfterDate(date foundation.IDate)
 }
 
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeTransaction(transaction IPersistentHistoryTransaction) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeTransaction:"), objc.Ptr(transaction))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeTransaction:"), transaction)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func PersistentHistoryChangeRequest_DeleteHistoryBeforeTransaction(transaction I
 }
 
 func (pc _PersistentHistoryChangeRequestClass) FetchHistoryWithFetchRequest(fetchRequest IFetchRequest) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryWithFetchRequest:"), objc.Ptr(fetchRequest))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("fetchHistoryWithFetchRequest:"), fetchRequest)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func PersistentHistoryChangeRequest_FetchHistoryWithFetchRequest(fetchRequest IF
 }
 
 func (pc _PersistentHistoryChangeRequestClass) DeleteHistoryBeforeToken(token IPersistentHistoryToken) PersistentHistoryChangeRequest {
-	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeToken:"), objc.Ptr(token))
+	rv := objc.Call[PersistentHistoryChangeRequest](pc, objc.Sel("deleteHistoryBeforeToken:"), token)
 	return rv
 }
 
@@ -178,5 +178,5 @@ func (p_ PersistentHistoryChangeRequest) FetchRequest() FetchRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorychangerequest/3240593-fetchrequest?language=objc
 func (p_ PersistentHistoryChangeRequest) SetFetchRequest(value IFetchRequest) {
-	objc.Call[objc.Void](p_, objc.Sel("setFetchRequest:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setFetchRequest:"), value)
 }

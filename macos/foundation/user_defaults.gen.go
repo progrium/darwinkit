@@ -25,7 +25,7 @@ type IUserDefaults interface {
 	DictionaryRepresentation() map[string]objc.Object
 	URLForKey(defaultName string) URL
 	SetObjectForKey(value objc.IObject, defaultName string)
-	FloatForKey(defaultName string) float64
+	FloatForKey(defaultName string) float32
 	SetURLForKey(url IURL, defaultName string)
 	DataForKey(defaultName string) []byte
 	RemoveSuiteNamed(suiteName string)
@@ -37,7 +37,7 @@ type IUserDefaults interface {
 	VolatileDomainForName(domainName string) map[string]objc.Object
 	ArrayForKey(defaultName string) []objc.Object
 	DoubleForKey(defaultName string) float64
-	SetFloatForKey(value float64, defaultName string)
+	SetFloatForKey(value float32, defaultName string)
 	RemoveObjectForKey(defaultName string)
 	AddSuiteNamed(suiteName string)
 	RemoveVolatileDomainForName(domainName string)
@@ -156,8 +156,8 @@ func (u_ UserDefaults) SetObjectForKey(value objc.IObject, defaultName string) {
 // Returns the float value associated with the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414027-floatforkey?language=objc
-func (u_ UserDefaults) FloatForKey(defaultName string) float64 {
-	rv := objc.Call[float64](u_, objc.Sel("floatForKey:"), defaultName)
+func (u_ UserDefaults) FloatForKey(defaultName string) float32 {
+	rv := objc.Call[float32](u_, objc.Sel("floatForKey:"), defaultName)
 	return rv
 }
 
@@ -165,7 +165,7 @@ func (u_ UserDefaults) FloatForKey(defaultName string) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1414194-seturl?language=objc
 func (u_ UserDefaults) SetURLForKey(url IURL, defaultName string) {
-	objc.Call[objc.Void](u_, objc.Sel("setURL:forKey:"), objc.Ptr(url), defaultName)
+	objc.Call[objc.Void](u_, objc.Sel("setURL:forKey:"), url, defaultName)
 }
 
 // Returns the data object associated with the specified key. [Full Topic]
@@ -248,7 +248,7 @@ func (u_ UserDefaults) DoubleForKey(defaultName string) float64 {
 // Sets the value of the specified default key to the specified float value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserdefaults/1413320-setfloat?language=objc
-func (u_ UserDefaults) SetFloatForKey(value float64, defaultName string) {
+func (u_ UserDefaults) SetFloatForKey(value float32, defaultName string) {
 	objc.Call[objc.Void](u_, objc.Sel("setFloat:forKey:"), value, defaultName)
 }
 

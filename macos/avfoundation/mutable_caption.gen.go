@@ -170,7 +170,7 @@ func (m_ MutableCaption) RemoveFontStyleInRange(range_ foundation.Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaption/3752912-setruby?language=objc
 func (m_ MutableCaption) SetRubyInRange(ruby ICaptionRuby, range_ foundation.Range) {
-	objc.Call[objc.Void](m_, objc.Sel("setRuby:inRange:"), objc.Ptr(ruby), range_)
+	objc.Call[objc.Void](m_, objc.Sel("setRuby:inRange:"), ruby, range_)
 }
 
 // Removes a decoration from a range of text. [Full Topic]
@@ -198,7 +198,7 @@ func (m_ MutableCaption) SetTimeRange(value coremedia.TimeRange) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecaption/3752900-region?language=objc
 func (m_ MutableCaption) SetRegion(value ICaptionRegion) {
-	objc.Call[objc.Void](m_, objc.Sel("setRegion:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setRegion:"), value)
 }
 
 // The caption text. [Full Topic]

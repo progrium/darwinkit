@@ -101,5 +101,5 @@ func (a_ AccessibilityCustomRotorSearchParameters) CurrentItem() AccessibilityCu
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotorsearchparameters/2876332-currentitem?language=objc
 func (a_ AccessibilityCustomRotorSearchParameters) SetCurrentItem(value IAccessibilityCustomRotorItemResult) {
-	objc.Call[objc.Void](a_, objc.Sel("setCurrentItem:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setCurrentItem:"), value)
 }

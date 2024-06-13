@@ -63,21 +63,21 @@ func (p_ PageLayout) Init() PageLayout {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397790-addaccessorycontroller?language=objc
 func (p_ PageLayout) AddAccessoryController(accessoryController IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), objc.Ptr(accessoryController))
+	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), accessoryController)
 }
 
 // Removes the specified controller of an accessory view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397802-removeaccessorycontroller?language=objc
 func (p_ PageLayout) RemoveAccessoryController(accessoryController IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), objc.Ptr(accessoryController))
+	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), accessoryController)
 }
 
 // Displays the page layout panel and begins the modal loop using the specified print info object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagelayout/1397784-runmodalwithprintinfo?language=objc
 func (p_ PageLayout) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), objc.Ptr(printInfo))
+	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), printInfo)
 	return rv
 }
 

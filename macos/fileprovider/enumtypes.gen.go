@@ -70,6 +70,7 @@ const (
 	FileProviderErrorServerUnreachable            FileProviderErrorCode = -1004
 	FileProviderErrorSyncAnchorExpired            FileProviderErrorCode = -1002
 	FileProviderErrorUnsyncedEdits                FileProviderErrorCode = -2007
+	FileProviderErrorVersionNoLongerAvailable     FileProviderErrorCode = -2009
 )
 
 // An identifier for custom actions. [Full Topic]
@@ -81,6 +82,10 @@ type FileProviderExtensionActionIdentifier string
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderfetchcontentsoptions?language=objc
 type FileProviderFetchContentsOptions uint
+
+const (
+	FileProviderFetchContentsOptionsStrictVersioning FileProviderFetchContentsOptions = 1
+)
 
 // Flags that define an item’s on-disk properties and its appearance in the user interface. [Full Topic]
 //
@@ -162,6 +167,10 @@ const (
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermaterializationflags?language=objc
 type FileProviderMaterializationFlags uint
+
+const (
+	FileProviderMaterializationFlagsKnownSparseRanges FileProviderMaterializationFlags = 1
+)
 
 // Options for modifying items. [Full Topic]
 //

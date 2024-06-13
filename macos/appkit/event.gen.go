@@ -44,7 +44,7 @@ type IEvent interface {
 	IsARepeat() bool
 	Window() Window
 	DeltaZ() float64
-	Rotation() float64
+	Rotation() float32
 	UniqueID() int64
 	PointingDeviceID() uint
 	KeyCode() int
@@ -56,7 +56,7 @@ type IEvent interface {
 	EventNumber() int
 	DeviceID() uint
 	TrackingArea() TrackingArea
-	TangentialPressure() float64
+	TangentialPressure() float32
 	Data1() int
 	Timestamp() foundation.TimeInterval
 	CGEvent() coregraphics.EventRef
@@ -76,7 +76,7 @@ type IEvent interface {
 	CharactersIgnoringModifiers() string
 	Type() EventType
 	LocationInWindow() foundation.Point
-	Pressure() float64
+	Pressure() float32
 	ButtonMask() EventButtonMask
 	VendorID() uint
 	MomentumPhase() EventPhase
@@ -149,7 +149,7 @@ func Event_RemoveMonitor(eventMonitor objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1535383-enterexiteventwithtype?language=objc
 func (ec _EventClass) EnterExitEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberTrackingNumberUserData(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, enum int, tNum int, data unsafe.Pointer) Event {
-	rv := objc.Call[Event](ec, objc.Sel("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:"), type_, location, flags, time, wNum, objc.Ptr(unusedPassNil), enum, tNum, data)
+	rv := objc.Call[Event](ec, objc.Sel("enterExitEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:trackingNumber:userData:"), type_, location, flags, time, wNum, unusedPassNil, enum, tNum, data)
 	return rv
 }
 
@@ -163,15 +163,15 @@ func Event_EnterExitEventWithTypeLocationModifierFlagsTimestampWindowNumberConte
 // Creates and returns a new event object that describes a mouse-down, -up, -moved, or -dragged event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1532495-mouseeventwithtype?language=objc
-func (ec _EventClass) MouseEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberClickCountPressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, enum int, cNum int, pressure float64) Event {
-	rv := objc.Call[Event](ec, objc.Sel("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:"), type_, location, flags, time, wNum, objc.Ptr(unusedPassNil), enum, cNum, pressure)
+func (ec _EventClass) MouseEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberClickCountPressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, enum int, cNum int, pressure float32) Event {
+	rv := objc.Call[Event](ec, objc.Sel("mouseEventWithType:location:modifierFlags:timestamp:windowNumber:context:eventNumber:clickCount:pressure:"), type_, location, flags, time, wNum, unusedPassNil, enum, cNum, pressure)
 	return rv
 }
 
 // Creates and returns a new event object that describes a mouse-down, -up, -moved, or -dragged event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1532495-mouseeventwithtype?language=objc
-func Event_MouseEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberClickCountPressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, enum int, cNum int, pressure float64) Event {
+func Event_MouseEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberClickCountPressure(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, enum int, cNum int, pressure float32) Event {
 	return EventClass.MouseEventWithTypeLocationModifierFlagsTimestampWindowNumberContextEventNumberClickCountPressure(type_, location, flags, time, wNum, unusedPassNil, enum, cNum, pressure)
 }
 
@@ -217,7 +217,7 @@ func (e_ Event) AllTouches() foundation.Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/2646918-touchesforview?language=objc
 func (e_ Event) TouchesForView(view IView) foundation.Set {
-	rv := objc.Call[foundation.Set](e_, objc.Sel("touchesForView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Set](e_, objc.Sel("touchesForView:"), view)
 	return rv
 }
 
@@ -262,7 +262,7 @@ func (e_ Event) CharactersByApplyingModifiers(modifiers EventModifierFlags) stri
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1530010-othereventwithtype?language=objc
 func (ec _EventClass) OtherEventWithTypeLocationModifierFlagsTimestampWindowNumberContextSubtypeData1Data2(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, subtype int, d1 int, d2 int) Event {
-	rv := objc.Call[Event](ec, objc.Sel("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:"), type_, location, flags, time, wNum, objc.Ptr(unusedPassNil), subtype, d1, d2)
+	rv := objc.Call[Event](ec, objc.Sel("otherEventWithType:location:modifierFlags:timestamp:windowNumber:context:subtype:data1:data2:"), type_, location, flags, time, wNum, unusedPassNil, subtype, d1, d2)
 	return rv
 }
 
@@ -298,7 +298,7 @@ func Event_StopPeriodicEvents() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1533943-keyeventwithtype?language=objc
 func (ec _EventClass) KeyEventWithTypeLocationModifierFlagsTimestampWindowNumberContextCharactersCharactersIgnoringModifiersIsARepeatKeyCode(type_ EventType, location foundation.Point, flags EventModifierFlags, time foundation.TimeInterval, wNum int, unusedPassNil IGraphicsContext, keys string, ukeys string, flag bool, code int) Event {
-	rv := objc.Call[Event](ec, objc.Sel("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:"), type_, location, flags, time, wNum, objc.Ptr(unusedPassNil), keys, ukeys, flag, code)
+	rv := objc.Call[Event](ec, objc.Sel("keyEventWithType:location:modifierFlags:timestamp:windowNumber:context:characters:charactersIgnoringModifiers:isARepeat:keyCode:"), type_, location, flags, time, wNum, unusedPassNil, keys, ukeys, flag, code)
 	return rv
 }
 
@@ -313,7 +313,7 @@ func Event_KeyEventWithTypeLocationModifierFlagsTimestampWindowNumberContextChar
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1483105-locationinnode?language=objc
 func (e_ Event) LocationInNode(node objc.IObject) coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](e_, objc.Sel("locationInNode:"), objc.Ptr(node))
+	rv := objc.Call[coregraphics.Point](e_, objc.Sel("locationInNode:"), node)
 	return rv
 }
 
@@ -321,7 +321,7 @@ func (e_ Event) LocationInNode(node objc.IObject) coregraphics.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1530950-touchesmatchingphase?language=objc
 func (e_ Event) TouchesMatchingPhaseInView(phase TouchPhase, view IView) foundation.Set {
-	rv := objc.Call[foundation.Set](e_, objc.Sel("touchesMatchingPhase:inView:"), phase, objc.Ptr(view))
+	rv := objc.Call[foundation.Set](e_, objc.Sel("touchesMatchingPhase:inView:"), phase, view)
 	return rv
 }
 
@@ -329,7 +329,7 @@ func (e_ Event) TouchesMatchingPhaseInView(phase TouchPhase, view IView) foundat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/2646916-coalescedtouchesfortouch?language=objc
 func (e_ Event) CoalescedTouchesForTouch(touch ITouch) []Touch {
-	rv := objc.Call[[]Touch](e_, objc.Sel("coalescedTouchesForTouch:"), objc.Ptr(touch))
+	rv := objc.Call[[]Touch](e_, objc.Sel("coalescedTouchesForTouch:"), touch)
 	return rv
 }
 
@@ -531,8 +531,8 @@ func Event_SetMouseCoalescingEnabled(value bool) {
 // The rotation in degrees of the tablet pointing device associated with this event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1526249-rotation?language=objc
-func (e_ Event) Rotation() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("rotation"))
+func (e_ Event) Rotation() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("rotation"))
 	return rv
 }
 
@@ -672,8 +672,8 @@ func (e_ Event) TrackingArea() TrackingArea {
 // The tangential pressure on the device that generated this event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1525959-tangentialpressure?language=objc
-func (e_ Event) TangentialPressure() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("tangentialPressure"))
+func (e_ Event) TangentialPressure() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("tangentialPressure"))
 	return rv
 }
 
@@ -847,8 +847,8 @@ func (e_ Event) LocationInWindow() foundation.Point {
 // A normalized value that indicates the degree of pressure applied to an appropriate input device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsevent/1534543-pressure?language=objc
-func (e_ Event) Pressure() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("pressure"))
+func (e_ Event) Pressure() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("pressure"))
 	return rv
 }
 

@@ -39,7 +39,7 @@ func CollectionLayoutGroupFrom(ptr unsafe.Pointer) CollectionLayoutGroup {
 }
 
 func (cc _CollectionLayoutGroupClass) CustomGroupWithLayoutSizeItemProvider(layoutSize ICollectionLayoutSize, itemProvider CollectionLayoutGroupCustomItemProvider) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("customGroupWithLayoutSize:itemProvider:"), objc.Ptr(layoutSize), itemProvider)
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("customGroupWithLayoutSize:itemProvider:"), layoutSize, itemProvider)
 	return rv
 }
 
@@ -51,7 +51,7 @@ func CollectionLayoutGroup_CustomGroupWithLayoutSizeItemProvider(layoutSize ICol
 }
 
 func (cc _CollectionLayoutGroupClass) HorizontalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("horizontalGroupWithLayoutSize:subitems:"), objc.Ptr(layoutSize), subitems)
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("horizontalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
 	return rv
 }
 
@@ -63,7 +63,7 @@ func CollectionLayoutGroup_HorizontalGroupWithLayoutSizeSubitems(layoutSize ICol
 }
 
 func (cc _CollectionLayoutGroupClass) VerticalGroupWithLayoutSizeSubitems(layoutSize ICollectionLayoutSize, subitems []ICollectionLayoutItem) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("verticalGroupWithLayoutSize:subitems:"), objc.Ptr(layoutSize), subitems)
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("verticalGroupWithLayoutSize:subitems:"), layoutSize, subitems)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (c_ CollectionLayoutGroup) Init() CollectionLayoutGroup {
 }
 
 func (cc _CollectionLayoutGroupClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func CollectionLayoutGroup_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) 
 }
 
 func (cc _CollectionLayoutGroupClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutGroup {
-	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), objc.Ptr(layoutSize), supplementaryItems)
+	rv := objc.Call[CollectionLayoutGroup](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func (c_ CollectionLayoutGroup) InterItemSpacing() CollectionLayoutSpacing {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutgroup/3199078-interitemspacing?language=objc
 func (c_ CollectionLayoutGroup) SetInterItemSpacing(value ICollectionLayoutSpacing) {
-	objc.Call[objc.Void](c_, objc.Sel("setInterItemSpacing:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInterItemSpacing:"), value)
 }
 
 // An array of the supplementary items that are anchored to the group. [Full Topic]

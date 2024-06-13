@@ -54,5 +54,5 @@ func (s_ SoundDelegateObject) HasSoundDidFinishPlaying() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssounddelegate/1477298-sound?language=objc
 func (s_ SoundDelegateObject) SoundDidFinishPlaying(sound Sound, flag bool) {
-	objc.Call[objc.Void](s_, objc.Sel("sound:didFinishPlaying:"), objc.Ptr(sound), flag)
+	objc.Call[objc.Void](s_, objc.Sel("sound:didFinishPlaying:"), sound, flag)
 }

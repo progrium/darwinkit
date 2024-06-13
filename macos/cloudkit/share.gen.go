@@ -43,7 +43,7 @@ func ShareFrom(ptr unsafe.Pointer) Share {
 }
 
 func (s_ Share) InitWithRootRecord(rootRecord IRecord) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRootRecord:"), objc.Ptr(rootRecord))
+	rv := objc.Call[Share](s_, objc.Sel("initWithRootRecord:"), rootRecord)
 	return rv
 }
 
@@ -57,7 +57,7 @@ func NewShareWithRootRecord(rootRecord IRecord) Share {
 }
 
 func (s_ Share) InitWithRecordZoneID(recordZoneID IRecordZoneID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRecordZoneID:"), objc.Ptr(recordZoneID))
+	rv := objc.Call[Share](s_, objc.Sel("initWithRecordZoneID:"), recordZoneID)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func NewShareWithRecordZoneID(recordZoneID IRecordZoneID) Share {
 }
 
 func (s_ Share) InitWithRootRecordShareID(rootRecord IRecord, shareID IRecordID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRootRecord:shareID:"), objc.Ptr(rootRecord), objc.Ptr(shareID))
+	rv := objc.Call[Share](s_, objc.Sel("initWithRootRecord:shareID:"), rootRecord, shareID)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (s_ Share) Init() Share {
 }
 
 func (s_ Share) InitWithRecordTypeRecordID(recordType RecordType, recordID IRecordID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:recordID:"), recordType, objc.Ptr(recordID))
+	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:recordID:"), recordType, recordID)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func NewShareWithRecordType(recordType RecordType) Share {
 }
 
 func (s_ Share) InitWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) Share {
-	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:zoneID:"), recordType, objc.Ptr(zoneID))
+	rv := objc.Call[Share](s_, objc.Sel("initWithRecordType:zoneID:"), recordType, zoneID)
 	return rv
 }
 
@@ -150,14 +150,14 @@ func NewShareWithRecordTypeZoneID(recordType RecordType, zoneID IRecordZoneID) S
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640523-removeparticipant?language=objc
 func (s_ Share) RemoveParticipant(participant IShareParticipant) {
-	objc.Call[objc.Void](s_, objc.Sel("removeParticipant:"), objc.Ptr(participant))
+	objc.Call[objc.Void](s_, objc.Sel("removeParticipant:"), participant)
 }
 
 // Adds a participant to the share. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckshare/1640443-addparticipant?language=objc
 func (s_ Share) AddParticipant(participant IShareParticipant) {
-	objc.Call[objc.Void](s_, objc.Sel("addParticipant:"), objc.Ptr(participant))
+	objc.Call[objc.Void](s_, objc.Sel("addParticipant:"), participant)
 }
 
 // The participant that represents the current user. [Full Topic]

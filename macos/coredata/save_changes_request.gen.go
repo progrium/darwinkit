@@ -39,7 +39,7 @@ func SaveChangesRequestFrom(ptr unsafe.Pointer) SaveChangesRequest {
 }
 
 func (s_ SaveChangesRequest) InitWithInsertedObjectsUpdatedObjectsDeletedObjectsLockedObjects(insertedObjects foundation.ISet, updatedObjects foundation.ISet, deletedObjects foundation.ISet, lockedObjects foundation.ISet) SaveChangesRequest {
-	rv := objc.Call[SaveChangesRequest](s_, objc.Sel("initWithInsertedObjects:updatedObjects:deletedObjects:lockedObjects:"), objc.Ptr(insertedObjects), objc.Ptr(updatedObjects), objc.Ptr(deletedObjects), objc.Ptr(lockedObjects))
+	rv := objc.Call[SaveChangesRequest](s_, objc.Sel("initWithInsertedObjects:updatedObjects:deletedObjects:lockedObjects:"), insertedObjects, updatedObjects, deletedObjects, lockedObjects)
 	return rv
 }
 

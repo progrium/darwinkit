@@ -87,7 +87,7 @@ func (c_ Container) FetchAllLongLivedOperationIDsWithCompletionHandler(completio
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/2113666-fetchsharemetadatawithurl?language=objc
 func (c_ Container) FetchShareMetadataWithURLCompletionHandler(url foundation.IURL, completionHandler func(metadata ShareMetadata, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("fetchShareMetadataWithURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](c_, objc.Sel("fetchShareMetadataWithURL:completionHandler:"), url, completionHandler)
 }
 
 // Returns the database with the specified scope. [Full Topic]
@@ -109,7 +109,7 @@ func (c_ Container) AccountStatusWithCompletionHandler(completionHandler func(ac
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1399215-addoperation?language=objc
 func (c_ Container) AddOperation(operation IOperation) {
-	objc.Call[objc.Void](c_, objc.Sel("addOperation:"), objc.Ptr(operation))
+	objc.Call[objc.Void](c_, objc.Sel("addOperation:"), operation)
 }
 
 // Returns the app’s default container. [Full Topic]
@@ -131,7 +131,7 @@ func Container_DefaultContainer() Container {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/1640387-fetchshareparticipantwithuserrec?language=objc
 func (c_ Container) FetchShareParticipantWithUserRecordIDCompletionHandler(userRecordID IRecordID, completionHandler func(shareParticipant ShareParticipant, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithUserRecordID:completionHandler:"), objc.Ptr(userRecordID), completionHandler)
+	objc.Call[objc.Void](c_, objc.Sel("fetchShareParticipantWithUserRecordID:completionHandler:"), userRecordID, completionHandler)
 }
 
 // Fetches the user record ID of the current user. [Full Topic]
@@ -145,7 +145,7 @@ func (c_ Container) FetchUserRecordIDWithCompletionHandler(completionHandler fun
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckcontainer/2113667-acceptsharemetadata?language=objc
 func (c_ Container) AcceptShareMetadataCompletionHandler(metadata IShareMetadata, completionHandler func(acceptedShare Share, error foundation.Error)) {
-	objc.Call[objc.Void](c_, objc.Sel("acceptShareMetadata:completionHandler:"), objc.Ptr(metadata), completionHandler)
+	objc.Call[objc.Void](c_, objc.Sel("acceptShareMetadata:completionHandler:"), metadata, completionHandler)
 }
 
 // Creates a container for the specified identifier. [Full Topic]

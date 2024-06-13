@@ -35,7 +35,7 @@ func (s_ ScrubberDataSourceObject) HasNumberOfItemsForScrubber() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource/2544845-numberofitemsforscrubber?language=objc
 func (s_ ScrubberDataSourceObject) NumberOfItemsForScrubber(scrubber Scrubber) int {
-	rv := objc.Call[int](s_, objc.Sel("numberOfItemsForScrubber:"), objc.Ptr(scrubber))
+	rv := objc.Call[int](s_, objc.Sel("numberOfItemsForScrubber:"), scrubber)
 	return rv
 }
 
@@ -47,6 +47,6 @@ func (s_ ScrubberDataSourceObject) HasScrubberViewForItemAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdatasource/2544709-scrubber?language=objc
 func (s_ ScrubberDataSourceObject) ScrubberViewForItemAtIndex(scrubber Scrubber, index int) ScrubberItemView {
-	rv := objc.Call[ScrubberItemView](s_, objc.Sel("scrubber:viewForItemAtIndex:"), objc.Ptr(scrubber), index)
+	rv := objc.Call[ScrubberItemView](s_, objc.Sel("scrubber:viewForItemAtIndex:"), scrubber, index)
 	return rv
 }

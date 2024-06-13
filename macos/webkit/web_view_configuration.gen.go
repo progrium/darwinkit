@@ -92,7 +92,7 @@ func (w_ WebViewConfiguration) SetURLSchemeHandlerForURLScheme(urlSchemeHandler 
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/2875766-seturlschemehandler?language=objc
 func (w_ WebViewConfiguration) SetURLSchemeHandlerObjectForURLScheme(urlSchemeHandlerObject objc.IObject, urlScheme string) {
-	objc.Call[objc.Void](w_, objc.Sel("setURLSchemeHandler:forURLScheme:"), objc.Ptr(urlSchemeHandlerObject), urlScheme)
+	objc.Call[objc.Void](w_, objc.Sel("setURLSchemeHandler:forURLScheme:"), urlSchemeHandlerObject, urlScheme)
 }
 
 // Returns the currently registered handler object for the specified URL scheme. [Full Topic]
@@ -115,7 +115,7 @@ func (w_ WebViewConfiguration) UserContentController() UserContentController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395668-usercontentcontroller?language=objc
 func (w_ WebViewConfiguration) SetUserContentController(value IUserContentController) {
-	objc.Call[objc.Void](w_, objc.Sel("setUserContentController:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setUserContentController:"), value)
 }
 
 // The default preferences to use when loading and rendering content. [Full Topic]
@@ -130,7 +130,7 @@ func (w_ WebViewConfiguration) DefaultWebpagePreferences() WebpagePreferences {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/3194420-defaultwebpagepreferences?language=objc
 func (w_ WebViewConfiguration) SetDefaultWebpagePreferences(value IWebpagePreferences) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultWebpagePreferences:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultWebpagePreferences:"), value)
 }
 
 // The media types that require a user gesture to begin playing. [Full Topic]
@@ -190,7 +190,7 @@ func (w_ WebViewConfiguration) ProcessPool() ProcessPool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395659-processpool?language=objc
 func (w_ WebViewConfiguration) SetProcessPool(value IProcessPool) {
-	objc.Call[objc.Void](w_, objc.Sel("setProcessPool:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setProcessPool:"), value)
 }
 
 // The object that manages the preference-related settings for the web view. [Full Topic]
@@ -205,7 +205,7 @@ func (w_ WebViewConfiguration) Preferences() Preferences {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395666-preferences?language=objc
 func (w_ WebViewConfiguration) SetPreferences(value IPreferences) {
-	objc.Call[objc.Void](w_, objc.Sel("setPreferences:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setPreferences:"), value)
 }
 
 // A Boolean value that indicates whether the web view limits navigation to pages within the app’s domain. [Full Topic]
@@ -235,7 +235,7 @@ func (w_ WebViewConfiguration) WebsiteDataStore() WebsiteDataStore {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebviewconfiguration/1395661-websitedatastore?language=objc
 func (w_ WebViewConfiguration) SetWebsiteDataStore(value IWebsiteDataStore) {
-	objc.Call[objc.Void](w_, objc.Sel("setWebsiteDataStore:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setWebsiteDataStore:"), value)
 }
 
 // The directionality of user interface elements. [Full Topic]

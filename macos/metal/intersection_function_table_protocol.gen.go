@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,7 +22,7 @@ type PIntersectionFunctionTable interface {
 	HasSetVisibleFunctionTableAtBufferIndex() bool
 
 	// optional
-	SetFunctionsWithRange(functions FunctionHandleObject, range_ foundation.Range)
+	SetFunctionsWithRange(functions unsafe.Pointer, range_ foundation.Range)
 	HasSetFunctionsWithRange() bool
 
 	// optional
@@ -32,11 +34,11 @@ type PIntersectionFunctionTable interface {
 	HasSetOpaqueTriangleIntersectionFunctionWithSignatureWithRange() bool
 
 	// optional
-	SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range)
+	SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
 	HasSetBuffersOffsetsWithRange() bool
 
 	// optional
-	SetVisibleFunctionTablesWithBufferRange(functionTables VisibleFunctionTableObject, bufferRange foundation.Range)
+	SetVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, bufferRange foundation.Range)
 	HasSetVisibleFunctionTablesWithBufferRange() bool
 
 	// optional
@@ -83,7 +85,7 @@ func (i_ IntersectionFunctionTableObject) HasSetFunctionsWithRange() bool {
 // Sets a range of entries in the table. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlintersectionfunctiontable/3566555-setfunctions?language=objc
-func (i_ IntersectionFunctionTableObject) SetFunctionsWithRange(functions FunctionHandleObject, range_ foundation.Range) {
+func (i_ IntersectionFunctionTableObject) SetFunctionsWithRange(functions unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLFunctionHandle", functions)
 	objc.Call[objc.Void](i_, objc.Sel("setFunctions:withRange:"), po0, range_)
 }
@@ -117,7 +119,7 @@ func (i_ IntersectionFunctionTableObject) HasSetBuffersOffsetsWithRange() bool {
 // Sets a range of buffers for the intersection functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlintersectionfunctiontable/3578280-setbuffers?language=objc
-func (i_ IntersectionFunctionTableObject) SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range) {
+func (i_ IntersectionFunctionTableObject) SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
 	objc.Call[objc.Void](i_, objc.Sel("setBuffers:offsets:withRange:"), po0, offsets, range_)
 }
@@ -129,7 +131,7 @@ func (i_ IntersectionFunctionTableObject) HasSetVisibleFunctionTablesWithBufferR
 // Sets a range of visible function tables for the intersection functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlintersectionfunctiontable/3674231-setvisiblefunctiontables?language=objc
-func (i_ IntersectionFunctionTableObject) SetVisibleFunctionTablesWithBufferRange(functionTables VisibleFunctionTableObject, bufferRange foundation.Range) {
+func (i_ IntersectionFunctionTableObject) SetVisibleFunctionTablesWithBufferRange(functionTables unsafe.Pointer, bufferRange foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", functionTables)
 	objc.Call[objc.Void](i_, objc.Sel("setVisibleFunctionTables:withBufferRange:"), po0, bufferRange)
 }

@@ -19,11 +19,11 @@ type PStraighten interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -43,7 +43,7 @@ func (s_ StraightenObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistraighten/3228759-inputimage?language=objc
 func (s_ StraightenObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ StraightenObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (s_ StraightenObject) HasSetAngle() bool {
 // The rotation angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistraighten/3228758-angle?language=objc
-func (s_ StraightenObject) SetAngle(value float64) {
+func (s_ StraightenObject) SetAngle(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setAngle:"), value)
 }
 
@@ -76,7 +76,7 @@ func (s_ StraightenObject) HasAngle() bool {
 // The rotation angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistraighten/3228758-angle?language=objc
-func (s_ StraightenObject) Angle() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("angle"))
+func (s_ StraightenObject) Angle() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("angle"))
 	return rv
 }

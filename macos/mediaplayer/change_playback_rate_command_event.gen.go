@@ -18,7 +18,7 @@ type _ChangePlaybackRateCommandEventClass struct {
 // An interface definition for the [ChangePlaybackRateCommandEvent] class.
 type IChangePlaybackRateCommandEvent interface {
 	IRemoteCommandEvent
-	PlaybackRate() float64
+	PlaybackRate() float32
 }
 
 // An event requesting a change in the playback rate. [Full Topic]
@@ -57,7 +57,7 @@ func (c_ ChangePlaybackRateCommandEvent) Init() ChangePlaybackRateCommandEvent {
 // The chosen playback rate for the command event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpchangeplaybackratecommandevent/1616782-playbackrate?language=objc
-func (c_ ChangePlaybackRateCommandEvent) PlaybackRate() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("playbackRate"))
+func (c_ ChangePlaybackRateCommandEvent) PlaybackRate() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("playbackRate"))
 	return rv
 }

@@ -19,8 +19,8 @@ type _NNPadClass struct {
 // An interface definition for the [NNPad] class.
 type INNPad interface {
 	ICNNKernel
-	FillValue() float64
-	SetFillValue(value float64)
+	FillValue() float32
+	SetFillValue(value float32)
 	PaddingSizeBefore() ImageCoordinate
 	SetPaddingSizeBefore(value ImageCoordinate)
 	PaddingSizeAfter() ImageCoordinate
@@ -123,15 +123,15 @@ func NNPad_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNPad {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpad/3037427-fillvalue?language=objc
-func (n_ NNPad) FillValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("fillValue"))
+func (n_ NNPad) FillValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("fillValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpad/3037427-fillvalue?language=objc
-func (n_ NNPad) SetFillValue(value float64) {
+func (n_ NNPad) SetFillValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setFillValue:"), value)
 }
 

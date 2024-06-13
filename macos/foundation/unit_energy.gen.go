@@ -54,7 +54,7 @@ func (u_ UnitEnergy) Init() UnitEnergy {
 }
 
 func (u_ UnitEnergy) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitEnergy {
-	rv := objc.Call[UnitEnergy](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitEnergy](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

@@ -90,14 +90,14 @@ func NewClipViewWithFrame(frameRect foundation.Rect) ClipView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1531354-viewboundschanged?language=objc
 func (c_ ClipView) ViewBoundsChanged(notification foundation.INotification) {
-	objc.Call[objc.Void](c_, objc.Sel("viewBoundsChanged:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("viewBoundsChanged:"), notification)
 }
 
 // Handles an NSViewFrameDidChangeNotification, passed in the aNotification argument, by updating a containing NSScrollView based on the new frame. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1526364-viewframechanged?language=objc
 func (c_ ClipView) ViewFrameChanged(notification foundation.INotification) {
-	objc.Call[objc.Void](c_, objc.Sel("viewFrameChanged:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("viewFrameChanged:"), notification)
 }
 
 // Changes the origin of the clip view’s bounds rectangle to newOrigin. [Full Topic]
@@ -127,7 +127,7 @@ func (c_ ClipView) DocumentCursor() Cursor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1535377-documentcursor?language=objc
 func (c_ ClipView) SetDocumentCursor(value ICursor) {
-	objc.Call[objc.Void](c_, objc.Sel("setDocumentCursor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setDocumentCursor:"), value)
 }
 
 // The clip view’s document view. [Full Topic]
@@ -142,7 +142,7 @@ func (c_ ClipView) DocumentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1524587-documentview?language=objc
 func (c_ ClipView) SetDocumentView(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setDocumentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setDocumentView:"), value)
 }
 
 // The exposed rectangle of the clip view’s document view, in the document view’s own coordinate system. [Full Topic]
@@ -218,5 +218,5 @@ func (c_ ClipView) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsclipview/1525469-backgroundcolor?language=objc
 func (c_ ClipView) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](c_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBackgroundColor:"), value)
 }

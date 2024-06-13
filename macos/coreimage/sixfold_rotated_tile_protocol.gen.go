@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile?language=objc
 type PSixfoldRotatedTile interface {
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (s_ SixfoldRotatedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile/3228721-width?language=objc
-func (s_ SixfoldRotatedTileObject) SetWidth(value float64) {
+func (s_ SixfoldRotatedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setWidth:"), value)
 }
 
@@ -70,8 +70,8 @@ func (s_ SixfoldRotatedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile/3228721-width?language=objc
-func (s_ SixfoldRotatedTileObject) Width() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("width"))
+func (s_ SixfoldRotatedTileObject) Width() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("width"))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (s_ SixfoldRotatedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile/3228718-angle?language=objc
-func (s_ SixfoldRotatedTileObject) SetAngle(value float64) {
+func (s_ SixfoldRotatedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setAngle:"), value)
 }
 
@@ -93,8 +93,8 @@ func (s_ SixfoldRotatedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile/3228718-angle?language=objc
-func (s_ SixfoldRotatedTileObject) Angle() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("angle"))
+func (s_ SixfoldRotatedTileObject) Angle() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("angle"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (s_ SixfoldRotatedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisixfoldrotatedtile/3228720-inputimage?language=objc
 func (s_ SixfoldRotatedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SixfoldRotatedTileObject) HasInputImage() bool {

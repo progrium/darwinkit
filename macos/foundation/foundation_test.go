@@ -40,7 +40,6 @@ func TestFoundationArray(t *testing.T) {
 	}
 }
 
-
 // Test the (NS)Error type
 func TestFoundationError(t *testing.T) {
 	t.Run("Empty Map", func(t *testing.T) {

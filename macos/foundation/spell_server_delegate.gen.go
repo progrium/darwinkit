@@ -3,6 +3,8 @@
 package foundation
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -27,7 +29,7 @@ type PSpellServerDelegate interface {
 	HasSpellServerSuggestGuessesForWordInLanguage() bool
 
 	// optional
-	SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details []map[string]objc.Object) Range
+	SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details unsafe.Pointer) Range
 	HasSpellServerCheckGrammarInStringLanguageDetails() bool
 
 	// optional
@@ -49,7 +51,7 @@ type SpellServerDelegate struct {
 	_SpellServerFindMisspelledWordInStringLanguageWordCountCountOnly  func(sender SpellServer, stringToCheck string, language string, wordCount *int, countOnly bool) Range
 	_SpellServerRecordResponseToCorrectionForWordLanguage             func(sender SpellServer, response uint, correction string, word string, language string)
 	_SpellServerSuggestGuessesForWordInLanguage                       func(sender SpellServer, word string, language string) []string
-	_SpellServerCheckGrammarInStringLanguageDetails                   func(sender SpellServer, stringToCheck string, language string, details []map[string]objc.Object) Range
+	_SpellServerCheckGrammarInStringLanguageDetails                   func(sender SpellServer, stringToCheck string, language string, details unsafe.Pointer) Range
 	_SpellServerDidLearnWordInLanguage                                func(sender SpellServer, word string, language string)
 	_SpellServerDidForgetWordInLanguage                               func(sender SpellServer, word string, language string)
 	_SpellServerCheckStringOffsetTypesOptionsOrthographyWordCount     func(sender SpellServer, stringToCheck string, offset uint, checkingTypes TextCheckingTypes, options map[string]objc.Object, orthography Orthography, wordCount *int) []TextCheckingResult
@@ -130,14 +132,14 @@ func (di *SpellServerDelegate) HasSpellServerCheckGrammarInStringLanguageDetails
 // Gives the delegate the opportunity to customize the grammatical analysis of a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1409242-spellserver?language=objc
-func (di *SpellServerDelegate) SetSpellServerCheckGrammarInStringLanguageDetails(f func(sender SpellServer, stringToCheck string, language string, details []map[string]objc.Object) Range) {
+func (di *SpellServerDelegate) SetSpellServerCheckGrammarInStringLanguageDetails(f func(sender SpellServer, stringToCheck string, language string, details unsafe.Pointer) Range) {
 	di._SpellServerCheckGrammarInStringLanguageDetails = f
 }
 
 // Gives the delegate the opportunity to customize the grammatical analysis of a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1409242-spellserver?language=objc
-func (di *SpellServerDelegate) SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details []map[string]objc.Object) Range {
+func (di *SpellServerDelegate) SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details unsafe.Pointer) Range {
 	return di._SpellServerCheckGrammarInStringLanguageDetails(sender, stringToCheck, language, details)
 }
 func (di *SpellServerDelegate) HasSpellServerDidLearnWordInLanguage() bool {
@@ -208,7 +210,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerSuggestCompletionsForPartialWo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1414606-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerSuggestCompletionsForPartialWordRangeInStringLanguage(sender SpellServer, range_ Range, string_ string, language string) []string {
-	rv := objc.Call[[]string](s_, objc.Sel("spellServer:suggestCompletionsForPartialWordRange:inString:language:"), objc.Ptr(sender), range_, string_, language)
+	rv := objc.Call[[]string](s_, objc.Sel("spellServer:suggestCompletionsForPartialWordRange:inString:language:"), sender, range_, string_, language)
 	return rv
 }
 
@@ -220,7 +222,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerFindMisspelledWordInStringLang
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1413235-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerFindMisspelledWordInStringLanguageWordCountCountOnly(sender SpellServer, stringToCheck string, language string, wordCount *int, countOnly bool) Range {
-	rv := objc.Call[Range](s_, objc.Sel("spellServer:findMisspelledWordInString:language:wordCount:countOnly:"), objc.Ptr(sender), stringToCheck, language, wordCount, countOnly)
+	rv := objc.Call[Range](s_, objc.Sel("spellServer:findMisspelledWordInString:language:wordCount:countOnly:"), sender, stringToCheck, language, wordCount, countOnly)
 	return rv
 }
 
@@ -232,7 +234,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerRecordResponseToCorrectionForW
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1412894-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerRecordResponseToCorrectionForWordLanguage(sender SpellServer, response uint, correction string, word string, language string) {
-	objc.Call[objc.Void](s_, objc.Sel("spellServer:recordResponse:toCorrection:forWord:language:"), objc.Ptr(sender), response, correction, word, language)
+	objc.Call[objc.Void](s_, objc.Sel("spellServer:recordResponse:toCorrection:forWord:language:"), sender, response, correction, word, language)
 }
 
 func (s_ SpellServerDelegateObject) HasSpellServerSuggestGuessesForWordInLanguage() bool {
@@ -243,7 +245,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerSuggestGuessesForWordInLanguag
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1410726-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerSuggestGuessesForWordInLanguage(sender SpellServer, word string, language string) []string {
-	rv := objc.Call[[]string](s_, objc.Sel("spellServer:suggestGuessesForWord:inLanguage:"), objc.Ptr(sender), word, language)
+	rv := objc.Call[[]string](s_, objc.Sel("spellServer:suggestGuessesForWord:inLanguage:"), sender, word, language)
 	return rv
 }
 
@@ -254,8 +256,8 @@ func (s_ SpellServerDelegateObject) HasSpellServerCheckGrammarInStringLanguageDe
 // Gives the delegate the opportunity to customize the grammatical analysis of a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1409242-spellserver?language=objc
-func (s_ SpellServerDelegateObject) SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details []map[string]objc.Object) Range {
-	rv := objc.Call[Range](s_, objc.Sel("spellServer:checkGrammarInString:language:details:"), objc.Ptr(sender), stringToCheck, language, details)
+func (s_ SpellServerDelegateObject) SpellServerCheckGrammarInStringLanguageDetails(sender SpellServer, stringToCheck string, language string, details unsafe.Pointer) Range {
+	rv := objc.Call[Range](s_, objc.Sel("spellServer:checkGrammarInString:language:details:"), sender, stringToCheck, language, details)
 	return rv
 }
 
@@ -267,7 +269,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerDidLearnWordInLanguage() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1407851-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerDidLearnWordInLanguage(sender SpellServer, word string, language string) {
-	objc.Call[objc.Void](s_, objc.Sel("spellServer:didLearnWord:inLanguage:"), objc.Ptr(sender), word, language)
+	objc.Call[objc.Void](s_, objc.Sel("spellServer:didLearnWord:inLanguage:"), sender, word, language)
 }
 
 func (s_ SpellServerDelegateObject) HasSpellServerDidForgetWordInLanguage() bool {
@@ -278,7 +280,7 @@ func (s_ SpellServerDelegateObject) HasSpellServerDidForgetWordInLanguage() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1417315-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerDidForgetWordInLanguage(sender SpellServer, word string, language string) {
-	objc.Call[objc.Void](s_, objc.Sel("spellServer:didForgetWord:inLanguage:"), objc.Ptr(sender), word, language)
+	objc.Call[objc.Void](s_, objc.Sel("spellServer:didForgetWord:inLanguage:"), sender, word, language)
 }
 
 func (s_ SpellServerDelegateObject) HasSpellServerCheckStringOffsetTypesOptionsOrthographyWordCount() bool {
@@ -289,6 +291,6 @@ func (s_ SpellServerDelegateObject) HasSpellServerCheckStringOffsetTypesOptionsO
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserverdelegate/1409733-spellserver?language=objc
 func (s_ SpellServerDelegateObject) SpellServerCheckStringOffsetTypesOptionsOrthographyWordCount(sender SpellServer, stringToCheck string, offset uint, checkingTypes TextCheckingTypes, options map[string]objc.Object, orthography Orthography, wordCount *int) []TextCheckingResult {
-	rv := objc.Call[[]TextCheckingResult](s_, objc.Sel("spellServer:checkString:offset:types:options:orthography:wordCount:"), objc.Ptr(sender), stringToCheck, offset, checkingTypes, options, objc.Ptr(orthography), wordCount)
+	rv := objc.Call[[]TextCheckingResult](s_, objc.Sel("spellServer:checkString:offset:types:options:orthography:wordCount:"), sender, stringToCheck, offset, checkingTypes, options, orthography, wordCount)
 	return rv
 }

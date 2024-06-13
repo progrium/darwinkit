@@ -67,7 +67,7 @@ func (c_ ColorPickingCustomObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingcustom/1526545-setcolor?language=objc
 func (c_ ColorPickingCustomObject) SetColor(newColor Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(newColor))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), newColor)
 }
 
 func (c_ ColorPickingCustomObject) HasProvideNewView() bool {

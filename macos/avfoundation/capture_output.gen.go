@@ -63,7 +63,7 @@ func (c_ CaptureOutput) Init() CaptureOutput {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureoutput/1616310-transformedmetadataobjectformeta?language=objc
 func (c_ CaptureOutput) TransformedMetadataObjectForMetadataObjectConnection(metadataObject IMetadataObject, connection ICaptureConnection) MetadataObject {
-	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:connection:"), objc.Ptr(metadataObject), objc.Ptr(connection))
+	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:connection:"), metadataObject, connection)
 	return rv
 }
 

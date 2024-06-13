@@ -72,7 +72,7 @@ func (s_ SplitViewController) Init() SplitViewController {
 }
 
 func (s_ SplitViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) SplitViewController {
-	rv := objc.Call[SplitViewController](s_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[SplitViewController](s_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -89,7 +89,7 @@ func NewSplitViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNi
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388861-splitview?language=objc
 func (s_ SplitViewController) SplitViewCanCollapseSubview(splitView ISplitView, subview IView) bool {
-	rv := objc.Call[bool](s_, objc.Sel("splitView:canCollapseSubview:"), objc.Ptr(splitView), objc.Ptr(subview))
+	rv := objc.Call[bool](s_, objc.Sel("splitView:canCollapseSubview:"), splitView, subview)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (s_ SplitViewController) ValidateUserInterfaceItem(item PValidatedUserInter
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/2881936-validateuserinterfaceitem?language=objc
 func (s_ SplitViewController) ValidateUserInterfaceItemObject(itemObject objc.IObject) bool {
-	rv := objc.Call[bool](s_, objc.Sel("validateUserInterfaceItem:"), objc.Ptr(itemObject))
+	rv := objc.Call[bool](s_, objc.Sel("validateUserInterfaceItem:"), itemObject)
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (s_ SplitViewController) ValidateUserInterfaceItemObject(itemObject objc.IO
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388882-splitview?language=objc
 func (s_ SplitViewController) SplitViewShouldHideDividerAtIndex(splitView ISplitView, dividerIndex int) bool {
-	rv := objc.Call[bool](s_, objc.Sel("splitView:shouldHideDividerAtIndex:"), objc.Ptr(splitView), dividerIndex)
+	rv := objc.Call[bool](s_, objc.Sel("splitView:shouldHideDividerAtIndex:"), splitView, dividerIndex)
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (s_ SplitViewController) SplitViewShouldHideDividerAtIndex(splitView ISplit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388897-splitview?language=objc
 func (s_ SplitViewController) SplitViewEffectiveRectForDrawnRectOfDividerAtIndex(splitView ISplitView, proposedEffectiveRect foundation.Rect, drawnRect foundation.Rect, dividerIndex int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), objc.Ptr(splitView), proposedEffectiveRect, drawnRect, dividerIndex)
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:effectiveRect:forDrawnRect:ofDividerAtIndex:"), splitView, proposedEffectiveRect, drawnRect, dividerIndex)
 	return rv
 }
 
@@ -130,7 +130,7 @@ func (s_ SplitViewController) SplitViewEffectiveRectForDrawnRectOfDividerAtIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388857-splitviewitemforviewcontroller?language=objc
 func (s_ SplitViewController) SplitViewItemForViewController(viewController IViewController) SplitViewItem {
-	rv := objc.Call[SplitViewItem](s_, objc.Sel("splitViewItemForViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[SplitViewItem](s_, objc.Sel("splitViewItemForViewController:"), viewController)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func (s_ SplitViewController) SplitViewItemForViewController(viewController IVie
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388922-splitview?language=objc
 func (s_ SplitViewController) SplitViewAdditionalEffectiveRectOfDividerAtIndex(splitView ISplitView, dividerIndex int) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:additionalEffectiveRectOfDividerAtIndex:"), objc.Ptr(splitView), dividerIndex)
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("splitView:additionalEffectiveRectOfDividerAtIndex:"), splitView, dividerIndex)
 	return rv
 }
 
@@ -146,14 +146,14 @@ func (s_ SplitViewController) SplitViewAdditionalEffectiveRectOfDividerAtIndex(s
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388928-addsplitviewitem?language=objc
 func (s_ SplitViewController) AddSplitViewItem(splitViewItem ISplitViewItem) {
-	objc.Call[objc.Void](s_, objc.Sel("addSplitViewItem:"), objc.Ptr(splitViewItem))
+	objc.Call[objc.Void](s_, objc.Sel("addSplitViewItem:"), splitViewItem)
 }
 
 // Adds a split view item to the array of split view items at the specified index position. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388886-insertsplitviewitem?language=objc
 func (s_ SplitViewController) InsertSplitViewItemAtIndex(splitViewItem ISplitViewItem, index int) {
-	objc.Call[objc.Void](s_, objc.Sel("insertSplitViewItem:atIndex:"), objc.Ptr(splitViewItem), index)
+	objc.Call[objc.Void](s_, objc.Sel("insertSplitViewItem:atIndex:"), splitViewItem, index)
 }
 
 // Collapses or expands the first sidebar in the split view controller using an animation. [Full Topic]
@@ -168,7 +168,7 @@ func (s_ SplitViewController) ToggleSidebar(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388903-removesplitviewitem?language=objc
 func (s_ SplitViewController) RemoveSplitViewItem(splitViewItem ISplitViewItem) {
-	objc.Call[objc.Void](s_, objc.Sel("removeSplitViewItem:"), objc.Ptr(splitViewItem))
+	objc.Call[objc.Void](s_, objc.Sel("removeSplitViewItem:"), splitViewItem)
 }
 
 // The split view that the split view controller manages. [Full Topic]
@@ -183,7 +183,7 @@ func (s_ SplitViewController) SplitView() SplitView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewcontroller/1388907-splitview?language=objc
 func (s_ SplitViewController) SetSplitView(value ISplitView) {
-	objc.Call[objc.Void](s_, objc.Sel("setSplitView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSplitView:"), value)
 }
 
 // The minimum thickness for a sidebar before it automatically collapses. [Full Topic]

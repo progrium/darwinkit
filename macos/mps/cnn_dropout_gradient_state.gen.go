@@ -57,7 +57,7 @@ func (c_ CNNDropoutGradientState) Init() CNNDropoutGradientState {
 
 func (cc _CNNDropoutGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNDropoutGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNDropoutGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNDropoutGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func CNNDropoutGradientState_TemporaryStateWithCommandBufferResourceList(command
 
 func (c_ CNNDropoutGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNDropoutGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNDropoutGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNDropoutGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func CNNDropoutGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PComma
 
 func (cc _CNNDropoutGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNDropoutGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNDropoutGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNDropoutGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -168,7 +168,7 @@ func CNNDropoutGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cm
 
 func (c_ CNNDropoutGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNDropoutGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNDropoutGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNDropoutGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

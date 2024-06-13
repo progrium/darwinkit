@@ -99,12 +99,12 @@ func (m_ MutableCharacterSet) Invert() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1408380-formunionwithcharacterset?language=objc
 func (m_ MutableCharacterSet) FormUnionWithCharacterSet(otherSet ICharacterSet) {
-	objc.Call[objc.Void](m_, objc.Sel("formUnionWithCharacterSet:"), objc.Ptr(otherSet))
+	objc.Call[objc.Void](m_, objc.Sel("formUnionWithCharacterSet:"), otherSet)
 }
 
 // Modifies the receiver so it contains only characters that exist in both the receiver and another set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablecharacterset/1412512-formintersectionwithcharacterset?language=objc
 func (m_ MutableCharacterSet) FormIntersectionWithCharacterSet(otherSet ICharacterSet) {
-	objc.Call[objc.Void](m_, objc.Sel("formIntersectionWithCharacterSet:"), objc.Ptr(otherSet))
+	objc.Call[objc.Void](m_, objc.Sel("formIntersectionWithCharacterSet:"), otherSet)
 }

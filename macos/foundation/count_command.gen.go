@@ -54,7 +54,7 @@ func (c_ CountCommand) Init() CountCommand {
 }
 
 func (c_ CountCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CountCommand {
-	rv := objc.Call[CountCommand](c_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[CountCommand](c_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

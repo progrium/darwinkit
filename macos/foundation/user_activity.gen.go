@@ -224,7 +224,7 @@ func (u_ UserActivity) ContentAttributeSet() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1616398-contentattributeset?language=objc
 func (u_ UserActivity) SetContentAttributeSet(value objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("setContentAttributeSet:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setContentAttributeSet:"), value)
 }
 
 // The date after which the activity is no longer eligible for Handoff or indexing. [Full Topic]
@@ -239,7 +239,7 @@ func (u_ UserActivity) ExpirationDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1413745-expirationdate?language=objc
 func (u_ UserActivity) SetExpirationDate(value IDate) {
-	objc.Call[objc.Void](u_, objc.Sel("setExpirationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setExpirationDate:"), value)
 }
 
 // A string that identifies the user activity’s content. [Full Topic]
@@ -277,7 +277,7 @@ func (u_ UserActivity) RequiredUserInfoKeys() Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1417256-requireduserinfokeys?language=objc
 func (u_ UserActivity) SetRequiredUserInfoKeys(value ISet) {
-	objc.Call[objc.Void](u_, objc.Sel("setRequiredUserInfoKeys:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setRequiredUserInfoKeys:"), value)
 }
 
 // A Boolean value that indicates whether the activity can be publicly accessed by all iOS users. [Full Topic]
@@ -360,7 +360,7 @@ func (u_ UserActivity) Keywords() Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1408023-keywords?language=objc
 func (u_ UserActivity) SetKeywords(value ISet) {
-	objc.Call[objc.Void](u_, objc.Sel("setKeywords:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setKeywords:"), value)
 }
 
 // A Boolean value that indicates whether the activity can be continued on another device using Handoff. [Full Topic]
@@ -390,7 +390,7 @@ func (u_ UserActivity) ReferrerURL() URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/2875762-referrerurl?language=objc
 func (u_ UserActivity) SetReferrerURL(value IURL) {
-	objc.Call[objc.Void](u_, objc.Sel("setReferrerURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setReferrerURL:"), value)
 }
 
 // The user activity object’s delegate. [Full Topic]
@@ -414,7 +414,7 @@ func (u_ UserActivity) SetDelegate(value PUserActivityDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1412329-delegate?language=objc
 func (u_ UserActivity) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](u_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether a user activity represents a ClassKit context. [Full Topic]
@@ -467,5 +467,5 @@ func (u_ UserActivity) WebpageURL() URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivity/1418086-webpageurl?language=objc
 func (u_ UserActivity) SetWebpageURL(value IURL) {
-	objc.Call[objc.Void](u_, objc.Sel("setWebpageURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setWebpageURL:"), value)
 }

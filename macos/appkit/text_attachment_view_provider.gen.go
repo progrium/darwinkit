@@ -47,7 +47,7 @@ func TextAttachmentViewProviderFrom(ptr unsafe.Pointer) TextAttachmentViewProvid
 
 func (t_ TextAttachmentViewProvider) InitWithTextAttachmentParentViewTextLayoutManagerLocation(textAttachment ITextAttachment, parentView IView, textLayoutManager ITextLayoutManager, location PTextLocation) TextAttachmentViewProvider {
 	po3 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextAttachmentViewProvider](t_, objc.Sel("initWithTextAttachment:parentView:textLayoutManager:location:"), objc.Ptr(textAttachment), objc.Ptr(parentView), objc.Ptr(textLayoutManager), po3)
+	rv := objc.Call[TextAttachmentViewProvider](t_, objc.Sel("initWithTextAttachment:parentView:textLayoutManager:location:"), textAttachment, parentView, textLayoutManager, po3)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func (t_ TextAttachmentViewProvider) LoadView() {
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857594-attachmentboundsforattributes?language=objc
 func (t_ TextAttachmentViewProvider) AttachmentBoundsForAttributesLocationTextContainerProposedLineFragmentPosition(attributes map[foundation.AttributedStringKey]objc.IObject, location PTextLocation, textContainer ITextContainer, proposedLineFragment coregraphics.Rect, position coregraphics.Point) coregraphics.Rect {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, po1, objc.Ptr(textContainer), proposedLineFragment, position)
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, po1, textContainer, proposedLineFragment, position)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func (t_ TextAttachmentViewProvider) AttachmentBoundsForAttributesLocationTextCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857594-attachmentboundsforattributes?language=objc
 func (t_ TextAttachmentViewProvider) AttachmentBoundsForAttributesLocationObjectTextContainerProposedLineFragmentPosition(attributes map[foundation.AttributedStringKey]objc.IObject, locationObject objc.IObject, textContainer ITextContainer, proposedLineFragment coregraphics.Rect, position coregraphics.Point) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, objc.Ptr(locationObject), objc.Ptr(textContainer), proposedLineFragment, position)
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, locationObject, textContainer, proposedLineFragment, position)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func (t_ TextAttachmentViewProvider) View() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentviewprovider/3857601-view?language=objc
 func (t_ TextAttachmentViewProvider) SetView(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
 }
 
 // A Boolean value that determines the text attachment’s bounds policy. [Full Topic]

@@ -19,11 +19,11 @@ type PMorphologyMaximum interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -43,7 +43,7 @@ func (m_ MorphologyMaximumObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologymaximum/3228577-inputimage?language=objc
 func (m_ MorphologyMaximumObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MorphologyMaximumObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (m_ MorphologyMaximumObject) HasSetRadius() bool {
 // The radius of the circular morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologymaximum/3228578-radius?language=objc
-func (m_ MorphologyMaximumObject) SetRadius(value float64) {
+func (m_ MorphologyMaximumObject) SetRadius(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRadius:"), value)
 }
 
@@ -76,7 +76,7 @@ func (m_ MorphologyMaximumObject) HasRadius() bool {
 // The radius of the circular morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologymaximum/3228578-radius?language=objc
-func (m_ MorphologyMaximumObject) Radius() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("radius"))
+func (m_ MorphologyMaximumObject) Radius() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("radius"))
 	return rv
 }

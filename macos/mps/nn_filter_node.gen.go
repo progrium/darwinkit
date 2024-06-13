@@ -86,7 +86,7 @@ func (n_ NNFilterNode) GradientFiltersWithSources(gradientImages []INNImageNode)
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/3020688-traininggraphwithsourcegradient?language=objc
 func (n_ NNFilterNode) TrainingGraphWithSourceGradientNodeHandler(gradientImage INNImageNode, nodeHandler GradientNodeBlock) []NNFilterNode {
-	rv := objc.Call[[]NNFilterNode](n_, objc.Sel("trainingGraphWithSourceGradient:nodeHandler:"), objc.Ptr(gradientImage), nodeHandler)
+	rv := objc.Call[[]NNFilterNode](n_, objc.Sel("trainingGraphWithSourceGradient:nodeHandler:"), gradientImage, nodeHandler)
 	return rv
 }
 
@@ -94,7 +94,7 @@ func (n_ NNFilterNode) TrainingGraphWithSourceGradientNodeHandler(gradientImage 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2953944-gradientfilterswithsource?language=objc
 func (n_ NNFilterNode) GradientFiltersWithSource(gradientImage INNImageNode) []NNGradientFilterNode {
-	rv := objc.Call[[]NNGradientFilterNode](n_, objc.Sel("gradientFiltersWithSource:"), objc.Ptr(gradientImage))
+	rv := objc.Call[[]NNGradientFilterNode](n_, objc.Sel("gradientFiltersWithSource:"), gradientImage)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func (n_ NNFilterNode) GradientFiltersWithSource(gradientImage INNImageNode) []N
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2953941-gradientfilterwithsource?language=objc
 func (n_ NNFilterNode) GradientFilterWithSource(gradientImage INNImageNode) NNGradientFilterNode {
-	rv := objc.Call[NNGradientFilterNode](n_, objc.Sel("gradientFilterWithSource:"), objc.Ptr(gradientImage))
+	rv := objc.Call[NNGradientFilterNode](n_, objc.Sel("gradientFilterWithSource:"), gradientImage)
 	return rv
 }
 
@@ -134,7 +134,7 @@ func (n_ NNFilterNode) SetPaddingPolicy(value PNNPadding) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnfilternode/2866496-paddingpolicy?language=objc
 func (n_ NNFilterNode) SetPaddingPolicyObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setPaddingPolicy:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setPaddingPolicy:"), valueObject)
 }
 
 //	[Full Topic]

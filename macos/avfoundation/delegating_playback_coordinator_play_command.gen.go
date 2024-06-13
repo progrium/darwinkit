@@ -19,7 +19,7 @@ type _DelegatingPlaybackCoordinatorPlayCommandClass struct {
 // An interface definition for the [DelegatingPlaybackCoordinatorPlayCommand] class.
 type IDelegatingPlaybackCoordinatorPlayCommand interface {
 	IDelegatingPlaybackCoordinatorPlaybackControlCommand
-	Rate() float64
+	Rate() float32
 	ItemTime() coremedia.Time
 	HostClockTime() coremedia.Time
 }
@@ -60,8 +60,8 @@ func (d_ DelegatingPlaybackCoordinatorPlayCommand) Init() DelegatingPlaybackCoor
 // A rate to use when starting playback. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorplaycommand/3750268-rate?language=objc
-func (d_ DelegatingPlaybackCoordinatorPlayCommand) Rate() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("rate"))
+func (d_ DelegatingPlaybackCoordinatorPlayCommand) Rate() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("rate"))
 	return rv
 }
 

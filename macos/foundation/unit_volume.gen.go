@@ -54,7 +54,7 @@ func (u_ UnitVolume) Init() UnitVolume {
 }
 
 func (u_ UnitVolume) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitVolume {
-	rv := objc.Call[UnitVolume](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitVolume](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

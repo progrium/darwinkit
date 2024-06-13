@@ -28,7 +28,7 @@ type PDevice interface {
 	HasSupportsVertexAmplificationCount() bool
 
 	// optional
-	NewLibraryWithSourceOptionsError(source string, options CompileOptions, error foundation.Error) LibraryObject
+	NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject
 	HasNewLibraryWithSourceOptionsError() bool
 
 	// optional
@@ -36,7 +36,7 @@ type PDevice interface {
 	HasNewSharedEventWithHandle() bool
 
 	// optional
-	NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error foundation.Error) BinaryArchiveObject
+	NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject
 	HasNewBinaryArchiveWithDescriptorError() bool
 
 	// optional
@@ -48,7 +48,7 @@ type PDevice interface {
 	HasNewSharedTextureWithHandle() bool
 
 	// optional
-	NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error foundation.Error) ComputePipelineStateObject
+	NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error unsafe.Pointer) ComputePipelineStateObject
 	HasNewComputePipelineStateWithFunctionError() bool
 
 	// optional
@@ -56,7 +56,7 @@ type PDevice interface {
 	HasSparseTileSizeWithTextureTypePixelFormatSampleCount() bool
 
 	// optional
-	NewLibraryWithURLError(url foundation.URL, error foundation.Error) LibraryObject
+	NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject
 	HasNewLibraryWithURLError() bool
 
 	// optional
@@ -68,7 +68,7 @@ type PDevice interface {
 	HasConvertSparseTileRegionsToPixelRegionsWithTileSizeNumRegions() bool
 
 	// optional
-	NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error foundation.Error) ComputePipelineStateObject
+	NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject
 	HasNewComputePipelineStateWithFunctionOptionsReflectionError() bool
 
 	// optional
@@ -84,7 +84,7 @@ type PDevice interface {
 	HasGetDefaultSamplePositionsCount() bool
 
 	// optional
-	NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error foundation.Error) CounterSampleBufferObject
+	NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject
 	HasNewCounterSampleBufferWithDescriptorError() bool
 
 	// optional
@@ -92,7 +92,7 @@ type PDevice interface {
 	HasHeapTextureSizeAndAlignWithDescriptor() bool
 
 	// optional
-	NewDynamicLibraryWithURLError(url foundation.URL, error foundation.Error) DynamicLibraryObject
+	NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject
 	HasNewDynamicLibraryWithURLError() bool
 
 	// optional
@@ -108,7 +108,7 @@ type PDevice interface {
 	HasNewRenderPipelineStateWithDescriptorCompletionHandler() bool
 
 	// optional
-	NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error foundation.Error) RenderPipelineStateObject
+	NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject
 	HasNewRenderPipelineStateWithDescriptorOptionsReflectionError() bool
 
 	// optional
@@ -116,7 +116,7 @@ type PDevice interface {
 	HasNewSharedTextureWithDescriptor() bool
 
 	// optional
-	NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error foundation.Error) LibraryObject
+	NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject
 	HasNewDefaultLibraryWithBundleError() bool
 
 	// optional
@@ -136,7 +136,7 @@ type PDevice interface {
 	HasNewCommandQueueWithMaxCommandBufferCount() bool
 
 	// optional
-	NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error foundation.Error) LibraryObject
+	NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error unsafe.Pointer) LibraryObject
 	HasNewLibraryWithStitchedDescriptorError() bool
 
 	// optional
@@ -176,7 +176,7 @@ type PDevice interface {
 	HasNewSharedEvent() bool
 
 	// optional
-	NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error foundation.Error) ComputePipelineStateObject
+	NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject
 	HasNewComputePipelineStateWithDescriptorOptionsReflectionError() bool
 
 	// optional
@@ -216,7 +216,7 @@ type PDevice interface {
 	HasMinimumLinearTextureAlignmentForPixelFormat() bool
 
 	// optional
-	NewDynamicLibraryError(library LibraryObject, error foundation.Error) DynamicLibraryObject
+	NewDynamicLibraryError(library LibraryObject, error unsafe.Pointer) DynamicLibraryObject
 	HasNewDynamicLibraryError() bool
 
 	// optional
@@ -232,7 +232,7 @@ type PDevice interface {
 	HasNewComputePipelineStateWithFunctionCompletionHandler() bool
 
 	// optional
-	NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error foundation.Error) RenderPipelineStateObject
+	NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject
 	HasNewRenderPipelineStateWithTileDescriptorOptionsReflectionError() bool
 
 	// optional
@@ -240,11 +240,11 @@ type PDevice interface {
 	HasNewDepthStencilStateWithDescriptor() bool
 
 	// optional
-	NewLibraryWithDataError(data dispatch.Data, error foundation.Error) LibraryObject
+	NewLibraryWithDataError(data dispatch.Data, error unsafe.Pointer) LibraryObject
 	HasNewLibraryWithDataError() bool
 
 	// optional
-	NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error foundation.Error) RenderPipelineStateObject
+	NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) RenderPipelineStateObject
 	HasNewRenderPipelineStateWithDescriptorError() bool
 
 	// optional
@@ -459,8 +459,8 @@ func (d_ DeviceObject) HasNewLibraryWithSourceOptionsError() bool {
 // Synchronously creates a Metal library instance by compiling the functions in a source string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433431-newlibrarywithsource?language=objc
-func (d_ DeviceObject) NewLibraryWithSourceOptionsError(source string, options CompileOptions, error foundation.Error) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithSource:options:error:"), source, objc.Ptr(options), objc.Ptr(error))
+func (d_ DeviceObject) NewLibraryWithSourceOptionsError(source string, options CompileOptions, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithSource:options:error:"), source, options, error)
 	return rv
 }
 
@@ -472,7 +472,7 @@ func (d_ DeviceObject) HasNewSharedEventWithHandle() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2981024-newsharedeventwithhandle?language=objc
 func (d_ DeviceObject) NewSharedEventWithHandle(sharedEventHandle SharedEventHandle) SharedEventObject {
-	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEventWithHandle:"), objc.Ptr(sharedEventHandle))
+	rv := objc.Call[SharedEventObject](d_, objc.Sel("newSharedEventWithHandle:"), sharedEventHandle)
 	return rv
 }
 
@@ -483,8 +483,8 @@ func (d_ DeviceObject) HasNewBinaryArchiveWithDescriptorError() bool {
 // Creates a Metal binary archive instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553973-newbinaryarchivewithdescriptor?language=objc
-func (d_ DeviceObject) NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error foundation.Error) BinaryArchiveObject {
-	rv := objc.Call[BinaryArchiveObject](d_, objc.Sel("newBinaryArchiveWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (d_ DeviceObject) NewBinaryArchiveWithDescriptorError(descriptor BinaryArchiveDescriptor, error unsafe.Pointer) BinaryArchiveObject {
+	rv := objc.Call[BinaryArchiveObject](d_, objc.Sel("newBinaryArchiveWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -496,7 +496,7 @@ func (d_ DeviceObject) HasNewIndirectCommandBufferWithDescriptorMaxCommandCountO
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967420-newindirectcommandbufferwithdesc?language=objc
 func (d_ DeviceObject) NewIndirectCommandBufferWithDescriptorMaxCommandCountOptions(descriptor IndirectCommandBufferDescriptor, maxCount uint, options ResourceOptions) IndirectCommandBufferObject {
-	rv := objc.Call[IndirectCommandBufferObject](d_, objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"), objc.Ptr(descriptor), maxCount, options)
+	rv := objc.Call[IndirectCommandBufferObject](d_, objc.Sel("newIndirectCommandBufferWithDescriptor:maxCommandCount:options:"), descriptor, maxCount, options)
 	return rv
 }
 
@@ -508,7 +508,7 @@ func (d_ DeviceObject) HasNewSharedTextureWithHandle() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967422-newsharedtexturewithhandle?language=objc
 func (d_ DeviceObject) NewSharedTextureWithHandle(sharedHandle SharedTextureHandle) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithHandle:"), objc.Ptr(sharedHandle))
+	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithHandle:"), sharedHandle)
 	return rv
 }
 
@@ -519,9 +519,9 @@ func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionError() bool {
 // Synchronously creates a new compute pipeline state with a function instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433395-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error foundation.Error) ComputePipelineStateObject {
+func (d_ DeviceObject) NewComputePipelineStateWithFunctionError(computeFunction FunctionObject, error unsafe.Pointer) ComputePipelineStateObject {
 	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:error:"), po0, objc.Ptr(error))
+	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:error:"), po0, error)
 	return rv
 }
 
@@ -544,8 +544,8 @@ func (d_ DeviceObject) HasNewLibraryWithURLError() bool {
 // Creates a Metal library instance that contains the functions in the Metal library file at a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2877432-newlibrarywithurl?language=objc
-func (d_ DeviceObject) NewLibraryWithURLError(url foundation.URL, error foundation.Error) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (d_ DeviceObject) NewLibraryWithURLError(url foundation.URL, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithURL:error:"), url, error)
 	return rv
 }
 
@@ -557,7 +557,7 @@ func (d_ DeviceObject) HasNewAccelerationStructureWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553971-newaccelerationstructurewithdesc?language=objc
 func (d_ DeviceObject) NewAccelerationStructureWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureObject {
-	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[AccelerationStructureObject](d_, objc.Sel("newAccelerationStructureWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -579,9 +579,9 @@ func (d_ DeviceObject) HasNewComputePipelineStateWithFunctionOptionsReflectionEr
 // Synchronously creates a compute pipeline state and reflection with a function instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433419-newcomputepipelinestatewithfunct?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error foundation.Error) ComputePipelineStateObject {
+func (d_ DeviceObject) NewComputePipelineStateWithFunctionOptionsReflectionError(computeFunction FunctionObject, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject {
 	po0 := objc.WrapAsProtocol("MTLFunction", computeFunction)
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:options:reflection:error:"), po0, options, reflection, objc.Ptr(error))
+	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithFunction:options:reflection:error:"), po0, options, reflection, error)
 	return rv
 }
 
@@ -593,7 +593,7 @@ func (d_ DeviceObject) HasNewHeapWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649928-newheapwithdescriptor?language=objc
 func (d_ DeviceObject) NewHeapWithDescriptor(descriptor HeapDescriptor) HeapObject {
-	rv := objc.Call[HeapObject](d_, objc.Sel("newHeapWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[HeapObject](d_, objc.Sel("newHeapWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -605,7 +605,7 @@ func (d_ DeviceObject) HasNewTextureWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433425-newtexturewithdescriptor?language=objc
 func (d_ DeviceObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -627,8 +627,8 @@ func (d_ DeviceObject) HasNewCounterSampleBufferWithDescriptorError() bool {
 // Creates a counter sample buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3081741-newcountersamplebufferwithdescri?language=objc
-func (d_ DeviceObject) NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error foundation.Error) CounterSampleBufferObject {
-	rv := objc.Call[CounterSampleBufferObject](d_, objc.Sel("newCounterSampleBufferWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (d_ DeviceObject) NewCounterSampleBufferWithDescriptorError(descriptor CounterSampleBufferDescriptor, error unsafe.Pointer) CounterSampleBufferObject {
+	rv := objc.Call[CounterSampleBufferObject](d_, objc.Sel("newCounterSampleBufferWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -640,7 +640,7 @@ func (d_ DeviceObject) HasHeapTextureSizeAndAlignWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1649927-heaptexturesizeandalignwithdescr?language=objc
 func (d_ DeviceObject) HeapTextureSizeAndAlignWithDescriptor(desc TextureDescriptor) SizeAndAlign {
-	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapTextureSizeAndAlignWithDescriptor:"), objc.Ptr(desc))
+	rv := objc.Call[SizeAndAlign](d_, objc.Sel("heapTextureSizeAndAlignWithDescriptor:"), desc)
 	return rv
 }
 
@@ -651,8 +651,8 @@ func (d_ DeviceObject) HasNewDynamicLibraryWithURLError() bool {
 // Creates a Metal dynamic library instance that contains the functions in the Metal library file at a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3564458-newdynamiclibrarywithurl?language=objc
-func (d_ DeviceObject) NewDynamicLibraryWithURLError(url foundation.URL, error foundation.Error) DynamicLibraryObject {
-	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibraryWithURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (d_ DeviceObject) NewDynamicLibraryWithURLError(url foundation.URL, error unsafe.Pointer) DynamicLibraryObject {
+	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibraryWithURL:error:"), url, error)
 	return rv
 }
 
@@ -688,7 +688,7 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorCompletionHandler(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433363-newrenderpipelinestatewithdescri?language=objc
 func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorCompletionHandler(descriptor RenderPipelineDescriptor, completionHandler NewRenderPipelineStateCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"), objc.Ptr(descriptor), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:completionHandler:"), descriptor, completionHandler)
 }
 
 func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorOptionsReflectionError() bool {
@@ -698,8 +698,8 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorOptionsReflectionE
 // Synchronously creates a render pipeline state and reflection information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433361-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error foundation.Error) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:reflection:error:"), objc.Ptr(descriptor), options, reflection, objc.Ptr(error))
+func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorOptionsReflectionError(descriptor RenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject {
+	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
 	return rv
 }
 
@@ -711,7 +711,7 @@ func (d_ DeviceObject) HasNewSharedTextureWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2967421-newsharedtexturewithdescriptor?language=objc
 func (d_ DeviceObject) NewSharedTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[TextureObject](d_, objc.Sel("newSharedTextureWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -722,8 +722,8 @@ func (d_ DeviceObject) HasNewDefaultLibraryWithBundleError() bool {
 // Creates a Metal library instance that contains the functions in a bundle’s default Metal library. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2177054-newdefaultlibrarywithbundle?language=objc
-func (d_ DeviceObject) NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error foundation.Error) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibraryWithBundle:error:"), objc.Ptr(bundle), objc.Ptr(error))
+func (d_ DeviceObject) NewDefaultLibraryWithBundleError(bundle foundation.Bundle, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newDefaultLibraryWithBundle:error:"), bundle, error)
 	return rv
 }
 
@@ -735,7 +735,7 @@ func (d_ DeviceObject) HasAccelerationStructureSizesWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553970-accelerationstructuresizeswithde?language=objc
 func (d_ DeviceObject) AccelerationStructureSizesWithDescriptor(descriptor AccelerationStructureDescriptor) AccelerationStructureSizes {
-	rv := objc.Call[AccelerationStructureSizes](d_, objc.Sel("accelerationStructureSizesWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[AccelerationStructureSizes](d_, objc.Sel("accelerationStructureSizesWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -759,7 +759,7 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorOptionsCompletionH
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433365-newrenderpipelinestatewithdescri?language=objc
 func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorOptionsCompletionHandler(descriptor RenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:completionHandler:"), objc.Ptr(descriptor), options, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
 }
 
 func (d_ DeviceObject) HasNewCommandQueueWithMaxCommandBufferCount() bool {
@@ -781,8 +781,8 @@ func (d_ DeviceObject) HasNewLibraryWithStitchedDescriptorError() bool {
 // Synchronously creates a Metal library from the function stitching graphs in a descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3857572-newlibrarywithstitcheddescriptor?language=objc
-func (d_ DeviceObject) NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error foundation.Error) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithStitchedDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (d_ DeviceObject) NewLibraryWithStitchedDescriptorError(descriptor StitchedLibraryDescriptor, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithStitchedDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -794,7 +794,7 @@ func (d_ DeviceObject) HasNewLibraryWithStitchedDescriptorCompletionHandler() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3857571-newlibrarywithstitcheddescriptor?language=objc
 func (d_ DeviceObject) NewLibraryWithStitchedDescriptorCompletionHandler(descriptor StitchedLibraryDescriptor, completionHandler NewLibraryCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"), objc.Ptr(descriptor), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithStitchedDescriptor:completionHandler:"), descriptor, completionHandler)
 }
 
 func (d_ DeviceObject) HasNewCommandQueue() bool {
@@ -829,7 +829,7 @@ func (d_ DeviceObject) HasNewTextureWithDescriptorIosurfacePlane() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433378-newtexturewithdescriptor?language=objc
 func (d_ DeviceObject) NewTextureWithDescriptorIosurfacePlane(descriptor TextureDescriptor, iosurface iosurface.Ref, plane uint) TextureObject {
-	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:iosurface:plane:"), objc.Ptr(descriptor), iosurface, plane)
+	rv := objc.Call[TextureObject](d_, objc.Sel("newTextureWithDescriptor:iosurface:plane:"), descriptor, iosurface, plane)
 	return rv
 }
 
@@ -853,7 +853,7 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithTileDescriptorOptionsComplet
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866129-newrenderpipelinestatewithtilede?language=objc
 func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsCompletionHandler(descriptor TileRenderPipelineDescriptor, options PipelineOption, completionHandler NewRenderPipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"), objc.Ptr(descriptor), options, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
 }
 
 func (d_ DeviceObject) HasNewSamplerStateWithDescriptor() bool {
@@ -864,7 +864,7 @@ func (d_ DeviceObject) HasNewSamplerStateWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433408-newsamplerstatewithdescriptor?language=objc
 func (d_ DeviceObject) NewSamplerStateWithDescriptor(descriptor SamplerDescriptor) SamplerStateObject {
-	rv := objc.Call[SamplerStateObject](d_, objc.Sel("newSamplerStateWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[SamplerStateObject](d_, objc.Sel("newSamplerStateWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -899,8 +899,8 @@ func (d_ DeviceObject) HasNewComputePipelineStateWithDescriptorOptionsReflection
 // Synchronously creates a compute pipeline state and reflection information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433353-newcomputepipelinestatewithdescr?language=objc
-func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error foundation.Error) ComputePipelineStateObject {
-	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:reflection:error:"), objc.Ptr(descriptor), options, reflection, objc.Ptr(error))
+func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsReflectionError(descriptor ComputePipelineDescriptor, options PipelineOption, reflection *AutoreleasedComputePipelineReflection, error unsafe.Pointer) ComputePipelineStateObject {
+	rv := objc.Call[ComputePipelineStateObject](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
 	return rv
 }
 
@@ -924,7 +924,7 @@ func (d_ DeviceObject) HasNewRasterizationRateMapWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3131681-newrasterizationratemapwithdescr?language=objc
 func (d_ DeviceObject) NewRasterizationRateMapWithDescriptor(descriptor RasterizationRateMapDescriptor) RasterizationRateMapObject {
-	rv := objc.Call[RasterizationRateMapObject](d_, objc.Sel("newRasterizationRateMapWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[RasterizationRateMapObject](d_, objc.Sel("newRasterizationRateMapWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -960,7 +960,7 @@ func (d_ DeviceObject) HasNewComputePipelineStateWithDescriptorOptionsCompletion
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433403-newcomputepipelinestatewithdescr?language=objc
 func (d_ DeviceObject) NewComputePipelineStateWithDescriptorOptionsCompletionHandler(descriptor ComputePipelineDescriptor, options PipelineOption, completionHandler NewComputePipelineStateWithReflectionCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"), objc.Ptr(descriptor), options, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newComputePipelineStateWithDescriptor:options:completionHandler:"), descriptor, options, completionHandler)
 }
 
 func (d_ DeviceObject) HasSampleTimestampsGpuTimestamp() bool {
@@ -1017,9 +1017,9 @@ func (d_ DeviceObject) HasNewDynamicLibraryError() bool {
 // Creates a Metal dynamic library instance from a Metal library instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/3553974-newdynamiclibrary?language=objc
-func (d_ DeviceObject) NewDynamicLibraryError(library LibraryObject, error foundation.Error) DynamicLibraryObject {
+func (d_ DeviceObject) NewDynamicLibraryError(library LibraryObject, error unsafe.Pointer) DynamicLibraryObject {
 	po0 := objc.WrapAsProtocol("MTLLibrary", library)
-	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibrary:error:"), po0, objc.Ptr(error))
+	rv := objc.Call[DynamicLibraryObject](d_, objc.Sel("newDynamicLibrary:error:"), po0, error)
 	return rv
 }
 
@@ -1065,8 +1065,8 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithTileDescriptorOptionsReflect
 // Synchronously creates a tile shader’s render pipeline state and reflection information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/2866134-newrenderpipelinestatewithtilede?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error foundation.Error) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:reflection:error:"), objc.Ptr(descriptor), options, reflection, objc.Ptr(error))
+func (d_ DeviceObject) NewRenderPipelineStateWithTileDescriptorOptionsReflectionError(descriptor TileRenderPipelineDescriptor, options PipelineOption, reflection *AutoreleasedRenderPipelineReflection, error unsafe.Pointer) RenderPipelineStateObject {
+	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithTileDescriptor:options:reflection:error:"), descriptor, options, reflection, error)
 	return rv
 }
 
@@ -1078,7 +1078,7 @@ func (d_ DeviceObject) HasNewDepthStencilStateWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433412-newdepthstencilstatewithdescript?language=objc
 func (d_ DeviceObject) NewDepthStencilStateWithDescriptor(descriptor DepthStencilDescriptor) DepthStencilStateObject {
-	rv := objc.Call[DepthStencilStateObject](d_, objc.Sel("newDepthStencilStateWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[DepthStencilStateObject](d_, objc.Sel("newDepthStencilStateWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -1089,8 +1089,8 @@ func (d_ DeviceObject) HasNewLibraryWithDataError() bool {
 // Creates a Metal library instance that contains the functions in a precompiled Metal library. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433391-newlibrarywithdata?language=objc
-func (d_ DeviceObject) NewLibraryWithDataError(data dispatch.Data, error foundation.Error) LibraryObject {
-	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithData:error:"), data, objc.Ptr(error))
+func (d_ DeviceObject) NewLibraryWithDataError(data dispatch.Data, error unsafe.Pointer) LibraryObject {
+	rv := objc.Call[LibraryObject](d_, objc.Sel("newLibraryWithData:error:"), data, error)
 	return rv
 }
 
@@ -1101,8 +1101,8 @@ func (d_ DeviceObject) HasNewRenderPipelineStateWithDescriptorError() bool {
 // Synchronously creates a render pipeline state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433369-newrenderpipelinestatewithdescri?language=objc
-func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error foundation.Error) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (d_ DeviceObject) NewRenderPipelineStateWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) RenderPipelineStateObject {
+	rv := objc.Call[RenderPipelineStateObject](d_, objc.Sel("newRenderPipelineStateWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -1126,7 +1126,7 @@ func (d_ DeviceObject) HasNewLibraryWithSourceOptionsCompletionHandler() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldevice/1433351-newlibrarywithsource?language=objc
 func (d_ DeviceObject) NewLibraryWithSourceOptionsCompletionHandler(source string, options CompileOptions, completionHandler NewLibraryCompletionHandler) {
-	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithSource:options:completionHandler:"), source, objc.Ptr(options), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("newLibraryWithSource:options:completionHandler:"), source, options, completionHandler)
 }
 
 func (d_ DeviceObject) HasLocation() bool {

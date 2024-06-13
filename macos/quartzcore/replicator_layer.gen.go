@@ -20,22 +20,22 @@ type _ReplicatorLayerClass struct {
 // An interface definition for the [ReplicatorLayer] class.
 type IReplicatorLayer interface {
 	ILayer
-	InstanceRedOffset() float64
-	SetInstanceRedOffset(value float64)
-	InstanceBlueOffset() float64
-	SetInstanceBlueOffset(value float64)
+	InstanceRedOffset() float32
+	SetInstanceRedOffset(value float32)
+	InstanceBlueOffset() float32
+	SetInstanceBlueOffset(value float32)
 	InstanceDelay() corefoundation.TimeInterval
 	SetInstanceDelay(value corefoundation.TimeInterval)
 	InstanceCount() int
 	SetInstanceCount(value int)
-	InstanceAlphaOffset() float64
-	SetInstanceAlphaOffset(value float64)
+	InstanceAlphaOffset() float32
+	SetInstanceAlphaOffset(value float32)
 	InstanceColor() coregraphics.ColorRef
 	SetInstanceColor(value coregraphics.ColorRef)
 	PreservesDepth() bool
 	SetPreservesDepth(value bool)
-	InstanceGreenOffset() float64
-	SetInstanceGreenOffset(value float64)
+	InstanceGreenOffset() float32
+	SetInstanceGreenOffset(value float32)
 	InstanceTransform() Transform3D
 	SetInstanceTransform(value Transform3D)
 }
@@ -130,30 +130,30 @@ func ReplicatorLayer_Layer() ReplicatorLayer {
 // Defines the offset added to the red component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522090-instanceredoffset?language=objc
-func (r_ ReplicatorLayer) InstanceRedOffset() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("instanceRedOffset"))
+func (r_ ReplicatorLayer) InstanceRedOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceRedOffset"))
 	return rv
 }
 
 // Defines the offset added to the red component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522090-instanceredoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceRedOffset(value float64) {
+func (r_ ReplicatorLayer) SetInstanceRedOffset(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceRedOffset:"), value)
 }
 
 // Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
-func (r_ ReplicatorLayer) InstanceBlueOffset() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("instanceBlueOffset"))
+func (r_ ReplicatorLayer) InstanceBlueOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceBlueOffset"))
 	return rv
 }
 
 // Defines the offset added to the blue component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522267-instanceblueoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceBlueOffset(value float64) {
+func (r_ ReplicatorLayer) SetInstanceBlueOffset(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceBlueOffset:"), value)
 }
 
@@ -190,15 +190,15 @@ func (r_ ReplicatorLayer) SetInstanceCount(value int) {
 // Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
-func (r_ ReplicatorLayer) InstanceAlphaOffset() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("instanceAlphaOffset"))
+func (r_ ReplicatorLayer) InstanceAlphaOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceAlphaOffset"))
 	return rv
 }
 
 // Defines the offset added to the alpha component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1521898-instancealphaoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceAlphaOffset(value float64) {
+func (r_ ReplicatorLayer) SetInstanceAlphaOffset(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceAlphaOffset:"), value)
 }
 
@@ -235,15 +235,15 @@ func (r_ ReplicatorLayer) SetPreservesDepth(value bool) {
 // Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
-func (r_ ReplicatorLayer) InstanceGreenOffset() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("instanceGreenOffset"))
+func (r_ ReplicatorLayer) InstanceGreenOffset() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("instanceGreenOffset"))
 	return rv
 }
 
 // Defines the offset added to the green component of the color for each replicated instance. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/careplicatorlayer/1522032-instancegreenoffset?language=objc
-func (r_ ReplicatorLayer) SetInstanceGreenOffset(value float64) {
+func (r_ ReplicatorLayer) SetInstanceGreenOffset(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setInstanceGreenOffset:"), value)
 }
 

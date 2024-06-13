@@ -34,7 +34,7 @@ func LogicalTestFrom(ptr unsafe.Pointer) LogicalTest {
 }
 
 func (l_ LogicalTest) InitNotTestWithTest(subTest IScriptWhoseTest) LogicalTest {
-	rv := objc.Call[LogicalTest](l_, objc.Sel("initNotTestWithTest:"), objc.Ptr(subTest))
+	rv := objc.Call[LogicalTest](l_, objc.Sel("initNotTestWithTest:"), subTest)
 	return rv
 }
 

@@ -66,7 +66,7 @@ func NNDivisionNode_NodeWithSources(sourceNodes []INNImageNode) NNDivisionNode {
 }
 
 func (n_ NNDivisionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
-	rv := objc.Call[NNDivisionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNDivisionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func NewNNDivisionNodeWithLeftSourceRightSource(left INNImageNode, right INNImag
 }
 
 func (nc _NNDivisionNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNDivisionNode {
-	rv := objc.Call[NNDivisionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNDivisionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 

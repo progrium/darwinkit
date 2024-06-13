@@ -75,7 +75,7 @@ func (o_ OperationQueue) Init() OperationQueue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsoperationqueue/1410704-addoperation?language=objc
 func (o_ OperationQueue) AddOperation(op IOperation) {
-	objc.Call[objc.Void](o_, objc.Sel("addOperation:"), objc.Ptr(op))
+	objc.Call[objc.Void](o_, objc.Sel("addOperation:"), op)
 }
 
 // Adds the specified operations to the queue. [Full Topic]

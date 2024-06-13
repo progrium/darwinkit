@@ -44,7 +44,7 @@ func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1389404-videocomposition?language=objc
 func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidValueForKey(videoComposition VideoComposition, key string) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidValueForKey:"), objc.Ptr(videoComposition), key)
+	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidValueForKey:"), videoComposition, key)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1390721-videocomposition?language=objc
 func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction(videoComposition VideoComposition, videoCompositionInstruction objc.Object) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction:"), objc.Ptr(videoComposition), videoCompositionInstruction)
+	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTimeRangeInInstruction:"), videoComposition, videoCompositionInstruction)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1388452-videocomposition?language=objc
 func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingInvalidTrackIDInInstructionLayerInstructionAsset(videoComposition VideoComposition, videoCompositionInstruction objc.Object, layerInstruction VideoCompositionLayerInstruction, asset Asset) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTrackIDInInstruction:layerInstruction:asset:"), objc.Ptr(videoComposition), videoCompositionInstruction, objc.Ptr(layerInstruction), objc.Ptr(asset))
+	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingInvalidTrackIDInInstruction:layerInstruction:asset:"), videoComposition, videoCompositionInstruction, layerInstruction, asset)
 	return rv
 }
 
@@ -80,6 +80,6 @@ func (v_ VideoCompositionValidationHandlingObject) HasVideoCompositionShouldCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionvalidationhandling/1388620-videocomposition?language=objc
 func (v_ VideoCompositionValidationHandlingObject) VideoCompositionShouldContinueValidatingAfterFindingEmptyTimeRange(videoComposition VideoComposition, timeRange coremedia.TimeRange) bool {
-	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingEmptyTimeRange:"), objc.Ptr(videoComposition), timeRange)
+	rv := objc.Call[bool](v_, objc.Sel("videoComposition:shouldContinueValidatingAfterFindingEmptyTimeRange:"), videoComposition, timeRange)
 	return rv
 }

@@ -55,7 +55,7 @@ func (q_ QuitCommand) Init() QuitCommand {
 }
 
 func (q_ QuitCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) QuitCommand {
-	rv := objc.Call[QuitCommand](q_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[QuitCommand](q_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

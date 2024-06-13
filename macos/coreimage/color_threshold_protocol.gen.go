@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorthreshold?language=objc
 type PColorThreshold interface {
 	// optional
-	SetThreshold(value float64)
+	SetThreshold(value float32)
 	HasSetThreshold() bool
 
 	// optional
-	Threshold() float64
+	Threshold() float32
 	HasThreshold() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (c_ ColorThresholdObject) HasSetThreshold() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorthreshold/3547108-threshold?language=objc
-func (c_ ColorThresholdObject) SetThreshold(value float64) {
+func (c_ ColorThresholdObject) SetThreshold(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setThreshold:"), value)
 }
 
@@ -53,8 +53,8 @@ func (c_ ColorThresholdObject) HasThreshold() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorthreshold/3547108-threshold?language=objc
-func (c_ ColorThresholdObject) Threshold() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("threshold"))
+func (c_ ColorThresholdObject) Threshold() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("threshold"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (c_ ColorThresholdObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorthreshold/3547107-inputimage?language=objc
 func (c_ ColorThresholdObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorThresholdObject) HasInputImage() bool {

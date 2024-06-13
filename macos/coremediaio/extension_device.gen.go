@@ -19,8 +19,8 @@ type _ExtensionDeviceClass struct {
 // An interface definition for the [ExtensionDevice] class.
 type IExtensionDevice interface {
 	objc.IObject
-	AddStreamError(stream IExtensionStream, outError foundation.IError) bool
-	RemoveStreamError(stream IExtensionStream, outError foundation.IError) bool
+	AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
+	RemoveStreamError(stream IExtensionStream, outError unsafe.Pointer) bool
 	NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState)
 	LocalizedName() string
 	Streams() []ExtensionStream
@@ -44,7 +44,7 @@ func ExtensionDeviceFrom(ptr unsafe.Pointer) ExtensionDevice {
 
 func (ec _ExtensionDeviceClass) DeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
 	po3 := objc.WrapAsProtocol("CMIOExtensionDeviceSource", source)
-	rv := objc.Call[ExtensionDevice](ec, objc.Sel("deviceWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, objc.Ptr(deviceID), legacyDeviceID, po3)
+	rv := objc.Call[ExtensionDevice](ec, objc.Sel("deviceWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, deviceID, legacyDeviceID, po3)
 	return rv
 }
 
@@ -57,7 +57,7 @@ func ExtensionDevice_DeviceWithLocalizedNameDeviceIDLegacyDeviceIDSource(localiz
 
 func (e_ ExtensionDevice) InitWithLocalizedNameDeviceIDLegacyDeviceIDSource(localizedName string, deviceID foundation.IUUID, legacyDeviceID string, source PExtensionDeviceSource) ExtensionDevice {
 	po3 := objc.WrapAsProtocol("CMIOExtensionDeviceSource", source)
-	rv := objc.Call[ExtensionDevice](e_, objc.Sel("initWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, objc.Ptr(deviceID), legacyDeviceID, po3)
+	rv := objc.Call[ExtensionDevice](e_, objc.Sel("initWithLocalizedName:deviceID:legacyDeviceID:source:"), localizedName, deviceID, legacyDeviceID, po3)
 	return rv
 }
 
@@ -93,16 +93,16 @@ func (e_ ExtensionDevice) Init() ExtensionDevice {
 // Adds a stream to a device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915826-addstream?language=objc
-func (e_ ExtensionDevice) AddStreamError(stream IExtensionStream, outError foundation.IError) bool {
-	rv := objc.Call[bool](e_, objc.Sel("addStream:error:"), objc.Ptr(stream), objc.Ptr(outError))
+func (e_ ExtensionDevice) AddStreamError(stream IExtensionStream, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("addStream:error:"), stream, outError)
 	return rv
 }
 
 // Removes a stream from the device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevice/3915835-removestream?language=objc
-func (e_ ExtensionDevice) RemoveStreamError(stream IExtensionStream, outError foundation.IError) bool {
-	rv := objc.Call[bool](e_, objc.Sel("removeStream:error:"), objc.Ptr(stream), objc.Ptr(outError))
+func (e_ ExtensionDevice) RemoveStreamError(stream IExtensionStream, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("removeStream:error:"), stream, outError)
 	return rv
 }
 

@@ -96,7 +96,7 @@ func (d_ DraggingInfoObject) HasEnumerateDraggingItemsWithOptionsForViewClassesS
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdragginginfo/1416074-enumeratedraggingitemswithoption?language=objc
 func (d_ DraggingInfoObject) EnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock(enumOpts DraggingItemEnumerationOptions, view View, classArray []objc.Class, searchOptions map[PasteboardReadingOptionKey]objc.Object, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	objc.Call[objc.Void](d_, objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.Ptr(view), classArray, searchOptions, block)
+	objc.Call[objc.Void](d_, objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, view, classArray, searchOptions, block)
 }
 
 func (d_ DraggingInfoObject) HasSlideDraggedImageTo() bool {

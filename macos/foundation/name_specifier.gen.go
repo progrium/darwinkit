@@ -36,7 +36,7 @@ func NameSpecifierFrom(ptr unsafe.Pointer) NameSpecifier {
 }
 
 func (n_ NameSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyName(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, name string) NameSpecifier {
-	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:name:"), objc.Ptr(classDesc), objc.Ptr(container), property, name)
+	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:name:"), classDesc, container, property, name)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func (n_ NameSpecifier) Init() NameSpecifier {
 }
 
 func (n_ NameSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) NameSpecifier {
-	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func NewNameSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDes
 }
 
 func (n_ NameSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) NameSpecifier {
-	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[NameSpecifier](n_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

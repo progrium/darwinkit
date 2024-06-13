@@ -54,7 +54,7 @@ func (u_ UnitIlluminance) Init() UnitIlluminance {
 }
 
 func (u_ UnitIlluminance) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitIlluminance {
-	rv := objc.Call[UnitIlluminance](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitIlluminance](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

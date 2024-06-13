@@ -157,7 +157,7 @@ func (t_ Text) Underline(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1530110-settextcolor?language=objc
 func (t_ Text) SetTextColorRange(color IColor, range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:range:"), objc.Ptr(color), range_)
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:range:"), color, range_)
 }
 
 // This action method pastes paragraph style information from the ruler pasteboard onto the selected paragraphs of a rich text object. [Full Topic]
@@ -293,7 +293,7 @@ func (t_ Text) Subscript(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1526283-setfont?language=objc
 func (t_ Text) SetFontRange(font IFont, range_ foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("setFont:range:"), objc.Ptr(font), range_)
+	objc.Call[objc.Void](t_, objc.Sel("setFont:range:"), font, range_)
 }
 
 // This action method pastes text from the general pasteboard at the insertion point or over the selection. [Full Topic]
@@ -410,7 +410,7 @@ func (t_ Text) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1534646-font?language=objc
 func (t_ Text) SetFont(value IFont) {
-	objc.Call[objc.Void](t_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFont:"), value)
 }
 
 // A Boolean that controls whether the receiver allows the user to import files by dragging. [Full Topic]
@@ -463,7 +463,7 @@ func (t_ Text) SetDelegate(value PTextDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1529480-delegate?language=objc
 func (t_ Text) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean that controls whether the receiver changes its height to fit the height of its text. [Full Topic]
@@ -508,7 +508,7 @@ func (t_ Text) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1535324-backgroundcolor?language=objc
 func (t_ Text) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The receiver’s characters within aRange. [Full Topic]
@@ -553,7 +553,7 @@ func (t_ Text) TextColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstext/1534875-textcolor?language=objc
 func (t_ Text) SetTextColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
 }
 
 // A Boolean that controls whether the receiver allows the user to select its text. [Full Topic]

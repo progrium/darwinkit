@@ -165,7 +165,7 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750333-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerDidTransitionToRenderSize(pictureInPictureController PictureInPictureController, newRenderSize coremedia.VideoDimensions) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:didTransitionToRenderSize:"), objc.Ptr(pictureInPictureController), newRenderSize)
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:didTransitionToRenderSize:"), pictureInPictureController, newRenderSize)
 }
 
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerSkipByIntervalCompletionHandler() bool {
@@ -176,7 +176,7 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750335-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerSkipByIntervalCompletionHandler(pictureInPictureController PictureInPictureController, skipInterval coremedia.Time, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:skipByInterval:completionHandler:"), objc.Ptr(pictureInPictureController), skipInterval, completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:skipByInterval:completionHandler:"), pictureInPictureController, skipInterval, completionHandler)
 }
 
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerSetPlaying() bool {
@@ -187,7 +187,7 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750334-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerSetPlaying(pictureInPictureController PictureInPictureController, playing bool) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:setPlaying:"), objc.Ptr(pictureInPictureController), playing)
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:setPlaying:"), pictureInPictureController, playing)
 }
 
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPictureControllerIsPlaybackPaused() bool {
@@ -198,7 +198,7 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750336-pictureinpicturecontrollerisplay?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerIsPlaybackPaused(pictureInPictureController PictureInPictureController) bool {
-	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerIsPlaybackPaused:"), objc.Ptr(pictureInPictureController))
+	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerIsPlaybackPaused:"), pictureInPictureController)
 	return rv
 }
 
@@ -210,7 +210,7 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3750337-pictureinpicturecontrollertimera?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerTimeRangeForPlayback(pictureInPictureController PictureInPictureController) coremedia.TimeRange {
-	rv := objc.Call[coremedia.TimeRange](p_, objc.Sel("pictureInPictureControllerTimeRangeForPlayback:"), objc.Ptr(pictureInPictureController))
+	rv := objc.Call[coremedia.TimeRange](p_, objc.Sel("pictureInPictureControllerTimeRangeForPlayback:"), pictureInPictureController)
 	return rv
 }
 
@@ -222,6 +222,6 @@ func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) HasPictureInPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturesamplebufferplaybackdelegate/3857563-pictureinpicturecontrollershould?language=objc
 func (p_ PictureInPictureSampleBufferPlaybackDelegateObject) PictureInPictureControllerShouldProhibitBackgroundAudioPlayback(pictureInPictureController PictureInPictureController) bool {
-	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"), objc.Ptr(pictureInPictureController))
+	rv := objc.Call[bool](p_, objc.Sel("pictureInPictureControllerShouldProhibitBackgroundAudioPlayback:"), pictureInPictureController)
 	return rv
 }

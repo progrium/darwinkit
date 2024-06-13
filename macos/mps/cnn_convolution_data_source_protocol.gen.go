@@ -15,7 +15,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondatasource?language=objc
 type PCNNConvolutionDataSource interface {
 	// optional
-	BiasTerms() *float64
+	BiasTerms() *float32
 	HasBiasTerms() bool
 
 	// optional
@@ -55,7 +55,7 @@ type PCNNConvolutionDataSource interface {
 	HasWeightsLayout() bool
 
 	// optional
-	LookupTableForUInt8Kernel() *float64
+	LookupTableForUInt8Kernel() *float32
 	HasLookupTableForUInt8Kernel() bool
 
 	// optional
@@ -90,8 +90,8 @@ func (c_ CNNConvolutionDataSourceObject) HasBiasTerms() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondatasource/2867023-biasterms?language=objc
-func (c_ CNNConvolutionDataSourceObject) BiasTerms() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("biasTerms"))
+func (c_ CNNConvolutionDataSourceObject) BiasTerms() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("biasTerms"))
 	return rv
 }
 
@@ -139,7 +139,7 @@ func (c_ CNNConvolutionDataSourceObject) HasUpdateWithCommandBufferGradientState
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondatasource/2953007-updatewithcommandbuffer?language=objc
 func (c_ CNNConvolutionDataSourceObject) UpdateWithCommandBufferGradientStateSourceState(commandBuffer metal.CommandBufferObject, gradientState CNNConvolutionGradientState, sourceState CNNConvolutionWeightsAndBiasesState) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("updateWithCommandBuffer:gradientState:sourceState:"), po0, objc.Ptr(gradientState), objc.Ptr(sourceState))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("updateWithCommandBuffer:gradientState:sourceState:"), po0, gradientState, sourceState)
 	return rv
 }
 
@@ -187,7 +187,7 @@ func (c_ CNNConvolutionDataSourceObject) HasUpdateWithGradientStateSourceState()
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondatasource/2953009-updatewithgradientstate?language=objc
 func (c_ CNNConvolutionDataSourceObject) UpdateWithGradientStateSourceState(gradientState CNNConvolutionGradientState, sourceState CNNConvolutionWeightsAndBiasesState) bool {
-	rv := objc.Call[bool](c_, objc.Sel("updateWithGradientState:sourceState:"), objc.Ptr(gradientState), objc.Ptr(sourceState))
+	rv := objc.Call[bool](c_, objc.Sel("updateWithGradientState:sourceState:"), gradientState, sourceState)
 	return rv
 }
 
@@ -210,8 +210,8 @@ func (c_ CNNConvolutionDataSourceObject) HasLookupTableForUInt8Kernel() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondatasource/2867186-lookuptableforuint8kernel?language=objc
-func (c_ CNNConvolutionDataSourceObject) LookupTableForUInt8Kernel() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("lookupTableForUInt8Kernel"))
+func (c_ CNNConvolutionDataSourceObject) LookupTableForUInt8Kernel() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("lookupTableForUInt8Kernel"))
 	return rv
 }
 

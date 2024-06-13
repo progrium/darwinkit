@@ -28,11 +28,11 @@ type PCheckerboardGenerator interface {
 	HasColor0() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PCheckerboardGenerator interface {
 	HasColor1() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 }
 
@@ -91,7 +91,7 @@ func (c_ CheckerboardGeneratorObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228106-color0?language=objc
 func (c_ CheckerboardGeneratorObject) SetColor0(value Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor0:"), value)
 }
 
 func (c_ CheckerboardGeneratorObject) HasColor0() bool {
@@ -113,7 +113,7 @@ func (c_ CheckerboardGeneratorObject) HasSetWidth() bool {
 // The width of the squares in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228109-width?language=objc
-func (c_ CheckerboardGeneratorObject) SetWidth(value float64) {
+func (c_ CheckerboardGeneratorObject) SetWidth(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
 }
 
@@ -124,8 +124,8 @@ func (c_ CheckerboardGeneratorObject) HasWidth() bool {
 // The width of the squares in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228109-width?language=objc
-func (c_ CheckerboardGeneratorObject) Width() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("width"))
+func (c_ CheckerboardGeneratorObject) Width() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("width"))
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (c_ CheckerboardGeneratorObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228107-color1?language=objc
 func (c_ CheckerboardGeneratorObject) SetColor1(value Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor1:"), value)
 }
 
 func (c_ CheckerboardGeneratorObject) HasColor1() bool {
@@ -159,7 +159,7 @@ func (c_ CheckerboardGeneratorObject) HasSetSharpness() bool {
 // The sharpness of the edges in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228108-sharpness?language=objc
-func (c_ CheckerboardGeneratorObject) SetSharpness(value float64) {
+func (c_ CheckerboardGeneratorObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setSharpness:"), value)
 }
 
@@ -170,7 +170,7 @@ func (c_ CheckerboardGeneratorObject) HasSharpness() bool {
 // The sharpness of the edges in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicheckerboardgenerator/3228108-sharpness?language=objc
-func (c_ CheckerboardGeneratorObject) Sharpness() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("sharpness"))
+func (c_ CheckerboardGeneratorObject) Sharpness() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("sharpness"))
 	return rv
 }

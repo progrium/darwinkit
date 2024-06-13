@@ -39,7 +39,7 @@ func QueryFrom(ptr unsafe.Pointer) Query {
 }
 
 func (q_ Query) InitWithRecordTypePredicate(recordType RecordType, predicate foundation.IPredicate) Query {
-	rv := objc.Call[Query](q_, objc.Sel("initWithRecordType:predicate:"), recordType, objc.Ptr(predicate))
+	rv := objc.Call[Query](q_, objc.Sel("initWithRecordType:predicate:"), recordType, predicate)
 	return rv
 }
 

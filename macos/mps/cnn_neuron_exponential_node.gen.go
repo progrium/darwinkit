@@ -33,20 +33,20 @@ func CNNNeuronExponentialNodeFrom(ptr unsafe.Pointer) CNNNeuronExponentialNode {
 	}
 }
 
-func (cc _CNNNeuronExponentialNodeClass) NodeWithSourceABC(sourceNode INNImageNode, a float64, b float64, c float64) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:a:b:c:"), objc.Ptr(sourceNode), a, b, c)
+func (cc _CNNNeuronExponentialNodeClass) NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
+	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:a:b:c:"), sourceNode, a, b, c)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronexponentialnode/2951959-nodewithsource?language=objc
-func CNNNeuronExponentialNode_NodeWithSourceABC(sourceNode INNImageNode, a float64, b float64, c float64) CNNNeuronExponentialNode {
+func CNNNeuronExponentialNode_NodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
 	return CNNNeuronExponentialNodeClass.NodeWithSourceABC(sourceNode, a, b, c)
 }
 
 func (cc _CNNNeuronExponentialNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -58,7 +58,7 @@ func CNNNeuronExponentialNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronE
 }
 
 func (c_ CNNNeuronExponentialNode) InitWithSource(sourceNode INNImageNode) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronExponentialNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -71,15 +71,15 @@ func NewCNNNeuronExponentialNodeWithSource(sourceNode INNImageNode) CNNNeuronExp
 	return instance
 }
 
-func (c_ CNNNeuronExponentialNode) InitWithSourceABC(sourceNode INNImageNode, a float64, b float64, c float64) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](c_, objc.Sel("initWithSource:a:b:c:"), objc.Ptr(sourceNode), a, b, c)
+func (c_ CNNNeuronExponentialNode) InitWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
+	rv := objc.Call[CNNNeuronExponentialNode](c_, objc.Sel("initWithSource:a:b:c:"), sourceNode, a, b, c)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronexponentialnode/2951933-initwithsource?language=objc
-func NewCNNNeuronExponentialNodeWithSourceABC(sourceNode INNImageNode, a float64, b float64, c float64) CNNNeuronExponentialNode {
+func NewCNNNeuronExponentialNodeWithSourceABC(sourceNode INNImageNode, a float32, b float32, c float32) CNNNeuronExponentialNode {
 	instance := CNNNeuronExponentialNodeClass.Alloc().InitWithSourceABC(sourceNode, a, b, c)
 	instance.Autorelease()
 	return instance
@@ -106,7 +106,7 @@ func (c_ CNNNeuronExponentialNode) Init() CNNNeuronExponentialNode {
 }
 
 func (cc _CNNNeuronExponentialNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronExponentialNode {
-	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronExponentialNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

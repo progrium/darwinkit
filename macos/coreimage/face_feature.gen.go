@@ -23,7 +23,7 @@ type IFaceFeature interface {
 	LeftEyePosition() coregraphics.Point
 	RightEyeClosed() bool
 	HasLeftEyePosition() bool
-	FaceAngle() float64
+	FaceAngle() float32
 	TrackingID() int
 	HasTrackingID() bool
 	MouthPosition() coregraphics.Point
@@ -104,8 +104,8 @@ func (f_ FaceFeature) HasLeftEyePosition() bool {
 // The rotation of the face. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifacefeature/1437689-faceangle?language=objc
-func (f_ FaceFeature) FaceAngle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("faceAngle"))
+func (f_ FaceFeature) FaceAngle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("faceAngle"))
 	return rv
 }
 

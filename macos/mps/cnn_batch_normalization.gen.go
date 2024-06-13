@@ -31,8 +31,8 @@ type ICNNBatchNormalization interface {
 	ReloadMeanAndVarianceWithCommandBufferMeanAndVarianceState(commandBuffer metal.PCommandBuffer, meanAndVarianceState ICNNNormalizationMeanAndVarianceState)
 	ReloadMeanAndVarianceWithCommandBufferObjectMeanAndVarianceState(commandBufferObject objc.IObject, meanAndVarianceState ICNNNormalizationMeanAndVarianceState)
 	NumberOfFeatureChannels() uint
-	Epsilon() float64
-	SetEpsilon(value float64)
+	Epsilon() float32
+	SetEpsilon(value float32)
 	DataSource() CNNBatchNormalizationDataSourceObject
 }
 
@@ -68,7 +68,7 @@ func NewCNNBatchNormalizationWithDeviceDataSource(device metal.PDevice, dataSour
 func (c_ CNNBatchNormalization) InitWithDeviceDataSourceFusedNeuronDescriptor(device metal.PDevice, dataSource PCNNBatchNormalizationDataSource, fusedNeuronDescriptor INNNeuronDescriptor) CNNBatchNormalization {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNBatchNormalization](c_, objc.Sel("initWithDevice:dataSource:fusedNeuronDescriptor:"), po0, po1, objc.Ptr(fusedNeuronDescriptor))
+	rv := objc.Call[CNNBatchNormalization](c_, objc.Sel("initWithDevice:dataSource:fusedNeuronDescriptor:"), po0, po1, fusedNeuronDescriptor)
 	return rv
 }
 
@@ -143,14 +143,14 @@ func (c_ CNNBatchNormalization) ReloadGammaAndBetaFromDataSource() {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942610-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalization) EncodeBatchToCommandBufferSourceImagesBatchNormalizationStateDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationImages *foundation.Array) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:destinationImages:"), po0, sourceImages, objc.Ptr(batchNormalizationState), destinationImages)
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:destinationImages:"), po0, sourceImages, batchNormalizationState, destinationImages)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942610-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalization) EncodeBatchToCommandBufferObjectSourceImagesBatchNormalizationStateDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:destinationImages:"), objc.Ptr(commandBufferObject), sourceImages, objc.Ptr(batchNormalizationState), destinationImages)
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:destinationImages:"), commandBufferObject, sourceImages, batchNormalizationState, destinationImages)
 }
 
 //	[Full Topic]
@@ -165,14 +165,14 @@ func (c_ CNNBatchNormalization) ReloadMeanAndVarianceFromDataSource() {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2953965-reloadgammaandbetawithcommandbuf?language=objc
 func (c_ CNNBatchNormalization) ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), po0, objc.Ptr(gammaAndBetaState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), po0, gammaAndBetaState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2953965-reloadgammaandbetawithcommandbuf?language=objc
 func (c_ CNNBatchNormalization) ReloadGammaAndBetaWithCommandBufferObjectGammaAndBetaState(commandBufferObject objc.IObject, gammaAndBetaState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), objc.Ptr(commandBufferObject), objc.Ptr(gammaAndBetaState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), commandBufferObject, gammaAndBetaState)
 }
 
 //	[Full Topic]
@@ -180,14 +180,14 @@ func (c_ CNNBatchNormalization) ReloadGammaAndBetaWithCommandBufferObjectGammaAn
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942591-encodetocommandbuffer?language=objc
 func (c_ CNNBatchNormalization) EncodeToCommandBufferSourceImageBatchNormalizationStateDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:batchNormalizationState:destinationImage:"), po0, objc.Ptr(sourceImage), objc.Ptr(batchNormalizationState), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:batchNormalizationState:destinationImage:"), po0, sourceImage, batchNormalizationState, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942591-encodetocommandbuffer?language=objc
 func (c_ CNNBatchNormalization) EncodeToCommandBufferObjectSourceImageBatchNormalizationStateDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, batchNormalizationState ICNNBatchNormalizationState, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:batchNormalizationState:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(batchNormalizationState), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:batchNormalizationState:destinationImage:"), commandBufferObject, sourceImage, batchNormalizationState, destinationImage)
 }
 
 //	[Full Topic]
@@ -195,14 +195,14 @@ func (c_ CNNBatchNormalization) EncodeToCommandBufferObjectSourceImageBatchNorma
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/3002359-reloadmeanandvariancewithcommand?language=objc
 func (c_ CNNBatchNormalization) ReloadMeanAndVarianceWithCommandBufferMeanAndVarianceState(commandBuffer metal.PCommandBuffer, meanAndVarianceState ICNNNormalizationMeanAndVarianceState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("reloadMeanAndVarianceWithCommandBuffer:meanAndVarianceState:"), po0, objc.Ptr(meanAndVarianceState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadMeanAndVarianceWithCommandBuffer:meanAndVarianceState:"), po0, meanAndVarianceState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/3002359-reloadmeanandvariancewithcommand?language=objc
 func (c_ CNNBatchNormalization) ReloadMeanAndVarianceWithCommandBufferObjectMeanAndVarianceState(commandBufferObject objc.IObject, meanAndVarianceState ICNNNormalizationMeanAndVarianceState) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadMeanAndVarianceWithCommandBuffer:meanAndVarianceState:"), objc.Ptr(commandBufferObject), objc.Ptr(meanAndVarianceState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadMeanAndVarianceWithCommandBuffer:meanAndVarianceState:"), commandBufferObject, meanAndVarianceState)
 }
 
 //	[Full Topic]
@@ -216,15 +216,15 @@ func (c_ CNNBatchNormalization) NumberOfFeatureChannels() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942599-epsilon?language=objc
-func (c_ CNNBatchNormalization) Epsilon() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("epsilon"))
+func (c_ CNNBatchNormalization) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalization/2942599-epsilon?language=objc
-func (c_ CNNBatchNormalization) SetEpsilon(value float64) {
+func (c_ CNNBatchNormalization) SetEpsilon(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
 }
 

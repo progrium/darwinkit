@@ -73,7 +73,7 @@ func (c_ Cache) Init() Cache {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1408223-setobject?language=objc
 func (c_ Cache) SetObjectForKey(obj objc.IObject, key objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:"), objc.Ptr(obj), objc.Ptr(key))
+	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:"), obj, key)
 }
 
 // Empties the cache. [Full Topic]
@@ -87,14 +87,14 @@ func (c_ Cache) RemoveAllObjects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1409900-removeobjectforkey?language=objc
 func (c_ Cache) RemoveObjectForKey(key objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("removeObjectForKey:"), objc.Ptr(key))
+	objc.Call[objc.Void](c_, objc.Sel("removeObjectForKey:"), key)
 }
 
 // Returns the value associated with a given key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1415458-objectforkey?language=objc
 func (c_ Cache) ObjectForKey(key objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("objectForKey:"), objc.Ptr(key))
+	rv := objc.Call[objc.Object](c_, objc.Sel("objectForKey:"), key)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func (c_ Cache) ObjectForKey(key objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1416399-setobject?language=objc
 func (c_ Cache) SetObjectForKeyCost(obj objc.IObject, key objc.IObject, g uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:cost:"), objc.Ptr(obj), objc.Ptr(key), g)
+	objc.Call[objc.Void](c_, objc.Sel("setObject:forKey:cost:"), obj, key, g)
 }
 
 // The maximum total cost that the cache can hold before it starts evicting objects. [Full Topic]
@@ -185,5 +185,5 @@ func (c_ Cache) SetDelegate(value PCacheDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscache/1413061-delegate?language=objc
 func (c_ Cache) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }

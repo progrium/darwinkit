@@ -34,7 +34,7 @@ func CNNSoftMaxNodeFrom(ptr unsafe.Pointer) CNNSoftMaxNode {
 }
 
 func (c_ CNNSoftMaxNode) InitWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
-	rv := objc.Call[CNNSoftMaxNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNSoftMaxNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewCNNSoftMaxNodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
 }
 
 func (cc _CNNSoftMaxNodeClass) NodeWithSource(sourceNode INNImageNode) CNNSoftMaxNode {
-	rv := objc.Call[CNNSoftMaxNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNSoftMaxNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 

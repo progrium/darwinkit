@@ -19,11 +19,11 @@ type PMix interface {
 	HasBackgroundImage() bool
 
 	// optional
-	SetAmount(value float64)
+	SetAmount(value float32)
 	HasSetAmount() bool
 
 	// optional
-	Amount() float64
+	Amount() float32
 	HasAmount() bool
 
 	// optional
@@ -51,7 +51,7 @@ func (m_ MixObject) HasSetBackgroundImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228566-backgroundimage?language=objc
 func (m_ MixObject) SetBackgroundImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setBackgroundImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setBackgroundImage:"), value)
 }
 
 func (m_ MixObject) HasBackgroundImage() bool {
@@ -73,7 +73,7 @@ func (m_ MixObject) HasSetAmount() bool {
 // The amount of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228565-amount?language=objc
-func (m_ MixObject) SetAmount(value float64) {
+func (m_ MixObject) SetAmount(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setAmount:"), value)
 }
 
@@ -84,8 +84,8 @@ func (m_ MixObject) HasAmount() bool {
 // The amount of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228565-amount?language=objc
-func (m_ MixObject) Amount() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("amount"))
+func (m_ MixObject) Amount() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("amount"))
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (m_ MixObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimix/3228567-inputimage?language=objc
 func (m_ MixObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MixObject) HasInputImage() bool {

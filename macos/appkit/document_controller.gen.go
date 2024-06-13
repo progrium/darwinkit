@@ -20,7 +20,7 @@ type _DocumentControllerClass struct {
 type IDocumentController interface {
 	objc.IObject
 	WillPresentError(error foundation.IError) foundation.Error
-	DuplicateDocumentWithContentsOfURLCopyingDisplayNameError(url foundation.IURL, duplicateByCopying bool, displayNameOrNil string, outError foundation.IError) Document
+	DuplicateDocumentWithContentsOfURLCopyingDisplayNameError(url foundation.IURL, duplicateByCopying bool, displayNameOrNil string, outError unsafe.Pointer) Document
 	PresentError(error foundation.IError) bool
 	SaveAllDocuments(sender objc.IObject) objc.Object
 	URLsFromRunningOpenPanel() []foundation.URL
@@ -28,11 +28,11 @@ type IDocumentController interface {
 	OpenDocument(sender objc.IObject) objc.Object
 	ValidateUserInterfaceItem(item PValidatedUserInterfaceItem) bool
 	ValidateUserInterfaceItemObject(itemObject objc.IObject) bool
-	TypeForContentsOfURLError(url foundation.IURL, outError foundation.IError) string
-	MakeUntitledDocumentOfTypeError(typeName string, outError foundation.IError) Document
+	TypeForContentsOfURLError(url foundation.IURL, outError unsafe.Pointer) string
+	MakeUntitledDocumentOfTypeError(typeName string, outError unsafe.Pointer) Document
 	NewDocument(sender objc.IObject) objc.Object
-	OpenUntitledDocumentAndDisplayError(displayDocument bool, outError foundation.IError) Document
-	MakeDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) Document
+	OpenUntitledDocumentAndDisplayError(displayDocument bool, outError unsafe.Pointer) Document
+	MakeDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) Document
 	BeginOpenPanelForTypesCompletionHandler(openPanel IOpenPanel, inTypes []string, completionHandler func(result int))
 	CloseAllDocumentsWithDelegateDidCloseAllSelectorContextInfo(delegate objc.IObject, didCloseAllSelector objc.Selector, contextInfo unsafe.Pointer)
 	ReviewUnsavedDocumentsWithAlertTitleCancellableDelegateDidReviewAllSelectorContextInfo(title string, cancellable bool, delegate objc.IObject, didReviewAllSelector objc.Selector, contextInfo unsafe.Pointer)
@@ -48,7 +48,7 @@ type IDocumentController interface {
 	BeginOpenPanelWithCompletionHandler(completionHandler func(arg0 []foundation.URL))
 	OpenDocumentWithContentsOfURLDisplayCompletionHandler(url foundation.IURL, displayDocument bool, completionHandler func(document Document, documentWasAlreadyOpen bool, error foundation.Error))
 	DocumentForWindow(window IWindow) Document
-	MakeDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document
+	MakeDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) Document
 	RemoveDocument(document IDocument)
 	DocumentClassForType(typeName string) objc.Class
 	CurrentDocument() Document
@@ -101,15 +101,15 @@ func NewDocumentController() DocumentController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514994-willpresenterror?language=objc
 func (d_ DocumentController) WillPresentError(error foundation.IError) foundation.Error {
-	rv := objc.Call[foundation.Error](d_, objc.Sel("willPresentError:"), objc.Ptr(error))
+	rv := objc.Call[foundation.Error](d_, objc.Sel("willPresentError:"), error)
 	return rv
 }
 
 // Creates a new document by reading the contents for the document from another URL, presents its user interface, and returns the document if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514982-duplicatedocumentwithcontentsofu?language=objc
-func (d_ DocumentController) DuplicateDocumentWithContentsOfURLCopyingDisplayNameError(url foundation.IURL, duplicateByCopying bool, displayNameOrNil string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("duplicateDocumentWithContentsOfURL:copying:displayName:error:"), objc.Ptr(url), duplicateByCopying, displayNameOrNil, objc.Ptr(outError))
+func (d_ DocumentController) DuplicateDocumentWithContentsOfURLCopyingDisplayNameError(url foundation.IURL, duplicateByCopying bool, displayNameOrNil string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("duplicateDocumentWithContentsOfURL:copying:displayName:error:"), url, duplicateByCopying, displayNameOrNil, outError)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func (d_ DocumentController) DuplicateDocumentWithContentsOfURLCopyingDisplayNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514977-presenterror?language=objc
 func (d_ DocumentController) PresentError(error foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("presentError:"), objc.Ptr(error))
+	rv := objc.Call[bool](d_, objc.Sel("presentError:"), error)
 	return rv
 }
 
@@ -166,23 +166,23 @@ func (d_ DocumentController) ValidateUserInterfaceItem(item PValidatedUserInterf
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514943-validateuserinterfaceitem?language=objc
 func (d_ DocumentController) ValidateUserInterfaceItemObject(itemObject objc.IObject) bool {
-	rv := objc.Call[bool](d_, objc.Sel("validateUserInterfaceItem:"), objc.Ptr(itemObject))
+	rv := objc.Call[bool](d_, objc.Sel("validateUserInterfaceItem:"), itemObject)
 	return rv
 }
 
 // Returns, for a specified URL, the document type identifier to use when opening the document at that location, if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514946-typeforcontentsofurl?language=objc
-func (d_ DocumentController) TypeForContentsOfURLError(url foundation.IURL, outError foundation.IError) string {
-	rv := objc.Call[string](d_, objc.Sel("typeForContentsOfURL:error:"), objc.Ptr(url), objc.Ptr(outError))
+func (d_ DocumentController) TypeForContentsOfURLError(url foundation.IURL, outError unsafe.Pointer) string {
+	rv := objc.Call[string](d_, objc.Sel("typeForContentsOfURL:error:"), url, outError)
 	return rv
 }
 
 // Instantiates a new untitled document of the specified type and returns it if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514963-makeuntitleddocumentoftype?language=objc
-func (d_ DocumentController) MakeUntitledDocumentOfTypeError(typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("makeUntitledDocumentOfType:error:"), typeName, objc.Ptr(outError))
+func (d_ DocumentController) MakeUntitledDocumentOfTypeError(typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("makeUntitledDocumentOfType:error:"), typeName, outError)
 	return rv
 }
 
@@ -197,16 +197,16 @@ func (d_ DocumentController) NewDocument(sender objc.IObject) objc.Object {
 // Creates a new untitled document, presents its user interface if displayDocument is YES, and returns the document if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1515014-openuntitleddocumentanddisplay?language=objc
-func (d_ DocumentController) OpenUntitledDocumentAndDisplayError(displayDocument bool, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("openUntitledDocumentAndDisplay:error:"), displayDocument, objc.Ptr(outError))
+func (d_ DocumentController) OpenUntitledDocumentAndDisplayError(displayDocument bool, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("openUntitledDocumentAndDisplay:error:"), displayDocument, outError)
 	return rv
 }
 
 // Instantiates a document located by a URL, of a specified type, and returns it if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514949-makedocumentwithcontentsofurl?language=objc
-func (d_ DocumentController) MakeDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("makeDocumentWithContentsOfURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (d_ DocumentController) MakeDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("makeDocumentWithContentsOfURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func (d_ DocumentController) MakeDocumentWithContentsOfURLOfTypeError(url founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514969-beginopenpanel?language=objc
 func (d_ DocumentController) BeginOpenPanelForTypesCompletionHandler(openPanel IOpenPanel, inTypes []string, completionHandler func(result int)) {
-	objc.Call[objc.Void](d_, objc.Sel("beginOpenPanel:forTypes:completionHandler:"), objc.Ptr(openPanel), inTypes, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("beginOpenPanel:forTypes:completionHandler:"), openPanel, inTypes, completionHandler)
 }
 
 // Iterates through all the open documents and tries to close them one by one using the specified delegate. [Full Topic]
@@ -243,14 +243,14 @@ func (d_ DocumentController) ClearRecentDocuments(sender objc.IObject) objc.Obje
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514954-presenterror?language=objc
 func (d_ DocumentController) PresentErrorModalForWindowDelegateDidPresentSelectorContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), objc.Ptr(error), objc.Ptr(window), delegate, didPresentSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), error, window, delegate, didPresentSelector, contextInfo)
 }
 
 // Returns, for a given URL, the open document whose file or file package is located by the URL, or nil if there is no such open document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514939-documentforurl?language=objc
 func (d_ DocumentController) DocumentForURL(url foundation.IURL) Document {
-	rv := objc.Call[Document](d_, objc.Sel("documentForURL:"), objc.Ptr(url))
+	rv := objc.Call[Document](d_, objc.Sel("documentForURL:"), url)
 	return rv
 }
 
@@ -258,14 +258,14 @@ func (d_ DocumentController) DocumentForURL(url foundation.IURL) Document {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1515013-adddocument?language=objc
 func (d_ DocumentController) AddDocument(document IDocument) {
-	objc.Call[objc.Void](d_, objc.Sel("addDocument:"), objc.Ptr(document))
+	objc.Call[objc.Void](d_, objc.Sel("addDocument:"), document)
 }
 
 // Presents a modal Open dialog and limits selection to specific file types. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514960-runmodalopenpanel?language=objc
 func (d_ DocumentController) RunModalOpenPanelForTypes(openPanel IOpenPanel, types []string) int {
-	rv := objc.Call[int](d_, objc.Sel("runModalOpenPanel:forTypes:"), objc.Ptr(openPanel), types)
+	rv := objc.Call[int](d_, objc.Sel("runModalOpenPanel:forTypes:"), openPanel, types)
 	return rv
 }
 
@@ -273,21 +273,21 @@ func (d_ DocumentController) RunModalOpenPanelForTypes(openPanel IOpenPanel, typ
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1515009-notenewrecentdocument?language=objc
 func (d_ DocumentController) NoteNewRecentDocument(document IDocument) {
-	objc.Call[objc.Void](d_, objc.Sel("noteNewRecentDocument:"), objc.Ptr(document))
+	objc.Call[objc.Void](d_, objc.Sel("noteNewRecentDocument:"), document)
 }
 
 // Adds or replaces an Open Recent menu item corresponding to the data located by the URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514967-notenewrecentdocumenturl?language=objc
 func (d_ DocumentController) NoteNewRecentDocumentURL(url foundation.IURL) {
-	objc.Call[objc.Void](d_, objc.Sel("noteNewRecentDocumentURL:"), objc.Ptr(url))
+	objc.Call[objc.Void](d_, objc.Sel("noteNewRecentDocumentURL:"), url)
 }
 
 // Reopens a document, optionally located by a URL, by reading the contents for the document from another URL, optionally presents its user interface, and calls the passed-in completion handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514935-reopendocumentforurl?language=objc
 func (d_ DocumentController) ReopenDocumentForURLWithContentsOfURLDisplayCompletionHandler(urlOrNil foundation.IURL, contentsURL foundation.IURL, displayDocument bool, completionHandler func(document Document, documentWasAlreadyOpen bool, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("reopenDocumentForURL:withContentsOfURL:display:completionHandler:"), objc.Ptr(urlOrNil), objc.Ptr(contentsURL), displayDocument, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("reopenDocumentForURL:withContentsOfURL:display:completionHandler:"), urlOrNil, contentsURL, displayDocument, completionHandler)
 }
 
 // Returns a menu item that your app uses for sharing the current document. [Full Topic]
@@ -309,22 +309,22 @@ func (d_ DocumentController) BeginOpenPanelWithCompletionHandler(completionHandl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514992-opendocumentwithcontentsofurl?language=objc
 func (d_ DocumentController) OpenDocumentWithContentsOfURLDisplayCompletionHandler(url foundation.IURL, displayDocument bool, completionHandler func(document Document, documentWasAlreadyOpen bool, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("openDocumentWithContentsOfURL:display:completionHandler:"), objc.Ptr(url), displayDocument, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("openDocumentWithContentsOfURL:display:completionHandler:"), url, displayDocument, completionHandler)
 }
 
 // Returns the document object whose window controller owns a specified window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514970-documentforwindow?language=objc
 func (d_ DocumentController) DocumentForWindow(window IWindow) Document {
-	rv := objc.Call[Document](d_, objc.Sel("documentForWindow:"), objc.Ptr(window))
+	rv := objc.Call[Document](d_, objc.Sel("documentForWindow:"), window)
 	return rv
 }
 
 // Instantiates a document located by a URL, of a specified type, but by reading the contents for the document from another URL, and returns it if successful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514930-makedocumentforurl?language=objc
-func (d_ DocumentController) MakeDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("makeDocumentForURL:withContentsOfURL:ofType:error:"), objc.Ptr(urlOrNil), objc.Ptr(contentsURL), typeName, objc.Ptr(outError))
+func (d_ DocumentController) MakeDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("makeDocumentForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, outError)
 	return rv
 }
 
@@ -332,7 +332,7 @@ func (d_ DocumentController) MakeDocumentForURLWithContentsOfURLOfTypeError(urlO
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocumentcontroller/1514984-removedocument?language=objc
 func (d_ DocumentController) RemoveDocument(document IDocument) {
-	objc.Call[objc.Void](d_, objc.Sel("removeDocument:"), objc.Ptr(document))
+	objc.Call[objc.Void](d_, objc.Sel("removeDocument:"), document)
 }
 
 // Returns the NSDocument subclass associated with a given document type. [Full Topic]

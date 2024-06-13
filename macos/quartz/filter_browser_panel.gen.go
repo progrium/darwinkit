@@ -62,7 +62,7 @@ func (f_ FilterBrowserPanel) Init() FilterBrowserPanel {
 }
 
 func (fc _FilterBrowserPanelClass) WindowWithContentViewController(contentViewController appkit.IViewController) FilterBrowserPanel {
-	rv := objc.Call[FilterBrowserPanel](fc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[FilterBrowserPanel](fc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func FilterBrowserPanel_WindowWithContentViewController(contentViewController ap
 }
 
 func (f_ FilterBrowserPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool, screen appkit.IScreen) FilterBrowserPanel {
-	rv := objc.Call[FilterBrowserPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[FilterBrowserPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (f_ FilterBrowserPanel) BeginWithOptionsModelessDelegateDidEndSelectorConte
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilterbrowserpanel/1504636-beginsheetwithoptions?language=objc
 func (f_ FilterBrowserPanel) BeginSheetWithOptionsModalForWindowModalDelegateDidEndSelectorContextInfo(inOptions foundation.Dictionary, docWindow appkit.IWindow, modalDelegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](f_, objc.Sel("beginSheetWithOptions:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), inOptions, objc.Ptr(docWindow), modalDelegate, didEndSelector, contextInfo)
+	objc.Call[objc.Void](f_, objc.Sel("beginSheetWithOptions:modalForWindow:modalDelegate:didEndSelector:contextInfo:"), inOptions, docWindow, modalDelegate, didEndSelector, contextInfo)
 }
 
 // Closes a filter browser view. [Full Topic]

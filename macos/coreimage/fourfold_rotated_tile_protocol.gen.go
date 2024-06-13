@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile?language=objc
 type PFourfoldRotatedTile interface {
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (f_ FourfoldRotatedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
-func (f_ FourfoldRotatedTileObject) SetAngle(value float64) {
+func (f_ FourfoldRotatedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
 }
 
@@ -70,8 +70,8 @@ func (f_ FourfoldRotatedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228450-angle?language=objc
-func (f_ FourfoldRotatedTileObject) Angle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("angle"))
+func (f_ FourfoldRotatedTileObject) Angle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("angle"))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (f_ FourfoldRotatedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228453-width?language=objc
-func (f_ FourfoldRotatedTileObject) SetWidth(value float64) {
+func (f_ FourfoldRotatedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setWidth:"), value)
 }
 
@@ -93,8 +93,8 @@ func (f_ FourfoldRotatedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228453-width?language=objc
-func (f_ FourfoldRotatedTileObject) Width() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("width"))
+func (f_ FourfoldRotatedTileObject) Width() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("width"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (f_ FourfoldRotatedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldrotatedtile/3228452-inputimage?language=objc
 func (f_ FourfoldRotatedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), value)
 }
 
 func (f_ FourfoldRotatedTileObject) HasInputImage() bool {

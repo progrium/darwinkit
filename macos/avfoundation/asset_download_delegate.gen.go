@@ -188,7 +188,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskDidResolveMe
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/1621023-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAssetDownloadTaskDidResolveMediaSelection(session foundation.URLSession, assetDownloadTask AssetDownloadTask, resolvedMediaSelection MediaSelection) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didResolveMediaSelection:"), objc.Ptr(session), objc.Ptr(assetDownloadTask), objc.Ptr(resolvedMediaSelection))
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didResolveMediaSelection:"), session, assetDownloadTask, resolvedMediaSelection)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskDidLoadTimeRangeTotalTimeRangesLoadedTimeRangeExpectedToLoad() bool {
@@ -199,7 +199,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskDidLoadTimeR
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/1621019-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAssetDownloadTaskDidLoadTimeRangeTotalTimeRangesLoadedTimeRangeExpectedToLoad(session foundation.URLSession, assetDownloadTask AssetDownloadTask, timeRange coremedia.TimeRange, loadedTimeRanges []foundation.Value, timeRangeExpectedToLoad coremedia.TimeRange) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didLoadTimeRange:totalTimeRangesLoaded:timeRangeExpectedToLoad:"), objc.Ptr(session), objc.Ptr(assetDownloadTask), timeRange, loadedTimeRanges, timeRangeExpectedToLoad)
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didLoadTimeRange:totalTimeRangesLoaded:timeRangeExpectedToLoad:"), session, assetDownloadTask, timeRange, loadedTimeRanges, timeRangeExpectedToLoad)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskDidLoadTimeRangeTotalTimeRangesLoadedTimeRangeExpectedToLoadForMediaSelection() bool {
@@ -210,7 +210,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskDid
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/2919988-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAggregateAssetDownloadTaskDidLoadTimeRangeTotalTimeRangesLoadedTimeRangeExpectedToLoadForMediaSelection(session foundation.URLSession, aggregateAssetDownloadTask AggregateAssetDownloadTask, timeRange coremedia.TimeRange, loadedTimeRanges []foundation.Value, timeRangeExpectedToLoad coremedia.TimeRange, mediaSelection MediaSelection) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:didLoadTimeRange:totalTimeRangesLoaded:timeRangeExpectedToLoad:forMediaSelection:"), objc.Ptr(session), objc.Ptr(aggregateAssetDownloadTask), timeRange, loadedTimeRanges, timeRangeExpectedToLoad, objc.Ptr(mediaSelection))
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:didLoadTimeRange:totalTimeRangesLoaded:timeRangeExpectedToLoad:forMediaSelection:"), session, aggregateAssetDownloadTask, timeRange, loadedTimeRanges, timeRangeExpectedToLoad, mediaSelection)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskWillDownloadToURL() bool {
@@ -221,7 +221,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskWil
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/2897241-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAggregateAssetDownloadTaskWillDownloadToURL(session foundation.URLSession, aggregateAssetDownloadTask AggregateAssetDownloadTask, location foundation.URL) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:willDownloadToURL:"), objc.Ptr(session), objc.Ptr(aggregateAssetDownloadTask), objc.Ptr(location))
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:willDownloadToURL:"), session, aggregateAssetDownloadTask, location)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskWillDownloadVariants() bool {
@@ -232,7 +232,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskWillDownload
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/3751760-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAssetDownloadTaskWillDownloadVariants(session foundation.URLSession, assetDownloadTask AssetDownloadTask, variants []AssetVariant) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:willDownloadVariants:"), objc.Ptr(session), objc.Ptr(assetDownloadTask), variants)
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:willDownloadVariants:"), session, assetDownloadTask, variants)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskDidCompleteForMediaSelection() bool {
@@ -243,7 +243,7 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAggregateAssetDownloadTaskDid
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/2897211-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAggregateAssetDownloadTaskDidCompleteForMediaSelection(session foundation.URLSession, aggregateAssetDownloadTask AggregateAssetDownloadTask, mediaSelection MediaSelection) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:didCompleteForMediaSelection:"), objc.Ptr(session), objc.Ptr(aggregateAssetDownloadTask), objc.Ptr(mediaSelection))
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:aggregateAssetDownloadTask:didCompleteForMediaSelection:"), session, aggregateAssetDownloadTask, mediaSelection)
 }
 
 func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskDidFinishDownloadingToURL() bool {
@@ -254,5 +254,5 @@ func (a_ AssetDownloadDelegateObject) HasURLSessionAssetDownloadTaskDidFinishDow
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloaddelegate/1845200-urlsession?language=objc
 func (a_ AssetDownloadDelegateObject) URLSessionAssetDownloadTaskDidFinishDownloadingToURL(session foundation.URLSession, assetDownloadTask AssetDownloadTask, location foundation.URL) {
-	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didFinishDownloadingToURL:"), objc.Ptr(session), objc.Ptr(assetDownloadTask), objc.Ptr(location))
+	objc.Call[objc.Void](a_, objc.Sel("URLSession:assetDownloadTask:didFinishDownloadingToURL:"), session, assetDownloadTask, location)
 }

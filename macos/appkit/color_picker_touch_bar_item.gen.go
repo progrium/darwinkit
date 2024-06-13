@@ -61,7 +61,7 @@ func ColorPickerTouchBarItem_StrokeColorPickerWithIdentifier(identifier TouchBar
 }
 
 func (cc _ColorPickerTouchBarItemClass) ColorPickerWithIdentifierButtonImage(identifier TouchBarItemIdentifier, image IImage) ColorPickerTouchBarItem {
-	rv := objc.Call[ColorPickerTouchBarItem](cc, objc.Sel("colorPickerWithIdentifier:buttonImage:"), identifier, objc.Ptr(image))
+	rv := objc.Call[ColorPickerTouchBarItem](cc, objc.Sel("colorPickerWithIdentifier:buttonImage:"), identifier, image)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func (c_ ColorPickerTouchBarItem) Color() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2544768-color?language=objc
 func (c_ ColorPickerTouchBarItem) SetColor(value IColor) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
 }
 
 // A Boolean value that determines whether the color picker is enabled. [Full Topic]
@@ -239,5 +239,5 @@ func (c_ ColorPickerTouchBarItem) ColorList() ColorList {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickertouchbaritem/2641681-colorlist?language=objc
 func (c_ ColorPickerTouchBarItem) SetColorList(value IColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("setColorList:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColorList:"), value)
 }

@@ -103,7 +103,7 @@ func (e_ EntityMapping) SourceExpression() foundation.Expression {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitymapping/1443180-sourceexpression?language=objc
 func (e_ EntityMapping) SetSourceExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](e_, objc.Sel("setSourceExpression:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSourceExpression:"), value)
 }
 
 // The user info dictionary for the entity mapping. [Full Topic]

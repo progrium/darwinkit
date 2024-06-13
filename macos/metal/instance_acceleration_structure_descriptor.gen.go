@@ -150,7 +150,7 @@ func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformBuffer(value
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3750499-motiontransformbuffer?language=objc
 func (i_ InstanceAccelerationStructureDescriptor) SetMotionTransformBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](i_, objc.Sel("setMotionTransformBuffer:"), valueObject)
 }
 
 // A buffer that contains descriptions of each instance in the acceleration structure. [Full Topic]
@@ -173,7 +173,7 @@ func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBuffer(va
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlinstanceaccelerationstructuredescriptor/3553886-instancedescriptorbuffer?language=objc
 func (i_ InstanceAccelerationStructureDescriptor) SetInstanceDescriptorBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](i_, objc.Sel("setInstanceDescriptorBuffer:"), valueObject)
 }
 
 // The stride, in bytes, between instance descriptions. [Full Topic]

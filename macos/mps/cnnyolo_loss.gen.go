@@ -29,20 +29,20 @@ type ICNNYOLOLoss interface {
 	EncodeToCommandBufferSourceImageLabels(commandBuffer metal.PCommandBuffer, sourceImage IImage, labels ICNNLossLabels) Image
 	EncodeToCommandBufferObjectSourceImageLabels(commandBufferObject objc.IObject, sourceImage IImage, labels ICNNLossLabels) Image
 	NumberOfAnchorBoxes() uint
-	ScaleNoObject() float64
-	ScaleObject() float64
+	ScaleNoObject() float32
+	ScaleObject() float32
 	LossWH() CNNLoss
-	ScaleWH() float64
+	ScaleWH() float32
 	LossClasses() CNNLoss
 	AnchorBoxes() []byte
-	MaxIOUForObjectAbsence() float64
-	ScaleXY() float64
+	MaxIOUForObjectAbsence() float32
+	ScaleXY() float32
 	ReductionType() CNNReductionType
 	LossXY() CNNLoss
 	ReduceAcrossBatch() bool
-	ScaleClass() float64
+	ScaleClass() float32
 	LossConfidence() CNNLoss
-	MinIOUForObjectPresence() float64
+	MinIOUForObjectPresence() float32
 }
 
 // A kernel that computes the YOLO loss and loss gradient between specified predictions and labels. [Full Topic]
@@ -60,7 +60,7 @@ func CNNYOLOLossFrom(ptr unsafe.Pointer) CNNYOLOLoss {
 
 func (c_ CNNYOLOLoss) InitWithDeviceLossDescriptor(device metal.PDevice, lossDescriptor ICNNYOLOLossDescriptor) CNNYOLOLoss {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNYOLOLoss](c_, objc.Sel("initWithDevice:lossDescriptor:"), po0, objc.Ptr(lossDescriptor))
+	rv := objc.Call[CNNYOLOLoss](c_, objc.Sel("initWithDevice:lossDescriptor:"), po0, lossDescriptor)
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferSourceImagesLabels(commandBuffer
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976476-encodebatchtocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferObjectSourceImagesLabels(commandBufferObject objc.IObject, sourceImage *foundation.Array, labels *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:"), objc.Ptr(commandBufferObject), sourceImage, labels)
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:"), commandBufferObject, sourceImage, labels)
 	return rv
 }
 
@@ -145,14 +145,14 @@ func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferObjectSourceImagesLabels(command
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976479-encodetocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeToCommandBufferSourceImageLabelsDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, labels ICNNLossLabels, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), po0, objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), po0, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976479-encodetocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeToCommandBufferObjectSourceImageLabelsDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, labels ICNNLossLabels, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), commandBufferObject, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
@@ -167,7 +167,7 @@ func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferSourceImagesLabelsDestinationIma
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976477-encodebatchtocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsDestinationImages(commandBufferObject objc.IObject, sourceImage *foundation.Array, labels *foundation.Array, destinationImage *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:destinationImages:"), objc.Ptr(commandBufferObject), sourceImage, labels, destinationImage)
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:destinationImages:"), commandBufferObject, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
@@ -175,7 +175,7 @@ func (c_ CNNYOLOLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsDestinat
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976478-encodetocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeToCommandBufferSourceImageLabels(commandBuffer metal.PCommandBuffer, sourceImage IImage, labels ICNNLossLabels) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), po0, objc.Ptr(sourceImage), objc.Ptr(labels))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), po0, sourceImage, labels)
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (c_ CNNYOLOLoss) EncodeToCommandBufferSourceImageLabels(commandBuffer metal
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976478-encodetocommandbuffer?language=objc
 func (c_ CNNYOLOLoss) EncodeToCommandBufferObjectSourceImageLabels(commandBufferObject objc.IObject, sourceImage IImage, labels ICNNLossLabels) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(labels))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), commandBufferObject, sourceImage, labels)
 	return rv
 }
 
@@ -198,16 +198,16 @@ func (c_ CNNYOLOLoss) NumberOfAnchorBoxes() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976491-scalenoobject?language=objc
-func (c_ CNNYOLOLoss) ScaleNoObject() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleNoObject"))
+func (c_ CNNYOLOLoss) ScaleNoObject() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleNoObject"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976492-scaleobject?language=objc
-func (c_ CNNYOLOLoss) ScaleObject() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleObject"))
+func (c_ CNNYOLOLoss) ScaleObject() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleObject"))
 	return rv
 }
 
@@ -222,8 +222,8 @@ func (c_ CNNYOLOLoss) LossWH() CNNLoss {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976493-scalewh?language=objc
-func (c_ CNNYOLOLoss) ScaleWH() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleWH"))
+func (c_ CNNYOLOLoss) ScaleWH() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleWH"))
 	return rv
 }
 
@@ -246,16 +246,16 @@ func (c_ CNNYOLOLoss) AnchorBoxes() []byte {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976486-maxiouforobjectabsence?language=objc
-func (c_ CNNYOLOLoss) MaxIOUForObjectAbsence() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("maxIOUForObjectAbsence"))
+func (c_ CNNYOLOLoss) MaxIOUForObjectAbsence() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("maxIOUForObjectAbsence"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976494-scalexy?language=objc
-func (c_ CNNYOLOLoss) ScaleXY() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleXY"))
+func (c_ CNNYOLOLoss) ScaleXY() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleXY"))
 	return rv
 }
 
@@ -286,8 +286,8 @@ func (c_ CNNYOLOLoss) ReduceAcrossBatch() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976490-scaleclass?language=objc
-func (c_ CNNYOLOLoss) ScaleClass() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleClass"))
+func (c_ CNNYOLOLoss) ScaleClass() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleClass"))
 	return rv
 }
 
@@ -302,7 +302,7 @@ func (c_ CNNYOLOLoss) LossConfidence() CNNLoss {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololoss/2976487-miniouforobjectpresence?language=objc
-func (c_ CNNYOLOLoss) MinIOUForObjectPresence() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("minIOUForObjectPresence"))
+func (c_ CNNYOLOLoss) MinIOUForObjectPresence() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("minIOUForObjectPresence"))
 	return rv
 }

@@ -106,12 +106,12 @@ func NewMatrixSolveCholeskyWithDevice(device metal.PDevice) MatrixSolveCholesky 
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsolvecholesky/2866957-encodetocommandbuffer?language=objc
 func (m_ MatrixSolveCholesky) EncodeToCommandBufferSourceMatrixRightHandSideMatrixSolutionMatrix(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, rightHandSideMatrix IMatrix, solutionMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:solutionMatrix:"), po0, objc.Ptr(sourceMatrix), objc.Ptr(rightHandSideMatrix), objc.Ptr(solutionMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:solutionMatrix:"), po0, sourceMatrix, rightHandSideMatrix, solutionMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsolvecholesky/2866957-encodetocommandbuffer?language=objc
 func (m_ MatrixSolveCholesky) EncodeToCommandBufferObjectSourceMatrixRightHandSideMatrixSolutionMatrix(commandBufferObject objc.IObject, sourceMatrix IMatrix, rightHandSideMatrix IMatrix, solutionMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:solutionMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), objc.Ptr(rightHandSideMatrix), objc.Ptr(solutionMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:solutionMatrix:"), commandBufferObject, sourceMatrix, rightHandSideMatrix, solutionMatrix)
 }

@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -28,15 +30,15 @@ type PLibrary interface {
 	HasNewIntersectionFunctionWithDescriptorCompletionHandler() bool
 
 	// optional
-	NewIntersectionFunctionWithDescriptorError(descriptor IntersectionFunctionDescriptor, error foundation.Error) FunctionObject
+	NewIntersectionFunctionWithDescriptorError(descriptor IntersectionFunctionDescriptor, error unsafe.Pointer) FunctionObject
 	HasNewIntersectionFunctionWithDescriptorError() bool
 
 	// optional
-	NewFunctionWithDescriptorError(descriptor FunctionDescriptor, error foundation.Error) FunctionObject
+	NewFunctionWithDescriptorError(descriptor FunctionDescriptor, error unsafe.Pointer) FunctionObject
 	HasNewFunctionWithDescriptorError() bool
 
 	// optional
-	NewFunctionWithNameConstantValuesError(name string, constantValues FunctionConstantValues, error foundation.Error) FunctionObject
+	NewFunctionWithNameConstantValuesError(name string, constantValues FunctionConstantValues, error unsafe.Pointer) FunctionObject
 	HasNewFunctionWithNameConstantValuesError() bool
 
 	// optional
@@ -80,7 +82,7 @@ func (l_ LibraryObject) HasNewFunctionWithNameConstantValuesCompletionHandler() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/1640053-newfunctionwithname?language=objc
 func (l_ LibraryObject) NewFunctionWithNameConstantValuesCompletionHandler(name string, constantValues FunctionConstantValues, completionHandler func(function FunctionObject, error foundation.Error)) {
-	objc.Call[objc.Void](l_, objc.Sel("newFunctionWithName:constantValues:completionHandler:"), name, objc.Ptr(constantValues), completionHandler)
+	objc.Call[objc.Void](l_, objc.Sel("newFunctionWithName:constantValues:completionHandler:"), name, constantValues, completionHandler)
 }
 
 func (l_ LibraryObject) HasNewFunctionWithName() bool {
@@ -103,7 +105,7 @@ func (l_ LibraryObject) HasNewFunctionWithDescriptorCompletionHandler() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/3554040-newfunctionwithdescriptor?language=objc
 func (l_ LibraryObject) NewFunctionWithDescriptorCompletionHandler(descriptor FunctionDescriptor, completionHandler func(function FunctionObject, error foundation.Error)) {
-	objc.Call[objc.Void](l_, objc.Sel("newFunctionWithDescriptor:completionHandler:"), objc.Ptr(descriptor), completionHandler)
+	objc.Call[objc.Void](l_, objc.Sel("newFunctionWithDescriptor:completionHandler:"), descriptor, completionHandler)
 }
 
 func (l_ LibraryObject) HasNewIntersectionFunctionWithDescriptorCompletionHandler() bool {
@@ -114,7 +116,7 @@ func (l_ LibraryObject) HasNewIntersectionFunctionWithDescriptorCompletionHandle
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/3578134-newintersectionfunctionwithdescr?language=objc
 func (l_ LibraryObject) NewIntersectionFunctionWithDescriptorCompletionHandler(descriptor IntersectionFunctionDescriptor, completionHandler func(function FunctionObject, error foundation.Error)) {
-	objc.Call[objc.Void](l_, objc.Sel("newIntersectionFunctionWithDescriptor:completionHandler:"), objc.Ptr(descriptor), completionHandler)
+	objc.Call[objc.Void](l_, objc.Sel("newIntersectionFunctionWithDescriptor:completionHandler:"), descriptor, completionHandler)
 }
 
 func (l_ LibraryObject) HasNewIntersectionFunctionWithDescriptorError() bool {
@@ -124,8 +126,8 @@ func (l_ LibraryObject) HasNewIntersectionFunctionWithDescriptorError() bool {
 // Synchronously creates an object representing a ray-tracing intersection function, using the specified descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/3578135-newintersectionfunctionwithdescr?language=objc
-func (l_ LibraryObject) NewIntersectionFunctionWithDescriptorError(descriptor IntersectionFunctionDescriptor, error foundation.Error) FunctionObject {
-	rv := objc.Call[FunctionObject](l_, objc.Sel("newIntersectionFunctionWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (l_ LibraryObject) NewIntersectionFunctionWithDescriptorError(descriptor IntersectionFunctionDescriptor, error unsafe.Pointer) FunctionObject {
+	rv := objc.Call[FunctionObject](l_, objc.Sel("newIntersectionFunctionWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -136,8 +138,8 @@ func (l_ LibraryObject) HasNewFunctionWithDescriptorError() bool {
 // Synchronously creates an object representing a shader function, using the specified descriptor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/3554041-newfunctionwithdescriptor?language=objc
-func (l_ LibraryObject) NewFunctionWithDescriptorError(descriptor FunctionDescriptor, error foundation.Error) FunctionObject {
-	rv := objc.Call[FunctionObject](l_, objc.Sel("newFunctionWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (l_ LibraryObject) NewFunctionWithDescriptorError(descriptor FunctionDescriptor, error unsafe.Pointer) FunctionObject {
+	rv := objc.Call[FunctionObject](l_, objc.Sel("newFunctionWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -148,8 +150,8 @@ func (l_ LibraryObject) HasNewFunctionWithNameConstantValuesError() bool {
 // Synchronously creates a specialized shader function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtllibrary/1640020-newfunctionwithname?language=objc
-func (l_ LibraryObject) NewFunctionWithNameConstantValuesError(name string, constantValues FunctionConstantValues, error foundation.Error) FunctionObject {
-	rv := objc.Call[FunctionObject](l_, objc.Sel("newFunctionWithName:constantValues:error:"), name, objc.Ptr(constantValues), objc.Ptr(error))
+func (l_ LibraryObject) NewFunctionWithNameConstantValuesError(name string, constantValues FunctionConstantValues, error unsafe.Pointer) FunctionObject {
+	rv := objc.Call[FunctionObject](l_, objc.Sel("newFunctionWithName:constantValues:error:"), name, constantValues, error)
 	return rv
 }
 

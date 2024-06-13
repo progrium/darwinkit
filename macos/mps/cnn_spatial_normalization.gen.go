@@ -19,12 +19,12 @@ type _CNNSpatialNormalizationClass struct {
 // An interface definition for the [CNNSpatialNormalization] class.
 type ICNNSpatialNormalization interface {
 	ICNNKernel
-	Delta() float64
-	SetDelta(value float64)
-	Alpha() float64
-	SetAlpha(value float64)
-	Beta() float64
-	SetBeta(value float64)
+	Delta() float32
+	SetDelta(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
+	Beta() float32
+	SetBeta(value float32)
 }
 
 // A spatial normalization kernel. [Full Topic]
@@ -108,44 +108,44 @@ func CNNSpatialNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device meta
 // The "delta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648933-delta?language=objc
-func (c_ CNNSpatialNormalization) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNSpatialNormalization) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 // The "delta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648933-delta?language=objc
-func (c_ CNNSpatialNormalization) SetDelta(value float64) {
+func (c_ CNNSpatialNormalization) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }
 
 // The "alpha" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648825-alpha?language=objc
-func (c_ CNNSpatialNormalization) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNSpatialNormalization) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 // The "alpha" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648825-alpha?language=objc
-func (c_ CNNSpatialNormalization) SetAlpha(value float64) {
+func (c_ CNNSpatialNormalization) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 // The "beta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648936-beta?language=objc
-func (c_ CNNSpatialNormalization) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNSpatialNormalization) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 // The "beta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalization/1648936-beta?language=objc
-func (c_ CNNSpatialNormalization) SetBeta(value float64) {
+func (c_ CNNSpatialNormalization) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }

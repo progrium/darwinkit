@@ -122,7 +122,7 @@ func (e_ EnergyFormatter) NumberFormatter() NumberFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsenergyformatter/1412614-numberformatter?language=objc
 func (e_ EnergyFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.Call[objc.Void](e_, objc.Sel("setNumberFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setNumberFormatter:"), value)
 }
 
 // A Boolean value that indicates whether the energy value is used to measure food energy. [Full Topic]

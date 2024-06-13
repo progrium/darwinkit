@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion?language=objc
 type PDisplacementDistortion interface {
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -50,7 +50,7 @@ func (d_ DisplacementDistortionObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600129-scale?language=objc
-func (d_ DisplacementDistortionObject) SetScale(value float64) {
+func (d_ DisplacementDistortionObject) SetScale(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setScale:"), value)
 }
 
@@ -61,8 +61,8 @@ func (d_ DisplacementDistortionObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600129-scale?language=objc
-func (d_ DisplacementDistortionObject) Scale() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("scale"))
+func (d_ DisplacementDistortionObject) Scale() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("scale"))
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (d_ DisplacementDistortionObject) HasSetDisplacementImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600127-displacementimage?language=objc
 func (d_ DisplacementDistortionObject) SetDisplacementImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setDisplacementImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDisplacementImage:"), value)
 }
 
 func (d_ DisplacementDistortionObject) HasDisplacementImage() bool {
@@ -97,7 +97,7 @@ func (d_ DisplacementDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisplacementdistortion/3600128-inputimage?language=objc
 func (d_ DisplacementDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DisplacementDistortionObject) HasInputImage() bool {

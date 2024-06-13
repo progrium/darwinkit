@@ -62,7 +62,7 @@ func SetFrom(ptr unsafe.Pointer) Set {
 }
 
 func (s_ Set) InitWithSetCopyItems(set ISet, flag bool) Set {
-	rv := objc.Call[Set](s_, objc.Sel("initWithSet:copyItems:"), objc.Ptr(set), flag)
+	rv := objc.Call[Set](s_, objc.Sel("initWithSet:copyItems:"), set, flag)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func NewSetWithSetCopyItems(set ISet, flag bool) Set {
 }
 
 func (s_ Set) InitWithObjects(firstObj objc.IObject, args ...any) Set {
-	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func NewSetWithObjects(firstObj objc.IObject, args ...any) Set {
 }
 
 func (sc _SetClass) SetWithObject(object objc.IObject) Set {
-	rv := objc.Call[Set](sc, objc.Sel("setWithObject:"), objc.Ptr(object))
+	rv := objc.Call[Set](sc, objc.Sel("setWithObject:"), object)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func Set_SetWithObject(object objc.IObject) Set {
 }
 
 func (sc _SetClass) SetWithObjects(firstObj objc.IObject, args ...any) Set {
-	rv := objc.Call[Set](sc, objc.Sel("setWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[Set](sc, objc.Sel("setWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -113,27 +113,27 @@ func Set_SetWithObjects(firstObj objc.IObject, args ...any) Set {
 	return SetClass.SetWithObjects(firstObj, args...)
 }
 
-func (sc _SetClass) SetWithObjectsCount(objects objc.IObject, cnt uint) Set {
-	rv := objc.Call[Set](sc, objc.Sel("setWithObjects:count:"), objc.Ptr(objects), cnt)
+func (sc _SetClass) SetWithObjectsCount(objects unsafe.Pointer, cnt uint) Set {
+	rv := objc.Call[Set](sc, objc.Sel("setWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1574824-setwithobjects?language=objc
-func Set_SetWithObjectsCount(objects objc.IObject, cnt uint) Set {
+func Set_SetWithObjectsCount(objects unsafe.Pointer, cnt uint) Set {
 	return SetClass.SetWithObjectsCount(objects, cnt)
 }
 
-func (s_ Set) InitWithObjectsCount(objects objc.IObject, cnt uint) Set {
-	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:count:"), objc.Ptr(objects), cnt)
+func (s_ Set) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) Set {
+	rv := objc.Call[Set](s_, objc.Sel("initWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Initializes a newly allocated set with a specified number of objects from a given C array of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1407458-initwithobjects?language=objc
-func NewSetWithObjectsCount(objects objc.IObject, cnt uint) Set {
+func NewSetWithObjectsCount(objects unsafe.Pointer, cnt uint) Set {
 	instance := SetClass.Alloc().InitWithObjectsCount(objects, cnt)
 	instance.Autorelease()
 	return instance
@@ -154,7 +154,7 @@ func NewSetWithArray(array []objc.IObject) Set {
 }
 
 func (s_ Set) InitWithSet(set ISet) Set {
-	rv := objc.Call[Set](s_, objc.Sel("initWithSet:"), objc.Ptr(set))
+	rv := objc.Call[Set](s_, objc.Sel("initWithSet:"), set)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func Set_Set() Set {
 }
 
 func (sc _SetClass) SetWithSet(set ISet) Set {
-	rv := objc.Call[Set](sc, objc.Sel("setWithSet:"), objc.Ptr(set))
+	rv := objc.Call[Set](sc, objc.Sel("setWithSet:"), set)
 	return rv
 }
 
@@ -221,7 +221,7 @@ func (s_ Set) Init() Set {
 }
 
 func (sc _SetClass) SetWithCollectionViewIndexPath(indexPath IIndexPath) Set {
-	rv := objc.Call[Set](sc, objc.Sel("setWithCollectionViewIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[Set](sc, objc.Sel("setWithCollectionViewIndexPath:"), indexPath)
 	return rv
 }
 
@@ -259,7 +259,7 @@ func (s_ Set) SortedArrayUsingDescriptors(sortDescriptors []ISortDescriptor) []o
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1412896-member?language=objc
 func (s_ Set) Member(object objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("member:"), objc.Ptr(object))
+	rv := objc.Call[objc.Object](s_, objc.Sel("member:"), object)
 	return rv
 }
 
@@ -281,7 +281,7 @@ func (s_ Set) EnumerateIndexPathsWithOptionsUsingBlock(opts EnumerationOptions, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1408217-setbyaddingobjectsfromset?language=objc
 func (s_ Set) SetByAddingObjectsFromSet(other ISet) Set {
-	rv := objc.Call[Set](s_, objc.Sel("setByAddingObjectsFromSet:"), objc.Ptr(other))
+	rv := objc.Call[Set](s_, objc.Sel("setByAddingObjectsFromSet:"), other)
 	return rv
 }
 
@@ -296,7 +296,7 @@ func (s_ Set) EnumerateObjectsUsingBlock(block func(obj objc.Object, stop *bool)
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1414829-isequaltoset?language=objc
 func (s_ Set) IsEqualToSet(otherSet ISet) bool {
-	rv := objc.Call[bool](s_, objc.Sel("isEqualToSet:"), objc.Ptr(otherSet))
+	rv := objc.Call[bool](s_, objc.Sel("isEqualToSet:"), otherSet)
 	return rv
 }
 
@@ -312,7 +312,7 @@ func (s_ Set) DescriptionWithLocale(locale objc.IObject) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1416316-setbyaddingobject?language=objc
 func (s_ Set) SetByAddingObject(anObject objc.IObject) Set {
-	rv := objc.Call[Set](s_, objc.Sel("setByAddingObject:"), objc.Ptr(anObject))
+	rv := objc.Call[Set](s_, objc.Sel("setByAddingObject:"), anObject)
 	return rv
 }
 
@@ -320,7 +320,7 @@ func (s_ Set) SetByAddingObject(anObject objc.IObject) Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1410212-removeobserver?language=objc
 func (s_ Set) RemoveObserverForKeyPath(observer objc.IObject, keyPath string) {
-	objc.Call[objc.Void](s_, objc.Sel("removeObserver:forKeyPath:"), objc.Ptr(observer), keyPath)
+	objc.Call[objc.Void](s_, objc.Sel("removeObserver:forKeyPath:"), observer, keyPath)
 }
 
 // Sends a message specified by a given selector to each object in the set. [Full Topic]
@@ -349,7 +349,7 @@ func (s_ Set) EnumerateObjectsWithOptionsUsingBlock(opts EnumerationOptions, blo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1415413-removeobserver?language=objc
 func (s_ Set) RemoveObserverForKeyPathContext(observer objc.IObject, keyPath string, context unsafe.Pointer) {
-	objc.Call[objc.Void](s_, objc.Sel("removeObserver:forKeyPath:context:"), objc.Ptr(observer), keyPath, context)
+	objc.Call[objc.Void](s_, objc.Sel("removeObserver:forKeyPath:context:"), observer, keyPath, context)
 }
 
 // Returns a set of objects that pass a test in a given block. [Full Topic]
@@ -364,7 +364,7 @@ func (s_ Set) ObjectsPassingTest(predicate func(obj objc.Object, stop *bool) boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1416324-filteredsetusingpredicate?language=objc
 func (s_ Set) FilteredSetUsingPredicate(predicate IPredicate) Set {
-	rv := objc.Call[Set](s_, objc.Sel("filteredSetUsingPredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[Set](s_, objc.Sel("filteredSetUsingPredicate:"), predicate)
 	return rv
 }
 
@@ -372,14 +372,14 @@ func (s_ Set) FilteredSetUsingPredicate(predicate IPredicate) Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1414043-addobserver?language=objc
 func (s_ Set) AddObserverForKeyPathOptionsContext(observer objc.IObject, keyPath string, options KeyValueObservingOptions, context unsafe.Pointer) {
-	objc.Call[objc.Void](s_, objc.Sel("addObserver:forKeyPath:options:context:"), objc.Ptr(observer), keyPath, options, context)
+	objc.Call[objc.Void](s_, objc.Sel("addObserver:forKeyPath:options:context:"), observer, keyPath, options, context)
 }
 
 // Returns a Boolean value that indicates whether a given object is present in the set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1414555-containsobject?language=objc
 func (s_ Set) ContainsObject(anObject objc.IObject) bool {
-	rv := objc.Call[bool](s_, objc.Sel("containsObject:"), objc.Ptr(anObject))
+	rv := objc.Call[bool](s_, objc.Sel("containsObject:"), anObject)
 	return rv
 }
 
@@ -402,7 +402,7 @@ func (s_ Set) SetValueForKey(value objc.IObject, key string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1418319-issubsetofset?language=objc
 func (s_ Set) IsSubsetOfSet(otherSet ISet) bool {
-	rv := objc.Call[bool](s_, objc.Sel("isSubsetOfSet:"), objc.Ptr(otherSet))
+	rv := objc.Call[bool](s_, objc.Sel("isSubsetOfSet:"), otherSet)
 	return rv
 }
 
@@ -434,7 +434,7 @@ func (s_ Set) AnyObject() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsset/1417472-intersectsset?language=objc
 func (s_ Set) IntersectsSet(otherSet ISet) bool {
-	rv := objc.Call[bool](s_, objc.Sel("intersectsSet:"), objc.Ptr(otherSet))
+	rv := objc.Call[bool](s_, objc.Sel("intersectsSet:"), otherSet)
 	return rv
 }
 

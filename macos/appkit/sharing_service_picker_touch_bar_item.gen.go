@@ -88,7 +88,7 @@ func (s_ SharingServicePickerTouchBarItem) ButtonImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickertouchbaritem/2646965-buttonimage?language=objc
 func (s_ SharingServicePickerTouchBarItem) SetButtonImage(value IImage) {
-	objc.Call[objc.Void](s_, objc.Sel("setButtonImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setButtonImage:"), value)
 }
 
 // The text displayed in the sharing service picker item button. [Full Topic]
@@ -127,7 +127,7 @@ func (s_ SharingServicePickerTouchBarItem) SetDelegate(value PSharingServicePick
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickertouchbaritem/2539408-delegate?language=objc
 func (s_ SharingServicePickerTouchBarItem) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that specifies whether the sharing service picker item is enabled. [Full Topic]

@@ -69,7 +69,7 @@ func (cc _CaptureMovieFileOutputClass) Alloc() CaptureMovieFileOutput {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1386479-outputsettingsforconnection?language=objc
 func (c_ CaptureMovieFileOutput) OutputSettingsForConnection(connection ICaptureConnection) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("outputSettingsForConnection:"), objc.Ptr(connection))
+	rv := objc.Call[map[string]objc.Object](c_, objc.Sel("outputSettingsForConnection:"), connection)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func (c_ CaptureMovieFileOutput) SetPrimaryConstituentDeviceSwitchingBehaviorFor
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturemoviefileoutput/1388448-setoutputsettings?language=objc
 func (c_ CaptureMovieFileOutput) SetOutputSettingsForConnection(outputSettings map[string]objc.IObject, connection ICaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("setOutputSettings:forConnection:"), outputSettings, objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("setOutputSettings:forConnection:"), outputSettings, connection)
 }
 
 // The number of seconds of output that are written per fragment. [Full Topic]

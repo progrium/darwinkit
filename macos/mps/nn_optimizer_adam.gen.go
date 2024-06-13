@@ -40,7 +40,7 @@ type INNOptimizerAdam interface {
 	EncodeToCommandBufferBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState)
 	EncodeToCommandBufferObjectBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBufferObject objc.IObject, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState)
 	Beta2() float64
-	Epsilon() float64
+	Epsilon() float32
 	Beta1() float64
 	TimeStep() uint
 	SetTimeStep(value uint)
@@ -59,7 +59,7 @@ func NNOptimizerAdamFrom(ptr unsafe.Pointer) NNOptimizerAdam {
 	}
 }
 
-func (n_ NNOptimizerAdam) InitWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerAdam {
+func (n_ NNOptimizerAdam) InitWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerAdam {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNOptimizerAdam](n_, objc.Sel("initWithDevice:learningRate:"), po0, learningRate)
 	return rv
@@ -68,22 +68,22 @@ func (n_ NNOptimizerAdam) InitWithDeviceLearningRate(device metal.PDevice, learn
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/2966719-initwithdevice?language=objc
-func NewNNOptimizerAdamWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerAdam {
+func NewNNOptimizerAdamWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerAdam {
 	instance := NNOptimizerAdamClass.Alloc().InitWithDeviceLearningRate(device, learningRate)
 	instance.Autorelease()
 	return instance
 }
 
-func (n_ NNOptimizerAdam) InitWithDeviceBeta1Beta2EpsilonTimeStepOptimizerDescriptor(device metal.PDevice, beta1 float64, beta2 float64, epsilon float64, timeStep uint, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerAdam {
+func (n_ NNOptimizerAdam) InitWithDeviceBeta1Beta2EpsilonTimeStepOptimizerDescriptor(device metal.PDevice, beta1 float64, beta2 float64, epsilon float32, timeStep uint, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerAdam {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNOptimizerAdam](n_, objc.Sel("initWithDevice:beta1:beta2:epsilon:timeStep:optimizerDescriptor:"), po0, beta1, beta2, epsilon, timeStep, objc.Ptr(optimizerDescriptor))
+	rv := objc.Call[NNOptimizerAdam](n_, objc.Sel("initWithDevice:beta1:beta2:epsilon:timeStep:optimizerDescriptor:"), po0, beta1, beta2, epsilon, timeStep, optimizerDescriptor)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/2966718-initwithdevice?language=objc
-func NewNNOptimizerAdamWithDeviceBeta1Beta2EpsilonTimeStepOptimizerDescriptor(device metal.PDevice, beta1 float64, beta2 float64, epsilon float64, timeStep uint, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerAdam {
+func NewNNOptimizerAdamWithDeviceBeta1Beta2EpsilonTimeStepOptimizerDescriptor(device metal.PDevice, beta1 float64, beta2 float64, epsilon float32, timeStep uint, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerAdam {
 	instance := NNOptimizerAdamClass.Alloc().InitWithDeviceBeta1Beta2EpsilonTimeStepOptimizerDescriptor(device, beta1, beta2, epsilon, timeStep, optimizerDescriptor)
 	instance.Autorelease()
 	return instance
@@ -144,14 +144,14 @@ func NewNNOptimizerAdamWithDevice(device metal.PDevice) NNOptimizerAdam {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175016-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferInputGradientVectorInputValuesVectorInputMomentumVectorInputVelocityVectorMaximumVelocityVectorResultValuesVector(commandBuffer metal.PCommandBuffer, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, inputVelocityVector IVector, maximumVelocityVector IVector, resultValuesVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:maximumVelocityVector:resultValuesVector:"), po0, objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(inputVelocityVector), objc.Ptr(maximumVelocityVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:maximumVelocityVector:resultValuesVector:"), po0, inputGradientVector, inputValuesVector, inputMomentumVector, inputVelocityVector, maximumVelocityVector, resultValuesVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175016-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientVectorInputValuesVectorInputMomentumVectorInputVelocityVectorMaximumVelocityVectorResultValuesVector(commandBufferObject objc.IObject, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, inputVelocityVector IVector, maximumVelocityVector IVector, resultValuesVector IVector) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:maximumVelocityVector:resultValuesVector:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(inputVelocityVector), objc.Ptr(maximumVelocityVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:maximumVelocityVector:resultValuesVector:"), commandBufferObject, inputGradientVector, inputValuesVector, inputMomentumVector, inputVelocityVector, maximumVelocityVector, resultValuesVector)
 }
 
 //	[Full Topic]
@@ -159,14 +159,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientVectorInputVal
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3197825-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferInputGradientMatrixInputValuesMatrixInputMomentumMatrixInputVelocityMatrixMaximumVelocityMatrixResultValuesMatrix(commandBuffer metal.PCommandBuffer, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, inputVelocityMatrix IMatrix, maximumVelocityMatrix IMatrix, resultValuesMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:maximumVelocityMatrix:resultValuesMatrix:"), po0, objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(inputVelocityMatrix), objc.Ptr(maximumVelocityMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:maximumVelocityMatrix:resultValuesMatrix:"), po0, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, inputVelocityMatrix, maximumVelocityMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3197825-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientMatrixInputValuesMatrixInputMomentumMatrixInputVelocityMatrixMaximumVelocityMatrixResultValuesMatrix(commandBufferObject objc.IObject, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, inputVelocityMatrix IMatrix, maximumVelocityMatrix IMatrix, resultValuesMatrix IMatrix) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:maximumVelocityMatrix:resultValuesMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(inputVelocityMatrix), objc.Ptr(maximumVelocityMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:maximumVelocityMatrix:resultValuesMatrix:"), commandBufferObject, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, inputVelocityMatrix, maximumVelocityMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
@@ -174,14 +174,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientMatrixInputVal
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3019334-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferBatchNormalizationStateInputMomentumVectorsInputVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, objc.Ptr(batchNormalizationState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, batchNormalizationState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3019334-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationStateInputMomentumVectorsInputVelocityVectorsResultState(commandBufferObject objc.IObject, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:resultState:"), commandBufferObject, batchNormalizationState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -189,14 +189,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationStateInpu
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3013782-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsInputVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, convolutionGradientState, convolutionSourceState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3013782-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsInputVelocityVectorsResultState(commandBufferObject objc.IObject, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), commandBufferObject, convolutionGradientState, convolutionSourceState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -204,14 +204,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectConvolutionGradientStateCon
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/2966716-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferInputGradientVectorInputValuesVectorInputMomentumVectorInputVelocityVectorResultValuesVector(commandBuffer metal.PCommandBuffer, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, inputVelocityVector IVector, resultValuesVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:resultValuesVector:"), po0, objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(inputVelocityVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:resultValuesVector:"), po0, inputGradientVector, inputValuesVector, inputMomentumVector, inputVelocityVector, resultValuesVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/2966716-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientVectorInputValuesVectorInputMomentumVectorInputVelocityVectorResultValuesVector(commandBufferObject objc.IObject, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, inputVelocityVector IVector, resultValuesVector IVector) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:resultValuesVector:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(inputVelocityVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:inputVelocityVector:resultValuesVector:"), commandBufferObject, inputGradientVector, inputValuesVector, inputMomentumVector, inputVelocityVector, resultValuesVector)
 }
 
 //	[Full Topic]
@@ -219,14 +219,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientVectorInputVal
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3197826-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferInputGradientMatrixInputValuesMatrixInputMomentumMatrixInputVelocityMatrixResultValuesMatrix(commandBuffer metal.PCommandBuffer, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, inputVelocityMatrix IMatrix, resultValuesMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:resultValuesMatrix:"), po0, objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(inputVelocityMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:resultValuesMatrix:"), po0, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, inputVelocityMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3197826-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientMatrixInputValuesMatrixInputMomentumMatrixInputVelocityMatrixResultValuesMatrix(commandBufferObject objc.IObject, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, inputVelocityMatrix IMatrix, resultValuesMatrix IMatrix) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:resultValuesMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(inputVelocityMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:inputVelocityMatrix:resultValuesMatrix:"), commandBufferObject, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, inputVelocityMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
@@ -234,14 +234,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectInputGradientMatrixInputVal
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175015-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, convolutionGradientState, convolutionSourceState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175015-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBufferObject objc.IObject, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), commandBufferObject, convolutionGradientState, convolutionSourceState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -249,14 +249,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectConvolutionGradientStateCon
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175014-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferBatchNormalizationStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, objc.Ptr(batchNormalizationState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, batchNormalizationState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175014-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBufferObject objc.IObject, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), commandBufferObject, batchNormalizationState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -264,14 +264,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationStateInpu
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3013781-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), po0, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3013781-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsResultState(commandBufferObject objc.IObject, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, inputVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:resultState:"), commandBufferObject, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, inputVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -279,14 +279,14 @@ func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationGradientS
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175013-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), po0, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/3175013-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerAdam) EncodeToCommandBufferObjectBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsInputVelocityVectorsMaximumVelocityVectorsResultState(commandBufferObject objc.IObject, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, inputVelocityVectors []IVector, maximumVelocityVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:inputVelocityVectors:maximumVelocityVectors:resultState:"), commandBufferObject, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, inputVelocityVectors, maximumVelocityVectors, resultState)
 }
 
 //	[Full Topic]
@@ -300,8 +300,8 @@ func (n_ NNOptimizerAdam) Beta2() float64 {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizeradam/2966717-epsilon?language=objc
-func (n_ NNOptimizerAdam) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNOptimizerAdam) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 

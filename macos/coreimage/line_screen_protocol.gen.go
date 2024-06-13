@@ -20,19 +20,19 @@ type PLineScreen interface {
 	HasCenter() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PLineScreen interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -90,7 +90,7 @@ func (l_ LineScreenObject) HasSetWidth() bool {
 // The distance between lines in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228540-width?language=objc
-func (l_ LineScreenObject) SetWidth(value float64) {
+func (l_ LineScreenObject) SetWidth(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setWidth:"), value)
 }
 
@@ -101,8 +101,8 @@ func (l_ LineScreenObject) HasWidth() bool {
 // The distance between lines in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228540-width?language=objc
-func (l_ LineScreenObject) Width() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("width"))
+func (l_ LineScreenObject) Width() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("width"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (l_ LineScreenObject) HasSetSharpness() bool {
 // The sharpness of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
-func (l_ LineScreenObject) SetSharpness(value float64) {
+func (l_ LineScreenObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setSharpness:"), value)
 }
 
@@ -124,8 +124,8 @@ func (l_ LineScreenObject) HasSharpness() bool {
 // The sharpness of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228539-sharpness?language=objc
-func (l_ LineScreenObject) Sharpness() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("sharpness"))
+func (l_ LineScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("sharpness"))
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (l_ LineScreenObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228538-inputimage?language=objc
 func (l_ LineScreenObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
 }
 
 func (l_ LineScreenObject) HasInputImage() bool {
@@ -159,7 +159,7 @@ func (l_ LineScreenObject) HasSetAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228536-angle?language=objc
-func (l_ LineScreenObject) SetAngle(value float64) {
+func (l_ LineScreenObject) SetAngle(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setAngle:"), value)
 }
 
@@ -170,7 +170,7 @@ func (l_ LineScreenObject) HasAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilinescreen/3228536-angle?language=objc
-func (l_ LineScreenObject) Angle() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("angle"))
+func (l_ LineScreenObject) Angle() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("angle"))
 	return rv
 }

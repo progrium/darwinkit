@@ -107,12 +107,12 @@ func NewMatrixDecompositionCholeskyWithDevice(device metal.PDevice) MatrixDecomp
 func (m_ MatrixDecompositionCholesky) EncodeToCommandBufferSourceMatrixResultMatrixStatus(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, resultMatrix IMatrix, status metal.PBuffer) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po3 := objc.WrapAsProtocol("MTLBuffer", status)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:status:"), po0, objc.Ptr(sourceMatrix), objc.Ptr(resultMatrix), po3)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:status:"), po0, sourceMatrix, resultMatrix, po3)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixdecompositioncholesky/2867004-encodetocommandbuffer?language=objc
 func (m_ MatrixDecompositionCholesky) EncodeToCommandBufferObjectSourceMatrixResultMatrixStatusObject(commandBufferObject objc.IObject, sourceMatrix IMatrix, resultMatrix IMatrix, statusObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:status:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), objc.Ptr(resultMatrix), objc.Ptr(statusObject))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:status:"), commandBufferObject, sourceMatrix, resultMatrix, statusObject)
 }

@@ -59,7 +59,7 @@ func (c_ ContactViewController) Init() ContactViewController {
 }
 
 func (c_ ContactViewController) InitWithNibNameBundle(nibNameOrNil appkit.NibName, nibBundleOrNil foundation.IBundle) ContactViewController {
-	rv := objc.Call[ContactViewController](c_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[ContactViewController](c_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -99,5 +99,5 @@ func (c_ ContactViewController) Contact() contacts.Contact {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactviewcontroller/1522596-contact?language=objc
 func (c_ ContactViewController) SetContact(value contacts.IContact) {
-	objc.Call[objc.Void](c_, objc.Sel("setContact:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setContact:"), value)
 }

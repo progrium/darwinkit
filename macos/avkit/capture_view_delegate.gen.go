@@ -55,5 +55,5 @@ func (c_ CaptureViewDelegateObject) HasCaptureViewStartRecordingToFileOutput() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avcaptureviewdelegate/1519138-captureview?language=objc
 func (c_ CaptureViewDelegateObject) CaptureViewStartRecordingToFileOutput(captureView CaptureView, fileOutput avfoundation.CaptureFileOutput) {
-	objc.Call[objc.Void](c_, objc.Sel("captureView:startRecordingToFileOutput:"), objc.Ptr(captureView), objc.Ptr(fileOutput))
+	objc.Call[objc.Void](c_, objc.Sel("captureView:startRecordingToFileOutput:"), captureView, fileOutput)
 }

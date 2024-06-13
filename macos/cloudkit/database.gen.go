@@ -72,7 +72,7 @@ func (d_ Database) Init() Database {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449114-saverecord?language=objc
 func (d_ Database) SaveRecordCompletionHandler(record IRecord, completionHandler func(record Record, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("saveRecord:completionHandler:"), objc.Ptr(record), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("saveRecord:completionHandler:"), record, completionHandler)
 }
 
 // Deletes a specific subscription and delivers the deleted subscription’s identifier to a completion handler. [Full Topic]
@@ -86,14 +86,14 @@ func (d_ Database) DeleteSubscriptionWithIDCompletionHandler(subscriptionID Subs
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449127-performquery?language=objc
 func (d_ Database) PerformQueryInZoneWithIDCompletionHandler(query IQuery, zoneID IRecordZoneID, completionHandler func(results []Record, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("performQuery:inZoneWithID:completionHandler:"), objc.Ptr(query), objc.Ptr(zoneID), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("performQuery:inZoneWithID:completionHandler:"), query, zoneID, completionHandler)
 }
 
 // Saves a specific subscription. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449102-savesubscription?language=objc
 func (d_ Database) SaveSubscriptionCompletionHandler(subscription ISubscription, completionHandler func(subscription Subscription, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("saveSubscription:completionHandler:"), objc.Ptr(subscription), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("saveSubscription:completionHandler:"), subscription, completionHandler)
 }
 
 // Fetches a specific subscription and delivers it to a completion handler. [Full Topic]
@@ -107,21 +107,21 @@ func (d_ Database) FetchSubscriptionWithIDCompletionHandler(subscriptionID Subsc
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449122-deleterecordwithid?language=objc
 func (d_ Database) DeleteRecordWithIDCompletionHandler(recordID IRecordID, completionHandler func(recordID RecordID, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("deleteRecordWithID:completionHandler:"), objc.Ptr(recordID), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("deleteRecordWithID:completionHandler:"), recordID, completionHandler)
 }
 
 // Fetches a specific record. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449126-fetchrecordwithid?language=objc
 func (d_ Database) FetchRecordWithIDCompletionHandler(recordID IRecordID, completionHandler func(record Record, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("fetchRecordWithID:completionHandler:"), objc.Ptr(recordID), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("fetchRecordWithID:completionHandler:"), recordID, completionHandler)
 }
 
 // Fetches a specific record zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449104-fetchrecordzonewithid?language=objc
 func (d_ Database) FetchRecordZoneWithIDCompletionHandler(zoneID IRecordZoneID, completionHandler func(zone RecordZone, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("fetchRecordZoneWithID:completionHandler:"), objc.Ptr(zoneID), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("fetchRecordZoneWithID:completionHandler:"), zoneID, completionHandler)
 }
 
 // Fetches all record zones from the current database. [Full Topic]
@@ -142,21 +142,21 @@ func (d_ Database) FetchAllSubscriptionsWithCompletionHandler(completionHandler 
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449118-deleterecordzonewithid?language=objc
 func (d_ Database) DeleteRecordZoneWithIDCompletionHandler(zoneID IRecordZoneID, completionHandler func(zoneID RecordZoneID, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("deleteRecordZoneWithID:completionHandler:"), objc.Ptr(zoneID), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("deleteRecordZoneWithID:completionHandler:"), zoneID, completionHandler)
 }
 
 // Saves a specific record zone. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449108-saverecordzone?language=objc
 func (d_ Database) SaveRecordZoneCompletionHandler(zone IRecordZone, completionHandler func(zone RecordZone, error foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("saveRecordZone:completionHandler:"), objc.Ptr(zone), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("saveRecordZone:completionHandler:"), zone, completionHandler)
 }
 
 // Executes the specified operation in the current database. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabase/1449116-addoperation?language=objc
 func (d_ Database) AddOperation(operation IDatabaseOperation) {
-	objc.Call[objc.Void](d_, objc.Sel("addOperation:"), objc.Ptr(operation))
+	objc.Call[objc.Void](d_, objc.Sel("addOperation:"), operation)
 }
 
 // The type of database. [Full Topic]

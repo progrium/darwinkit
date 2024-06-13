@@ -384,7 +384,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorCopying
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1410189-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorCopyingItemAtPathToPath(fileManager FileManager, error Error, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:copyingItemAtPath:toPath:"), objc.Ptr(fileManager), objc.Ptr(error), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:copyingItemAtPath:toPath:"), fileManager, error, srcPath, dstPath)
 	return rv
 }
 
@@ -396,7 +396,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldMoveItemAtPathToPath() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1407734-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldMoveItemAtPathToPath(fileManager FileManager, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldMoveItemAtPath:toPath:"), objc.Ptr(fileManager), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldMoveItemAtPath:toPath:"), fileManager, srcPath, dstPath)
 	return rv
 }
 
@@ -408,7 +408,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorMovingI
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1411289-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorMovingItemAtURLToURL(fileManager FileManager, error Error, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:movingItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(error), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:movingItemAtURL:toURL:"), fileManager, error, srcURL, dstURL)
 	return rv
 }
 
@@ -420,7 +420,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorCopying
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1410788-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorCopyingItemAtURLToURL(fileManager FileManager, error Error, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:copyingItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(error), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:copyingItemAtURL:toURL:"), fileManager, error, srcURL, dstURL)
 	return rv
 }
 
@@ -432,7 +432,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorLinking
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1415627-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorLinkingItemAtPathToPath(fileManager FileManager, error Error, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:linkingItemAtPath:toPath:"), objc.Ptr(fileManager), objc.Ptr(error), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:linkingItemAtPath:toPath:"), fileManager, error, srcPath, dstPath)
 	return rv
 }
 
@@ -444,7 +444,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldMoveItemAtURLToURL() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1411878-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldMoveItemAtURLToURL(fileManager FileManager, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldMoveItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldMoveItemAtURL:toURL:"), fileManager, srcURL, dstURL)
 	return rv
 }
 
@@ -456,7 +456,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorLinking
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1408003-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorLinkingItemAtURLToURL(fileManager FileManager, error Error, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:linkingItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(error), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:linkingItemAtURL:toURL:"), fileManager, error, srcURL, dstURL)
 	return rv
 }
 
@@ -468,7 +468,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldLinkItemAtPathToPath() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1414699-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldLinkItemAtPathToPath(fileManager FileManager, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldLinkItemAtPath:toPath:"), objc.Ptr(fileManager), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldLinkItemAtPath:toPath:"), fileManager, srcPath, dstPath)
 	return rv
 }
 
@@ -480,7 +480,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorRemovin
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1409791-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorRemovingItemAtPath(fileManager FileManager, error Error, path string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:removingItemAtPath:"), objc.Ptr(fileManager), objc.Ptr(error), path)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:removingItemAtPath:"), fileManager, error, path)
 	return rv
 }
 
@@ -492,7 +492,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldLinkItemAtURLToURL() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1417589-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldLinkItemAtURLToURL(fileManager FileManager, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldLinkItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldLinkItemAtURL:toURL:"), fileManager, srcURL, dstURL)
 	return rv
 }
 
@@ -504,7 +504,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorRemovin
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1408660-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorRemovingItemAtURL(fileManager FileManager, error Error, URL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:removingItemAtURL:"), objc.Ptr(fileManager), objc.Ptr(error), objc.Ptr(URL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:removingItemAtURL:"), fileManager, error, URL)
 	return rv
 }
 
@@ -516,7 +516,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldRemoveItemAtPath() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1412994-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldRemoveItemAtPath(fileManager FileManager, path string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldRemoveItemAtPath:"), objc.Ptr(fileManager), path)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldRemoveItemAtPath:"), fileManager, path)
 	return rv
 }
 
@@ -528,7 +528,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldCopyItemAtPathToPath() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1414922-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldCopyItemAtPathToPath(fileManager FileManager, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldCopyItemAtPath:toPath:"), objc.Ptr(fileManager), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldCopyItemAtPath:toPath:"), fileManager, srcPath, dstPath)
 	return rv
 }
 
@@ -540,7 +540,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldCopyItemAtURLToURL() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1417936-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldCopyItemAtURLToURL(fileManager FileManager, srcURL URL, dstURL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldCopyItemAtURL:toURL:"), objc.Ptr(fileManager), objc.Ptr(srcURL), objc.Ptr(dstURL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldCopyItemAtURL:toURL:"), fileManager, srcURL, dstURL)
 	return rv
 }
 
@@ -552,7 +552,7 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldProceedAfterErrorMovingI
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1412865-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldProceedAfterErrorMovingItemAtPathToPath(fileManager FileManager, error Error, srcPath string, dstPath string) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:movingItemAtPath:toPath:"), objc.Ptr(fileManager), objc.Ptr(error), srcPath, dstPath)
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldProceedAfterError:movingItemAtPath:toPath:"), fileManager, error, srcPath, dstPath)
 	return rv
 }
 
@@ -564,6 +564,6 @@ func (f_ FileManagerDelegateObject) HasFileManagerShouldRemoveItemAtURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilemanagerdelegate/1411918-filemanager?language=objc
 func (f_ FileManagerDelegateObject) FileManagerShouldRemoveItemAtURL(fileManager FileManager, URL URL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldRemoveItemAtURL:"), objc.Ptr(fileManager), objc.Ptr(URL))
+	rv := objc.Call[bool](f_, objc.Sel("fileManager:shouldRemoveItemAtURL:"), fileManager, URL)
 	return rv
 }

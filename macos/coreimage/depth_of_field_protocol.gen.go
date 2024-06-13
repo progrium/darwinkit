@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield?language=objc
 type PDepthOfField interface {
 	// optional
-	SetSaturation(value float64)
+	SetSaturation(value float32)
 	HasSetSaturation() bool
 
 	// optional
-	Saturation() float64
+	Saturation() float32
 	HasSaturation() bool
 
 	// optional
@@ -28,11 +28,11 @@ type PDepthOfField interface {
 	HasPoint1() bool
 
 	// optional
-	SetUnsharpMaskRadius(value float64)
+	SetUnsharpMaskRadius(value float32)
 	HasSetUnsharpMaskRadius() bool
 
 	// optional
-	UnsharpMaskRadius() float64
+	UnsharpMaskRadius() float32
 	HasUnsharpMaskRadius() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PDepthOfField interface {
 	HasPoint0() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -60,11 +60,11 @@ type PDepthOfField interface {
 	HasInputImage() bool
 
 	// optional
-	SetUnsharpMaskIntensity(value float64)
+	SetUnsharpMaskIntensity(value float32)
 	HasSetUnsharpMaskIntensity() bool
 
 	// optional
-	UnsharpMaskIntensity() float64
+	UnsharpMaskIntensity() float32
 	HasUnsharpMaskIntensity() bool
 }
 
@@ -83,7 +83,7 @@ func (d_ DepthOfFieldObject) HasSetSaturation() bool {
 // The amount to adjust the saturation by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228208-saturation?language=objc
-func (d_ DepthOfFieldObject) SetSaturation(value float64) {
+func (d_ DepthOfFieldObject) SetSaturation(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setSaturation:"), value)
 }
 
@@ -94,8 +94,8 @@ func (d_ DepthOfFieldObject) HasSaturation() bool {
 // The amount to adjust the saturation by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228208-saturation?language=objc
-func (d_ DepthOfFieldObject) Saturation() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("saturation"))
+func (d_ DepthOfFieldObject) Saturation() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("saturation"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (d_ DepthOfFieldObject) HasSetUnsharpMaskRadius() bool {
 // The radius of the unsharp mask effect applied to the in-focus area. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228210-unsharpmaskradius?language=objc
-func (d_ DepthOfFieldObject) SetUnsharpMaskRadius(value float64) {
+func (d_ DepthOfFieldObject) SetUnsharpMaskRadius(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setUnsharpMaskRadius:"), value)
 }
 
@@ -140,8 +140,8 @@ func (d_ DepthOfFieldObject) HasUnsharpMaskRadius() bool {
 // The radius of the unsharp mask effect applied to the in-focus area. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228210-unsharpmaskradius?language=objc
-func (d_ DepthOfFieldObject) UnsharpMaskRadius() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("unsharpMaskRadius"))
+func (d_ DepthOfFieldObject) UnsharpMaskRadius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("unsharpMaskRadius"))
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (d_ DepthOfFieldObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228207-radius?language=objc
-func (d_ DepthOfFieldObject) SetRadius(value float64) {
+func (d_ DepthOfFieldObject) SetRadius(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setRadius:"), value)
 }
 
@@ -186,8 +186,8 @@ func (d_ DepthOfFieldObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228207-radius?language=objc
-func (d_ DepthOfFieldObject) Radius() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("radius"))
+func (d_ DepthOfFieldObject) Radius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("radius"))
 	return rv
 }
 
@@ -199,7 +199,7 @@ func (d_ DepthOfFieldObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228204-inputimage?language=objc
 func (d_ DepthOfFieldObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DepthOfFieldObject) HasInputImage() bool {
@@ -221,7 +221,7 @@ func (d_ DepthOfFieldObject) HasSetUnsharpMaskIntensity() bool {
 // The intensity of the unsharp mask effect applied to the in-focus area. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228209-unsharpmaskintensity?language=objc
-func (d_ DepthOfFieldObject) SetUnsharpMaskIntensity(value float64) {
+func (d_ DepthOfFieldObject) SetUnsharpMaskIntensity(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setUnsharpMaskIntensity:"), value)
 }
 
@@ -232,7 +232,7 @@ func (d_ DepthOfFieldObject) HasUnsharpMaskIntensity() bool {
 // The intensity of the unsharp mask effect applied to the in-focus area. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthoffield/3228209-unsharpmaskintensity?language=objc
-func (d_ DepthOfFieldObject) UnsharpMaskIntensity() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("unsharpMaskIntensity"))
+func (d_ DepthOfFieldObject) UnsharpMaskIntensity() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("unsharpMaskIntensity"))
 	return rv
 }

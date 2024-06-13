@@ -12,27 +12,27 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion?language=objc
 type PTorusLensDistortion interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetRefraction(value float64)
+	SetRefraction(value float32)
 	HasSetRefraction() bool
 
 	// optional
-	Refraction() float64
+	Refraction() float32
 	HasRefraction() bool
 
 	// optional
@@ -67,7 +67,7 @@ func (t_ TorusLensDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600199-radius?language=objc
-func (t_ TorusLensDistortionObject) SetRadius(value float64) {
+func (t_ TorusLensDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setRadius:"), value)
 }
 
@@ -78,8 +78,8 @@ func (t_ TorusLensDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600199-radius?language=objc
-func (t_ TorusLensDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("radius"))
+func (t_ TorusLensDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("radius"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (t_ TorusLensDistortionObject) HasSetWidth() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600201-width?language=objc
-func (t_ TorusLensDistortionObject) SetWidth(value float64) {
+func (t_ TorusLensDistortionObject) SetWidth(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setWidth:"), value)
 }
 
@@ -101,8 +101,8 @@ func (t_ TorusLensDistortionObject) HasWidth() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600201-width?language=objc
-func (t_ TorusLensDistortionObject) Width() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("width"))
+func (t_ TorusLensDistortionObject) Width() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("width"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (t_ TorusLensDistortionObject) HasSetRefraction() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600200-refraction?language=objc
-func (t_ TorusLensDistortionObject) SetRefraction(value float64) {
+func (t_ TorusLensDistortionObject) SetRefraction(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setRefraction:"), value)
 }
 
@@ -124,8 +124,8 @@ func (t_ TorusLensDistortionObject) HasRefraction() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600200-refraction?language=objc
-func (t_ TorusLensDistortionObject) Refraction() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("refraction"))
+func (t_ TorusLensDistortionObject) Refraction() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("refraction"))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (t_ TorusLensDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citoruslensdistortion/3600198-inputimage?language=objc
 func (t_ TorusLensDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TorusLensDistortionObject) HasInputImage() bool {

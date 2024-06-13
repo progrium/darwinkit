@@ -90,7 +90,7 @@ func (d_ DepthStencilDescriptor) BackFaceStencil() StencilDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462507-backfacestencil?language=objc
 func (d_ DepthStencilDescriptor) SetBackFaceStencil(value IStencilDescriptor) {
-	objc.Call[objc.Void](d_, objc.Sel("setBackFaceStencil:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setBackFaceStencil:"), value)
 }
 
 // A string that identifies this object. [Full Topic]
@@ -120,7 +120,7 @@ func (d_ DepthStencilDescriptor) FrontFaceStencil() StencilDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldepthstencildescriptor/1462476-frontfacestencil?language=objc
 func (d_ DepthStencilDescriptor) SetFrontFaceStencil(value IStencilDescriptor) {
-	objc.Call[objc.Void](d_, objc.Sel("setFrontFaceStencil:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setFrontFaceStencil:"), value)
 }
 
 // A Boolean value that indicates whether depth values can be written to the depth attachment. [Full Topic]

@@ -58,7 +58,7 @@ func (r_ RNNRecurrentMatrixState) Init() RNNRecurrentMatrixState {
 
 func (rc _RNNRecurrentMatrixStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentMatrixState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[RNNRecurrentMatrixState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNRecurrentMatrixState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func RNNRecurrentMatrixState_TemporaryStateWithCommandBufferResourceList(command
 
 func (r_ RNNRecurrentMatrixState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNRecurrentMatrixState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentMatrixState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNRecurrentMatrixState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -156,7 +156,7 @@ func RNNRecurrentMatrixState_TemporaryStateWithCommandBuffer(cmdBuf metal.PComma
 
 func (rc _RNNRecurrentMatrixStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNRecurrentMatrixState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNRecurrentMatrixState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNRecurrentMatrixState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func RNNRecurrentMatrixState_TemporaryStateWithCommandBufferTextureDescriptor(cm
 
 func (r_ RNNRecurrentMatrixState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNRecurrentMatrixState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentMatrixState](r_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNRecurrentMatrixState](r_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

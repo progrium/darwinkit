@@ -43,7 +43,7 @@ func BrowserCellFrom(ptr unsafe.Pointer) BrowserCell {
 }
 
 func (b_ BrowserCell) InitImageCell(image IImage) BrowserCell {
-	rv := objc.Call[BrowserCell](b_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[BrowserCell](b_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -108,7 +108,7 @@ func (b_ BrowserCell) Set() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435767-highlightcolorinview?language=objc
 func (b_ BrowserCell) HighlightColorInView(controlView IView) Color {
-	rv := objc.Call[Color](b_, objc.Sel("highlightColorInView:"), objc.Ptr(controlView))
+	rv := objc.Call[Color](b_, objc.Sel("highlightColorInView:"), controlView)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func (b_ BrowserCell) AlternateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowsercell/1435768-alternateimage?language=objc
 func (b_ BrowserCell) SetAlternateImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
 }
 
 // Returns the default image for branch browser cells that are highlighted. [Full Topic]

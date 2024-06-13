@@ -59,7 +59,7 @@ func SplitViewItemFrom(ptr unsafe.Pointer) SplitViewItem {
 }
 
 func (sc _SplitViewItemClass) ContentListWithViewController(viewController IViewController) SplitViewItem {
-	rv := objc.Call[SplitViewItem](sc, objc.Sel("contentListWithViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[SplitViewItem](sc, objc.Sel("contentListWithViewController:"), viewController)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func SplitViewItem_ContentListWithViewController(viewController IViewController)
 }
 
 func (sc _SplitViewItemClass) SplitViewItemWithViewController(viewController IViewController) SplitViewItem {
-	rv := objc.Call[SplitViewItem](sc, objc.Sel("splitViewItemWithViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[SplitViewItem](sc, objc.Sel("splitViewItemWithViewController:"), viewController)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func SplitViewItem_SplitViewItemWithViewController(viewController IViewControlle
 }
 
 func (sc _SplitViewItemClass) SidebarWithViewController(viewController IViewController) SplitViewItem {
-	rv := objc.Call[SplitViewItem](sc, objc.Sel("sidebarWithViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[SplitViewItem](sc, objc.Sel("sidebarWithViewController:"), viewController)
 	return rv
 }
 
@@ -164,7 +164,7 @@ func (s_ SplitViewItem) ViewController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitviewitem/1388911-viewcontroller?language=objc
 func (s_ SplitViewItem) SetViewController(value IViewController) {
-	objc.Call[objc.Void](s_, objc.Sel("setViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setViewController:"), value)
 }
 
 // The maximum thickness of the split view item when it resizes due to automatic sizing. [Full Topic]

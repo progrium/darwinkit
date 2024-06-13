@@ -85,7 +85,7 @@ func (h_ HTTPCookie) Init() HTTPCookie {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookie/1393011-cookieswithresponseheaderfields?language=objc
 func (hc _HTTPCookieClass) CookiesWithResponseHeaderFieldsForURL(headerFields map[string]string, URL IURL) []HTTPCookie {
-	rv := objc.Call[[]HTTPCookie](hc, objc.Sel("cookiesWithResponseHeaderFields:forURL:"), headerFields, objc.Ptr(URL))
+	rv := objc.Call[[]HTTPCookie](hc, objc.Sel("cookiesWithResponseHeaderFields:forURL:"), headerFields, URL)
 	return rv
 }
 

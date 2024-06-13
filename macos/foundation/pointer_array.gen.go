@@ -44,7 +44,7 @@ func PointerArrayFrom(ptr unsafe.Pointer) PointerArray {
 }
 
 func (p_ PointerArray) InitWithPointerFunctions(functions IPointerFunctions) PointerArray {
-	rv := objc.Call[PointerArray](p_, objc.Sel("initWithPointerFunctions:"), objc.Ptr(functions))
+	rv := objc.Call[PointerArray](p_, objc.Sel("initWithPointerFunctions:"), functions)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (p_ PointerArray) PointerAtIndex(index uint) unsafe.Pointer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspointerarray/1564844-pointerarraywithpointerfunctions?language=objc
 func (pc _PointerArrayClass) PointerArrayWithPointerFunctions(functions IPointerFunctions) PointerArray {
-	rv := objc.Call[PointerArray](pc, objc.Sel("pointerArrayWithPointerFunctions:"), objc.Ptr(functions))
+	rv := objc.Call[PointerArray](pc, objc.Sel("pointerArrayWithPointerFunctions:"), functions)
 	return rv
 }
 

@@ -37,7 +37,7 @@ func TintConfigurationFrom(ptr unsafe.Pointer) TintConfiguration {
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithFixedColor(color IColor) TintConfiguration {
-	rv := objc.Call[TintConfiguration](tc, objc.Sel("tintConfigurationWithFixedColor:"), objc.Ptr(color))
+	rv := objc.Call[TintConfiguration](tc, objc.Sel("tintConfigurationWithFixedColor:"), color)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func TintConfiguration_TintConfigurationWithFixedColor(color IColor) TintConfigu
 }
 
 func (tc _TintConfigurationClass) TintConfigurationWithPreferredColor(color IColor) TintConfiguration {
-	rv := objc.Call[TintConfiguration](tc, objc.Sel("tintConfigurationWithPreferredColor:"), objc.Ptr(color))
+	rv := objc.Call[TintConfiguration](tc, objc.Sel("tintConfigurationWithPreferredColor:"), color)
 	return rv
 }
 

@@ -36,7 +36,7 @@ func (u_ URLSchemeHandlerObject) HasWebViewStartURLSchemeTask() bool {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemehandler/2890834-webview?language=objc
 func (u_ URLSchemeHandlerObject) WebViewStartURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskObject) {
 	po1 := objc.WrapAsProtocol("WKURLSchemeTask", urlSchemeTask)
-	objc.Call[objc.Void](u_, objc.Sel("webView:startURLSchemeTask:"), objc.Ptr(webView), po1)
+	objc.Call[objc.Void](u_, objc.Sel("webView:startURLSchemeTask:"), webView, po1)
 }
 
 func (u_ URLSchemeHandlerObject) HasWebViewStopURLSchemeTask() bool {
@@ -48,5 +48,5 @@ func (u_ URLSchemeHandlerObject) HasWebViewStopURLSchemeTask() bool {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemehandler/2890835-webview?language=objc
 func (u_ URLSchemeHandlerObject) WebViewStopURLSchemeTask(webView WebView, urlSchemeTask URLSchemeTaskObject) {
 	po1 := objc.WrapAsProtocol("WKURLSchemeTask", urlSchemeTask)
-	objc.Call[objc.Void](u_, objc.Sel("webView:stopURLSchemeTask:"), objc.Ptr(webView), po1)
+	objc.Call[objc.Void](u_, objc.Sel("webView:stopURLSchemeTask:"), webView, po1)
 }

@@ -157,7 +157,7 @@ func (r_ RenderPassAttachmentDescriptor) SetTexture(value PTexture) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassattachmentdescriptor/1437958-texture?language=objc
 func (r_ RenderPassAttachmentDescriptor) SetTextureObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setTexture:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setTexture:"), valueObject)
 }
 
 // The destination texture used when resolving multisampled texture data into single sample values. [Full Topic]
@@ -180,7 +180,7 @@ func (r_ RenderPassAttachmentDescriptor) SetResolveTexture(value PTexture) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassattachmentdescriptor/1437926-resolvetexture?language=objc
 func (r_ RenderPassAttachmentDescriptor) SetResolveTextureObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setResolveTexture:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setResolveTexture:"), valueObject)
 }
 
 // The mipmap level of the texture used for the multisample resolve action. [Full Topic]

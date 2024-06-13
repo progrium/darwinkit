@@ -35,7 +35,7 @@ func (c_ ColorInvertObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorinvert/3228155-inputimage?language=objc
 func (c_ ColorInvertObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorInvertObject) HasInputImage() bool {

@@ -106,12 +106,12 @@ func NewMatrixSolveLUWithDevice(device metal.PDevice) MatrixSolveLU {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsolvelu/2867074-encodetocommandbuffer?language=objc
 func (m_ MatrixSolveLU) EncodeToCommandBufferSourceMatrixRightHandSideMatrixPivotIndicesSolutionMatrix(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, rightHandSideMatrix IMatrix, pivotIndices IMatrix, solutionMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:pivotIndices:solutionMatrix:"), po0, objc.Ptr(sourceMatrix), objc.Ptr(rightHandSideMatrix), objc.Ptr(pivotIndices), objc.Ptr(solutionMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:pivotIndices:solutionMatrix:"), po0, sourceMatrix, rightHandSideMatrix, pivotIndices, solutionMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsolvelu/2867074-encodetocommandbuffer?language=objc
 func (m_ MatrixSolveLU) EncodeToCommandBufferObjectSourceMatrixRightHandSideMatrixPivotIndicesSolutionMatrix(commandBufferObject objc.IObject, sourceMatrix IMatrix, rightHandSideMatrix IMatrix, pivotIndices IMatrix, solutionMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:pivotIndices:solutionMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), objc.Ptr(rightHandSideMatrix), objc.Ptr(pivotIndices), objc.Ptr(solutionMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:rightHandSideMatrix:pivotIndices:solutionMatrix:"), commandBufferObject, sourceMatrix, rightHandSideMatrix, pivotIndices, solutionMatrix)
 }

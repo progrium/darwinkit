@@ -35,7 +35,7 @@ func (s_ SRGBToneCurveToLinearObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisrgbtonecurvetolinear/3228698-inputimage?language=objc
 func (s_ SRGBToneCurveToLinearObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SRGBToneCurveToLinearObject) HasInputImage() bool {

@@ -81,7 +81,7 @@ func (c_ CaptureSession) Init() CaptureSession {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1390041-removeconnection?language=objc
 func (c_ CaptureSession) RemoveConnection(connection ICaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("removeConnection:"), objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("removeConnection:"), connection)
 }
 
 // Determines whether you can configure a capture session with the specified preset. [Full Topic]
@@ -96,14 +96,14 @@ func (c_ CaptureSession) CanSetSessionPreset(preset CaptureSessionPreset) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1388073-removeinput?language=objc
 func (c_ CaptureSession) RemoveInput(input ICaptureInput) {
-	objc.Call[objc.Void](c_, objc.Sel("removeInput:"), objc.Ptr(input))
+	objc.Call[objc.Void](c_, objc.Sel("removeInput:"), input)
 }
 
 // Determines whether a you can add a connection to a capture session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1389596-canaddconnection?language=objc
 func (c_ CaptureSession) CanAddConnection(connection ICaptureConnection) bool {
-	rv := objc.Call[bool](c_, objc.Sel("canAddConnection:"), objc.Ptr(connection))
+	rv := objc.Call[bool](c_, objc.Sel("canAddConnection:"), connection)
 	return rv
 }
 
@@ -118,14 +118,14 @@ func (c_ CaptureSession) StartRunning() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1387325-addoutput?language=objc
 func (c_ CaptureSession) AddOutput(output ICaptureOutput) {
-	objc.Call[objc.Void](c_, objc.Sel("addOutput:"), objc.Ptr(output))
+	objc.Call[objc.Void](c_, objc.Sel("addOutput:"), output)
 }
 
 // Determines whether you can add an output to a session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1388944-canaddoutput?language=objc
 func (c_ CaptureSession) CanAddOutput(output ICaptureOutput) bool {
-	rv := objc.Call[bool](c_, objc.Sel("canAddOutput:"), objc.Ptr(output))
+	rv := objc.Call[bool](c_, objc.Sel("canAddOutput:"), output)
 	return rv
 }
 
@@ -133,35 +133,35 @@ func (c_ CaptureSession) CanAddOutput(output ICaptureOutput) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1388709-addoutputwithnoconnections?language=objc
 func (c_ CaptureSession) AddOutputWithNoConnections(output ICaptureOutput) {
-	objc.Call[objc.Void](c_, objc.Sel("addOutputWithNoConnections:"), objc.Ptr(output))
+	objc.Call[objc.Void](c_, objc.Sel("addOutputWithNoConnections:"), output)
 }
 
 // Adds a capture input to a session without forming any connections. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1390383-addinputwithnoconnections?language=objc
 func (c_ CaptureSession) AddInputWithNoConnections(input ICaptureInput) {
-	objc.Call[objc.Void](c_, objc.Sel("addInputWithNoConnections:"), objc.Ptr(input))
+	objc.Call[objc.Void](c_, objc.Sel("addInputWithNoConnections:"), input)
 }
 
 // Adds a capture input to the session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1387239-addinput?language=objc
 func (c_ CaptureSession) AddInput(input ICaptureInput) {
-	objc.Call[objc.Void](c_, objc.Sel("addInput:"), objc.Ptr(input))
+	objc.Call[objc.Void](c_, objc.Sel("addInput:"), input)
 }
 
 // Removes an output from a capture session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1385688-removeoutput?language=objc
 func (c_ CaptureSession) RemoveOutput(output ICaptureOutput) {
-	objc.Call[objc.Void](c_, objc.Sel("removeOutput:"), objc.Ptr(output))
+	objc.Call[objc.Void](c_, objc.Sel("removeOutput:"), output)
 }
 
 // Determines whether you can add an input to a session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1387180-canaddinput?language=objc
 func (c_ CaptureSession) CanAddInput(input ICaptureInput) bool {
-	rv := objc.Call[bool](c_, objc.Sel("canAddInput:"), objc.Ptr(input))
+	rv := objc.Call[bool](c_, objc.Sel("canAddInput:"), input)
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (c_ CaptureSession) StopRunning() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturesession/1389687-addconnection?language=objc
 func (c_ CaptureSession) AddConnection(connection ICaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("addConnection:"), objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("addConnection:"), connection)
 }
 
 // Marks the beginning of changes to a running capture session’s configuration to perform in a single atomic update. [Full Topic]

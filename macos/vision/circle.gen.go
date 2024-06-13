@@ -39,7 +39,7 @@ func CircleFrom(ptr unsafe.Pointer) Circle {
 }
 
 func (c_ Circle) InitWithCenterRadius(center IPoint, radius float64) Circle {
-	rv := objc.Call[Circle](c_, objc.Sel("initWithCenter:radius:"), objc.Ptr(center), radius)
+	rv := objc.Call[Circle](c_, objc.Sel("initWithCenter:radius:"), center, radius)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func NewCircleWithCenterRadius(center IPoint, radius float64) Circle {
 }
 
 func (c_ Circle) InitWithCenterDiameter(center IPoint, diameter float64) Circle {
-	rv := objc.Call[Circle](c_, objc.Sel("initWithCenter:diameter:"), objc.Ptr(center), diameter)
+	rv := objc.Call[Circle](c_, objc.Sel("initWithCenter:diameter:"), center, diameter)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (c_ Circle) Init() Circle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548314-containspoint?language=objc
 func (c_ Circle) ContainsPointInCircumferentialRingOfWidth(point IPoint, ringWidth float64) bool {
-	rv := objc.Call[bool](c_, objc.Sel("containsPoint:inCircumferentialRingOfWidth:"), objc.Ptr(point), ringWidth)
+	rv := objc.Call[bool](c_, objc.Sel("containsPoint:inCircumferentialRingOfWidth:"), point, ringWidth)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (c_ Circle) ContainsPointInCircumferentialRingOfWidth(point IPoint, ringWid
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncircle/3548313-containspoint?language=objc
 func (c_ Circle) ContainsPoint(point IPoint) bool {
-	rv := objc.Call[bool](c_, objc.Sel("containsPoint:"), objc.Ptr(point))
+	rv := objc.Call[bool](c_, objc.Sel("containsPoint:"), point)
 	return rv
 }
 

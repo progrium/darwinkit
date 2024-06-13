@@ -137,5 +137,5 @@ func (m_ MassFormatter) NumberFormatter() NumberFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmassformatter/1418462-numberformatter?language=objc
 func (m_ MassFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.Call[objc.Void](m_, objc.Sel("setNumberFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setNumberFormatter:"), value)
 }

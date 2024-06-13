@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator?language=objc
 type PAttributedTextImageGenerator interface {
 	// optional
-	SetScaleFactor(value float64)
+	SetScaleFactor(value float32)
 	HasSetScaleFactor() bool
 
 	// optional
-	ScaleFactor() float64
+	ScaleFactor() float32
 	HasScaleFactor() bool
 
 	// optional
@@ -43,7 +43,7 @@ func (a_ AttributedTextImageGeneratorObject) HasSetScaleFactor() bool {
 // The scale at which to render the text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator/3228060-scalefactor?language=objc
-func (a_ AttributedTextImageGeneratorObject) SetScaleFactor(value float64) {
+func (a_ AttributedTextImageGeneratorObject) SetScaleFactor(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setScaleFactor:"), value)
 }
 
@@ -54,8 +54,8 @@ func (a_ AttributedTextImageGeneratorObject) HasScaleFactor() bool {
 // The scale at which to render the text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator/3228060-scalefactor?language=objc
-func (a_ AttributedTextImageGeneratorObject) ScaleFactor() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("scaleFactor"))
+func (a_ AttributedTextImageGeneratorObject) ScaleFactor() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("scaleFactor"))
 	return rv
 }
 
@@ -67,7 +67,7 @@ func (a_ AttributedTextImageGeneratorObject) HasSetText() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciattributedtextimagegenerator/3228061-text?language=objc
 func (a_ AttributedTextImageGeneratorObject) SetText(value foundation.AttributedString) {
-	objc.Call[objc.Void](a_, objc.Sel("setText:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setText:"), value)
 }
 
 func (a_ AttributedTextImageGeneratorObject) HasText() bool {

@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither?language=objc
 type PDither interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (d_ DitherObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
-func (d_ DitherObject) SetIntensity(value float64) {
+func (d_ DitherObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setIntensity:"), value)
 }
 
@@ -53,8 +53,8 @@ func (d_ DitherObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228226-intensity?language=objc
-func (d_ DitherObject) Intensity() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("intensity"))
+func (d_ DitherObject) Intensity() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (d_ DitherObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidither/3228225-inputimage?language=objc
 func (d_ DitherObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DitherObject) HasInputImage() bool {

@@ -71,14 +71,14 @@ func (x_ XPCInterface) ClassesForSelectorArgumentIndexOfReply(sel objc.Selector,
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1415555-setclasses?language=objc
 func (x_ XPCInterface) SetClassesForSelectorArgumentIndexOfReply(classes ISet, sel objc.Selector, arg uint, ofReply bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setClasses:forSelector:argumentIndex:ofReply:"), objc.Ptr(classes), sel, arg, ofReply)
+	objc.Call[objc.Void](x_, objc.Sel("setClasses:forSelector:argumentIndex:ofReply:"), classes, sel, arg, ofReply)
 }
 
 // Configures a specific parameter of a method to be sent as a proxy object instead of copied. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1414293-setinterface?language=objc
 func (x_ XPCInterface) SetInterfaceForSelectorArgumentIndexOfReply(ifc IXPCInterface, sel objc.Selector, arg uint, ofReply bool) {
-	objc.Call[objc.Void](x_, objc.Sel("setInterface:forSelector:argumentIndex:ofReply:"), objc.Ptr(ifc), sel, arg, ofReply)
+	objc.Call[objc.Void](x_, objc.Sel("setInterface:forSelector:argumentIndex:ofReply:"), ifc, sel, arg, ofReply)
 }
 
 // Returns the interface previously set for the specified selector and parameter. [Full Topic]
@@ -93,7 +93,7 @@ func (x_ XPCInterface) InterfaceForSelectorArgumentIndexOfReply(sel objc.Selecto
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1410202-interfacewithprotocol?language=objc
 func (xc _XPCInterfaceClass) InterfaceWithProtocol(protocol objc.IProtocol) XPCInterface {
-	rv := objc.Call[XPCInterface](xc, objc.Sel("interfaceWithProtocol:"), objc.Ptr(protocol))
+	rv := objc.Call[XPCInterface](xc, objc.Sel("interfaceWithProtocol:"), protocol)
 	return rv
 }
 
@@ -116,5 +116,5 @@ func (x_ XPCInterface) Protocol() objc.Protocol {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcinterface/1416353-protocol?language=objc
 func (x_ XPCInterface) SetProtocol(value objc.IProtocol) {
-	objc.Call[objc.Void](x_, objc.Sel("setProtocol:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setProtocol:"), value)
 }

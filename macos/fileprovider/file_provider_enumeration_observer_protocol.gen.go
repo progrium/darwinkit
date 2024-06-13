@@ -66,7 +66,7 @@ func (f_ FileProviderEnumerationObserverObject) HasFinishEnumeratingWithError() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerationobserver/2879612-finishenumeratingwitherror?language=objc
 func (f_ FileProviderEnumerationObserverObject) FinishEnumeratingWithError(error foundation.Error) {
-	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
 }
 
 func (f_ FileProviderEnumerationObserverObject) HasSuggestedPageSize() bool {

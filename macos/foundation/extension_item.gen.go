@@ -73,7 +73,7 @@ func (e_ ExtensionItem) AttributedTitle() AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1416592-attributedtitle?language=objc
 func (e_ ExtensionItem) SetAttributedTitle(value IAttributedString) {
-	objc.Call[objc.Void](e_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // An optional array of media data associated with the extension item. [Full Topic]
@@ -103,7 +103,7 @@ func (e_ ExtensionItem) AttributedContentText() AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionitem/1408297-attributedcontenttext?language=objc
 func (e_ ExtensionItem) SetAttributedContentText(value IAttributedString) {
-	objc.Call[objc.Void](e_, objc.Sel("setAttributedContentText:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setAttributedContentText:"), value)
 }
 
 // An optional dictionary of keys and values corresponding to the extension item’s properties. [Full Topic]

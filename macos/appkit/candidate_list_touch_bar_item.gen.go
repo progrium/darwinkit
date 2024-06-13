@@ -159,7 +159,7 @@ func (c_ CandidateListTouchBarItem) SetDelegate(value PCandidateListTouchBarItem
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544820-delegate?language=objc
 func (c_ CandidateListTouchBarItem) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The array of candidate objects previously set by [appkit/nscandidatelisttouchbaritem/setcandidates]. [Full Topic]
@@ -204,7 +204,7 @@ func (c_ CandidateListTouchBarItem) Client() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritem/2544873-client?language=objc
 func (c_ CandidateListTouchBarItem) SetClient(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setClient:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setClient:"), value)
 }
 
 // A Boolean value that controls the visibility of the candidate list. [Full Topic]

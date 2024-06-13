@@ -67,5 +67,5 @@ func (c_ ComputePassSampleBufferAttachmentDescriptorArray) ObjectAtIndexedSubscr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepasssamplebufferattachmentdescriptorarray/3564443-setobject?language=objc
 func (c_ ComputePassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IComputePassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](c_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](c_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

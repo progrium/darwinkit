@@ -24,8 +24,8 @@ type IContentItem interface {
 	SetContainer(value bool)
 	IsPlayable() bool
 	SetPlayable(value bool)
-	PlaybackProgress() float64
-	SetPlaybackProgress(value float64)
+	PlaybackProgress() float32
+	SetPlaybackProgress(value float32)
 	Artwork() MediaItemArtwork
 	SetArtwork(value IMediaItemArtwork)
 	Subtitle() string
@@ -132,15 +132,15 @@ func (c_ ContentItem) SetPlayable(value bool) {
 // The amount of content played for the media item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620153-playbackprogress?language=objc
-func (c_ ContentItem) PlaybackProgress() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("playbackProgress"))
+func (c_ ContentItem) PlaybackProgress() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("playbackProgress"))
 	return rv
 }
 
 // The amount of content played for the media item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620153-playbackprogress?language=objc
-func (c_ ContentItem) SetPlaybackProgress(value float64) {
+func (c_ ContentItem) SetPlaybackProgress(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPlaybackProgress:"), value)
 }
 
@@ -156,7 +156,7 @@ func (c_ ContentItem) Artwork() MediaItemArtwork {
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpcontentitem/1620160-artwork?language=objc
 func (c_ ContentItem) SetArtwork(value IMediaItemArtwork) {
-	objc.Call[objc.Void](c_, objc.Sel("setArtwork:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setArtwork:"), value)
 }
 
 // A secondary designator for the media item. [Full Topic]

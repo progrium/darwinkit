@@ -82,7 +82,7 @@ func (c_ CounterSampleBufferDescriptor) SetCounterSet(value PCounterSet) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcountersamplebufferdescriptor/3081730-counterset?language=objc
 func (c_ CounterSampleBufferDescriptor) SetCounterSetObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setCounterSet:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setCounterSet:"), valueObject)
 }
 
 // The number of instances of a counter set’s data that a counter sample buffer can store. [Full Topic]

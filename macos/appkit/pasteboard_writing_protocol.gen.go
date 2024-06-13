@@ -39,7 +39,7 @@ func (p_ PasteboardWritingObject) HasWritableTypesForPasteboard() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardwriting/1533578-writabletypesforpasteboard?language=objc
 func (p_ PasteboardWritingObject) WritableTypesForPasteboard(pasteboard Pasteboard) []PasteboardType {
-	rv := objc.Call[[]PasteboardType](p_, objc.Sel("writableTypesForPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[[]PasteboardType](p_, objc.Sel("writableTypesForPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -63,6 +63,6 @@ func (p_ PasteboardWritingObject) HasWritingOptionsForTypePasteboard() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardwriting/1525372-writingoptionsfortype?language=objc
 func (p_ PasteboardWritingObject) WritingOptionsForTypePasteboard(type_ PasteboardType, pasteboard Pasteboard) PasteboardWritingOptions {
-	rv := objc.Call[PasteboardWritingOptions](p_, objc.Sel("writingOptionsForType:pasteboard:"), type_, objc.Ptr(pasteboard))
+	rv := objc.Call[PasteboardWritingOptions](p_, objc.Sel("writingOptionsForType:pasteboard:"), type_, pasteboard)
 	return rv
 }

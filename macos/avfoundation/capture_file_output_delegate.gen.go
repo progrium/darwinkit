@@ -77,7 +77,7 @@ func (c_ CaptureFileOutputDelegateObject) HasCaptureOutputShouldProvideSampleAcc
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputdelegate/1388760-captureoutputshouldprovidesample?language=objc
 func (c_ CaptureFileOutputDelegateObject) CaptureOutputShouldProvideSampleAccurateRecordingStart(output CaptureOutput) bool {
-	rv := objc.Call[bool](c_, objc.Sel("captureOutputShouldProvideSampleAccurateRecordingStart:"), objc.Ptr(output))
+	rv := objc.Call[bool](c_, objc.Sel("captureOutputShouldProvideSampleAccurateRecordingStart:"), output)
 	return rv
 }
 
@@ -89,5 +89,5 @@ func (c_ CaptureFileOutputDelegateObject) HasCaptureOutputDidOutputSampleBufferF
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputdelegate/1390096-captureoutput?language=objc
 func (c_ CaptureFileOutputDelegateObject) CaptureOutputDidOutputSampleBufferFromConnection(output CaptureFileOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), objc.Ptr(output), sampleBuffer, objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
 }

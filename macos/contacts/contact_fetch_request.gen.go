@@ -120,7 +120,7 @@ func (c_ ContactFetchRequest) Predicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactfetchrequest/1403080-predicate?language=objc
 func (c_ ContactFetchRequest) SetPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](c_, objc.Sel("setPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setPredicate:"), value)
 }
 
 // The properties to fetch in the returned contacts. [Full Topic]

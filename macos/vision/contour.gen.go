@@ -19,10 +19,10 @@ type _ContourClass struct {
 // An interface definition for the [Contour] class.
 type IContour interface {
 	objc.IObject
-	PolygonApproximationWithEpsilonError(epsilon float64, error foundation.IError) Contour
-	ChildContourAtIndexError(childContourIndex uint, error foundation.IError) Contour
+	PolygonApproximationWithEpsilonError(epsilon float32, error unsafe.Pointer) Contour
+	ChildContourAtIndexError(childContourIndex uint, error unsafe.Pointer) Contour
 	NormalizedPoints() objc.Object
-	AspectRatio() float64
+	AspectRatio() float32
 	IndexPath() foundation.IndexPath
 	ChildContours() []Contour
 	PointCount() int
@@ -66,16 +66,16 @@ func (c_ Contour) Init() Contour {
 // Simplifies the contour to a polygon using a Ramer-Douglas-Peucker algorithm. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3618958-polygonapproximationwithepsilon?language=objc
-func (c_ Contour) PolygonApproximationWithEpsilonError(epsilon float64, error foundation.IError) Contour {
-	rv := objc.Call[Contour](c_, objc.Sel("polygonApproximationWithEpsilon:error:"), epsilon, objc.Ptr(error))
+func (c_ Contour) PolygonApproximationWithEpsilonError(epsilon float32, error unsafe.Pointer) Contour {
+	rv := objc.Call[Contour](c_, objc.Sel("polygonApproximationWithEpsilon:error:"), epsilon, error)
 	return rv
 }
 
 // Retrieves the child contour object at the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3548321-childcontouratindex?language=objc
-func (c_ Contour) ChildContourAtIndexError(childContourIndex uint, error foundation.IError) Contour {
-	rv := objc.Call[Contour](c_, objc.Sel("childContourAtIndex:error:"), childContourIndex, objc.Ptr(error))
+func (c_ Contour) ChildContourAtIndexError(childContourIndex uint, error unsafe.Pointer) Contour {
+	rv := objc.Call[Contour](c_, objc.Sel("childContourAtIndex:error:"), childContourIndex, error)
 	return rv
 }
 
@@ -90,8 +90,8 @@ func (c_ Contour) NormalizedPoints() objc.Object {
 // The aspect ratio of the contour. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontour/3600614-aspectratio?language=objc
-func (c_ Contour) AspectRatio() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("aspectRatio"))
+func (c_ Contour) AspectRatio() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("aspectRatio"))
 	return rv
 }
 

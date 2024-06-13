@@ -72,7 +72,7 @@ func (a_ AssetResourceLoader) SetDelegateQueue(delegate PAssetResourceLoaderDele
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloader/1388314-setdelegate?language=objc
 func (a_ AssetResourceLoader) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // A Boolean value that indicates whether content keys will be loaded as quickly as possible. [Full Topic]

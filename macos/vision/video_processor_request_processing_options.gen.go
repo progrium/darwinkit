@@ -67,5 +67,5 @@ func (v_ VideoProcessorRequestProcessingOptions) Cadence() VideoProcessorCadence
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvideoprocessorrequestprocessingoptions/3675684-cadence?language=objc
 func (v_ VideoProcessorRequestProcessingOptions) SetCadence(value IVideoProcessorCadence) {
-	objc.Call[objc.Void](v_, objc.Sel("setCadence:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setCadence:"), value)
 }

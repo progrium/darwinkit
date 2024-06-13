@@ -22,7 +22,7 @@ type IString interface {
 	CapitalizedStringWithLocale(locale ILocale) string
 	StringByReplacingOccurrencesOfStringWithStringOptionsRange(target string, replacement string, options StringCompareOptions, searchRange Range) string
 	StringByTrimmingCharactersInSet(set ICharacterSet) string
-	CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(outputName string, flag bool, outputArray []string, filterTypes []string) uint
+	CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(outputName unsafe.Pointer, flag bool, outputArray unsafe.Pointer, filterTypes []string) uint
 	RangeOfCharacterFromSetOptionsRange(searchSet ICharacterSet, mask StringCompareOptions, rangeOfReceiverToSearch Range) Range
 	StringByAppendingPathExtension(str string) string
 	UppercaseStringWithLocale(locale ILocale) string
@@ -75,7 +75,7 @@ type IString interface {
 	LocalizedCompare(string_ string) ComparisonResult
 	StringByAppendingPathExtensionForType(contentType objc.IObject) string
 	Compare(string_ string) ComparisonResult
-	WriteToFileAtomicallyEncodingError(path string, useAuxiliaryFile bool, enc StringEncoding, error IError) bool
+	WriteToFileAtomicallyEncodingError(path string, useAuxiliaryFile bool, enc StringEncoding, error unsafe.Pointer) bool
 	LocalizedStandardRangeOfString(str string) Range
 	StringByAppendingPathComponent(str string) string
 	HasPrefix(str string) bool
@@ -87,7 +87,7 @@ type IString interface {
 	DataUsingEncodingAllowLossyConversion(encoding StringEncoding, lossy bool) []byte
 	LocalizedStandardContainsString(str string) bool
 	DrawAtPointWithAttributes(point Point, attrs map[AttributedStringKey]objc.IObject)
-	WriteToURLAtomicallyEncodingError(url IURL, useAuxiliaryFile bool, enc StringEncoding, error IError) bool
+	WriteToURLAtomicallyEncodingError(url IURL, useAuxiliaryFile bool, enc StringEncoding, error unsafe.Pointer) bool
 	CompareOptions(string_ string, mask StringCompareOptions) ComparisonResult
 	GetFileSystemRepresentationMaxLength(cname *uint8, max uint) bool
 	SubstringToIndex(to uint) string
@@ -109,7 +109,7 @@ type IString interface {
 	StringByAbbreviatingWithTildeInPath() string
 	PathComponents() []string
 	PrecomposedStringWithCompatibilityMapping() string
-	FloatValue() float64
+	FloatValue() float32
 	IntegerValue() int
 	BoolValue() bool
 	SmallestEncoding() StringEncoding
@@ -143,27 +143,27 @@ func StringFrom(ptr unsafe.Pointer) String {
 	}
 }
 
-func (sc _StringClass) StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) String {
-	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (sc _StringClass) StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497408-stringwithcontentsofurl?language=objc
-func String_StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) String {
+func String_StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) String {
 	return StringClass.StringWithContentsOfURLUsedEncodingError(url, enc, error)
 }
 
-func (s_ String) InitWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) String {
-	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (s_ String) InitWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414472-initwithcontentsofurl?language=objc
-func NewStringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) String {
+func NewStringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) String {
 	instance := StringClass.Alloc().InitWithContentsOfURLUsedEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
@@ -235,41 +235,41 @@ func String_StringWithFormat(format string, args ...any) String {
 	return StringClass.StringWithFormat(format, args...)
 }
 
-func (sc _StringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) String {
-	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (sc _StringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
-func String_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) String {
+func String_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) String {
 	return StringClass.StringWithContentsOfFileEncodingError(path, enc, error)
 }
 
-func (s_ String) InitWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) String {
-	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (s_ String) InitWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc
-func NewStringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) String {
+func NewStringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) String {
 	instance := StringClass.Alloc().InitWithContentsOfURLEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (sc _StringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) String {
-	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (sc _StringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path and returns by reference the encoding used to interpret the file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497254-stringwithcontentsoffile?language=objc
-func String_StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) String {
+func String_StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) String {
 	return StringClass.StringWithContentsOfFileUsedEncodingError(path, enc, error)
 }
 
@@ -287,15 +287,15 @@ func NewStringWithFormatLocale(format string, locale objc.IObject, args ...any) 
 	return instance
 }
 
-func (sc _StringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) String {
-	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (sc _StringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](sc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
-func String_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) String {
+func String_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) String {
 	return StringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
@@ -367,15 +367,15 @@ func String_StringWithCStringEncoding(cString *uint8, enc StringEncoding) String
 	return StringClass.StringWithCStringEncoding(cString, enc)
 }
 
-func (s_ String) InitWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) String {
-	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (s_ String) InitWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path and returns by reference the encoding used to interpret the characters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1418227-initwithcontentsoffile?language=objc
-func NewStringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) String {
+func NewStringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) String {
 	instance := StringClass.Alloc().InitWithContentsOfFileUsedEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance
@@ -426,15 +426,15 @@ func NewStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Pointer, len
 	return instance
 }
 
-func (s_ String) InitWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) String {
-	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (s_ String) InitWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) String {
+	rv := objc.Call[String](s_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc
-func NewStringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) String {
+func NewStringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) String {
 	instance := StringClass.Alloc().InitWithContentsOfFileEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance
@@ -511,7 +511,7 @@ func NewString() String {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411946-stringbyaddingpercentencodingwit?language=objc
 func (s_ String) StringByAddingPercentEncodingWithAllowedCharacters(allowedCharacters ICharacterSet) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByAddingPercentEncodingWithAllowedCharacters:"), objc.Ptr(allowedCharacters))
+	rv := objc.Call[string](s_, objc.Sel("stringByAddingPercentEncodingWithAllowedCharacters:"), allowedCharacters)
 	return rv
 }
 
@@ -519,7 +519,7 @@ func (s_ String) StringByAddingPercentEncodingWithAllowedCharacters(allowedChara
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414023-capitalizedstringwithlocale?language=objc
 func (s_ String) CapitalizedStringWithLocale(locale ILocale) string {
-	rv := objc.Call[string](s_, objc.Sel("capitalizedStringWithLocale:"), objc.Ptr(locale))
+	rv := objc.Call[string](s_, objc.Sel("capitalizedStringWithLocale:"), locale)
 	return rv
 }
 
@@ -535,14 +535,14 @@ func (s_ String) StringByReplacingOccurrencesOfStringWithStringOptionsRange(targ
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1415462-stringbytrimmingcharactersinset?language=objc
 func (s_ String) StringByTrimmingCharactersInSet(set ICharacterSet) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByTrimmingCharactersInSet:"), objc.Ptr(set))
+	rv := objc.Call[string](s_, objc.Sel("stringByTrimmingCharactersInSet:"), set)
 	return rv
 }
 
 // Interprets the receiver as a path in the file system and attempts to perform filename completion, returning a numeric value that indicates whether a match was possible, and by reference the longest path that matches the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411841-completepathintostring?language=objc
-func (s_ String) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(outputName string, flag bool, outputArray []string, filterTypes []string) uint {
+func (s_ String) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(outputName unsafe.Pointer, flag bool, outputArray unsafe.Pointer, filterTypes []string) uint {
 	rv := objc.Call[uint](s_, objc.Sel("completePathIntoString:caseSensitive:matchesIntoArray:filterTypes:"), outputName, flag, outputArray, filterTypes)
 	return rv
 }
@@ -551,7 +551,7 @@ func (s_ String) CompletePathIntoStringCaseSensitiveMatchesIntoArrayFilterTypes(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411461-rangeofcharacterfromset?language=objc
 func (s_ String) RangeOfCharacterFromSetOptionsRange(searchSet ICharacterSet, mask StringCompareOptions, rangeOfReceiverToSearch Range) Range {
-	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:options:range:"), objc.Ptr(searchSet), mask, rangeOfReceiverToSearch)
+	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:options:range:"), searchSet, mask, rangeOfReceiverToSearch)
 	return rv
 }
 
@@ -567,7 +567,7 @@ func (s_ String) StringByAppendingPathExtension(str string) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413316-uppercasestringwithlocale?language=objc
 func (s_ String) UppercaseStringWithLocale(locale ILocale) string {
-	rv := objc.Call[string](s_, objc.Sel("uppercaseStringWithLocale:"), objc.Ptr(locale))
+	rv := objc.Call[string](s_, objc.Sel("uppercaseStringWithLocale:"), locale)
 	return rv
 }
 
@@ -614,7 +614,7 @@ func (s_ String) PropertyList() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1411930-rangeofcharacterfromset?language=objc
 func (s_ String) RangeOfCharacterFromSet(searchSet ICharacterSet) Range {
-	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:"), objc.Ptr(searchSet))
+	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:"), searchSet)
 	return rv
 }
 
@@ -630,7 +630,7 @@ func (s_ String) StringsByAppendingPaths(paths []string) []string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1417298-lowercasestringwithlocale?language=objc
 func (s_ String) LowercaseStringWithLocale(locale ILocale) string {
-	rv := objc.Call[string](s_, objc.Sel("lowercaseStringWithLocale:"), objc.Ptr(locale))
+	rv := objc.Call[string](s_, objc.Sel("lowercaseStringWithLocale:"), locale)
 	return rv
 }
 
@@ -646,7 +646,7 @@ func (s_ String) CharacterAtIndex(index uint) Unichar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1416898-rangeofcharacterfromset?language=objc
 func (s_ String) RangeOfCharacterFromSetOptions(searchSet ICharacterSet, mask StringCompareOptions) Range {
-	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:options:"), objc.Ptr(searchSet), mask)
+	rv := objc.Call[Range](s_, objc.Sel("rangeOfCharacterFromSet:options:"), searchSet, mask)
 	return rv
 }
 
@@ -654,7 +654,7 @@ func (s_ String) RangeOfCharacterFromSetOptions(searchSet ICharacterSet, mask St
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1524729-boundingrectwithsize?language=objc
 func (s_ String) BoundingRectWithSizeOptionsAttributesContext(size Size, options objc.IObject, attributes map[AttributedStringKey]objc.IObject, context objc.IObject) Rect {
-	rv := objc.Call[Rect](s_, objc.Sel("boundingRectWithSize:options:attributes:context:"), size, objc.Ptr(options), attributes, objc.Ptr(context))
+	rv := objc.Call[Rect](s_, objc.Sel("boundingRectWithSize:options:attributes:context:"), size, options, attributes, context)
 	return rv
 }
 
@@ -803,7 +803,7 @@ func (s_ String) ContainsString(str string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1530195-drawwithrect?language=objc
 func (s_ String) DrawWithRectOptionsAttributesContext(rect Rect, options objc.IObject, attributes map[AttributedStringKey]objc.IObject, context objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("drawWithRect:options:attributes:context:"), rect, objc.Ptr(options), attributes, objc.Ptr(context))
+	objc.Call[objc.Void](s_, objc.Sel("drawWithRect:options:attributes:context:"), rect, options, attributes, context)
 }
 
 // Returns the bounding box size the receiver occupies when drawn with the given attributes. [Full Topic]
@@ -857,7 +857,7 @@ func (s_ String) DrawInRectWithAttributes(rect Rect, attrs map[AttributedStringK
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413779-stringbyfoldingwithoptions?language=objc
 func (s_ String) StringByFoldingWithOptionsLocale(options StringCompareOptions, locale ILocale) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByFoldingWithOptions:locale:"), options, objc.Ptr(locale))
+	rv := objc.Call[string](s_, objc.Sel("stringByFoldingWithOptions:locale:"), options, locale)
 	return rv
 }
 
@@ -888,7 +888,7 @@ func (s_ String) RangeOfComposedCharacterSequenceAtIndex(index uint) Range {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1410120-componentsseparatedbycharactersi?language=objc
 func (s_ String) ComponentsSeparatedByCharactersInSet(separator ICharacterSet) []string {
-	rv := objc.Call[[]string](s_, objc.Sel("componentsSeparatedByCharactersInSet:"), objc.Ptr(separator))
+	rv := objc.Call[[]string](s_, objc.Sel("componentsSeparatedByCharactersInSet:"), separator)
 	return rv
 }
 
@@ -959,7 +959,7 @@ func String_LocalizedNameOfStringEncoding(encoding StringEncoding) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3564809-stringbyappendingpathextensionfo?language=objc
 func (s_ String) StringByAppendingPathExtensionForType(contentType objc.IObject) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByAppendingPathExtensionForType:"), objc.Ptr(contentType))
+	rv := objc.Call[string](s_, objc.Sel("stringByAppendingPathExtensionForType:"), contentType)
 	return rv
 }
 
@@ -974,8 +974,8 @@ func (s_ String) Compare(string_ string) ComparisonResult {
 // Writes the contents of the receiver to a file at a given path using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1407654-writetofile?language=objc
-func (s_ String) WriteToFileAtomicallyEncodingError(path string, useAuxiliaryFile bool, enc StringEncoding, error IError) bool {
-	rv := objc.Call[bool](s_, objc.Sel("writeToFile:atomically:encoding:error:"), path, useAuxiliaryFile, enc, objc.Ptr(error))
+func (s_ String) WriteToFileAtomicallyEncodingError(path string, useAuxiliaryFile bool, enc StringEncoding, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](s_, objc.Sel("writeToFile:atomically:encoding:error:"), path, useAuxiliaryFile, enc, error)
 	return rv
 }
 
@@ -1021,7 +1021,7 @@ func String_PathWithComponents(components []string) string {
 // Returns the string encoding for the given data as detected by attempting to create a string according to the specified encoding options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413576-stringencodingfordata?language=objc
-func (sc _StringClass) StringEncodingForDataEncodingOptionsConvertedStringUsedLossyConversion(data []byte, opts map[StringEncodingDetectionOptionsKey]objc.IObject, string_ string, usedLossyConversion *bool) StringEncoding {
+func (sc _StringClass) StringEncodingForDataEncodingOptionsConvertedStringUsedLossyConversion(data []byte, opts map[StringEncodingDetectionOptionsKey]objc.IObject, string_ unsafe.Pointer, usedLossyConversion *bool) StringEncoding {
 	rv := objc.Call[StringEncoding](sc, objc.Sel("stringEncodingForData:encodingOptions:convertedString:usedLossyConversion:"), data, opts, string_, usedLossyConversion)
 	return rv
 }
@@ -1029,7 +1029,7 @@ func (sc _StringClass) StringEncodingForDataEncodingOptionsConvertedStringUsedLo
 // Returns the string encoding for the given data as detected by attempting to create a string according to the specified encoding options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1413576-stringencodingfordata?language=objc
-func String_StringEncodingForDataEncodingOptionsConvertedStringUsedLossyConversion(data []byte, opts map[StringEncodingDetectionOptionsKey]objc.IObject, string_ string, usedLossyConversion *bool) StringEncoding {
+func String_StringEncodingForDataEncodingOptionsConvertedStringUsedLossyConversion(data []byte, opts map[StringEncodingDetectionOptionsKey]objc.IObject, string_ unsafe.Pointer, usedLossyConversion *bool) StringEncoding {
 	return StringClass.StringEncodingForDataEncodingOptionsConvertedStringUsedLossyConversion(data, opts, string_, usedLossyConversion)
 }
 
@@ -1045,7 +1045,7 @@ func (s_ String) LocalizedStandardCompare(string_ string) ComparisonResult {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1417348-rangeofstring?language=objc
 func (s_ String) RangeOfStringOptionsRangeLocale(searchString string, mask StringCompareOptions, rangeOfReceiverToSearch Range, locale ILocale) Range {
-	rv := objc.Call[Range](s_, objc.Sel("rangeOfString:options:range:locale:"), searchString, mask, rangeOfReceiverToSearch, objc.Ptr(locale))
+	rv := objc.Call[Range](s_, objc.Sel("rangeOfString:options:range:locale:"), searchString, mask, rangeOfReceiverToSearch, locale)
 	return rv
 }
 
@@ -1114,8 +1114,8 @@ func (s_ String) DrawAtPointWithAttributes(point Point, attrs map[AttributedStri
 // Writes the contents of the receiver to the URL specified by url using the specified encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1417341-writetourl?language=objc
-func (s_ String) WriteToURLAtomicallyEncodingError(url IURL, useAuxiliaryFile bool, enc StringEncoding, error IError) bool {
-	rv := objc.Call[bool](s_, objc.Sel("writeToURL:atomically:encoding:error:"), objc.Ptr(url), useAuxiliaryFile, enc, objc.Ptr(error))
+func (s_ String) WriteToURLAtomicallyEncodingError(url IURL, useAuxiliaryFile bool, enc StringEncoding, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](s_, objc.Sel("writeToURL:atomically:encoding:error:"), url, useAuxiliaryFile, enc, error)
 	return rv
 }
 
@@ -1193,7 +1193,7 @@ func (s_ String) ComponentsSeparatedByString(separator string) []string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/3564808-stringbyappendingpathcomponent?language=objc
 func (s_ String) StringByAppendingPathComponentConformingToType(partialName string, contentType objc.IObject) string {
-	rv := objc.Call[string](s_, objc.Sel("stringByAppendingPathComponent:conformingToType:"), partialName, objc.Ptr(contentType))
+	rv := objc.Call[string](s_, objc.Sel("stringByAppendingPathComponent:conformingToType:"), partialName, contentType)
 	return rv
 }
 
@@ -1335,8 +1335,8 @@ func (s_ String) PrecomposedStringWithCompatibilityMapping() string {
 // The floating-point value of the string as a float. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412321-floatvalue?language=objc
-func (s_ String) FloatValue() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("floatValue"))
+func (s_ String) FloatValue() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("floatValue"))
 	return rv
 }
 

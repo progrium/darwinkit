@@ -67,5 +67,5 @@ func (v_ VertexAttributeDescriptorArray) ObjectAtIndexedSubscript(index uint) Ve
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexattributedescriptorarray/1550757-setobject?language=objc
 func (v_ VertexAttributeDescriptorArray) SetObjectAtIndexedSubscript(attributeDesc IVertexAttributeDescriptor, index uint) {
-	objc.Call[objc.Void](v_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attributeDesc), index)
+	objc.Call[objc.Void](v_, objc.Sel("setObject:atIndexedSubscript:"), attributeDesc, index)
 }

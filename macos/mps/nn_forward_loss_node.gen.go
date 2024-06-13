@@ -18,16 +18,16 @@ type _NNForwardLossNodeClass struct {
 // An interface definition for the [NNForwardLossNode] class.
 type INNForwardLossNode interface {
 	INNFilterNode
-	Delta() float64
+	Delta() float32
 	PropertyCallBack() NNLossCallbackObject
 	SetPropertyCallBack(value PNNLossCallback)
 	SetPropertyCallBackObject(valueObject objc.IObject)
 	NumberOfClasses() uint
-	Epsilon() float64
+	Epsilon() float32
 	ReductionType() CNNReductionType
-	LabelSmoothing() float64
+	LabelSmoothing() float32
 	ReduceAcrossBatch() bool
-	Weight() float64
+	Weight() float32
 	LossType() CNNLossType
 }
 
@@ -45,7 +45,7 @@ func NNForwardLossNodeFrom(ptr unsafe.Pointer) NNForwardLossNode {
 }
 
 func (nc _NNForwardLossNodeClass) NodeWithSourceLabelsLossDescriptor(source INNImageNode, labels INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSource:labels:lossDescriptor:"), objc.Ptr(source), objc.Ptr(labels), objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSource:labels:lossDescriptor:"), source, labels, descriptor)
 	return rv
 }
 
@@ -57,7 +57,7 @@ func NNForwardLossNode_NodeWithSourceLabelsLossDescriptor(source INNImageNode, l
 }
 
 func (n_ NNForwardLossNode) InitWithSourcesLossDescriptor(sourceNodes []INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSources:lossDescriptor:"), sourceNodes, objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSources:lossDescriptor:"), sourceNodes, descriptor)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func NewNNForwardLossNodeWithSourcesLossDescriptor(sourceNodes []INNImageNode, d
 }
 
 func (n_ NNForwardLossNode) InitWithSourceLabelsWeightsLossDescriptor(source INNImageNode, labels INNImageNode, weights INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSource:labels:weights:lossDescriptor:"), objc.Ptr(source), objc.Ptr(labels), objc.Ptr(weights), objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSource:labels:weights:lossDescriptor:"), source, labels, weights, descriptor)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func NewNNForwardLossNodeWithSourceLabelsWeightsLossDescriptor(source INNImageNo
 }
 
 func (nc _NNForwardLossNodeClass) NodeWithSourcesLossDescriptor(sourceNodes []INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSources:lossDescriptor:"), sourceNodes, objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSources:lossDescriptor:"), sourceNodes, descriptor)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func NNForwardLossNode_NodeWithSourcesLossDescriptor(sourceNodes []INNImageNode,
 }
 
 func (n_ NNForwardLossNode) InitWithSourceLabelsLossDescriptor(source INNImageNode, labels INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSource:labels:lossDescriptor:"), objc.Ptr(source), objc.Ptr(labels), objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](n_, objc.Sel("initWithSource:labels:lossDescriptor:"), source, labels, descriptor)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func NewNNForwardLossNodeWithSourceLabelsLossDescriptor(source INNImageNode, lab
 }
 
 func (nc _NNForwardLossNodeClass) NodeWithSourceLabelsWeightsLossDescriptor(source INNImageNode, labels INNImageNode, weights INNImageNode, descriptor ICNNLossDescriptor) NNForwardLossNode {
-	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSource:labels:weights:lossDescriptor:"), objc.Ptr(source), objc.Ptr(labels), objc.Ptr(weights), objc.Ptr(descriptor))
+	rv := objc.Call[NNForwardLossNode](nc, objc.Sel("nodeWithSource:labels:weights:lossDescriptor:"), source, labels, weights, descriptor)
 	return rv
 }
 
@@ -145,8 +145,8 @@ func (n_ NNForwardLossNode) Init() NNForwardLossNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardlossnode/3131826-delta?language=objc
-func (n_ NNForwardLossNode) Delta() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("delta"))
+func (n_ NNForwardLossNode) Delta() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("delta"))
 	return rv
 }
 
@@ -170,7 +170,7 @@ func (n_ NNForwardLossNode) SetPropertyCallBack(value PNNLossCallback) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardlossnode/3131841-propertycallback?language=objc
 func (n_ NNForwardLossNode) SetPropertyCallBackObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), valueObject)
 }
 
 //	[Full Topic]
@@ -184,8 +184,8 @@ func (n_ NNForwardLossNode) NumberOfClasses() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardlossnode/3131827-epsilon?language=objc
-func (n_ NNForwardLossNode) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNForwardLossNode) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -200,8 +200,8 @@ func (n_ NNForwardLossNode) ReductionType() CNNReductionType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardlossnode/3131835-labelsmoothing?language=objc
-func (n_ NNForwardLossNode) LabelSmoothing() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("labelSmoothing"))
+func (n_ NNForwardLossNode) LabelSmoothing() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("labelSmoothing"))
 	return rv
 }
 
@@ -216,8 +216,8 @@ func (n_ NNForwardLossNode) ReduceAcrossBatch() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardlossnode/3131843-weight?language=objc
-func (n_ NNForwardLossNode) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNForwardLossNode) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 

@@ -58,7 +58,7 @@ func NewMapTableWithKeyOptionsValueOptionsCapacity(keyOptions PointerFunctionsOp
 }
 
 func (m_ MapTable) InitWithKeyPointerFunctionsValuePointerFunctionsCapacity(keyFunctions IPointerFunctions, valueFunctions IPointerFunctions, initialCapacity uint) MapTable {
-	rv := objc.Call[MapTable](m_, objc.Sel("initWithKeyPointerFunctions:valuePointerFunctions:capacity:"), objc.Ptr(keyFunctions), objc.Ptr(valueFunctions), initialCapacity)
+	rv := objc.Call[MapTable](m_, objc.Sel("initWithKeyPointerFunctions:valuePointerFunctions:capacity:"), keyFunctions, valueFunctions, initialCapacity)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func MapTable_MapTableWithKeyOptionsValueOptions(keyOptions PointerFunctionsOpti
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmaptable/1391461-removeobjectforkey?language=objc
 func (m_ MapTable) RemoveObjectForKey(aKey objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectForKey:"), objc.Ptr(aKey))
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectForKey:"), aKey)
 }
 
 // Returns a new map table object which has strong references to the keys and values. [Full Topic]
@@ -185,7 +185,7 @@ func (m_ MapTable) KeyEnumerator() Enumerator {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmaptable/1391444-objectforkey?language=objc
 func (m_ MapTable) ObjectForKey(aKey objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("objectForKey:"), objc.Ptr(aKey))
+	rv := objc.Call[objc.Object](m_, objc.Sel("objectForKey:"), aKey)
 	return rv
 }
 
@@ -193,7 +193,7 @@ func (m_ MapTable) ObjectForKey(aKey objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmaptable/1391457-setobject?language=objc
 func (m_ MapTable) SetObjectForKey(anObject objc.IObject, aKey objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), objc.Ptr(anObject), objc.Ptr(aKey))
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), anObject, aKey)
 }
 
 // Returns an enumerator object that lets you access each value in the map table. [Full Topic]

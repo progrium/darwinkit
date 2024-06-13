@@ -116,7 +116,7 @@ func (a_ Animation) TimingFunction() MediaTimingFunction {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412456-timingfunction?language=objc
 func (a_ Animation) SetTimingFunction(value IMediaTimingFunction) {
-	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
 }
 
 // For animations attached to SceneKit objects, the duration for transitioning into the animation’s effect as it begins. [Full Topic]
@@ -154,7 +154,7 @@ func (a_ Animation) SetDelegate(value PAnimationDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimation/1412490-delegate?language=objc
 func (a_ Animation) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
 //	[Full Topic]

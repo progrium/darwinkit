@@ -198,7 +198,7 @@ func (l_ LayoutManager) AddTemporaryAttributesForCharacterRange(attrs map[founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1402991-setboundsrect?language=objc
 func (l_ LayoutManager) SetBoundsRectForTextBlockGlyphRange(rect foundation.Rect, block ITextBlock, glyphRange foundation.Range) {
-	objc.Call[objc.Void](l_, objc.Sel("setBoundsRect:forTextBlock:glyphRange:"), rect, objc.Ptr(block), glyphRange)
+	objc.Call[objc.Void](l_, objc.Sel("setBoundsRect:forTextBlock:glyphRange:"), rect, block, glyphRange)
 }
 
 // Returns the temporary attributes for a character, and the maximum range they apply to. [Full Topic]
@@ -213,7 +213,7 @@ func (l_ LayoutManager) TemporaryAttributesAtCharacterIndexLongestEffectiveRange
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403007-defaultlineheightforfont?language=objc
 func (l_ LayoutManager) DefaultLineHeightForFont(theFont IFont) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("defaultLineHeightForFont:"), objc.Ptr(theFont))
+	rv := objc.Call[float64](l_, objc.Sel("defaultLineHeightForFont:"), theFont)
 	return rv
 }
 
@@ -221,7 +221,7 @@ func (l_ LayoutManager) DefaultLineHeightForFont(theFont IFont) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1402956-boundsrectfortextblock?language=objc
 func (l_ LayoutManager) BoundsRectForTextBlockAtIndexEffectiveRange(block ITextBlock, glyphIndex uint, effectiveGlyphRange foundation.RangePointer) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundsRectForTextBlock:atIndex:effectiveRange:"), objc.Ptr(block), glyphIndex, effectiveGlyphRange)
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundsRectForTextBlock:atIndex:effectiveRange:"), block, glyphIndex, effectiveGlyphRange)
 	return rv
 }
 
@@ -229,14 +229,14 @@ func (l_ LayoutManager) BoundsRectForTextBlockAtIndexEffectiveRange(block ITextB
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1402965-showattachmentcell?language=objc
 func (l_ LayoutManager) ShowAttachmentCellInRectCharacterIndex(cell ICell, rect foundation.Rect, attachmentIndex uint) {
-	objc.Call[objc.Void](l_, objc.Sel("showAttachmentCell:inRect:characterIndex:"), objc.Ptr(cell), rect, attachmentIndex)
+	objc.Call[objc.Void](l_, objc.Sel("showAttachmentCell:inRect:characterIndex:"), cell, rect, attachmentIndex)
 }
 
 // Returns the bounding rectangle that encloses the specified text block and glyph range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403138-boundsrectfortextblock?language=objc
 func (l_ LayoutManager) BoundsRectForTextBlockGlyphRange(block ITextBlock, glyphRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundsRectForTextBlock:glyphRange:"), objc.Ptr(block), glyphRange)
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundsRectForTextBlock:glyphRange:"), block, glyphRange)
 	return rv
 }
 
@@ -244,7 +244,7 @@ func (l_ LayoutManager) BoundsRectForTextBlockGlyphRange(block ITextBlock, glyph
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403229-textcontainerchangedtextview?language=objc
 func (l_ LayoutManager) TextContainerChangedTextView(container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("textContainerChangedTextView:"), objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("textContainerChangedTextView:"), container)
 }
 
 // Sets one or more temporary attributes for the specified character range. [Full Topic]
@@ -258,7 +258,7 @@ func (l_ LayoutManager) SetTemporaryAttributesForCharacterRange(attrs map[founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403058-defaultbaselineoffsetforfont?language=objc
 func (l_ LayoutManager) DefaultBaselineOffsetForFont(theFont IFont) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("defaultBaselineOffsetForFont:"), objc.Ptr(theFont))
+	rv := objc.Call[float64](l_, objc.Sel("defaultBaselineOffsetForFont:"), theFont)
 	return rv
 }
 
@@ -273,7 +273,7 @@ func (l_ LayoutManager) RemoveTemporaryAttributeForCharacterRange(attrName found
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403130-ruleraccessoryviewfortextview?language=objc
 func (l_ LayoutManager) RulerAccessoryViewForTextViewParagraphStyleRulerEnabled(view ITextView, style IParagraphStyle, ruler IRulerView, isEnabled bool) View {
-	rv := objc.Call[View](l_, objc.Sel("rulerAccessoryViewForTextView:paragraphStyle:ruler:enabled:"), objc.Ptr(view), objc.Ptr(style), objc.Ptr(ruler), isEnabled)
+	rv := objc.Call[View](l_, objc.Sel("rulerAccessoryViewForTextView:paragraphStyle:ruler:enabled:"), view, style, ruler, isEnabled)
 	return rv
 }
 
@@ -281,14 +281,14 @@ func (l_ LayoutManager) RulerAccessoryViewForTextViewParagraphStyleRulerEnabled(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403227-replacetextstorage?language=objc
 func (l_ LayoutManager) ReplaceTextStorage(newTextStorage ITextStorage) {
-	objc.Call[objc.Void](l_, objc.Sel("replaceTextStorage:"), objc.Ptr(newTextStorage))
+	objc.Call[objc.Void](l_, objc.Sel("replaceTextStorage:"), newTextStorage)
 }
 
 // Sets the layout rectangle that encloses the specified text block and glyph range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1402929-setlayoutrect?language=objc
 func (l_ LayoutManager) SetLayoutRectForTextBlockGlyphRange(rect foundation.Rect, block ITextBlock, glyphRange foundation.Range) {
-	objc.Call[objc.Void](l_, objc.Sel("setLayoutRect:forTextBlock:glyphRange:"), rect, objc.Ptr(block), glyphRange)
+	objc.Call[objc.Void](l_, objc.Sel("setLayoutRect:forTextBlock:glyphRange:"), rect, block, glyphRange)
 }
 
 // Returns the value for the temporary attribute of a character, and the range it applies to. [Full Topic]
@@ -303,7 +303,7 @@ func (l_ LayoutManager) TemporaryAttributeAtCharacterIndexEffectiveRange(attrNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403026-layoutmanagerownsfirstresponderi?language=objc
 func (l_ LayoutManager) LayoutManagerOwnsFirstResponderInWindow(window IWindow) bool {
-	rv := objc.Call[bool](l_, objc.Sel("layoutManagerOwnsFirstResponderInWindow:"), objc.Ptr(window))
+	rv := objc.Call[bool](l_, objc.Sel("layoutManagerOwnsFirstResponderInWindow:"), window)
 	return rv
 }
 
@@ -311,7 +311,7 @@ func (l_ LayoutManager) LayoutManagerOwnsFirstResponderInWindow(window IWindow) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403163-rulermarkersfortextview?language=objc
 func (l_ LayoutManager) RulerMarkersForTextViewParagraphStyleRuler(view ITextView, style IParagraphStyle, ruler IRulerView) []RulerMarker {
-	rv := objc.Call[[]RulerMarker](l_, objc.Sel("rulerMarkersForTextView:paragraphStyle:ruler:"), objc.Ptr(view), objc.Ptr(style), objc.Ptr(ruler))
+	rv := objc.Call[[]RulerMarker](l_, objc.Sel("rulerMarkersForTextView:paragraphStyle:ruler:"), view, style, ruler)
 	return rv
 }
 
@@ -319,7 +319,7 @@ func (l_ LayoutManager) RulerMarkersForTextViewParagraphStyleRuler(view ITextVie
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403201-layoutrectfortextblock?language=objc
 func (l_ LayoutManager) LayoutRectForTextBlockGlyphRange(block ITextBlock, glyphRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutRectForTextBlock:glyphRange:"), objc.Ptr(block), glyphRange)
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutRectForTextBlock:glyphRange:"), block, glyphRange)
 	return rv
 }
 
@@ -334,7 +334,7 @@ func (l_ LayoutManager) AddTemporaryAttributeValueForCharacterRange(attrName fou
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403102-layoutrectfortextblock?language=objc
 func (l_ LayoutManager) LayoutRectForTextBlockAtIndexEffectiveRange(block ITextBlock, glyphIndex uint, effectiveGlyphRange foundation.RangePointer) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutRectForTextBlock:atIndex:effectiveRange:"), objc.Ptr(block), glyphIndex, effectiveGlyphRange)
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutRectForTextBlock:atIndex:effectiveRange:"), block, glyphIndex, effectiveGlyphRange)
 	return rv
 }
 
@@ -350,7 +350,7 @@ func (l_ LayoutManager) TemporaryAttributeAtCharacterIndexLongestEffectiveRangeI
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402946-addtextcontainer?language=objc
 func (l_ LayoutManager) AddTextContainer(container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("addTextContainer:"), objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("addTextContainer:"), container)
 }
 
 // Indicates whether the specified glyph exceeds the bounds of the line fragment for its layout. [Full Topic]
@@ -410,14 +410,14 @@ func (l_ LayoutManager) LineFragmentRectForGlyphAtIndexEffectiveRange(glyphIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402967-ensurelayoutfortextcontainer?language=objc
 func (l_ LayoutManager) EnsureLayoutForTextContainer(container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("ensureLayoutForTextContainer:"), objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("ensureLayoutForTextContainer:"), container)
 }
 
 // Returns the smallest contiguous range for glyphs lying wholly or partially within the specified rectangle of the text container. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403183-glyphrangeforboundingrectwithout?language=objc
 func (l_ LayoutManager) GlyphRangeForBoundingRectWithoutAdditionalLayoutInTextContainer(bounds foundation.Rect, container ITextContainer) foundation.Range {
-	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:"), bounds, objc.Ptr(container))
+	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForBoundingRectWithoutAdditionalLayout:inTextContainer:"), bounds, container)
 	return rv
 }
 
@@ -447,7 +447,7 @@ func (l_ LayoutManager) InvalidateLayoutForCharacterRangeActualCharacterRange(ch
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402980-usedrectfortextcontainer?language=objc
 func (l_ LayoutManager) UsedRectForTextContainer(container ITextContainer) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("usedRectForTextContainer:"), objc.Ptr(container))
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("usedRectForTextContainer:"), container)
 	return rv
 }
 
@@ -485,7 +485,7 @@ func (l_ LayoutManager) InvalidateDisplayForCharacterRange(charRange foundation.
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403010-inserttextcontainer?language=objc
 func (l_ LayoutManager) InsertTextContainerAtIndex(container ITextContainer, index uint) {
-	objc.Call[objc.Void](l_, objc.Sel("insertTextContainer:atIndex:"), objc.Ptr(container), index)
+	objc.Call[objc.Void](l_, objc.Sel("insertTextContainer:atIndex:"), container, index)
 }
 
 // Draws the specified glyphs, which must lie completely within a single text container. [Full Topic]
@@ -523,7 +523,7 @@ func (l_ LayoutManager) CGGlyphAtIndex(glyphIndex uint) coregraphics.Glyph {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/3180379-showcgglyphs?language=objc
 func (l_ LayoutManager) ShowCGGlyphsPositionsCountFontTextMatrixAttributesInContext(glyphs *coregraphics.Glyph, positions *coregraphics.Point, glyphCount int, font IFont, textMatrix coregraphics.AffineTransform, attributes map[foundation.AttributedStringKey]objc.IObject, CGContext coregraphics.ContextRef) {
-	objc.Call[objc.Void](l_, objc.Sel("showCGGlyphs:positions:count:font:textMatrix:attributes:inContext:"), glyphs, positions, glyphCount, objc.Ptr(font), textMatrix, attributes, CGContext)
+	objc.Call[objc.Void](l_, objc.Sel("showCGGlyphs:positions:count:font:textMatrix:attributes:inContext:"), glyphs, positions, glyphCount, font, textMatrix, attributes, CGContext)
 }
 
 // Returns the index in the text storage for the first character of the specified glyph. [Full Topic]
@@ -569,7 +569,7 @@ func (l_ LayoutManager) CharacterRangeForGlyphRangeActualGlyphRange(glyphRange f
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403041-glyphrangefortextcontainer?language=objc
 func (l_ LayoutManager) GlyphRangeForTextContainer(container ITextContainer) foundation.Range {
-	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForTextContainer:"), objc.Ptr(container))
+	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForTextContainer:"), container)
 	return rv
 }
 
@@ -584,7 +584,7 @@ func (l_ LayoutManager) InvalidateGlyphsForCharacterRangeChangeInLengthActualCha
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403021-enumerateenclosingrectsforglyphr?language=objc
 func (l_ LayoutManager) EnumerateEnclosingRectsForGlyphRangeWithinSelectedGlyphRangeInTextContainerUsingBlock(glyphRange foundation.Range, selectedRange foundation.Range, textContainer ITextContainer, block func(rect foundation.Rect, stop *bool)) {
-	objc.Call[objc.Void](l_, objc.Sel("enumerateEnclosingRectsForGlyphRange:withinSelectedGlyphRange:inTextContainer:usingBlock:"), glyphRange, selectedRange, objc.Ptr(textContainer), block)
+	objc.Call[objc.Void](l_, objc.Sel("enumerateEnclosingRectsForGlyphRange:withinSelectedGlyphRange:inTextContainer:usingBlock:"), glyphRange, selectedRange, textContainer, block)
 }
 
 // Returns the glyph property of the glyph at the specified index. [Full Topic]
@@ -606,7 +606,7 @@ func (l_ LayoutManager) InvalidateDisplayForGlyphRange(glyphRange foundation.Ran
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403053-glyphrangeforboundingrect?language=objc
 func (l_ LayoutManager) GlyphRangeForBoundingRectInTextContainer(bounds foundation.Rect, container ITextContainer) foundation.Range {
-	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForBoundingRect:inTextContainer:"), bounds, objc.Ptr(container))
+	rv := objc.Call[foundation.Range](l_, objc.Sel("glyphRangeForBoundingRect:inTextContainer:"), bounds, container)
 	return rv
 }
 
@@ -621,7 +621,7 @@ func (l_ LayoutManager) StrikethroughGlyphRangeStrikethroughTypeLineFragmentRect
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402962-ensurelayoutforboundingrect?language=objc
 func (l_ LayoutManager) EnsureLayoutForBoundingRectInTextContainer(bounds foundation.Rect, container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("ensureLayoutForBoundingRect:inTextContainer:"), bounds, objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("ensureLayoutForBoundingRect:inTextContainer:"), bounds, container)
 }
 
 // Calculates subranges to underline for the specified glyphs and draws the underlining as appropriate. [Full Topic]
@@ -657,7 +657,7 @@ func (l_ LayoutManager) DrawBackgroundForGlyphRangeAtPoint(glyphsToShow foundati
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403065-processeditingfortextstorage?language=objc
 func (l_ LayoutManager) ProcessEditingForTextStorageEditedRangeChangeInLengthInvalidatedRange(textStorage ITextStorage, editMask TextStorageEditActions, newCharRange foundation.Range, delta int, invalidatedCharRange foundation.Range) {
-	objc.Call[objc.Void](l_, objc.Sel("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), objc.Ptr(textStorage), editMask, newCharRange, delta, invalidatedCharRange)
+	objc.Call[objc.Void](l_, objc.Sel("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), textStorage, editMask, newCharRange, delta, invalidatedCharRange)
 }
 
 // Returns the size of the attachment glyph at the specified index. [Full Topic]
@@ -694,7 +694,7 @@ func (l_ LayoutManager) DrawStrikethroughForGlyphRangeStrikethroughTypeBaselineO
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402933-glyphindexforpoint?language=objc
 func (l_ LayoutManager) GlyphIndexForPointInTextContainerFractionOfDistanceThroughGlyph(point foundation.Point, container ITextContainer, partialFraction *float64) uint {
-	rv := objc.Call[uint](l_, objc.Sel("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:"), point, objc.Ptr(container), partialFraction)
+	rv := objc.Call[uint](l_, objc.Sel("glyphIndexForPoint:inTextContainer:fractionOfDistanceThroughGlyph:"), point, container, partialFraction)
 	return rv
 }
 
@@ -710,7 +710,7 @@ func (l_ LayoutManager) GetGlyphsInRangeGlyphsPropertiesCharacterIndexesBidiLeve
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403112-glyphindexforpoint?language=objc
 func (l_ LayoutManager) GlyphIndexForPointInTextContainer(point foundation.Point, container ITextContainer) uint {
-	rv := objc.Call[uint](l_, objc.Sel("glyphIndexForPoint:inTextContainer:"), point, objc.Ptr(container))
+	rv := objc.Call[uint](l_, objc.Sel("glyphIndexForPoint:inTextContainer:"), point, container)
 	return rv
 }
 
@@ -732,7 +732,7 @@ func (l_ LayoutManager) RemoveTextContainerAtIndex(index uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403255-boundingrectforglyphrange?language=objc
 func (l_ LayoutManager) BoundingRectForGlyphRangeInTextContainer(glyphRange foundation.Range, container ITextContainer) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundingRectForGlyphRange:inTextContainer:"), glyphRange, objc.Ptr(container))
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("boundingRectForGlyphRange:inTextContainer:"), glyphRange, container)
 	return rv
 }
 
@@ -755,7 +755,7 @@ func (l_ LayoutManager) EnumerateLineFragmentsForGlyphRangeUsingBlock(glyphRange
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403097-fractionofdistancethroughglyphfo?language=objc
 func (l_ LayoutManager) FractionOfDistanceThroughGlyphForPointInTextContainer(point foundation.Point, container ITextContainer) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("fractionOfDistanceThroughGlyphForPoint:inTextContainer:"), point, objc.Ptr(container))
+	rv := objc.Call[float64](l_, objc.Sel("fractionOfDistanceThroughGlyphForPoint:inTextContainer:"), point, container)
 	return rv
 }
 
@@ -778,7 +778,7 @@ func (l_ LayoutManager) EnsureGlyphsForGlyphRange(glyphRange foundation.Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403028-characterindexforpoint?language=objc
 func (l_ LayoutManager) CharacterIndexForPointInTextContainerFractionOfDistanceBetweenInsertionPoints(point foundation.Point, container ITextContainer, partialFraction *float64) uint {
-	rv := objc.Call[uint](l_, objc.Sel("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:"), point, objc.Ptr(container), partialFraction)
+	rv := objc.Call[uint](l_, objc.Sel("characterIndexForPoint:inTextContainer:fractionOfDistanceBetweenInsertionPoints:"), point, container, partialFraction)
 	return rv
 }
 
@@ -801,7 +801,7 @@ func (l_ LayoutManager) RangeOfNominallySpacedGlyphsContainingIndex(glyphIndex u
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403071-setextralinefragmentrect?language=objc
 func (l_ LayoutManager) SetExtraLineFragmentRectUsedRectTextContainer(fragmentRect foundation.Rect, usedRect foundation.Rect, container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("setExtraLineFragmentRect:usedRect:textContainer:"), fragmentRect, usedRect, objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("setExtraLineFragmentRect:usedRect:textContainer:"), fragmentRect, usedRect, container)
 }
 
 // Returns the index for the first glyph in the layout manager that isn’t in the layout. [Full Topic]
@@ -816,28 +816,28 @@ func (l_ LayoutManager) FirstUnlaidGlyphIndex() uint {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403030-setglyphs?language=objc
 func (l_ LayoutManager) SetGlyphsPropertiesCharacterIndexesFontForGlyphRange(glyphs *coregraphics.Glyph, props *GlyphProperty, charIndexes *uint, aFont IFont, glyphRange foundation.Range) {
-	objc.Call[objc.Void](l_, objc.Sel("setGlyphs:properties:characterIndexes:font:forGlyphRange:"), glyphs, props, charIndexes, objc.Ptr(aFont), glyphRange)
+	objc.Call[objc.Void](l_, objc.Sel("setGlyphs:properties:characterIndexes:font:forGlyphRange:"), glyphs, props, charIndexes, aFont, glyphRange)
 }
 
 // Associates a text container with the specified range of glyphs. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403241-settextcontainer?language=objc
 func (l_ LayoutManager) SetTextContainerForGlyphRange(container ITextContainer, glyphRange foundation.Range) {
-	objc.Call[objc.Void](l_, objc.Sel("setTextContainer:forGlyphRange:"), objc.Ptr(container), glyphRange)
+	objc.Call[objc.Void](l_, objc.Sel("setTextContainer:forGlyphRange:"), container, glyphRange)
 }
 
 // Invalidates the layout information, and possibly glyphs, for the specified text container and all subsequent text container objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403091-textcontainerchangedgeometry?language=objc
 func (l_ LayoutManager) TextContainerChangedGeometry(container ITextContainer) {
-	objc.Call[objc.Void](l_, objc.Sel("textContainerChangedGeometry:"), objc.Ptr(container))
+	objc.Call[objc.Void](l_, objc.Sel("textContainerChangedGeometry:"), container)
 }
 
 // Fills background rectangles with a color. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403161-fillbackgroundrectarray?language=objc
 func (l_ LayoutManager) FillBackgroundRectArrayCountForCharacterRangeColor(rectArray *foundation.Rect, rectCount uint, charRange foundation.Range, color IColor) {
-	objc.Call[objc.Void](l_, objc.Sel("fillBackgroundRectArray:count:forCharacterRange:color:"), rectArray, rectCount, charRange, objc.Ptr(color))
+	objc.Call[objc.Void](l_, objc.Sel("fillBackgroundRectArray:count:forCharacterRange:color:"), rectArray, rectCount, charRange, color)
 }
 
 // Returns the index for the first character in the layout manager that isn’t in the layout. [Full Topic]
@@ -890,7 +890,7 @@ func (l_ LayoutManager) Typesetter() Typesetter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403205-typesetter?language=objc
 func (l_ LayoutManager) SetTypesetter(value ITypesetter) {
-	objc.Call[objc.Void](l_, objc.Sel("setTypesetter:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setTypesetter:"), value)
 }
 
 // The first text view in the layout manager’s series of text views. [Full Topic]
@@ -913,7 +913,7 @@ func (l_ LayoutManager) GlyphGenerator() GlyphGenerator {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanager/1403069-glyphgenerator?language=objc
 func (l_ LayoutManager) SetGlyphGenerator(value IGlyphGenerator) {
-	objc.Call[objc.Void](l_, objc.Sel("setGlyphGenerator:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setGlyphGenerator:"), value)
 }
 
 // The text view that contains the first glyph in the selection. [Full Topic]
@@ -1021,7 +1021,7 @@ func (l_ LayoutManager) SetDelegate(value PLayoutManagerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1402920-delegate?language=objc
 func (l_ LayoutManager) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The text container for the extra line fragment rectangle. [Full Topic]
@@ -1044,7 +1044,7 @@ func (l_ LayoutManager) TextStorage() TextStorage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanager/1403015-textstorage?language=objc
 func (l_ LayoutManager) SetTextStorage(value ITextStorage) {
-	objc.Call[objc.Void](l_, objc.Sel("setTextStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setTextStorage:"), value)
 }
 
 // A Boolean value that indicates whether the layout manager avoids laying out unusually long or suspicious input. [Full Topic]

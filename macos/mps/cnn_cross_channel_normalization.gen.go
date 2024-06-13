@@ -19,13 +19,13 @@ type _CNNCrossChannelNormalizationClass struct {
 // An interface definition for the [CNNCrossChannelNormalization] class.
 type ICNNCrossChannelNormalization interface {
 	ICNNKernel
-	Beta() float64
-	SetBeta(value float64)
-	Alpha() float64
-	SetAlpha(value float64)
+	Beta() float32
+	SetBeta(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
 	KernelSize() uint
-	Delta() float64
-	SetDelta(value float64)
+	Delta() float32
+	SetDelta(value float32)
 }
 
 // A normalization kernel applied across feature channels. [Full Topic]
@@ -109,30 +109,30 @@ func CNNCrossChannelNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device
 // The "beta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648879-beta?language=objc
-func (c_ CNNCrossChannelNormalization) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNCrossChannelNormalization) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 // The "beta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648879-beta?language=objc
-func (c_ CNNCrossChannelNormalization) SetBeta(value float64) {
+func (c_ CNNCrossChannelNormalization) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
 // The "alpha" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648896-alpha?language=objc
-func (c_ CNNCrossChannelNormalization) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNCrossChannelNormalization) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 // The "alpha" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648896-alpha?language=objc
-func (c_ CNNCrossChannelNormalization) SetAlpha(value float64) {
+func (c_ CNNCrossChannelNormalization) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
@@ -147,14 +147,14 @@ func (c_ CNNCrossChannelNormalization) KernelSize() uint {
 // The "delta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648881-delta?language=objc
-func (c_ CNNCrossChannelNormalization) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNCrossChannelNormalization) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 // The "delta" variable of the kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalization/1648881-delta?language=objc
-func (c_ CNNCrossChannelNormalization) SetDelta(value float64) {
+func (c_ CNNCrossChannelNormalization) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }

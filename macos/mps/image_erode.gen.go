@@ -54,7 +54,7 @@ func (i_ ImageErode) Init() ImageErode {
 	return rv
 }
 
-func (i_ ImageErode) InitWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float64) ImageErode {
+func (i_ ImageErode) InitWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float32) ImageErode {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageErode](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:values:"), po0, kernelWidth, kernelHeight, values)
 	return rv
@@ -63,7 +63,7 @@ func (i_ ImageErode) InitWithDeviceKernelWidthKernelHeightValues(device metal.PD
 // Initializes the kernel with a specified width, height, and weight values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedilate/1618285-initwithdevice?language=objc
-func NewImageErodeWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float64) ImageErode {
+func NewImageErodeWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float32) ImageErode {
 	instance := ImageErodeClass.Alloc().InitWithDeviceKernelWidthKernelHeightValues(device, kernelWidth, kernelHeight, values)
 	instance.Autorelease()
 	return instance

@@ -36,11 +36,11 @@ type PColorCubesMixedWithMask interface {
 	HasInputImage() bool
 
 	// optional
-	SetCubeDimension(value float64)
+	SetCubeDimension(value float32)
 	HasSetCubeDimension() bool
 
 	// optional
-	CubeDimension() float64
+	CubeDimension() float32
 	HasCubeDimension() bool
 
 	// optional
@@ -122,7 +122,7 @@ func (c_ ColorCubesMixedWithMaskObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228147-inputimage?language=objc
 func (c_ ColorCubesMixedWithMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorCubesMixedWithMaskObject) HasInputImage() bool {
@@ -144,7 +144,7 @@ func (c_ ColorCubesMixedWithMaskObject) HasSetCubeDimension() bool {
 // The length, in texels, of each side of the cube texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228146-cubedimension?language=objc
-func (c_ ColorCubesMixedWithMaskObject) SetCubeDimension(value float64) {
+func (c_ ColorCubesMixedWithMaskObject) SetCubeDimension(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setCubeDimension:"), value)
 }
 
@@ -155,8 +155,8 @@ func (c_ ColorCubesMixedWithMaskObject) HasCubeDimension() bool {
 // The length, in texels, of each side of the cube texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228146-cubedimension?language=objc
-func (c_ ColorCubesMixedWithMaskObject) CubeDimension() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("cubeDimension"))
+func (c_ ColorCubesMixedWithMaskObject) CubeDimension() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("cubeDimension"))
 	return rv
 }
 
@@ -168,7 +168,7 @@ func (c_ ColorCubesMixedWithMaskObject) HasSetMaskImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubesmixedwithmask/3228148-maskimage?language=objc
 func (c_ ColorCubesMixedWithMaskObject) SetMaskImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setMaskImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setMaskImage:"), value)
 }
 
 func (c_ ColorCubesMixedWithMaskObject) HasMaskImage() bool {

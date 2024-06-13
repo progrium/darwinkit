@@ -66,7 +66,7 @@ func NNMultiplicationNode_NodeWithSources(sourceNodes []INNImageNode) NNMultipli
 }
 
 func (n_ NNMultiplicationNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
-	rv := objc.Call[NNMultiplicationNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNMultiplicationNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func NewNNMultiplicationNodeWithLeftSourceRightSource(left INNImageNode, right I
 }
 
 func (nc _NNMultiplicationNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNMultiplicationNode {
-	rv := objc.Call[NNMultiplicationNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNMultiplicationNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 

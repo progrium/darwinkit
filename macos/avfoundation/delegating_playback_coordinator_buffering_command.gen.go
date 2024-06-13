@@ -19,7 +19,7 @@ type _DelegatingPlaybackCoordinatorBufferingCommandClass struct {
 // An interface definition for the [DelegatingPlaybackCoordinatorBufferingCommand] class.
 type IDelegatingPlaybackCoordinatorBufferingCommand interface {
 	IDelegatingPlaybackCoordinatorPlaybackControlCommand
-	AnticipatedPlaybackRate() float64
+	AnticipatedPlaybackRate() float32
 	CompletionDueDate() foundation.Date
 }
 
@@ -59,8 +59,8 @@ func (d_ DelegatingPlaybackCoordinatorBufferingCommand) Init() DelegatingPlaybac
 // The rate at which the coordinator expects the current item to play. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinatorbufferingcommand/3750261-anticipatedplaybackrate?language=objc
-func (d_ DelegatingPlaybackCoordinatorBufferingCommand) AnticipatedPlaybackRate() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("anticipatedPlaybackRate"))
+func (d_ DelegatingPlaybackCoordinatorBufferingCommand) AnticipatedPlaybackRate() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("anticipatedPlaybackRate"))
 	return rv
 }
 

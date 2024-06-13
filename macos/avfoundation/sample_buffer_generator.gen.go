@@ -36,7 +36,7 @@ func SampleBufferGeneratorFrom(ptr unsafe.Pointer) SampleBufferGenerator {
 }
 
 func (s_ SampleBufferGenerator) InitWithAssetTimebase(asset IAsset, timebase coremedia.TimebaseRef) SampleBufferGenerator {
-	rv := objc.Call[SampleBufferGenerator](s_, objc.Sel("initWithAsset:timebase:"), objc.Ptr(asset), timebase)
+	rv := objc.Call[SampleBufferGenerator](s_, objc.Sel("initWithAsset:timebase:"), asset, timebase)
 	return rv
 }
 

@@ -31,7 +31,7 @@ type IMutableVideoComposition interface {
 	SetColorYCbCrMatrix(value string)
 	SetRenderSize(value coregraphics.Size)
 	SetFrameDuration(value coremedia.Time)
-	SetRenderScale(value float64)
+	SetRenderScale(value float32)
 }
 
 // A mutable video composition subclass. [Full Topic]
@@ -93,14 +93,14 @@ func (m_ MutableVideoComposition) SetInstructions(value []objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390649-customvideocompositorclass?language=objc
 func (m_ MutableVideoComposition) SetCustomVideoCompositorClass(value objc.IClass) {
-	objc.Call[objc.Void](m_, objc.Sel("setCustomVideoCompositorClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setCustomVideoCompositorClass:"), value)
 }
 
 // A video composition tool to use with Core Animation in offline rendering. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1390395-animationtool?language=objc
 func (m_ MutableVideoComposition) SetAnimationTool(value IVideoCompositionCoreAnimationTool) {
-	objc.Call[objc.Void](m_, objc.Sel("setAnimationTool:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setAnimationTool:"), value)
 }
 
 // The color primaries used for video composition. [Full Topic]
@@ -114,7 +114,7 @@ func (m_ MutableVideoComposition) SetColorPrimaries(value string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/2873799-sourcetrackidforframetiming?language=objc
 func (m_ MutableVideoComposition) SetSourceTrackIDForFrameTiming(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setSourceTrackIDForFrameTiming:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setSourceTrackIDForFrameTiming:"), value)
 }
 
 // The identifiers of source sample data tracks in the composition that the compositor requires to compose frames. [Full Topic]
@@ -155,6 +155,6 @@ func (m_ MutableVideoComposition) SetFrameDuration(value coremedia.Time) {
 // The scale at which the video composition should render. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocomposition/1615787-renderscale?language=objc
-func (m_ MutableVideoComposition) SetRenderScale(value float64) {
+func (m_ MutableVideoComposition) SetRenderScale(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRenderScale:"), value)
 }

@@ -67,7 +67,7 @@ func FragmentedMovie_MovieWithDataOptions(data []byte, options map[string]objc.I
 }
 
 func (fc _FragmentedMovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
-	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[FragmentedMovie](fc, objc.Sel("movieWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func NewFragmentedMovieWithDataOptions(data []byte, options map[string]objc.IObj
 }
 
 func (f_ FragmentedMovie) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedMovie {
-	rv := objc.Call[FragmentedMovie](f_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[FragmentedMovie](f_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func NewFragmentedMovieWithURLOptions(URL foundation.IURL, options map[string]ob
 }
 
 func (fc _FragmentedMovieClass) AssetWithURL(URL foundation.IURL) FragmentedMovie {
-	rv := objc.Call[FragmentedMovie](fc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[FragmentedMovie](fc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 

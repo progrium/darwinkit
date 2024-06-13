@@ -34,7 +34,7 @@ func NNReductionSpatialMeanGradientNodeFrom(ptr unsafe.Pointer) NNReductionSpati
 }
 
 func (n_ NNReductionSpatialMeanGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNReductionSpatialMeanGradientNode {
-	rv := objc.Call[NNReductionSpatialMeanGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNReductionSpatialMeanGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewNNReductionSpatialMeanGradientNodeWithSourceGradientSourceImageGradientS
 }
 
 func (nc _NNReductionSpatialMeanGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNReductionSpatialMeanGradientNode {
-	rv := objc.Call[NNReductionSpatialMeanGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNReductionSpatialMeanGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 

@@ -68,7 +68,7 @@ func (p_ PersistentHistoryTransaction) Init() PersistentHistoryTransaction {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistenthistorytransaction/3240595-entitydescriptionwithcontext?language=objc
 func (pc _PersistentHistoryTransactionClass) EntityDescriptionWithContext(context IManagedObjectContext) EntityDescription {
-	rv := objc.Call[EntityDescription](pc, objc.Sel("entityDescriptionWithContext:"), objc.Ptr(context))
+	rv := objc.Call[EntityDescription](pc, objc.Sel("entityDescriptionWithContext:"), context)
 	return rv
 }
 

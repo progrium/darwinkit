@@ -67,7 +67,7 @@ func (f_ FilterObject) HasApply() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1562058-apply?language=objc
 func (f_ FilterObject) Apply(k Kernel, args ...any) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:"), append([]any{objc.Ptr(k)}, args...)...)
+	rv := objc.Call[Image](f_, objc.Sel("apply:"), append([]any{k}, args...)...)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func (f_ FilterObject) HasApplyArgumentsOptions() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438077-apply?language=objc
 func (f_ FilterObject) ApplyArgumentsOptions(k Kernel, args []objc.Object, dict map[string]objc.Object) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:arguments:options:"), objc.Ptr(k), args, dict)
+	rv := objc.Call[Image](f_, objc.Sel("apply:arguments:options:"), k, args, dict)
 	return rv
 }
 

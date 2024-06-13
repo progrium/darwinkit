@@ -86,7 +86,7 @@ func (p_ Popover) Close() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1532113-showrelativetorect?language=objc
 func (p_ Popover) ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge) {
-	objc.Call[objc.Void](p_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, objc.Ptr(positioningView), preferredEdge)
+	objc.Call[objc.Void](p_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, positioningView, preferredEdge)
 }
 
 // Attempts to close the popover. [Full Topic]
@@ -118,7 +118,7 @@ func (p_ Popover) SetDelegate(value PPopoverDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526708-delegate?language=objc
 func (p_ Popover) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The rectangle within the positioning view relative to which the popover should be positioned. [Full Topic]
@@ -148,7 +148,7 @@ func (p_ Popover) Appearance() Appearance {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1529859-appearance?language=objc
 func (p_ Popover) SetAppearance(value IAppearance) {
-	objc.Call[objc.Void](p_, objc.Sel("setAppearance:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setAppearance:"), value)
 }
 
 // The display state of the popover. [Full Topic]
@@ -224,7 +224,7 @@ func (p_ Popover) ContentViewController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopover/1526794-contentviewcontroller?language=objc
 func (p_ Popover) SetContentViewController(value IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("setContentViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setContentViewController:"), value)
 }
 
 // The appearance that will be used when the popover is displayed onscreen. [Full Topic]

@@ -36,7 +36,7 @@ func LocationSortDescriptorFrom(ptr unsafe.Pointer) LocationSortDescriptor {
 }
 
 func (l_ LocationSortDescriptor) InitWithKeyRelativeLocation(key string, relativeLocation objc.IObject) LocationSortDescriptor {
-	rv := objc.Call[LocationSortDescriptor](l_, objc.Sel("initWithKey:relativeLocation:"), key, objc.Ptr(relativeLocation))
+	rv := objc.Call[LocationSortDescriptor](l_, objc.Sel("initWithKey:relativeLocation:"), key, relativeLocation)
 	return rv
 }
 

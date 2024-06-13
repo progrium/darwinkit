@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coreml"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -40,15 +39,15 @@ func CoreMLModelFrom(ptr unsafe.Pointer) CoreMLModel {
 	}
 }
 
-func (cc _CoreMLModelClass) ModelForMLModelError(model coreml.IModel, error foundation.IError) CoreMLModel {
-	rv := objc.Call[CoreMLModel](cc, objc.Sel("modelForMLModel:error:"), objc.Ptr(model), objc.Ptr(error))
+func (cc _CoreMLModelClass) ModelForMLModelError(model coreml.IModel, error unsafe.Pointer) CoreMLModel {
+	rv := objc.Call[CoreMLModel](cc, objc.Sel("modelForMLModel:error:"), model, error)
 	return rv
 }
 
 // Creates a model container to be used with VNCoreMLRequest. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlmodel/2890148-modelformlmodel?language=objc
-func CoreMLModel_ModelForMLModelError(model coreml.IModel, error foundation.IError) CoreMLModel {
+func CoreMLModel_ModelForMLModelError(model coreml.IModel, error unsafe.Pointer) CoreMLModel {
 	return CoreMLModelClass.ModelForMLModelError(model, error)
 }
 
@@ -92,7 +91,7 @@ func (c_ CoreMLModel) SetFeatureProvider(value coreml.PFeatureProvider) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncoremlmodel/3131933-featureprovider?language=objc
 func (c_ CoreMLModel) SetFeatureProviderObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setFeatureProvider:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setFeatureProvider:"), valueObject)
 }
 
 // The name of the MLFeatureValue that Vision sets from the request handler. [Full Topic]

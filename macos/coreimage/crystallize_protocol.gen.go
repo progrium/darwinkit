@@ -28,11 +28,11 @@ type PCrystallize interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -75,7 +75,7 @@ func (c_ CrystallizeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228201-inputimage?language=objc
 func (c_ CrystallizeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CrystallizeObject) HasInputImage() bool {
@@ -97,7 +97,7 @@ func (c_ CrystallizeObject) HasSetRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228202-radius?language=objc
-func (c_ CrystallizeObject) SetRadius(value float64) {
+func (c_ CrystallizeObject) SetRadius(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setRadius:"), value)
 }
 
@@ -108,7 +108,7 @@ func (c_ CrystallizeObject) HasRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicrystallize/3228202-radius?language=objc
-func (c_ CrystallizeObject) Radius() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("radius"))
+func (c_ CrystallizeObject) Radius() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("radius"))
 	return rv
 }

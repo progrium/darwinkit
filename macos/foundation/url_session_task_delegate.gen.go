@@ -208,7 +208,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskNeedNewBodyStream() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1410001-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskNeedNewBodyStream(session URLSession, task URLSessionTask, completionHandler func(bodyStream InputStream)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:needNewBodyStream:"), objc.Ptr(session), objc.Ptr(task), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:needNewBodyStream:"), session, task, completionHandler)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler() bool {
@@ -219,7 +219,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillPerformHTTPRedirecti
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411626-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskWillPerformHTTPRedirectionNewRequestCompletionHandler(session URLSession, task URLSessionTask, response HTTPURLResponse, request URLRequest, completionHandler func(arg0 URLRequest)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:"), objc.Ptr(session), objc.Ptr(task), objc.Ptr(response), objc.Ptr(request), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willPerformHTTPRedirection:newRequest:completionHandler:"), session, task, response, request, completionHandler)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidReceiveChallengeCompletionHandler() bool {
@@ -230,7 +230,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidReceiveChallengeCompl
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411595-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidReceiveChallengeCompletionHandler(session URLSession, task URLSessionTask, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didReceiveChallenge:completionHandler:"), objc.Ptr(session), objc.Ptr(task), objc.Ptr(challenge), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didReceiveChallenge:completionHandler:"), session, task, challenge, completionHandler)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidFinishCollectingMetrics() bool {
@@ -241,7 +241,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidFinishCollectingMetri
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1643148-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidFinishCollectingMetrics(session URLSession, task URLSessionTask, metrics URLSessionTaskMetrics) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didFinishCollectingMetrics:"), objc.Ptr(session), objc.Ptr(task), objc.Ptr(metrics))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didFinishCollectingMetrics:"), session, task, metrics)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskIsWaitingForConnectivity() bool {
@@ -252,7 +252,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskIsWaitingForConnectivity
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2908819-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskIsWaitingForConnectivity(session URLSession, task URLSessionTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:taskIsWaitingForConnectivity:"), objc.Ptr(session), objc.Ptr(task))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:taskIsWaitingForConnectivity:"), session, task)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend() bool {
@@ -263,7 +263,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidSendBodyDataTotalByte
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1408299-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidSendBodyDataTotalBytesSentTotalBytesExpectedToSend(session URLSession, task URLSessionTask, bytesSent int64, totalBytesSent int64, totalBytesExpectedToSend int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:"), objc.Ptr(session), objc.Ptr(task), bytesSent, totalBytesSent, totalBytesExpectedToSend)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:"), session, task, bytesSent, totalBytesSent, totalBytesExpectedToSend)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillBeginDelayedRequestCompletionHandler() bool {
@@ -274,7 +274,7 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskWillBeginDelayedRequestC
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/2873415-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskWillBeginDelayedRequestCompletionHandler(session URLSession, task URLSessionTask, request URLRequest, completionHandler func(disposition URLSessionDelayedRequestDisposition, newRequest URLRequest)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willBeginDelayedRequest:completionHandler:"), objc.Ptr(session), objc.Ptr(task), objc.Ptr(request), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:willBeginDelayedRequest:completionHandler:"), session, task, request, completionHandler)
 }
 
 func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidCompleteWithError() bool {
@@ -285,5 +285,5 @@ func (u_ URLSessionTaskDelegateObject) HasURLSessionTaskDidCompleteWithError() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontaskdelegate/1411610-urlsession?language=objc
 func (u_ URLSessionTaskDelegateObject) URLSessionTaskDidCompleteWithError(session URLSession, task URLSessionTask, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didCompleteWithError:"), objc.Ptr(session), objc.Ptr(task), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:task:didCompleteWithError:"), session, task, error)
 }

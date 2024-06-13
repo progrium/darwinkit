@@ -36,7 +36,7 @@ func RecordIDFrom(ptr unsafe.Pointer) RecordID {
 }
 
 func (r_ RecordID) InitWithRecordNameZoneID(recordName string, zoneID IRecordZoneID) RecordID {
-	rv := objc.Call[RecordID](r_, objc.Sel("initWithRecordName:zoneID:"), recordName, objc.Ptr(zoneID))
+	rv := objc.Call[RecordID](r_, objc.Sel("initWithRecordName:zoneID:"), recordName, zoneID)
 	return rv
 }
 

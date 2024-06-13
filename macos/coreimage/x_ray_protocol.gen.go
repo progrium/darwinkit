@@ -35,7 +35,7 @@ func (x_ XRayObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cixray/3228839-inputimage?language=objc
 func (x_ XRayObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](x_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setInputImage:"), value)
 }
 
 func (x_ XRayObject) HasInputImage() bool {

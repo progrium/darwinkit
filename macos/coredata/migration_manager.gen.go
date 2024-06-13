@@ -32,7 +32,7 @@ type IMigrationManager interface {
 	SetUserInfo(value foundation.Dictionary)
 	CurrentEntityMapping() EntityMapping
 	MappingModel() MappingModel
-	MigrationProgress() float64
+	MigrationProgress() float32
 	SourceModel() ManagedObjectModel
 	DestinationModel() ManagedObjectModel
 	SourceContext() ManagedObjectContext
@@ -53,7 +53,7 @@ func MigrationManagerFrom(ptr unsafe.Pointer) MigrationManager {
 }
 
 func (m_ MigrationManager) InitWithSourceModelDestinationModel(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel) MigrationManager {
-	rv := objc.Call[MigrationManager](m_, objc.Sel("initWithSourceModel:destinationModel:"), objc.Ptr(sourceModel), objc.Ptr(destinationModel))
+	rv := objc.Call[MigrationManager](m_, objc.Sel("initWithSourceModel:destinationModel:"), sourceModel, destinationModel)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (m_ MigrationManager) Init() MigrationManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417608-cancelmigrationwitherror?language=objc
 func (m_ MigrationManager) CancelMigrationWithError(error foundation.IError) {
-	objc.Call[objc.Void](m_, objc.Sel("cancelMigrationWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](m_, objc.Sel("cancelMigrationWithError:"), error)
 }
 
 // Resets the association tables for the migration. [Full Topic]
@@ -120,7 +120,7 @@ func (m_ MigrationManager) SourceInstancesForEntityMappingNamedDestinationInstan
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417596-sourceentityforentitymapping?language=objc
 func (m_ MigrationManager) SourceEntityForEntityMapping(mEntity IEntityMapping) EntityDescription {
-	rv := objc.Call[EntityDescription](m_, objc.Sel("sourceEntityForEntityMapping:"), objc.Ptr(mEntity))
+	rv := objc.Call[EntityDescription](m_, objc.Sel("sourceEntityForEntityMapping:"), mEntity)
 	return rv
 }
 
@@ -128,7 +128,7 @@ func (m_ MigrationManager) SourceEntityForEntityMapping(mEntity IEntityMapping) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417598-destinationentityforentitymappin?language=objc
 func (m_ MigrationManager) DestinationEntityForEntityMapping(mEntity IEntityMapping) EntityDescription {
-	rv := objc.Call[EntityDescription](m_, objc.Sel("destinationEntityForEntityMapping:"), objc.Ptr(mEntity))
+	rv := objc.Call[EntityDescription](m_, objc.Sel("destinationEntityForEntityMapping:"), mEntity)
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (m_ MigrationManager) DestinationEntityForEntityMapping(mEntity IEntityMapp
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417604-associatesourceinstance?language=objc
 func (m_ MigrationManager) AssociateSourceInstanceWithDestinationInstanceForEntityMapping(sourceInstance IManagedObject, destinationInstance IManagedObject, entityMapping IEntityMapping) {
-	objc.Call[objc.Void](m_, objc.Sel("associateSourceInstance:withDestinationInstance:forEntityMapping:"), objc.Ptr(sourceInstance), objc.Ptr(destinationInstance), objc.Ptr(entityMapping))
+	objc.Call[objc.Void](m_, objc.Sel("associateSourceInstance:withDestinationInstance:forEntityMapping:"), sourceInstance, destinationInstance, entityMapping)
 }
 
 // A Boolean value that indicates whether the migration manager tries to use a store specific migration manager to perform the  migration. [Full Topic]
@@ -188,8 +188,8 @@ func (m_ MigrationManager) MappingModel() MappingModel {
 // A number between 0 and 1 that indicates the proportion of completeness of the migration. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmigrationmanager/1417602-migrationprogress?language=objc
-func (m_ MigrationManager) MigrationProgress() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("migrationProgress"))
+func (m_ MigrationManager) MigrationProgress() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("migrationProgress"))
 	return rv
 }
 

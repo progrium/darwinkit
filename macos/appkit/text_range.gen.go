@@ -42,7 +42,7 @@ func TextRangeFrom(ptr unsafe.Pointer) TextRange {
 }
 
 func (t_ TextRange) TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByIntersectingWithTextRange:"), objc.Ptr(textRange))
+	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByIntersectingWithTextRange:"), textRange)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func TextRange_TextRangeByIntersectingWithTextRange(textRange ITextRange) TextRa
 }
 
 func (t_ TextRange) TextRangeByFormingUnionWithTextRange(textRange ITextRange) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByFormingUnionWithTextRange:"), objc.Ptr(textRange))
+	rv := objc.Call[TextRange](t_, objc.Sel("textRangeByFormingUnionWithTextRange:"), textRange)
 	return rv
 }
 
@@ -124,7 +124,7 @@ func (t_ TextRange) Init() TextRange {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801810-intersectswithtextrange?language=objc
 func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("intersectsWithTextRange:"), objc.Ptr(textRange))
+	rv := objc.Call[bool](t_, objc.Sel("intersectsWithTextRange:"), textRange)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (t_ TextRange) IntersectsWithTextRange(textRange ITextRange) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801805-containsrange?language=objc
 func (t_ TextRange) ContainsRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("containsRange:"), objc.Ptr(textRange))
+	rv := objc.Call[bool](t_, objc.Sel("containsRange:"), textRange)
 	return rv
 }
 
@@ -149,7 +149,7 @@ func (t_ TextRange) ContainsLocation(location PTextLocation) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801804-containslocation?language=objc
 func (t_ TextRange) ContainsLocationObject(locationObject objc.IObject) bool {
-	rv := objc.Call[bool](t_, objc.Sel("containsLocation:"), objc.Ptr(locationObject))
+	rv := objc.Call[bool](t_, objc.Sel("containsLocation:"), locationObject)
 	return rv
 }
 
@@ -157,7 +157,7 @@ func (t_ TextRange) ContainsLocationObject(locationObject objc.IObject) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextrange/3801811-isequaltotextrange?language=objc
 func (t_ TextRange) IsEqualToTextRange(textRange ITextRange) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isEqualToTextRange:"), objc.Ptr(textRange))
+	rv := objc.Call[bool](t_, objc.Sel("isEqualToTextRange:"), textRange)
 	return rv
 }
 

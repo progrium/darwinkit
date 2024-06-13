@@ -120,7 +120,7 @@ func Thread_Exit() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsthread/1415959-sleepuntildate?language=objc
 func (tc _ThreadClass) SleepUntilDate(date IDate) {
-	objc.Call[objc.Void](tc, objc.Sel("sleepUntilDate:"), objc.Ptr(date))
+	objc.Call[objc.Void](tc, objc.Sel("sleepUntilDate:"), date)
 }
 
 // Blocks the current thread until the time specified. [Full Topic]

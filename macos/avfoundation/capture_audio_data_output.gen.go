@@ -73,7 +73,7 @@ func (c_ CaptureAudioDataOutput) SetSampleBufferDelegateQueue(sampleBufferDelega
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiodataoutput/1390651-setsamplebufferdelegate?language=objc
 func (c_ CaptureAudioDataOutput) SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue) {
-	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), objc.Ptr(sampleBufferDelegateObject), sampleBufferCallbackQueue)
+	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), sampleBufferDelegateObject, sampleBufferCallbackQueue)
 }
 
 // Specifies the recommended settings for use with an AVAssetWriterInput. [Full Topic]

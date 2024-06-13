@@ -54,7 +54,7 @@ func (n_ NNAdditionGradientNode) Init() NNAdditionGradientNode {
 }
 
 func (n_ NNAdditionGradientNode) InitWithGradientImagesForwardFilterIsSecondarySourceFilter(gradientImages []INNImageNode, filter INNFilterNode, isSecondarySourceFilter bool) NNAdditionGradientNode {
-	rv := objc.Call[NNAdditionGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, objc.Ptr(filter), isSecondarySourceFilter)
+	rv := objc.Call[NNAdditionGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, filter, isSecondarySourceFilter)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewNNAdditionGradientNodeWithGradientImagesForwardFilterIsSecondarySourceFi
 }
 
 func (n_ NNAdditionGradientNode) InitWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNAdditionGradientNode {
-	rv := objc.Call[NNAdditionGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNAdditionGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func NewNNAdditionGradientNodeWithSourceGradientSourceImageGradientStateIsSecond
 }
 
 func (nc _NNAdditionGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNAdditionGradientNode {
-	rv := objc.Call[NNAdditionGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNAdditionGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 

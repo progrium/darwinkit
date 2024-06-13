@@ -117,7 +117,7 @@ func (p_ PopoverTouchBarItem) PopoverTouchBar() TouchBar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopovertouchbaritem/2544856-popovertouchbar?language=objc
 func (p_ PopoverTouchBarItem) SetPopoverTouchBar(value ITouchBar) {
-	objc.Call[objc.Void](p_, objc.Sel("setPopoverTouchBar:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPopoverTouchBar:"), value)
 }
 
 // A Boolean value that determines whether a close button should be shown on the popover bar. [Full Topic]
@@ -154,7 +154,7 @@ func (p_ PopoverTouchBarItem) CollapsedRepresentation() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopovertouchbaritem/2544699-collapsedrepresentation?language=objc
 func (p_ PopoverTouchBarItem) SetCollapsedRepresentation(value IView) {
-	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentation:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentation:"), value)
 }
 
 // The image displayed by the button for the default collapsed representation. [Full Topic]
@@ -169,7 +169,7 @@ func (p_ PopoverTouchBarItem) CollapsedRepresentationImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopovertouchbaritem/2544725-collapsedrepresentationimage?language=objc
 func (p_ PopoverTouchBarItem) SetCollapsedRepresentationImage(value IImage) {
-	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentationImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentationImage:"), value)
 }
 
 // The localized string displayed by the button for the default collapsed representation. [Full Topic]
@@ -199,5 +199,5 @@ func (p_ PopoverTouchBarItem) PressAndHoldTouchBar() TouchBar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopovertouchbaritem/2646955-pressandholdtouchbar?language=objc
 func (p_ PopoverTouchBarItem) SetPressAndHoldTouchBar(value ITouchBar) {
-	objc.Call[objc.Void](p_, objc.Sel("setPressAndHoldTouchBar:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPressAndHoldTouchBar:"), value)
 }

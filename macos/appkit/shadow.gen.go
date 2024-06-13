@@ -110,5 +110,5 @@ func (s_ Shadow) ShadowColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsshadow/1429855-shadowcolor?language=objc
 func (s_ Shadow) SetShadowColor(value IColor) {
-	objc.Call[objc.Void](s_, objc.Sel("setShadowColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setShadowColor:"), value)
 }

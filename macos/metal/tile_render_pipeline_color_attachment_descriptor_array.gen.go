@@ -59,7 +59,7 @@ func (t_ TileRenderPipelineColorAttachmentDescriptorArray) Init() TileRenderPipe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinecolorattachmentdescriptorarray/2867636-setobject?language=objc
 func (t_ TileRenderPipelineColorAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment ITileRenderPipelineColorAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](t_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](t_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }
 
 // Returns the render pipeline state for the specified color attachment. [Full Topic]

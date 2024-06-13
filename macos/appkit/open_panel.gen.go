@@ -70,7 +70,7 @@ func (o_ OpenPanel) Init() OpenPanel {
 }
 
 func (oc _OpenPanelClass) WindowWithContentViewController(contentViewController IViewController) OpenPanel {
-	rv := objc.Call[OpenPanel](oc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[OpenPanel](oc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func OpenPanel_WindowWithContentViewController(contentViewController IViewContro
 }
 
 func (o_ OpenPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) OpenPanel {
-	rv := objc.Call[OpenPanel](o_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[OpenPanel](o_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 

@@ -102,7 +102,7 @@ func (p_ PopUpButton) Init() PopUpButton {
 }
 
 func (pc _PopUpButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.Call[PopUpButton](pc, objc.Sel("buttonWithTitle:image:target:action:"), title, objc.Ptr(image), target, action)
+	rv := objc.Call[PopUpButton](pc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func PopUpButton_CheckboxWithTitleTargetAction(title string, target objc.IObject
 }
 
 func (pc _PopUpButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) PopUpButton {
-	rv := objc.Call[PopUpButton](pc, objc.Sel("buttonWithImage:target:action:"), objc.Ptr(image), target, action)
+	rv := objc.Call[PopUpButton](pc, objc.Sel("buttonWithImage:target:action:"), image, target, action)
 	return rv
 }
 
@@ -240,7 +240,7 @@ func (p_ PopUpButton) ItemTitleAtIndex(index int) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1529708-indexofitem?language=objc
 func (p_ PopUpButton) IndexOfItem(item IMenuItem) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), objc.Ptr(item))
+	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), item)
 	return rv
 }
 
@@ -314,7 +314,7 @@ func (p_ PopUpButton) InsertItemWithTitleAtIndex(title string, index int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbutton/1527162-selectitem?language=objc
 func (p_ PopUpButton) SelectItem(item IMenuItem) {
-	objc.Call[objc.Void](p_, objc.Sel("selectItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](p_, objc.Sel("selectItem:"), item)
 }
 
 // An array of strings corresponding to the titles of the items in the menu. [Full Topic]

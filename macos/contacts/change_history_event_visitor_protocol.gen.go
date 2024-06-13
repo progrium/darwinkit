@@ -71,7 +71,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitDropEverythingEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113275-visitdropeverythingevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitDropEverythingEvent(event ChangeHistoryDropEverythingEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitDropEverythingEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitDropEverythingEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitAddMemberToGroupEvent() bool {
@@ -82,7 +82,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitAddMemberToGroupEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113271-visitaddmembertogroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitAddMemberToGroupEvent(event ChangeHistoryAddMemberToGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitAddMemberToGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitAddMemberToGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitRemoveSubgroupFromGroupEvent() bool {
@@ -93,7 +93,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitRemoveSubgroupFromGroupEvent()
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113277-visitremovesubgroupfromgroupeven?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitRemoveSubgroupFromGroupEvent(event ChangeHistoryRemoveSubgroupFromGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitRemoveSubgroupFromGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitRemoveSubgroupFromGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitDeleteContactEvent() bool {
@@ -104,7 +104,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitDeleteContactEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113273-visitdeletecontactevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitDeleteContactEvent(event ChangeHistoryDeleteContactEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitDeleteContactEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitDeleteContactEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitAddSubgroupToGroupEvent() bool {
@@ -115,7 +115,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitAddSubgroupToGroupEvent() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113272-visitaddsubgrouptogroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitAddSubgroupToGroupEvent(event ChangeHistoryAddSubgroupToGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitAddSubgroupToGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitAddSubgroupToGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitUpdateGroupEvent() bool {
@@ -126,7 +126,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitUpdateGroupEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113279-visitupdategroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitUpdateGroupEvent(event ChangeHistoryUpdateGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitUpdateGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitUpdateGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitUpdateContactEvent() bool {
@@ -137,7 +137,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitUpdateContactEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113278-visitupdatecontactevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitUpdateContactEvent(event ChangeHistoryUpdateContactEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitUpdateContactEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitUpdateContactEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitRemoveMemberFromGroupEvent() bool {
@@ -148,7 +148,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitRemoveMemberFromGroupEvent() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113276-visitremovememberfromgroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitRemoveMemberFromGroupEvent(event ChangeHistoryRemoveMemberFromGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitRemoveMemberFromGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitRemoveMemberFromGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitAddContactEvent() bool {
@@ -159,7 +159,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitAddContactEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113269-visitaddcontactevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitAddContactEvent(event ChangeHistoryAddContactEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitAddContactEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitAddContactEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitDeleteGroupEvent() bool {
@@ -170,7 +170,7 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitDeleteGroupEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113274-visitdeletegroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitDeleteGroupEvent(event ChangeHistoryDeleteGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitDeleteGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitDeleteGroupEvent:"), event)
 }
 
 func (c_ ChangeHistoryEventVisitorObject) HasVisitAddGroupEvent() bool {
@@ -181,5 +181,5 @@ func (c_ ChangeHistoryEventVisitorObject) HasVisitAddGroupEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryeventvisitor/3113270-visitaddgroupevent?language=objc
 func (c_ ChangeHistoryEventVisitorObject) VisitAddGroupEvent(event ChangeHistoryAddGroupEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("visitAddGroupEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("visitAddGroupEvent:"), event)
 }

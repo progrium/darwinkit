@@ -186,7 +186,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionDidFinishLoading() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1416409-connectiondidfinishloading?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionDidFinishLoading(connection URLConnection) {
-	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishLoading:"), objc.Ptr(connection))
+	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishLoading:"), connection)
 }
 
 func (u_ URLConnectionDataDelegateObject) HasConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite() bool {
@@ -197,7 +197,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionDidSendBodyDataTotalBytes
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1418264-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionDidSendBodyDataTotalBytesWrittenTotalBytesExpectedToWrite(connection URLConnection, bytesWritten int, totalBytesWritten int, totalBytesExpectedToWrite int) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:"), objc.Ptr(connection), bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
+	objc.Call[objc.Void](u_, objc.Sel("connection:didSendBodyData:totalBytesWritten:totalBytesExpectedToWrite:"), connection, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
 }
 
 func (u_ URLConnectionDataDelegateObject) HasConnectionWillCacheResponse() bool {
@@ -208,7 +208,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionWillCacheResponse() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1414834-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionWillCacheResponse(connection URLConnection, cachedResponse CachedURLResponse) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](u_, objc.Sel("connection:willCacheResponse:"), objc.Ptr(connection), objc.Ptr(cachedResponse))
+	rv := objc.Call[CachedURLResponse](u_, objc.Sel("connection:willCacheResponse:"), connection, cachedResponse)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionDidReceiveData() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1414090-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionDidReceiveData(connection URLConnection, data []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveData:"), objc.Ptr(connection), data)
+	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveData:"), connection, data)
 }
 
 func (u_ URLConnectionDataDelegateObject) HasConnectionDidReceiveResponse() bool {
@@ -231,7 +231,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionDidReceiveResponse() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1407728-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionDidReceiveResponse(connection URLConnection, response URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveResponse:"), objc.Ptr(connection), objc.Ptr(response))
+	objc.Call[objc.Void](u_, objc.Sel("connection:didReceiveResponse:"), connection, response)
 }
 
 func (u_ URLConnectionDataDelegateObject) HasConnectionWillSendRequestRedirectResponse() bool {
@@ -242,7 +242,7 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionWillSendRequestRedirectRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1415830-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionWillSendRequestRedirectResponse(connection URLConnection, request URLRequest, response URLResponse) URLRequest {
-	rv := objc.Call[URLRequest](u_, objc.Sel("connection:willSendRequest:redirectResponse:"), objc.Ptr(connection), objc.Ptr(request), objc.Ptr(response))
+	rv := objc.Call[URLRequest](u_, objc.Sel("connection:willSendRequest:redirectResponse:"), connection, request, response)
 	return rv
 }
 
@@ -254,6 +254,6 @@ func (u_ URLConnectionDataDelegateObject) HasConnectionNeedNewBodyStream() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondatadelegate/1412892-connection?language=objc
 func (u_ URLConnectionDataDelegateObject) ConnectionNeedNewBodyStream(connection URLConnection, request URLRequest) InputStream {
-	rv := objc.Call[InputStream](u_, objc.Sel("connection:needNewBodyStream:"), objc.Ptr(connection), objc.Ptr(request))
+	rv := objc.Call[InputStream](u_, objc.Sel("connection:needNewBodyStream:"), connection, request)
 	return rv
 }

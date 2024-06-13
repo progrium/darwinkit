@@ -22,17 +22,17 @@ type _MutableMovieTrackClass struct {
 type IMutableMovieTrack interface {
 	IMovieTrack
 	InsertMediaTimeRangeIntoTimeRange(mediaTimeRange coremedia.TimeRange, trackTimeRange coremedia.TimeRange) bool
-	InsertTimeRangeOfTrackAtTimeCopySampleDataError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, copySampleData bool, outError foundation.IError) bool
+	InsertTimeRangeOfTrackAtTimeCopySampleDataError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, copySampleData bool, outError unsafe.Pointer) bool
 	ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time)
 	RemoveTrackAssociationToTrackType(movieTrack IMovieTrack, trackAssociationType TrackAssociationType)
 	AddTrackAssociationToTrackType(movieTrack IMovieTrack, trackAssociationType TrackAssociationType)
 	InsertEmptyTimeRange(timeRange coremedia.TimeRange)
-	AppendSampleBufferDecodeTimePresentationTimeError(sampleBuffer coremedia.SampleBufferRef, outDecodeTime *coremedia.Time, outPresentationTime *coremedia.Time, outError foundation.IError) bool
+	AppendSampleBufferDecodeTimePresentationTimeError(sampleBuffer coremedia.SampleBufferRef, outDecodeTime *coremedia.Time, outPresentationTime *coremedia.Time, outError unsafe.Pointer) bool
 	ReplaceFormatDescriptionWithFormatDescription(formatDescription coremedia.FormatDescriptionRef, newFormatDescription coremedia.FormatDescriptionRef)
 	RemoveTimeRange(timeRange coremedia.TimeRange)
 	Layer() int
 	SetLayer(value int)
-	SetPreferredVolume(value float64)
+	SetPreferredVolume(value float32)
 	ProductionApertureDimensions() coregraphics.Size
 	SetProductionApertureDimensions(value coregraphics.Size)
 	PreferredMediaChunkSize() int
@@ -106,8 +106,8 @@ func (m_ MutableMovieTrack) InsertMediaTimeRangeIntoTimeRange(mediaTimeRange cor
 // Inserts a portion of an asset track into the target movie. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1387665-inserttimerange?language=objc
-func (m_ MutableMovieTrack) InsertTimeRangeOfTrackAtTimeCopySampleDataError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, copySampleData bool, outError foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofTrack:atTime:copySampleData:error:"), timeRange, objc.Ptr(track), startTime, copySampleData, objc.Ptr(outError))
+func (m_ MutableMovieTrack) InsertTimeRangeOfTrackAtTimeCopySampleDataError(timeRange coremedia.TimeRange, track IAssetTrack, startTime coremedia.Time, copySampleData bool, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofTrack:atTime:copySampleData:error:"), timeRange, track, startTime, copySampleData, outError)
 	return rv
 }
 
@@ -122,14 +122,14 @@ func (m_ MutableMovieTrack) ScaleTimeRangeToDuration(timeRange coremedia.TimeRan
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1389620-removetrackassociationtotrack?language=objc
 func (m_ MutableMovieTrack) RemoveTrackAssociationToTrackType(movieTrack IMovieTrack, trackAssociationType TrackAssociationType) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTrackAssociationToTrack:type:"), objc.Ptr(movieTrack), trackAssociationType)
+	objc.Call[objc.Void](m_, objc.Sel("removeTrackAssociationToTrack:type:"), movieTrack, trackAssociationType)
 }
 
 // Creates a specific type of track association between two tracks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1390163-addtrackassociationtotrack?language=objc
 func (m_ MutableMovieTrack) AddTrackAssociationToTrackType(movieTrack IMovieTrack, trackAssociationType TrackAssociationType) {
-	objc.Call[objc.Void](m_, objc.Sel("addTrackAssociationToTrack:type:"), objc.Ptr(movieTrack), trackAssociationType)
+	objc.Call[objc.Void](m_, objc.Sel("addTrackAssociationToTrack:type:"), movieTrack, trackAssociationType)
 }
 
 // Adds an empty time range to a track. [Full Topic]
@@ -142,8 +142,8 @@ func (m_ MutableMovieTrack) InsertEmptyTimeRange(timeRange coremedia.TimeRange) 
 // Appends sample data to a media file and adds sample references for the added data to a track’s media sample tables. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1638041-appendsamplebuffer?language=objc
-func (m_ MutableMovieTrack) AppendSampleBufferDecodeTimePresentationTimeError(sampleBuffer coremedia.SampleBufferRef, outDecodeTime *coremedia.Time, outPresentationTime *coremedia.Time, outError foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("appendSampleBuffer:decodeTime:presentationTime:error:"), sampleBuffer, outDecodeTime, outPresentationTime, objc.Ptr(outError))
+func (m_ MutableMovieTrack) AppendSampleBufferDecodeTimePresentationTimeError(sampleBuffer coremedia.SampleBufferRef, outDecodeTime *coremedia.Time, outPresentationTime *coremedia.Time, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("appendSampleBuffer:decodeTime:presentationTime:error:"), sampleBuffer, outDecodeTime, outPresentationTime, outError)
 	return rv
 }
 
@@ -179,7 +179,7 @@ func (m_ MutableMovieTrack) SetLayer(value int) {
 // The preferred volume for the audible medata data of the track. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1390391-preferredvolume?language=objc
-func (m_ MutableMovieTrack) SetPreferredVolume(value float64) {
+func (m_ MutableMovieTrack) SetPreferredVolume(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setPreferredVolume:"), value)
 }
 
@@ -349,7 +349,7 @@ func (m_ MutableMovieTrack) SetPreferredMediaChunkAlignment(value int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1386532-mediadatastorage?language=objc
 func (m_ MutableMovieTrack) SetMediaDataStorage(value IMediaDataStorage) {
-	objc.Call[objc.Void](m_, objc.Sel("setMediaDataStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMediaDataStorage:"), value)
 }
 
 // The base URL for sample references. [Full Topic]
@@ -364,7 +364,7 @@ func (m_ MutableMovieTrack) SampleReferenceBaseURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovietrack/1385583-samplereferencebaseurl?language=objc
 func (m_ MutableMovieTrack) SetSampleReferenceBaseURL(value foundation.IURL) {
-	objc.Call[objc.Void](m_, objc.Sel("setSampleReferenceBaseURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setSampleReferenceBaseURL:"), value)
 }
 
 // The clean aperture dimension of the track. [Full Topic]

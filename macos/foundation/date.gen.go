@@ -81,7 +81,7 @@ func NewDateWithTimeIntervalSince1970(secs TimeInterval) Date {
 }
 
 func (dc _DateClass) DateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := objc.Call[Date](dc, objc.Sel("dateWithTimeInterval:sinceDate:"), secsToBeAdded, objc.Ptr(date))
+	rv := objc.Call[Date](dc, objc.Sel("dateWithTimeInterval:sinceDate:"), secsToBeAdded, date)
 	return rv
 }
 
@@ -121,7 +121,7 @@ func NewDateWithTimeIntervalSinceNow(secs TimeInterval) Date {
 }
 
 func (d_ Date) InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) Date {
-	rv := objc.Call[Date](d_, objc.Sel("initWithTimeInterval:sinceDate:"), secsToBeAdded, objc.Ptr(date))
+	rv := objc.Call[Date](d_, objc.Sel("initWithTimeInterval:sinceDate:"), secsToBeAdded, date)
 	return rv
 }
 
@@ -196,7 +196,7 @@ func NewDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1410206-timeintervalsincedate?language=objc
 func (d_ Date) TimeIntervalSinceDate(anotherDate IDate) TimeInterval {
-	rv := objc.Call[TimeInterval](d_, objc.Sel("timeIntervalSinceDate:"), objc.Ptr(anotherDate))
+	rv := objc.Call[TimeInterval](d_, objc.Sel("timeIntervalSinceDate:"), anotherDate)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func (d_ Date) TimeIntervalSinceDate(anotherDate IDate) TimeInterval {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1412791-earlierdate?language=objc
 func (d_ Date) EarlierDate(anotherDate IDate) Date {
-	rv := objc.Call[Date](d_, objc.Sel("earlierDate:"), objc.Ptr(anotherDate))
+	rv := objc.Call[Date](d_, objc.Sel("earlierDate:"), anotherDate)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func (d_ Date) EarlierDate(anotherDate IDate) Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1409058-laterdate?language=objc
 func (d_ Date) LaterDate(anotherDate IDate) Date {
-	rv := objc.Call[Date](d_, objc.Sel("laterDate:"), objc.Ptr(anotherDate))
+	rv := objc.Call[Date](d_, objc.Sel("laterDate:"), anotherDate)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func (d_ Date) LaterDate(anotherDate IDate) Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1416400-isequaltodate?language=objc
 func (d_ Date) IsEqualToDate(otherDate IDate) bool {
-	rv := objc.Call[bool](d_, objc.Sel("isEqualToDate:"), objc.Ptr(otherDate))
+	rv := objc.Call[bool](d_, objc.Sel("isEqualToDate:"), otherDate)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (d_ Date) IsEqualToDate(otherDate IDate) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdate/1409748-compare?language=objc
 func (d_ Date) Compare(other IDate) ComparisonResult {
-	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), objc.Ptr(other))
+	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), other)
 	return rv
 }
 

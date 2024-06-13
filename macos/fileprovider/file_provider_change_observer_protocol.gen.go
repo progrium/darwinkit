@@ -81,7 +81,7 @@ func (f_ FileProviderChangeObserverObject) HasFinishEnumeratingWithError() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderchangeobserver/2879605-finishenumeratingwitherror?language=objc
 func (f_ FileProviderChangeObserverObject) FinishEnumeratingWithError(error foundation.Error) {
-	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](f_, objc.Sel("finishEnumeratingWithError:"), error)
 }
 
 func (f_ FileProviderChangeObserverObject) HasSuggestedBatchSize() bool {

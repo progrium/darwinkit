@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap?language=objc
 type PCircularWrap interface {
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PCircularWrap interface {
 	HasCenter() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -59,7 +59,7 @@ func (c_ CircularWrapObject) HasSetAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
-func (c_ CircularWrapObject) SetAngle(value float64) {
+func (c_ CircularWrapObject) SetAngle(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
 }
 
@@ -70,8 +70,8 @@ func (c_ CircularWrapObject) HasAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600122-angle?language=objc
-func (c_ CircularWrapObject) Angle() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("angle"))
+func (c_ CircularWrapObject) Angle() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("angle"))
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (c_ CircularWrapObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600124-inputimage?language=objc
 func (c_ CircularWrapObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CircularWrapObject) HasInputImage() bool {
@@ -128,7 +128,7 @@ func (c_ CircularWrapObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600125-radius?language=objc
-func (c_ CircularWrapObject) SetRadius(value float64) {
+func (c_ CircularWrapObject) SetRadius(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setRadius:"), value)
 }
 
@@ -139,7 +139,7 @@ func (c_ CircularWrapObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularwrap/3600125-radius?language=objc
-func (c_ CircularWrapObject) Radius() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("radius"))
+func (c_ CircularWrapObject) Radius() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("radius"))
 	return rv
 }

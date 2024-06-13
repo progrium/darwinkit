@@ -81,12 +81,12 @@ func (c_ CustomTouchBarItem) SetCustomizationLabel(value string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomtouchbaritem/2544813-view?language=objc
 func (c_ CustomTouchBarItem) SetView(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setView:"), value)
 }
 
 // A view controller whose view is displayed in the bar to represent this item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscustomtouchbaritem/2544745-viewcontroller?language=objc
 func (c_ CustomTouchBarItem) SetViewController(value IViewController) {
-	objc.Call[objc.Void](c_, objc.Sel("setViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setViewController:"), value)
 }

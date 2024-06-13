@@ -18,12 +18,12 @@ type _CaptureAudioChannelClass struct {
 // An interface definition for the [CaptureAudioChannel] class.
 type ICaptureAudioChannel interface {
 	objc.IObject
-	Volume() float64
-	SetVolume(value float64)
+	Volume() float32
+	SetVolume(value float32)
 	IsEnabled() bool
 	SetEnabled(value bool)
-	AveragePowerLevel() float64
-	PeakHoldLevel() float64
+	AveragePowerLevel() float32
+	PeakHoldLevel() float32
 }
 
 // An object that monitors average and peak power levels for an audio channel in a capture connection. [Full Topic]
@@ -62,15 +62,15 @@ func (c_ CaptureAudioChannel) Init() CaptureAudioChannel {
 // The current volume (gain) of the channel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388396-volume?language=objc
-func (c_ CaptureAudioChannel) Volume() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("volume"))
+func (c_ CaptureAudioChannel) Volume() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("volume"))
 	return rv
 }
 
 // The current volume (gain) of the channel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1388396-volume?language=objc
-func (c_ CaptureAudioChannel) SetVolume(value float64) {
+func (c_ CaptureAudioChannel) SetVolume(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setVolume:"), value)
 }
 
@@ -92,15 +92,15 @@ func (c_ CaptureAudioChannel) SetEnabled(value bool) {
 // The instantaneous average power level in decibels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1387368-averagepowerlevel?language=objc
-func (c_ CaptureAudioChannel) AveragePowerLevel() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("averagePowerLevel"))
+func (c_ CaptureAudioChannel) AveragePowerLevel() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("averagePowerLevel"))
 	return rv
 }
 
 // The peak hold power level in decibels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiochannel/1390872-peakholdlevel?language=objc
-func (c_ CaptureAudioChannel) PeakHoldLevel() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("peakHoldLevel"))
+func (c_ CaptureAudioChannel) PeakHoldLevel() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("peakHoldLevel"))
 	return rv
 }

@@ -35,7 +35,7 @@ func FileAccessIntentFrom(ptr unsafe.Pointer) FileAccessIntent {
 }
 
 func (fc _FileAccessIntentClass) WritingIntentWithURLOptions(url IURL, options FileCoordinatorWritingOptions) FileAccessIntent {
-	rv := objc.Call[FileAccessIntent](fc, objc.Sel("writingIntentWithURL:options:"), objc.Ptr(url), options)
+	rv := objc.Call[FileAccessIntent](fc, objc.Sel("writingIntentWithURL:options:"), url, options)
 	return rv
 }
 
@@ -47,7 +47,7 @@ func FileAccessIntent_WritingIntentWithURLOptions(url IURL, options FileCoordina
 }
 
 func (fc _FileAccessIntentClass) ReadingIntentWithURLOptions(url IURL, options FileCoordinatorReadingOptions) FileAccessIntent {
-	rv := objc.Call[FileAccessIntent](fc, objc.Sel("readingIntentWithURL:options:"), objc.Ptr(url), options)
+	rv := objc.Call[FileAccessIntent](fc, objc.Sel("readingIntentWithURL:options:"), url, options)
 	return rv
 }
 

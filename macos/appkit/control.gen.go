@@ -47,8 +47,8 @@ type IControl interface {
 	SetHighlighted(value bool)
 	Formatter() foundation.Formatter
 	SetFormatter(value foundation.IFormatter)
-	FloatValue() float64
-	SetFloatValue(value float64)
+	FloatValue() float32
+	SetFloatValue(value float32)
 	IntValue() int
 	SetIntValue(value int)
 	SetTag(value int)
@@ -142,7 +142,7 @@ func (c_ Control) TakeIntValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428968-selectwithframe?language=objc
 func (c_ Control) SelectWithFrameEditorDelegateStartLength(rect foundation.Rect, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	objc.Call[objc.Void](c_, objc.Sel("selectWithFrame:editor:delegate:start:length:"), rect, objc.Ptr(textObj), delegate, selStart, selLength)
+	objc.Call[objc.Void](c_, objc.Sel("selectWithFrame:editor:delegate:start:length:"), rect, textObj, delegate, selStart, selLength)
 }
 
 // Sets the value of the receiver’s cell to a double-precision floating-point value obtained from the specified object. [Full Topic]
@@ -209,7 +209,7 @@ func (c_ Control) TakeObjectValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428936-endediting?language=objc
 func (c_ Control) EndEditing(textObj IText) {
-	objc.Call[objc.Void](c_, objc.Sel("endEditing:"), objc.Ptr(textObj))
+	objc.Call[objc.Void](c_, objc.Sel("endEditing:"), textObj)
 }
 
 // Resizes the receiver’s frame so that it’s the minimum size needed to contain its cell. [Full Topic]
@@ -230,7 +230,7 @@ func (c_ Control) TakeStringValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428919-editwithframe?language=objc
 func (c_ Control) EditWithFrameEditorDelegateEvent(rect foundation.Rect, textObj IText, delegate objc.IObject, event IEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("editWithFrame:editor:delegate:event:"), rect, objc.Ptr(textObj), delegate, objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("editWithFrame:editor:delegate:event:"), rect, textObj, delegate, event)
 }
 
 // The frame in which a tool tip can be displayed, if needed. [Full Topic]
@@ -260,14 +260,14 @@ func (c_ Control) ValidateEditing() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1526876-invalidateintrinsiccontentsizefo?language=objc
 func (c_ Control) InvalidateIntrinsicContentSizeForCell(cell ICell) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateIntrinsicContentSizeForCell:"), objc.Ptr(cell))
+	objc.Call[objc.Void](c_, objc.Sel("invalidateIntrinsicContentSizeForCell:"), cell)
 }
 
 // Performs custom expansion tool tip drawing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428895-drawwithexpansionframe?language=objc
 func (c_ Control) DrawWithExpansionFrameInView(contentFrame foundation.Rect, view IView) {
-	objc.Call[objc.Void](c_, objc.Sel("drawWithExpansionFrame:inView:"), contentFrame, objc.Ptr(view))
+	objc.Call[objc.Void](c_, objc.Sel("drawWithExpansionFrame:inView:"), contentFrame, view)
 }
 
 // Sets the value of the receiver’s cell to a single-precision floating-point value obtained from the specified object. [Full Topic]
@@ -334,21 +334,21 @@ func (c_ Control) Formatter() foundation.Formatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428887-formatter?language=objc
 func (c_ Control) SetFormatter(value foundation.IFormatter) {
-	objc.Call[objc.Void](c_, objc.Sel("setFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setFormatter:"), value)
 }
 
 // The value of the receiver’s cell as a single-precision floating-point number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428889-floatvalue?language=objc
-func (c_ Control) FloatValue() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("floatValue"))
+func (c_ Control) FloatValue() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("floatValue"))
 	return rv
 }
 
 // The value of the receiver’s cell as a single-precision floating-point number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428889-floatvalue?language=objc
-func (c_ Control) SetFloatValue(value float64) {
+func (c_ Control) SetFloatValue(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setFloatValue:"), value)
 }
 
@@ -431,7 +431,7 @@ func (c_ Control) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428914-font?language=objc
 func (c_ Control) SetFont(value IFont) {
-	objc.Call[objc.Void](c_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setFont:"), value)
 }
 
 // A Boolean value indicating whether the receiver ignores multiple clicks made in rapid succession. [Full Topic]
@@ -551,7 +551,7 @@ func (c_ Control) AttributedStringValue() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontrol/1428916-attributedstringvalue?language=objc
 func (c_ Control) SetAttributedStringValue(value foundation.IAttributedString) {
-	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringValue:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringValue:"), value)
 }
 
 // The value of the receiver’s cell as an NSString object. [Full Topic]

@@ -131,14 +131,14 @@ func NewMatrixMultiplicationWithDevice(device metal.PDevice) MatrixMultiplicatio
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixmultiplication/2147848-encodetocommandbuffer?language=objc
 func (m_ MatrixMultiplication) EncodeToCommandBufferLeftMatrixRightMatrixResultMatrix(commandBuffer metal.PCommandBuffer, leftMatrix IMatrix, rightMatrix IMatrix, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:leftMatrix:rightMatrix:resultMatrix:"), po0, objc.Ptr(leftMatrix), objc.Ptr(rightMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:leftMatrix:rightMatrix:resultMatrix:"), po0, leftMatrix, rightMatrix, resultMatrix)
 }
 
 // Encodes a matrix multiplication kernel to a command buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixmultiplication/2147848-encodetocommandbuffer?language=objc
 func (m_ MatrixMultiplication) EncodeToCommandBufferObjectLeftMatrixRightMatrixResultMatrix(commandBufferObject objc.IObject, leftMatrix IMatrix, rightMatrix IMatrix, resultMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:leftMatrix:rightMatrix:resultMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(leftMatrix), objc.Ptr(rightMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:leftMatrix:rightMatrix:resultMatrix:"), commandBufferObject, leftMatrix, rightMatrix, resultMatrix)
 }
 
 // The origin of the right input matrix. [Full Topic]

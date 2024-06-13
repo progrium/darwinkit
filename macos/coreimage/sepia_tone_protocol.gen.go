@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisepiatone?language=objc
 type PSepiaTone interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (s_ SepiaToneObject) HasSetIntensity() bool {
 // The intensity of the sepia effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisepiatone/3228703-intensity?language=objc
-func (s_ SepiaToneObject) SetIntensity(value float64) {
+func (s_ SepiaToneObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setIntensity:"), value)
 }
 
@@ -53,8 +53,8 @@ func (s_ SepiaToneObject) HasIntensity() bool {
 // The intensity of the sepia effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisepiatone/3228703-intensity?language=objc
-func (s_ SepiaToneObject) Intensity() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("intensity"))
+func (s_ SepiaToneObject) Intensity() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (s_ SepiaToneObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisepiatone/3228702-inputimage?language=objc
 func (s_ SepiaToneObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SepiaToneObject) HasInputImage() bool {

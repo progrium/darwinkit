@@ -54,7 +54,7 @@ func (a_ AffineTransform) Init() AffineTransform {
 }
 
 func (a_ AffineTransform) InitWithTransform(transform IAffineTransform) AffineTransform {
-	rv := objc.Call[AffineTransform](a_, objc.Sel("initWithTransform:"), objc.Ptr(transform))
+	rv := objc.Call[AffineTransform](a_, objc.Sel("initWithTransform:"), transform)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewAffineTransform() AffineTransform {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsaffinetransform/1409793-prependtransform?language=objc
 func (a_ AffineTransform) PrependTransform(transform IAffineTransform) {
-	objc.Call[objc.Void](a_, objc.Sel("prependTransform:"), objc.Ptr(transform))
+	objc.Call[objc.Void](a_, objc.Sel("prependTransform:"), transform)
 }
 
 // Appends the receiver’s matrix to the current transformation matrix stored in the current graphics context, replacing the current transformation matrix with the result. [Full Topic]
@@ -107,7 +107,7 @@ func (a_ AffineTransform) ScaleXByYBy(scaleX float64, scaleY float64) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsaffinetransform/1462131-transformbezierpath?language=objc
 func (a_ AffineTransform) TransformBezierPath(path objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("transformBezierPath:"), objc.Ptr(path))
+	rv := objc.Call[objc.Object](a_, objc.Sel("transformBezierPath:"), path)
 	return rv
 }
 
@@ -173,7 +173,7 @@ func (a_ AffineTransform) ScaleBy(scale float64) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsaffinetransform/1408404-appendtransform?language=objc
 func (a_ AffineTransform) AppendTransform(transform IAffineTransform) {
-	objc.Call[objc.Void](a_, objc.Sel("appendTransform:"), objc.Ptr(transform))
+	objc.Call[objc.Void](a_, objc.Sel("appendTransform:"), transform)
 }
 
 // Applies the specified translation factors to the receiver’s transformation matrix. [Full Topic]

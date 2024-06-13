@@ -107,7 +107,7 @@ func (l_ LayoutGuide) OwningView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutguide/1533971-owningview?language=objc
 func (l_ LayoutGuide) SetOwningView(value IView) {
-	objc.Call[objc.Void](l_, objc.Sel("setOwningView:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setOwningView:"), value)
 }
 
 // A layout anchor representing the top edge of the layout guide’s frame. [Full Topic]

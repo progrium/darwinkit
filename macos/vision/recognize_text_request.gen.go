@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,13 +18,13 @@ type _RecognizeTextRequestClass struct {
 // An interface definition for the [RecognizeTextRequest] class.
 type IRecognizeTextRequest interface {
 	IImageBasedRequest
-	SupportedRecognitionLanguagesAndReturnError(error foundation.IError) []string
+	SupportedRecognitionLanguagesAndReturnError(error unsafe.Pointer) []string
 	RecognitionLanguages() []string
 	SetRecognitionLanguages(value []string)
 	RecognitionLevel() RequestTextRecognitionLevel
 	SetRecognitionLevel(value RequestTextRecognitionLevel)
-	MinimumTextHeight() float64
-	SetMinimumTextHeight(value float64)
+	MinimumTextHeight() float32
+	SetMinimumTextHeight(value float32)
 	CustomWords() []string
 	SetCustomWords(value []string)
 	UsesLanguageCorrection() bool
@@ -82,8 +81,8 @@ func NewRecognizeTextRequestWithCompletionHandler(completionHandler RequestCompl
 // Returns the identifiers of the languages that the request supports. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3751006-supportedrecognitionlanguagesand?language=objc
-func (r_ RecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(error foundation.IError) []string {
-	rv := objc.Call[[]string](r_, objc.Sel("supportedRecognitionLanguagesAndReturnError:"), objc.Ptr(error))
+func (r_ RecognizeTextRequest) SupportedRecognitionLanguagesAndReturnError(error unsafe.Pointer) []string {
+	rv := objc.Call[[]string](r_, objc.Sel("supportedRecognitionLanguagesAndReturnError:"), error)
 	return rv
 }
 
@@ -120,15 +119,15 @@ func (r_ RecognizeTextRequest) SetRecognitionLevel(value RequestTextRecognitionL
 // The minimum height, relative to the image height, of the text to recognize. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152641-minimumtextheight?language=objc
-func (r_ RecognizeTextRequest) MinimumTextHeight() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("minimumTextHeight"))
+func (r_ RecognizeTextRequest) MinimumTextHeight() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("minimumTextHeight"))
 	return rv
 }
 
 // The minimum height, relative to the image height, of the text to recognize. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizetextrequest/3152641-minimumtextheight?language=objc
-func (r_ RecognizeTextRequest) SetMinimumTextHeight(value float64) {
+func (r_ RecognizeTextRequest) SetMinimumTextHeight(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setMinimumTextHeight:"), value)
 }
 

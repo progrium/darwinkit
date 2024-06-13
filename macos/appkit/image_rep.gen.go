@@ -80,7 +80,7 @@ func NewImageRep() ImageRep {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1533478-cgimageforproposedrect?language=objc
 func (i_ ImageRep) CGImageForProposedRectContextHints(proposedDestRect *foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject) coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImageForProposedRect:context:hints:"), proposedDestRect, objc.Ptr(context), hints)
+	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImageForProposedRect:context:hints:"), proposedDestRect, context, hints)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func ImageRep_ImageRepClassForData(data []byte) objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1526978-imagerepswithcontentsofurl?language=objc
 func (ic _ImageRepClass) ImageRepsWithContentsOfURL(url foundation.IURL) []ImageRep {
-	rv := objc.Call[[]ImageRep](ic, objc.Sel("imageRepsWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[[]ImageRep](ic, objc.Sel("imageRepsWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -134,7 +134,7 @@ func (i_ ImageRep) DrawInRectFromRectOperationFractionRespectFlippedHints(dstSpa
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1535586-imagerepswithpasteboard?language=objc
 func (ic _ImageRepClass) ImageRepsWithPasteboard(pasteboard IPasteboard) []ImageRep {
-	rv := objc.Call[[]ImageRep](ic, objc.Sel("imageRepsWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[[]ImageRep](ic, objc.Sel("imageRepsWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -149,7 +149,7 @@ func ImageRep_ImageRepsWithPasteboard(pasteboard IPasteboard) []ImageRep {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1533918-imagerepwithpasteboard?language=objc
 func (ic _ImageRepClass) ImageRepWithPasteboard(pasteboard IPasteboard) ImageRep {
-	rv := objc.Call[ImageRep](ic, objc.Sel("imageRepWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[ImageRep](ic, objc.Sel("imageRepWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -164,7 +164,7 @@ func ImageRep_ImageRepWithPasteboard(pasteboard IPasteboard) ImageRep {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1535840-imagerepwithcontentsofurl?language=objc
 func (ic _ImageRepClass) ImageRepWithContentsOfURL(url foundation.IURL) ImageRep {
-	rv := objc.Call[ImageRep](ic, objc.Sel("imageRepWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[ImageRep](ic, objc.Sel("imageRepWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func ImageRep_CanInitWithData(data []byte) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1535027-unregisterimagerepclass?language=objc
 func (ic _ImageRepClass) UnregisterImageRepClass(imageRepClass objc.IClass) {
-	objc.Call[objc.Void](ic, objc.Sel("unregisterImageRepClass:"), objc.Ptr(imageRepClass))
+	objc.Call[objc.Void](ic, objc.Sel("unregisterImageRepClass:"), imageRepClass)
 }
 
 // Removes the specified image representation subclass from the registry of available image representations. [Full Topic]
@@ -224,7 +224,7 @@ func (i_ ImageRep) Draw() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1535393-registerimagerepclass?language=objc
 func (ic _ImageRepClass) RegisterImageRepClass(imageRepClass objc.IClass) {
-	objc.Call[objc.Void](ic, objc.Sel("registerImageRepClass:"), objc.Ptr(imageRepClass))
+	objc.Call[objc.Void](ic, objc.Sel("registerImageRepClass:"), imageRepClass)
 }
 
 // Adds the specified class to the registry of available image representation subclasses. [Full Topic]
@@ -268,7 +268,7 @@ func ImageRep_ImageRepClassForType(type_ string) objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagerep/1527887-caninitwithpasteboard?language=objc
 func (ic _ImageRepClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.Call[bool](ic, objc.Sel("canInitWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[bool](ic, objc.Sel("canInitWithPasteboard:"), pasteboard)
 	return rv
 }
 

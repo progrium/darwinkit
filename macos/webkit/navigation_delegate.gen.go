@@ -341,7 +341,7 @@ func (n_ NavigationDelegateObject) HasWebViewAuthenticationChallengeShouldAllowD
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/3601237-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewAuthenticationChallengeShouldAllowDeprecatedTLS(webView WebView, challenge foundation.URLAuthenticationChallenge, decisionHandler func(arg0 bool)) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:authenticationChallenge:shouldAllowDeprecatedTLS:"), objc.Ptr(webView), objc.Ptr(challenge), decisionHandler)
+	objc.Call[objc.Void](n_, objc.Sel("webView:authenticationChallenge:shouldAllowDeprecatedTLS:"), webView, challenge, decisionHandler)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidFailNavigationWithError() bool {
@@ -352,7 +352,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidFailNavigationWithError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455623-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidFailNavigationWithError(webView WebView, navigation Navigation, error foundation.Error) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didFailNavigation:withError:"), objc.Ptr(webView), objc.Ptr(navigation), objc.Ptr(error))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didFailNavigation:withError:"), webView, navigation, error)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidFailProvisionalNavigationWithError() bool {
@@ -363,7 +363,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidFailProvisionalNavigationWithErr
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455637-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidFailProvisionalNavigationWithError(webView WebView, navigation Navigation, error foundation.Error) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didFailProvisionalNavigation:withError:"), objc.Ptr(webView), objc.Ptr(navigation), objc.Ptr(error))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didFailProvisionalNavigation:withError:"), webView, navigation, error)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationActionPreferencesDecisionHandler() bool {
@@ -374,7 +374,7 @@ func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationActionPref
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/3223382-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDecidePolicyForNavigationActionPreferencesDecisionHandler(webView WebView, navigationAction NavigationAction, preferences WebpagePreferences, decisionHandler func(arg0 NavigationActionPolicy, arg1 WebpagePreferences)) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), objc.Ptr(webView), objc.Ptr(navigationAction), objc.Ptr(preferences), decisionHandler)
+	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationAction:preferences:decisionHandler:"), webView, navigationAction, preferences, decisionHandler)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewNavigationResponseDidBecomeDownload() bool {
@@ -385,7 +385,7 @@ func (n_ NavigationDelegateObject) HasWebViewNavigationResponseDidBecomeDownload
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/3727360-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewNavigationResponseDidBecomeDownload(webView WebView, navigationResponse NavigationResponse, download Download) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:navigationResponse:didBecomeDownload:"), objc.Ptr(webView), objc.Ptr(navigationResponse), objc.Ptr(download))
+	objc.Call[objc.Void](n_, objc.Sel("webView:navigationResponse:didBecomeDownload:"), webView, navigationResponse, download)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationActionDecisionHandler() bool {
@@ -396,7 +396,7 @@ func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationActionDeci
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455641-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDecidePolicyForNavigationActionDecisionHandler(webView WebView, navigationAction NavigationAction, decisionHandler func(arg0 NavigationActionPolicy)) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationAction:decisionHandler:"), objc.Ptr(webView), objc.Ptr(navigationAction), decisionHandler)
+	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationAction:decisionHandler:"), webView, navigationAction, decisionHandler)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidFinishNavigation() bool {
@@ -407,7 +407,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidFinishNavigation() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455629-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidFinishNavigation(webView WebView, navigation Navigation) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didFinishNavigation:"), objc.Ptr(webView), objc.Ptr(navigation))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didFinishNavigation:"), webView, navigation)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewWebContentProcessDidTerminate() bool {
@@ -418,7 +418,7 @@ func (n_ NavigationDelegateObject) HasWebViewWebContentProcessDidTerminate() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455639-webviewwebcontentprocessdidtermi?language=objc
 func (n_ NavigationDelegateObject) WebViewWebContentProcessDidTerminate(webView WebView) {
-	objc.Call[objc.Void](n_, objc.Sel("webViewWebContentProcessDidTerminate:"), objc.Ptr(webView))
+	objc.Call[objc.Void](n_, objc.Sel("webViewWebContentProcessDidTerminate:"), webView)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidReceiveAuthenticationChallengeCompletionHandler() bool {
@@ -429,7 +429,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidReceiveAuthenticationChallengeCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455638-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidReceiveAuthenticationChallengeCompletionHandler(webView WebView, challenge foundation.URLAuthenticationChallenge, completionHandler func(disposition foundation.URLSessionAuthChallengeDisposition, credential foundation.URLCredential)) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didReceiveAuthenticationChallenge:completionHandler:"), objc.Ptr(webView), objc.Ptr(challenge), completionHandler)
+	objc.Call[objc.Void](n_, objc.Sel("webView:didReceiveAuthenticationChallenge:completionHandler:"), webView, challenge, completionHandler)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewNavigationActionDidBecomeDownload() bool {
@@ -440,7 +440,7 @@ func (n_ NavigationDelegateObject) HasWebViewNavigationActionDidBecomeDownload()
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/3727359-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewNavigationActionDidBecomeDownload(webView WebView, navigationAction NavigationAction, download Download) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:navigationAction:didBecomeDownload:"), objc.Ptr(webView), objc.Ptr(navigationAction), objc.Ptr(download))
+	objc.Call[objc.Void](n_, objc.Sel("webView:navigationAction:didBecomeDownload:"), webView, navigationAction, download)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidReceiveServerRedirectForProvisionalNavigation() bool {
@@ -451,7 +451,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidReceiveServerRedirectForProvisio
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455627-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidReceiveServerRedirectForProvisionalNavigation(webView WebView, navigation Navigation) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didReceiveServerRedirectForProvisionalNavigation:"), objc.Ptr(webView), objc.Ptr(navigation))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didReceiveServerRedirectForProvisionalNavigation:"), webView, navigation)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidCommitNavigation() bool {
@@ -462,7 +462,7 @@ func (n_ NavigationDelegateObject) HasWebViewDidCommitNavigation() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455635-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidCommitNavigation(webView WebView, navigation Navigation) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didCommitNavigation:"), objc.Ptr(webView), objc.Ptr(navigation))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didCommitNavigation:"), webView, navigation)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationResponseDecisionHandler() bool {
@@ -473,7 +473,7 @@ func (n_ NavigationDelegateObject) HasWebViewDecidePolicyForNavigationResponseDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455643-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDecidePolicyForNavigationResponseDecisionHandler(webView WebView, navigationResponse NavigationResponse, decisionHandler func(arg0 NavigationResponsePolicy)) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationResponse:decisionHandler:"), objc.Ptr(webView), objc.Ptr(navigationResponse), decisionHandler)
+	objc.Call[objc.Void](n_, objc.Sel("webView:decidePolicyForNavigationResponse:decisionHandler:"), webView, navigationResponse, decisionHandler)
 }
 
 func (n_ NavigationDelegateObject) HasWebViewDidStartProvisionalNavigation() bool {
@@ -484,5 +484,5 @@ func (n_ NavigationDelegateObject) HasWebViewDidStartProvisionalNavigation() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wknavigationdelegate/1455621-webview?language=objc
 func (n_ NavigationDelegateObject) WebViewDidStartProvisionalNavigation(webView WebView, navigation Navigation) {
-	objc.Call[objc.Void](n_, objc.Sel("webView:didStartProvisionalNavigation:"), objc.Ptr(webView), objc.Ptr(navigation))
+	objc.Call[objc.Void](n_, objc.Sel("webView:didStartProvisionalNavigation:"), webView, navigation)
 }

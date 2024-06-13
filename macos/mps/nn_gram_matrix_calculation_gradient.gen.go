@@ -19,8 +19,8 @@ type _NNGramMatrixCalculationGradientClass struct {
 // An interface definition for the [NNGramMatrixCalculationGradient] class.
 type INNGramMatrixCalculationGradient interface {
 	ICNNGradientKernel
-	Alpha() float64
-	SetAlpha(value float64)
+	Alpha() float32
+	SetAlpha(value float32)
 }
 
 //	[Full Topic]
@@ -51,7 +51,7 @@ func NewNNGramMatrixCalculationGradientWithDevice(device metal.PDevice) NNGramMa
 	return instance
 }
 
-func (n_ NNGramMatrixCalculationGradient) InitWithDeviceAlpha(device metal.PDevice, alpha float64) NNGramMatrixCalculationGradient {
+func (n_ NNGramMatrixCalculationGradient) InitWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculationGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNGramMatrixCalculationGradient](n_, objc.Sel("initWithDevice:alpha:"), po0, alpha)
 	return rv
@@ -60,7 +60,7 @@ func (n_ NNGramMatrixCalculationGradient) InitWithDeviceAlpha(device metal.PDevi
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradient/3114085-initwithdevice?language=objc
-func NewNNGramMatrixCalculationGradientWithDeviceAlpha(device metal.PDevice, alpha float64) NNGramMatrixCalculationGradient {
+func NewNNGramMatrixCalculationGradientWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculationGradient {
 	instance := NNGramMatrixCalculationGradientClass.Alloc().InitWithDeviceAlpha(device, alpha)
 	instance.Autorelease()
 	return instance
@@ -104,14 +104,14 @@ func NNGramMatrixCalculationGradient_CopyWithZoneDevice(zone unsafe.Pointer, dev
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradient/3114082-alpha?language=objc
-func (n_ NNGramMatrixCalculationGradient) Alpha() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alpha"))
+func (n_ NNGramMatrixCalculationGradient) Alpha() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradient/3114082-alpha?language=objc
-func (n_ NNGramMatrixCalculationGradient) SetAlpha(value float64) {
+func (n_ NNGramMatrixCalculationGradient) SetAlpha(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setAlpha:"), value)
 }

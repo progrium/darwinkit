@@ -41,7 +41,7 @@ func URLAssetFrom(ptr unsafe.Pointer) URLAsset {
 }
 
 func (uc _URLAssetClass) URLAssetWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) URLAsset {
-	rv := objc.Call[URLAsset](uc, objc.Sel("URLAssetWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[URLAsset](uc, objc.Sel("URLAssetWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func URLAsset_URLAssetWithURLOptions(URL foundation.IURL, options map[string]obj
 }
 
 func (u_ URLAsset) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) URLAsset {
-	rv := objc.Call[URLAsset](u_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[URLAsset](u_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -87,7 +87,7 @@ func (u_ URLAsset) Init() URLAsset {
 }
 
 func (uc _URLAssetClass) AssetWithURL(URL foundation.IURL) URLAsset {
-	rv := objc.Call[URLAsset](uc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[URLAsset](uc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func URLAsset_AudiovisualTypes() []FileType {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avurlasset/3746535-findcompatibletrackforcompositio?language=objc
 func (u_ URLAsset) FindCompatibleTrackForCompositionTrackCompletionHandler(compositionTrack ICompositionTrack, completionHandler func(arg0 AssetTrack, arg1 foundation.Error)) {
-	objc.Call[objc.Void](u_, objc.Sel("findCompatibleTrackForCompositionTrack:completionHandler:"), objc.Ptr(compositionTrack), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("findCompatibleTrackForCompositionTrack:completionHandler:"), compositionTrack, completionHandler)
 }
 
 // Returns an array of the MIME types the asset supports. [Full Topic]

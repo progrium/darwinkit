@@ -20,11 +20,11 @@ type IFileWrapper interface {
 	objc.IObject
 	MatchesContentsOfURL(url IURL) bool
 	KeyForFileWrapper(child IFileWrapper) string
-	WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError IError) bool
+	WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool
 	RemoveFileWrapper(child IFileWrapper)
 	AddFileWrapper(child IFileWrapper) string
 	AddRegularFileWithContentsPreferredFilename(data []byte, fileName string) string
-	ReadFromURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) bool
+	ReadFromURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) bool
 	SerializedRepresentation() []byte
 	FileWrappers() map[string]FileWrapper
 	RegularFileContents() []byte
@@ -56,7 +56,7 @@ func FileWrapperFrom(ptr unsafe.Pointer) FileWrapper {
 }
 
 func (f_ FileWrapper) InitSymbolicLinkWithDestinationURL(url IURL) FileWrapper {
-	rv := objc.Call[FileWrapper](f_, objc.Sel("initSymbolicLinkWithDestinationURL:"), objc.Ptr(url))
+	rv := objc.Call[FileWrapper](f_, objc.Sel("initSymbolicLinkWithDestinationURL:"), url)
 	return rv
 }
 
@@ -83,15 +83,15 @@ func NewFileWrapperRegularFileWithContents(contents []byte) FileWrapper {
 	return instance
 }
 
-func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) FileWrapper {
-	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithURL:options:error:"), objc.Ptr(url), options, objc.Ptr(outError))
+func (f_ FileWrapper) InitWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
+	rv := objc.Call[FileWrapper](f_, objc.Sel("initWithURL:options:error:"), url, options, outError)
 	return rv
 }
 
 // Initializes a file wrapper instance whose kind is determined by the type of file-system node located by the URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415658-initwithurl?language=objc
-func NewFileWrapperWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) FileWrapper {
+func NewFileWrapperWithURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) FileWrapper {
 	instance := FileWrapperClass.Alloc().InitWithURLOptionsError(url, options, outError)
 	instance.Autorelease()
 	return instance
@@ -149,7 +149,7 @@ func (f_ FileWrapper) Init() FileWrapper {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1408360-matchescontentsofurl?language=objc
 func (f_ FileWrapper) MatchesContentsOfURL(url IURL) bool {
-	rv := objc.Call[bool](f_, objc.Sel("matchesContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[bool](f_, objc.Sel("matchesContentsOfURL:"), url)
 	return rv
 }
 
@@ -157,15 +157,15 @@ func (f_ FileWrapper) MatchesContentsOfURL(url IURL) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1407541-keyforfilewrapper?language=objc
 func (f_ FileWrapper) KeyForFileWrapper(child IFileWrapper) string {
-	rv := objc.Call[string](f_, objc.Sel("keyForFileWrapper:"), objc.Ptr(child))
+	rv := objc.Call[string](f_, objc.Sel("keyForFileWrapper:"), child)
 	return rv
 }
 
 // Recursively writes the entire contents of a file wrapper to a given file-system URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415981-writetourl?language=objc
-func (f_ FileWrapper) WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("writeToURL:options:originalContentsURL:error:"), objc.Ptr(url), options, objc.Ptr(originalContentsURL), objc.Ptr(outError))
+func (f_ FileWrapper) WriteToURLOptionsOriginalContentsURLError(url IURL, options FileWrapperWritingOptions, originalContentsURL IURL, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("writeToURL:options:originalContentsURL:error:"), url, options, originalContentsURL, outError)
 	return rv
 }
 
@@ -173,14 +173,14 @@ func (f_ FileWrapper) WriteToURLOptionsOriginalContentsURLError(url IURL, option
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1417343-removefilewrapper?language=objc
 func (f_ FileWrapper) RemoveFileWrapper(child IFileWrapper) {
-	objc.Call[objc.Void](f_, objc.Sel("removeFileWrapper:"), objc.Ptr(child))
+	objc.Call[objc.Void](f_, objc.Sel("removeFileWrapper:"), child)
 }
 
 // Adds a child file wrapper to the receiver, which must be a directory file wrapper. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1415067-addfilewrapper?language=objc
 func (f_ FileWrapper) AddFileWrapper(child IFileWrapper) string {
-	rv := objc.Call[string](f_, objc.Sel("addFileWrapper:"), objc.Ptr(child))
+	rv := objc.Call[string](f_, objc.Sel("addFileWrapper:"), child)
 	return rv
 }
 
@@ -195,8 +195,8 @@ func (f_ FileWrapper) AddRegularFileWithContentsPreferredFilename(data []byte, f
 // Recursively rereads the entire contents of a file wrapper from the specified location on disk. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1411645-readfromurl?language=objc
-func (f_ FileWrapper) ReadFromURLOptionsError(url IURL, options FileWrapperReadingOptions, outError IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("readFromURL:options:error:"), objc.Ptr(url), options, objc.Ptr(outError))
+func (f_ FileWrapper) ReadFromURLOptionsError(url IURL, options FileWrapperReadingOptions, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("readFromURL:options:error:"), url, options, outError)
 	return rv
 }
 
@@ -259,7 +259,7 @@ func (f_ FileWrapper) Icon() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilewrapper/1413123-icon?language=objc
 func (f_ FileWrapper) SetIcon(value objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("setIcon:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setIcon:"), value)
 }
 
 // The preferred filename for the file wrapper object. [Full Topic]

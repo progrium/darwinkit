@@ -142,7 +142,7 @@ func (k_ KeyedArchiverDelegateObject) HasArchiverDidEncodeObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1416193-archiver?language=objc
 func (k_ KeyedArchiverDelegateObject) ArchiverDidEncodeObject(archiver KeyedArchiver, object objc.Object) {
-	objc.Call[objc.Void](k_, objc.Sel("archiver:didEncodeObject:"), objc.Ptr(archiver), object)
+	objc.Call[objc.Void](k_, objc.Sel("archiver:didEncodeObject:"), archiver, object)
 }
 
 func (k_ KeyedArchiverDelegateObject) HasArchiverWillFinish() bool {
@@ -153,7 +153,7 @@ func (k_ KeyedArchiverDelegateObject) HasArchiverWillFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1411119-archiverwillfinish?language=objc
 func (k_ KeyedArchiverDelegateObject) ArchiverWillFinish(archiver KeyedArchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("archiverWillFinish:"), objc.Ptr(archiver))
+	objc.Call[objc.Void](k_, objc.Sel("archiverWillFinish:"), archiver)
 }
 
 func (k_ KeyedArchiverDelegateObject) HasArchiverDidFinish() bool {
@@ -164,7 +164,7 @@ func (k_ KeyedArchiverDelegateObject) HasArchiverDidFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1412480-archiverdidfinish?language=objc
 func (k_ KeyedArchiverDelegateObject) ArchiverDidFinish(archiver KeyedArchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("archiverDidFinish:"), objc.Ptr(archiver))
+	objc.Call[objc.Void](k_, objc.Sel("archiverDidFinish:"), archiver)
 }
 
 func (k_ KeyedArchiverDelegateObject) HasArchiverWillEncodeObject() bool {
@@ -175,7 +175,7 @@ func (k_ KeyedArchiverDelegateObject) HasArchiverWillEncodeObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409228-archiver?language=objc
 func (k_ KeyedArchiverDelegateObject) ArchiverWillEncodeObject(archiver KeyedArchiver, object objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](k_, objc.Sel("archiver:willEncodeObject:"), objc.Ptr(archiver), object)
+	rv := objc.Call[objc.Object](k_, objc.Sel("archiver:willEncodeObject:"), archiver, object)
 	return rv
 }
 
@@ -187,5 +187,5 @@ func (k_ KeyedArchiverDelegateObject) HasArchiverWillReplaceObjectWithObject() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiverdelegate/1409389-archiver?language=objc
 func (k_ KeyedArchiverDelegateObject) ArchiverWillReplaceObjectWithObject(archiver KeyedArchiver, object objc.Object, newObject objc.Object) {
-	objc.Call[objc.Void](k_, objc.Sel("archiver:willReplaceObject:withObject:"), objc.Ptr(archiver), object, newObject)
+	objc.Call[objc.Void](k_, objc.Sel("archiver:willReplaceObject:withObject:"), archiver, object, newObject)
 }

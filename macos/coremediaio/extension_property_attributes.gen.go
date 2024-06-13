@@ -38,7 +38,7 @@ func ExtensionPropertyAttributesFrom(ptr unsafe.Pointer) ExtensionPropertyAttrib
 }
 
 func (e_ ExtensionPropertyAttributes) InitWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
-	rv := objc.Call[ExtensionPropertyAttributes](e_, objc.Sel("initWithMinValue:maxValue:validValues:readOnly:"), objc.Ptr(minValue), objc.Ptr(maxValue), validValues, readOnly)
+	rv := objc.Call[ExtensionPropertyAttributes](e_, objc.Sel("initWithMinValue:maxValue:validValues:readOnly:"), minValue, maxValue, validValues, readOnly)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewExtensionPropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minVa
 }
 
 func (ec _ExtensionPropertyAttributesClass) PropertyAttributesWithMinValueMaxValueValidValuesReadOnly(minValue objc.IObject, maxValue objc.IObject, validValues []objc.IObject, readOnly bool) ExtensionPropertyAttributes {
-	rv := objc.Call[ExtensionPropertyAttributes](ec, objc.Sel("propertyAttributesWithMinValue:maxValue:validValues:readOnly:"), objc.Ptr(minValue), objc.Ptr(maxValue), validValues, readOnly)
+	rv := objc.Call[ExtensionPropertyAttributes](ec, objc.Sel("propertyAttributesWithMinValue:maxValue:validValues:readOnly:"), minValue, maxValue, validValues, readOnly)
 	return rv
 }
 

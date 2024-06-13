@@ -78,7 +78,7 @@ func (a_ AsynchronousVideoCompositionRequest) FinishCancelledRequest() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/3750313-sourcetimedmetadatabytrackid?language=objc
 func (a_ AsynchronousVideoCompositionRequest) SourceTimedMetadataByTrackID(trackID objc.IObject) TimedMetadataGroup {
-	rv := objc.Call[TimedMetadataGroup](a_, objc.Sel("sourceTimedMetadataByTrackID:"), objc.Ptr(trackID))
+	rv := objc.Call[TimedMetadataGroup](a_, objc.Sel("sourceTimedMetadataByTrackID:"), trackID)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (a_ AsynchronousVideoCompositionRequest) SourceTimedMetadataByTrackID(track
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/3750311-sourcesamplebufferbytrackid?language=objc
 func (a_ AsynchronousVideoCompositionRequest) SourceSampleBufferByTrackID(trackID objc.IObject) coremedia.SampleBufferRef {
-	rv := objc.Call[coremedia.SampleBufferRef](a_, objc.Sel("sourceSampleBufferByTrackID:"), objc.Ptr(trackID))
+	rv := objc.Call[coremedia.SampleBufferRef](a_, objc.Sel("sourceSampleBufferByTrackID:"), trackID)
 	return rv
 }
 
@@ -101,14 +101,14 @@ func (a_ AsynchronousVideoCompositionRequest) FinishWithComposedVideoFrame(compo
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1390797-finishwitherror?language=objc
 func (a_ AsynchronousVideoCompositionRequest) FinishWithError(error foundation.IError) {
-	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), error)
 }
 
 // Returns a source pixel buffer for the track that contains the specified identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousvideocompositionrequest/1390379-sourceframebytrackid?language=objc
 func (a_ AsynchronousVideoCompositionRequest) SourceFrameByTrackID(trackID objc.IObject) corevideo.PixelBufferRef {
-	rv := objc.Call[corevideo.PixelBufferRef](a_, objc.Sel("sourceFrameByTrackID:"), objc.Ptr(trackID))
+	rv := objc.Call[corevideo.PixelBufferRef](a_, objc.Sel("sourceFrameByTrackID:"), trackID)
 	return rv
 }
 

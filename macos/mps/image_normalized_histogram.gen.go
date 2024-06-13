@@ -122,7 +122,7 @@ func (i_ ImageNormalizedHistogram) EncodeToCommandBufferSourceTextureMinmaxTextu
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagenormalizedhistogram/3019322-encodetocommandbuffer?language=objc
 func (i_ ImageNormalizedHistogram) EncodeToCommandBufferObjectSourceTextureObjectMinmaxTextureObjectHistogramObjectHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, minmaxTextureObject objc.IObject, histogramObject objc.IObject, histogramOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:minmaxTexture:histogram:histogramOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), objc.Ptr(minmaxTextureObject), objc.Ptr(histogramObject), histogramOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:minmaxTexture:histogram:histogramOffset:"), commandBufferObject, sourceObject, minmaxTextureObject, histogramObject, histogramOffset)
 }
 
 //	[Full Topic]

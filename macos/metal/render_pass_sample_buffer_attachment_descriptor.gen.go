@@ -99,7 +99,7 @@ func (r_ RenderPassSampleBufferAttachmentDescriptor) SetSampleBuffer(value PCoun
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasssamplebufferattachmentdescriptor/3081752-samplebuffer?language=objc
 func (r_ RenderPassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setSampleBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setSampleBuffer:"), valueObject)
 }
 
 // The index the Metal device object should use to store GPU counters when starting the render pass’s fragment stage. [Full Topic]

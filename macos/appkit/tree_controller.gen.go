@@ -112,7 +112,7 @@ func NewTreeControllerWithContent(content objc.IObject) TreeController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1528109-countkeypathfornode?language=objc
 func (t_ TreeController) CountKeyPathForNode(node ITreeNode) string {
-	rv := objc.Call[string](t_, objc.Sel("countKeyPathForNode:"), objc.Ptr(node))
+	rv := objc.Call[string](t_, objc.Sel("countKeyPathForNode:"), node)
 	return rv
 }
 
@@ -136,14 +136,14 @@ func (t_ TreeController) Insert(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1530156-insertobject?language=objc
 func (t_ TreeController) InsertObjectAtArrangedObjectIndexPath(object objc.IObject, indexPath foundation.IIndexPath) {
-	objc.Call[objc.Void](t_, objc.Sel("insertObject:atArrangedObjectIndexPath:"), object, objc.Ptr(indexPath))
+	objc.Call[objc.Void](t_, objc.Sel("insertObject:atArrangedObjectIndexPath:"), object, indexPath)
 }
 
 // Returns the key path that specifies whether the node is a leaf node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1526740-leafkeypathfornode?language=objc
 func (t_ TreeController) LeafKeyPathForNode(node ITreeNode) string {
-	rv := objc.Call[string](t_, objc.Sel("leafKeyPathForNode:"), objc.Ptr(node))
+	rv := objc.Call[string](t_, objc.Sel("leafKeyPathForNode:"), node)
 	return rv
 }
 
@@ -151,14 +151,14 @@ func (t_ TreeController) LeafKeyPathForNode(node ITreeNode) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1530337-movenodes?language=objc
 func (t_ TreeController) MoveNodesToIndexPath(nodes []ITreeNode, startingIndexPath foundation.IIndexPath) {
-	objc.Call[objc.Void](t_, objc.Sel("moveNodes:toIndexPath:"), nodes, objc.Ptr(startingIndexPath))
+	objc.Call[objc.Void](t_, objc.Sel("moveNodes:toIndexPath:"), nodes, startingIndexPath)
 }
 
 // Returns the key path used to find the children in the specified tree node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1525412-childrenkeypathfornode?language=objc
 func (t_ TreeController) ChildrenKeyPathForNode(node ITreeNode) string {
-	rv := objc.Call[string](t_, objc.Sel("childrenKeyPathForNode:"), objc.Ptr(node))
+	rv := objc.Call[string](t_, objc.Sel("childrenKeyPathForNode:"), node)
 	return rv
 }
 
@@ -181,7 +181,7 @@ func (t_ TreeController) InsertObjectsAtArrangedObjectIndexPaths(objects []objc.
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1532133-movenode?language=objc
 func (t_ TreeController) MoveNodeToIndexPath(node ITreeNode, indexPath foundation.IIndexPath) {
-	objc.Call[objc.Void](t_, objc.Sel("moveNode:toIndexPath:"), objc.Ptr(node), objc.Ptr(indexPath))
+	objc.Call[objc.Void](t_, objc.Sel("moveNode:toIndexPath:"), node, indexPath)
 }
 
 // Removes the objects at the specified indexPaths in the tree controller’s arranged objects from the tree controller’s content. [Full Topic]
@@ -226,14 +226,14 @@ func (t_ TreeController) InsertChild(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1530806-removeobjectatarrangedobjectinde?language=objc
 func (t_ TreeController) RemoveObjectAtArrangedObjectIndexPath(indexPath foundation.IIndexPath) {
-	objc.Call[objc.Void](t_, objc.Sel("removeObjectAtArrangedObjectIndexPath:"), objc.Ptr(indexPath))
+	objc.Call[objc.Void](t_, objc.Sel("removeObjectAtArrangedObjectIndexPath:"), indexPath)
 }
 
 // Sets the tree controller’s current selection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreecontroller/1527490-setselectionindexpath?language=objc
 func (t_ TreeController) SetSelectionIndexPath(indexPath foundation.IIndexPath) bool {
-	rv := objc.Call[bool](t_, objc.Sel("setSelectionIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[bool](t_, objc.Sel("setSelectionIndexPath:"), indexPath)
 	return rv
 }
 

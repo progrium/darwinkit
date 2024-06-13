@@ -24,12 +24,12 @@ type INNLossGradientNode interface {
 	LossType() CNNLossType
 	NumberOfClasses() uint
 	IsLabelsGradientFilter() bool
-	Weight() float64
+	Weight() float32
 	ReductionType() CNNReductionType
-	Delta() float64
-	Epsilon() float64
+	Delta() float32
+	Epsilon() float32
 	ReduceAcrossBatch() bool
-	LabelSmoothing() float64
+	LabelSmoothing() float32
 }
 
 //	[Full Topic]
@@ -46,7 +46,7 @@ func NNLossGradientNodeFrom(ptr unsafe.Pointer) NNLossGradientNode {
 }
 
 func (n_ NNLossGradientNode) InitWithSourceGradientSourceImageLabelsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:labels:gradientState:lossDescriptor:isLabelsGradientFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:labels:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -60,7 +60,7 @@ func NewNNLossGradientNodeWithSourceGradientSourceImageLabelsGradientStateLossDe
 }
 
 func (nc _NNLossGradientNodeClass) NodeWithSourceGradientSourceImageLabelsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:labels:gradientState:lossDescriptor:isLabelsGradientFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:labels:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func NNLossGradientNode_NodeWithSourceGradientSourceImageLabelsGradientStateLoss
 }
 
 func (n_ NNLossGradientNode) InitWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(weights), objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewNNLossGradientNodeWithSourceGradientSourceImageLabelsWeightsGradientStat
 }
 
 func (nc _NNLossGradientNodeClass) NodeWithSourceGradientSourceImageLabelsWeightsGradientStateLossDescriptorIsLabelsGradientFilter(sourceGradient INNImageNode, sourceImage INNImageNode, labels INNImageNode, weights INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(weights), objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:labels:weights:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceGradient, sourceImage, labels, weights, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func NNLossGradientNode_NodeWithSourceGradientSourceImageLabelsWeightsGradientSt
 }
 
 func (nc _NNLossGradientNodeClass) NodeWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](nc, objc.Sel("nodeWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func NNLossGradientNode_NodeWithSourcesGradientStateLossDescriptorIsLabelsGradie
 }
 
 func (n_ NNLossGradientNode) InitWithSourcesGradientStateLossDescriptorIsLabelsGradientFilter(sourceNodes []INNImageNode, gradientState INNGradientStateNode, descriptor ICNNLossDescriptor, isLabelsGradientFilter bool) NNLossGradientNode {
-	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, objc.Ptr(gradientState), objc.Ptr(descriptor), isLabelsGradientFilter)
+	rv := objc.Call[NNLossGradientNode](n_, objc.Sel("initWithSources:gradientState:lossDescriptor:isLabelsGradientFilter:"), sourceNodes, gradientState, descriptor, isLabelsGradientFilter)
 	return rv
 }
 
@@ -163,7 +163,7 @@ func (n_ NNLossGradientNode) SetPropertyCallBack(value PNNLossCallback) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131865-propertycallback?language=objc
 func (n_ NNLossGradientNode) SetPropertyCallBackObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), valueObject)
 }
 
 //	[Full Topic]
@@ -193,8 +193,8 @@ func (n_ NNLossGradientNode) IsLabelsGradientFilter() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131867-weight?language=objc
-func (n_ NNLossGradientNode) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNLossGradientNode) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 
@@ -209,16 +209,16 @@ func (n_ NNLossGradientNode) ReductionType() CNNReductionType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131853-delta?language=objc
-func (n_ NNLossGradientNode) Delta() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("delta"))
+func (n_ NNLossGradientNode) Delta() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131854-epsilon?language=objc
-func (n_ NNLossGradientNode) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNLossGradientNode) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -233,7 +233,7 @@ func (n_ NNLossGradientNode) ReduceAcrossBatch() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradientnode/3131859-labelsmoothing?language=objc
-func (n_ NNLossGradientNode) LabelSmoothing() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("labelSmoothing"))
+func (n_ NNLossGradientNode) LabelSmoothing() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("labelSmoothing"))
 	return rv
 }

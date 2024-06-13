@@ -165,7 +165,7 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeContentWi
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/3235741-controller?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeContentWithDifference(controller FetchedResultsController, diff foundation.OrderedCollectionDifference) {
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeContentWithDifference:"), objc.Ptr(controller), objc.Ptr(diff))
+	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeContentWithDifference:"), controller, diff)
 }
 
 func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeSectionAtIndexForChangeType() bool {
@@ -177,7 +177,7 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeSectionAt
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622298-controller?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeSectionAtIndexForChangeType(controller FetchedResultsController, sectionInfo FetchedResultsSectionInfoObject, sectionIndex uint, type_ FetchedResultsChangeType) {
 	po1 := objc.WrapAsProtocol("NSFetchedResultsSectionInfo", sectionInfo)
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeSection:atIndex:forChangeType:"), objc.Ptr(controller), po1, sectionIndex, type_)
+	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeSection:atIndex:forChangeType:"), controller, po1, sectionIndex, type_)
 }
 
 func (f_ FetchedResultsControllerDelegateObject) HasControllerSectionIndexTitleForSectionName() bool {
@@ -188,7 +188,7 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerSectionIndexTitleF
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622286-controller?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerSectionIndexTitleForSectionName(controller FetchedResultsController, sectionName string) string {
-	rv := objc.Call[string](f_, objc.Sel("controller:sectionIndexTitleForSectionName:"), objc.Ptr(controller), sectionName)
+	rv := objc.Call[string](f_, objc.Sel("controller:sectionIndexTitleForSectionName:"), controller, sectionName)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeObjectAtI
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622296-controller?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeObjectAtIndexPathForChangeTypeNewIndexPath(controller FetchedResultsController, anObject objc.Object, indexPath foundation.IndexPath, type_ FetchedResultsChangeType, newIndexPath foundation.IndexPath) {
-	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"), objc.Ptr(controller), anObject, objc.Ptr(indexPath), type_, objc.Ptr(newIndexPath))
+	objc.Call[objc.Void](f_, objc.Sel("controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:"), controller, anObject, indexPath, type_, newIndexPath)
 }
 
 func (f_ FetchedResultsControllerDelegateObject) HasControllerWillChangeContent() bool {
@@ -211,7 +211,7 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerWillChangeContent(
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622295-controllerwillchangecontent?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerWillChangeContent(controller FetchedResultsController) {
-	objc.Call[objc.Void](f_, objc.Sel("controllerWillChangeContent:"), objc.Ptr(controller))
+	objc.Call[objc.Void](f_, objc.Sel("controllerWillChangeContent:"), controller)
 }
 
 func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeContent() bool {
@@ -222,5 +222,5 @@ func (f_ FetchedResultsControllerDelegateObject) HasControllerDidChangeContent()
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontrollerdelegate/1622290-controllerdidchangecontent?language=objc
 func (f_ FetchedResultsControllerDelegateObject) ControllerDidChangeContent(controller FetchedResultsController) {
-	objc.Call[objc.Void](f_, objc.Sel("controllerDidChangeContent:"), objc.Ptr(controller))
+	objc.Call[objc.Void](f_, objc.Sel("controllerDidChangeContent:"), controller)
 }

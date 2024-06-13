@@ -54,5 +54,5 @@ func (s_ StreamDelegateObject) HasStreamHandleEvent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstreamdelegate/1410079-stream?language=objc
 func (s_ StreamDelegateObject) StreamHandleEvent(aStream Stream, eventCode StreamEvent) {
-	objc.Call[objc.Void](s_, objc.Sel("stream:handleEvent:"), objc.Ptr(aStream), eventCode)
+	objc.Call[objc.Void](s_, objc.Sel("stream:handleEvent:"), aStream, eventCode)
 }

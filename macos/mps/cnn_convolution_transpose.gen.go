@@ -22,10 +22,10 @@ type ICNNConvolutionTranspose interface {
 	ICNNKernel
 	ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState)
 	ReloadWeightsAndBiasesWithCommandBufferObjectState(commandBufferObject objc.IObject, state ICNNConvolutionWeightsAndBiasesState)
-	EncodeToCommandBufferSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState ICNNConvolutionTransposeGradientState, isTemporary bool) Image
-	EncodeToCommandBufferObjectSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState ICNNConvolutionTransposeGradientState, isTemporary bool) Image
-	EncodeBatchToCommandBufferSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array
+	EncodeToCommandBufferSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState unsafe.Pointer, isTemporary bool) Image
+	EncodeToCommandBufferObjectSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState unsafe.Pointer, isTemporary bool) Image
+	EncodeBatchToCommandBufferSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
+	EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
 	EncodeToCommandBufferSourceImageConvolutionGradientState(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState) Image
 	EncodeToCommandBufferObjectSourceImageConvolutionGradientState(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState) Image
 	ExportWeightsAndBiasesWithCommandBufferResultStateCanBeTemporary(commandBuffer metal.PCommandBuffer, resultStateCanBeTemporary bool) CNNConvolutionWeightsAndBiasesState
@@ -133,37 +133,37 @@ func CNNConvolutionTranspose_CopyWithZoneDevice(zone unsafe.Pointer, device meta
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131774-reloadweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolutionTranspose) ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), po0, objc.Ptr(state))
+	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), po0, state)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131774-reloadweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolutionTranspose) ReloadWeightsAndBiasesWithCommandBufferObjectState(commandBufferObject objc.IObject, state ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), objc.Ptr(commandBufferObject), objc.Ptr(state))
+	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), commandBufferObject, state)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131771-encodetocommandbuffer?language=objc
-func (c_ CNNConvolutionTranspose) EncodeToCommandBufferSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState ICNNConvolutionTransposeGradientState, isTemporary bool) Image {
+func (c_ CNNConvolutionTranspose) EncodeToCommandBufferSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState unsafe.Pointer, isTemporary bool) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationState:destinationStateIsTemporary:"), po0, objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState), objc.Ptr(outState), isTemporary)
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationState:destinationStateIsTemporary:"), po0, sourceImage, convolutionGradientState, outState, isTemporary)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131771-encodetocommandbuffer?language=objc
-func (c_ CNNConvolutionTranspose) EncodeToCommandBufferObjectSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState ICNNConvolutionTransposeGradientState, isTemporary bool) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationState:destinationStateIsTemporary:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState), objc.Ptr(outState), isTemporary)
+func (c_ CNNConvolutionTranspose) EncodeToCommandBufferObjectSourceImageConvolutionGradientStateDestinationStateDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, outState unsafe.Pointer, isTemporary bool) Image {
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationState:destinationStateIsTemporary:"), commandBufferObject, sourceImage, convolutionGradientState, outState, isTemporary)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131770-encodebatchtocommandbuffer?language=objc
-func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array {
+func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:destinationStates:destinationStateIsTemporary:"), po0, sourceImages, convolutionGradientStates, outStates, isTemporary)
 	return rv
@@ -172,8 +172,8 @@ func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferSourceImagesConvolut
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131770-encodebatchtocommandbuffer?language=objc
-func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:destinationStates:destinationStateIsTemporary:"), objc.Ptr(commandBufferObject), sourceImages, convolutionGradientStates, outStates, isTemporary)
+func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStatesDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, convolutionGradientStates *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:destinationStates:destinationStateIsTemporary:"), commandBufferObject, sourceImages, convolutionGradientStates, outStates, isTemporary)
 	return rv
 }
 
@@ -182,7 +182,7 @@ func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferObjectSourceImagesCo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942409-encodetocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeToCommandBufferSourceImageConvolutionGradientState(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:"), po0, objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:"), po0, sourceImage, convolutionGradientState)
 	return rv
 }
 
@@ -190,7 +190,7 @@ func (c_ CNNConvolutionTranspose) EncodeToCommandBufferSourceImageConvolutionGra
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942409-encodetocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeToCommandBufferObjectSourceImageConvolutionGradientState(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:"), commandBufferObject, sourceImage, convolutionGradientState)
 	return rv
 }
 
@@ -207,7 +207,7 @@ func (c_ CNNConvolutionTranspose) ExportWeightsAndBiasesWithCommandBufferResultS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/3131772-exportweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolutionTranspose) ExportWeightsAndBiasesWithCommandBufferObjectResultStateCanBeTemporary(commandBufferObject objc.IObject, resultStateCanBeTemporary bool) CNNConvolutionWeightsAndBiasesState {
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("exportWeightsAndBiasesWithCommandBuffer:resultStateCanBeTemporary:"), objc.Ptr(commandBufferObject), resultStateCanBeTemporary)
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("exportWeightsAndBiasesWithCommandBuffer:resultStateCanBeTemporary:"), commandBufferObject, resultStateCanBeTemporary)
 	return rv
 }
 
@@ -223,14 +223,14 @@ func (c_ CNNConvolutionTranspose) ReloadWeightsAndBiasesFromDataSource() {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942429-encodetocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeToCommandBufferSourceImageConvolutionGradientStateDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationImage:"), po0, objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationImage:"), po0, sourceImage, convolutionGradientState, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942429-encodetocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeToCommandBufferObjectSourceImageConvolutionGradientStateDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, convolutionGradientState ICNNConvolutionGradientState, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(convolutionGradientState), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:convolutionGradientState:destinationImage:"), commandBufferObject, sourceImage, convolutionGradientState, destinationImage)
 }
 
 //	[Full Topic]
@@ -245,7 +245,7 @@ func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferSourceImagesConvolut
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942411-encodebatchtocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStatesDestinationImages(commandBufferObject objc.IObject, sourceImage *foundation.Array, convolutionGradientState *foundation.Array, destinationImage *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:destinationImages:"), objc.Ptr(commandBufferObject), sourceImage, convolutionGradientState, destinationImage)
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:destinationImages:"), commandBufferObject, sourceImage, convolutionGradientState, destinationImage)
 }
 
 //	[Full Topic]
@@ -261,7 +261,7 @@ func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferSourceImagesConvolut
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiontranspose/2942406-encodebatchtocommandbuffer?language=objc
 func (c_ CNNConvolutionTranspose) EncodeBatchToCommandBufferObjectSourceImagesConvolutionGradientStates(commandBufferObject objc.IObject, sourceImage *foundation.Array, convolutionGradientState *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:"), objc.Ptr(commandBufferObject), sourceImage, convolutionGradientState)
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:convolutionGradientStates:"), commandBufferObject, sourceImage, convolutionGradientState)
 	return rv
 }
 

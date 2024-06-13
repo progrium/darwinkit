@@ -56,7 +56,7 @@ func (c_ CNNArithmeticGradientState) Init() CNNArithmeticGradientState {
 
 func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNArithmeticGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func CNNArithmeticGradientState_TemporaryStateWithCommandBufferResourceList(comm
 
 func (c_ CNNArithmeticGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func CNNArithmeticGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCo
 
 func (cc _CNNArithmeticGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNArithmeticGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNArithmeticGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func CNNArithmeticGradientState_TemporaryStateWithCommandBufferTextureDescriptor
 
 func (c_ CNNArithmeticGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNArithmeticGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNArithmeticGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

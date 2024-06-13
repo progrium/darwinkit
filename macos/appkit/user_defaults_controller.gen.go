@@ -45,7 +45,7 @@ func UserDefaultsControllerFrom(ptr unsafe.Pointer) UserDefaultsController {
 }
 
 func (u_ UserDefaultsController) InitWithDefaultsInitialValues(defaults foundation.IUserDefaults, initialValues map[string]objc.IObject) UserDefaultsController {
-	rv := objc.Call[UserDefaultsController](u_, objc.Sel("initWithDefaults:initialValues:"), objc.Ptr(defaults), initialValues)
+	rv := objc.Call[UserDefaultsController](u_, objc.Sel("initWithDefaults:initialValues:"), defaults, initialValues)
 	return rv
 }
 

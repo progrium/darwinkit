@@ -97,7 +97,7 @@ func (p_ PropertyAnimation) ValueFunction() ValueFunction {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/capropertyanimation/1412447-valuefunction?language=objc
 func (p_ PropertyAnimation) SetValueFunction(value IValueFunction) {
-	objc.Call[objc.Void](p_, objc.Sel("setValueFunction:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setValueFunction:"), value)
 }
 
 // Determines if the value of the property is the value at the end of the previous repeat cycle, plus the value of the current repeat cycle. [Full Topic]

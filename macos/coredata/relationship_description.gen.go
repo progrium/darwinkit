@@ -93,7 +93,7 @@ func (r_ RelationshipDescription) DestinationEntity() EntityDescription {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506652-destinationentity?language=objc
 func (r_ RelationshipDescription) SetDestinationEntity(value IEntityDescription) {
-	objc.Call[objc.Void](r_, objc.Sel("setDestinationEntity:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setDestinationEntity:"), value)
 }
 
 // The maximum number of managed objects the relationship can reference. [Full Topic]
@@ -153,7 +153,7 @@ func (r_ RelationshipDescription) InverseRelationship() RelationshipDescription 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsrelationshipdescription/1506596-inverserelationship?language=objc
 func (r_ RelationshipDescription) SetInverseRelationship(value IRelationshipDescription) {
-	objc.Call[objc.Void](r_, objc.Sel("setInverseRelationship:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setInverseRelationship:"), value)
 }
 
 // Returns a Boolean value that indicates whether the relationship can contain many managed objects. [Full Topic]

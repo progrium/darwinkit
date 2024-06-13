@@ -84,7 +84,7 @@ func (t_ TextFieldCell) Init() TextFieldCell {
 }
 
 func (t_ TextFieldCell) InitImageCell(image IImage) TextFieldCell {
-	rv := objc.Call[TextFieldCell](t_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[TextFieldCell](t_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func (t_ TextFieldCell) PlaceholderAttributedString() foundation.AttributedStrin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447153-placeholderattributedstring?language=objc
 func (t_ TextFieldCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 // The color to use to draw the cell’s text. [Full Topic]
@@ -146,7 +146,7 @@ func (t_ TextFieldCell) TextColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447151-textcolor?language=objc
 func (t_ TextFieldCell) SetTextColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
 }
 
 // The bezel style to use when drawing the text field. [Full Topic]
@@ -191,7 +191,7 @@ func (t_ TextFieldCell) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfieldcell/1447159-backgroundcolor?language=objc
 func (t_ TextFieldCell) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // A Boolean value that indicates whether the cell draws its background color. [Full Topic]

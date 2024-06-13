@@ -69,7 +69,7 @@ func (t_ TextTable) Init() TextTable {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1534161-rectforblock?language=objc
 func (t_ TextTable) RectForBlockLayoutAtPointInRectTextContainerCharacterRange(block ITextTableBlock, startingPoint foundation.Point, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForBlock:layoutAtPoint:inRect:textContainer:characterRange:"), objc.Ptr(block), startingPoint, rect, objc.Ptr(textContainer), charRange)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("rectForBlock:layoutAtPoint:inRect:textContainer:characterRange:"), block, startingPoint, rect, textContainer, charRange)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (t_ TextTable) RectForBlockLayoutAtPointInRectTextContainerCharacterRange(b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1525956-boundsrectforblock?language=objc
 func (t_ TextTable) BoundsRectForBlockContentRectInRectTextContainerCharacterRange(block ITextTableBlock, contentRect foundation.Rect, rect foundation.Rect, textContainer ITextContainer, charRange foundation.Range) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundsRectForBlock:contentRect:inRect:textContainer:characterRange:"), objc.Ptr(block), contentRect, rect, objc.Ptr(textContainer), charRange)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundsRectForBlock:contentRect:inRect:textContainer:characterRange:"), block, contentRect, rect, textContainer, charRange)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (t_ TextTable) BoundsRectForBlockContentRectInRectTextContainerCharacterRan
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstexttable/1534234-drawbackgroundforblock?language=objc
 func (t_ TextTable) DrawBackgroundForBlockWithFrameInViewCharacterRangeLayoutManager(block ITextTableBlock, frameRect foundation.Rect, controlView IView, charRange foundation.Range, layoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundForBlock:withFrame:inView:characterRange:layoutManager:"), objc.Ptr(block), frameRect, objc.Ptr(controlView), charRange, objc.Ptr(layoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("drawBackgroundForBlock:withFrame:inView:characterRange:layoutManager:"), block, frameRect, controlView, charRange, layoutManager)
 }
 
 // The text table layout algorithm. [Full Topic]

@@ -96,7 +96,7 @@ func (a_ AssetReaderVideoCompositionOutput) VideoComposition() VideoComposition 
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadervideocompositionoutput/1388927-videocomposition?language=objc
 func (a_ AssetReaderVideoCompositionOutput) SetVideoComposition(value IVideoComposition) {
-	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), value)
 }
 
 // The video settings that the output uses. [Full Topic]

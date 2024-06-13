@@ -38,7 +38,7 @@ func TemporaryNDArrayFrom(ptr unsafe.Pointer) TemporaryNDArray {
 
 func (tc _TemporaryNDArrayClass) TemporaryNDArrayWithCommandBufferDescriptor(commandBuffer metal.PCommandBuffer, descriptor INDArrayDescriptor) TemporaryNDArray {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryNDArray](tc, objc.Sel("temporaryNDArrayWithCommandBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryNDArray](tc, objc.Sel("temporaryNDArrayWithCommandBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewTemporaryNDArrayWithDeviceScalar(device metal.PDevice, value float64) Te
 
 func (t_ TemporaryNDArray) InitWithDeviceDescriptor(device metal.PDevice, descriptor INDArrayDescriptor) TemporaryNDArray {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporaryNDArray](t_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryNDArray](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 

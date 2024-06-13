@@ -59,7 +59,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolCachedResponseIsValid() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1412327-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolCachedResponseIsValid(protocol URLProtocol, cachedResponse CachedURLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:cachedResponseIsValid:"), objc.Ptr(protocol), objc.Ptr(cachedResponse))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:cachedResponseIsValid:"), protocol, cachedResponse)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidFailWithError() bool {
@@ -70,7 +70,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidFailWithError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1413131-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidFailWithError(protocol URLProtocol, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didFailWithError:"), objc.Ptr(protocol), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didFailWithError:"), protocol, error)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveResponseCacheStoragePolicy() bool {
@@ -81,7 +81,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveResponseCacheStoragePo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1416347-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidReceiveResponseCacheStoragePolicy(protocol URLProtocol, response URLResponse, policy URLCacheStoragePolicy) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveResponse:cacheStoragePolicy:"), objc.Ptr(protocol), objc.Ptr(response), policy)
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveResponse:cacheStoragePolicy:"), protocol, response, policy)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveAuthenticationChallenge() bool {
@@ -92,7 +92,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidReceiveAuthenticationChalleng
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1413387-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidReceiveAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveAuthenticationChallenge:"), objc.Ptr(protocol), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didReceiveAuthenticationChallenge:"), protocol, challenge)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidFinishLoading() bool {
@@ -103,7 +103,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidFinishLoading() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1411543-urlprotocoldidfinishloading?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidFinishLoading(protocol URLProtocol) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocolDidFinishLoading:"), objc.Ptr(protocol))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocolDidFinishLoading:"), protocol)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidCancelAuthenticationChallenge() bool {
@@ -114,7 +114,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidCancelAuthenticationChallenge
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1410932-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidCancelAuthenticationChallenge(protocol URLProtocol, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didCancelAuthenticationChallenge:"), objc.Ptr(protocol), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didCancelAuthenticationChallenge:"), protocol, challenge)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolWasRedirectedToRequestRedirectResponse() bool {
@@ -125,7 +125,7 @@ func (u_ URLProtocolClientObject) HasURLProtocolWasRedirectedToRequestRedirectRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1415800-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolWasRedirectedToRequestRedirectResponse(protocol URLProtocol, request URLRequest, redirectResponse URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:wasRedirectedToRequest:redirectResponse:"), objc.Ptr(protocol), objc.Ptr(request), objc.Ptr(redirectResponse))
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:wasRedirectedToRequest:redirectResponse:"), protocol, request, redirectResponse)
 }
 
 func (u_ URLProtocolClientObject) HasURLProtocolDidLoadData() bool {
@@ -136,5 +136,5 @@ func (u_ URLProtocolClientObject) HasURLProtocolDidLoadData() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocolclient/1411370-urlprotocol?language=objc
 func (u_ URLProtocolClientObject) URLProtocolDidLoadData(protocol URLProtocol, data []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didLoadData:"), objc.Ptr(protocol), data)
+	objc.Call[objc.Void](u_, objc.Sel("URLProtocol:didLoadData:"), protocol, data)
 }

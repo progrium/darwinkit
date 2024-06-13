@@ -76,7 +76,7 @@ func (m_ MetadataQueryDelegateObject) HasMetadataQueryReplacementObjectForResult
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate/1407317-metadataquery?language=objc
 func (m_ MetadataQueryDelegateObject) MetadataQueryReplacementObjectForResultObject(query MetadataQuery, result MetadataItem) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("metadataQuery:replacementObjectForResultObject:"), objc.Ptr(query), objc.Ptr(result))
+	rv := objc.Call[objc.Object](m_, objc.Sel("metadataQuery:replacementObjectForResultObject:"), query, result)
 	return rv
 }
 
@@ -88,6 +88,6 @@ func (m_ MetadataQueryDelegateObject) HasMetadataQueryReplacementValueForAttribu
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquerydelegate/1414215-metadataquery?language=objc
 func (m_ MetadataQueryDelegateObject) MetadataQueryReplacementValueForAttributeValue(query MetadataQuery, attrName string, attrValue objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](m_, objc.Sel("metadataQuery:replacementValueForAttribute:value:"), objc.Ptr(query), attrName, attrValue)
+	rv := objc.Call[objc.Object](m_, objc.Sel("metadataQuery:replacementValueForAttribute:value:"), query, attrName, attrValue)
 	return rv
 }

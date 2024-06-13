@@ -35,7 +35,7 @@ func (m_ MedianObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimedian/3228557-inputimage?language=objc
 func (m_ MedianObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MedianObject) HasInputImage() bool {

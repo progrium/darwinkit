@@ -67,7 +67,7 @@ func SecureTextField_LabelWithString(stringValue string) SecureTextField {
 }
 
 func (sc _SecureTextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SecureTextField {
-	rv := objc.Call[SecureTextField](sc, objc.Sel("labelWithAttributedString:"), objc.Ptr(attributedStringValue))
+	rv := objc.Call[SecureTextField](sc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 

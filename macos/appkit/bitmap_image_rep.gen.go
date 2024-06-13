@@ -23,19 +23,19 @@ type IBitmapImageRep interface {
 	CanBeCompressedUsing(compression TIFFCompression) bool
 	ColorizeByMappingGrayToColorBlackMappingWhiteMapping(midPoint float64, midPointColor IColor, shadowColor IColor, lightColor IColor)
 	ValueForProperty(property BitmapImageRepPropertyKey) objc.Object
-	GetBitmapDataPlanes(data *uint8)
+	GetBitmapDataPlanes(data unsafe.Pointer)
 	IncrementalLoadFromDataComplete(data []byte, complete bool) int
 	ColorAtXY(x int, y int) Color
 	GetPixelAtXY(p *uint, x int, y int)
-	GetCompressionFactor(compression *TIFFCompression, factor *float64)
+	GetCompressionFactor(compression *TIFFCompression, factor *float32)
 	SetPixelAtXY(p *uint, x int, y int)
 	SetColorAtXY(color IColor, x int, y int)
 	BitmapImageRepByRetaggingWithColorSpace(newSpace IColorSpace) BitmapImageRep
 	BitmapImageRepByConvertingToColorSpaceRenderingIntent(targetSpace IColorSpace, renderingIntent ColorRenderingIntent) BitmapImageRep
 	RepresentationUsingTypeProperties(storageType BitmapImageFileType, properties map[BitmapImageRepPropertyKey]objc.IObject) []byte
 	SetPropertyWithValue(property BitmapImageRepPropertyKey, value objc.IObject)
-	TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float64) []byte
-	SetCompressionFactor(compression TIFFCompression, factor float64)
+	TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float32) []byte
+	SetCompressionFactor(compression TIFFCompression, factor float32)
 	BytesPerPlane() int
 	BitsPerPixel() int
 	BytesPerRow() int
@@ -88,7 +88,7 @@ func BitmapImageRep_ImageRepWithData(data []byte) BitmapImageRep {
 	return BitmapImageRepClass.ImageRepWithData(data)
 }
 
-func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
+func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes unsafe.Pointer, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
 	rv := objc.Call[BitmapImageRep](b_, objc.Sel("initWithBitmapDataPlanes:pixelsWide:pixelsHigh:bitsPerSample:samplesPerPixel:hasAlpha:isPlanar:colorSpaceName:bytesPerRow:bitsPerPixel:"), planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, rBytes, pBits)
 	return rv
 }
@@ -96,7 +96,7 @@ func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSamp
 // Initializes a newly allocated bitmap image representation so it can render the specified image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395540-initwithbitmapdataplanes?language=objc
-func NewBitmapImageRepWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
+func NewBitmapImageRepWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes unsafe.Pointer, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, rBytes int, pBits int) BitmapImageRep {
 	instance := BitmapImageRepClass.Alloc().InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBytesPerRowBitsPerPixel(planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, rBytes, pBits)
 	instance.Autorelease()
 	return instance
@@ -117,7 +117,7 @@ func NewBitmapImageRepForIncrementalLoad() BitmapImageRep {
 }
 
 func (b_ BitmapImageRep) InitWithCIImage(ciImage coreimage.IImage) BitmapImageRep {
-	rv := objc.Call[BitmapImageRep](b_, objc.Sel("initWithCIImage:"), objc.Ptr(ciImage))
+	rv := objc.Call[BitmapImageRep](b_, objc.Sel("initWithCIImage:"), ciImage)
 	return rv
 }
 
@@ -144,7 +144,7 @@ func NewBitmapImageRepWithData(data []byte) BitmapImageRep {
 	return instance
 }
 
-func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBitmapFormatBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, bitmapFormat BitmapFormat, rBytes int, pBits int) BitmapImageRep {
+func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBitmapFormatBytesPerRowBitsPerPixel(planes unsafe.Pointer, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, bitmapFormat BitmapFormat, rBytes int, pBits int) BitmapImageRep {
 	rv := objc.Call[BitmapImageRep](b_, objc.Sel("initWithBitmapDataPlanes:pixelsWide:pixelsHigh:bitsPerSample:samplesPerPixel:hasAlpha:isPlanar:colorSpaceName:bitmapFormat:bytesPerRow:bitsPerPixel:"), planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, bitmapFormat, rBytes, pBits)
 	return rv
 }
@@ -152,7 +152,7 @@ func (b_ BitmapImageRep) InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSamp
 // Initializes a newly allocated bitmap image representation so it can render the specified image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395538-initwithbitmapdataplanes?language=objc
-func NewBitmapImageRepWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBitmapFormatBytesPerRowBitsPerPixel(planes *uint8, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, bitmapFormat BitmapFormat, rBytes int, pBits int) BitmapImageRep {
+func NewBitmapImageRepWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBitmapFormatBytesPerRowBitsPerPixel(planes unsafe.Pointer, width int, height int, bps int, spp int, alpha bool, isPlanar bool, colorSpaceName ColorSpaceName, bitmapFormat BitmapFormat, rBytes int, pBits int) BitmapImageRep {
 	instance := BitmapImageRepClass.Alloc().InitWithBitmapDataPlanesPixelsWidePixelsHighBitsPerSampleSamplesPerPixelHasAlphaIsPlanarColorSpaceNameBitmapFormatBytesPerRowBitsPerPixel(planes, width, height, bps, spp, alpha, isPlanar, colorSpaceName, bitmapFormat, rBytes, pBits)
 	instance.Autorelease()
 	return instance
@@ -205,7 +205,7 @@ func (b_ BitmapImageRep) CanBeCompressedUsing(compression TIFFCompression) bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395530-colorizebymappinggray?language=objc
 func (b_ BitmapImageRep) ColorizeByMappingGrayToColorBlackMappingWhiteMapping(midPoint float64, midPointColor IColor, shadowColor IColor, lightColor IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("colorizeByMappingGray:toColor:blackMapping:whiteMapping:"), midPoint, objc.Ptr(midPointColor), objc.Ptr(shadowColor), objc.Ptr(lightColor))
+	objc.Call[objc.Void](b_, objc.Sel("colorizeByMappingGray:toColor:blackMapping:whiteMapping:"), midPoint, midPointColor, shadowColor, lightColor)
 }
 
 // Returns the value for the specified property. [Full Topic]
@@ -219,7 +219,7 @@ func (b_ BitmapImageRep) ValueForProperty(property BitmapImageRepPropertyKey) ob
 // Returns by indirection bitmap data of the bitmap image representation separated into planes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395490-getbitmapdataplanes?language=objc
-func (b_ BitmapImageRep) GetBitmapDataPlanes(data *uint8) {
+func (b_ BitmapImageRep) GetBitmapDataPlanes(data unsafe.Pointer) {
 	objc.Call[objc.Void](b_, objc.Sel("getBitmapDataPlanes:"), data)
 }
 
@@ -249,7 +249,7 @@ func (b_ BitmapImageRep) GetPixelAtXY(p *uint, x int, y int) {
 // Returns by indirection the bitmap image representation’s compression type and compression factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395515-getcompression?language=objc
-func (b_ BitmapImageRep) GetCompressionFactor(compression *TIFFCompression, factor *float64) {
+func (b_ BitmapImageRep) GetCompressionFactor(compression *TIFFCompression, factor *float32) {
 	objc.Call[objc.Void](b_, objc.Sel("getCompression:factor:"), compression, factor)
 }
 
@@ -264,14 +264,14 @@ func (b_ BitmapImageRep) SetPixelAtXY(p *uint, x int, y int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395472-setcolor?language=objc
 func (b_ BitmapImageRep) SetColorAtXY(color IColor, x int, y int) {
-	objc.Call[objc.Void](b_, objc.Sel("setColor:atX:y:"), objc.Ptr(color), x, y)
+	objc.Call[objc.Void](b_, objc.Sel("setColor:atX:y:"), color, x, y)
 }
 
 // Changes the color space tag of the bitmap image representation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395512-bitmapimagerepbyretaggingwithcol?language=objc
 func (b_ BitmapImageRep) BitmapImageRepByRetaggingWithColorSpace(newSpace IColorSpace) BitmapImageRep {
-	rv := objc.Call[BitmapImageRep](b_, objc.Sel("bitmapImageRepByRetaggingWithColorSpace:"), objc.Ptr(newSpace))
+	rv := objc.Call[BitmapImageRep](b_, objc.Sel("bitmapImageRepByRetaggingWithColorSpace:"), newSpace)
 	return rv
 }
 
@@ -294,7 +294,7 @@ func BitmapImageRep_RepresentationOfImageRepsInArrayUsingTypeProperties(imageRep
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395470-bitmapimagerepbyconvertingtocolo?language=objc
 func (b_ BitmapImageRep) BitmapImageRepByConvertingToColorSpaceRenderingIntent(targetSpace IColorSpace, renderingIntent ColorRenderingIntent) BitmapImageRep {
-	rv := objc.Call[BitmapImageRep](b_, objc.Sel("bitmapImageRepByConvertingToColorSpace:renderingIntent:"), objc.Ptr(targetSpace), renderingIntent)
+	rv := objc.Call[BitmapImageRep](b_, objc.Sel("bitmapImageRepByConvertingToColorSpace:renderingIntent:"), targetSpace, renderingIntent)
 	return rv
 }
 
@@ -316,7 +316,7 @@ func (b_ BitmapImageRep) SetPropertyWithValue(property BitmapImageRepPropertyKey
 // Returns a TIFF representation of the image using the specified compression. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395524-tiffrepresentationusingcompressi?language=objc
-func (b_ BitmapImageRep) TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float64) []byte {
+func (b_ BitmapImageRep) TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float32) []byte {
 	rv := objc.Call[[]byte](b_, objc.Sel("TIFFRepresentationUsingCompression:factor:"), comp, factor)
 	return rv
 }
@@ -324,14 +324,14 @@ func (b_ BitmapImageRep) TIFFRepresentationUsingCompressionFactor(comp TIFFCompr
 // Returns by indirection an array of all available compression types that can be used when writing a TIFF image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395513-gettiffcompressiontypes?language=objc
-func (bc _BitmapImageRepClass) GetTIFFCompressionTypesCount(list *TIFFCompression, numTypes *int) {
+func (bc _BitmapImageRepClass) GetTIFFCompressionTypesCount(list unsafe.Pointer, numTypes *int) {
 	objc.Call[objc.Void](bc, objc.Sel("getTIFFCompressionTypes:count:"), list, numTypes)
 }
 
 // Returns by indirection an array of all available compression types that can be used when writing a TIFF image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395513-gettiffcompressiontypes?language=objc
-func BitmapImageRep_GetTIFFCompressionTypesCount(list *TIFFCompression, numTypes *int) {
+func BitmapImageRep_GetTIFFCompressionTypesCount(list unsafe.Pointer, numTypes *int) {
 	BitmapImageRepClass.GetTIFFCompressionTypesCount(list, numTypes)
 }
 
@@ -353,7 +353,7 @@ func BitmapImageRep_TIFFRepresentationOfImageRepsInArray(array []IImageRep) []by
 // Sets the bitmap image representation’s compression type and compression factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395478-setcompression?language=objc
-func (b_ BitmapImageRep) SetCompressionFactor(compression TIFFCompression, factor float64) {
+func (b_ BitmapImageRep) SetCompressionFactor(compression TIFFCompression, factor float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setCompression:factor:"), compression, factor)
 }
 
@@ -375,7 +375,7 @@ func BitmapImageRep_LocalizedNameForTIFFCompressionType(compression TIFFCompress
 // Returns a TIFF representation of the specified images using the specified compression scheme and factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395456-tiffrepresentationofimagerepsina?language=objc
-func (bc _BitmapImageRepClass) TIFFRepresentationOfImageRepsInArrayUsingCompressionFactor(array []IImageRep, comp TIFFCompression, factor float64) []byte {
+func (bc _BitmapImageRepClass) TIFFRepresentationOfImageRepsInArrayUsingCompressionFactor(array []IImageRep, comp TIFFCompression, factor float32) []byte {
 	rv := objc.Call[[]byte](bc, objc.Sel("TIFFRepresentationOfImageRepsInArray:usingCompression:factor:"), array, comp, factor)
 	return rv
 }
@@ -383,7 +383,7 @@ func (bc _BitmapImageRepClass) TIFFRepresentationOfImageRepsInArrayUsingCompress
 // Returns a TIFF representation of the specified images using the specified compression scheme and factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbitmapimagerep/1395456-tiffrepresentationofimagerepsina?language=objc
-func BitmapImageRep_TIFFRepresentationOfImageRepsInArrayUsingCompressionFactor(array []IImageRep, comp TIFFCompression, factor float64) []byte {
+func BitmapImageRep_TIFFRepresentationOfImageRepsInArrayUsingCompressionFactor(array []IImageRep, comp TIFFCompression, factor float32) []byte {
 	return BitmapImageRepClass.TIFFRepresentationOfImageRepsInArrayUsingCompressionFactor(array, comp, factor)
 }
 

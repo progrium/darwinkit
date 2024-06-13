@@ -20,8 +20,8 @@ type ICaptureAudioPreviewOutput interface {
 	ICaptureOutput
 	OutputDeviceUniqueID() string
 	SetOutputDeviceUniqueID(value string)
-	Volume() float64
-	SetVolume(value float64)
+	Volume() float32
+	SetVolume(value float32)
 }
 
 // A capture output that provides a preview of the captured audio. [Full Topic]
@@ -75,14 +75,14 @@ func (c_ CaptureAudioPreviewOutput) SetOutputDeviceUniqueID(value string) {
 // The output volume of the audio preview. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390510-volume?language=objc
-func (c_ CaptureAudioPreviewOutput) Volume() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("volume"))
+func (c_ CaptureAudioPreviewOutput) Volume() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("volume"))
 	return rv
 }
 
 // The output volume of the audio preview. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiopreviewoutput/1390510-volume?language=objc
-func (c_ CaptureAudioPreviewOutput) SetVolume(value float64) {
+func (c_ CaptureAudioPreviewOutput) SetVolume(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setVolume:"), value)
 }

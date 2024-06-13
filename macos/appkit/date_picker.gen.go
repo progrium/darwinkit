@@ -115,7 +115,7 @@ func (d_ DatePicker) Locale() foundation.Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1525940-locale?language=objc
 func (d_ DatePicker) SetLocale(value foundation.ILocale) {
-	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
 }
 
 // A Boolean value that indicates whether to present a graphical calendar overlay when editing a calendar element within a text-field style date picker. [Full Topic]
@@ -145,7 +145,7 @@ func (d_ DatePicker) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1527710-backgroundcolor?language=objc
 func (d_ DatePicker) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](d_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The date picker’s minimum date value. [Full Topic]
@@ -160,7 +160,7 @@ func (d_ DatePicker) MinDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1526893-mindate?language=objc
 func (d_ DatePicker) SetMinDate(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setMinDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setMinDate:"), value)
 }
 
 // The date selected by the date picker. [Full Topic]
@@ -175,7 +175,7 @@ func (d_ DatePicker) DateValue() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1527606-datevalue?language=objc
 func (d_ DatePicker) SetDateValue(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setDateValue:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDateValue:"), value)
 }
 
 // A bitmask that indicates which visual elements of the date picker are currently shown, and which won't be usable because they are hidden. [Full Topic]
@@ -205,7 +205,7 @@ func (d_ DatePicker) Calendar() foundation.Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1533591-calendar?language=objc
 func (d_ DatePicker) SetCalendar(value foundation.ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // A delegate for the date picker’s cell [Full Topic]
@@ -229,7 +229,7 @@ func (d_ DatePicker) SetDelegate(value PDatePickerCellDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1533878-delegate?language=objc
 func (d_ DatePicker) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The date picker’s mode. [Full Topic]
@@ -274,7 +274,7 @@ func (d_ DatePicker) MaxDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1535887-maxdate?language=objc
 func (d_ DatePicker) SetMaxDate(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setMaxDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setMaxDate:"), value)
 }
 
 // The date picker’s text color. [Full Topic]
@@ -289,7 +289,7 @@ func (d_ DatePicker) TextColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1534294-textcolor?language=objc
 func (d_ DatePicker) SetTextColor(value IColor) {
-	objc.Call[objc.Void](d_, objc.Sel("setTextColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTextColor:"), value)
 }
 
 // The time zone for the date picker. [Full Topic]
@@ -304,7 +304,7 @@ func (d_ DatePicker) TimeZone() foundation.TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepicker/1535451-timezone?language=objc
 func (d_ DatePicker) SetTimeZone(value foundation.ITimeZone) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
 // The date picker’s style. [Full Topic]

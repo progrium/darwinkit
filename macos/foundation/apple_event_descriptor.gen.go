@@ -21,7 +21,7 @@ type IAppleEventDescriptor interface {
 	DescriptorAtIndex(index int) AppleEventDescriptor
 	RemoveDescriptorAtIndex(index int)
 	InsertDescriptorAtIndex(descriptor IAppleEventDescriptor, index int)
-	SendEventWithOptionsTimeoutError(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error IError) AppleEventDescriptor
+	SendEventWithOptionsTimeoutError(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error unsafe.Pointer) AppleEventDescriptor
 	FileURLValue() URL
 	StringValue() string
 	IsRecordDescriptor() bool
@@ -153,7 +153,7 @@ func (a_ AppleEventDescriptor) DescriptorAtIndex(index int) AppleEventDescriptor
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1411349-descriptorwithfileurl?language=objc
 func (ac _AppleEventDescriptorClass) DescriptorWithFileURL(fileURL IURL) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithFileURL:"), objc.Ptr(fileURL))
+	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithFileURL:"), fileURL)
 	return rv
 }
 
@@ -205,14 +205,14 @@ func AppleEventDescriptor_ListDescriptor() AppleEventDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1409452-insertdescriptor?language=objc
 func (a_ AppleEventDescriptor) InsertDescriptorAtIndex(descriptor IAppleEventDescriptor, index int) {
-	objc.Call[objc.Void](a_, objc.Sel("insertDescriptor:atIndex:"), objc.Ptr(descriptor), index)
+	objc.Call[objc.Void](a_, objc.Sel("insertDescriptor:atIndex:"), descriptor, index)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1412834-descriptorwithapplicationurl?language=objc
 func (ac _AppleEventDescriptorClass) DescriptorWithApplicationURL(applicationURL IURL) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithApplicationURL:"), objc.Ptr(applicationURL))
+	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithApplicationURL:"), applicationURL)
 	return rv
 }
 
@@ -287,7 +287,7 @@ func AppleEventDescriptor_DescriptorWithDouble(doubleValue float64) AppleEventDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1409710-descriptorwithdate?language=objc
 func (ac _AppleEventDescriptorClass) DescriptorWithDate(date IDate) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithDate:"), objc.Ptr(date))
+	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithDate:"), date)
 	return rv
 }
 
@@ -331,8 +331,8 @@ func AppleEventDescriptor_DescriptorWithTypeCode(typeCode uint) AppleEventDescri
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1409337-sendeventwithoptions?language=objc
-func (a_ AppleEventDescriptor) SendEventWithOptionsTimeoutError(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error IError) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("sendEventWithOptions:timeout:error:"), sendOptions, timeoutInSeconds, objc.Ptr(error))
+func (a_ AppleEventDescriptor) SendEventWithOptionsTimeoutError(sendOptions AppleEventSendOptions, timeoutInSeconds TimeInterval, error unsafe.Pointer) AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("sendEventWithOptions:timeout:error:"), sendOptions, timeoutInSeconds, error)
 	return rv
 }
 

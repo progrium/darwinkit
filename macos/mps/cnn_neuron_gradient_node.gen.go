@@ -35,7 +35,7 @@ func CNNNeuronGradientNodeFrom(ptr unsafe.Pointer) CNNNeuronGradientNode {
 }
 
 func (cc _CNNNeuronGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
-	rv := objc.Call[CNNNeuronGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:descriptor:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:descriptor:"), sourceGradient, sourceImage, gradientState, descriptor)
 	return rv
 }
 
@@ -47,7 +47,7 @@ func CNNNeuronGradientNode_NodeWithSourceGradientSourceImageGradientStateDescrip
 }
 
 func (c_ CNNNeuronGradientNode) InitWithSourceGradientSourceImageGradientStateDescriptor(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, descriptor INNNeuronDescriptor) CNNNeuronGradientNode {
-	rv := objc.Call[CNNNeuronGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:descriptor:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:descriptor:"), sourceGradient, sourceImage, gradientState, descriptor)
 	return rv
 }
 

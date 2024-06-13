@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen?language=objc
 type PCircularScreen interface {
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PCircularScreen interface {
 	HasInputImage() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 }
 
@@ -59,7 +59,7 @@ func (c_ CircularScreenObject) HasSetWidth() bool {
 // The distance between each circle in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228114-width?language=objc
-func (c_ CircularScreenObject) SetWidth(value float64) {
+func (c_ CircularScreenObject) SetWidth(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
 }
 
@@ -70,8 +70,8 @@ func (c_ CircularScreenObject) HasWidth() bool {
 // The distance between each circle in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228114-width?language=objc
-func (c_ CircularScreenObject) Width() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("width"))
+func (c_ CircularScreenObject) Width() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("width"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (c_ CircularScreenObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228112-inputimage?language=objc
 func (c_ CircularScreenObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CircularScreenObject) HasInputImage() bool {
@@ -128,7 +128,7 @@ func (c_ CircularScreenObject) HasSetSharpness() bool {
 // The sharpness of the circles. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228113-sharpness?language=objc
-func (c_ CircularScreenObject) SetSharpness(value float64) {
+func (c_ CircularScreenObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setSharpness:"), value)
 }
 
@@ -139,7 +139,7 @@ func (c_ CircularScreenObject) HasSharpness() bool {
 // The sharpness of the circles. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicircularscreen/3228113-sharpness?language=objc
-func (c_ CircularScreenObject) Sharpness() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("sharpness"))
+func (c_ CircularScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("sharpness"))
 	return rv
 }

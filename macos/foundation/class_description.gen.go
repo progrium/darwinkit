@@ -75,7 +75,7 @@ func ClassDescription_InvalidateClassDescriptionCache() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1407444-registerclassdescription?language=objc
 func (cc _ClassDescriptionClass) RegisterClassDescriptionForClass(description IClassDescription, aClass objc.IClass) {
-	objc.Call[objc.Void](cc, objc.Sel("registerClassDescription:forClass:"), objc.Ptr(description), objc.Ptr(aClass))
+	objc.Call[objc.Void](cc, objc.Sel("registerClassDescription:forClass:"), description, aClass)
 }
 
 // Registers an NSClassDescription object for a given class in the NSClassDescription cache. [Full Topic]
@@ -97,7 +97,7 @@ func (c_ ClassDescription) InverseForRelationshipKey(relationshipKey string) str
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsclassdescription/1413026-classdescriptionforclass?language=objc
 func (cc _ClassDescriptionClass) ClassDescriptionForClass(aClass objc.IClass) ClassDescription {
-	rv := objc.Call[ClassDescription](cc, objc.Sel("classDescriptionForClass:"), objc.Ptr(aClass))
+	rv := objc.Call[ClassDescription](cc, objc.Sel("classDescriptionForClass:"), aClass)
 	return rv
 }
 

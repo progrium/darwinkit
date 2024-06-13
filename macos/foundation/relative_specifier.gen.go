@@ -38,7 +38,7 @@ func RelativeSpecifierFrom(ptr unsafe.Pointer) RelativeSpecifier {
 }
 
 func (r_ RelativeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyRelativePositionBaseSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, relPos RelativePosition, baseSpecifier IScriptObjectSpecifier) RelativeSpecifier {
-	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:relativePosition:baseSpecifier:"), objc.Ptr(classDesc), objc.Ptr(container), property, relPos, objc.Ptr(baseSpecifier))
+	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:relativePosition:baseSpecifier:"), classDesc, container, property, relPos, baseSpecifier)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func (r_ RelativeSpecifier) Init() RelativeSpecifier {
 }
 
 func (r_ RelativeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RelativeSpecifier {
-	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewRelativeSpecifierWithContainerClassDescriptionContainerSpecifierKey(clas
 }
 
 func (r_ RelativeSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RelativeSpecifier {
-	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[RelativeSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (r_ RelativeSpecifier) BaseSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativespecifier/1409071-basespecifier?language=objc
 func (r_ RelativeSpecifier) SetBaseSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](r_, objc.Sel("setBaseSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setBaseSpecifier:"), value)
 }
 
 // Sets the relative position encapsulated by the receiver. [Full Topic]

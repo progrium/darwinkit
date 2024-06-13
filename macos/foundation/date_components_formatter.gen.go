@@ -82,7 +82,7 @@ func (d_ DateComponentsFormatter) Init() DateComponentsFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponentsformatter/1415967-stringfromdate?language=objc
 func (d_ DateComponentsFormatter) StringFromDateToDate(startDate IDate, endDate IDate) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDate:toDate:"), objc.Ptr(startDate), objc.Ptr(endDate))
+	rv := objc.Call[string](d_, objc.Sel("stringFromDate:toDate:"), startDate, endDate)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (d_ DateComponentsFormatter) StringFromDateToDate(startDate IDate, endDate 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponentsformatter/1411422-localizedstringfromdatecomponent?language=objc
 func (dc _DateComponentsFormatterClass) LocalizedStringFromDateComponentsUnitsStyle(components IDateComponents, unitsStyle DateComponentsFormatterUnitsStyle) string {
-	rv := objc.Call[string](dc, objc.Sel("localizedStringFromDateComponents:unitsStyle:"), objc.Ptr(components), unitsStyle)
+	rv := objc.Call[string](dc, objc.Sel("localizedStringFromDateComponents:unitsStyle:"), components, unitsStyle)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (d_ DateComponentsFormatter) StringFromTimeInterval(ti TimeInterval) string
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponentsformatter/1407641-stringfromdatecomponents?language=objc
 func (d_ DateComponentsFormatter) StringFromDateComponents(components IDateComponents) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDateComponents:"), objc.Ptr(components))
+	rv := objc.Call[string](d_, objc.Sel("stringFromDateComponents:"), components)
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (d_ DateComponentsFormatter) Calendar() Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponentsformatter/1407359-calendar?language=objc
 func (d_ DateComponentsFormatter) SetCalendar(value ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // The bitmask of calendrical units such as day and month to include in the output string. [Full Topic]
@@ -189,7 +189,7 @@ func (d_ DateComponentsFormatter) ReferenceDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponentsformatter/2878110-referencedate?language=objc
 func (d_ DateComponentsFormatter) SetReferenceDate(value IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setReferenceDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setReferenceDate:"), value)
 }
 
 // A Boolean value indicating whether to collapse the largest unit into smaller units when a certain threshold is met. [Full Topic]

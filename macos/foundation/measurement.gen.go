@@ -40,7 +40,7 @@ func MeasurementFrom(ptr unsafe.Pointer) Measurement {
 }
 
 func (m_ Measurement) InitWithDoubleValueUnit(doubleValue float64, unit objc.IObject) Measurement {
-	rv := objc.Call[Measurement](m_, objc.Sel("initWithDoubleValue:unit:"), doubleValue, objc.Ptr(unit))
+	rv := objc.Call[Measurement](m_, objc.Sel("initWithDoubleValue:unit:"), doubleValue, unit)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (m_ Measurement) Init() Measurement {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1642900-measurementbyconvertingtounit?language=objc
 func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
-	rv := objc.Call[Measurement](m_, objc.Sel("measurementByConvertingToUnit:"), objc.Ptr(unit))
+	rv := objc.Call[Measurement](m_, objc.Sel("measurementByConvertingToUnit:"), unit)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (m_ Measurement) MeasurementByConvertingToUnit(unit IUnit) Measurement {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1642872-measurementbysubtractingmeasurem?language=objc
 func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.Call[Measurement](m_, objc.Sel("measurementBySubtractingMeasurement:"), objc.Ptr(measurement))
+	rv := objc.Call[Measurement](m_, objc.Sel("measurementBySubtractingMeasurement:"), measurement)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (m_ Measurement) MeasurementBySubtractingMeasurement(measurement IMeasureme
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1690850-canbeconvertedtounit?language=objc
 func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
-	rv := objc.Call[bool](m_, objc.Sel("canBeConvertedToUnit:"), objc.Ptr(unit))
+	rv := objc.Call[bool](m_, objc.Sel("canBeConvertedToUnit:"), unit)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func (m_ Measurement) CanBeConvertedToUnit(unit IUnit) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurement/1643170-measurementbyaddingmeasurement?language=objc
 func (m_ Measurement) MeasurementByAddingMeasurement(measurement IMeasurement) Measurement {
-	rv := objc.Call[Measurement](m_, objc.Sel("measurementByAddingMeasurement:"), objc.Ptr(measurement))
+	rv := objc.Call[Measurement](m_, objc.Sel("measurementByAddingMeasurement:"), measurement)
 	return rv
 }
 

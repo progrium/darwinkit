@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,7 +14,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldynamiclibrary?language=objc
 type PDynamicLibrary interface {
 	// optional
-	SerializeToURLError(url foundation.URL, error foundation.Error) bool
+	SerializeToURLError(url foundation.URL, error unsafe.Pointer) bool
 	HasSerializeToURLError() bool
 
 	// optional
@@ -47,8 +49,8 @@ func (d_ DynamicLibraryObject) HasSerializeToURLError() bool {
 // Writes the contents of the dynamic library to a file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtldynamiclibrary/3553982-serializetourl?language=objc
-func (d_ DynamicLibraryObject) SerializeToURLError(url foundation.URL, error foundation.Error) bool {
-	rv := objc.Call[bool](d_, objc.Sel("serializeToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (d_ DynamicLibraryObject) SerializeToURLError(url foundation.URL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("serializeToURL:error:"), url, error)
 	return rv
 }
 

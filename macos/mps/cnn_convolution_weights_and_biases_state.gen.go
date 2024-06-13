@@ -57,7 +57,7 @@ func NewCNNConvolutionWeightsAndBiasesStateWithWeightsBiases(weights metal.PBuff
 func (c_ CNNConvolutionWeightsAndBiasesState) InitWithWeightsWeightsOffsetBiasesBiasesOffsetCnnConvolutionDescriptor(weights metal.PBuffer, weightsOffset uint, biases metal.PBuffer, biasesOffset uint, descriptor ICNNConvolutionDescriptor) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLBuffer", weights)
 	po2 := objc.WrapAsProtocol("MTLBuffer", biases)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithWeights:weightsOffset:biases:biasesOffset:cnnConvolutionDescriptor:"), po0, weightsOffset, po2, biasesOffset, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithWeights:weightsOffset:biases:biasesOffset:cnnConvolutionDescriptor:"), po0, weightsOffset, po2, biasesOffset, descriptor)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func NewCNNConvolutionWeightsAndBiasesStateWithWeightsWeightsOffsetBiasesBiasesO
 
 func (c_ CNNConvolutionWeightsAndBiasesState) InitWithDeviceCnnConvolutionDescriptor(device metal.PDevice, descriptor ICNNConvolutionDescriptor) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:cnnConvolutionDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:cnnConvolutionDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -87,7 +87,7 @@ func NewCNNConvolutionWeightsAndBiasesStateWithDeviceCnnConvolutionDescriptor(de
 
 func (cc _CNNConvolutionWeightsAndBiasesStateClass) TemporaryCNNConvolutionWeightsAndBiasesStateWithCommandBufferCnnConvolutionDescriptor(commandBuffer metal.PCommandBuffer, descriptor ICNNConvolutionDescriptor) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryCNNConvolutionWeightsAndBiasesStateWithCommandBuffer:cnnConvolutionDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryCNNConvolutionWeightsAndBiasesStateWithCommandBuffer:cnnConvolutionDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (c_ CNNConvolutionWeightsAndBiasesState) Init() CNNConvolutionWeightsAndBia
 
 func (cc _CNNConvolutionWeightsAndBiasesStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func CNNConvolutionWeightsAndBiasesState_TemporaryStateWithCommandBufferResource
 
 func (c_ CNNConvolutionWeightsAndBiasesState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -218,7 +218,7 @@ func CNNConvolutionWeightsAndBiasesState_TemporaryStateWithCommandBuffer(cmdBuf 
 
 func (cc _CNNConvolutionWeightsAndBiasesStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -231,7 +231,7 @@ func CNNConvolutionWeightsAndBiasesState_TemporaryStateWithCommandBufferTextureD
 
 func (c_ CNNConvolutionWeightsAndBiasesState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNConvolutionWeightsAndBiasesState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

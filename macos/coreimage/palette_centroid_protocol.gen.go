@@ -51,7 +51,7 @@ func (p_ PaletteCentroidObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228632-inputimage?language=objc
 func (p_ PaletteCentroidObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PaletteCentroidObject) HasInputImage() bool {
@@ -74,7 +74,7 @@ func (p_ PaletteCentroidObject) HasSetPaletteImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettecentroid/3228633-paletteimage?language=objc
 func (p_ PaletteCentroidObject) SetPaletteImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), value)
 }
 
 func (p_ PaletteCentroidObject) HasPaletteImage() bool {

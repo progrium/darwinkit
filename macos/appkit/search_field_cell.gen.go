@@ -90,7 +90,7 @@ func (s_ SearchFieldCell) Init() SearchFieldCell {
 }
 
 func (s_ SearchFieldCell) InitImageCell(image IImage) SearchFieldCell {
-	rv := objc.Call[SearchFieldCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[SearchFieldCell](s_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -168,7 +168,7 @@ func (s_ SearchFieldCell) SearchButtonCell() ButtonCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399457-searchbuttoncell?language=objc
 func (s_ SearchFieldCell) SetSearchButtonCell(value IButtonCell) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchButtonCell:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSearchButtonCell:"), value)
 }
 
 // A Boolean value indicating whether the cell calls its action method immediately when an appropriate action occurs. [Full Topic]
@@ -213,7 +213,7 @@ func (s_ SearchFieldCell) SearchMenuTemplate() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399452-searchmenutemplate?language=objc
 func (s_ SearchFieldCell) SetSearchMenuTemplate(value IMenu) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), value)
 }
 
 // The maximum number of search strings that can appear in the search menu. [Full Topic]
@@ -243,7 +243,7 @@ func (s_ SearchFieldCell) CancelButtonCell() ButtonCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfieldcell/1399440-cancelbuttoncell?language=objc
 func (s_ SearchFieldCell) SetCancelButtonCell(value IButtonCell) {
-	objc.Call[objc.Void](s_, objc.Sel("setCancelButtonCell:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setCancelButtonCell:"), value)
 }
 
 // The autosave name under which the search field automatically saves the list of recent search strings. [Full Topic]

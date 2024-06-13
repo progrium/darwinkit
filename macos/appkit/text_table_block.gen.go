@@ -39,7 +39,7 @@ func TextTableBlockFrom(ptr unsafe.Pointer) TextTableBlock {
 }
 
 func (t_ TextTableBlock) InitWithTableStartingRowRowSpanStartingColumnColumnSpan(table ITextTable, row int, rowSpan int, col int, colSpan int) TextTableBlock {
-	rv := objc.Call[TextTableBlock](t_, objc.Sel("initWithTable:startingRow:rowSpan:startingColumn:columnSpan:"), objc.Ptr(table), row, rowSpan, col, colSpan)
+	rv := objc.Call[TextTableBlock](t_, objc.Sel("initWithTable:startingRow:rowSpan:startingColumn:columnSpan:"), table, row, rowSpan, col, colSpan)
 	return rv
 }
 

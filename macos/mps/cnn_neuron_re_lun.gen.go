@@ -56,7 +56,7 @@ func (c_ CNNNeuronReLUN) Init() CNNNeuronReLUN {
 
 func (c_ CNNNeuronReLUN) InitWithDeviceNeuronDescriptor(device metal.PDevice, neuronDescriptor INNNeuronDescriptor) CNNNeuronReLUN {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNeuronReLUN](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, objc.Ptr(neuronDescriptor))
+	rv := objc.Call[CNNNeuronReLUN](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, neuronDescriptor)
 	return rv
 }
 

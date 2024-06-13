@@ -125,7 +125,7 @@ func (f_ FontDescriptor) FontDescriptorWithSize(newPointSize float64) FontDescri
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/1469839-matchingfontdescriptorwithmandat?language=objc
 func (f_ FontDescriptor) MatchingFontDescriptorWithMandatoryKeys(mandatoryKeys foundation.ISet) FontDescriptor {
-	rv := objc.Call[FontDescriptor](f_, objc.Sel("matchingFontDescriptorWithMandatoryKeys:"), objc.Ptr(mandatoryKeys))
+	rv := objc.Call[FontDescriptor](f_, objc.Sel("matchingFontDescriptorWithMandatoryKeys:"), mandatoryKeys)
 	return rv
 }
 
@@ -149,7 +149,7 @@ func (f_ FontDescriptor) FontDescriptorByAddingAttributes(attributes map[FontDes
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/1469983-fontdescriptorwithmatrix?language=objc
 func (f_ FontDescriptor) FontDescriptorWithMatrix(matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.Call[FontDescriptor](f_, objc.Sel("fontDescriptorWithMatrix:"), objc.Ptr(matrix))
+	rv := objc.Call[FontDescriptor](f_, objc.Sel("fontDescriptorWithMatrix:"), matrix)
 	return rv
 }
 
@@ -157,7 +157,7 @@ func (f_ FontDescriptor) FontDescriptorWithMatrix(matrix foundation.IAffineTrans
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/1469942-fontdescriptorwithname?language=objc
 func (fc _FontDescriptorClass) FontDescriptorWithNameMatrix(fontName string, matrix foundation.IAffineTransform) FontDescriptor {
-	rv := objc.Call[FontDescriptor](fc, objc.Sel("fontDescriptorWithName:matrix:"), fontName, objc.Ptr(matrix))
+	rv := objc.Call[FontDescriptor](fc, objc.Sel("fontDescriptorWithName:matrix:"), fontName, matrix)
 	return rv
 }
 
@@ -225,7 +225,7 @@ func FontDescriptor_FontDescriptorWithNameSize(fontName string, size float64) Fo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontdescriptor/1469985-matchingfontdescriptorswithmanda?language=objc
 func (f_ FontDescriptor) MatchingFontDescriptorsWithMandatoryKeys(mandatoryKeys foundation.ISet) []FontDescriptor {
-	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("matchingFontDescriptorsWithMandatoryKeys:"), objc.Ptr(mandatoryKeys))
+	rv := objc.Call[[]FontDescriptor](f_, objc.Sel("matchingFontDescriptorsWithMandatoryKeys:"), mandatoryKeys)
 	return rv
 }
 

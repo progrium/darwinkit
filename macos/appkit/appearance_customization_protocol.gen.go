@@ -51,7 +51,7 @@ func (a_ AppearanceCustomizationObject) HasSetAppearance() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsappearancecustomization/1533925-appearance?language=objc
 func (a_ AppearanceCustomizationObject) SetAppearance(value Appearance) {
-	objc.Call[objc.Void](a_, objc.Sel("setAppearance:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAppearance:"), value)
 }
 
 func (a_ AppearanceCustomizationObject) HasAppearance() bool {

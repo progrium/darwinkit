@@ -55,7 +55,7 @@ func (d_ DeleteCommand) Init() DeleteCommand {
 }
 
 func (d_ DeleteCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) DeleteCommand {
-	rv := objc.Call[DeleteCommand](d_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[DeleteCommand](d_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

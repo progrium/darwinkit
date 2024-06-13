@@ -36,7 +36,7 @@ func AssetWriterInputMetadataAdaptorFrom(ptr unsafe.Pointer) AssetWriterInputMet
 }
 
 func (a_ AssetWriterInputMetadataAdaptor) InitWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputMetadataAdaptor {
-	rv := objc.Call[AssetWriterInputMetadataAdaptor](a_, objc.Sel("initWithAssetWriterInput:"), objc.Ptr(input))
+	rv := objc.Call[AssetWriterInputMetadataAdaptor](a_, objc.Sel("initWithAssetWriterInput:"), input)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewAssetWriterInputMetadataAdaptorWithAssetWriterInput(input IAssetWriterIn
 }
 
 func (ac _AssetWriterInputMetadataAdaptorClass) AssetWriterInputMetadataAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputMetadataAdaptor {
-	rv := objc.Call[AssetWriterInputMetadataAdaptor](ac, objc.Sel("assetWriterInputMetadataAdaptorWithAssetWriterInput:"), objc.Ptr(input))
+	rv := objc.Call[AssetWriterInputMetadataAdaptor](ac, objc.Sel("assetWriterInputMetadataAdaptorWithAssetWriterInput:"), input)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (a_ AssetWriterInputMetadataAdaptor) Init() AssetWriterInputMetadataAdaptor
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputmetadataadaptor/1389014-appendtimedmetadatagroup?language=objc
 func (a_ AssetWriterInputMetadataAdaptor) AppendTimedMetadataGroup(timedMetadataGroup ITimedMetadataGroup) bool {
-	rv := objc.Call[bool](a_, objc.Sel("appendTimedMetadataGroup:"), objc.Ptr(timedMetadataGroup))
+	rv := objc.Call[bool](a_, objc.Sel("appendTimedMetadataGroup:"), timedMetadataGroup)
 	return rv
 }
 

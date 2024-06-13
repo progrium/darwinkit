@@ -95,7 +95,7 @@ func (u_ URLSession) InvalidateAndCancel() {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration?language=objc
 func (uc _URLSessionClass) SessionWithConfigurationDelegateDelegateQueue(configuration IURLSessionConfiguration, delegate PURLSessionDelegate, queue IOperationQueue) URLSession {
 	po1 := objc.WrapAsProtocol("NSURLSessionDelegate", delegate)
-	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:delegate:delegateQueue:"), objc.Ptr(configuration), po1, objc.Ptr(queue))
+	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:delegate:delegateQueue:"), configuration, po1, queue)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func URLSession_SessionWithConfigurationDelegateDelegateQueue(configuration IURL
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411597-sessionwithconfiguration?language=objc
 func (uc _URLSessionClass) SessionWithConfigurationDelegateObjectDelegateQueue(configuration IURLSessionConfiguration, delegateObject objc.IObject, queue IOperationQueue) URLSession {
-	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:delegate:delegateQueue:"), objc.Ptr(configuration), objc.Ptr(delegateObject), objc.Ptr(queue))
+	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:delegate:delegateQueue:"), configuration, delegateObject, queue)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func URLSession_SessionWithConfigurationDelegateObjectDelegateQueue(configuratio
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/3181172-websockettaskwithurl?language=objc
 func (u_ URLSession) WebSocketTaskWithURLProtocols(url IURL, protocols []string) URLSessionWebSocketTask {
-	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithURL:protocols:"), objc.Ptr(url), protocols)
+	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithURL:protocols:"), url, protocols)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (u_ URLSession) WebSocketTaskWithURLProtocols(url IURL, protocols []string)
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411482-downloadtaskwithurl?language=objc
 func (u_ URLSession) DownloadTaskWithURL(url IURL) URLSessionDownloadTask {
-	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithURL:"), objc.Ptr(url))
+	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithURL:"), url)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (u_ URLSession) DownloadTaskWithURL(url IURL) URLSessionDownloadTask {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411608-downloadtaskwithurl?language=objc
 func (u_ URLSession) DownloadTaskWithURLCompletionHandler(url IURL, completionHandler func(location URL, response URLResponse, error Error)) URLSessionDownloadTask {
-	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithURL:completionHandler:"), url, completionHandler)
 	return rv
 }
 
@@ -156,7 +156,7 @@ func (u_ URLSession) GetAllTasksWithCompletionHandler(completionHandler func(tas
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411511-downloadtaskwithrequest?language=objc
 func (u_ URLSession) DownloadTaskWithRequestCompletionHandler(request IURLRequest, completionHandler func(location URL, response URLResponse, error Error)) URLSessionDownloadTask {
-	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithRequest:completionHandler:"), objc.Ptr(request), completionHandler)
+	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithRequest:completionHandler:"), request, completionHandler)
 	return rv
 }
 
@@ -164,7 +164,7 @@ func (u_ URLSession) DownloadTaskWithRequestCompletionHandler(request IURLReques
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1407613-datataskwithrequest?language=objc
 func (u_ URLSession) DataTaskWithRequestCompletionHandler(request IURLRequest, completionHandler func(data []byte, response URLResponse, error Error)) URLSessionDataTask {
-	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithRequest:completionHandler:"), objc.Ptr(request), completionHandler)
+	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithRequest:completionHandler:"), request, completionHandler)
 	return rv
 }
 
@@ -186,7 +186,7 @@ func (u_ URLSession) FlushWithCompletionHandler(completionHandler func()) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411554-datataskwithurl?language=objc
 func (u_ URLSession) DataTaskWithURL(url IURL) URLSessionDataTask {
-	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithURL:"), objc.Ptr(url))
+	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithURL:"), url)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (u_ URLSession) GetTasksWithCompletionHandler(completionHandler func(dataTa
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1409763-uploadtaskwithrequest?language=objc
 func (u_ URLSession) UploadTaskWithRequestFromData(request IURLRequest, bodyData []byte) URLSessionUploadTask {
-	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromData:"), objc.Ptr(request), bodyData)
+	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromData:"), request, bodyData)
 	return rv
 }
 
@@ -217,7 +217,7 @@ func (u_ URLSession) DownloadTaskWithResumeData(resumeData []byte) URLSessionDow
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411481-downloadtaskwithrequest?language=objc
 func (u_ URLSession) DownloadTaskWithRequest(request IURLRequest) URLSessionDownloadTask {
-	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithRequest:"), objc.Ptr(request))
+	rv := objc.Call[URLSessionDownloadTask](u_, objc.Sel("downloadTaskWithRequest:"), request)
 	return rv
 }
 
@@ -225,7 +225,7 @@ func (u_ URLSession) DownloadTaskWithRequest(request IURLRequest) URLSessionDown
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411518-uploadtaskwithrequest?language=objc
 func (u_ URLSession) UploadTaskWithRequestFromDataCompletionHandler(request IURLRequest, bodyData []byte, completionHandler func(data []byte, response URLResponse, error Error)) URLSessionUploadTask {
-	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromData:completionHandler:"), objc.Ptr(request), bodyData, completionHandler)
+	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromData:completionHandler:"), request, bodyData, completionHandler)
 	return rv
 }
 
@@ -233,7 +233,7 @@ func (u_ URLSession) UploadTaskWithRequestFromDataCompletionHandler(request IURL
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/3181171-websockettaskwithurl?language=objc
 func (u_ URLSession) WebSocketTaskWithURL(url IURL) URLSessionWebSocketTask {
-	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithURL:"), objc.Ptr(url))
+	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithURL:"), url)
 	return rv
 }
 
@@ -241,7 +241,7 @@ func (u_ URLSession) WebSocketTaskWithURL(url IURL) URLSessionWebSocketTask {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411474-sessionwithconfiguration?language=objc
 func (uc _URLSessionClass) SessionWithConfiguration(configuration IURLSessionConfiguration) URLSession {
-	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:"), objc.Ptr(configuration))
+	rv := objc.Call[URLSession](uc, objc.Sel("sessionWithConfiguration:"), configuration)
 	return rv
 }
 
@@ -256,7 +256,7 @@ func URLSession_SessionWithConfiguration(configuration IURLSessionConfiguration)
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1410330-datataskwithurl?language=objc
 func (u_ URLSession) DataTaskWithURLCompletionHandler(url IURL, completionHandler func(data []byte, response URLResponse, error Error)) URLSessionDataTask {
-	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithURL:completionHandler:"), url, completionHandler)
 	return rv
 }
 
@@ -271,7 +271,7 @@ func (u_ URLSession) ResetWithCompletionHandler(completionHandler func()) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411550-uploadtaskwithrequest?language=objc
 func (u_ URLSession) UploadTaskWithRequestFromFile(request IURLRequest, fileURL IURL) URLSessionUploadTask {
-	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromFile:"), objc.Ptr(request), objc.Ptr(fileURL))
+	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromFile:"), request, fileURL)
 	return rv
 }
 
@@ -295,7 +295,7 @@ func (u_ URLSession) StreamTaskWithHostNamePort(hostname string, port int) URLSe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/3235750-websockettaskwithrequest?language=objc
 func (u_ URLSession) WebSocketTaskWithRequest(request IURLRequest) URLSessionWebSocketTask {
-	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithRequest:"), objc.Ptr(request))
+	rv := objc.Call[URLSessionWebSocketTask](u_, objc.Sel("webSocketTaskWithRequest:"), request)
 	return rv
 }
 
@@ -303,7 +303,7 @@ func (u_ URLSession) WebSocketTaskWithRequest(request IURLRequest) URLSessionWeb
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1410934-uploadtaskwithstreamedrequest?language=objc
 func (u_ URLSession) UploadTaskWithStreamedRequest(request IURLRequest) URLSessionUploadTask {
-	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithStreamedRequest:"), objc.Ptr(request))
+	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithStreamedRequest:"), request)
 	return rv
 }
 
@@ -311,7 +311,7 @@ func (u_ URLSession) UploadTaskWithStreamedRequest(request IURLRequest) URLSessi
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1410592-datataskwithrequest?language=objc
 func (u_ URLSession) DataTaskWithRequest(request IURLRequest) URLSessionDataTask {
-	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithRequest:"), objc.Ptr(request))
+	rv := objc.Call[URLSessionDataTask](u_, objc.Sel("dataTaskWithRequest:"), request)
 	return rv
 }
 
@@ -319,7 +319,7 @@ func (u_ URLSession) DataTaskWithRequest(request IURLRequest) URLSessionDataTask
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsession/1411638-uploadtaskwithrequest?language=objc
 func (u_ URLSession) UploadTaskWithRequestFromFileCompletionHandler(request IURLRequest, fileURL IURL, completionHandler func(data []byte, response URLResponse, error Error)) URLSessionUploadTask {
-	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromFile:completionHandler:"), objc.Ptr(request), objc.Ptr(fileURL), completionHandler)
+	rv := objc.Call[URLSessionUploadTask](u_, objc.Sel("uploadTaskWithRequest:fromFile:completionHandler:"), request, fileURL, completionHandler)
 	return rv
 }
 

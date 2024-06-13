@@ -38,7 +38,7 @@ func CachedURLResponseFrom(ptr unsafe.Pointer) CachedURLResponse {
 }
 
 func (c_ CachedURLResponse) InitWithResponseData(response IURLResponse, data []byte) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](c_, objc.Sel("initWithResponse:data:"), objc.Ptr(response), data)
+	rv := objc.Call[CachedURLResponse](c_, objc.Sel("initWithResponse:data:"), response, data)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewCachedURLResponseWithResponseData(response IURLResponse, data []byte) Ca
 }
 
 func (c_ CachedURLResponse) InitWithResponseDataUserInfoStoragePolicy(response IURLResponse, data []byte, userInfo Dictionary, storagePolicy URLCacheStoragePolicy) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](c_, objc.Sel("initWithResponse:data:userInfo:storagePolicy:"), objc.Ptr(response), data, userInfo, storagePolicy)
+	rv := objc.Call[CachedURLResponse](c_, objc.Sel("initWithResponse:data:userInfo:storagePolicy:"), response, data, userInfo, storagePolicy)
 	return rv
 }
 

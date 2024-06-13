@@ -27,11 +27,11 @@ type PMaskedVariableBlur interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -51,7 +51,7 @@ func (m_ MaskedVariableBlurObject) HasSetMask() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228552-mask?language=objc
 func (m_ MaskedVariableBlurObject) SetMask(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setMask:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMask:"), value)
 }
 
 func (m_ MaskedVariableBlurObject) HasMask() bool {
@@ -74,7 +74,7 @@ func (m_ MaskedVariableBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228551-inputimage?language=objc
 func (m_ MaskedVariableBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MaskedVariableBlurObject) HasInputImage() bool {
@@ -96,7 +96,7 @@ func (m_ MaskedVariableBlurObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228553-radius?language=objc
-func (m_ MaskedVariableBlurObject) SetRadius(value float64) {
+func (m_ MaskedVariableBlurObject) SetRadius(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRadius:"), value)
 }
 
@@ -107,7 +107,7 @@ func (m_ MaskedVariableBlurObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaskedvariableblur/3228553-radius?language=objc
-func (m_ MaskedVariableBlurObject) Radius() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("radius"))
+func (m_ MaskedVariableBlurObject) Radius() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("radius"))
 	return rv
 }

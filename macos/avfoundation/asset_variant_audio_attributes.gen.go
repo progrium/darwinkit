@@ -60,7 +60,7 @@ func (a_ AssetVariantAudioAttributes) Init() AssetVariantAudioAttributes {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantaudioattributes/3746549-renditionspecificattributesforme?language=objc
 func (a_ AssetVariantAudioAttributes) RenditionSpecificAttributesForMediaOption(mediaSelectionOption IMediaSelectionOption) AssetVariantAudioRenditionSpecificAttributes {
-	rv := objc.Call[AssetVariantAudioRenditionSpecificAttributes](a_, objc.Sel("renditionSpecificAttributesForMediaOption:"), objc.Ptr(mediaSelectionOption))
+	rv := objc.Call[AssetVariantAudioRenditionSpecificAttributes](a_, objc.Sel("renditionSpecificAttributesForMediaOption:"), mediaSelectionOption)
 	return rv
 }
 

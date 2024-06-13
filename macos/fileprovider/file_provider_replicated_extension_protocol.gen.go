@@ -68,7 +68,7 @@ func (f_ FileProviderReplicatedExtensionObject) HasItemForIdentifierRequestCompl
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3656551-itemforidentifier?language=objc
 func (f_ FileProviderReplicatedExtensionObject) ItemForIdentifierRequestCompletionHandler(identifier FileProviderItemIdentifier, request FileProviderRequest, completionHandler func(arg0 objc.Object, arg1 foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("itemForIdentifier:request:completionHandler:"), identifier, objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("itemForIdentifier:request:completionHandler:"), identifier, request, completionHandler)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (f_ FileProviderReplicatedExtensionObject) HasModifyItemBaseVersionChangedF
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3656552-modifyitem?language=objc
 func (f_ FileProviderReplicatedExtensionObject) ModifyItemBaseVersionChangedFieldsContentsOptionsRequestCompletionHandler(item objc.Object, version FileProviderItemVersion, changedFields FileProviderItemFields, newContents foundation.URL, options FileProviderModifyItemOptions, request FileProviderRequest, completionHandler func(item objc.Object, stillPendingFields FileProviderItemFields, shouldFetchContent bool, error foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("modifyItem:baseVersion:changedFields:contents:options:request:completionHandler:"), objc.Ptr(item), objc.Ptr(version), changedFields, objc.Ptr(newContents), options, objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("modifyItem:baseVersion:changedFields:contents:options:request:completionHandler:"), item, version, changedFields, newContents, options, request, completionHandler)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (f_ FileProviderReplicatedExtensionObject) HasCreateItemBasedOnTemplateFiel
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3656549-createitembasedontemplate?language=objc
 func (f_ FileProviderReplicatedExtensionObject) CreateItemBasedOnTemplateFieldsContentsOptionsRequestCompletionHandler(itemTemplate objc.Object, fields FileProviderItemFields, url foundation.URL, options FileProviderCreateItemOptions, request FileProviderRequest, completionHandler func(createdItem objc.Object, stillPendingFields FileProviderItemFields, shouldFetchContent bool, error foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("createItemBasedOnTemplate:fields:contents:options:request:completionHandler:"), objc.Ptr(itemTemplate), fields, objc.Ptr(url), options, objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("createItemBasedOnTemplate:fields:contents:options:request:completionHandler:"), itemTemplate, fields, url, options, request, completionHandler)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (f_ FileProviderReplicatedExtensionObject) HasDeleteItemWithIdentifierBaseV
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3656550-deleteitemwithidentifier?language=objc
 func (f_ FileProviderReplicatedExtensionObject) DeleteItemWithIdentifierBaseVersionOptionsRequestCompletionHandler(identifier FileProviderItemIdentifier, version FileProviderItemVersion, options FileProviderDeleteItemOptions, request FileProviderRequest, completionHandler func(arg0 foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("deleteItemWithIdentifier:baseVersion:options:request:completionHandler:"), identifier, objc.Ptr(version), options, objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("deleteItemWithIdentifier:baseVersion:options:request:completionHandler:"), identifier, version, options, request, completionHandler)
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (f_ FileProviderReplicatedExtensionObject) HasInitWithDomain() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3553305-initwithdomain?language=objc
 func (f_ FileProviderReplicatedExtensionObject) InitWithDomain(domain FileProviderDomain) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("initWithDomain:"), objc.Ptr(domain))
+	rv := objc.Call[objc.Object](f_, objc.Sel("initWithDomain:"), domain)
 	return rv
 }
 
@@ -172,6 +172,6 @@ func (f_ FileProviderReplicatedExtensionObject) HasFetchContentsForItemWithIdent
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderreplicatedextension/3553303-fetchcontentsforitemwithidentifi?language=objc
 func (f_ FileProviderReplicatedExtensionObject) FetchContentsForItemWithIdentifierVersionRequestCompletionHandler(itemIdentifier FileProviderItemIdentifier, requestedVersion FileProviderItemVersion, request FileProviderRequest, completionHandler func(fileContents foundation.URL, item objc.Object, error foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchContentsForItemWithIdentifier:version:request:completionHandler:"), itemIdentifier, objc.Ptr(requestedVersion), objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchContentsForItemWithIdentifier:version:request:completionHandler:"), itemIdentifier, requestedVersion, request, completionHandler)
 	return rv
 }

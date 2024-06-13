@@ -35,32 +35,32 @@ type ISVGF interface {
 	EncodeBilateralFilterToCommandBufferObjectStepDistanceSourceTextureObjectDestinationTextureObjectSourceTexture2ObjectDestinationTexture2ObjectDepthNormalTextureObject(commandBufferObject objc.IObject, stepDistance uint, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject, sourceTexture2Object objc.IObject, destinationTexture2Object objc.IObject, depthNormalTextureObject objc.IObject)
 	TemporalWeighting() TemporalWeighting
 	SetTemporalWeighting(value TemporalWeighting)
-	VarianceEstimationSigma() float64
-	SetVarianceEstimationSigma(value float64)
-	NormalWeight() float64
-	SetNormalWeight(value float64)
-	TemporalReprojectionBlendFactor() float64
-	SetTemporalReprojectionBlendFactor(value float64)
+	VarianceEstimationSigma() float32
+	SetVarianceEstimationSigma(value float32)
+	NormalWeight() float32
+	SetNormalWeight(value float32)
+	TemporalReprojectionBlendFactor() float32
+	SetTemporalReprojectionBlendFactor(value float32)
 	MinimumFramesForVarianceEstimation() uint
 	SetMinimumFramesForVarianceEstimation(value uint)
 	VarianceEstimationRadius() uint
 	SetVarianceEstimationRadius(value uint)
-	BilateralFilterSigma() float64
-	SetBilateralFilterSigma(value float64)
-	ReprojectionThreshold() float64
-	SetReprojectionThreshold(value float64)
+	BilateralFilterSigma() float32
+	SetBilateralFilterSigma(value float32)
+	ReprojectionThreshold() float32
+	SetReprojectionThreshold(value float32)
 	VariancePrefilterRadius() uint
 	SetVariancePrefilterRadius(value uint)
 	BilateralFilterRadius() uint
 	SetBilateralFilterRadius(value uint)
 	ChannelCount2() uint
 	SetChannelCount2(value uint)
-	LuminanceWeight() float64
-	SetLuminanceWeight(value float64)
-	DepthWeight() float64
-	SetDepthWeight(value float64)
-	VariancePrefilterSigma() float64
-	SetVariancePrefilterSigma(value float64)
+	LuminanceWeight() float32
+	SetLuminanceWeight(value float32)
+	DepthWeight() float32
+	SetDepthWeight(value float32)
+	VariancePrefilterSigma() float32
+	SetVariancePrefilterSigma(value float32)
 	ChannelCount() uint
 	SetChannelCount(value uint)
 }
@@ -155,7 +155,7 @@ func (s_ SVGF) EncodeReprojectionToCommandBufferSourceTexturePreviousTextureDest
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143562-encodereprojectiontocommandbuffe?language=objc
 func (s_ SVGF) EncodeReprojectionToCommandBufferObjectSourceTextureObjectPreviousTextureObjectDestinationTextureObjectPreviousLuminanceMomentsTextureObjectDestinationLuminanceMomentsTextureObjectSourceTexture2ObjectPreviousTexture2ObjectDestinationTexture2ObjectPreviousLuminanceMomentsTexture2ObjectDestinationLuminanceMomentsTexture2ObjectPreviousFrameCountTextureObjectDestinationFrameCountTextureObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, previousTextureObject objc.IObject, destinationTextureObject objc.IObject, previousLuminanceMomentsTextureObject objc.IObject, destinationLuminanceMomentsTextureObject objc.IObject, sourceTexture2Object objc.IObject, previousTexture2Object objc.IObject, destinationTexture2Object objc.IObject, previousLuminanceMomentsTexture2Object objc.IObject, destinationLuminanceMomentsTexture2Object objc.IObject, previousFrameCountTextureObject objc.IObject, destinationFrameCountTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeReprojectionToCommandBuffer:sourceTexture:previousTexture:destinationTexture:previousLuminanceMomentsTexture:destinationLuminanceMomentsTexture:sourceTexture2:previousTexture2:destinationTexture2:previousLuminanceMomentsTexture2:destinationLuminanceMomentsTexture2:previousFrameCountTexture:destinationFrameCountTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(previousTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(previousLuminanceMomentsTextureObject), objc.Ptr(destinationLuminanceMomentsTextureObject), objc.Ptr(sourceTexture2Object), objc.Ptr(previousTexture2Object), objc.Ptr(destinationTexture2Object), objc.Ptr(previousLuminanceMomentsTexture2Object), objc.Ptr(destinationLuminanceMomentsTexture2Object), objc.Ptr(previousFrameCountTextureObject), objc.Ptr(destinationFrameCountTextureObject), objc.Ptr(motionVectorTextureObject), objc.Ptr(depthNormalTextureObject), objc.Ptr(previousDepthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeReprojectionToCommandBuffer:sourceTexture:previousTexture:destinationTexture:previousLuminanceMomentsTexture:destinationLuminanceMomentsTexture:sourceTexture2:previousTexture2:destinationTexture2:previousLuminanceMomentsTexture2:destinationLuminanceMomentsTexture2:previousFrameCountTexture:destinationFrameCountTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), commandBufferObject, sourceTextureObject, previousTextureObject, destinationTextureObject, previousLuminanceMomentsTextureObject, destinationLuminanceMomentsTextureObject, sourceTexture2Object, previousTexture2Object, destinationTexture2Object, previousLuminanceMomentsTexture2Object, destinationLuminanceMomentsTexture2Object, previousFrameCountTextureObject, destinationFrameCountTextureObject, motionVectorTextureObject, depthNormalTextureObject, previousDepthNormalTextureObject)
 }
 
 //	[Full Topic]
@@ -178,14 +178,14 @@ func (s_ SVGF) EncodeVarianceEstimationToCommandBufferSourceTextureLuminanceMome
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143563-encodevarianceestimationtocomman?language=objc
 func (s_ SVGF) EncodeVarianceEstimationToCommandBufferObjectSourceTextureObjectLuminanceMomentsTextureObjectDestinationTextureObjectSourceTexture2ObjectLuminanceMomentsTexture2ObjectDestinationTexture2ObjectFrameCountTextureObjectDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, luminanceMomentsTextureObject objc.IObject, destinationTextureObject objc.IObject, sourceTexture2Object objc.IObject, luminanceMomentsTexture2Object objc.IObject, destinationTexture2Object objc.IObject, frameCountTextureObject objc.IObject, depthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeVarianceEstimationToCommandBuffer:sourceTexture:luminanceMomentsTexture:destinationTexture:sourceTexture2:luminanceMomentsTexture2:destinationTexture2:frameCountTexture:depthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(luminanceMomentsTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(sourceTexture2Object), objc.Ptr(luminanceMomentsTexture2Object), objc.Ptr(destinationTexture2Object), objc.Ptr(frameCountTextureObject), objc.Ptr(depthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeVarianceEstimationToCommandBuffer:sourceTexture:luminanceMomentsTexture:destinationTexture:sourceTexture2:luminanceMomentsTexture2:destinationTexture2:frameCountTexture:depthNormalTexture:"), commandBufferObject, sourceTextureObject, luminanceMomentsTextureObject, destinationTextureObject, sourceTexture2Object, luminanceMomentsTexture2Object, destinationTexture2Object, frameCountTextureObject, depthNormalTextureObject)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143564-encodewithcoder?language=objc
 func (s_ SVGF) EncodeWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](s_, objc.Sel("encodeWithCoder:"), coder)
 }
 
 //	[Full Topic]
@@ -203,7 +203,7 @@ func (s_ SVGF) EncodeBilateralFilterToCommandBufferStepDistanceSourceTextureDest
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3242891-encodebilateralfiltertocommandbu?language=objc
 func (s_ SVGF) EncodeBilateralFilterToCommandBufferObjectStepDistanceSourceTextureObjectDestinationTextureObjectDepthNormalTextureObject(commandBufferObject objc.IObject, stepDistance uint, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject, depthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeBilateralFilterToCommandBuffer:stepDistance:sourceTexture:destinationTexture:depthNormalTexture:"), objc.Ptr(commandBufferObject), stepDistance, objc.Ptr(sourceTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(depthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeBilateralFilterToCommandBuffer:stepDistance:sourceTexture:destinationTexture:depthNormalTexture:"), commandBufferObject, stepDistance, sourceTextureObject, destinationTextureObject, depthNormalTextureObject)
 }
 
 //	[Full Topic]
@@ -228,7 +228,7 @@ func (s_ SVGF) EncodeReprojectionToCommandBufferSourceTexturePreviousTextureDest
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3242892-encodereprojectiontocommandbuffe?language=objc
 func (s_ SVGF) EncodeReprojectionToCommandBufferObjectSourceTextureObjectPreviousTextureObjectDestinationTextureObjectPreviousLuminanceMomentsTextureObjectDestinationLuminanceMomentsTextureObjectPreviousFrameCountTextureObjectDestinationFrameCountTextureObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, previousTextureObject objc.IObject, destinationTextureObject objc.IObject, previousLuminanceMomentsTextureObject objc.IObject, destinationLuminanceMomentsTextureObject objc.IObject, previousFrameCountTextureObject objc.IObject, destinationFrameCountTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeReprojectionToCommandBuffer:sourceTexture:previousTexture:destinationTexture:previousLuminanceMomentsTexture:destinationLuminanceMomentsTexture:previousFrameCountTexture:destinationFrameCountTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(previousTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(previousLuminanceMomentsTextureObject), objc.Ptr(destinationLuminanceMomentsTextureObject), objc.Ptr(previousFrameCountTextureObject), objc.Ptr(destinationFrameCountTextureObject), objc.Ptr(motionVectorTextureObject), objc.Ptr(depthNormalTextureObject), objc.Ptr(previousDepthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeReprojectionToCommandBuffer:sourceTexture:previousTexture:destinationTexture:previousLuminanceMomentsTexture:destinationLuminanceMomentsTexture:previousFrameCountTexture:destinationFrameCountTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), commandBufferObject, sourceTextureObject, previousTextureObject, destinationTextureObject, previousLuminanceMomentsTextureObject, destinationLuminanceMomentsTextureObject, previousFrameCountTextureObject, destinationFrameCountTextureObject, motionVectorTextureObject, depthNormalTextureObject, previousDepthNormalTextureObject)
 }
 
 //	[Full Topic]
@@ -248,7 +248,7 @@ func (s_ SVGF) EncodeVarianceEstimationToCommandBufferSourceTextureLuminanceMome
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3242893-encodevarianceestimationtocomman?language=objc
 func (s_ SVGF) EncodeVarianceEstimationToCommandBufferObjectSourceTextureObjectLuminanceMomentsTextureObjectDestinationTextureObjectFrameCountTextureObjectDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, luminanceMomentsTextureObject objc.IObject, destinationTextureObject objc.IObject, frameCountTextureObject objc.IObject, depthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeVarianceEstimationToCommandBuffer:sourceTexture:luminanceMomentsTexture:destinationTexture:frameCountTexture:depthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(luminanceMomentsTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(frameCountTextureObject), objc.Ptr(depthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeVarianceEstimationToCommandBuffer:sourceTexture:luminanceMomentsTexture:destinationTexture:frameCountTexture:depthNormalTexture:"), commandBufferObject, sourceTextureObject, luminanceMomentsTextureObject, destinationTextureObject, frameCountTextureObject, depthNormalTextureObject)
 }
 
 //	[Full Topic]
@@ -268,7 +268,7 @@ func (s_ SVGF) EncodeBilateralFilterToCommandBufferStepDistanceSourceTextureDest
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143561-encodebilateralfiltertocommandbu?language=objc
 func (s_ SVGF) EncodeBilateralFilterToCommandBufferObjectStepDistanceSourceTextureObjectDestinationTextureObjectSourceTexture2ObjectDestinationTexture2ObjectDepthNormalTextureObject(commandBufferObject objc.IObject, stepDistance uint, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject, sourceTexture2Object objc.IObject, destinationTexture2Object objc.IObject, depthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeBilateralFilterToCommandBuffer:stepDistance:sourceTexture:destinationTexture:sourceTexture2:destinationTexture2:depthNormalTexture:"), objc.Ptr(commandBufferObject), stepDistance, objc.Ptr(sourceTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(sourceTexture2Object), objc.Ptr(destinationTexture2Object), objc.Ptr(depthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeBilateralFilterToCommandBuffer:stepDistance:sourceTexture:destinationTexture:sourceTexture2:destinationTexture2:depthNormalTexture:"), commandBufferObject, stepDistance, sourceTextureObject, destinationTextureObject, sourceTexture2Object, destinationTexture2Object, depthNormalTextureObject)
 }
 
 //	[Full Topic]
@@ -289,45 +289,45 @@ func (s_ SVGF) SetTemporalWeighting(value TemporalWeighting) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143574-varianceestimationsigma?language=objc
-func (s_ SVGF) VarianceEstimationSigma() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("varianceEstimationSigma"))
+func (s_ SVGF) VarianceEstimationSigma() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("varianceEstimationSigma"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143574-varianceestimationsigma?language=objc
-func (s_ SVGF) SetVarianceEstimationSigma(value float64) {
+func (s_ SVGF) SetVarianceEstimationSigma(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setVarianceEstimationSigma:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143569-normalweight?language=objc
-func (s_ SVGF) NormalWeight() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("normalWeight"))
+func (s_ SVGF) NormalWeight() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("normalWeight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143569-normalweight?language=objc
-func (s_ SVGF) SetNormalWeight(value float64) {
+func (s_ SVGF) SetNormalWeight(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setNormalWeight:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143571-temporalreprojectionblendfactor?language=objc
-func (s_ SVGF) TemporalReprojectionBlendFactor() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("temporalReprojectionBlendFactor"))
+func (s_ SVGF) TemporalReprojectionBlendFactor() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("temporalReprojectionBlendFactor"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143571-temporalreprojectionblendfactor?language=objc
-func (s_ SVGF) SetTemporalReprojectionBlendFactor(value float64) {
+func (s_ SVGF) SetTemporalReprojectionBlendFactor(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setTemporalReprojectionBlendFactor:"), value)
 }
 
@@ -364,30 +364,30 @@ func (s_ SVGF) SetVarianceEstimationRadius(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143556-bilateralfiltersigma?language=objc
-func (s_ SVGF) BilateralFilterSigma() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("bilateralFilterSigma"))
+func (s_ SVGF) BilateralFilterSigma() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("bilateralFilterSigma"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143556-bilateralfiltersigma?language=objc
-func (s_ SVGF) SetBilateralFilterSigma(value float64) {
+func (s_ SVGF) SetBilateralFilterSigma(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setBilateralFilterSigma:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143570-reprojectionthreshold?language=objc
-func (s_ SVGF) ReprojectionThreshold() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("reprojectionThreshold"))
+func (s_ SVGF) ReprojectionThreshold() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("reprojectionThreshold"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143570-reprojectionthreshold?language=objc
-func (s_ SVGF) SetReprojectionThreshold(value float64) {
+func (s_ SVGF) SetReprojectionThreshold(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setReprojectionThreshold:"), value)
 }
 
@@ -439,45 +439,45 @@ func (s_ SVGF) SetChannelCount2(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143567-luminanceweight?language=objc
-func (s_ SVGF) LuminanceWeight() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("luminanceWeight"))
+func (s_ SVGF) LuminanceWeight() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("luminanceWeight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143567-luminanceweight?language=objc
-func (s_ SVGF) SetLuminanceWeight(value float64) {
+func (s_ SVGF) SetLuminanceWeight(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setLuminanceWeight:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143560-depthweight?language=objc
-func (s_ SVGF) DepthWeight() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("depthWeight"))
+func (s_ SVGF) DepthWeight() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("depthWeight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143560-depthweight?language=objc
-func (s_ SVGF) SetDepthWeight(value float64) {
+func (s_ SVGF) SetDepthWeight(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setDepthWeight:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143576-varianceprefiltersigma?language=objc
-func (s_ SVGF) VariancePrefilterSigma() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("variancePrefilterSigma"))
+func (s_ SVGF) VariancePrefilterSigma() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("variancePrefilterSigma"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgf/3143576-varianceprefiltersigma?language=objc
-func (s_ SVGF) SetVariancePrefilterSigma(value float64) {
+func (s_ SVGF) SetVariancePrefilterSigma(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setVariancePrefilterSigma:"), value)
 }
 

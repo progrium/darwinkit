@@ -18,14 +18,14 @@ type _CNNLocalContrastNormalizationNodeClass struct {
 // An interface definition for the [CNNLocalContrastNormalizationNode] class.
 type ICNNLocalContrastNormalizationNode interface {
 	ICNNNormalizationNode
-	P0() float64
-	SetP0(value float64)
-	Ps() float64
-	SetPs(value float64)
+	P0() float32
+	SetP0(value float32)
+	Ps() float32
+	SetPs(value float32)
 	KernelWidth() uint
 	SetKernelWidth(value uint)
-	Pm() float64
-	SetPm(value float64)
+	Pm() float32
+	SetPm(value float32)
 	KernelHeight() uint
 	SetKernelHeight(value uint)
 }
@@ -44,7 +44,7 @@ func CNNLocalContrastNormalizationNodeFrom(ptr unsafe.Pointer) CNNLocalContrastN
 }
 
 func (cc _CNNLocalContrastNormalizationNodeClass) NodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNLocalContrastNormalizationNode {
-	rv := objc.Call[CNNLocalContrastNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNLocalContrastNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func CNNLocalContrastNormalizationNode_NodeWithSourceKernelSize(sourceNode INNIm
 }
 
 func (c_ CNNLocalContrastNormalizationNode) InitWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNLocalContrastNormalizationNode {
-	rv := objc.Call[CNNLocalContrastNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNLocalContrastNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func NewCNNLocalContrastNormalizationNodeWithSourceKernelSize(sourceNode INNImag
 }
 
 func (c_ CNNLocalContrastNormalizationNode) InitWithSource(sourceNode INNImageNode) CNNLocalContrastNormalizationNode {
-	rv := objc.Call[CNNLocalContrastNormalizationNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNLocalContrastNormalizationNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (c_ CNNLocalContrastNormalizationNode) Init() CNNLocalContrastNormalization
 }
 
 func (cc _CNNLocalContrastNormalizationNodeClass) NodeWithSource(sourceNode INNImageNode) CNNLocalContrastNormalizationNode {
-	rv := objc.Call[CNNLocalContrastNormalizationNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNLocalContrastNormalizationNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -118,30 +118,30 @@ func CNNLocalContrastNormalizationNode_NodeWithSource(sourceNode INNImageNode) C
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
-func (c_ CNNLocalContrastNormalizationNode) P0() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("p0"))
+func (c_ CNNLocalContrastNormalizationNode) P0() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("p0"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866510-p0?language=objc
-func (c_ CNNLocalContrastNormalizationNode) SetP0(value float64) {
+func (c_ CNNLocalContrastNormalizationNode) SetP0(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setP0:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866500-ps?language=objc
-func (c_ CNNLocalContrastNormalizationNode) Ps() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("ps"))
+func (c_ CNNLocalContrastNormalizationNode) Ps() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("ps"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866500-ps?language=objc
-func (c_ CNNLocalContrastNormalizationNode) SetPs(value float64) {
+func (c_ CNNLocalContrastNormalizationNode) SetPs(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
 }
 
@@ -163,15 +163,15 @@ func (c_ CNNLocalContrastNormalizationNode) SetKernelWidth(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866404-pm?language=objc
-func (c_ CNNLocalContrastNormalizationNode) Pm() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("pm"))
+func (c_ CNNLocalContrastNormalizationNode) Pm() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pm"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationnode/2866404-pm?language=objc
-func (c_ CNNLocalContrastNormalizationNode) SetPm(value float64) {
+func (c_ CNNLocalContrastNormalizationNode) SetPm(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
 }
 

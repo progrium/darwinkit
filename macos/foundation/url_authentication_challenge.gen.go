@@ -41,7 +41,7 @@ func URLAuthenticationChallengeFrom(ptr unsafe.Pointer) URLAuthenticationChallen
 
 func (u_ URLAuthenticationChallenge) InitWithProtectionSpaceProposedCredentialPreviousFailureCountFailureResponseErrorSender(space IURLProtectionSpace, credential IURLCredential, previousFailureCount int, response IURLResponse, error IError, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
 	po5 := objc.WrapAsProtocol("NSURLAuthenticationChallengeSender", sender)
-	rv := objc.Call[URLAuthenticationChallenge](u_, objc.Sel("initWithProtectionSpace:proposedCredential:previousFailureCount:failureResponse:error:sender:"), objc.Ptr(space), objc.Ptr(credential), previousFailureCount, objc.Ptr(response), objc.Ptr(error), po5)
+	rv := objc.Call[URLAuthenticationChallenge](u_, objc.Sel("initWithProtectionSpace:proposedCredential:previousFailureCount:failureResponse:error:sender:"), space, credential, previousFailureCount, response, error, po5)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func NewURLAuthenticationChallengeWithProtectionSpaceProposedCredentialPreviousF
 
 func (u_ URLAuthenticationChallenge) InitWithAuthenticationChallengeSender(challenge IURLAuthenticationChallenge, sender PURLAuthenticationChallengeSender) URLAuthenticationChallenge {
 	po1 := objc.WrapAsProtocol("NSURLAuthenticationChallengeSender", sender)
-	rv := objc.Call[URLAuthenticationChallenge](u_, objc.Sel("initWithAuthenticationChallenge:sender:"), objc.Ptr(challenge), po1)
+	rv := objc.Call[URLAuthenticationChallenge](u_, objc.Sel("initWithAuthenticationChallenge:sender:"), challenge, po1)
 	return rv
 }
 

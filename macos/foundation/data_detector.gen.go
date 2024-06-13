@@ -34,15 +34,15 @@ func DataDetectorFrom(ptr unsafe.Pointer) DataDetector {
 	}
 }
 
-func (d_ DataDetector) InitWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
-	rv := objc.Call[DataDetector](d_, objc.Sel("initWithTypes:error:"), checkingTypes, objc.Ptr(error))
+func (d_ DataDetector) InitWithTypesError(checkingTypes TextCheckingTypes, error unsafe.Pointer) DataDetector {
+	rv := objc.Call[DataDetector](d_, objc.Sel("initWithTypes:error:"), checkingTypes, error)
 	return rv
 }
 
 // Initializes and returns a data detector instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatadetector/1409829-initwithtypes?language=objc
-func NewDataDetectorWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
+func NewDataDetectorWithTypesError(checkingTypes TextCheckingTypes, error unsafe.Pointer) DataDetector {
 	instance := DataDetectorClass.Alloc().InitWithTypesError(checkingTypes, error)
 	instance.Autorelease()
 	return instance
@@ -68,15 +68,15 @@ func (d_ DataDetector) Init() DataDetector {
 	return rv
 }
 
-func (d_ DataDetector) InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) DataDetector {
-	rv := objc.Call[DataDetector](d_, objc.Sel("initWithPattern:options:error:"), pattern, options, objc.Ptr(error))
+func (d_ DataDetector) InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) DataDetector {
+	rv := objc.Call[DataDetector](d_, objc.Sel("initWithPattern:options:error:"), pattern, options, error)
 	return rv
 }
 
 // Returns an initialized NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1410900-initwithpattern?language=objc
-func NewDataDetectorWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) DataDetector {
+func NewDataDetectorWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) DataDetector {
 	instance := DataDetectorClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
 	instance.Autorelease()
 	return instance
@@ -85,15 +85,15 @@ func NewDataDetectorWithPatternOptionsError(pattern string, options RegularExpre
 // Creates and returns a new data detector instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatadetector/1557375-datadetectorwithtypes?language=objc
-func (dc _DataDetectorClass) DataDetectorWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
-	rv := objc.Call[DataDetector](dc, objc.Sel("dataDetectorWithTypes:error:"), checkingTypes, objc.Ptr(error))
+func (dc _DataDetectorClass) DataDetectorWithTypesError(checkingTypes TextCheckingTypes, error unsafe.Pointer) DataDetector {
+	rv := objc.Call[DataDetector](dc, objc.Sel("dataDetectorWithTypes:error:"), checkingTypes, error)
 	return rv
 }
 
 // Creates and returns a new data detector instance. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatadetector/1557375-datadetectorwithtypes?language=objc
-func DataDetector_DataDetectorWithTypesError(checkingTypes TextCheckingTypes, error IError) DataDetector {
+func DataDetector_DataDetectorWithTypesError(checkingTypes TextCheckingTypes, error unsafe.Pointer) DataDetector {
 	return DataDetectorClass.DataDetectorWithTypesError(checkingTypes, error)
 }
 

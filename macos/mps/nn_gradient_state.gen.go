@@ -56,7 +56,7 @@ func (n_ NNGradientState) Init() NNGradientState {
 
 func (nc _NNGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NNGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NNGradientState_TemporaryStateWithCommandBufferResourceList(commandBuffer m
 
 func (n_ NNGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NNGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NNGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer
 
 func (nc _NNGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NNGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func NNGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf met
 
 func (n_ NNGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NNGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

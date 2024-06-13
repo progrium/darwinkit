@@ -673,7 +673,7 @@ func (t_ TableViewDelegateObject) HasTableViewTypeSelectStringForTableColumnRow(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1530001-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewTypeSelectStringForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) string {
-	rv := objc.Call[string](t_, objc.Sel("tableView:typeSelectStringForTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[string](t_, objc.Sel("tableView:typeSelectStringForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -685,7 +685,7 @@ func (t_ TableViewDelegateObject) HasTableViewDataCellForTableColumnRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1529321-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewDataCellForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) Cell {
-	rv := objc.Call[Cell](t_, objc.Sel("tableView:dataCellForTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[Cell](t_, objc.Sel("tableView:dataCellForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -697,7 +697,7 @@ func (t_ TableViewDelegateObject) HasTableViewNextTypeSelectMatchFromRowToRowFor
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1534757-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewNextTypeSelectMatchFromRowToRowForString(tableView TableView, startRow int, endRow int, searchString string) int {
-	rv := objc.Call[int](t_, objc.Sel("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), objc.Ptr(tableView), startRow, endRow, searchString)
+	rv := objc.Call[int](t_, objc.Sel("tableView:nextTypeSelectMatchFromRow:toRow:forString:"), tableView, startRow, endRow, searchString)
 	return rv
 }
 
@@ -709,7 +709,7 @@ func (t_ TableViewDelegateObject) HasTableViewIsGroupRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1526676-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewIsGroupRow(tableView TableView, row int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:isGroupRow:"), objc.Ptr(tableView), row)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:isGroupRow:"), tableView, row)
 	return rv
 }
 
@@ -721,7 +721,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldShowCellExpansionForTableCol
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1535567-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldShowCellExpansionForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldShowCellExpansionForTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldShowCellExpansionForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -733,7 +733,7 @@ func (t_ TableViewDelegateObject) HasTableViewDidDragTableColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1535732-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewDidDragTableColumn(tableView TableView, tableColumn TableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:didDragTableColumn:"), objc.Ptr(tableView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("tableView:didDragTableColumn:"), tableView, tableColumn)
 }
 
 func (t_ TableViewDelegateObject) HasSelectionShouldChangeInTableView() bool {
@@ -744,7 +744,7 @@ func (t_ TableViewDelegateObject) HasSelectionShouldChangeInTableView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1533949-selectionshouldchangeintableview?language=objc
 func (t_ TableViewDelegateObject) SelectionShouldChangeInTableView(tableView TableView) bool {
-	rv := objc.Call[bool](t_, objc.Sel("selectionShouldChangeInTableView:"), objc.Ptr(tableView))
+	rv := objc.Call[bool](t_, objc.Sel("selectionShouldChangeInTableView:"), tableView)
 	return rv
 }
 
@@ -756,7 +756,7 @@ func (t_ TableViewDelegateObject) HasTableViewViewForTableColumnRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1527449-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewViewForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) View {
-	rv := objc.Call[View](t_, objc.Sel("tableView:viewForTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[View](t_, objc.Sel("tableView:viewForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -768,7 +768,7 @@ func (t_ TableViewDelegateObject) HasTableViewRowActionsForRowEdge() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1532060-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewRowActionsForRowEdge(tableView TableView, row int, edge TableRowActionEdge) []TableViewRowAction {
-	rv := objc.Call[[]TableViewRowAction](t_, objc.Sel("tableView:rowActionsForRow:edge:"), objc.Ptr(tableView), row, edge)
+	rv := objc.Call[[]TableViewRowAction](t_, objc.Sel("tableView:rowActionsForRow:edge:"), tableView, row, edge)
 	return rv
 }
 
@@ -780,7 +780,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldTrackCellForTableColumnRow()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1533564-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldTrackCellForTableColumnRow(tableView TableView, cell Cell, tableColumn TableColumn, row int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldTrackCell:forTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(cell), objc.Ptr(tableColumn), row)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldTrackCell:forTableColumn:row:"), tableView, cell, tableColumn, row)
 	return rv
 }
 
@@ -792,7 +792,7 @@ func (t_ TableViewDelegateObject) HasTableViewRowViewForRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1532417-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewRowViewForRow(tableView TableView, row int) TableRowView {
-	rv := objc.Call[TableRowView](t_, objc.Sel("tableView:rowViewForRow:"), objc.Ptr(tableView), row)
+	rv := objc.Call[TableRowView](t_, objc.Sel("tableView:rowViewForRow:"), tableView, row)
 	return rv
 }
 
@@ -804,7 +804,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldEditTableColumnRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1527305-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldEditTableColumnRow(tableView TableView, tableColumn TableColumn, row int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldEditTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldEditTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -816,7 +816,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldSelectTableColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1527204-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldSelectTableColumn(tableView TableView, tableColumn TableColumn) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldSelectTableColumn:"), objc.Ptr(tableView), objc.Ptr(tableColumn))
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldSelectTableColumn:"), tableView, tableColumn)
 	return rv
 }
 
@@ -828,7 +828,7 @@ func (t_ TableViewDelegateObject) HasTableViewSelectionIndexesForProposedSelecti
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1532829-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewSelectionIndexesForProposedSelection(tableView TableView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet {
-	rv := objc.Call[foundation.IndexSet](t_, objc.Sel("tableView:selectionIndexesForProposedSelection:"), objc.Ptr(tableView), objc.Ptr(proposedSelectionIndexes))
+	rv := objc.Call[foundation.IndexSet](t_, objc.Sel("tableView:selectionIndexesForProposedSelection:"), tableView, proposedSelectionIndexes)
 	return rv
 }
 
@@ -840,7 +840,7 @@ func (t_ TableViewDelegateObject) HasTableViewDidAddRowViewForRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1527434-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewDidAddRowViewForRow(tableView TableView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:didAddRowView:forRow:"), objc.Ptr(tableView), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:didAddRowView:forRow:"), tableView, rowView, row)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewDidClickTableColumn() bool {
@@ -851,7 +851,7 @@ func (t_ TableViewDelegateObject) HasTableViewDidClickTableColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1533923-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewDidClickTableColumn(tableView TableView, tableColumn TableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:didClickTableColumn:"), objc.Ptr(tableView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("tableView:didClickTableColumn:"), tableView, tableColumn)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewWillDisplayCellForTableColumnRow() bool {
@@ -862,7 +862,7 @@ func (t_ TableViewDelegateObject) HasTableViewWillDisplayCellForTableColumnRow()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1533829-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewWillDisplayCellForTableColumnRow(tableView TableView, cell objc.Object, tableColumn TableColumn, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:willDisplayCell:forTableColumn:row:"), objc.Ptr(tableView), cell, objc.Ptr(tableColumn), row)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:willDisplayCell:forTableColumn:row:"), tableView, cell, tableColumn, row)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewSizeToFitWidthOfColumn() bool {
@@ -873,7 +873,7 @@ func (t_ TableViewDelegateObject) HasTableViewSizeToFitWidthOfColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1526429-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewSizeToFitWidthOfColumn(tableView TableView, column int) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("tableView:sizeToFitWidthOfColumn:"), objc.Ptr(tableView), column)
+	rv := objc.Call[float64](t_, objc.Sel("tableView:sizeToFitWidthOfColumn:"), tableView, column)
 	return rv
 }
 
@@ -885,7 +885,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldSelectRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1526916-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldSelectRow(tableView TableView, row int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldSelectRow:"), objc.Ptr(tableView), row)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldSelectRow:"), tableView, row)
 	return rv
 }
 
@@ -897,7 +897,7 @@ func (t_ TableViewDelegateObject) HasTableViewColumnDidMove() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1534237-tableviewcolumndidmove?language=objc
 func (t_ TableViewDelegateObject) TableViewColumnDidMove(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("tableViewColumnDidMove:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("tableViewColumnDidMove:"), notification)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewSelectionIsChanging() bool {
@@ -908,7 +908,7 @@ func (t_ TableViewDelegateObject) HasTableViewSelectionIsChanging() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1530812-tableviewselectionischanging?language=objc
 func (t_ TableViewDelegateObject) TableViewSelectionIsChanging(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("tableViewSelectionIsChanging:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("tableViewSelectionIsChanging:"), notification)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewMouseDownInHeaderOfTableColumn() bool {
@@ -919,7 +919,7 @@ func (t_ TableViewDelegateObject) HasTableViewMouseDownInHeaderOfTableColumn() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1531711-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewMouseDownInHeaderOfTableColumn(tableView TableView, tableColumn TableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:mouseDownInHeaderOfTableColumn:"), objc.Ptr(tableView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("tableView:mouseDownInHeaderOfTableColumn:"), tableView, tableColumn)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewDidRemoveRowViewForRow() bool {
@@ -930,7 +930,7 @@ func (t_ TableViewDelegateObject) HasTableViewDidRemoveRowViewForRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1528674-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewDidRemoveRowViewForRow(tableView TableView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:didRemoveRowView:forRow:"), objc.Ptr(tableView), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:didRemoveRowView:forRow:"), tableView, rowView, row)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewShouldReorderColumnToColumn() bool {
@@ -941,7 +941,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldReorderColumnToColumn() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1534434-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldReorderColumnToColumn(tableView TableView, columnIndex int, newColumnIndex int) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldReorderColumn:toColumn:"), objc.Ptr(tableView), columnIndex, newColumnIndex)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldReorderColumn:toColumn:"), tableView, columnIndex, newColumnIndex)
 	return rv
 }
 
@@ -953,7 +953,7 @@ func (t_ TableViewDelegateObject) HasTableViewSelectionDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1528567-tableviewselectiondidchange?language=objc
 func (t_ TableViewDelegateObject) TableViewSelectionDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("tableViewSelectionDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("tableViewSelectionDidChange:"), notification)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewShouldTypeSelectForEventWithCurrentSearchString() bool {
@@ -964,7 +964,7 @@ func (t_ TableViewDelegateObject) HasTableViewShouldTypeSelectForEventWithCurren
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1526347-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewShouldTypeSelectForEventWithCurrentSearchString(tableView TableView, event Event, searchString string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), objc.Ptr(tableView), objc.Ptr(event), searchString)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:shouldTypeSelectForEvent:withCurrentSearchString:"), tableView, event, searchString)
 	return rv
 }
 
@@ -976,7 +976,7 @@ func (t_ TableViewDelegateObject) HasTableViewToolTipForCellRectTableColumnRowMo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1526097-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewToolTipForCellRectTableColumnRowMouseLocation(tableView TableView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, row int, mouseLocation foundation.Point) string {
-	rv := objc.Call[string](t_, objc.Sel("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:"), objc.Ptr(tableView), objc.Ptr(cell), rect, objc.Ptr(tableColumn), row, mouseLocation)
+	rv := objc.Call[string](t_, objc.Sel("tableView:toolTipForCell:rect:tableColumn:row:mouseLocation:"), tableView, cell, rect, tableColumn, row, mouseLocation)
 	return rv
 }
 
@@ -988,7 +988,7 @@ func (t_ TableViewDelegateObject) HasTableViewColumnDidResize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1535901-tableviewcolumndidresize?language=objc
 func (t_ TableViewDelegateObject) TableViewColumnDidResize(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("tableViewColumnDidResize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("tableViewColumnDidResize:"), notification)
 }
 
 func (t_ TableViewDelegateObject) HasTableViewHeightOfRow() bool {
@@ -999,6 +999,6 @@ func (t_ TableViewDelegateObject) HasTableViewHeightOfRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdelegate/1529684-tableview?language=objc
 func (t_ TableViewDelegateObject) TableViewHeightOfRow(tableView TableView, row int) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("tableView:heightOfRow:"), objc.Ptr(tableView), row)
+	rv := objc.Call[float64](t_, objc.Sel("tableView:heightOfRow:"), tableView, row)
 	return rv
 }

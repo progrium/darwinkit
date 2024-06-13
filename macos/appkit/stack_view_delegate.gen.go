@@ -76,7 +76,7 @@ func (s_ StackViewDelegateObject) HasStackViewDidReattachViews() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewdelegate/1488921-stackview?language=objc
 func (s_ StackViewDelegateObject) StackViewDidReattachViews(stackView StackView, views []View) {
-	objc.Call[objc.Void](s_, objc.Sel("stackView:didReattachViews:"), objc.Ptr(stackView), views)
+	objc.Call[objc.Void](s_, objc.Sel("stackView:didReattachViews:"), stackView, views)
 }
 
 func (s_ StackViewDelegateObject) HasStackViewWillDetachViews() bool {
@@ -87,5 +87,5 @@ func (s_ StackViewDelegateObject) HasStackViewWillDetachViews() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewdelegate/1488953-stackview?language=objc
 func (s_ StackViewDelegateObject) StackViewWillDetachViews(stackView StackView, views []View) {
-	objc.Call[objc.Void](s_, objc.Sel("stackView:willDetachViews:"), objc.Ptr(stackView), views)
+	objc.Call[objc.Void](s_, objc.Sel("stackView:willDetachViews:"), stackView, views)
 }

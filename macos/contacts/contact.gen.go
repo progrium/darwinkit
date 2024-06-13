@@ -99,7 +99,7 @@ func (c_ Contact) IsUnifiedWithContactWithIdentifier(contactIdentifier string) b
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontact/3020511-predicateforcontactsmatchingphon?language=objc
 func (cc _ContactClass) PredicateForContactsMatchingPhoneNumber(phoneNumber IPhoneNumber) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](cc, objc.Sel("predicateForContactsMatchingPhoneNumber:"), objc.Ptr(phoneNumber))
+	rv := objc.Call[foundation.Predicate](cc, objc.Sel("predicateForContactsMatchingPhoneNumber:"), phoneNumber)
 	return rv
 }
 

@@ -3,7 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -28,7 +29,7 @@ type PComputePipelineState interface {
 	HasNewVisibleFunctionTableWithDescriptor() bool
 
 	// optional
-	NewComputePipelineStateWithAdditionalBinaryFunctionsError(functions []FunctionObject, error foundation.Error) ComputePipelineStateObject
+	NewComputePipelineStateWithAdditionalBinaryFunctionsError(functions []FunctionObject, error unsafe.Pointer) ComputePipelineStateObject
 	HasNewComputePipelineStateWithAdditionalBinaryFunctionsError() bool
 
 	// optional
@@ -85,7 +86,7 @@ func (c_ ComputePipelineStateObject) HasNewIntersectionFunctionTableWithDescript
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3580381-newintersectionfunctiontablewith?language=objc
 func (c_ ComputePipelineStateObject) NewIntersectionFunctionTableWithDescriptor(descriptor IntersectionFunctionTableDescriptor) IntersectionFunctionTableObject {
-	rv := objc.Call[IntersectionFunctionTableObject](c_, objc.Sel("newIntersectionFunctionTableWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[IntersectionFunctionTableObject](c_, objc.Sel("newIntersectionFunctionTableWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -109,7 +110,7 @@ func (c_ ComputePipelineStateObject) HasNewVisibleFunctionTableWithDescriptor() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3566543-newvisiblefunctiontablewithdescr?language=objc
 func (c_ ComputePipelineStateObject) NewVisibleFunctionTableWithDescriptor(descriptor VisibleFunctionTableDescriptor) VisibleFunctionTableObject {
-	rv := objc.Call[VisibleFunctionTableObject](c_, objc.Sel("newVisibleFunctionTableWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[VisibleFunctionTableObject](c_, objc.Sel("newVisibleFunctionTableWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -120,8 +121,8 @@ func (c_ ComputePipelineStateObject) HasNewComputePipelineStateWithAdditionalBin
 // Creates a new pipeline state object with additional callable functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinestate/3580380-newcomputepipelinestatewithaddit?language=objc
-func (c_ ComputePipelineStateObject) NewComputePipelineStateWithAdditionalBinaryFunctionsError(functions []FunctionObject, error foundation.Error) ComputePipelineStateObject {
-	rv := objc.Call[ComputePipelineStateObject](c_, objc.Sel("newComputePipelineStateWithAdditionalBinaryFunctions:error:"), functions, objc.Ptr(error))
+func (c_ ComputePipelineStateObject) NewComputePipelineStateWithAdditionalBinaryFunctionsError(functions []FunctionObject, error unsafe.Pointer) ComputePipelineStateObject {
+	rv := objc.Call[ComputePipelineStateObject](c_, objc.Sel("newComputePipelineStateWithAdditionalBinaryFunctions:error:"), functions, error)
 	return rv
 }
 

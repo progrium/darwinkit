@@ -54,7 +54,7 @@ func (u_ UnitElectricCharge) Init() UnitElectricCharge {
 }
 
 func (u_ UnitElectricCharge) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCharge {
-	rv := objc.Call[UnitElectricCharge](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitElectricCharge](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

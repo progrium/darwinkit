@@ -54,7 +54,7 @@ func (u_ UnitPressure) Init() UnitPressure {
 }
 
 func (u_ UnitPressure) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitPressure {
-	rv := objc.Call[UnitPressure](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitPressure](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

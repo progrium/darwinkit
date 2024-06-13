@@ -44,7 +44,7 @@ func TableViewDiffableDataSourceFrom(ptr unsafe.Pointer) TableViewDiffableDataSo
 }
 
 func (t_ TableViewDiffableDataSource) InitWithTableViewCellProvider(tableView ITableView, cellProvider TableViewDiffableDataSourceCellProvider) TableViewDiffableDataSource {
-	rv := objc.Call[TableViewDiffableDataSource](t_, objc.Sel("initWithTableView:cellProvider:"), objc.Ptr(tableView), cellProvider)
+	rv := objc.Call[TableViewDiffableDataSource](t_, objc.Sel("initWithTableView:cellProvider:"), tableView, cellProvider)
 	return rv
 }
 
@@ -89,7 +89,7 @@ func (t_ TableViewDiffableDataSource) SectionIdentifierForRow(row int) objc.Obje
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553218-rowforsectionidentifier?language=objc
 func (t_ TableViewDiffableDataSource) RowForSectionIdentifier(identifier objc.IObject) int {
-	rv := objc.Call[int](t_, objc.Sel("rowForSectionIdentifier:"), objc.Ptr(identifier))
+	rv := objc.Call[int](t_, objc.Sel("rowForSectionIdentifier:"), identifier)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (t_ TableViewDiffableDataSource) RowForSectionIdentifier(identifier objc.IO
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdiffabledatasource/3553217-rowforitemidentifier?language=objc
 func (t_ TableViewDiffableDataSource) RowForItemIdentifier(identifier objc.IObject) int {
-	rv := objc.Call[int](t_, objc.Sel("rowForItemIdentifier:"), objc.Ptr(identifier))
+	rv := objc.Call[int](t_, objc.Sel("rowForItemIdentifier:"), identifier)
 	return rv
 }
 

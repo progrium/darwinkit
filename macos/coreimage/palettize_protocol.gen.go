@@ -74,7 +74,7 @@ func (p_ PalettizeObject) HasSetPaletteImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228637-paletteimage?language=objc
 func (p_ PalettizeObject) SetPaletteImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPaletteImage:"), value)
 }
 
 func (p_ PalettizeObject) HasPaletteImage() bool {
@@ -97,7 +97,7 @@ func (p_ PalettizeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipalettize/3228636-inputimage?language=objc
 func (p_ PalettizeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PalettizeObject) HasInputImage() bool {

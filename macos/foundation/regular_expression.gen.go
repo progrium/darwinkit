@@ -44,15 +44,15 @@ func RegularExpressionFrom(ptr unsafe.Pointer) RegularExpression {
 	}
 }
 
-func (r_ RegularExpression) InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
-	rv := objc.Call[RegularExpression](r_, objc.Sel("initWithPattern:options:error:"), pattern, options, objc.Ptr(error))
+func (r_ RegularExpression) InitWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) RegularExpression {
+	rv := objc.Call[RegularExpression](r_, objc.Sel("initWithPattern:options:error:"), pattern, options, error)
 	return rv
 }
 
 // Returns an initialized NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1410900-initwithpattern?language=objc
-func NewRegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
+func NewRegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) RegularExpression {
 	instance := RegularExpressionClass.Alloc().InitWithPatternOptionsError(pattern, options, error)
 	instance.Autorelease()
 	return instance
@@ -105,7 +105,7 @@ func (r_ RegularExpression) StringByReplacingMatchesInStringOptionsRangeWithTemp
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1411139-replacematchesinstring?language=objc
 func (r_ RegularExpression) ReplaceMatchesInStringOptionsRangeWithTemplate(string_ IMutableString, options MatchingOptions, range_ Range, templ string) uint {
-	rv := objc.Call[uint](r_, objc.Sel("replaceMatchesInString:options:range:withTemplate:"), objc.Ptr(string_), options, range_, templ)
+	rv := objc.Call[uint](r_, objc.Sel("replaceMatchesInString:options:range:withTemplate:"), string_, options, range_, templ)
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (r_ RegularExpression) RangeOfFirstMatchInStringOptionsRange(string_ string
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1414859-replacementstringforresult?language=objc
 func (r_ RegularExpression) ReplacementStringForResultInStringOffsetTemplate(result ITextCheckingResult, string_ string, offset int, templ string) string {
-	rv := objc.Call[string](r_, objc.Sel("replacementStringForResult:inString:offset:template:"), objc.Ptr(result), string_, offset, templ)
+	rv := objc.Call[string](r_, objc.Sel("replacementStringForResult:inString:offset:template:"), result, string_, offset, templ)
 	return rv
 }
 
@@ -174,15 +174,15 @@ func RegularExpression_EscapedPatternForString(string_ string) string {
 // Creates an NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1557374-regularexpressionwithpattern?language=objc
-func (rc _RegularExpressionClass) RegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
-	rv := objc.Call[RegularExpression](rc, objc.Sel("regularExpressionWithPattern:options:error:"), pattern, options, objc.Ptr(error))
+func (rc _RegularExpressionClass) RegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) RegularExpression {
+	rv := objc.Call[RegularExpression](rc, objc.Sel("regularExpressionWithPattern:options:error:"), pattern, options, error)
 	return rv
 }
 
 // Creates an NSRegularExpression instance with the specified regular expression pattern and options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsregularexpression/1557374-regularexpressionwithpattern?language=objc
-func RegularExpression_RegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error IError) RegularExpression {
+func RegularExpression_RegularExpressionWithPatternOptionsError(pattern string, options RegularExpressionOptions, error unsafe.Pointer) RegularExpression {
 	return RegularExpressionClass.RegularExpressionWithPatternOptionsError(pattern, options, error)
 }
 

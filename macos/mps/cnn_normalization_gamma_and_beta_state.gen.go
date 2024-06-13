@@ -87,7 +87,7 @@ func (c_ CNNNormalizationGammaAndBetaState) Init() CNNNormalizationGammaAndBetaS
 
 func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferResourceLi
 
 func (c_ CNNNormalizationGammaAndBetaState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -185,7 +185,7 @@ func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBuffer(cmdBuf me
 
 func (cc _CNNNormalizationGammaAndBetaStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -198,7 +198,7 @@ func CNNNormalizationGammaAndBetaState_TemporaryStateWithCommandBufferTextureDes
 
 func (c_ CNNNormalizationGammaAndBetaState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

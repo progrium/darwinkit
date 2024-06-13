@@ -114,7 +114,7 @@ func NewArrayControllerWithContent(content objc.IObject) ArrayController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1533997-addselectionindexes?language=objc
 func (a_ ArrayController) AddSelectionIndexes(indexes foundation.IIndexSet) bool {
-	rv := objc.Call[bool](a_, objc.Sel("addSelectionIndexes:"), objc.Ptr(indexes))
+	rv := objc.Call[bool](a_, objc.Sel("addSelectionIndexes:"), indexes)
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (a_ ArrayController) AddSelectionIndexes(indexes foundation.IIndexSet) bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1527973-insertobjects?language=objc
 func (a_ ArrayController) InsertObjectsAtArrangedObjectIndexes(objects []objc.IObject, indexes foundation.IIndexSet) {
-	objc.Call[objc.Void](a_, objc.Sel("insertObjects:atArrangedObjectIndexes:"), objects, objc.Ptr(indexes))
+	objc.Call[objc.Void](a_, objc.Sel("insertObjects:atArrangedObjectIndexes:"), objects, indexes)
 }
 
 // Removes the object at the specified index in the receiver’s arranged objects from the receiver’s content array. [Full Topic]
@@ -144,7 +144,7 @@ func (a_ ArrayController) ArrangeObjects(objects []objc.IObject) []objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1525801-setselectionindexes?language=objc
 func (a_ ArrayController) SetSelectionIndexes(indexes foundation.IIndexSet) bool {
-	rv := objc.Call[bool](a_, objc.Sel("setSelectionIndexes:"), objc.Ptr(indexes))
+	rv := objc.Call[bool](a_, objc.Sel("setSelectionIndexes:"), indexes)
 	return rv
 }
 
@@ -197,7 +197,7 @@ func (a_ ArrayController) AddSelectedObjects(objects []objc.IObject) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1533508-removeobjectsatarrangedobjectind?language=objc
 func (a_ ArrayController) RemoveObjectsAtArrangedObjectIndexes(indexes foundation.IIndexSet) {
-	objc.Call[objc.Void](a_, objc.Sel("removeObjectsAtArrangedObjectIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](a_, objc.Sel("removeObjectsAtArrangedObjectIndexes:"), indexes)
 }
 
 // Sets objects as the receiver’s current selection, returning YES if the selection was changed. [Full Topic]
@@ -228,7 +228,7 @@ func (a_ ArrayController) SelectNext(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1525061-removeselectionindexes?language=objc
 func (a_ ArrayController) RemoveSelectionIndexes(indexes foundation.IIndexSet) bool {
-	rv := objc.Call[bool](a_, objc.Sel("removeSelectionIndexes:"), objc.Ptr(indexes))
+	rv := objc.Call[bool](a_, objc.Sel("removeSelectionIndexes:"), indexes)
 	return rv
 }
 
@@ -372,7 +372,7 @@ func (a_ ArrayController) FilterPredicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsarraycontroller/1524815-filterpredicate?language=objc
 func (a_ ArrayController) SetFilterPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](a_, objc.Sel("setFilterPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setFilterPredicate:"), value)
 }
 
 // An array containing the receiver’s content objects arranged using [appkit/nsarraycontroller/arrangeobjects]. [Full Topic]

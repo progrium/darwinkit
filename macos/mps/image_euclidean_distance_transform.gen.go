@@ -19,8 +19,8 @@ type _ImageEuclideanDistanceTransformClass struct {
 // An interface definition for the [ImageEuclideanDistanceTransform] class.
 type IImageEuclideanDistanceTransform interface {
 	IUnaryImageKernel
-	SearchLimitRadius() float64
-	SetSearchLimitRadius(value float64)
+	SearchLimitRadius() float32
+	SetSearchLimitRadius(value float32)
 }
 
 // A filter that performs a Euclidean distance transform on an image. [Full Topic]
@@ -89,14 +89,14 @@ func ImageEuclideanDistanceTransform_CopyWithZoneDevice(zone unsafe.Pointer, dev
 // Limits the search in an image from a pixel to the closest nonzero pixel within a specified radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageeuclideandistancetransform/3547977-searchlimitradius?language=objc
-func (i_ ImageEuclideanDistanceTransform) SearchLimitRadius() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("searchLimitRadius"))
+func (i_ ImageEuclideanDistanceTransform) SearchLimitRadius() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("searchLimitRadius"))
 	return rv
 }
 
 // Limits the search in an image from a pixel to the closest nonzero pixel within a specified radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageeuclideandistancetransform/3547977-searchlimitradius?language=objc
-func (i_ ImageEuclideanDistanceTransform) SetSearchLimitRadius(value float64) {
+func (i_ ImageEuclideanDistanceTransform) SetSearchLimitRadius(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setSearchLimitRadius:"), value)
 }

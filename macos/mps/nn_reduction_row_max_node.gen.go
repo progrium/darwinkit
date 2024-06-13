@@ -54,7 +54,7 @@ func (n_ NNReductionRowMaxNode) Init() NNReductionRowMaxNode {
 }
 
 func (nc _NNReductionRowMaxNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionRowMaxNode {
-	rv := objc.Call[NNReductionRowMaxNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionRowMaxNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionRowMaxNode_NodeWithSource(sourceNode INNImageNode) NNReductionRo
 }
 
 func (n_ NNReductionRowMaxNode) InitWithSource(sourceNode INNImageNode) NNReductionRowMaxNode {
-	rv := objc.Call[NNReductionRowMaxNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionRowMaxNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

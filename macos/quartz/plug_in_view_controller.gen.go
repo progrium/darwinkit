@@ -56,7 +56,7 @@ func (p_ PlugInViewController) Init() PlugInViewController {
 }
 
 func (p_ PlugInViewController) InitWithNibNameBundle(nibNameOrNil appkit.NibName, nibBundleOrNil foundation.IBundle) PlugInViewController {
-	rv := objc.Call[PlugInViewController](p_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[PlugInViewController](p_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 

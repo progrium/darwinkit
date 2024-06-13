@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidocumentenhancer?language=objc
 type PDocumentEnhancer interface {
 	// optional
-	SetAmount(value float64)
+	SetAmount(value float32)
 	HasSetAmount() bool
 
 	// optional
-	Amount() float64
+	Amount() float32
 	HasAmount() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (d_ DocumentEnhancerObject) HasSetAmount() bool {
 // The amount of enhancement. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidocumentenhancer/3228228-amount?language=objc
-func (d_ DocumentEnhancerObject) SetAmount(value float64) {
+func (d_ DocumentEnhancerObject) SetAmount(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setAmount:"), value)
 }
 
@@ -53,8 +53,8 @@ func (d_ DocumentEnhancerObject) HasAmount() bool {
 // The amount of enhancement. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidocumentenhancer/3228228-amount?language=objc
-func (d_ DocumentEnhancerObject) Amount() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("amount"))
+func (d_ DocumentEnhancerObject) Amount() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("amount"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (d_ DocumentEnhancerObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidocumentenhancer/3228229-inputimage?language=objc
 func (d_ DocumentEnhancerObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DocumentEnhancerObject) HasInputImage() bool {

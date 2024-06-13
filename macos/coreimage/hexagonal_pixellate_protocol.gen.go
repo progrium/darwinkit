@@ -20,11 +20,11 @@ type PHexagonalPixellate interface {
 	HasCenter() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -74,7 +74,7 @@ func (h_ HexagonalPixellateObject) HasSetScale() bool {
 // The size of the hexagons. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228492-scale?language=objc
-func (h_ HexagonalPixellateObject) SetScale(value float64) {
+func (h_ HexagonalPixellateObject) SetScale(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setScale:"), value)
 }
 
@@ -85,8 +85,8 @@ func (h_ HexagonalPixellateObject) HasScale() bool {
 // The size of the hexagons. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228492-scale?language=objc
-func (h_ HexagonalPixellateObject) Scale() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("scale"))
+func (h_ HexagonalPixellateObject) Scale() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("scale"))
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (h_ HexagonalPixellateObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihexagonalpixellate/3228491-inputimage?language=objc
 func (h_ HexagonalPixellateObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
 func (h_ HexagonalPixellateObject) HasInputImage() bool {

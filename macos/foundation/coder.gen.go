@@ -29,12 +29,12 @@ type ICoder interface {
 	EncodeCMTimeForKey(time coremedia.Time, key string)
 	DecodeArrayOfObjCTypeCountAt(itemType *uint8, count uint, array unsafe.Pointer)
 	EncodeObject(object objc.IObject)
-	DecodeTopLevelObjectAndReturnError(error IError) objc.Object
+	DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object
 	DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object
 	DecodeInt32ForKey(key string) int32
-	DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error IError) objc.Object
+	DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object
 	DecodeCMTimeRangeForKey(key string) coremedia.TimeRange
-	DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error IError) objc.Object
+	DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error unsafe.Pointer) objc.Object
 	DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary
 	DecodeObjectForKey(key string) objc.Object
 	EncodeRectForKey(rect Rect, key string)
@@ -44,7 +44,7 @@ type ICoder interface {
 	SetObjectZone(zone unsafe.Pointer)
 	EncodeDataObject(data []byte)
 	DecodeObject() objc.Object
-	DecodeFloatForKey(key string) float64
+	DecodeFloatForKey(key string) float32
 	EncodePoint(point Point)
 	DecodeArrayOfObjectsOfClassForKey(cls objc.IClass, key string) []objc.Object
 	DecodeInt64ForKey(key string) int64
@@ -53,14 +53,14 @@ type ICoder interface {
 	DecodeDictionaryWithKeysOfClassObjectsOfClassForKey(keyCls objc.IClass, objectCls objc.IClass, key string) Dictionary
 	EncodeBytesLength(byteaddr unsafe.Pointer, length uint)
 	DecodeDataObject() []byte
-	DecodeTopLevelObjectForKeyError(key string, error IError) objc.Object
+	DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object
 	EncodeValuesOfObjCTypes(types *uint8, args ...any)
 	EncodeRootObject(rootObject objc.IObject)
 	DecodeSize() Size
 	DecodeRectForKey(key string) Rect
 	VersionForClassName(className string) int
 	DecodeIntegerForKey(key string) int
-	EncodeFloatForKey(value float64, key string)
+	EncodeFloatForKey(value float32, key string)
 	EncodeObjectForKey(object objc.IObject, key string)
 	DecodeValueOfObjCTypeAtSize(type_ *uint8, data unsafe.Pointer, size uint)
 	DecodeCMTimeForKey(key string) coremedia.Time
@@ -208,8 +208,8 @@ func (c_ Coder) EncodeObject(object objc.IObject) {
 // Decodes a previously-encoded object, populating an error if decoding fails. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442553-decodetoplevelobjectandreturnerr?language=objc
-func (c_ Coder) DecodeTopLevelObjectAndReturnError(error IError) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectAndReturnError:"), objc.Ptr(error))
+func (c_ Coder) DecodeTopLevelObjectAndReturnError(error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectAndReturnError:"), error)
 	return rv
 }
 
@@ -217,7 +217,7 @@ func (c_ Coder) DecodeTopLevelObjectAndReturnError(error IError) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442560-decodeobjectofclasses?language=objc
 func (c_ Coder) DecodeObjectOfClassesForKey(classes ISet, key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClasses:forKey:"), objc.Ptr(classes), key)
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClasses:forKey:"), classes, key)
 	return rv
 }
 
@@ -232,8 +232,8 @@ func (c_ Coder) DecodeInt32ForKey(key string) int32 {
 // Decode an object as one of several expected types, failing if the archived type does not match. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442539-decodetoplevelobjectofclasses?language=objc
-func (c_ Coder) DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClasses:forKey:error:"), objc.Ptr(classes), key, objc.Ptr(error))
+func (c_ Coder) DecodeTopLevelObjectOfClassesForKeyError(classes ISet, key string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClasses:forKey:error:"), classes, key, error)
 	return rv
 }
 
@@ -248,8 +248,8 @@ func (c_ Coder) DecodeCMTimeRangeForKey(key string) coremedia.TimeRange {
 // Decode an object as an expected type, failing if the archived type does not match. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442575-decodetoplevelobjectofclass?language=objc
-func (c_ Coder) DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClass:forKey:error:"), objc.Ptr(aClass), key, objc.Ptr(error))
+func (c_ Coder) DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectOfClass:forKey:error:"), aClass, key, error)
 	return rv
 }
 
@@ -257,7 +257,7 @@ func (c_ Coder) DecodeTopLevelObjectOfClassForKeyError(aClass objc.IClass, key s
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563980-decodedictionarywithkeysofclasse?language=objc
 func (c_ Coder) DecodeDictionaryWithKeysOfClassesObjectsOfClassesForKey(keyClasses ISet, objectClasses ISet, key string) Dictionary {
-	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClasses:objectsOfClasses:forKey:"), objc.Ptr(keyClasses), objc.Ptr(objectClasses), key)
+	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClasses:objectsOfClasses:forKey:"), keyClasses, objectClasses, key)
 	return rv
 }
 
@@ -324,8 +324,8 @@ func (c_ Coder) DecodeObject() objc.Object {
 // Decodes and returns a float value that was previously encoded with [foundation/nscoder/encodefloat] or [foundation/nscoder/encodedouble] and associated with the string key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1408104-decodefloatforkey?language=objc
-func (c_ Coder) DecodeFloatForKey(key string) float64 {
-	rv := objc.Call[float64](c_, objc.Sel("decodeFloatForKey:"), key)
+func (c_ Coder) DecodeFloatForKey(key string) float32 {
+	rv := objc.Call[float32](c_, objc.Sel("decodeFloatForKey:"), key)
 	return rv
 }
 
@@ -340,7 +340,7 @@ func (c_ Coder) EncodePoint(point Point) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563977-decodearrayofobjectsofclass?language=objc
 func (c_ Coder) DecodeArrayOfObjectsOfClassForKey(cls objc.IClass, key string) []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("decodeArrayOfObjectsOfClass:forKey:"), objc.Ptr(cls), key)
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("decodeArrayOfObjectsOfClass:forKey:"), cls, key)
 	return rv
 }
 
@@ -371,7 +371,7 @@ func (c_ Coder) ObjectZone() unsafe.Pointer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563979-decodedictionarywithkeysofclass?language=objc
 func (c_ Coder) DecodeDictionaryWithKeysOfClassObjectsOfClassForKey(keyCls objc.IClass, objectCls objc.IClass, key string) Dictionary {
-	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClass:objectsOfClass:forKey:"), objc.Ptr(keyCls), objc.Ptr(objectCls), key)
+	rv := objc.Call[Dictionary](c_, objc.Sel("decodeDictionaryWithKeysOfClass:objectsOfClass:forKey:"), keyCls, objectCls, key)
 	return rv
 }
 
@@ -393,8 +393,8 @@ func (c_ Coder) DecodeDataObject() []byte {
 // Decodes the previously-encoded object associated by a key, populating an error if decoding fails. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442541-decodetoplevelobjectforkey?language=objc
-func (c_ Coder) DecodeTopLevelObjectForKeyError(key string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectForKey:error:"), key, objc.Ptr(error))
+func (c_ Coder) DecodeTopLevelObjectForKeyError(key string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeTopLevelObjectForKey:error:"), key, error)
 	return rv
 }
 
@@ -447,7 +447,7 @@ func (c_ Coder) DecodeIntegerForKey(key string) int {
 // Encodes a floating point value and associates it with the string key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1414384-encodefloat?language=objc
-func (c_ Coder) EncodeFloatForKey(value float64, key string) {
+func (c_ Coder) EncodeFloatForKey(value float32, key string) {
 	objc.Call[objc.Void](c_, objc.Sel("encodeFloat:forKey:"), value, key)
 }
 
@@ -492,7 +492,7 @@ func (c_ Coder) DecodeDoubleForKey(key string) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1442558-decodeobjectofclass?language=objc
 func (c_ Coder) DecodeObjectOfClassForKey(aClass objc.IClass, key string) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClass:forKey:"), objc.Ptr(aClass), key)
+	rv := objc.Call[objc.Object](c_, objc.Sel("decodeObjectOfClass:forKey:"), aClass, key)
 	return rv
 }
 
@@ -559,7 +559,7 @@ func (c_ Coder) DecodeBoolForKey(key string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/3563978-decodearrayofobjectsofclasses?language=objc
 func (c_ Coder) DecodeArrayOfObjectsOfClassesForKey(classes ISet, key string) []objc.Object {
-	rv := objc.Call[[]objc.Object](c_, objc.Sel("decodeArrayOfObjectsOfClasses:forKey:"), objc.Ptr(classes), key)
+	rv := objc.Call[[]objc.Object](c_, objc.Sel("decodeArrayOfObjectsOfClasses:forKey:"), classes, key)
 	return rv
 }
 
@@ -597,7 +597,7 @@ func (c_ Coder) ContainsValueForKey(key string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoder/1411455-failwitherror?language=objc
 func (c_ Coder) FailWithError(error IError) {
-	objc.Call[objc.Void](c_, objc.Sel("failWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("failWithError:"), error)
 }
 
 // Encodes a size structure. [Full Topic]

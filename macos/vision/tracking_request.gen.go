@@ -115,5 +115,5 @@ func (t_ TrackingRequest) InputObservation() DetectedObjectObservation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vntrackingrequest/2887350-inputobservation?language=objc
 func (t_ TrackingRequest) SetInputObservation(value IDetectedObjectObservation) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputObservation:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputObservation:"), value)
 }

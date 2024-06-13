@@ -43,7 +43,7 @@ func (w_ WhitePointAdjustObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciwhitepointadjust/3228836-color?language=objc
 func (w_ WhitePointAdjustObject) SetColor(value Color) {
-	objc.Call[objc.Void](w_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setColor:"), value)
 }
 
 func (w_ WhitePointAdjustObject) HasColor() bool {
@@ -66,7 +66,7 @@ func (w_ WhitePointAdjustObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciwhitepointadjust/3228837-inputimage?language=objc
 func (w_ WhitePointAdjustObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](w_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setInputImage:"), value)
 }
 
 func (w_ WhitePointAdjustObject) HasInputImage() bool {

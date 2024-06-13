@@ -152,7 +152,7 @@ func (a_ ArgumentDescriptor) Access() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentdescriptor/2915735-access?language=objc
 func (a_ ArgumentDescriptor) SetAccess(value objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setAccess:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAccess:"), value)
 }
 
 // The texture type of a texture argument. [Full Topic]

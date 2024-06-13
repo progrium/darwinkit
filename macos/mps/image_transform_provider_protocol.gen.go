@@ -32,6 +32,6 @@ func (i_ ImageTransformProviderObject) HasTransformForSourceImageHandle() bool {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagetransformprovider/2915282-transformforsourceimage?language=objc
 func (i_ ImageTransformProviderObject) TransformForSourceImageHandle(image Image, handle HandleObject) ScaleTransform {
 	po1 := objc.WrapAsProtocol("MPSHandle", handle)
-	rv := objc.Call[ScaleTransform](i_, objc.Sel("transformForSourceImage:handle:"), objc.Ptr(image), po1)
+	rv := objc.Call[ScaleTransform](i_, objc.Sel("transformForSourceImage:handle:"), image, po1)
 	return rv
 }

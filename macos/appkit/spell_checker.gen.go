@@ -26,7 +26,7 @@ type ISpellChecker interface {
 	RecordResponseToCorrectionForWordLanguageInSpellDocumentWithTag(response CorrectionResponse, correction string, word string, language string, tag int)
 	CloseSpellDocumentWithTag(tag int)
 	RequestCandidatesForSelectedRangeInStringTypesOptionsInSpellDocumentWithTagCompletionHandler(selectedRange foundation.Range, stringToCheck string, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, tag int, completionHandler func(sequenceNumber int, candidates []foundation.TextCheckingResult)) int
-	CheckGrammarOfStringStartingAtLanguageWrapInSpellDocumentWithTagDetails(stringToCheck string, startingOffset int, language string, wrapFlag bool, tag int, details []map[string]objc.IObject) foundation.Range
+	CheckGrammarOfStringStartingAtLanguageWrapInSpellDocumentWithTagDetails(stringToCheck string, startingOffset int, language string, wrapFlag bool, tag int, details unsafe.Pointer) foundation.Range
 	SetLanguage(language string) bool
 	HasLearnedWord(word string) bool
 	SetIgnoredWordsInSpellDocumentWithTag(words []string, tag int)
@@ -43,7 +43,7 @@ type ISpellChecker interface {
 	GuessesForWordRangeInStringLanguageInSpellDocumentWithTag(range_ foundation.Range, string_ string, language string, tag int) []string
 	MenuForResultStringOptionsAtLocationInView(result foundation.ITextCheckingResult, checkedString string, options map[TextCheckingOptionKey]objc.IObject, location foundation.Point, view IView) Menu
 	UnlearnWord(word string)
-	CheckStringRangeTypesOptionsInSpellDocumentWithTagOrthographyWordCount(stringToCheck string, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, tag int, orthography foundation.IOrthography, wordCount *int) []foundation.TextCheckingResult
+	CheckStringRangeTypesOptionsInSpellDocumentWithTagOrthographyWordCount(stringToCheck string, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, tag int, orthography unsafe.Pointer, wordCount *int) []foundation.TextCheckingResult
 	LearnWord(word string)
 	CountWordsInStringLanguage(stringToCount string, language string) int
 	CorrectionForWordRangeInStringLanguageInSpellDocumentWithTag(range_ foundation.Range, string_ string, language string, tag int) string
@@ -107,7 +107,7 @@ func (s_ SpellChecker) IgnoreWordInSpellDocumentWithTag(wordToIgnore string, tag
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1530303-languageforwordrange?language=objc
 func (s_ SpellChecker) LanguageForWordRangeInStringOrthography(range_ foundation.Range, string_ string, orthography foundation.IOrthography) string {
-	rv := objc.Call[string](s_, objc.Sel("languageForWordRange:inString:orthography:"), range_, string_, objc.Ptr(orthography))
+	rv := objc.Call[string](s_, objc.Sel("languageForWordRange:inString:orthography:"), range_, string_, orthography)
 	return rv
 }
 
@@ -151,7 +151,7 @@ func (s_ SpellChecker) RequestCandidatesForSelectedRangeInStringTypesOptionsInSp
 // Initiates a grammatical analysis of a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1528441-checkgrammarofstring?language=objc
-func (s_ SpellChecker) CheckGrammarOfStringStartingAtLanguageWrapInSpellDocumentWithTagDetails(stringToCheck string, startingOffset int, language string, wrapFlag bool, tag int, details []map[string]objc.IObject) foundation.Range {
+func (s_ SpellChecker) CheckGrammarOfStringStartingAtLanguageWrapInSpellDocumentWithTagDetails(stringToCheck string, startingOffset int, language string, wrapFlag bool, tag int, details unsafe.Pointer) foundation.Range {
 	rv := objc.Call[foundation.Range](s_, objc.Sel("checkGrammarOfString:startingAt:language:wrap:inSpellDocumentWithTag:details:"), stringToCheck, startingOffset, language, wrapFlag, tag, details)
 	return rv
 }
@@ -198,7 +198,7 @@ func (s_ SpellChecker) UpdatePanels() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1535527-dismisscorrectionindicatorforvie?language=objc
 func (s_ SpellChecker) DismissCorrectionIndicatorForView(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("dismissCorrectionIndicatorForView:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("dismissCorrectionIndicatorForView:"), view)
 }
 
 // Causes the spell checker to update the Spelling panel’s misspelled-word field to reflect word. [Full Topic]
@@ -266,7 +266,7 @@ func (s_ SpellChecker) UpdateSpellingPanelWithGrammarStringDetail(string_ string
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1524316-showcorrectionindicatoroftype?language=objc
 func (s_ SpellChecker) ShowCorrectionIndicatorOfTypePrimaryStringAlternativeStringsForStringInRectViewCompletionHandler(type_ CorrectionIndicatorType, primaryString string, alternativeStrings []string, rectOfTypedString foundation.Rect, view IView, completionBlock func(acceptedString string)) {
-	objc.Call[objc.Void](s_, objc.Sel("showCorrectionIndicatorOfType:primaryString:alternativeStrings:forStringInRect:view:completionHandler:"), type_, primaryString, alternativeStrings, rectOfTypedString, objc.Ptr(view), completionBlock)
+	objc.Call[objc.Void](s_, objc.Sel("showCorrectionIndicatorOfType:primaryString:alternativeStrings:forStringInRect:view:completionHandler:"), type_, primaryString, alternativeStrings, rectOfTypedString, view, completionBlock)
 }
 
 // Returns an array of possible substitutions for the specified string. [Full Topic]
@@ -281,7 +281,7 @@ func (s_ SpellChecker) GuessesForWordRangeInStringLanguageInSpellDocumentWithTag
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1531603-menuforresult?language=objc
 func (s_ SpellChecker) MenuForResultStringOptionsAtLocationInView(result foundation.ITextCheckingResult, checkedString string, options map[TextCheckingOptionKey]objc.IObject, location foundation.Point, view IView) Menu {
-	rv := objc.Call[Menu](s_, objc.Sel("menuForResult:string:options:atLocation:inView:"), objc.Ptr(result), checkedString, options, location, objc.Ptr(view))
+	rv := objc.Call[Menu](s_, objc.Sel("menuForResult:string:options:atLocation:inView:"), result, checkedString, options, location, view)
 	return rv
 }
 
@@ -295,8 +295,8 @@ func (s_ SpellChecker) UnlearnWord(word string) {
 // Requests unified text checking for the given range of the given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1535739-checkstring?language=objc
-func (s_ SpellChecker) CheckStringRangeTypesOptionsInSpellDocumentWithTagOrthographyWordCount(stringToCheck string, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, tag int, orthography foundation.IOrthography, wordCount *int) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](s_, objc.Sel("checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:"), stringToCheck, range_, checkingTypes, options, tag, objc.Ptr(orthography), wordCount)
+func (s_ SpellChecker) CheckStringRangeTypesOptionsInSpellDocumentWithTagOrthographyWordCount(stringToCheck string, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, tag int, orthography unsafe.Pointer, wordCount *int) []foundation.TextCheckingResult {
+	rv := objc.Call[[]foundation.TextCheckingResult](s_, objc.Sel("checkString:range:types:options:inSpellDocumentWithTag:orthography:wordCount:"), stringToCheck, range_, checkingTypes, options, tag, orthography, wordCount)
 	return rv
 }
 
@@ -359,7 +359,7 @@ func (s_ SpellChecker) SubstitutionsPanelAccessoryViewController() ViewControlle
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1531645-substitutionspanelaccessoryviewc?language=objc
 func (s_ SpellChecker) SetSubstitutionsPanelAccessoryViewController(value IViewController) {
-	objc.Call[objc.Void](s_, objc.Sel("setSubstitutionsPanelAccessoryViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSubstitutionsPanelAccessoryViewController:"), value)
 }
 
 //	[Full Topic]
@@ -450,7 +450,7 @@ func (s_ SpellChecker) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspellchecker/1528160-accessoryview?language=objc
 func (s_ SpellChecker) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), value)
 }
 
 // Returns the spell checker’s panel. [Full Topic]

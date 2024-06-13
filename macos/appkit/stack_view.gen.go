@@ -118,7 +118,7 @@ func NewStackViewWithFrame(frameRect foundation.Rect) StackView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488888-customspacingafterview?language=objc
 func (s_ StackView) CustomSpacingAfterView(view IView) float64 {
-	rv := objc.Call[float64](s_, objc.Sel("customSpacingAfterView:"), objc.Ptr(view))
+	rv := objc.Call[float64](s_, objc.Sel("customSpacingAfterView:"), view)
 	return rv
 }
 
@@ -126,21 +126,21 @@ func (s_ StackView) CustomSpacingAfterView(view IView) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488916-removeview?language=objc
 func (s_ StackView) RemoveView(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("removeView:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("removeView:"), view)
 }
 
 // Adds a view to the end of the stack view gravity area. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488897-addview?language=objc
 func (s_ StackView) AddViewInGravity(view IView, gravity StackViewGravity) {
-	objc.Call[objc.Void](s_, objc.Sel("addView:inGravity:"), objc.Ptr(view), gravity)
+	objc.Call[objc.Void](s_, objc.Sel("addView:inGravity:"), view, gravity)
 }
 
 // Adds the provided view to the array of arranged subviews at the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488896-insertarrangedsubview?language=objc
 func (s_ StackView) InsertArrangedSubviewAtIndex(view IView, index int) {
-	objc.Call[objc.Void](s_, objc.Sel("insertArrangedSubview:atIndex:"), objc.Ptr(view), index)
+	objc.Call[objc.Void](s_, objc.Sel("insertArrangedSubview:atIndex:"), view, index)
 }
 
 // Specifies an array of views for a specified gravity area in the stack view, replacing any previous views in that area. [Full Topic]
@@ -177,21 +177,21 @@ func (s_ StackView) ViewsInGravity(gravity StackViewGravity) []View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488925-removearrangedsubview?language=objc
 func (s_ StackView) RemoveArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), view)
 }
 
 // Adds the specified view to the end of the arranged subviews list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488899-addarrangedsubview?language=objc
 func (s_ StackView) AddArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), view)
 }
 
 // Returns the visibility priority for a specified view in the stack view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488934-visibilitypriorityforview?language=objc
 func (s_ StackView) VisibilityPriorityForView(view IView) StackViewVisibilityPriority {
-	rv := objc.Call[StackViewVisibilityPriority](s_, objc.Sel("visibilityPriorityForView:"), objc.Ptr(view))
+	rv := objc.Call[StackViewVisibilityPriority](s_, objc.Sel("visibilityPriorityForView:"), view)
 	return rv
 }
 
@@ -199,14 +199,14 @@ func (s_ StackView) VisibilityPriorityForView(view IView) StackViewVisibilityPri
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488874-setcustomspacing?language=objc
 func (s_ StackView) SetCustomSpacingAfterView(spacing float64, view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setCustomSpacing:afterView:"), spacing, objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("setCustomSpacing:afterView:"), spacing, view)
 }
 
 // Adds a view to a stack view gravity area at a specified index position. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488933-insertview?language=objc
 func (s_ StackView) InsertViewAtIndexInGravity(view IView, index uint, gravity StackViewGravity) {
-	objc.Call[objc.Void](s_, objc.Sel("insertView:atIndex:inGravity:"), objc.Ptr(view), index, gravity)
+	objc.Call[objc.Void](s_, objc.Sel("insertView:atIndex:inGravity:"), view, index, gravity)
 }
 
 // Returns the Auto Layout priority for resisting clipping of views in the stack view when Auto Layout attempts to reduce the stack view’s size. [Full Topic]
@@ -221,7 +221,7 @@ func (s_ StackView) ClippingResistancePriorityForOrientation(orientation LayoutC
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488890-setvisibilitypriority?language=objc
 func (s_ StackView) SetVisibilityPriorityForView(priority StackViewVisibilityPriority, view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setVisibilityPriority:forView:"), priority, objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("setVisibilityPriority:forView:"), priority, view)
 }
 
 // Sets the Auto Layout priority for the stack view to minimize its size, for a specified user interface axis. [Full Topic]
@@ -298,7 +298,7 @@ func (s_ StackView) SetDelegate(value PStackViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackview/1488946-delegate?language=objc
 func (s_ StackView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The array of views arranged by the stack view. [Full Topic]

@@ -93,7 +93,7 @@ func (p_ PrintOperation) DestroyContext() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1525273-epsoperationwithview?language=objc
 func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:"), objc.Ptr(view), rect, objc.Ptr(data))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:"), view, rect, data)
 	return rv
 }
 
@@ -116,7 +116,7 @@ func (p_ PrintOperation) DeliverResult() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529269-pdfoperationwithview?language=objc
 func (pc _PrintOperationClass) PDFOperationWithViewInsideRectToData(view IView, rect foundation.Rect, data foundation.IMutableData) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toData:"), objc.Ptr(view), rect, objc.Ptr(data))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toData:"), view, rect, data)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func PrintOperation_PDFOperationWithViewInsideRectToData(view IView, rect founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1531298-pdfoperationwithview?language=objc
 func (pc _PrintOperationClass) PDFOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toData:printInfo:"), objc.Ptr(view), rect, objc.Ptr(data), objc.Ptr(printInfo))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func (p_ PrintOperation) CreateContext() GraphicsContext {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535893-printoperationwithview?language=objc
 func (pc _PrintOperationClass) PrintOperationWithView(view IView) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:"), objc.Ptr(view))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:"), view)
 	return rv
 }
 
@@ -169,14 +169,14 @@ func PrintOperation_PrintOperationWithView(view IView) PrintOperation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1532065-runoperationmodalforwindow?language=objc
 func (p_ PrintOperation) RunOperationModalForWindowDelegateDidRunSelectorContextInfo(docWindow IWindow, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("runOperationModalForWindow:delegate:didRunSelector:contextInfo:"), objc.Ptr(docWindow), delegate, didRunSelector, contextInfo)
+	objc.Call[objc.Void](p_, objc.Sel("runOperationModalForWindow:delegate:didRunSelector:contextInfo:"), docWindow, delegate, didRunSelector, contextInfo)
 }
 
 // Creates and returns a new print operation object ready to control the copying of EPS graphics from the specified view and write the resulting data to the specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1530037-epsoperationwithview?language=objc
 func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toPath:printInfo:"), objc.Ptr(view), rect, path, objc.Ptr(printInfo))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
 	return rv
 }
 
@@ -191,7 +191,7 @@ func PrintOperation_EPSOperationWithViewInsideRectToPathPrintInfo(view IView, re
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1534130-pdfoperationwithview?language=objc
 func (pc _PrintOperationClass) PDFOperationWithViewInsideRectToPathPrintInfo(view IView, rect foundation.Rect, path string, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toPath:printInfo:"), objc.Ptr(view), rect, path, objc.Ptr(printInfo))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("PDFOperationWithView:insideRect:toPath:printInfo:"), view, rect, path, printInfo)
 	return rv
 }
 
@@ -206,7 +206,7 @@ func PrintOperation_PDFOperationWithViewInsideRectToPathPrintInfo(view IView, re
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524819-epsoperationwithview?language=objc
 func (pc _PrintOperationClass) EPSOperationWithViewInsideRectToDataPrintInfo(view IView, rect foundation.Rect, data foundation.IMutableData, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:printInfo:"), objc.Ptr(view), rect, objc.Ptr(data), objc.Ptr(printInfo))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("EPSOperationWithView:insideRect:toData:printInfo:"), view, rect, data, printInfo)
 	return rv
 }
 
@@ -221,7 +221,7 @@ func PrintOperation_EPSOperationWithViewInsideRectToDataPrintInfo(view IView, re
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1528557-printoperationwithview?language=objc
 func (pc _PrintOperationClass) PrintOperationWithViewPrintInfo(view IView, printInfo IPrintInfo) PrintOperation {
-	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:printInfo:"), objc.Ptr(view), objc.Ptr(printInfo))
+	rv := objc.Call[PrintOperation](pc, objc.Sel("printOperationWithView:printInfo:"), view, printInfo)
 	return rv
 }
 
@@ -267,7 +267,7 @@ func (p_ PrintOperation) PDFPanel() PDFPanel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1526838-pdfpanel?language=objc
 func (p_ PrintOperation) SetPDFPanel(value IPDFPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("setPDFPanel:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPDFPanel:"), value)
 }
 
 // The print order for the pages of the operation. [Full Topic]
@@ -297,7 +297,7 @@ func (p_ PrintOperation) PrintPanel() PrintPanel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1529626-printpanel?language=objc
 func (p_ PrintOperation) SetPrintPanel(value IPrintPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrintPanel:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPrintPanel:"), value)
 }
 
 // The printing quality. [Full Topic]
@@ -411,7 +411,7 @@ func PrintOperation_CurrentOperation() PrintOperation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1524255-currentoperation?language=objc
 func (pc _PrintOperationClass) SetCurrentOperation(value IPrintOperation) {
-	objc.Call[objc.Void](pc, objc.Sel("setCurrentOperation:"), objc.Ptr(value))
+	objc.Call[objc.Void](pc, objc.Sel("setCurrentOperation:"), value)
 }
 
 // The current print operation for this thread. [Full Topic]
@@ -441,5 +441,5 @@ func (p_ PrintOperation) PrintInfo() PrintInfo {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintoperation/1535187-printinfo?language=objc
 func (p_ PrintOperation) SetPrintInfo(value IPrintInfo) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrintInfo:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPrintInfo:"), value)
 }

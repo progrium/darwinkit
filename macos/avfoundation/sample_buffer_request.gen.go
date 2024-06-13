@@ -48,7 +48,7 @@ func SampleBufferRequestFrom(ptr unsafe.Pointer) SampleBufferRequest {
 }
 
 func (s_ SampleBufferRequest) InitWithStartCursor(startCursor ISampleCursor) SampleBufferRequest {
-	rv := objc.Call[SampleBufferRequest](s_, objc.Sel("initWithStartCursor:"), objc.Ptr(startCursor))
+	rv := objc.Call[SampleBufferRequest](s_, objc.Sel("initWithStartCursor:"), startCursor)
 	return rv
 }
 
@@ -176,5 +176,5 @@ func (s_ SampleBufferRequest) LimitCursor() SampleCursor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrequest/1387466-limitcursor?language=objc
 func (s_ SampleBufferRequest) SetLimitCursor(value ISampleCursor) {
-	objc.Call[objc.Void](s_, objc.Sel("setLimitCursor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLimitCursor:"), value)
 }

@@ -36,7 +36,7 @@ func CNNDilatedPoolingMaxNodeFrom(ptr unsafe.Pointer) CNNDilatedPoolingMaxNode {
 }
 
 func (c_ CNNDilatedPoolingMaxNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNDilatedPoolingMaxNode {
-	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCNNDilatedPoolingMaxNodeWithSourceFilterSize(sourceNode INNImageNode, si
 }
 
 func (cc _CNNDilatedPoolingMaxNodeClass) NodeWithSourceFilterSizeStrideDilationRate(sourceNode INNImageNode, size uint, stride uint, dilationRate uint) CNNDilatedPoolingMaxNode {
-	rv := objc.Call[CNNDilatedPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:stride:dilationRate:"), objc.Ptr(sourceNode), size, stride, dilationRate)
+	rv := objc.Call[CNNDilatedPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:stride:dilationRate:"), sourceNode, size, stride, dilationRate)
 	return rv
 }
 
@@ -62,7 +62,7 @@ func CNNDilatedPoolingMaxNode_NodeWithSourceFilterSizeStrideDilationRate(sourceN
 }
 
 func (c_ CNNDilatedPoolingMaxNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsYDilationRateXDilationRateY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint, dilationRateX uint, dilationRateY uint) CNNDilatedPoolingMaxNode {
-	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:dilationRateX:dilationRateY:"), objc.Ptr(sourceNode), kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY, dilationRateX, dilationRateY)
+	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:dilationRateX:dilationRateY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY, dilationRateX, dilationRateY)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func NewCNNDilatedPoolingMaxNodeWithSourceKernelWidthKernelHeightStrideInPixelsX
 }
 
 func (cc _CNNDilatedPoolingMaxNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNDilatedPoolingMaxNode {
-	rv := objc.Call[CNNDilatedPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNDilatedPoolingMaxNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -88,7 +88,7 @@ func CNNDilatedPoolingMaxNode_NodeWithSourceFilterSize(sourceNode INNImageNode, 
 }
 
 func (c_ CNNDilatedPoolingMaxNode) InitWithSourceFilterSizeStrideDilationRate(sourceNode INNImageNode, size uint, stride uint, dilationRate uint) CNNDilatedPoolingMaxNode {
-	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:stride:dilationRate:"), objc.Ptr(sourceNode), size, stride, dilationRate)
+	rv := objc.Call[CNNDilatedPoolingMaxNode](c_, objc.Sel("initWithSource:filterSize:stride:dilationRate:"), sourceNode, size, stride, dilationRate)
 	return rv
 }
 

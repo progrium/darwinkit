@@ -20,11 +20,11 @@ type POpTile interface {
 	HasCenter() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -36,19 +36,19 @@ type POpTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 }
 
@@ -90,7 +90,7 @@ func (o_ OpTileObject) HasSetScale() bool {
 // A value that determines the number of tiles in the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228602-scale?language=objc
-func (o_ OpTileObject) SetScale(value float64) {
+func (o_ OpTileObject) SetScale(value float32) {
 	objc.Call[objc.Void](o_, objc.Sel("setScale:"), value)
 }
 
@@ -101,8 +101,8 @@ func (o_ OpTileObject) HasScale() bool {
 // A value that determines the number of tiles in the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228602-scale?language=objc
-func (o_ OpTileObject) Scale() float64 {
-	rv := objc.Call[float64](o_, objc.Sel("scale"))
+func (o_ OpTileObject) Scale() float32 {
+	rv := objc.Call[float32](o_, objc.Sel("scale"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (o_ OpTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228601-inputimage?language=objc
 func (o_ OpTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](o_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setInputImage:"), value)
 }
 
 func (o_ OpTileObject) HasInputImage() bool {
@@ -136,7 +136,7 @@ func (o_ OpTileObject) HasSetAngle() bool {
 // The angle of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228599-angle?language=objc
-func (o_ OpTileObject) SetAngle(value float64) {
+func (o_ OpTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](o_, objc.Sel("setAngle:"), value)
 }
 
@@ -147,8 +147,8 @@ func (o_ OpTileObject) HasAngle() bool {
 // The angle of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228599-angle?language=objc
-func (o_ OpTileObject) Angle() float64 {
-	rv := objc.Call[float64](o_, objc.Sel("angle"))
+func (o_ OpTileObject) Angle() float32 {
+	rv := objc.Call[float32](o_, objc.Sel("angle"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (o_ OpTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
-func (o_ OpTileObject) SetWidth(value float64) {
+func (o_ OpTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](o_, objc.Sel("setWidth:"), value)
 }
 
@@ -170,7 +170,7 @@ func (o_ OpTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cioptile/3228603-width?language=objc
-func (o_ OpTileObject) Width() float64 {
-	rv := objc.Call[float64](o_, objc.Sel("width"))
+func (o_ OpTileObject) Width() float32 {
+	rv := objc.Call[float32](o_, objc.Sel("width"))
 	return rv
 }

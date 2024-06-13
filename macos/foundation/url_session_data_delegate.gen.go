@@ -142,7 +142,7 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskWillCacheResponseCom
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411612-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskWillCacheResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, proposedResponse CachedURLResponse, completionHandler func(cachedResponse CachedURLResponse)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:willCacheResponse:completionHandler:"), objc.Ptr(session), objc.Ptr(dataTask), objc.Ptr(proposedResponse), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:willCacheResponse:completionHandler:"), session, dataTask, proposedResponse, completionHandler)
 }
 
 func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveData() bool {
@@ -153,7 +153,7 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveData() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411528-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidReceiveData(session URLSession, dataTask URLSessionDataTask, data []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveData:"), objc.Ptr(session), objc.Ptr(dataTask), data)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveData:"), session, dataTask, data)
 }
 
 func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveResponseCompletionHandler() bool {
@@ -164,7 +164,7 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidReceiveResponseCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1410027-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidReceiveResponseCompletionHandler(session URLSession, dataTask URLSessionDataTask, response URLResponse, completionHandler func(disposition URLSessionResponseDisposition)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveResponse:completionHandler:"), objc.Ptr(session), objc.Ptr(dataTask), objc.Ptr(response), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didReceiveResponse:completionHandler:"), session, dataTask, response, completionHandler)
 }
 
 func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeStreamTask() bool {
@@ -175,7 +175,7 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeStreamTask(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1411648-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidBecomeStreamTask(session URLSession, dataTask URLSessionDataTask, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeStreamTask:"), objc.Ptr(session), objc.Ptr(dataTask), objc.Ptr(streamTask))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeStreamTask:"), session, dataTask, streamTask)
 }
 
 func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeDownloadTask() bool {
@@ -186,5 +186,5 @@ func (u_ URLSessionDataDelegateObject) HasURLSessionDataTaskDidBecomeDownloadTas
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondatadelegate/1409936-urlsession?language=objc
 func (u_ URLSessionDataDelegateObject) URLSessionDataTaskDidBecomeDownloadTask(session URLSession, dataTask URLSessionDataTask, downloadTask URLSessionDownloadTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeDownloadTask:"), objc.Ptr(session), objc.Ptr(dataTask), objc.Ptr(downloadTask))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:dataTask:didBecomeDownloadTask:"), session, dataTask, downloadTask)
 }

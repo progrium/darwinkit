@@ -3,6 +3,8 @@
 package fileprovider
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,7 +14,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderservicesource?language=objc
 type PFileProviderServiceSource interface {
 	// optional
-	MakeListenerEndpointAndReturnError(error foundation.Error) foundation.XPCListenerEndpoint
+	MakeListenerEndpointAndReturnError(error unsafe.Pointer) foundation.XPCListenerEndpoint
 	HasMakeListenerEndpointAndReturnError() bool
 
 	// optional
@@ -35,8 +37,8 @@ func (f_ FileProviderServiceSourceObject) HasMakeListenerEndpointAndReturnError(
 // Returns an endpoint object that lets the host app communicate with the File Provider extension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderservicesource/2915876-makelistenerendpointandreturnerr?language=objc
-func (f_ FileProviderServiceSourceObject) MakeListenerEndpointAndReturnError(error foundation.Error) foundation.XPCListenerEndpoint {
-	rv := objc.Call[foundation.XPCListenerEndpoint](f_, objc.Sel("makeListenerEndpointAndReturnError:"), objc.Ptr(error))
+func (f_ FileProviderServiceSourceObject) MakeListenerEndpointAndReturnError(error unsafe.Pointer) foundation.XPCListenerEndpoint {
+	rv := objc.Call[foundation.XPCListenerEndpoint](f_, objc.Sel("makeListenerEndpointAndReturnError:"), error)
 	return rv
 }
 

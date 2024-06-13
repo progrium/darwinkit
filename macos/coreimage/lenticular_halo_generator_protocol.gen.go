@@ -12,51 +12,51 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator?language=objc
 type PLenticularHaloGenerator interface {
 	// optional
-	SetStriationContrast(value float64)
+	SetStriationContrast(value float32)
 	HasSetStriationContrast() bool
 
 	// optional
-	StriationContrast() float64
+	StriationContrast() float32
 	HasStriationContrast() bool
 
 	// optional
-	SetHaloOverlap(value float64)
+	SetHaloOverlap(value float32)
 	HasSetHaloOverlap() bool
 
 	// optional
-	HaloOverlap() float64
+	HaloOverlap() float32
 	HasHaloOverlap() bool
 
 	// optional
-	SetHaloRadius(value float64)
+	SetHaloRadius(value float32)
 	HasSetHaloRadius() bool
 
 	// optional
-	HaloRadius() float64
+	HaloRadius() float32
 	HasHaloRadius() bool
 
 	// optional
-	SetStriationStrength(value float64)
+	SetStriationStrength(value float32)
 	HasSetStriationStrength() bool
 
 	// optional
-	StriationStrength() float64
+	StriationStrength() float32
 	HasStriationStrength() bool
 
 	// optional
-	SetTime(value float64)
+	SetTime(value float32)
 	HasSetTime() bool
 
 	// optional
-	Time() float64
+	Time() float32
 	HasTime() bool
 
 	// optional
-	SetHaloWidth(value float64)
+	SetHaloWidth(value float32)
 	HasSetHaloWidth() bool
 
 	// optional
-	HaloWidth() float64
+	HaloWidth() float32
 	HasHaloWidth() bool
 
 	// optional
@@ -91,7 +91,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetStriationContrast() bool {
 // The contrast of the halo colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228525-striationcontrast?language=objc
-func (l_ LenticularHaloGeneratorObject) SetStriationContrast(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetStriationContrast(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setStriationContrast:"), value)
 }
 
@@ -102,8 +102,8 @@ func (l_ LenticularHaloGeneratorObject) HasStriationContrast() bool {
 // The contrast of the halo colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228525-striationcontrast?language=objc
-func (l_ LenticularHaloGeneratorObject) StriationContrast() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("striationContrast"))
+func (l_ LenticularHaloGeneratorObject) StriationContrast() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("striationContrast"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetHaloOverlap() bool {
 // The separation of colors in the halo. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228522-halooverlap?language=objc
-func (l_ LenticularHaloGeneratorObject) SetHaloOverlap(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetHaloOverlap(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setHaloOverlap:"), value)
 }
 
@@ -125,8 +125,8 @@ func (l_ LenticularHaloGeneratorObject) HasHaloOverlap() bool {
 // The separation of colors in the halo. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228522-halooverlap?language=objc
-func (l_ LenticularHaloGeneratorObject) HaloOverlap() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("haloOverlap"))
+func (l_ LenticularHaloGeneratorObject) HaloOverlap() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("haloOverlap"))
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetHaloRadius() bool {
 // The radius of the halo. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228523-haloradius?language=objc
-func (l_ LenticularHaloGeneratorObject) SetHaloRadius(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetHaloRadius(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setHaloRadius:"), value)
 }
 
@@ -148,8 +148,8 @@ func (l_ LenticularHaloGeneratorObject) HasHaloRadius() bool {
 // The radius of the halo. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228523-haloradius?language=objc
-func (l_ LenticularHaloGeneratorObject) HaloRadius() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("haloRadius"))
+func (l_ LenticularHaloGeneratorObject) HaloRadius() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("haloRadius"))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetStriationStrength() bool {
 // The intensity of the halo colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228526-striationstrength?language=objc
-func (l_ LenticularHaloGeneratorObject) SetStriationStrength(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetStriationStrength(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setStriationStrength:"), value)
 }
 
@@ -171,8 +171,8 @@ func (l_ LenticularHaloGeneratorObject) HasStriationStrength() bool {
 // The intensity of the halo colors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228526-striationstrength?language=objc
-func (l_ LenticularHaloGeneratorObject) StriationStrength() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("striationStrength"))
+func (l_ LenticularHaloGeneratorObject) StriationStrength() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("striationStrength"))
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetTime() bool {
 // The current time of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228527-time?language=objc
-func (l_ LenticularHaloGeneratorObject) SetTime(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetTime(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setTime:"), value)
 }
 
@@ -194,8 +194,8 @@ func (l_ LenticularHaloGeneratorObject) HasTime() bool {
 // The current time of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228527-time?language=objc
-func (l_ LenticularHaloGeneratorObject) Time() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("time"))
+func (l_ LenticularHaloGeneratorObject) Time() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("time"))
 	return rv
 }
 
@@ -206,7 +206,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetHaloWidth() bool {
 // The width of the halo, from its inner radius to its outer radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228524-halowidth?language=objc
-func (l_ LenticularHaloGeneratorObject) SetHaloWidth(value float64) {
+func (l_ LenticularHaloGeneratorObject) SetHaloWidth(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setHaloWidth:"), value)
 }
 
@@ -217,8 +217,8 @@ func (l_ LenticularHaloGeneratorObject) HasHaloWidth() bool {
 // The width of the halo, from its inner radius to its outer radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228524-halowidth?language=objc
-func (l_ LenticularHaloGeneratorObject) HaloWidth() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("haloWidth"))
+func (l_ LenticularHaloGeneratorObject) HaloWidth() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("haloWidth"))
 	return rv
 }
 
@@ -230,7 +230,7 @@ func (l_ LenticularHaloGeneratorObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilenticularhalogenerator/3228521-color?language=objc
 func (l_ LenticularHaloGeneratorObject) SetColor(value Color) {
-	objc.Call[objc.Void](l_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setColor:"), value)
 }
 
 func (l_ LenticularHaloGeneratorObject) HasColor() bool {

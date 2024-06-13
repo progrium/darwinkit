@@ -126,7 +126,7 @@ func MatrixFrom(ptr unsafe.Pointer) Matrix {
 }
 
 func (m_ Matrix) InitWithFrameModePrototypeNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Matrix {
-	rv := objc.Call[Matrix](m_, objc.Sel("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, objc.Ptr(cell), rowsHigh, colsWide)
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, cell, rowsHigh, colsWide)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NewMatrixWithFrame(frameRect foundation.Rect) Matrix {
 }
 
 func (m_ Matrix) InitWithFrameModeCellClassNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Matrix {
-	rv := objc.Call[Matrix](m_, objc.Sel("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, objc.Ptr(factoryId), rowsHigh, colsWide)
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, factoryId, rowsHigh, colsWide)
 	return rv
 }
 
@@ -227,7 +227,7 @@ func (m_ Matrix) SetSelectionFromToAnchorHighlight(startPos int, endPos int, anc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436426-textdidendediting?language=objc
 func (m_ Matrix) TextDidEndEditing(notification foundation.INotification) {
-	objc.Call[objc.Void](m_, objc.Sel("textDidEndEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](m_, objc.Sel("textDidEndEditing:"), notification)
 }
 
 // Sets the state of the cell at specified location. [Full Topic]
@@ -241,7 +241,7 @@ func (m_ Matrix) SetStateAtRowColumn(value int, row int, col int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436395-textdidbeginediting?language=objc
 func (m_ Matrix) TextDidBeginEditing(notification foundation.INotification) {
-	objc.Call[objc.Void](m_, objc.Sel("textDidBeginEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](m_, objc.Sel("textDidBeginEditing:"), notification)
 }
 
 // Iterates through the cells in the receiver, sending the specified selector to an object for each cell. [Full Topic]
@@ -255,7 +255,7 @@ func (m_ Matrix) SendActionToForAllCells(selector objc.Selector, object objc.IOb
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436421-getrow?language=objc
 func (m_ Matrix) GetRowColumnOfCell(row *int, col *int, cell ICell) bool {
-	rv := objc.Call[bool](m_, objc.Sel("getRow:column:ofCell:"), row, col, objc.Ptr(cell))
+	rv := objc.Call[bool](m_, objc.Sel("getRow:column:ofCell:"), row, col, cell)
 	return rv
 }
 
@@ -263,7 +263,7 @@ func (m_ Matrix) GetRowColumnOfCell(row *int, col *int, cell ICell) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436489-textdidchange?language=objc
 func (m_ Matrix) TextDidChange(notification foundation.INotification) {
-	objc.Call[objc.Void](m_, objc.Sel("textDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](m_, objc.Sel("textDidChange:"), notification)
 }
 
 // Adds a new column of cells to the right of the last column. [Full Topic]
@@ -291,7 +291,7 @@ func (m_ Matrix) AddRow() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436509-textshouldendediting?language=objc
 func (m_ Matrix) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.Call[bool](m_, objc.Sel("textShouldEndEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](m_, objc.Sel("textShouldEndEditing:"), textObject)
 	return rv
 }
 
@@ -337,7 +337,7 @@ func (m_ Matrix) SizeToCells() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436384-putcell?language=objc
 func (m_ Matrix) PutCellAtRowColumn(newCell ICell, row int, col int) {
-	objc.Call[objc.Void](m_, objc.Sel("putCell:atRow:column:"), objc.Ptr(newCell), row, col)
+	objc.Call[objc.Void](m_, objc.Sel("putCell:atRow:column:"), newCell, row, col)
 }
 
 // Adds a new row of cells below the last row, using the specified cells. [Full Topic]
@@ -394,7 +394,7 @@ func (m_ Matrix) RemoveRow(row int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436393-textshouldbeginediting?language=objc
 func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.Call[bool](m_, objc.Sel("textShouldBeginEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](m_, objc.Sel("textShouldBeginEditing:"), textObject)
 	return rv
 }
 
@@ -402,7 +402,7 @@ func (m_ Matrix) TextShouldBeginEditing(textObject IText) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436401-tooltipforcell?language=objc
 func (m_ Matrix) ToolTipForCell(cell ICell) string {
-	rv := objc.Call[string](m_, objc.Sel("toolTipForCell:"), objc.Ptr(cell))
+	rv := objc.Call[string](m_, objc.Sel("toolTipForCell:"), cell)
 	return rv
 }
 
@@ -468,7 +468,7 @@ func (m_ Matrix) DeselectAllCells() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436372-settooltip?language=objc
 func (m_ Matrix) SetToolTipForCell(toolTipString string, cell ICell) {
-	objc.Call[objc.Void](m_, objc.Sel("setToolTip:forCell:"), toolTipString, objc.Ptr(cell))
+	objc.Call[objc.Void](m_, objc.Sel("setToolTip:forCell:"), toolTipString, cell)
 }
 
 // Obtains the number of rows and columns in the receiver. [Full Topic]
@@ -586,7 +586,7 @@ func (m_ Matrix) Prototype() Cell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436406-prototype?language=objc
 func (m_ Matrix) SetPrototype(value ICell) {
-	objc.Call[objc.Void](m_, objc.Sel("setPrototype:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setPrototype:"), value)
 }
 
 // The action sent to the target of the receiver when the user double-clicks a cell. [Full Topic]
@@ -662,7 +662,7 @@ func (m_ Matrix) KeyCell() Cell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436411-keycell?language=objc
 func (m_ Matrix) SetKeyCell(value ICell) {
-	objc.Call[objc.Void](m_, objc.Sel("setKeyCell:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setKeyCell:"), value)
 }
 
 // The most recently selected cell. [Full Topic]
@@ -685,7 +685,7 @@ func (m_ Matrix) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436442-backgroundcolor?language=objc
 func (m_ Matrix) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](m_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The background color of the matrix’s cells. [Full Topic]
@@ -700,7 +700,7 @@ func (m_ Matrix) CellBackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436449-cellbackgroundcolor?language=objc
 func (m_ Matrix) SetCellBackgroundColor(value IColor) {
-	objc.Call[objc.Void](m_, objc.Sel("setCellBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setCellBackgroundColor:"), value)
 }
 
 // The flags in effect at the mouse-down event that started the current tracking session. [Full Topic]
@@ -793,7 +793,7 @@ func (m_ Matrix) SetDelegate(value PMatrixDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436404-delegate?language=objc
 func (m_ Matrix) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean that indicates whether the cell sizes change when the receiver is resized. [Full Topic]
@@ -838,7 +838,7 @@ func (m_ Matrix) CellClass() objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmatrix/1436445-cellclass?language=objc
 func (m_ Matrix) SetCellClass(value objc.IClass) {
-	objc.Call[objc.Void](m_, objc.Sel("setCellClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setCellClass:"), value)
 }
 
 // An array containing all of the matrix’s highlighted cells plus its selected cell. [Full Topic]

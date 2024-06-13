@@ -36,7 +36,7 @@ func CNNUpsamplingNearestGradientNodeFrom(ptr unsafe.Pointer) CNNUpsamplingNeare
 }
 
 func (c_ CNNUpsamplingNearestGradientNode) InitWithSourceGradientSourceImageGradientStateScaleFactorXScaleFactorY(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, scaleFactorX float64, scaleFactorY float64) CNNUpsamplingNearestGradientNode {
-	rv := objc.Call[CNNUpsamplingNearestGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), scaleFactorX, scaleFactorY)
+	rv := objc.Call[CNNUpsamplingNearestGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), sourceGradient, sourceImage, gradientState, scaleFactorX, scaleFactorY)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCNNUpsamplingNearestGradientNodeWithSourceGradientSourceImageGradientSta
 }
 
 func (cc _CNNUpsamplingNearestGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateScaleFactorXScaleFactorY(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, scaleFactorX float64, scaleFactorY float64) CNNUpsamplingNearestGradientNode {
-	rv := objc.Call[CNNUpsamplingNearestGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), scaleFactorX, scaleFactorY)
+	rv := objc.Call[CNNUpsamplingNearestGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), sourceGradient, sourceImage, gradientState, scaleFactorX, scaleFactorY)
 	return rv
 }
 

@@ -77,7 +77,7 @@ func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) HasCaptureOutputDidOu
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1385775-captureoutput?language=objc
 func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) CaptureOutputDidOutputSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), objc.Ptr(output), sampleBuffer, objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
 }
 
 func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) HasCaptureOutputDidDropSampleBufferFromConnection() bool {
@@ -88,5 +88,5 @@ func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) HasCaptureOutputDidDr
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutputsamplebufferdelegate/1388468-captureoutput?language=objc
 func (c_ CaptureVideoDataOutputSampleBufferDelegateObject) CaptureOutputDidDropSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didDropSampleBuffer:fromConnection:"), objc.Ptr(output), sampleBuffer, objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didDropSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
 }

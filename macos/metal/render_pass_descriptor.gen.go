@@ -156,7 +156,7 @@ func (r_ RenderPassDescriptor) SetRasterizationRateMap(value PRasterizationRateM
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/3088853-rasterizationratemap?language=objc
 func (r_ RenderPassDescriptor) SetRasterizationRateMapObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setRasterizationRateMap:"), valueObject)
 }
 
 // A buffer where the GPU writes visibility test results when fragments pass depth and stencil tests. [Full Topic]
@@ -179,7 +179,7 @@ func (r_ RenderPassDescriptor) SetVisibilityResultBuffer(value PBuffer) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437942-visibilityresultbuffer?language=objc
 func (r_ RenderPassDescriptor) SetVisibilityResultBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setVisibilityResultBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setVisibilityResultBuffer:"), valueObject)
 }
 
 // The width, in pixels, to constrain the render target to. [Full Topic]
@@ -224,7 +224,7 @@ func (r_ RenderPassDescriptor) DepthAttachment() RenderPassDepthAttachmentDescri
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437973-depthattachment?language=objc
 func (r_ RenderPassDescriptor) SetDepthAttachment(value IRenderPassDepthAttachmentDescriptor) {
-	objc.Call[objc.Void](r_, objc.Sel("setDepthAttachment:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setDepthAttachment:"), value)
 }
 
 // The height, in pixels, to constrain the render target to. [Full Topic]
@@ -254,7 +254,7 @@ func (r_ RenderPassDescriptor) StencilAttachment() RenderPassStencilAttachmentDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpassdescriptor/1437950-stencilattachment?language=objc
 func (r_ RenderPassDescriptor) SetStencilAttachment(value IRenderPassStencilAttachmentDescriptor) {
-	objc.Call[objc.Void](r_, objc.Sel("setStencilAttachment:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setStencilAttachment:"), value)
 }
 
 // The per-sample size, in bytes, of the largest explicit imageblock layout in the render pass. [Full Topic]

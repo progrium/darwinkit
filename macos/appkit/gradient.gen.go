@@ -22,7 +22,7 @@ type IGradient interface {
 	DrawInRectRelativeCenterPosition(rect foundation.Rect, relativeCenterPosition foundation.Point)
 	InterpolatedColorAtLocation(location float64) Color
 	DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundation.Point, startRadius float64, endCenter foundation.Point, endRadius float64, options GradientDrawingOptions)
-	GetColorLocationAtIndex(color IColor, location *float64, index int)
+	GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int)
 	DrawInRectAngle(rect foundation.Rect, angle float64)
 	DrawFromPointToPointOptions(startingPoint foundation.Point, endingPoint foundation.Point, options GradientDrawingOptions)
 	DrawInBezierPathRelativeCenterPosition(path IBezierPath, relativeCenterPosition foundation.Point)
@@ -45,7 +45,7 @@ func GradientFrom(ptr unsafe.Pointer) Gradient {
 }
 
 func (g_ Gradient) InitWithStartingColorEndingColor(startingColor IColor, endingColor IColor) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithStartingColor:endingColor:"), objc.Ptr(startingColor), objc.Ptr(endingColor))
+	rv := objc.Call[Gradient](g_, objc.Sel("initWithStartingColor:endingColor:"), startingColor, endingColor)
 	return rv
 }
 
@@ -59,7 +59,7 @@ func NewGradientWithStartingColorEndingColor(startingColor IColor, endingColor I
 }
 
 func (g_ Gradient) InitWithColorsAndLocations(firstColor IColor, args ...any) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithColorsAndLocations:"), append([]any{objc.Ptr(firstColor)}, args...)...)
+	rv := objc.Call[Gradient](g_, objc.Sel("initWithColorsAndLocations:"), append([]any{firstColor}, args...)...)
 	return rv
 }
 
@@ -73,7 +73,7 @@ func NewGradientWithColorsAndLocations(firstColor IColor, args ...any) Gradient 
 }
 
 func (g_ Gradient) InitWithColorsAtLocationsColorSpace(colorArray []IColor, locations *float64, colorSpace IColorSpace) Gradient {
-	rv := objc.Call[Gradient](g_, objc.Sel("initWithColors:atLocations:colorSpace:"), colorArray, locations, objc.Ptr(colorSpace))
+	rv := objc.Call[Gradient](g_, objc.Sel("initWithColors:atLocations:colorSpace:"), colorArray, locations, colorSpace)
 	return rv
 }
 
@@ -145,8 +145,8 @@ func (g_ Gradient) DrawFromCenterRadiusToCenterRadiusOptions(startCenter foundat
 // Returns information about the color stop at the specified index in the receiver’s color array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1533505-getcolor?language=objc
-func (g_ Gradient) GetColorLocationAtIndex(color IColor, location *float64, index int) {
-	objc.Call[objc.Void](g_, objc.Sel("getColor:location:atIndex:"), objc.Ptr(color), location, index)
+func (g_ Gradient) GetColorLocationAtIndex(color unsafe.Pointer, location *float64, index int) {
+	objc.Call[objc.Void](g_, objc.Sel("getColor:location:atIndex:"), color, location, index)
 }
 
 // Fills the specified rectangle with a linear gradient. [Full Topic]
@@ -167,14 +167,14 @@ func (g_ Gradient) DrawFromPointToPointOptions(startingPoint foundation.Point, e
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1530168-drawinbezierpath?language=objc
 func (g_ Gradient) DrawInBezierPathRelativeCenterPosition(path IBezierPath, relativeCenterPosition foundation.Point) {
-	objc.Call[objc.Void](g_, objc.Sel("drawInBezierPath:relativeCenterPosition:"), objc.Ptr(path), relativeCenterPosition)
+	objc.Call[objc.Void](g_, objc.Sel("drawInBezierPath:relativeCenterPosition:"), path, relativeCenterPosition)
 }
 
 // Fills the specified path with a linear gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgradient/1534785-drawinbezierpath?language=objc
 func (g_ Gradient) DrawInBezierPathAngle(path IBezierPath, angle float64) {
-	objc.Call[objc.Void](g_, objc.Sel("drawInBezierPath:angle:"), objc.Ptr(path), angle)
+	objc.Call[objc.Void](g_, objc.Sel("drawInBezierPath:angle:"), path, angle)
 }
 
 // The color space of the colors associated with the gradient. [Full Topic]

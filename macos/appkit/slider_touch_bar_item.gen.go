@@ -115,7 +115,7 @@ func (s_ SliderTouchBarItem) Slider() Slider {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544809-slider?language=objc
 func (s_ SliderTouchBarItem) SetSlider(value ISlider) {
-	objc.Call[objc.Void](s_, objc.Sel("setSlider:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSlider:"), value)
 }
 
 // The double value of the slider. [Full Topic]
@@ -160,7 +160,7 @@ func (s_ SliderTouchBarItem) MaximumValueAccessory() SliderAccessory {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544672-maximumvalueaccessory?language=objc
 func (s_ SliderTouchBarItem) SetMaximumValueAccessory(value ISliderAccessory) {
-	objc.Call[objc.Void](s_, objc.Sel("setMaximumValueAccessory:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setMaximumValueAccessory:"), value)
 }
 
 // The accessory that appears at the end of the slider with the minimum value. [Full Topic]
@@ -175,7 +175,7 @@ func (s_ SliderTouchBarItem) MinimumValueAccessory() SliderAccessory {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslidertouchbaritem/2544846-minimumvalueaccessory?language=objc
 func (s_ SliderTouchBarItem) SetMinimumValueAccessory(value ISliderAccessory) {
-	objc.Call[objc.Void](s_, objc.Sel("setMinimumValueAccessory:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setMinimumValueAccessory:"), value)
 }
 
 // The user-visible string identifying this item during bar customization. [Full Topic]

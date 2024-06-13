@@ -43,7 +43,7 @@ func CIResponderFrom(ptr unsafe.Pointer) CIResponder {
 
 func (c_ CIResponder) InitWithDeviceInfoProfileDelegateProfileStatesSupportProperties(deviceInfo ICIDeviceInfo, delegate PCIProfileResponderDelegate, profileList *foundation.Array, propertiesSupported bool) CIResponder {
 	po1 := objc.WrapAsProtocol("MIDICIProfileResponderDelegate", delegate)
-	rv := objc.Call[CIResponder](c_, objc.Sel("initWithDeviceInfo:profileDelegate:profileStates:supportProperties:"), objc.Ptr(deviceInfo), po1, profileList, propertiesSupported)
+	rv := objc.Call[CIResponder](c_, objc.Sel("initWithDeviceInfo:profileDelegate:profileStates:supportProperties:"), deviceInfo, po1, profileList, propertiesSupported)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func (c_ CIResponder) Init() CIResponder {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553259-sendprofile?language=objc
 func (c_ CIResponder) SendProfileOnChannelProfileData(aProfile ICIProfile, channel ChannelNumber, profileSpecificData []byte) bool {
-	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), objc.Ptr(aProfile), channel, profileSpecificData)
+	rv := objc.Call[bool](c_, objc.Sel("sendProfile:onChannel:profileData:"), aProfile, channel, profileSpecificData)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (c_ CIResponder) Stop() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciresponder/3553257-notifyprofile?language=objc
 func (c_ CIResponder) NotifyProfileOnChannelIsEnabled(aProfile ICIProfile, channel ChannelNumber, enabledState bool) bool {
-	rv := objc.Call[bool](c_, objc.Sel("notifyProfile:onChannel:isEnabled:"), objc.Ptr(aProfile), channel, enabledState)
+	rv := objc.Call[bool](c_, objc.Sel("notifyProfile:onChannel:isEnabled:"), aProfile, channel, enabledState)
 	return rv
 }
 

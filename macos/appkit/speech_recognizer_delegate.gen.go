@@ -54,5 +54,5 @@ func (s_ SpeechRecognizerDelegateObject) HasSpeechRecognizerDidRecognizeCommand(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechrecognizerdelegate/1534211-speechrecognizer?language=objc
 func (s_ SpeechRecognizerDelegateObject) SpeechRecognizerDidRecognizeCommand(sender SpeechRecognizer, command string) {
-	objc.Call[objc.Void](s_, objc.Sel("speechRecognizer:didRecognizeCommand:"), objc.Ptr(sender), command)
+	objc.Call[objc.Void](s_, objc.Sel("speechRecognizer:didRecognizeCommand:"), sender, command)
 }

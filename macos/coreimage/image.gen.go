@@ -89,7 +89,7 @@ func NewImageWithData(data []byte) Image {
 }
 
 func (i_ Image) InitWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:options:"), objc.Ptr(url), options)
+	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:options:"), url, options)
 	return rv
 }
 
@@ -174,7 +174,7 @@ func NewImageWithCGImageOptions(image coregraphics.ImageRef, options map[ImageOp
 }
 
 func (i_ Image) InitWithBitmapImageRep(bitmapImageRep objc.IObject) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapImageRep:"), objc.Ptr(bitmapImageRep))
+	rv := objc.Call[Image](i_, objc.Sel("initWithBitmapImageRep:"), bitmapImageRep)
 	return rv
 }
 
@@ -216,7 +216,7 @@ func NewImageWithImageProviderSize(p objc.IObject, width uint) Image {
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -314,7 +314,7 @@ func NewImageWithCVPixelBufferOptions(pixelBuffer corevideo.PixelBufferRef, opti
 }
 
 func (i_ Image) InitWithColor(color IColor) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithColor:"), objc.Ptr(color))
+	rv := objc.Call[Image](i_, objc.Sel("initWithColor:"), color)
 	return rv
 }
 
@@ -366,7 +366,7 @@ func Image_ImageWithBitmapDataBytesPerRowSizeFormatColorSpace(data []byte, bytes
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437837-imagebycompositingoverimage?language=objc
 func (i_ Image) ImageByCompositingOverImage(dest IImage) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageByCompositingOverImage:"), objc.Ptr(dest))
+	rv := objc.Call[Image](i_, objc.Sel("imageByCompositingOverImage:"), dest)
 	return rv
 }
 
@@ -397,7 +397,7 @@ func (i_ Image) ImageByColorMatchingColorSpaceToWorkingSpace(colorSpace coregrap
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534407-drawinrect?language=objc
 func (i_ Image) DrawInRectFromRectOperationFraction(rect foundation.Rect, fromRect foundation.Rect, op objc.IObject, delta float64) {
-	objc.Call[objc.Void](i_, objc.Sel("drawInRect:fromRect:operation:fraction:"), rect, fromRect, objc.Ptr(op), delta)
+	objc.Call[objc.Void](i_, objc.Sel("drawInRect:fromRect:operation:fraction:"), rect, fromRect, op, delta)
 }
 
 // Transforms the original image by a given CGImagePropertyOrientation and returns the result. [Full Topic]
@@ -519,7 +519,7 @@ func Image_EmptyImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547012-imagewithcolor?language=objc
 func (ic _ImageClass) ImageWithColor(color IColor) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithColor:"), objc.Ptr(color))
+	rv := objc.Call[Image](ic, objc.Sel("imageWithColor:"), color)
 	return rv
 }
 
@@ -682,7 +682,7 @@ func (i_ Image) ImageByApplyingFilterWithInputParameters(filterName string, para
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1546997-imagewithcontentsofurl?language=objc
 func (ic _ImageClass) ImageWithContentsOfURLOptions(url foundation.IURL, options map[ImageOption]objc.IObject) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:options:"), objc.Ptr(url), options)
+	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:options:"), url, options)
 	return rv
 }
 
@@ -705,7 +705,7 @@ func (i_ Image) AutoAdjustmentFilters() []Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1437994-regionofinterestforimage?language=objc
 func (i_ Image) RegionOfInterestForImageInRect(image IImage, rect coregraphics.Rect) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("regionOfInterestForImage:inRect:"), objc.Ptr(image), rect)
+	rv := objc.Call[coregraphics.Rect](i_, objc.Sel("regionOfInterestForImage:inRect:"), image, rect)
 	return rv
 }
 
@@ -776,7 +776,7 @@ func Image_ImageWithCVPixelBuffer(pixelBuffer corevideo.PixelBufferRef) Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1547027-imagewithcontentsofurl?language=objc
 func (ic _ImageClass) ImageWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[Image](ic, objc.Sel("imageWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -799,7 +799,7 @@ func (i_ Image) ImageBySettingProperties(properties foundation.Dictionary) Image
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimage/1534432-drawatpoint?language=objc
 func (i_ Image) DrawAtPointFromRectOperationFraction(point foundation.Point, fromRect foundation.Rect, op objc.IObject, delta float64) {
-	objc.Call[objc.Void](i_, objc.Sel("drawAtPoint:fromRect:operation:fraction:"), point, fromRect, objc.Ptr(op), delta)
+	objc.Call[objc.Void](i_, objc.Sel("drawAtPoint:fromRect:operation:fraction:"), point, fromRect, op, delta)
 }
 
 // Returns a new image created by inserting an intermediate. [Full Topic]

@@ -31,5 +31,5 @@ func (h_ HTTPCookieStoreObserverObject) HasCookiesDidChangeInCookieStore() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestoreobserver/2882008-cookiesdidchangeincookiestore?language=objc
 func (h_ HTTPCookieStoreObserverObject) CookiesDidChangeInCookieStore(cookieStore HTTPCookieStore) {
-	objc.Call[objc.Void](h_, objc.Sel("cookiesDidChangeInCookieStore:"), objc.Ptr(cookieStore))
+	objc.Call[objc.Void](h_, objc.Sel("cookiesDidChangeInCookieStore:"), cookieStore)
 }

@@ -95,5 +95,5 @@ func (d_ Download) SetDelegate(value PDownloadDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownload/3727340-delegate?language=objc
 func (d_ Download) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), valueObject)
 }

@@ -19,9 +19,9 @@ type _ImageThresholdBinaryClass struct {
 // An interface definition for the [ImageThresholdBinary] class.
 type IImageThresholdBinary interface {
 	IUnaryImageKernel
-	MaximumValue() float64
-	Transform() *float64
-	ThresholdValue() float64
+	MaximumValue() float32
+	Transform() *float32
+	ThresholdValue() float32
 }
 
 // A filter that returns a specified value for each pixel with a value greater than a specified threshold or 0 otherwise. [Full Topic]
@@ -37,7 +37,7 @@ func ImageThresholdBinaryFrom(ptr unsafe.Pointer) ImageThresholdBinary {
 	}
 }
 
-func (i_ ImageThresholdBinary) InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, maximumValue float64, transform *float64) ImageThresholdBinary {
+func (i_ ImageThresholdBinary) InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, maximumValue float32, transform *float32) ImageThresholdBinary {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageThresholdBinary](i_, objc.Sel("initWithDevice:thresholdValue:maximumValue:linearGrayColorTransform:"), po0, thresholdValue, maximumValue, transform)
 	return rv
@@ -46,7 +46,7 @@ func (i_ ImageThresholdBinary) InitWithDeviceThresholdValueMaximumValueLinearGra
 // Initializes the kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinary/1618855-initwithdevice?language=objc
-func NewImageThresholdBinaryWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, maximumValue float64, transform *float64) ImageThresholdBinary {
+func NewImageThresholdBinaryWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, maximumValue float32, transform *float32) ImageThresholdBinary {
 	instance := ImageThresholdBinaryClass.Alloc().InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device, thresholdValue, maximumValue, transform)
 	instance.Autorelease()
 	return instance
@@ -105,23 +105,23 @@ func ImageThresholdBinary_CopyWithZoneDevice(zone unsafe.Pointer, device metal.P
 // The maximum value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinary/1618852-maximumvalue?language=objc
-func (i_ ImageThresholdBinary) MaximumValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("maximumValue"))
+func (i_ ImageThresholdBinary) MaximumValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("maximumValue"))
 	return rv
 }
 
 // The color transform used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinary/1618744-transform?language=objc
-func (i_ ImageThresholdBinary) Transform() *float64 {
-	rv := objc.Call[*float64](i_, objc.Sel("transform"))
+func (i_ ImageThresholdBinary) Transform() *float32 {
+	rv := objc.Call[*float32](i_, objc.Sel("transform"))
 	return rv
 }
 
 // The threshold value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinary/1618851-thresholdvalue?language=objc
-func (i_ ImageThresholdBinary) ThresholdValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("thresholdValue"))
+func (i_ ImageThresholdBinary) ThresholdValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
 	return rv
 }

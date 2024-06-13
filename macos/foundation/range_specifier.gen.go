@@ -38,7 +38,7 @@ func RangeSpecifierFrom(ptr unsafe.Pointer) RangeSpecifier {
 }
 
 func (r_ RangeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyStartSpecifierEndSpecifier(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, startSpec IScriptObjectSpecifier, endSpec IScriptObjectSpecifier) RangeSpecifier {
-	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:startSpecifier:endSpecifier:"), objc.Ptr(classDesc), objc.Ptr(container), property, objc.Ptr(startSpec), objc.Ptr(endSpec))
+	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:startSpecifier:endSpecifier:"), classDesc, container, property, startSpec, endSpec)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func (r_ RangeSpecifier) Init() RangeSpecifier {
 }
 
 func (r_ RangeSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RangeSpecifier {
-	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewRangeSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDe
 }
 
 func (r_ RangeSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RangeSpecifier {
-	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[RangeSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (r_ RangeSpecifier) StartSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrangespecifier/1418394-startspecifier?language=objc
 func (r_ RangeSpecifier) SetStartSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](r_, objc.Sel("setStartSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setStartSpecifier:"), value)
 }
 
 // Sets the object specifier representing the last object of the range to a given object. [Full Topic]
@@ -126,5 +126,5 @@ func (r_ RangeSpecifier) EndSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrangespecifier/1418470-endspecifier?language=objc
 func (r_ RangeSpecifier) SetEndSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](r_, objc.Sel("setEndSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setEndSpecifier:"), value)
 }

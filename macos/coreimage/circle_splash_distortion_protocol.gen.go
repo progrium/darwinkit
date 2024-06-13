@@ -28,11 +28,11 @@ type PCircleSplashDistortion interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -75,7 +75,7 @@ func (c_ CircleSplashDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600119-inputimage?language=objc
 func (c_ CircleSplashDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CircleSplashDistortionObject) HasInputImage() bool {
@@ -97,7 +97,7 @@ func (c_ CircleSplashDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600120-radius?language=objc
-func (c_ CircleSplashDistortionObject) SetRadius(value float64) {
+func (c_ CircleSplashDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setRadius:"), value)
 }
 
@@ -108,7 +108,7 @@ func (c_ CircleSplashDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicirclesplashdistortion/3600120-radius?language=objc
-func (c_ CircleSplashDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("radius"))
+func (c_ CircleSplashDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("radius"))
 	return rv
 }

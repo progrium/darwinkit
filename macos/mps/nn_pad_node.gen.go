@@ -18,8 +18,8 @@ type _NNPadNodeClass struct {
 // An interface definition for the [NNPadNode] class.
 type INNPadNode interface {
 	INNFilterNode
-	FillValue() float64
-	SetFillValue(value float64)
+	FillValue() float32
+	SetFillValue(value float32)
 }
 
 //	[Full Topic]
@@ -36,7 +36,7 @@ func NNPadNodeFrom(ptr unsafe.Pointer) NNPadNode {
 }
 
 func (nc _NNPadNodeClass) NodeWithSourcePaddingSizeBeforePaddingSizeAfterEdgeMode(source INNImageNode, paddingSizeBefore ImageCoordinate, paddingSizeAfter ImageCoordinate, edgeMode ImageEdgeMode) NNPadNode {
-	rv := objc.Call[NNPadNode](nc, objc.Sel("nodeWithSource:paddingSizeBefore:paddingSizeAfter:edgeMode:"), objc.Ptr(source), paddingSizeBefore, paddingSizeAfter, edgeMode)
+	rv := objc.Call[NNPadNode](nc, objc.Sel("nodeWithSource:paddingSizeBefore:paddingSizeAfter:edgeMode:"), source, paddingSizeBefore, paddingSizeAfter, edgeMode)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NNPadNode_NodeWithSourcePaddingSizeBeforePaddingSizeAfterEdgeMode(source IN
 }
 
 func (n_ NNPadNode) InitWithSourcePaddingSizeBeforePaddingSizeAfterEdgeMode(source INNImageNode, paddingSizeBefore ImageCoordinate, paddingSizeAfter ImageCoordinate, edgeMode ImageEdgeMode) NNPadNode {
-	rv := objc.Call[NNPadNode](n_, objc.Sel("initWithSource:paddingSizeBefore:paddingSizeAfter:edgeMode:"), objc.Ptr(source), paddingSizeBefore, paddingSizeAfter, edgeMode)
+	rv := objc.Call[NNPadNode](n_, objc.Sel("initWithSource:paddingSizeBefore:paddingSizeAfter:edgeMode:"), source, paddingSizeBefore, paddingSizeAfter, edgeMode)
 	return rv
 }
 
@@ -84,14 +84,14 @@ func (n_ NNPadNode) Init() NNPadNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadnode/3037394-fillvalue?language=objc
-func (n_ NNPadNode) FillValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("fillValue"))
+func (n_ NNPadNode) FillValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("fillValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadnode/3037394-fillvalue?language=objc
-func (n_ NNPadNode) SetFillValue(value float64) {
+func (n_ NNPadNode) SetFillValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setFillValue:"), value)
 }

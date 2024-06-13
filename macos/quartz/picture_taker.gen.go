@@ -65,7 +65,7 @@ func (p_ PictureTaker) Init() PictureTaker {
 }
 
 func (pc _PictureTakerClass) WindowWithContentViewController(contentViewController appkit.IViewController) PictureTaker {
-	rv := objc.Call[PictureTaker](pc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[PictureTaker](pc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func PictureTaker_WindowWithContentViewController(contentViewController appkit.I
 }
 
 func (p_ PictureTaker) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool, screen appkit.IScreen) PictureTaker {
-	rv := objc.Call[PictureTaker](p_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[PictureTaker](p_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -131,14 +131,14 @@ func (p_ PictureTaker) InputImage() appkit.Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504302-beginpicturetakersheetforwindow?language=objc
 func (p_ PictureTaker) BeginPictureTakerSheetForWindowWithDelegateDidEndSelectorContextInfo(aWindow appkit.IWindow, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("beginPictureTakerSheetForWindow:withDelegate:didEndSelector:contextInfo:"), objc.Ptr(aWindow), delegate, didEndSelector, contextInfo)
+	objc.Call[objc.Void](p_, objc.Sel("beginPictureTakerSheetForWindow:withDelegate:didEndSelector:contextInfo:"), aWindow, delegate, didEndSelector, contextInfo)
 }
 
 // Displays the Open Recent popup menu associated with the  picture taker. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1504753-popuprecentsmenuforview?language=objc
 func (p_ PictureTaker) PopUpRecentsMenuForViewWithDelegateDidEndSelectorContextInfo(aView appkit.IView, delegate objc.IObject, didEndSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](p_, objc.Sel("popUpRecentsMenuForView:withDelegate:didEndSelector:contextInfo:"), objc.Ptr(aView), delegate, didEndSelector, contextInfo)
+	objc.Call[objc.Void](p_, objc.Sel("popUpRecentsMenuForView:withDelegate:didEndSelector:contextInfo:"), aView, delegate, didEndSelector, contextInfo)
 }
 
 // Returns a shared IKPictureTaker instance, creating it if necessary. [Full Topic]
@@ -160,7 +160,7 @@ func PictureTaker_PictureTaker() PictureTaker {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikpicturetaker/1503724-setinputimage?language=objc
 func (p_ PictureTaker) SetInputImage(image appkit.IImage) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(image))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), image)
 }
 
 // Returns the edited image. [Full Topic]

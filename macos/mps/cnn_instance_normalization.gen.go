@@ -22,8 +22,8 @@ type ICNNInstanceNormalization interface {
 	ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
 	ReloadGammaAndBetaWithCommandBufferObjectGammaAndBetaState(commandBufferObject objc.IObject, gammaAndBetaState ICNNNormalizationGammaAndBetaState)
 	ReloadGammaAndBetaFromDataSource()
-	Epsilon() float64
-	SetEpsilon(value float64)
+	Epsilon() float32
+	SetEpsilon(value float32)
 	DataSource() CNNInstanceNormalizationDataSourceObject
 }
 
@@ -111,14 +111,14 @@ func CNNInstanceNormalization_CopyWithZoneDevice(zone unsafe.Pointer, device met
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2953921-reloadgammaandbetawithcommandbuf?language=objc
 func (c_ CNNInstanceNormalization) ReloadGammaAndBetaWithCommandBufferGammaAndBetaState(commandBuffer metal.PCommandBuffer, gammaAndBetaState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), po0, objc.Ptr(gammaAndBetaState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), po0, gammaAndBetaState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2953921-reloadgammaandbetawithcommandbuf?language=objc
 func (c_ CNNInstanceNormalization) ReloadGammaAndBetaWithCommandBufferObjectGammaAndBetaState(commandBufferObject objc.IObject, gammaAndBetaState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), objc.Ptr(commandBufferObject), objc.Ptr(gammaAndBetaState))
+	objc.Call[objc.Void](c_, objc.Sel("reloadGammaAndBetaWithCommandBuffer:gammaAndBetaState:"), commandBufferObject, gammaAndBetaState)
 }
 
 //	[Full Topic]
@@ -131,15 +131,15 @@ func (c_ CNNInstanceNormalization) ReloadGammaAndBetaFromDataSource() {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2947943-epsilon?language=objc
-func (c_ CNNInstanceNormalization) Epsilon() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("epsilon"))
+func (c_ CNNInstanceNormalization) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnninstancenormalization/2947943-epsilon?language=objc
-func (c_ CNNInstanceNormalization) SetEpsilon(value float64) {
+func (c_ CNNInstanceNormalization) SetEpsilon(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setEpsilon:"), value)
 }
 

@@ -81,7 +81,7 @@ func (k_ KeyedArchiver) Init() KeyedArchiver {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1407245-classnameforclass?language=objc
 func (k_ KeyedArchiver) ClassNameForClass_(cls objc.IClass) string {
-	rv := objc.Call[string](k_, objc.Sel("classNameForClass:"), objc.Ptr(cls))
+	rv := objc.Call[string](k_, objc.Sel("classNameForClass:"), cls)
 	return rv
 }
 
@@ -89,7 +89,7 @@ func (k_ KeyedArchiver) ClassNameForClass_(cls objc.IClass) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1414746-setclassname?language=objc
 func (k_ KeyedArchiver) SetClassNameForClass_(codedName string, cls objc.IClass) {
-	objc.Call[objc.Void](k_, objc.Sel("setClassName:forClass:"), codedName, objc.Ptr(cls))
+	objc.Call[objc.Void](k_, objc.Sel("setClassName:forClass:"), codedName, cls)
 }
 
 // Instructs the receiver to construct the final data stream. [Full Topic]
@@ -102,15 +102,15 @@ func (k_ KeyedArchiver) FinishEncoding() {
 // Encodes an object graph with the given root object into a data representation, optionally requiring secure coding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/2962880-archiveddatawithrootobject?language=objc
-func (kc _KeyedArchiverClass) ArchivedDataWithRootObjectRequiringSecureCodingError(object objc.IObject, requiresSecureCoding bool, error IError) []byte {
-	rv := objc.Call[[]byte](kc, objc.Sel("archivedDataWithRootObject:requiringSecureCoding:error:"), object, requiresSecureCoding, objc.Ptr(error))
+func (kc _KeyedArchiverClass) ArchivedDataWithRootObjectRequiringSecureCodingError(object objc.IObject, requiresSecureCoding bool, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](kc, objc.Sel("archivedDataWithRootObject:requiringSecureCoding:error:"), object, requiresSecureCoding, error)
 	return rv
 }
 
 // Encodes an object graph with the given root object into a data representation, optionally requiring secure coding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/2962880-archiveddatawithrootobject?language=objc
-func KeyedArchiver_ArchivedDataWithRootObjectRequiringSecureCodingError(object objc.IObject, requiresSecureCoding bool, error IError) []byte {
+func KeyedArchiver_ArchivedDataWithRootObjectRequiringSecureCodingError(object objc.IObject, requiresSecureCoding bool, error unsafe.Pointer) []byte {
 	return KeyedArchiverClass.ArchivedDataWithRootObjectRequiringSecureCodingError(object, requiresSecureCoding, error)
 }
 
@@ -149,7 +149,7 @@ func (k_ KeyedArchiver) SetDelegate(value PKeyedArchiverDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedarchiver/1412809-delegate?language=objc
 func (k_ KeyedArchiver) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](k_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](k_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The encoded data for the archiver. [Full Topic]

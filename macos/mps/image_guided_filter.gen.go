@@ -27,13 +27,13 @@ type IImageGuidedFilter interface {
 	EncodeReconstructionToCommandBufferObjectGuidanceTextureObjectCoefficientsTextureAObjectCoefficientsTextureBObjectDestinationTextureObject(commandBufferObject objc.IObject, guidanceTextureObject objc.IObject, coefficientsTextureAObject objc.IObject, coefficientsTextureBObject objc.IObject, destinationTextureObject objc.IObject)
 	EncodeReconstructionToCommandBufferGuidanceTextureCoefficientsTextureDestinationTexture(commandBuffer metal.PCommandBuffer, guidanceTexture metal.PTexture, coefficientsTexture metal.PTexture, destinationTexture metal.PTexture)
 	EncodeReconstructionToCommandBufferObjectGuidanceTextureObjectCoefficientsTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, guidanceTextureObject objc.IObject, coefficientsTextureObject objc.IObject, destinationTextureObject objc.IObject)
-	ReconstructScale() float64
-	SetReconstructScale(value float64)
+	ReconstructScale() float32
+	SetReconstructScale(value float32)
 	KernelDiameter() uint
-	ReconstructOffset() float64
-	SetReconstructOffset(value float64)
-	Epsilon() float64
-	SetEpsilon(value float64)
+	ReconstructOffset() float32
+	SetReconstructOffset(value float32)
+	Epsilon() float32
+	SetEpsilon(value float32)
 }
 
 // A filter that performs edge-aware filtering on an image. [Full Topic]
@@ -130,7 +130,7 @@ func (i_ ImageGuidedFilter) EncodeRegressionToCommandBufferSourceTextureGuidance
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2951907-encoderegressiontocommandbuffer?language=objc
 func (i_ ImageGuidedFilter) EncodeRegressionToCommandBufferObjectSourceTextureObjectGuidanceTextureObjectWeightsTextureObjectDestinationCoefficientsTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, guidanceTextureObject objc.IObject, weightsTextureObject objc.IObject, destinationCoefficientsTextureObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeRegressionToCommandBuffer:sourceTexture:guidanceTexture:weightsTexture:destinationCoefficientsTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(guidanceTextureObject), objc.Ptr(weightsTextureObject), objc.Ptr(destinationCoefficientsTextureObject))
+	objc.Call[objc.Void](i_, objc.Sel("encodeRegressionToCommandBuffer:sourceTexture:guidanceTexture:weightsTexture:destinationCoefficientsTexture:"), commandBufferObject, sourceTextureObject, guidanceTextureObject, weightsTextureObject, destinationCoefficientsTextureObject)
 }
 
 //	[Full Topic]
@@ -150,7 +150,7 @@ func (i_ ImageGuidedFilter) EncodeRegressionToCommandBufferSourceTextureGuidance
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/3516399-encoderegressiontocommandbuffer?language=objc
 func (i_ ImageGuidedFilter) EncodeRegressionToCommandBufferObjectSourceTextureObjectGuidanceTextureObjectWeightsTextureObjectDestinationCoefficientsTextureAObjectDestinationCoefficientsTextureBObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, guidanceTextureObject objc.IObject, weightsTextureObject objc.IObject, destinationCoefficientsTextureAObject objc.IObject, destinationCoefficientsTextureBObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeRegressionToCommandBuffer:sourceTexture:guidanceTexture:weightsTexture:destinationCoefficientsTextureA:destinationCoefficientsTextureB:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(guidanceTextureObject), objc.Ptr(weightsTextureObject), objc.Ptr(destinationCoefficientsTextureAObject), objc.Ptr(destinationCoefficientsTextureBObject))
+	objc.Call[objc.Void](i_, objc.Sel("encodeRegressionToCommandBuffer:sourceTexture:guidanceTexture:weightsTexture:destinationCoefficientsTextureA:destinationCoefficientsTextureB:"), commandBufferObject, sourceTextureObject, guidanceTextureObject, weightsTextureObject, destinationCoefficientsTextureAObject, destinationCoefficientsTextureBObject)
 }
 
 //	[Full Topic]
@@ -169,7 +169,7 @@ func (i_ ImageGuidedFilter) EncodeReconstructionToCommandBufferGuidanceTextureCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/3516398-encodereconstructiontocommandbuf?language=objc
 func (i_ ImageGuidedFilter) EncodeReconstructionToCommandBufferObjectGuidanceTextureObjectCoefficientsTextureAObjectCoefficientsTextureBObjectDestinationTextureObject(commandBufferObject objc.IObject, guidanceTextureObject objc.IObject, coefficientsTextureAObject objc.IObject, coefficientsTextureBObject objc.IObject, destinationTextureObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeReconstructionToCommandBuffer:guidanceTexture:coefficientsTextureA:coefficientsTextureB:destinationTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(guidanceTextureObject), objc.Ptr(coefficientsTextureAObject), objc.Ptr(coefficientsTextureBObject), objc.Ptr(destinationTextureObject))
+	objc.Call[objc.Void](i_, objc.Sel("encodeReconstructionToCommandBuffer:guidanceTexture:coefficientsTextureA:coefficientsTextureB:destinationTexture:"), commandBufferObject, guidanceTextureObject, coefficientsTextureAObject, coefficientsTextureBObject, destinationTextureObject)
 }
 
 //	[Full Topic]
@@ -187,21 +187,21 @@ func (i_ ImageGuidedFilter) EncodeReconstructionToCommandBufferGuidanceTextureCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2951906-encodereconstructiontocommandbuf?language=objc
 func (i_ ImageGuidedFilter) EncodeReconstructionToCommandBufferObjectGuidanceTextureObjectCoefficientsTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, guidanceTextureObject objc.IObject, coefficientsTextureObject objc.IObject, destinationTextureObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeReconstructionToCommandBuffer:guidanceTexture:coefficientsTexture:destinationTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(guidanceTextureObject), objc.Ptr(coefficientsTextureObject), objc.Ptr(destinationTextureObject))
+	objc.Call[objc.Void](i_, objc.Sel("encodeReconstructionToCommandBuffer:guidanceTexture:coefficientsTexture:destinationTexture:"), commandBufferObject, guidanceTextureObject, coefficientsTextureObject, destinationTextureObject)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2953078-reconstructscale?language=objc
-func (i_ ImageGuidedFilter) ReconstructScale() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("reconstructScale"))
+func (i_ ImageGuidedFilter) ReconstructScale() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("reconstructScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2953078-reconstructscale?language=objc
-func (i_ ImageGuidedFilter) SetReconstructScale(value float64) {
+func (i_ ImageGuidedFilter) SetReconstructScale(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setReconstructScale:"), value)
 }
 
@@ -216,29 +216,29 @@ func (i_ ImageGuidedFilter) KernelDiameter() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2953079-reconstructoffset?language=objc
-func (i_ ImageGuidedFilter) ReconstructOffset() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("reconstructOffset"))
+func (i_ ImageGuidedFilter) ReconstructOffset() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("reconstructOffset"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2953079-reconstructoffset?language=objc
-func (i_ ImageGuidedFilter) SetReconstructOffset(value float64) {
+func (i_ ImageGuidedFilter) SetReconstructOffset(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setReconstructOffset:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2951908-epsilon?language=objc
-func (i_ ImageGuidedFilter) Epsilon() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("epsilon"))
+func (i_ ImageGuidedFilter) Epsilon() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageguidedfilter/2951908-epsilon?language=objc
-func (i_ ImageGuidedFilter) SetEpsilon(value float64) {
+func (i_ ImageGuidedFilter) SetEpsilon(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setEpsilon:"), value)
 }

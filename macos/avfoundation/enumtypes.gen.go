@@ -337,6 +337,12 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturecenterstagecontrolmode?language=objc
 type CaptureCenterStageControlMode int
 
+const (
+	CaptureCenterStageControlModeApp         CaptureCenterStageControlMode = 1
+	CaptureCenterStageControlModeCooperative CaptureCenterStageControlMode = 2
+	CaptureCenterStageControlModeUser        CaptureCenterStageControlMode = 0
+)
+
 // An enumeration of color spaces a device can support. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturecolorspace?language=objc
@@ -371,7 +377,7 @@ const (
 // A constant that specifies speed of transport controls. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevicetransportcontrolsspeed?language=objc
-type CaptureDeviceTransportControlsSpeed float64
+type CaptureDeviceTransportControlsSpeed float32
 
 // A structure that defines the device types the framework supports. [Full Topic]
 //
@@ -379,9 +385,9 @@ type CaptureDeviceTransportControlsSpeed float64
 type CaptureDeviceType string
 
 const (
-	CaptureDeviceTypeBuiltInMicrophone      CaptureDeviceType = "AVCaptureDeviceTypeBuiltInMicrophone"
+	CaptureDeviceTypeBuiltInMicrophone      CaptureDeviceType = "AVCaptureDeviceTypeMicrophone"
 	CaptureDeviceTypeBuiltInWideAngleCamera CaptureDeviceType = "AVCaptureDeviceTypeBuiltInWideAngleCamera"
-	CaptureDeviceTypeExternalUnknown        CaptureDeviceType = "AVCaptureDeviceTypeExternalUnknown"
+	CaptureDeviceTypeExternalUnknown        CaptureDeviceType = "AVCaptureDeviceTypeExternal"
 )
 
 // Constants that specify the exposure mode of a capture device. [Full Topic]
@@ -1442,24 +1448,30 @@ const (
 type MetadataObjectType string
 
 const (
-	MetadataObjectTypeAztecCode           MetadataObjectType = "org.iso.Aztec"
-	MetadataObjectTypeCatBody             MetadataObjectType = "catBody"
-	MetadataObjectTypeCode128Code         MetadataObjectType = "org.iso.Code128"
-	MetadataObjectTypeCode39Code          MetadataObjectType = "org.iso.Code39"
-	MetadataObjectTypeCode39Mod43Code     MetadataObjectType = "org.iso.Code39Mod43"
-	MetadataObjectTypeCode93Code          MetadataObjectType = "com.intermec.Code93"
-	MetadataObjectTypeDataMatrixCode      MetadataObjectType = "org.iso.DataMatrix"
-	MetadataObjectTypeDogBody             MetadataObjectType = "dogBody"
-	MetadataObjectTypeEAN13Code           MetadataObjectType = "org.gs1.EAN-13"
-	MetadataObjectTypeEAN8Code            MetadataObjectType = "org.gs1.EAN-8"
-	MetadataObjectTypeFace                MetadataObjectType = "face"
-	MetadataObjectTypeHumanBody           MetadataObjectType = "humanBody"
-	MetadataObjectTypeITF14Code           MetadataObjectType = "org.gs1.ITF14"
-	MetadataObjectTypeInterleaved2of5Code MetadataObjectType = "org.ansi.Interleaved2of5"
-	MetadataObjectTypePDF417Code          MetadataObjectType = "org.iso.PDF417"
-	MetadataObjectTypeQRCode              MetadataObjectType = "org.iso.QRCode"
-	MetadataObjectTypeSalientObject       MetadataObjectType = "salientObject"
-	MetadataObjectTypeUPCECode            MetadataObjectType = "org.gs1.UPC-E"
+	MetadataObjectTypeAztecCode              MetadataObjectType = "org.iso.Aztec"
+	MetadataObjectTypeCatBody                MetadataObjectType = "catBody"
+	MetadataObjectTypeCodabarCode            MetadataObjectType = "Codabar"
+	MetadataObjectTypeCode128Code            MetadataObjectType = "org.iso.Code128"
+	MetadataObjectTypeCode39Code             MetadataObjectType = "org.iso.Code39"
+	MetadataObjectTypeCode39Mod43Code        MetadataObjectType = "org.iso.Code39Mod43"
+	MetadataObjectTypeCode93Code             MetadataObjectType = "com.intermec.Code93"
+	MetadataObjectTypeDataMatrixCode         MetadataObjectType = "org.iso.DataMatrix"
+	MetadataObjectTypeDogBody                MetadataObjectType = "dogBody"
+	MetadataObjectTypeEAN13Code              MetadataObjectType = "org.gs1.EAN-13"
+	MetadataObjectTypeEAN8Code               MetadataObjectType = "org.gs1.EAN-8"
+	MetadataObjectTypeFace                   MetadataObjectType = "face"
+	MetadataObjectTypeGS1DataBarCode         MetadataObjectType = "org.gs1.GS1DataBar"
+	MetadataObjectTypeGS1DataBarExpandedCode MetadataObjectType = "org.gs1.GS1DataBarExpanded"
+	MetadataObjectTypeGS1DataBarLimitedCode  MetadataObjectType = "org.gs1.GS1DataBarLimited"
+	MetadataObjectTypeHumanBody              MetadataObjectType = "humanBody"
+	MetadataObjectTypeITF14Code              MetadataObjectType = "org.gs1.ITF14"
+	MetadataObjectTypeInterleaved2of5Code    MetadataObjectType = "org.ansi.Interleaved2of5"
+	MetadataObjectTypeMicroPDF417Code        MetadataObjectType = "org.iso.MicroPDF417"
+	MetadataObjectTypeMicroQRCode            MetadataObjectType = "org.iso.MicroQR"
+	MetadataObjectTypePDF417Code             MetadataObjectType = "org.iso.PDF417"
+	MetadataObjectTypeQRCode                 MetadataObjectType = "org.iso.QRCode"
+	MetadataObjectTypeSalientObject          MetadataObjectType = "salientObject"
+	MetadataObjectTypeUPCECode               MetadataObjectType = "org.gs1.UPC-E"
 )
 
 // A structure that defines options to control the writing of a movie header to a destination URL. [Full Topic]
@@ -1487,6 +1499,7 @@ const (
 	OutputSettingsPresetHEVC1920x1080WithAlpha OutputSettingsPreset = "AVOutputSettingsPresetHEVC1920x1080WithAlpha"
 	OutputSettingsPresetHEVC3840x2160          OutputSettingsPreset = "AVOutputSettingsPresetHEVC3840x2160"
 	OutputSettingsPresetHEVC3840x2160WithAlpha OutputSettingsPreset = "AVOutputSettingsPresetHEVC3840x2160WithAlpha"
+	OutputSettingsPresetHEVC7680x4320          OutputSettingsPreset = "AVOutputSettingsPresetHEVC7680x4320"
 )
 
 // The actions a player can take when it finishes playing. [Full Topic]

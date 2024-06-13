@@ -76,7 +76,7 @@ func (p_ PasteboardItem) SetDataProviderForTypes(dataProvider PPasteboardItemDat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditem/1508502-setdataprovider?language=objc
 func (p_ PasteboardItem) SetDataProviderObjectForTypes(dataProviderObject objc.IObject, types []PasteboardType) bool {
-	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), objc.Ptr(dataProviderObject), types)
+	rv := objc.Call[bool](p_, objc.Sel("setDataProvider:forTypes:"), dataProviderObject, types)
 	return rv
 }
 

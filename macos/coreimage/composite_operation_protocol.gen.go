@@ -43,7 +43,7 @@ func (c_ CompositeOperationObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicompositeoperation/3228183-inputimage?language=objc
 func (c_ CompositeOperationObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CompositeOperationObject) HasInputImage() bool {
@@ -66,7 +66,7 @@ func (c_ CompositeOperationObject) HasSetBackgroundImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicompositeoperation/3228182-backgroundimage?language=objc
 func (c_ CompositeOperationObject) SetBackgroundImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setBackgroundImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBackgroundImage:"), value)
 }
 
 func (c_ CompositeOperationObject) HasBackgroundImage() bool {

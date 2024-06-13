@@ -150,7 +150,7 @@ func (t_ TimeZone) Init() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387242-secondsfromgmtfordate?language=objc
 func (t_ TimeZone) SecondsFromGMTForDate(aDate IDate) int {
-	rv := objc.Call[int](t_, objc.Sel("secondsFromGMTForDate:"), objc.Ptr(aDate))
+	rv := objc.Call[int](t_, objc.Sel("secondsFromGMTForDate:"), aDate)
 	return rv
 }
 
@@ -172,7 +172,7 @@ func TimeZone_ResetSystemTimeZone() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387207-daylightsavingtimeoffsetfordate?language=objc
 func (t_ TimeZone) DaylightSavingTimeOffsetForDate(aDate IDate) TimeInterval {
-	rv := objc.Call[TimeInterval](t_, objc.Sel("daylightSavingTimeOffsetForDate:"), objc.Ptr(aDate))
+	rv := objc.Call[TimeInterval](t_, objc.Sel("daylightSavingTimeOffsetForDate:"), aDate)
 	return rv
 }
 
@@ -180,7 +180,7 @@ func (t_ TimeZone) DaylightSavingTimeOffsetForDate(aDate IDate) TimeInterval {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387237-abbreviationfordate?language=objc
 func (t_ TimeZone) AbbreviationForDate(aDate IDate) string {
-	rv := objc.Call[string](t_, objc.Sel("abbreviationForDate:"), objc.Ptr(aDate))
+	rv := objc.Call[string](t_, objc.Sel("abbreviationForDate:"), aDate)
 	return rv
 }
 
@@ -188,7 +188,7 @@ func (t_ TimeZone) AbbreviationForDate(aDate IDate) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387254-nextdaylightsavingtimetransition?language=objc
 func (t_ TimeZone) NextDaylightSavingTimeTransitionAfterDate(aDate IDate) Date {
-	rv := objc.Call[Date](t_, objc.Sel("nextDaylightSavingTimeTransitionAfterDate:"), objc.Ptr(aDate))
+	rv := objc.Call[Date](t_, objc.Sel("nextDaylightSavingTimeTransitionAfterDate:"), aDate)
 	return rv
 }
 
@@ -196,7 +196,7 @@ func (t_ TimeZone) NextDaylightSavingTimeTransitionAfterDate(aDate IDate) Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387201-isdaylightsavingtimefordate?language=objc
 func (t_ TimeZone) IsDaylightSavingTimeForDate(aDate IDate) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isDaylightSavingTimeForDate:"), objc.Ptr(aDate))
+	rv := objc.Call[bool](t_, objc.Sel("isDaylightSavingTimeForDate:"), aDate)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func (t_ TimeZone) IsDaylightSavingTimeForDate(aDate IDate) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387193-localizedname?language=objc
 func (t_ TimeZone) LocalizedNameLocale(style TimeZoneNameStyle, locale ILocale) string {
-	rv := objc.Call[string](t_, objc.Sel("localizedName:locale:"), style, objc.Ptr(locale))
+	rv := objc.Call[string](t_, objc.Sel("localizedName:locale:"), style, locale)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func (t_ TimeZone) LocalizedNameLocale(style TimeZoneNameStyle, locale ILocale) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387211-isequaltotimezone?language=objc
 func (t_ TimeZone) IsEqualToTimeZone(aTimeZone ITimeZone) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isEqualToTimeZone:"), objc.Ptr(aTimeZone))
+	rv := objc.Call[bool](t_, objc.Sel("isEqualToTimeZone:"), aTimeZone)
 	return rv
 }
 
@@ -283,7 +283,7 @@ func TimeZone_DefaultTimeZone() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimezone/1387244-defaulttimezone?language=objc
 func (tc _TimeZoneClass) SetDefaultTimeZone(value ITimeZone) {
-	objc.Call[objc.Void](tc, objc.Sel("setDefaultTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](tc, objc.Sel("setDefaultTimeZone:"), value)
 }
 
 // The default time zone for the current app. [Full Topic]

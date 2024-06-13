@@ -113,7 +113,7 @@ func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexBuffer(v
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuremotiontrianglegeometrydescriptor/3750484-indexbuffer?language=objc
 func (a_ AccelerationStructureMotionTriangleGeometryDescriptor) SetIndexBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setIndexBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setIndexBuffer:"), valueObject)
 }
 
 // The number of triangles in the buffers. [Full Topic]

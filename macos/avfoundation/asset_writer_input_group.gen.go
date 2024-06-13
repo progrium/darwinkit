@@ -36,7 +36,7 @@ func AssetWriterInputGroupFrom(ptr unsafe.Pointer) AssetWriterInputGroup {
 }
 
 func (a_ AssetWriterInputGroup) InitWithInputsDefaultInput(inputs []IAssetWriterInput, defaultInput IAssetWriterInput) AssetWriterInputGroup {
-	rv := objc.Call[AssetWriterInputGroup](a_, objc.Sel("initWithInputs:defaultInput:"), inputs, objc.Ptr(defaultInput))
+	rv := objc.Call[AssetWriterInputGroup](a_, objc.Sel("initWithInputs:defaultInput:"), inputs, defaultInput)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewAssetWriterInputGroupWithInputsDefaultInput(inputs []IAssetWriterInput, 
 }
 
 func (ac _AssetWriterInputGroupClass) AssetWriterInputGroupWithInputsDefaultInput(inputs []IAssetWriterInput, defaultInput IAssetWriterInput) AssetWriterInputGroup {
-	rv := objc.Call[AssetWriterInputGroup](ac, objc.Sel("assetWriterInputGroupWithInputs:defaultInput:"), inputs, objc.Ptr(defaultInput))
+	rv := objc.Call[AssetWriterInputGroup](ac, objc.Sel("assetWriterInputGroupWithInputs:defaultInput:"), inputs, defaultInput)
 	return rv
 }
 

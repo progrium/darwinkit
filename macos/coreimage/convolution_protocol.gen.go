@@ -19,11 +19,11 @@ type PConvolution interface {
 	HasWeights() bool
 
 	// optional
-	SetBias(value float64)
+	SetBias(value float32)
 	HasSetBias() bool
 
 	// optional
-	Bias() float64
+	Bias() float32
 	HasBias() bool
 
 	// optional
@@ -51,7 +51,7 @@ func (c_ ConvolutionObject) HasSetWeights() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228187-weights?language=objc
 func (c_ ConvolutionObject) SetWeights(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setWeights:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setWeights:"), value)
 }
 
 func (c_ ConvolutionObject) HasWeights() bool {
@@ -73,7 +73,7 @@ func (c_ ConvolutionObject) HasSetBias() bool {
 // A value that’s added to each output pixel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228185-bias?language=objc
-func (c_ ConvolutionObject) SetBias(value float64) {
+func (c_ ConvolutionObject) SetBias(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBias:"), value)
 }
 
@@ -84,8 +84,8 @@ func (c_ ConvolutionObject) HasBias() bool {
 // A value that’s added to each output pixel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228185-bias?language=objc
-func (c_ ConvolutionObject) Bias() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("bias"))
+func (c_ ConvolutionObject) Bias() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("bias"))
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (c_ ConvolutionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciconvolution/3228186-inputimage?language=objc
 func (c_ ConvolutionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ConvolutionObject) HasInputImage() bool {

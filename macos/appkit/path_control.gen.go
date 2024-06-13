@@ -140,7 +140,7 @@ func (p_ PathControl) PlaceholderAttributedString() foundation.AttributedString 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrol/1531486-placeholderattributedstring?language=objc
 func (p_ PathControl) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 //	[Full Topic]
@@ -185,7 +185,7 @@ func (p_ PathControl) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrol/1527205-url?language=objc
 func (p_ PathControl) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }
 
 //	[Full Topic]
@@ -230,7 +230,7 @@ func (p_ PathControl) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrol/1534164-backgroundcolor?language=objc
 func (p_ PathControl) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The receiver’s delegate. [Full Topic]
@@ -254,7 +254,7 @@ func (p_ PathControl) SetDelegate(value PPathControlDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrol/1526753-delegate?language=objc
 func (p_ PathControl) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
 //	[Full Topic]

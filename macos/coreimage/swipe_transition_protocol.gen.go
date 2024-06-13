@@ -28,27 +28,27 @@ type PSwipeTransition interface {
 	HasExtent() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetOpacity(value float64)
+	SetOpacity(value float32)
 	HasSetOpacity() bool
 
 	// optional
-	Opacity() float64
+	Opacity() float32
 	HasOpacity() bool
 }
 
@@ -68,7 +68,7 @@ func (s_ SwipeTransitionObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228776-color?language=objc
 func (s_ SwipeTransitionObject) SetColor(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor:"), value)
 }
 
 func (s_ SwipeTransitionObject) HasColor() bool {
@@ -113,7 +113,7 @@ func (s_ SwipeTransitionObject) HasSetAngle() bool {
 // The angle of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
-func (s_ SwipeTransitionObject) SetAngle(value float64) {
+func (s_ SwipeTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setAngle:"), value)
 }
 
@@ -124,8 +124,8 @@ func (s_ SwipeTransitionObject) HasAngle() bool {
 // The angle of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228775-angle?language=objc
-func (s_ SwipeTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("angle"))
+func (s_ SwipeTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("angle"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (s_ SwipeTransitionObject) HasSetWidth() bool {
 // The width of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228779-width?language=objc
-func (s_ SwipeTransitionObject) SetWidth(value float64) {
+func (s_ SwipeTransitionObject) SetWidth(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setWidth:"), value)
 }
 
@@ -147,8 +147,8 @@ func (s_ SwipeTransitionObject) HasWidth() bool {
 // The width of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228779-width?language=objc
-func (s_ SwipeTransitionObject) Width() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("width"))
+func (s_ SwipeTransitionObject) Width() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("width"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (s_ SwipeTransitionObject) HasSetOpacity() bool {
 // The opacity of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228778-opacity?language=objc
-func (s_ SwipeTransitionObject) SetOpacity(value float64) {
+func (s_ SwipeTransitionObject) SetOpacity(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setOpacity:"), value)
 }
 
@@ -170,7 +170,7 @@ func (s_ SwipeTransitionObject) HasOpacity() bool {
 // The opacity of the swipe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciswipetransition/3228778-opacity?language=objc
-func (s_ SwipeTransitionObject) Opacity() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("opacity"))
+func (s_ SwipeTransitionObject) Opacity() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("opacity"))
 	return rv
 }

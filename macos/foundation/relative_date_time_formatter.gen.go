@@ -70,7 +70,7 @@ func (r_ RelativeDateTimeFormatter) Init() RelativeDateTimeFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativedatetimeformatter/3130998-localizedstringfordate?language=objc
 func (r_ RelativeDateTimeFormatter) LocalizedStringForDateRelativeToDate(date IDate, referenceDate IDate) string {
-	rv := objc.Call[string](r_, objc.Sel("localizedStringForDate:relativeToDate:"), objc.Ptr(date), objc.Ptr(referenceDate))
+	rv := objc.Call[string](r_, objc.Sel("localizedStringForDate:relativeToDate:"), date, referenceDate)
 	return rv
 }
 
@@ -78,7 +78,7 @@ func (r_ RelativeDateTimeFormatter) LocalizedStringForDateRelativeToDate(date ID
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativedatetimeformatter/3130999-localizedstringfromdatecomponent?language=objc
 func (r_ RelativeDateTimeFormatter) LocalizedStringFromDateComponents(dateComponents IDateComponents) string {
-	rv := objc.Call[string](r_, objc.Sel("localizedStringFromDateComponents:"), objc.Ptr(dateComponents))
+	rv := objc.Call[string](r_, objc.Sel("localizedStringFromDateComponents:"), dateComponents)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (r_ RelativeDateTimeFormatter) Calendar() Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativedatetimeformatter/3130994-calendar?language=objc
 func (r_ RelativeDateTimeFormatter) SetCalendar(value ICalendar) {
-	objc.Call[objc.Void](r_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setCalendar:"), value)
 }
 
 // The style to use when formatting the quantity or the name of the unit, such as “1 day ago” or “one day ago”. [Full Topic]
@@ -162,5 +162,5 @@ func (r_ RelativeDateTimeFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrelativedatetimeformatter/3130997-locale?language=objc
 func (r_ RelativeDateTimeFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](r_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setLocale:"), value)
 }

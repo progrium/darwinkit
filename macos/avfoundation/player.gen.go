@@ -22,12 +22,12 @@ type _PlayerClass struct {
 type IPlayer interface {
 	objc.IObject
 	SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, toleranceBefore coremedia.Time, toleranceAfter coremedia.Time)
-	PlayImmediatelyAtRate(rate float64)
+	PlayImmediatelyAtRate(rate float32)
 	Play()
-	PrerollAtRateCompletionHandler(rate float64, completionHandler func(finished bool))
+	PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool))
 	SeekToTimeCompletionHandler(time coremedia.Time, completionHandler func(finished bool))
 	SeekToDateCompletionHandler(date foundation.IDate, completionHandler func(finished bool))
-	SetRateTimeAtHostTime(rate float64, itemTime coremedia.Time, hostClockTime coremedia.Time)
+	SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time)
 	Pause()
 	MediaSelectionCriteriaForMediaCharacteristic(mediaCharacteristic MediaCharacteristic) PlayerMediaSelectionCriteria
 	SeekToDate(date foundation.IDate)
@@ -45,8 +45,8 @@ type IPlayer interface {
 	SetSourceClock(value coremedia.ClockRef)
 	AppliesMediaSelectionCriteriaAutomatically() bool
 	SetAppliesMediaSelectionCriteriaAutomatically(value bool)
-	Volume() float64
-	SetVolume(value float64)
+	Volume() float32
+	SetVolume(value float32)
 	ActionAtItemEnd() PlayerActionAtItemEnd
 	SetActionAtItemEnd(value PlayerActionAtItemEnd)
 	CurrentItem() PlayerItem
@@ -61,8 +61,8 @@ type IPlayer interface {
 	PreventsDisplaySleepDuringVideoPlayback() bool
 	SetPreventsDisplaySleepDuringVideoPlayback(value bool)
 	Status() PlayerStatus
-	Rate() float64
-	SetRate(value float64)
+	Rate() float32
+	SetRate(value float32)
 	TimeControlStatus() PlayerTimeControlStatus
 	Error() foundation.Error
 	ReasonForWaitingToPlay() PlayerWaitingReason
@@ -88,7 +88,7 @@ func PlayerFrom(ptr unsafe.Pointer) Player {
 }
 
 func (pc _PlayerClass) PlayerWithPlayerItem(item IPlayerItem) Player {
-	rv := objc.Call[Player](pc, objc.Sel("playerWithPlayerItem:"), objc.Ptr(item))
+	rv := objc.Call[Player](pc, objc.Sel("playerWithPlayerItem:"), item)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func Player_PlayerWithPlayerItem(item IPlayerItem) Player {
 }
 
 func (pc _PlayerClass) PlayerWithURL(URL foundation.IURL) Player {
-	rv := objc.Call[Player](pc, objc.Sel("playerWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[Player](pc, objc.Sel("playerWithURL:"), URL)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func Player_PlayerWithURL(URL foundation.IURL) Player {
 }
 
 func (p_ Player) InitWithPlayerItem(item IPlayerItem) Player {
-	rv := objc.Call[Player](p_, objc.Sel("initWithPlayerItem:"), objc.Ptr(item))
+	rv := objc.Call[Player](p_, objc.Sel("initWithPlayerItem:"), item)
 	return rv
 }
 
@@ -126,7 +126,7 @@ func NewPlayerWithPlayerItem(item IPlayerItem) Player {
 }
 
 func (p_ Player) InitWithURL(URL foundation.IURL) Player {
-	rv := objc.Call[Player](p_, objc.Sel("initWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[Player](p_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func (p_ Player) SeekToTimeToleranceBeforeToleranceAfter(time coremedia.Time, to
 // Plays the available media data immediately, at the specified rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1643480-playimmediatelyatrate?language=objc
-func (p_ Player) PlayImmediatelyAtRate(rate float64) {
+func (p_ Player) PlayImmediatelyAtRate(rate float32) {
 	objc.Call[objc.Void](p_, objc.Sel("playImmediatelyAtRate:"), rate)
 }
 
@@ -183,7 +183,7 @@ func (p_ Player) Play() {
 // Begins loading media data to prime the media pipelines for playback. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1389712-prerollatrate?language=objc
-func (p_ Player) PrerollAtRateCompletionHandler(rate float64, completionHandler func(finished bool)) {
+func (p_ Player) PrerollAtRateCompletionHandler(rate float32, completionHandler func(finished bool)) {
 	objc.Call[objc.Void](p_, objc.Sel("prerollAtRate:completionHandler:"), rate, completionHandler)
 }
 
@@ -198,13 +198,13 @@ func (p_ Player) SeekToTimeCompletionHandler(time coremedia.Time, completionHand
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386108-seektodate?language=objc
 func (p_ Player) SeekToDateCompletionHandler(date foundation.IDate, completionHandler func(finished bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToDate:completionHandler:"), objc.Ptr(date), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("seekToDate:completionHandler:"), date, completionHandler)
 }
 
 // Synchronizes the playback rate and time of the current item with an external source. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386591-setrate?language=objc
-func (p_ Player) SetRateTimeAtHostTime(rate float64, itemTime coremedia.Time, hostClockTime coremedia.Time) {
+func (p_ Player) SetRateTimeAtHostTime(rate float32, itemTime coremedia.Time, hostClockTime coremedia.Time) {
 	objc.Call[objc.Void](p_, objc.Sel("setRate:time:atHostTime:"), rate, itemTime, hostClockTime)
 }
 
@@ -227,14 +227,14 @@ func (p_ Player) MediaSelectionCriteriaForMediaCharacteristic(mediaCharacteristi
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1386114-seektodate?language=objc
 func (p_ Player) SeekToDate(date foundation.IDate) {
-	objc.Call[objc.Void](p_, objc.Sel("seekToDate:"), objc.Ptr(date))
+	objc.Call[objc.Void](p_, objc.Sel("seekToDate:"), date)
 }
 
 // Replaces the current item with a new item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390806-replacecurrentitemwithplayeritem?language=objc
 func (p_ Player) ReplaceCurrentItemWithPlayerItem(item IPlayerItem) {
-	objc.Call[objc.Void](p_, objc.Sel("replaceCurrentItemWithPlayerItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](p_, objc.Sel("replaceCurrentItemWithPlayerItem:"), item)
 }
 
 // Cancels any pending preroll requests and invokes the corresponding completion handlers, if present. [Full Topic]
@@ -256,7 +256,7 @@ func (p_ Player) AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundati
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390563-setmediaselectioncriteria?language=objc
 func (p_ Player) SetMediaSelectionCriteriaForMediaCharacteristic(criteria IPlayerMediaSelectionCriteria, mediaCharacteristic MediaCharacteristic) {
-	objc.Call[objc.Void](p_, objc.Sel("setMediaSelectionCriteria:forMediaCharacteristic:"), objc.Ptr(criteria), mediaCharacteristic)
+	objc.Call[objc.Void](p_, objc.Sel("setMediaSelectionCriteria:forMediaCharacteristic:"), criteria, mediaCharacteristic)
 }
 
 // Requests the periodic invocation of a given block during playback to report changing time. [Full Topic]
@@ -352,15 +352,15 @@ func (p_ Player) SetAppliesMediaSelectionCriteriaAutomatically(value bool) {
 // The audio playback volume for the player. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
-func (p_ Player) Volume() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("volume"))
+func (p_ Player) Volume() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("volume"))
 	return rv
 }
 
 // The audio playback volume for the player. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1390127-volume?language=objc
-func (p_ Player) SetVolume(value float64) {
+func (p_ Player) SetVolume(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setVolume:"), value)
 }
 
@@ -473,15 +473,15 @@ func (p_ Player) Status() PlayerStatus {
 // The current playback rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
-func (p_ Player) Rate() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("rate"))
+func (p_ Player) Rate() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("rate"))
 	return rv
 }
 
 // The current playback rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayer/1388846-rate?language=objc
-func (p_ Player) SetRate(value float64) {
+func (p_ Player) SetRate(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRate:"), value)
 }
 

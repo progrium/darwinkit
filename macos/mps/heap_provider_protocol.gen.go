@@ -36,7 +36,7 @@ func (h_ HeapProviderObject) HasNewHeapWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsheapprovider/3229861-newheapwithdescriptor?language=objc
 func (h_ HeapProviderObject) NewHeapWithDescriptor(descriptor metal.HeapDescriptor) metal.HeapObject {
-	rv := objc.Call[metal.HeapObject](h_, objc.Sel("newHeapWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[metal.HeapObject](h_, objc.Sel("newHeapWithDescriptor:"), descriptor)
 	return rv
 }
 

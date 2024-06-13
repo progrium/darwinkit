@@ -90,7 +90,7 @@ func (e_ ExtensionProviderProperties) Init() ExtensionProviderProperties {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionproviderproperties/3915922-setpropertystate?language=objc
 func (e_ ExtensionProviderProperties) SetPropertyStateForProperty(propertyState IExtensionPropertyState, property ExtensionProperty) {
-	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), objc.Ptr(propertyState), property)
+	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), propertyState, property)
 }
 
 // The provider name. [Full Topic]

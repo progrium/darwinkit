@@ -52,7 +52,7 @@ func NewDataAssetWithName(name DataAssetName) DataAsset {
 }
 
 func (d_ DataAsset) InitWithNameBundle(name DataAssetName, bundle foundation.IBundle) DataAsset {
-	rv := objc.Call[DataAsset](d_, objc.Sel("initWithName:bundle:"), name, objc.Ptr(bundle))
+	rv := objc.Call[DataAsset](d_, objc.Sel("initWithName:bundle:"), name, bundle)
 	return rv
 }
 

@@ -36,7 +36,7 @@ func ExtensionPropertyStateFrom(ptr unsafe.Pointer) ExtensionPropertyState {
 }
 
 func (ec _ExtensionPropertyStateClass) PropertyStateWithValue(value objc.IObject) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:"), objc.Ptr(value))
+	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:"), value)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func ExtensionPropertyState_PropertyStateWithValue(value objc.IObject) Extension
 }
 
 func (e_ ExtensionPropertyState) InitWithValue(value objc.IObject) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:"), objc.Ptr(value))
+	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:"), value)
 	return rv
 }
 
@@ -62,7 +62,7 @@ func NewExtensionPropertyStateWithValue(value objc.IObject) ExtensionPropertySta
 }
 
 func (e_ ExtensionPropertyState) InitWithValueAttributes(value objc.IObject, attributes IExtensionPropertyAttributes) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:attributes:"), objc.Ptr(value), objc.Ptr(attributes))
+	rv := objc.Call[ExtensionPropertyState](e_, objc.Sel("initWithValue:attributes:"), value, attributes)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func NewExtensionPropertyStateWithValueAttributes(value objc.IObject, attributes
 }
 
 func (ec _ExtensionPropertyStateClass) PropertyStateWithValueAttributes(value objc.IObject, attributes IExtensionPropertyAttributes) ExtensionPropertyState {
-	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:attributes:"), objc.Ptr(value), objc.Ptr(attributes))
+	rv := objc.Call[ExtensionPropertyState](ec, objc.Sel("propertyStateWithValue:attributes:"), value, attributes)
 	return rv
 }
 

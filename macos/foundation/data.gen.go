@@ -20,7 +20,7 @@ type IData interface {
 	objc.IObject
 	GetBytesRange(buffer unsafe.Pointer, range_ Range)
 	SubdataWithRange(range_ Range) []byte
-	WriteToURLOptionsError(url IURL, writeOptionsMask DataWritingOptions, errorPtr IError) bool
+	WriteToURLOptionsError(url IURL, writeOptionsMask DataWritingOptions, errorPtr unsafe.Pointer) bool
 	WriteToFileAtomically(path string, useAuxiliaryFile bool) bool
 	RangeOfDataOptionsRange(dataToFind []byte, mask DataSearchOptions, searchRange Range) Range
 	WriteToURLAtomically(url IURL, atomically bool) bool
@@ -28,7 +28,7 @@ type IData interface {
 	Base64EncodedStringWithOptions(options DataBase64EncodingOptions) string
 	EnumerateByteRangesUsingBlock(block func(bytes unsafe.Pointer, byteRange Range, stop *bool))
 	GetBytesLength(buffer unsafe.Pointer, length uint)
-	WriteToFileOptionsError(path string, writeOptionsMask DataWritingOptions, errorPtr IError) bool
+	WriteToFileOptionsError(path string, writeOptionsMask DataWritingOptions, errorPtr unsafe.Pointer) bool
 	Base64EncodedDataWithOptions(options DataBase64EncodingOptions) []byte
 	Description() string
 	Length() uint
@@ -48,15 +48,15 @@ func DataFrom(ptr unsafe.Pointer) Data {
 	}
 }
 
-func (dc _DataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
-	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (dc _DataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
+	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object by reading every byte from the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
-func Data_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
+func Data_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
 	return DataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 }
 
@@ -98,15 +98,15 @@ func Data_DataWithData(data []byte) Data {
 	return DataClass.DataWithData(data)
 }
 
-func (dc _DataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) Data {
-	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (dc _DataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
+	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object containing the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547238-datawithcontentsofurl?language=objc
-func Data_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) Data {
+func Data_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
 	return DataClass.DataWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 }
 
@@ -152,29 +152,29 @@ func NewDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, length uint,
 	return instance
 }
 
-func (d_ Data) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) Data {
-	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (d_ Data) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
+	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1407864-initwithcontentsofurl?language=objc
-func NewDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) Data {
+func NewDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
 	instance := DataClass.Alloc().InitWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
 }
 
-func (d_ Data) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
-	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (d_ Data) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
+	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func NewDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) Data {
+func NewDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) Data {
 	instance := DataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
@@ -193,7 +193,7 @@ func Data_DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) Data {
 }
 
 func (d_ Data) InitWithContentsOfURL(url IURL) Data {
-	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[Data](d_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -299,7 +299,7 @@ func NewDataWithData(data []byte) Data {
 }
 
 func (dc _DataClass) DataWithContentsOfURL(url IURL) Data {
-	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[Data](dc, objc.Sel("dataWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -310,29 +310,29 @@ func Data_DataWithContentsOfURL(url IURL) Data {
 	return DataClass.DataWithContentsOfURL(url)
 }
 
-func (d_ Data) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
-	rv := objc.Call[Data](d_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (d_ Data) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) Data {
+	rv := objc.Call[Data](d_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by compressing the data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
-func Data_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
+func Data_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) Data {
 	instance := DataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (d_ Data) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
-	rv := objc.Call[Data](d_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (d_ Data) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) Data {
+	rv := objc.Call[Data](d_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by decompressing data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
-func Data_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) Data {
+func Data_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) Data {
 	instance := DataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
@@ -376,8 +376,8 @@ func (d_ Data) SubdataWithRange(range_ Range) []byte {
 // Writes the data object's bytes to the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1410595-writetourl?language=objc
-func (d_ Data) WriteToURLOptionsError(url IURL, writeOptionsMask DataWritingOptions, errorPtr IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToURL:options:error:"), objc.Ptr(url), writeOptionsMask, objc.Ptr(errorPtr))
+func (d_ Data) WriteToURLOptionsError(url IURL, writeOptionsMask DataWritingOptions, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeToURL:options:error:"), url, writeOptionsMask, errorPtr)
 	return rv
 }
 
@@ -401,7 +401,7 @@ func (d_ Data) RangeOfDataOptionsRange(dataToFind []byte, mask DataSearchOptions
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1415134-writetourl?language=objc
 func (d_ Data) WriteToURLAtomically(url IURL, atomically bool) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToURL:atomically:"), objc.Ptr(url), atomically)
+	rv := objc.Call[bool](d_, objc.Sel("writeToURL:atomically:"), url, atomically)
 	return rv
 }
 
@@ -438,8 +438,8 @@ func (d_ Data) GetBytesLength(buffer unsafe.Pointer, length uint) {
 // Writes the data object’s bytes to the file specified by a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1414800-writetofile?language=objc
-func (d_ Data) WriteToFileOptionsError(path string, writeOptionsMask DataWritingOptions, errorPtr IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToFile:options:error:"), path, writeOptionsMask, objc.Ptr(errorPtr))
+func (d_ Data) WriteToFileOptionsError(path string, writeOptionsMask DataWritingOptions, errorPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeToFile:options:error:"), path, writeOptionsMask, errorPtr)
 	return rv
 }
 

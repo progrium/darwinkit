@@ -76,7 +76,7 @@ func (a_ AssetWriterDelegateObject) HasAssetWriterDidOutputSegmentDataSegmentTyp
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546592-assetwriter?language=objc
 func (a_ AssetWriterDelegateObject) AssetWriterDidOutputSegmentDataSegmentType(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType) {
-	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:"), objc.Ptr(writer), segmentData, segmentType)
+	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:"), writer, segmentData, segmentType)
 }
 
 func (a_ AssetWriterDelegateObject) HasAssetWriterDidOutputSegmentDataSegmentTypeSegmentReport() bool {
@@ -87,5 +87,5 @@ func (a_ AssetWriterDelegateObject) HasAssetWriterDidOutputSegmentDataSegmentTyp
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterdelegate/3546593-assetwriter?language=objc
 func (a_ AssetWriterDelegateObject) AssetWriterDidOutputSegmentDataSegmentTypeSegmentReport(writer AssetWriter, segmentData []byte, segmentType AssetSegmentType, segmentReport AssetSegmentReport) {
-	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:segmentReport:"), objc.Ptr(writer), segmentData, segmentType, objc.Ptr(segmentReport))
+	objc.Call[objc.Void](a_, objc.Sel("assetWriter:didOutputSegmentData:segmentType:segmentReport:"), writer, segmentData, segmentType, segmentReport)
 }

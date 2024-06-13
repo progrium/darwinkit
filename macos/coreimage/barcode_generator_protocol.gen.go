@@ -35,7 +35,7 @@ func (b_ BarcodeGeneratorObject) HasSetBarcodeDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarcodegenerator/3228068-barcodedescriptor?language=objc
 func (b_ BarcodeGeneratorObject) SetBarcodeDescriptor(value BarcodeDescriptor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBarcodeDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBarcodeDescriptor:"), value)
 }
 
 func (b_ BarcodeGeneratorObject) HasBarcodeDescriptor() bool {

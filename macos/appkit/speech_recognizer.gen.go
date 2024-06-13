@@ -101,7 +101,7 @@ func (s_ SpeechRecognizer) SetDelegate(value PSpeechRecognizerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsspeechrecognizer/1528171-delegate?language=objc
 func (s_ SpeechRecognizer) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The title of the commands section in the Speech Commands window or nil if there is no title. [Full Topic]

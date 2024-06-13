@@ -19,7 +19,7 @@ type _NibClass struct {
 // An interface definition for the [Nib] class.
 type INib interface {
 	objc.IObject
-	InstantiateWithOwnerTopLevelObjects(owner objc.IObject, topLevelObjects []objc.IObject) bool
+	InstantiateWithOwnerTopLevelObjects(owner objc.IObject, topLevelObjects unsafe.Pointer) bool
 }
 
 // An object wrapper, or container, for an Interface Builder nib file. [Full Topic]
@@ -36,7 +36,7 @@ func NibFrom(ptr unsafe.Pointer) Nib {
 }
 
 func (n_ Nib) InitWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
-	rv := objc.Call[Nib](n_, objc.Sel("initWithNibData:bundle:"), nibData, objc.Ptr(bundle))
+	rv := objc.Call[Nib](n_, objc.Sel("initWithNibData:bundle:"), nibData, bundle)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewNibWithNibDataBundle(nibData []byte, bundle foundation.IBundle) Nib {
 }
 
 func (n_ Nib) InitWithNibNamedBundle(nibName NibName, bundle foundation.IBundle) Nib {
-	rv := objc.Call[Nib](n_, objc.Sel("initWithNibNamed:bundle:"), nibName, objc.Ptr(bundle))
+	rv := objc.Call[Nib](n_, objc.Sel("initWithNibNamed:bundle:"), nibName, bundle)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (n_ Nib) Init() Nib {
 // Instantiates objects in the nib file with the specified owner. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsnib/1527173-instantiatewithowner?language=objc
-func (n_ Nib) InstantiateWithOwnerTopLevelObjects(owner objc.IObject, topLevelObjects []objc.IObject) bool {
+func (n_ Nib) InstantiateWithOwnerTopLevelObjects(owner objc.IObject, topLevelObjects unsafe.Pointer) bool {
 	rv := objc.Call[bool](n_, objc.Sel("instantiateWithOwner:topLevelObjects:"), owner, topLevelObjects)
 	return rv
 }

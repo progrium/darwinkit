@@ -54,7 +54,7 @@ func (e_ ExistsCommand) Init() ExistsCommand {
 }
 
 func (e_ ExistsCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) ExistsCommand {
-	rv := objc.Call[ExistsCommand](e_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[ExistsCommand](e_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

@@ -31,10 +31,10 @@ type ICNNLoss interface {
 	LossType() CNNLossType
 	ReductionType() CNNReductionType
 	NumberOfClasses() uint
-	Delta() float64
-	Weight() float64
-	LabelSmoothing() float64
-	Epsilon() float64
+	Delta() float32
+	Weight() float32
+	LabelSmoothing() float32
+	Epsilon() float32
 	ReduceAcrossBatch() bool
 }
 
@@ -53,7 +53,7 @@ func CNNLossFrom(ptr unsafe.Pointer) CNNLoss {
 
 func (c_ CNNLoss) InitWithDeviceLossDescriptor(device metal.PDevice, lossDescriptor ICNNLossDescriptor) CNNLoss {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLoss](c_, objc.Sel("initWithDevice:lossDescriptor:"), po0, objc.Ptr(lossDescriptor))
+	rv := objc.Call[CNNLoss](c_, objc.Sel("initWithDevice:lossDescriptor:"), po0, lossDescriptor)
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (c_ CNNLoss) EncodeBatchToCommandBufferSourceImagesLabels(commandBuffer met
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951839-encodebatchtocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeBatchToCommandBufferObjectSourceImagesLabels(commandBufferObject objc.IObject, sourceImage *foundation.Array, labels *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:"), objc.Ptr(commandBufferObject), sourceImage, labels)
+	rv := objc.Call[*foundation.Array](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:"), commandBufferObject, sourceImage, labels)
 	return rv
 }
 
@@ -138,14 +138,14 @@ func (c_ CNNLoss) EncodeBatchToCommandBufferObjectSourceImagesLabels(commandBuff
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951843-encodetocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeToCommandBufferSourceImageLabelsDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, labels ICNNLossLabels, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), po0, objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), po0, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951843-encodetocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeToCommandBufferObjectSourceImageLabelsDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, labels ICNNLossLabels, destinationImage IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(labels), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:destinationImage:"), commandBufferObject, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
@@ -160,7 +160,7 @@ func (c_ CNNLoss) EncodeBatchToCommandBufferSourceImagesLabelsDestinationImages(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951846-encodebatchtocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsDestinationImages(commandBufferObject objc.IObject, sourceImage *foundation.Array, labels *foundation.Array, destinationImage *foundation.Array) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:destinationImages:"), objc.Ptr(commandBufferObject), sourceImage, labels, destinationImage)
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:destinationImages:"), commandBufferObject, sourceImage, labels, destinationImage)
 }
 
 //	[Full Topic]
@@ -168,7 +168,7 @@ func (c_ CNNLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsDestinationI
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951838-encodetocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeToCommandBufferSourceImageLabels(commandBuffer metal.PCommandBuffer, sourceImage IImage, labels ICNNLossLabels) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), po0, objc.Ptr(sourceImage), objc.Ptr(labels))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), po0, sourceImage, labels)
 	return rv
 }
 
@@ -176,7 +176,7 @@ func (c_ CNNLoss) EncodeToCommandBufferSourceImageLabels(commandBuffer metal.PCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2951838-encodetocommandbuffer?language=objc
 func (c_ CNNLoss) EncodeToCommandBufferObjectSourceImageLabels(commandBufferObject objc.IObject, sourceImage IImage, labels ICNNLossLabels) Image {
-	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(labels))
+	rv := objc.Call[Image](c_, objc.Sel("encodeToCommandBuffer:sourceImage:labels:"), commandBufferObject, sourceImage, labels)
 	return rv
 }
 
@@ -207,32 +207,32 @@ func (c_ CNNLoss) NumberOfClasses() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2942360-delta?language=objc
-func (c_ CNNLoss) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNLoss) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2942387-weight?language=objc
-func (c_ CNNLoss) Weight() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("weight"))
+func (c_ CNNLoss) Weight() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2942358-labelsmoothing?language=objc
-func (c_ CNNLoss) LabelSmoothing() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("labelSmoothing"))
+func (c_ CNNLoss) LabelSmoothing() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("labelSmoothing"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnloss/2942371-epsilon?language=objc
-func (c_ CNNLoss) Epsilon() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("epsilon"))
+func (c_ CNNLoss) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 

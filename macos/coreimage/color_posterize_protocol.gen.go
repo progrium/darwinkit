@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize?language=objc
 type PColorPosterize interface {
 	// optional
-	SetLevels(value float64)
+	SetLevels(value float32)
 	HasSetLevels() bool
 
 	// optional
-	Levels() float64
+	Levels() float32
 	HasLevels() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (c_ ColorPosterizeObject) HasSetLevels() bool {
 // The number of brightness levels to use for each color component. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
-func (c_ ColorPosterizeObject) SetLevels(value float64) {
+func (c_ ColorPosterizeObject) SetLevels(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setLevels:"), value)
 }
 
@@ -53,8 +53,8 @@ func (c_ ColorPosterizeObject) HasLevels() bool {
 // The number of brightness levels to use for each color component. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228178-levels?language=objc
-func (c_ ColorPosterizeObject) Levels() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("levels"))
+func (c_ ColorPosterizeObject) Levels() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("levels"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (c_ ColorPosterizeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorposterize/3228177-inputimage?language=objc
 func (c_ ColorPosterizeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorPosterizeObject) HasInputImage() bool {

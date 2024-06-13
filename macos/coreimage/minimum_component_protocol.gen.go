@@ -35,7 +35,7 @@ func (m_ MinimumComponentObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciminimumcomponent/3228563-inputimage?language=objc
 func (m_ MinimumComponentObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MinimumComponentObject) HasInputImage() bool {

@@ -55,6 +55,6 @@ func (s_ ScrubberFlowLayoutDelegateObject) HasScrubberLayoutSizeForItemAtIndex()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberflowlayoutdelegate/2544630-scrubber?language=objc
 func (s_ ScrubberFlowLayoutDelegateObject) ScrubberLayoutSizeForItemAtIndex(scrubber Scrubber, layout ScrubberFlowLayout, itemIndex int) foundation.Size {
-	rv := objc.Call[foundation.Size](s_, objc.Sel("scrubber:layout:sizeForItemAtIndex:"), objc.Ptr(scrubber), objc.Ptr(layout), itemIndex)
+	rv := objc.Call[foundation.Size](s_, objc.Sel("scrubber:layout:sizeForItemAtIndex:"), scrubber, layout, itemIndex)
 	return rv
 }

@@ -62,7 +62,7 @@ func (c_ ContactFormatter) Init() ContactFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397744-delimiterforcontact?language=objc
 func (cc _ContactFormatterClass) DelimiterForContact(contact IContact) string {
-	rv := objc.Call[string](cc, objc.Sel("delimiterForContact:"), objc.Ptr(contact))
+	rv := objc.Call[string](cc, objc.Sel("delimiterForContact:"), contact)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func ContactFormatter_DelimiterForContact(contact IContact) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397754-stringfromcontact?language=objc
 func (c_ ContactFormatter) StringFromContact(contact IContact) string {
-	rv := objc.Call[string](c_, objc.Sel("stringFromContact:"), objc.Ptr(contact))
+	rv := objc.Call[string](c_, objc.Sel("stringFromContact:"), contact)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (c_ ContactFormatter) StringFromContact(contact IContact) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397733-attributedstringfromcontact?language=objc
 func (c_ ContactFormatter) AttributedStringFromContactDefaultAttributes(contact IContact, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](c_, objc.Sel("attributedStringFromContact:defaultAttributes:"), objc.Ptr(contact), attributes)
+	rv := objc.Call[foundation.AttributedString](c_, objc.Sel("attributedStringFromContact:defaultAttributes:"), contact, attributes)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (c_ ContactFormatter) AttributedStringFromContactDefaultAttributes(contact 
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397750-stringfromcontact?language=objc
 func (cc _ContactFormatterClass) StringFromContactStyle(contact IContact, style ContactFormatterStyle) string {
-	rv := objc.Call[string](cc, objc.Sel("stringFromContact:style:"), objc.Ptr(contact), style)
+	rv := objc.Call[string](cc, objc.Sel("stringFromContact:style:"), contact, style)
 	return rv
 }
 
@@ -123,7 +123,7 @@ func ContactFormatter_DescriptorForRequiredKeysForStyle(style ContactFormatterSt
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397748-attributedstringfromcontact?language=objc
 func (cc _ContactFormatterClass) AttributedStringFromContactStyleDefaultAttributes(contact IContact, style ContactFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](cc, objc.Sel("attributedStringFromContact:style:defaultAttributes:"), objc.Ptr(contact), style, attributes)
+	rv := objc.Call[foundation.AttributedString](cc, objc.Sel("attributedStringFromContact:style:defaultAttributes:"), contact, style, attributes)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func ContactFormatter_AttributedStringFromContactStyleDefaultAttributes(contact 
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactformatter/1397731-nameorderforcontact?language=objc
 func (cc _ContactFormatterClass) NameOrderForContact(contact IContact) ContactDisplayNameOrder {
-	rv := objc.Call[ContactDisplayNameOrder](cc, objc.Sel("nameOrderForContact:"), objc.Ptr(contact))
+	rv := objc.Call[ContactDisplayNameOrder](cc, objc.Sel("nameOrderForContact:"), contact)
 	return rv
 }
 

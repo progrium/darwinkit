@@ -22,7 +22,7 @@ type IMutableOrderedSet interface {
 	RemoveObject(object objc.IObject)
 	MinusOrderedSet(other IOrderedSet)
 	UnionOrderedSet(other IOrderedSet)
-	ReplaceObjectsInRangeWithObjectsCount(range_ Range, objects objc.IObject, count uint)
+	ReplaceObjectsInRangeWithObjectsCount(range_ Range, objects unsafe.Pointer, count uint)
 	ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject)
 	ExchangeObjectAtIndexWithObjectAtIndex(idx1 uint, idx2 uint)
 	ApplyDifference(difference IOrderedCollectionDifference)
@@ -46,7 +46,7 @@ type IMutableOrderedSet interface {
 	RemoveObjectsInArray(array []objc.IObject)
 	RemoveObjectsInRange(range_ Range)
 	MinusSet(other ISet)
-	AddObjectsCount(objects objc.IObject, count uint)
+	AddObjectsCount(objects unsafe.Pointer, count uint)
 	InsertObjectAtIndex(object objc.IObject, idx uint)
 }
 
@@ -109,20 +109,20 @@ func NewMutableOrderedSet() MutableOrderedSet {
 	return MutableOrderedSetClass.New()
 }
 
-func (mc _MutableOrderedSetClass) OrderedSetWithObjectsCount(objects objc.IObject, cnt uint) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:count:"), objc.Ptr(objects), cnt)
+func (mc _MutableOrderedSetClass) OrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Creates and returns a set containing a specified number of objects from a given C array of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1543334-orderedsetwithobjects?language=objc
-func MutableOrderedSet_OrderedSetWithObjectsCount(objects objc.IObject, cnt uint) MutableOrderedSet {
+func MutableOrderedSet_OrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
 	return MutableOrderedSetClass.OrderedSetWithObjectsCount(objects, cnt)
 }
 
 func (m_ MutableOrderedSet) InitWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:copyItems:"), objc.Ptr(set), flag)
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:copyItems:"), set, flag)
 	return rv
 }
 
@@ -136,7 +136,7 @@ func NewMutableOrderedSetWithSetCopyItems(set ISet, flag bool) MutableOrderedSet
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithSetCopyItems(set ISet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithSet:copyItems:"), objc.Ptr(set), flag)
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithSet:copyItems:"), set, flag)
 	return rv
 }
 
@@ -148,7 +148,7 @@ func MutableOrderedSet_OrderedSetWithSetCopyItems(set ISet, flag bool) MutableOr
 }
 
 func (m_ MutableOrderedSet) InitWithObject(object objc.IObject) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObject:"), objc.Ptr(object))
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObject:"), object)
 	return rv
 }
 
@@ -188,7 +188,7 @@ func MutableOrderedSet_OrderedSetWithArray(array []objc.IObject) MutableOrderedS
 }
 
 func (m_ MutableOrderedSet) InitWithSet(set ISet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:"), objc.Ptr(set))
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithSet:"), set)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func NewMutableOrderedSetWithSet(set ISet) MutableOrderedSet {
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:"), objc.Ptr(set))
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:"), set)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func MutableOrderedSet_OrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedS
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithObject(object objc.IObject) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObject:"), objc.Ptr(object))
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObject:"), object)
 	return rv
 }
 
@@ -226,7 +226,7 @@ func MutableOrderedSet_OrderedSetWithObject(object objc.IObject) MutableOrderedS
 }
 
 func (m_ MutableOrderedSet) InitWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:range:copyItems:"), objc.Ptr(set), range_, flag)
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:range:copyItems:"), set, range_, flag)
 	return rv
 }
 
@@ -252,7 +252,7 @@ func MutableOrderedSet_OrderedSet() MutableOrderedSet {
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithOrderedSetRangeCopyItems(set IOrderedSet, range_ Range, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:range:copyItems:"), objc.Ptr(set), range_, flag)
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithOrderedSet:range:copyItems:"), set, range_, flag)
 	return rv
 }
 
@@ -276,7 +276,7 @@ func MutableOrderedSet_OrderedSetWithArrayRangeCopyItems(array []objc.IObject, r
 }
 
 func (m_ MutableOrderedSet) InitWithOrderedSet(set IOrderedSet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:"), objc.Ptr(set))
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:"), set)
 	return rv
 }
 
@@ -290,7 +290,7 @@ func NewMutableOrderedSetWithOrderedSet(set IOrderedSet) MutableOrderedSet {
 }
 
 func (m_ MutableOrderedSet) InitWithOrderedSetCopyItems(set IOrderedSet, flag bool) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:copyItems:"), objc.Ptr(set), flag)
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithOrderedSet:copyItems:"), set, flag)
 	return rv
 }
 
@@ -332,7 +332,7 @@ func NewMutableOrderedSetWithArrayRangeCopyItems(set []objc.IObject, range_ Rang
 }
 
 func (m_ MutableOrderedSet) InitWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -346,7 +346,7 @@ func NewMutableOrderedSetWithObjects(firstObj objc.IObject, args ...any) Mutable
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithObjects(firstObj objc.IObject, args ...any) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -358,7 +358,7 @@ func MutableOrderedSet_OrderedSetWithObjects(firstObj objc.IObject, args ...any)
 }
 
 func (mc _MutableOrderedSetClass) OrderedSetWithSet(set ISet) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithSet:"), objc.Ptr(set))
+	rv := objc.Call[MutableOrderedSet](mc, objc.Sel("orderedSetWithSet:"), set)
 	return rv
 }
 
@@ -369,15 +369,15 @@ func MutableOrderedSet_OrderedSetWithSet(set ISet) MutableOrderedSet {
 	return MutableOrderedSetClass.OrderedSetWithSet(set)
 }
 
-func (m_ MutableOrderedSet) InitWithObjectsCount(objects objc.IObject, cnt uint) MutableOrderedSet {
-	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:count:"), objc.Ptr(objects), cnt)
+func (m_ MutableOrderedSet) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
+	rv := objc.Call[MutableOrderedSet](m_, objc.Sel("initWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Initializes a newly allocated set with a specified number of objects from a given C array of objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedset/1411910-initwithobjects?language=objc
-func NewMutableOrderedSetWithObjectsCount(objects objc.IObject, cnt uint) MutableOrderedSet {
+func NewMutableOrderedSetWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableOrderedSet {
 	instance := MutableOrderedSetClass.Alloc().InitWithObjectsCount(objects, cnt)
 	instance.Autorelease()
 	return instance
@@ -387,42 +387,42 @@ func NewMutableOrderedSetWithObjectsCount(objects objc.IObject, cnt uint) Mutabl
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408009-addobject?language=objc
 func (m_ MutableOrderedSet) AddObject(object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("addObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("addObject:"), object)
 }
 
 // Removes a given object from the mutable ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416776-removeobject?language=objc
 func (m_ MutableOrderedSet) RemoveObject(object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), object)
 }
 
 // Removes each object in another given ordered set from the receiving mutable ordered set, if present. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1407987-minusorderedset?language=objc
 func (m_ MutableOrderedSet) MinusOrderedSet(other IOrderedSet) {
-	objc.Call[objc.Void](m_, objc.Sel("minusOrderedSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("minusOrderedSet:"), other)
 }
 
 // Adds each object in another given ordered set to the receiving mutable ordered set, if not present. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410973-unionorderedset?language=objc
 func (m_ MutableOrderedSet) UnionOrderedSet(other IOrderedSet) {
-	objc.Call[objc.Void](m_, objc.Sel("unionOrderedSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("unionOrderedSet:"), other)
 }
 
 // Replaces the objects in the receiving mutable ordered set at the range with the specified number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1415340-replaceobjectsinrange?language=objc
-func (m_ MutableOrderedSet) ReplaceObjectsInRangeWithObjectsCount(range_ Range, objects objc.IObject, count uint) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsInRange:withObjects:count:"), range_, objc.Ptr(objects), count)
+func (m_ MutableOrderedSet) ReplaceObjectsInRangeWithObjectsCount(range_ Range, objects unsafe.Pointer, count uint) {
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsInRange:withObjects:count:"), range_, objects, count)
 }
 
 // Replaces the objects at the specified indexes with the new objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416127-replaceobjectsatindexes?language=objc
 func (m_ MutableOrderedSet) ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), objc.Ptr(indexes), objects)
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), indexes, objects)
 }
 
 // Exchanges the object at the specified index with the object at the other index. [Full Topic]
@@ -436,28 +436,28 @@ func (m_ MutableOrderedSet) ExchangeObjectAtIndexWithObjectAtIndex(idx1 uint, id
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/3152194-applydifference?language=objc
 func (m_ MutableOrderedSet) ApplyDifference(difference IOrderedCollectionDifference) {
-	objc.Call[objc.Void](m_, objc.Sel("applyDifference:"), objc.Ptr(difference))
+	objc.Call[objc.Void](m_, objc.Sel("applyDifference:"), difference)
 }
 
 // Replaces the given object at the specified index of the mutable ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1543323-setobject?language=objc
 func (m_ MutableOrderedSet) SetObjectAtIndexedSubscript(obj objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(obj), idx)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
 }
 
 // Removes from the receiving ordered set each object that isn’t a member of another set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1415257-intersectset?language=objc
 func (m_ MutableOrderedSet) IntersectSet(other ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("intersectSet:"), other)
 }
 
 // Removes from the receiving ordered set each object that isn’t a member of another ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408541-intersectorderedset?language=objc
 func (m_ MutableOrderedSet) IntersectOrderedSet(other IOrderedSet) {
-	objc.Call[objc.Void](m_, objc.Sel("intersectOrderedSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("intersectOrderedSet:"), other)
 }
 
 // Removes a the object at the specified index from the mutable ordered set. [Full Topic]
@@ -478,7 +478,7 @@ func (m_ MutableOrderedSet) SortUsingComparator(cmptr Comparator) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1418161-removeobjectsatindexes?language=objc
 func (m_ MutableOrderedSet) RemoveObjectsAtIndexes(indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), indexes)
 }
 
 // Sorts the specified range of the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
@@ -499,14 +499,14 @@ func (m_ MutableOrderedSet) RemoveAllObjects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1410287-insertobjects?language=objc
 func (m_ MutableOrderedSet) InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, objc.Ptr(indexes))
+	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, indexes)
 }
 
 // Appends or replaces the object at the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411158-setobject?language=objc
 func (m_ MutableOrderedSet) SetObjectAtIndex(obj objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndex:"), objc.Ptr(obj), idx)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndex:"), obj, idx)
 }
 
 // Sorts the mutable ordered set using the specified options and the comparison method specified by a given comparator block. [Full Topic]
@@ -527,28 +527,28 @@ func (m_ MutableOrderedSet) SortUsingDescriptors(sortDescriptors []ISortDescript
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1413853-unionset?language=objc
 func (m_ MutableOrderedSet) UnionSet(other ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("unionSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("unionSet:"), other)
 }
 
 // Moves the objects at the specified indexes to the new location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1417677-moveobjectsatindexes?language=objc
 func (m_ MutableOrderedSet) MoveObjectsAtIndexesToIndex(indexes IIndexSet, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("moveObjectsAtIndexes:toIndex:"), objc.Ptr(indexes), idx)
+	objc.Call[objc.Void](m_, objc.Sel("moveObjectsAtIndexes:toIndex:"), indexes, idx)
 }
 
 // Replaces the object at the specified index with the new object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1412115-replaceobjectatindex?language=objc
 func (m_ MutableOrderedSet) ReplaceObjectAtIndexWithObject(idx uint, object objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), idx, objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), idx, object)
 }
 
 // Evaluates a given predicate against the mutable ordered set’s content and leaves only objects that match. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1408348-filterusingpredicate?language=objc
 func (m_ MutableOrderedSet) FilterUsingPredicate(p IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), objc.Ptr(p))
+	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), p)
 }
 
 // Appends to the end of the mutable ordered set each object contained in a given array that is not already a member. [Full Topic]
@@ -576,19 +576,19 @@ func (m_ MutableOrderedSet) RemoveObjectsInRange(range_ Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1411229-minusset?language=objc
 func (m_ MutableOrderedSet) MinusSet(other ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("minusSet:"), objc.Ptr(other))
+	objc.Call[objc.Void](m_, objc.Sel("minusSet:"), other)
 }
 
 // Appends the given number of objects from a given C array to the end of the mutable ordered set. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1413840-addobjects?language=objc
-func (m_ MutableOrderedSet) AddObjectsCount(objects objc.IObject, count uint) {
-	objc.Call[objc.Void](m_, objc.Sel("addObjects:count:"), objc.Ptr(objects), count)
+func (m_ MutableOrderedSet) AddObjectsCount(objects unsafe.Pointer, count uint) {
+	objc.Call[objc.Void](m_, objc.Sel("addObjects:count:"), objects, count)
 }
 
 // Inserts the given object at the specified index of the mutable ordered set, if it is not already a member. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableorderedset/1416634-insertobject?language=objc
 func (m_ MutableOrderedSet) InsertObjectAtIndex(object objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), objc.Ptr(object), idx)
+	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), object, idx)
 }

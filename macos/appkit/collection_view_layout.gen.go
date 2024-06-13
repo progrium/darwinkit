@@ -102,14 +102,14 @@ func (c_ CollectionViewLayout) IndexPathsToDeleteForSupplementaryViewOfKind(elem
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533837-registerclass?language=objc
 func (c_ CollectionViewLayout) RegisterClassForDecorationViewOfKind(viewClass objc.IClass, elementKind CollectionViewDecorationElementKind) {
-	objc.Call[objc.Void](c_, objc.Sel("registerClass:forDecorationViewOfKind:"), objc.Ptr(viewClass), elementKind)
+	objc.Call[objc.Void](c_, objc.Sel("registerClass:forDecorationViewOfKind:"), viewClass, elementKind)
 }
 
 // Invalidates specific parts of the layout using the specified context object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533282-invalidatelayoutwithcontext?language=objc
 func (c_ CollectionViewLayout) InvalidateLayoutWithContext(context ICollectionViewLayoutInvalidationContext) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateLayoutWithContext:"), objc.Ptr(context))
+	objc.Call[objc.Void](c_, objc.Sel("invalidateLayoutWithContext:"), context)
 }
 
 // Returns the offset value to use for the collection view’s content at the end of scrolling. [Full Topic]
@@ -147,7 +147,7 @@ func (c_ CollectionViewLayout) ShouldInvalidateLayoutForBoundsChange(newBounds f
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535917-finallayoutattributesfordisappea?language=objc
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingDecorationElementOfKindAtIndexPath(elementKind CollectionViewDecorationElementKind, decorationIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath:"), elementKind, objc.Ptr(decorationIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingDecorationElementOfKind:atIndexPath:"), elementKind, decorationIndexPath)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (c_ CollectionViewLayout) FinalizeCollectionViewUpdates() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535536-shouldinvalidatelayoutforpreferr?language=objc
 func (c_ CollectionViewLayout) ShouldInvalidateLayoutForPreferredLayoutAttributesWithOriginalAttributes(preferredAttributes ICollectionViewLayoutAttributes, originalAttributes ICollectionViewLayoutAttributes) bool {
-	rv := objc.Call[bool](c_, objc.Sel("shouldInvalidateLayoutForPreferredLayoutAttributes:withOriginalAttributes:"), objc.Ptr(preferredAttributes), objc.Ptr(originalAttributes))
+	rv := objc.Call[bool](c_, objc.Sel("shouldInvalidateLayoutForPreferredLayoutAttributes:withOriginalAttributes:"), preferredAttributes, originalAttributes)
 	return rv
 }
 
@@ -170,7 +170,7 @@ func (c_ CollectionViewLayout) ShouldInvalidateLayoutForPreferredLayoutAttribute
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535405-registernib?language=objc
 func (c_ CollectionViewLayout) RegisterNibForDecorationViewOfKind(nib INib, elementKind CollectionViewDecorationElementKind) {
-	objc.Call[objc.Void](c_, objc.Sel("registerNib:forDecorationViewOfKind:"), objc.Ptr(nib), elementKind)
+	objc.Call[objc.Void](c_, objc.Sel("registerNib:forDecorationViewOfKind:"), nib, elementKind)
 }
 
 // Returns the index paths for any decoration views that the layout object wants to add to the collection view. [Full Topic]
@@ -214,7 +214,7 @@ func (c_ CollectionViewLayout) IndexPathsToInsertForSupplementaryViewOfKind(elem
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535331-initiallayoutattributesforappear?language=objc
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingSupplementaryElementOfKindAtIndexPath(elementKind CollectionViewSupplementaryElementKind, elementIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:"), elementKind, objc.Ptr(elementIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingSupplementaryElementOfKind:atIndexPath:"), elementKind, elementIndexPath)
 	return rv
 }
 
@@ -230,7 +230,7 @@ func (c_ CollectionViewLayout) TargetContentOffsetForProposedContentOffset(propo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1534298-layoutattributesforitematindexpa?language=objc
 func (c_ CollectionViewLayout) LayoutAttributesForItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForItemAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForItemAtIndexPath:"), indexPath)
 	return rv
 }
 
@@ -238,7 +238,7 @@ func (c_ CollectionViewLayout) LayoutAttributesForItemAtIndexPath(indexPath foun
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533317-finallayoutattributesfordisappea?language=objc
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingItemAtIndexPath(itemIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingItemAtIndexPath:"), objc.Ptr(itemIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingItemAtIndexPath:"), itemIndexPath)
 	return rv
 }
 
@@ -254,7 +254,7 @@ func (c_ CollectionViewLayout) LayoutAttributesForElementsInRect(rect foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1527929-layoutattributesfordecorationvie?language=objc
 func (c_ CollectionViewLayout) LayoutAttributesForDecorationViewOfKindAtIndexPath(elementKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForDecorationViewOfKind:atIndexPath:"), elementKind, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForDecorationViewOfKind:atIndexPath:"), elementKind, indexPath)
 	return rv
 }
 
@@ -262,14 +262,14 @@ func (c_ CollectionViewLayout) LayoutAttributesForDecorationViewOfKindAtIndexPat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533945-preparefortransitiontolayout?language=objc
 func (c_ CollectionViewLayout) PrepareForTransitionToLayout(newLayout ICollectionViewLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("prepareForTransitionToLayout:"), objc.Ptr(newLayout))
+	objc.Call[objc.Void](c_, objc.Sel("prepareForTransitionToLayout:"), newLayout)
 }
 
 // Returns the starting layout information for a decoration view being added to the collection view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535003-initiallayoutattributesforappear?language=objc
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingDecorationElementOfKindAtIndexPath(elementKind CollectionViewDecorationElementKind, decorationIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:"), elementKind, objc.Ptr(decorationIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingDecorationElementOfKind:atIndexPath:"), elementKind, decorationIndexPath)
 	return rv
 }
 
@@ -284,7 +284,7 @@ func (c_ CollectionViewLayout) InvalidateLayout() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535919-finallayoutattributesfordisappea?language=objc
 func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingSupplementaryElementOfKindAtIndexPath(elementKind CollectionViewSupplementaryElementKind, elementIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingSupplementaryElementOfKind:atIndexPath:"), elementKind, objc.Ptr(elementIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("finalLayoutAttributesForDisappearingSupplementaryElementOfKind:atIndexPath:"), elementKind, elementIndexPath)
 	return rv
 }
 
@@ -292,7 +292,7 @@ func (c_ CollectionViewLayout) FinalLayoutAttributesForDisappearingSupplementary
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1535343-invalidationcontextforpreferredl?language=objc
 func (c_ CollectionViewLayout) InvalidationContextForPreferredLayoutAttributesWithOriginalAttributes(preferredAttributes ICollectionViewLayoutAttributes, originalAttributes ICollectionViewLayoutAttributes) CollectionViewLayoutInvalidationContext {
-	rv := objc.Call[CollectionViewLayoutInvalidationContext](c_, objc.Sel("invalidationContextForPreferredLayoutAttributes:withOriginalAttributes:"), objc.Ptr(preferredAttributes), objc.Ptr(originalAttributes))
+	rv := objc.Call[CollectionViewLayoutInvalidationContext](c_, objc.Sel("invalidationContextForPreferredLayoutAttributes:withOriginalAttributes:"), preferredAttributes, originalAttributes)
 	return rv
 }
 
@@ -308,7 +308,7 @@ func (c_ CollectionViewLayout) LayoutAttributesForDropTargetAtPoint(pointInColle
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1534287-layoutattributesforsupplementary?language=objc
 func (c_ CollectionViewLayout) LayoutAttributesForSupplementaryViewOfKindAtIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForSupplementaryViewOfKind:atIndexPath:"), elementKind, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForSupplementaryViewOfKind:atIndexPath:"), elementKind, indexPath)
 	return rv
 }
 
@@ -316,7 +316,7 @@ func (c_ CollectionViewLayout) LayoutAttributesForSupplementaryViewOfKindAtIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533598-initiallayoutattributesforappear?language=objc
 func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingItemAtIndexPath(itemIndexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingItemAtIndexPath:"), objc.Ptr(itemIndexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("initialLayoutAttributesForAppearingItemAtIndexPath:"), itemIndexPath)
 	return rv
 }
 
@@ -324,14 +324,14 @@ func (c_ CollectionViewLayout) InitialLayoutAttributesForAppearingItemAtIndexPat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1533383-preparefortransitionfromlayout?language=objc
 func (c_ CollectionViewLayout) PrepareForTransitionFromLayout(oldLayout ICollectionViewLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("prepareForTransitionFromLayout:"), objc.Ptr(oldLayout))
+	objc.Call[objc.Void](c_, objc.Sel("prepareForTransitionFromLayout:"), oldLayout)
 }
 
 // Returns layout attributes for the inter-item gap at the specified location in your layout. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayout/1528296-layoutattributesforinteritemgapb?language=objc
 func (c_ CollectionViewLayout) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForInterItemGapBeforeIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
 	return rv
 }
 

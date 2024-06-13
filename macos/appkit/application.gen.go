@@ -204,7 +204,7 @@ func (a_ Application) OrderFrontStandardAboutPanelWithOptions(optionsDictionary 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428652-discardeventsmatchingmask?language=objc
 func (a_ Application) DiscardEventsMatchingMaskBeforeEvent(mask EventMask, lastEvent IEvent) {
-	objc.Call[objc.Void](a_, objc.Sel("discardEventsMatchingMask:beforeEvent:"), mask, objc.Ptr(lastEvent))
+	objc.Call[objc.Void](a_, objc.Sel("discardEventsMatchingMask:beforeEvent:"), mask, lastEvent)
 }
 
 // Miniaturizes all the receiver’s windows. [Full Topic]
@@ -254,7 +254,7 @@ func (a_ Application) RegisterUserInterfaceItemSearchHandler(handler PUserInterf
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1420818-registeruserinterfaceitemsearchh?language=objc
 func (a_ Application) RegisterUserInterfaceItemSearchHandlerObject(handlerObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("registerUserInterfaceItemSearchHandler:"), objc.Ptr(handlerObject))
+	objc.Call[objc.Void](a_, objc.Sel("registerUserInterfaceItemSearchHandler:"), handlerObject)
 }
 
 // Suppresses the usual window ordering in handling the most recent mouse-down event. [Full Topic]
@@ -318,7 +318,7 @@ func (a_ Application) RegisterForRemoteNotifications() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428422-updatewindowsitem?language=objc
 func (a_ Application) UpdateWindowsItem(win IWindow) {
-	objc.Call[objc.Void](a_, objc.Sel("updateWindowsItem:"), objc.Ptr(win))
+	objc.Call[objc.Void](a_, objc.Sel("updateWindowsItem:"), win)
 }
 
 // Searches for the string in the user interface. [Full Topic]
@@ -347,7 +347,7 @@ func (a_ Application) AbortModal() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1526233-restorewindowwithidentifier?language=objc
 func (a_ Application) RestoreWindowWithIdentifierStateCompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(arg0 Window, arg1 foundation.Error)) bool {
-	rv := objc.Call[bool](a_, objc.Sel("restoreWindowWithIdentifier:state:completionHandler:"), identifier, objc.Ptr(state), completionHandler)
+	rv := objc.Call[bool](a_, objc.Sel("restoreWindowWithIdentifier:state:completionHandler:"), identifier, state, completionHandler)
 	return rv
 }
 
@@ -376,7 +376,7 @@ func (a_ Application) OrderFrontCharacterPalette(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428485-nexteventmatchingmask?language=objc
 func (a_ Application) NextEventMatchingMaskUntilDateInModeDequeue(mask EventMask, expiration foundation.IDate, mode foundation.RunLoopMode, deqFlag bool) Event {
-	rv := objc.Call[Event](a_, objc.Sel("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, objc.Ptr(expiration), mode, deqFlag)
+	rv := objc.Call[Event](a_, objc.Sel("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, expiration, mode, deqFlag)
 	return rv
 }
 
@@ -384,7 +384,7 @@ func (a_ Application) NextEventMatchingMaskUntilDateInModeDequeue(mask EventMask
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428625-removewindowsitem?language=objc
 func (a_ Application) RemoveWindowsItem(win IWindow) {
-	objc.Call[objc.Void](a_, objc.Sel("removeWindowsItem:"), objc.Ptr(win))
+	objc.Call[objc.Void](a_, objc.Sel("removeWindowsItem:"), win)
 }
 
 // Runs a given modal session, as defined in a previous invocation of [appkit/nsapplication/beginmodalsessionforwindow]. [Full Topic]
@@ -399,7 +399,7 @@ func (a_ Application) RunModalSession(session ModalSession) ModalResponse {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428418-beginmodalsessionforwindow?language=objc
 func (a_ Application) BeginModalSessionForWindow(window IWindow) ModalSession {
-	rv := objc.Call[ModalSession](a_, objc.Sel("beginModalSessionForWindow:"), objc.Ptr(window))
+	rv := objc.Call[ModalSession](a_, objc.Sel("beginModalSessionForWindow:"), window)
 	return rv
 }
 
@@ -414,7 +414,7 @@ func (a_ Application) Unhide(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428436-runmodalforwindow?language=objc
 func (a_ Application) RunModalForWindow(window IWindow) ModalResponse {
-	rv := objc.Call[ModalResponse](a_, objc.Sel("runModalForWindow:"), objc.Ptr(window))
+	rv := objc.Call[ModalResponse](a_, objc.Sel("runModalForWindow:"), window)
 	return rv
 }
 
@@ -429,7 +429,7 @@ func (a_ Application) UnhideAllApplications(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428689-changewindowsitem?language=objc
 func (a_ Application) ChangeWindowsItemTitleFilename(win IWindow, string_ string, isFilename bool) {
-	objc.Call[objc.Void](a_, objc.Sel("changeWindowsItem:title:filename:"), objc.Ptr(win), string_, isFilename)
+	objc.Call[objc.Void](a_, objc.Sel("changeWindowsItem:title:filename:"), win, string_, isFilename)
 }
 
 // Returns the object that receives the action message specified by the given selector. [Full Topic]
@@ -451,7 +451,7 @@ func (a_ Application) ArrangeInFront(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428710-postevent?language=objc
 func (a_ Application) PostEventAtStart(event IEvent, flag bool) {
-	objc.Call[objc.Void](a_, objc.Sel("postEvent:atStart:"), objc.Ptr(event), flag)
+	objc.Call[objc.Void](a_, objc.Sel("postEvent:atStart:"), event, flag)
 }
 
 // If your project is properly registered, and the necessary keys have been set in the property list, this method launches Help Viewer and displays the first page of your app’s help book. [Full Topic]
@@ -472,7 +472,7 @@ func (a_ Application) Deactivate() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428359-sendevent?language=objc
 func (a_ Application) SendEvent(event IEvent) {
-	objc.Call[objc.Void](a_, objc.Sel("sendEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](a_, objc.Sel("sendEvent:"), event)
 }
 
 // Show or hides the interface for customizing the Touch Bar. [Full Topic]
@@ -515,7 +515,7 @@ func (a_ Application) Run() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428660-addwindowsitem?language=objc
 func (a_ Application) AddWindowsItemTitleFilename(win IWindow, string_ string, isFilename bool) {
-	objc.Call[objc.Void](a_, objc.Sel("addWindowsItem:title:filename:"), objc.Ptr(win), string_, isFilename)
+	objc.Call[objc.Void](a_, objc.Sel("addWindowsItem:title:filename:"), win, string_, isFilename)
 }
 
 // Creates and executes a new thread based on the specified target and selector. [Full Topic]
@@ -566,14 +566,14 @@ func (a_ Application) UnregisterUserInterfaceItemSearchHandler(handler PUserInte
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1420820-unregisteruserinterfaceitemsearc?language=objc
 func (a_ Application) UnregisterUserInterfaceItemSearchHandlerObject(handlerObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("unregisterUserInterfaceItemSearchHandler:"), objc.Ptr(handlerObject))
+	objc.Call[objc.Void](a_, objc.Sel("unregisterUserInterfaceItemSearchHandler:"), handlerObject)
 }
 
 // Logs a given exception by calling NSLog(). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428396-reportexception?language=objc
 func (a_ Application) ReportException(exception foundation.IException) {
-	objc.Call[objc.Void](a_, objc.Sel("reportException:"), objc.Ptr(exception))
+	objc.Call[objc.Void](a_, objc.Sel("reportException:"), exception)
 }
 
 // Attempts to modify the app’s activation policy. [Full Topic]
@@ -726,7 +726,7 @@ func (a_ Application) WindowsMenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428547-windowsmenu?language=objc
 func (a_ Application) SetWindowsMenu(value IMenu) {
-	objc.Call[objc.Void](a_, objc.Sel("setWindowsMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setWindowsMenu:"), value)
 }
 
 //	[Full Topic]
@@ -749,7 +749,7 @@ func (a_ Application) Appearance() Appearance {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/2967170-appearance?language=objc
 func (a_ Application) SetAppearance(value IAppearance) {
-	objc.Call[objc.Void](a_, objc.Sel("setAppearance:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAppearance:"), value)
 }
 
 // The window that currently receives keyboard events. [Full Topic]
@@ -811,7 +811,7 @@ func (a_ Application) MainMenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428634-mainmenu?language=objc
 func (a_ Application) SetMainMenu(value IMenu) {
-	objc.Call[objc.Void](a_, objc.Sel("setMainMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setMainMenu:"), value)
 }
 
 // The modal window displayed by the app. [Full Topic]
@@ -834,7 +834,7 @@ func (a_ Application) ServicesMenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428608-servicesmenu?language=objc
 func (a_ Application) SetServicesMenu(value IMenu) {
-	objc.Call[objc.Void](a_, objc.Sel("setServicesMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setServicesMenu:"), value)
 }
 
 // The object that provides the services the current app advertises in the Services menu of other apps. [Full Topic]
@@ -864,7 +864,7 @@ func (a_ Application) HelpMenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428644-helpmenu?language=objc
 func (a_ Application) SetHelpMenu(value IMenu) {
-	objc.Call[objc.Void](a_, objc.Sel("setHelpMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setHelpMenu:"), value)
 }
 
 // The image used for the app’s icon. [Full Topic]
@@ -879,7 +879,7 @@ func (a_ Application) ApplicationIconImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428744-applicationiconimage?language=objc
 func (a_ Application) SetApplicationIconImage(value IImage) {
-	objc.Call[objc.Void](a_, objc.Sel("setApplicationIconImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setApplicationIconImage:"), value)
 }
 
 // The app delegate object. [Full Topic]
@@ -903,7 +903,7 @@ func (a_ Application) SetDelegate(value PApplicationDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplication/1428705-delegate?language=objc
 func (a_ Application) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The appearance that AppKit uses to draw the app’s interface. [Full Topic]

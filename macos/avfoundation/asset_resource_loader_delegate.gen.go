@@ -143,7 +143,7 @@ func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderShouldWaitForRenewa
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloaderdelegate/1387058-resourceloader?language=objc
 func (a_ AssetResourceLoaderDelegateObject) ResourceLoaderShouldWaitForRenewalOfRequestedResource(resourceLoader AssetResourceLoader, renewalRequest AssetResourceRenewalRequest) bool {
-	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForRenewalOfRequestedResource:"), objc.Ptr(resourceLoader), objc.Ptr(renewalRequest))
+	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForRenewalOfRequestedResource:"), resourceLoader, renewalRequest)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderDidCancelLoadingReq
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloaderdelegate/1387722-resourceloader?language=objc
 func (a_ AssetResourceLoaderDelegateObject) ResourceLoaderDidCancelLoadingRequest(resourceLoader AssetResourceLoader, loadingRequest AssetResourceLoadingRequest) {
-	objc.Call[objc.Void](a_, objc.Sel("resourceLoader:didCancelLoadingRequest:"), objc.Ptr(resourceLoader), objc.Ptr(loadingRequest))
+	objc.Call[objc.Void](a_, objc.Sel("resourceLoader:didCancelLoadingRequest:"), resourceLoader, loadingRequest)
 }
 
 func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderDidCancelAuthenticationChallenge() bool {
@@ -166,7 +166,7 @@ func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderDidCancelAuthentica
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloaderdelegate/1387929-resourceloader?language=objc
 func (a_ AssetResourceLoaderDelegateObject) ResourceLoaderDidCancelAuthenticationChallenge(resourceLoader AssetResourceLoader, authenticationChallenge foundation.URLAuthenticationChallenge) {
-	objc.Call[objc.Void](a_, objc.Sel("resourceLoader:didCancelAuthenticationChallenge:"), objc.Ptr(resourceLoader), objc.Ptr(authenticationChallenge))
+	objc.Call[objc.Void](a_, objc.Sel("resourceLoader:didCancelAuthenticationChallenge:"), resourceLoader, authenticationChallenge)
 }
 
 func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderShouldWaitForResponseToAuthenticationChallenge() bool {
@@ -177,7 +177,7 @@ func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderShouldWaitForRespon
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloaderdelegate/1388736-resourceloader?language=objc
 func (a_ AssetResourceLoaderDelegateObject) ResourceLoaderShouldWaitForResponseToAuthenticationChallenge(resourceLoader AssetResourceLoader, authenticationChallenge foundation.URLAuthenticationChallenge) bool {
-	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForResponseToAuthenticationChallenge:"), objc.Ptr(resourceLoader), objc.Ptr(authenticationChallenge))
+	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForResponseToAuthenticationChallenge:"), resourceLoader, authenticationChallenge)
 	return rv
 }
 
@@ -189,6 +189,6 @@ func (a_ AssetResourceLoaderDelegateObject) HasResourceLoaderShouldWaitForLoadin
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloaderdelegate/1388121-resourceloader?language=objc
 func (a_ AssetResourceLoaderDelegateObject) ResourceLoaderShouldWaitForLoadingOfRequestedResource(resourceLoader AssetResourceLoader, loadingRequest AssetResourceLoadingRequest) bool {
-	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForLoadingOfRequestedResource:"), objc.Ptr(resourceLoader), objc.Ptr(loadingRequest))
+	rv := objc.Call[bool](a_, objc.Sel("resourceLoader:shouldWaitForLoadingOfRequestedResource:"), resourceLoader, loadingRequest)
 	return rv
 }

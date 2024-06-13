@@ -38,7 +38,7 @@ func OrderedCollectionDifferenceFrom(ptr unsafe.Pointer) OrderedCollectionDiffer
 }
 
 func (o_ OrderedCollectionDifference) InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjectsAdditionalChanges(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject, changes []IOrderedCollectionChange) OrderedCollectionDifference {
-	rv := objc.Call[OrderedCollectionDifference](o_, objc.Sel("initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:additionalChanges:"), objc.Ptr(inserts), insertedObjects, objc.Ptr(removes), removedObjects, changes)
+	rv := objc.Call[OrderedCollectionDifference](o_, objc.Sel("initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:additionalChanges:"), inserts, insertedObjects, removes, removedObjects, changes)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func OrderedCollectionDifference_InverseDifference() OrderedCollectionDifference
 }
 
 func (o_ OrderedCollectionDifference) InitWithInsertIndexesInsertedObjectsRemoveIndexesRemovedObjects(inserts IIndexSet, insertedObjects []objc.IObject, removes IIndexSet, removedObjects []objc.IObject) OrderedCollectionDifference {
-	rv := objc.Call[OrderedCollectionDifference](o_, objc.Sel("initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:"), objc.Ptr(inserts), insertedObjects, objc.Ptr(removes), removedObjects)
+	rv := objc.Call[OrderedCollectionDifference](o_, objc.Sel("initWithInsertIndexes:insertedObjects:removeIndexes:removedObjects:"), inserts, insertedObjects, removes, removedObjects)
 	return rv
 }
 

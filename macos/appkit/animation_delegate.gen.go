@@ -15,7 +15,7 @@ type PAnimationDelegate interface {
 	HasAnimationDidStop() bool
 
 	// optional
-	AnimationValueForProgress(animation Animation, progress AnimationProgress) float64
+	AnimationValueForProgress(animation Animation, progress AnimationProgress) float32
 	HasAnimationValueForProgress() bool
 
 	// optional
@@ -34,7 +34,7 @@ type PAnimationDelegate interface {
 // A delegate implementation builder for the [PAnimationDelegate] protocol.
 type AnimationDelegate struct {
 	_AnimationDidStop              func(animation Animation)
-	_AnimationValueForProgress     func(animation Animation, progress AnimationProgress) float64
+	_AnimationValueForProgress     func(animation Animation, progress AnimationProgress) float32
 	_AnimationDidReachProgressMark func(animation Animation, progress AnimationProgress)
 	_AnimationDidEnd               func(animation Animation)
 	_AnimationShouldStart          func(animation Animation) bool
@@ -64,14 +64,14 @@ func (di *AnimationDelegate) HasAnimationValueForProgress() bool {
 // Requests a custom curve value for the current progress value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1528965-animation?language=objc
-func (di *AnimationDelegate) SetAnimationValueForProgress(f func(animation Animation, progress AnimationProgress) float64) {
+func (di *AnimationDelegate) SetAnimationValueForProgress(f func(animation Animation, progress AnimationProgress) float32) {
 	di._AnimationValueForProgress = f
 }
 
 // Requests a custom curve value for the current progress value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1528965-animation?language=objc
-func (di *AnimationDelegate) AnimationValueForProgress(animation Animation, progress AnimationProgress) float64 {
+func (di *AnimationDelegate) AnimationValueForProgress(animation Animation, progress AnimationProgress) float32 {
 	return di._AnimationValueForProgress(animation, progress)
 }
 func (di *AnimationDelegate) HasAnimationDidReachProgressMark() bool {
@@ -142,7 +142,7 @@ func (a_ AnimationDelegateObject) HasAnimationDidStop() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1534155-animationdidstop?language=objc
 func (a_ AnimationDelegateObject) AnimationDidStop(animation Animation) {
-	objc.Call[objc.Void](a_, objc.Sel("animationDidStop:"), objc.Ptr(animation))
+	objc.Call[objc.Void](a_, objc.Sel("animationDidStop:"), animation)
 }
 
 func (a_ AnimationDelegateObject) HasAnimationValueForProgress() bool {
@@ -152,8 +152,8 @@ func (a_ AnimationDelegateObject) HasAnimationValueForProgress() bool {
 // Requests a custom curve value for the current progress value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1528965-animation?language=objc
-func (a_ AnimationDelegateObject) AnimationValueForProgress(animation Animation, progress AnimationProgress) float64 {
-	rv := objc.Call[float64](a_, objc.Sel("animation:valueForProgress:"), objc.Ptr(animation), progress)
+func (a_ AnimationDelegateObject) AnimationValueForProgress(animation Animation, progress AnimationProgress) float32 {
+	rv := objc.Call[float32](a_, objc.Sel("animation:valueForProgress:"), animation, progress)
 	return rv
 }
 
@@ -165,7 +165,7 @@ func (a_ AnimationDelegateObject) HasAnimationDidReachProgressMark() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535100-animation?language=objc
 func (a_ AnimationDelegateObject) AnimationDidReachProgressMark(animation Animation, progress AnimationProgress) {
-	objc.Call[objc.Void](a_, objc.Sel("animation:didReachProgressMark:"), objc.Ptr(animation), progress)
+	objc.Call[objc.Void](a_, objc.Sel("animation:didReachProgressMark:"), animation, progress)
 }
 
 func (a_ AnimationDelegateObject) HasAnimationDidEnd() bool {
@@ -176,7 +176,7 @@ func (a_ AnimationDelegateObject) HasAnimationDidEnd() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1535871-animationdidend?language=objc
 func (a_ AnimationDelegateObject) AnimationDidEnd(animation Animation) {
-	objc.Call[objc.Void](a_, objc.Sel("animationDidEnd:"), objc.Ptr(animation))
+	objc.Call[objc.Void](a_, objc.Sel("animationDidEnd:"), animation)
 }
 
 func (a_ AnimationDelegateObject) HasAnimationShouldStart() bool {
@@ -187,6 +187,6 @@ func (a_ AnimationDelegateObject) HasAnimationShouldStart() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationdelegate/1533279-animationshouldstart?language=objc
 func (a_ AnimationDelegateObject) AnimationShouldStart(animation Animation) bool {
-	rv := objc.Call[bool](a_, objc.Sel("animationShouldStart:"), objc.Ptr(animation))
+	rv := objc.Call[bool](a_, objc.Sel("animationShouldStart:"), animation)
 	return rv
 }

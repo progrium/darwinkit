@@ -41,7 +41,7 @@ func AssetDownloadConfigurationFrom(ptr unsafe.Pointer) AssetDownloadConfigurati
 }
 
 func (ac _AssetDownloadConfigurationClass) DownloadConfigurationWithAssetTitle(asset IURLAsset, title string) AssetDownloadConfiguration {
-	rv := objc.Call[AssetDownloadConfiguration](ac, objc.Sel("downloadConfigurationWithAsset:title:"), objc.Ptr(asset), title)
+	rv := objc.Call[AssetDownloadConfiguration](ac, objc.Sel("downloadConfigurationWithAsset:title:"), asset, title)
 	return rv
 }
 

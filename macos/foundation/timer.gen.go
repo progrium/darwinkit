@@ -43,7 +43,7 @@ func TimerFrom(ptr unsafe.Pointer) Timer {
 }
 
 func (t_ Timer) InitWithFireDateIntervalRepeatsBlock(date IDate, interval TimeInterval, repeats bool, block func(timer Timer)) Timer {
-	rv := objc.Call[Timer](t_, objc.Sel("initWithFireDate:interval:repeats:block:"), objc.Ptr(date), interval, repeats, block)
+	rv := objc.Call[Timer](t_, objc.Sel("initWithFireDate:interval:repeats:block:"), date, interval, repeats, block)
 	return rv
 }
 
@@ -57,7 +57,7 @@ func NewTimerWithFireDateIntervalRepeatsBlock(date IDate, interval TimeInterval,
 }
 
 func (t_ Timer) InitWithFireDateIntervalTargetSelectorUserInfoRepeats(date IDate, ti TimeInterval, t objc.IObject, s objc.Selector, ui objc.IObject, rep bool) Timer {
-	rv := objc.Call[Timer](t_, objc.Sel("initWithFireDate:interval:target:selector:userInfo:repeats:"), objc.Ptr(date), ti, t, s, ui, rep)
+	rv := objc.Call[Timer](t_, objc.Sel("initWithFireDate:interval:target:selector:userInfo:repeats:"), date, ti, t, s, ui, rep)
 	return rv
 }
 
@@ -124,7 +124,7 @@ func Timer_TimerWithTimeIntervalTargetSelectorUserInfoRepeats(ti TimeInterval, a
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1407170-timerwithtimeinterval?language=objc
 func (tc _TimerClass) TimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:invocation:repeats:"), ti, objc.Ptr(invocation), yesOrNo)
+	rv := objc.Call[Timer](tc, objc.Sel("timerWithTimeInterval:invocation:repeats:"), ti, invocation, yesOrNo)
 	return rv
 }
 
@@ -139,7 +139,7 @@ func Timer_TimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation II
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1415941-scheduledtimerwithtimeinterval?language=objc
 func (tc _TimerClass) ScheduledTimerWithTimeIntervalInvocationRepeats(ti TimeInterval, invocation IInvocation, yesOrNo bool) Timer {
-	rv := objc.Call[Timer](tc, objc.Sel("scheduledTimerWithTimeInterval:invocation:repeats:"), ti, objc.Ptr(invocation), yesOrNo)
+	rv := objc.Call[Timer](tc, objc.Sel("scheduledTimerWithTimeInterval:invocation:repeats:"), ti, invocation, yesOrNo)
 	return rv
 }
 
@@ -237,7 +237,7 @@ func (t_ Timer) FireDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstimer/1407353-firedate?language=objc
 func (t_ Timer) SetFireDate(value IDate) {
-	objc.Call[objc.Void](t_, objc.Sel("setFireDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFireDate:"), value)
 }
 
 // The receiver's userInfo object. [Full Topic]

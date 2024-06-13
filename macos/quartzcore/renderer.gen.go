@@ -142,7 +142,7 @@ func (r_ Renderer) SetDestination(tex metal.PTexture) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/carenderer/2998892-setdestination?language=objc
 func (r_ Renderer) SetDestinationObject(texObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setDestination:"), objc.Ptr(texObject))
+	objc.Call[objc.Void](r_, objc.Sel("setDestination:"), texObject)
 }
 
 // The bounds of the receiver. [Full Topic]
@@ -172,5 +172,5 @@ func (r_ Renderer) Layer() Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/carenderer/1519583-layer?language=objc
 func (r_ Renderer) SetLayer(value ILayer) {
-	objc.Call[objc.Void](r_, objc.Sel("setLayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setLayer:"), value)
 }

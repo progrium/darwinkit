@@ -67,5 +67,5 @@ func (r_ RenderPassColorAttachmentDescriptorArray) ObjectAtIndexedSubscript(atta
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpasscolorattachmentdescriptorarray/1437982-setobject?language=objc
 func (r_ RenderPassColorAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IRenderPassColorAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

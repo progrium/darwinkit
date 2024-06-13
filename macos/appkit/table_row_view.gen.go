@@ -281,7 +281,7 @@ func (t_ TableRowView) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablerowview/1534057-backgroundcolor?language=objc
 func (t_ TableRowView) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 //	[Full Topic]

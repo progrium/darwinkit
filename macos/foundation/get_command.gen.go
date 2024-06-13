@@ -54,7 +54,7 @@ func (g_ GetCommand) Init() GetCommand {
 }
 
 func (g_ GetCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) GetCommand {
-	rv := objc.Call[GetCommand](g_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[GetCommand](g_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

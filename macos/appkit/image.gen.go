@@ -33,7 +33,7 @@ type IImage interface {
 	RemoveRepresentation(imageRep IImageRep)
 	AddRepresentation(imageRep IImageRep)
 	HitTestRectWithImageDestinationRectContextHintsFlipped(testRectDestSpace foundation.Rect, imageRectDestSpace foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject, flipped bool) bool
-	TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float64) []byte
+	TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float32) []byte
 	Name() ImageName
 	RecommendedLayerContentsScale(preferredContentsScale float64) float64
 	LayerContentsForContentsScale(layerContentsScale float64) objc.Object
@@ -85,7 +85,7 @@ func ImageFrom(ptr unsafe.Pointer) Image {
 }
 
 func (i_ Image) InitWithContentsOfURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[Image](i_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -99,7 +99,7 @@ func NewImageWithContentsOfURL(url foundation.IURL) Image {
 }
 
 func (i_ Image) InitWithPasteboard(pasteboard IPasteboard) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[Image](i_, objc.Sel("initWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -179,7 +179,7 @@ func Image_ImageWithSizeFlippedDrawingHandler(size foundation.Size, drawingHandl
 }
 
 func (i_ Image) InitByReferencingURL(url foundation.IURL) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initByReferencingURL:"), objc.Ptr(url))
+	rv := objc.Call[Image](i_, objc.Sel("initByReferencingURL:"), url)
 	return rv
 }
 
@@ -258,7 +258,7 @@ func (i_ Image) Init() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1520039-caninitwithpasteboard?language=objc
 func (ic _ImageClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.Call[bool](ic, objc.Sel("canInitWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[bool](ic, objc.Sel("canInitWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -294,7 +294,7 @@ func (i_ Image) Recache() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519904-drawrepresentation?language=objc
 func (i_ Image) DrawRepresentationInRect(imageRep IImageRep, rect foundation.Rect) bool {
-	rv := objc.Call[bool](i_, objc.Sel("drawRepresentation:inRect:"), objc.Ptr(imageRep), rect)
+	rv := objc.Call[bool](i_, objc.Sel("drawRepresentation:inRect:"), imageRep, rect)
 	return rv
 }
 
@@ -310,7 +310,7 @@ func (i_ Image) SetName(string_ ImageName) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519961-bestrepresentationforrect?language=objc
 func (i_ Image) BestRepresentationForRectContextHints(rect foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) ImageRep {
-	rv := objc.Call[ImageRep](i_, objc.Sel("bestRepresentationForRect:context:hints:"), rect, objc.Ptr(referenceContext), hints)
+	rv := objc.Call[ImageRep](i_, objc.Sel("bestRepresentationForRect:context:hints:"), rect, referenceContext, hints)
 	return rv
 }
 
@@ -332,7 +332,7 @@ func (i_ Image) DrawAtPointFromRectOperationFraction(point foundation.Point, fro
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/3656508-imagewithsymbolconfiguration?language=objc
 func (i_ Image) ImageWithSymbolConfiguration(configuration IImageSymbolConfiguration) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageWithSymbolConfiguration:"), objc.Ptr(configuration))
+	rv := objc.Call[Image](i_, objc.Sel("imageWithSymbolConfiguration:"), configuration)
 	return rv
 }
 
@@ -340,7 +340,7 @@ func (i_ Image) ImageWithSymbolConfiguration(configuration IImageSymbolConfigura
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519861-cgimageforproposedrect?language=objc
 func (i_ Image) CGImageForProposedRectContextHints(proposedDestRect *foundation.Rect, referenceContext IGraphicsContext, hints map[ImageHintKey]objc.IObject) coregraphics.ImageRef {
-	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImageForProposedRect:context:hints:"), proposedDestRect, objc.Ptr(referenceContext), hints)
+	rv := objc.Call[coregraphics.ImageRef](i_, objc.Sel("CGImageForProposedRect:context:hints:"), proposedDestRect, referenceContext, hints)
 	return rv
 }
 
@@ -348,14 +348,14 @@ func (i_ Image) CGImageForProposedRectContextHints(proposedDestRect *foundation.
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519995-removerepresentation?language=objc
 func (i_ Image) RemoveRepresentation(imageRep IImageRep) {
-	objc.Call[objc.Void](i_, objc.Sel("removeRepresentation:"), objc.Ptr(imageRep))
+	objc.Call[objc.Void](i_, objc.Sel("removeRepresentation:"), imageRep)
 }
 
 // Adds the specified image representation object to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519911-addrepresentation?language=objc
 func (i_ Image) AddRepresentation(imageRep IImageRep) {
-	objc.Call[objc.Void](i_, objc.Sel("addRepresentation:"), objc.Ptr(imageRep))
+	objc.Call[objc.Void](i_, objc.Sel("addRepresentation:"), imageRep)
 }
 
 // Returns the image object associated with the specified name. [Full Topic]
@@ -377,14 +377,14 @@ func Image_ImageNamed(name ImageName) Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519922-hittestrect?language=objc
 func (i_ Image) HitTestRectWithImageDestinationRectContextHintsFlipped(testRectDestSpace foundation.Rect, imageRectDestSpace foundation.Rect, context IGraphicsContext, hints map[ImageHintKey]objc.IObject, flipped bool) bool {
-	rv := objc.Call[bool](i_, objc.Sel("hitTestRect:withImageDestinationRect:context:hints:flipped:"), testRectDestSpace, imageRectDestSpace, objc.Ptr(context), hints, flipped)
+	rv := objc.Call[bool](i_, objc.Sel("hitTestRect:withImageDestinationRect:context:hints:flipped:"), testRectDestSpace, imageRectDestSpace, context, hints, flipped)
 	return rv
 }
 
 // Returns a data object that contains TIFF data with the specified compression settings for all of the image representations in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519949-tiffrepresentationusingcompressi?language=objc
-func (i_ Image) TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float64) []byte {
+func (i_ Image) TIFFRepresentationUsingCompressionFactor(comp TIFFCompression, factor float32) []byte {
 	rv := objc.Call[[]byte](i_, objc.Sel("TIFFRepresentationUsingCompression:factor:"), comp, factor)
 	return rv
 }
@@ -471,7 +471,7 @@ func (i_ Image) SetDelegate(value PImageDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1519926-delegate?language=objc
 func (i_ Image) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](i_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether the image matches only on the best fitting axis. [Full Topic]
@@ -668,7 +668,7 @@ func (i_ Image) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimage/1520059-backgroundcolor?language=objc
 func (i_ Image) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](i_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // A Boolean value that indicates whether the image prefers to choose image representations using color-matching or resolution-matching. [Full Topic]

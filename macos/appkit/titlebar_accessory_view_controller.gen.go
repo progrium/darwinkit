@@ -63,7 +63,7 @@ func (t_ TitlebarAccessoryViewController) Init() TitlebarAccessoryViewController
 }
 
 func (t_ TitlebarAccessoryViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TitlebarAccessoryViewController {
-	rv := objc.Call[TitlebarAccessoryViewController](t_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[TitlebarAccessoryViewController](t_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 

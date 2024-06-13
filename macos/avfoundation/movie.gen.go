@@ -19,9 +19,9 @@ type _MovieClass struct {
 // An interface definition for the [Movie] class.
 type IMovie interface {
 	IAsset
-	MovieHeaderWithFileTypeError(fileType FileType, outError foundation.IError) []byte
+	MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte
 	IsCompatibleWithFileType(fileType FileType) bool
-	WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError foundation.IError) bool
+	WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError unsafe.Pointer) bool
 	DefaultMediaDataStorage() MediaDataStorage
 	URL() foundation.URL
 	ContainsMovieFragments() bool
@@ -55,7 +55,7 @@ func Movie_MovieWithDataOptions(data []byte, options map[string]objc.IObject) Mo
 }
 
 func (mc _MovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
-	rv := objc.Call[Movie](mc, objc.Sel("movieWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[Movie](mc, objc.Sel("movieWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -81,7 +81,7 @@ func NewMovieWithDataOptions(data []byte, options map[string]objc.IObject) Movie
 }
 
 func (m_ Movie) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) Movie {
-	rv := objc.Call[Movie](m_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[Movie](m_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -115,7 +115,7 @@ func (m_ Movie) Init() Movie {
 }
 
 func (mc _MovieClass) AssetWithURL(URL foundation.IURL) Movie {
-	rv := objc.Call[Movie](mc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[Movie](mc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -129,8 +129,8 @@ func Movie_AssetWithURL(URL foundation.IURL) Movie {
 // Creates a header for a movie for the specified file type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386686-movieheaderwithfiletype?language=objc
-func (m_ Movie) MovieHeaderWithFileTypeError(fileType FileType, outError foundation.IError) []byte {
-	rv := objc.Call[[]byte](m_, objc.Sel("movieHeaderWithFileType:error:"), fileType, objc.Ptr(outError))
+func (m_ Movie) MovieHeaderWithFileTypeError(fileType FileType, outError unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](m_, objc.Sel("movieHeaderWithFileType:error:"), fileType, outError)
 	return rv
 }
 
@@ -160,8 +160,8 @@ func (m_ Movie) IsCompatibleWithFileType(fileType FileType) bool {
 // Writes the movie header to the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmovie/1386682-writemovieheadertourl?language=objc
-func (m_ Movie) WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("writeMovieHeaderToURL:fileType:options:error:"), objc.Ptr(URL), fileType, options, objc.Ptr(outError))
+func (m_ Movie) WriteMovieHeaderToURLFileTypeOptionsError(URL foundation.IURL, fileType FileType, options MovieWritingOptions, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("writeMovieHeaderToURL:fileType:options:error:"), URL, fileType, options, outError)
 	return rv
 }
 

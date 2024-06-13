@@ -73,7 +73,7 @@ func TokenField_LabelWithString(stringValue string) TokenField {
 }
 
 func (tc _TokenFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TokenField {
-	rv := objc.Call[TokenField](tc, objc.Sel("labelWithAttributedString:"), objc.Ptr(attributedStringValue))
+	rv := objc.Call[TokenField](tc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
@@ -194,5 +194,5 @@ func (t_ TokenField) TokenizingCharacterSet() foundation.CharacterSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfield/1534230-tokenizingcharacterset?language=objc
 func (t_ TokenField) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), value)
 }

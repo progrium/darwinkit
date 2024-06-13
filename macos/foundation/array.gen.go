@@ -20,7 +20,7 @@ type IArray interface {
 	objc.IObject
 	ComponentsJoinedByString(separator string) string
 	RemoveObserverFromObjectsAtIndexesForKeyPath(observer objc.IObject, indexes IIndexSet, keyPath string)
-	GetObjectsRange(objects objc.IObject, range_ Range)
+	GetObjectsRange(objects unsafe.Pointer, range_ Range)
 	ArrayByApplyingDifference(difference IOrderedCollectionDifference) []objc.Object
 	ArrayByAddingObjectsFromArray(otherArray []objc.IObject) []objc.Object
 	RemoveObserverForKeyPath(observer objc.IObject, keyPath string)
@@ -42,10 +42,10 @@ type IArray interface {
 	IndexesOfObjectsWithOptionsPassingTest(opts EnumerationOptions, predicate func(obj objc.Object, idx uint, stop *bool) bool) IndexSet
 	FirstObjectCommonWithArray(otherArray []objc.IObject) objc.Object
 	ArrayByAddingObject(anObject objc.IObject) []objc.Object
-	WriteToURLError(url IURL, error IError) bool
+	WriteToURLError(url IURL, error unsafe.Pointer) bool
 	FilteredArrayUsingPredicate(predicate IPredicate) []objc.Object
 	ShuffledArray() []objc.Object
-	InitWithContentsOfURLError(url IURL, error IError) []objc.Object
+	InitWithContentsOfURLError(url IURL, error unsafe.Pointer) []objc.Object
 	RemoveObserverForKeyPathContext(observer objc.IObject, keyPath string, context unsafe.Pointer)
 	IndexOfObject(anObject objc.IObject) uint
 	SortedArrayUsingFunctionContextHint(comparator func(arg0 objc.Object, arg1 objc.Object, arg2 unsafe.Pointer) int, context unsafe.Pointer, hint []byte) []objc.Object
@@ -105,15 +105,15 @@ func Array_ArrayWithArray(array []objc.IObject) Array {
 	return ArrayClass.ArrayWithArray(array)
 }
 
-func (a_ Array) InitWithObjectsCount(objects objc.IObject, cnt uint) Array {
-	rv := objc.Call[Array](a_, objc.Sel("initWithObjects:count:"), objc.Ptr(objects), cnt)
+func (a_ Array) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) Array {
+	rv := objc.Call[Array](a_, objc.Sel("initWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Initializes a newly allocated array to include a given number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1415056-initwithobjects?language=objc
-func NewArrayWithObjectsCount(objects objc.IObject, cnt uint) Array {
+func NewArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) Array {
 	instance := ArrayClass.Alloc().InitWithObjectsCount(objects, cnt)
 	instance.Autorelease()
 	return instance
@@ -139,7 +139,7 @@ func NewArrayWithArrayCopyItems(array []objc.IObject, flag bool) Array {
 }
 
 func (ac _ArrayClass) ArrayWithObject(anObject objc.IObject) Array {
-	rv := objc.Call[Array](ac, objc.Sel("arrayWithObject:"), objc.Ptr(anObject))
+	rv := objc.Call[Array](ac, objc.Sel("arrayWithObject:"), anObject)
 	return rv
 }
 
@@ -151,7 +151,7 @@ func Array_ArrayWithObject(anObject objc.IObject) Array {
 }
 
 func (a_ Array) InitWithObjects(firstObj objc.IObject, args ...any) Array {
-	rv := objc.Call[Array](a_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[Array](a_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -190,20 +190,20 @@ func NewArrayWithArray(array []objc.IObject) Array {
 	return instance
 }
 
-func (ac _ArrayClass) ArrayWithObjectsCount(objects objc.IObject, cnt uint) Array {
-	rv := objc.Call[Array](ac, objc.Sel("arrayWithObjects:count:"), objc.Ptr(objects), cnt)
+func (ac _ArrayClass) ArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) Array {
+	rv := objc.Call[Array](ac, objc.Sel("arrayWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Creates and returns an array that includes a given number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460096-arraywithobjects?language=objc
-func Array_ArrayWithObjectsCount(objects objc.IObject, cnt uint) Array {
+func Array_ArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) Array {
 	return ArrayClass.ArrayWithObjectsCount(objects, cnt)
 }
 
 func (ac _ArrayClass) ArrayWithObjects(firstObj objc.IObject, args ...any) Array {
-	rv := objc.Call[Array](ac, objc.Sel("arrayWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[Array](ac, objc.Sel("arrayWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -241,21 +241,21 @@ func (a_ Array) ComponentsJoinedByString(separator string) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1407434-removeobserver?language=objc
 func (a_ Array) RemoveObserverFromObjectsAtIndexesForKeyPath(observer objc.IObject, indexes IIndexSet, keyPath string) {
-	objc.Call[objc.Void](a_, objc.Sel("removeObserver:fromObjectsAtIndexes:forKeyPath:"), objc.Ptr(observer), objc.Ptr(indexes), keyPath)
+	objc.Call[objc.Void](a_, objc.Sel("removeObserver:fromObjectsAtIndexes:forKeyPath:"), observer, indexes, keyPath)
 }
 
 // Copies references to objects contained in the array that fall within the specified range to aBuffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1414725-getobjects?language=objc
-func (a_ Array) GetObjectsRange(objects objc.IObject, range_ Range) {
-	objc.Call[objc.Void](a_, objc.Sel("getObjects:range:"), objc.Ptr(objects), range_)
+func (a_ Array) GetObjectsRange(objects unsafe.Pointer, range_ Range) {
+	objc.Call[objc.Void](a_, objc.Sel("getObjects:range:"), objects, range_)
 }
 
 // Creates a new array by applying a difference object to an existing array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/3152165-arraybyapplyingdifference?language=objc
 func (a_ Array) ArrayByApplyingDifference(difference IOrderedCollectionDifference) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("arrayByApplyingDifference:"), objc.Ptr(difference))
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("arrayByApplyingDifference:"), difference)
 	return rv
 }
 
@@ -271,14 +271,14 @@ func (a_ Array) ArrayByAddingObjectsFromArray(otherArray []objc.IObject) []objc.
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1414976-removeobserver?language=objc
 func (a_ Array) RemoveObserverForKeyPath(observer objc.IObject, keyPath string) {
-	objc.Call[objc.Void](a_, objc.Sel("removeObserver:forKeyPath:"), objc.Ptr(observer), keyPath)
+	objc.Call[objc.Void](a_, objc.Sel("removeObserver:forKeyPath:"), observer, keyPath)
 }
 
 // Returns a Boolean value that indicates whether a given object is present in the array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1407477-containsobject?language=objc
 func (a_ Array) ContainsObject(anObject objc.IObject) bool {
-	rv := objc.Call[bool](a_, objc.Sel("containsObject:"), objc.Ptr(anObject))
+	rv := objc.Call[bool](a_, objc.Sel("containsObject:"), anObject)
 	return rv
 }
 
@@ -325,7 +325,7 @@ func (a_ Array) SubarrayWithRange(range_ Range) []objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1413512-indexesofobjectsatindexes?language=objc
 func (a_ Array) IndexesOfObjectsAtIndexesOptionsPassingTest(s IIndexSet, opts EnumerationOptions, predicate func(obj objc.Object, idx uint, stop *bool) bool) IndexSet {
-	rv := objc.Call[IndexSet](a_, objc.Sel("indexesOfObjectsAtIndexes:options:passingTest:"), objc.Ptr(s), opts, predicate)
+	rv := objc.Call[IndexSet](a_, objc.Sel("indexesOfObjectsAtIndexes:options:passingTest:"), s, opts, predicate)
 	return rv
 }
 
@@ -333,7 +333,7 @@ func (a_ Array) IndexesOfObjectsAtIndexesOptionsPassingTest(s IIndexSet, opts En
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1407652-indexofobjectatindexes?language=objc
 func (a_ Array) IndexOfObjectAtIndexesOptionsPassingTest(s IIndexSet, opts EnumerationOptions, predicate func(obj objc.Object, idx uint, stop *bool) bool) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectAtIndexes:options:passingTest:"), objc.Ptr(s), opts, predicate)
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectAtIndexes:options:passingTest:"), s, opts, predicate)
 	return rv
 }
 
@@ -349,7 +349,7 @@ func (a_ Array) ReverseObjectEnumerator() Enumerator {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1411296-objectsatindexes?language=objc
 func (a_ Array) ObjectsAtIndexes(indexes IIndexSet) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("objectsAtIndexes:"), objc.Ptr(indexes))
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("objectsAtIndexes:"), indexes)
 	return rv
 }
 
@@ -357,7 +357,7 @@ func (a_ Array) ObjectsAtIndexes(indexes IIndexSet) []objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1410847-indexofobjectidenticalto?language=objc
 func (a_ Array) IndexOfObjectIdenticalTo(anObject objc.IObject) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectIdenticalTo:"), objc.Ptr(anObject))
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectIdenticalTo:"), anObject)
 	return rv
 }
 
@@ -380,7 +380,7 @@ func (a_ Array) DifferenceFromArrayWithOptions(other []objc.IObject, options Ord
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1408305-removeobserver?language=objc
 func (a_ Array) RemoveObserverFromObjectsAtIndexesForKeyPathContext(observer objc.IObject, indexes IIndexSet, keyPath string, context unsafe.Pointer) {
-	objc.Call[objc.Void](a_, objc.Sel("removeObserver:fromObjectsAtIndexes:forKeyPath:context:"), objc.Ptr(observer), objc.Ptr(indexes), keyPath, context)
+	objc.Call[objc.Void](a_, objc.Sel("removeObserver:fromObjectsAtIndexes:forKeyPath:context:"), observer, indexes, keyPath, context)
 }
 
 // Returns the index of an object in the array that passes a test in a given block for a given set of enumeration options. [Full Topic]
@@ -411,15 +411,15 @@ func (a_ Array) FirstObjectCommonWithArray(otherArray []objc.IObject) objc.Objec
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1408534-arraybyaddingobject?language=objc
 func (a_ Array) ArrayByAddingObject(anObject objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("arrayByAddingObject:"), objc.Ptr(anObject))
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("arrayByAddingObject:"), anObject)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/2879138-writetourl?language=objc
-func (a_ Array) WriteToURLError(url IURL, error IError) bool {
-	rv := objc.Call[bool](a_, objc.Sel("writeToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (a_ Array) WriteToURLError(url IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](a_, objc.Sel("writeToURL:error:"), url, error)
 	return rv
 }
 
@@ -427,7 +427,7 @@ func (a_ Array) WriteToURLError(url IURL, error IError) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1411033-filteredarrayusingpredicate?language=objc
 func (a_ Array) FilteredArrayUsingPredicate(predicate IPredicate) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("filteredArrayUsingPredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("filteredArrayUsingPredicate:"), predicate)
 	return rv
 }
 
@@ -442,8 +442,8 @@ func (a_ Array) ShuffledArray() []objc.Object {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/2879134-initwithcontentsofurl?language=objc
-func (a_ Array) InitWithContentsOfURLError(url IURL, error IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("initWithContentsOfURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (a_ Array) InitWithContentsOfURLError(url IURL, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("initWithContentsOfURL:error:"), url, error)
 	return rv
 }
 
@@ -451,14 +451,14 @@ func (a_ Array) InitWithContentsOfURLError(url IURL, error IError) []objc.Object
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1418441-removeobserver?language=objc
 func (a_ Array) RemoveObserverForKeyPathContext(observer objc.IObject, keyPath string, context unsafe.Pointer) {
-	objc.Call[objc.Void](a_, objc.Sel("removeObserver:forKeyPath:context:"), objc.Ptr(observer), keyPath, context)
+	objc.Call[objc.Void](a_, objc.Sel("removeObserver:forKeyPath:context:"), observer, keyPath, context)
 }
 
 // Returns the lowest index whose corresponding array value is equal to a given object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1417076-indexofobject?language=objc
 func (a_ Array) IndexOfObject(anObject objc.IObject) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:"), objc.Ptr(anObject))
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:"), anObject)
 	return rv
 }
 
@@ -474,7 +474,7 @@ func (a_ Array) SortedArrayUsingFunctionContextHint(comparator func(arg0 objc.Ob
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1417577-enumerateobjectsatindexes?language=objc
 func (a_ Array) EnumerateObjectsAtIndexesOptionsUsingBlock(s IIndexSet, opts EnumerationOptions, block func(obj objc.Object, idx uint, stop *bool)) {
-	objc.Call[objc.Void](a_, objc.Sel("enumerateObjectsAtIndexes:options:usingBlock:"), objc.Ptr(s), opts, block)
+	objc.Call[objc.Void](a_, objc.Sel("enumerateObjectsAtIndexes:options:usingBlock:"), s, opts, block)
 }
 
 // Invokes [foundation/nsarray/setvalue] on each of the array's items using the specified value and key. [Full Topic]
@@ -503,7 +503,7 @@ func (a_ Array) SortedArrayUsingFunctionContext(comparator func(arg0 objc.Object
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1412722-indexofobject?language=objc
 func (a_ Array) IndexOfObjectInSortedRangeOptionsUsingComparator(obj objc.IObject, r Range, opts BinarySearchingOptions, cmp Comparator) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:inSortedRange:options:usingComparator:"), objc.Ptr(obj), r, opts, cmp)
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:inSortedRange:options:usingComparator:"), obj, r, opts, cmp)
 	return rv
 }
 
@@ -533,15 +533,15 @@ func (a_ Array) SortedArrayUsingDescriptors(sortDescriptors []ISortDescriptor) [
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/2879153-arraywithcontentsofurl?language=objc
-func (ac _ArrayClass) ArrayWithContentsOfURLError(url IURL, error IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](ac, objc.Sel("arrayWithContentsOfURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (ac _ArrayClass) ArrayWithContentsOfURLError(url IURL, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](ac, objc.Sel("arrayWithContentsOfURL:error:"), url, error)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/2879153-arraywithcontentsofurl?language=objc
-func Array_ArrayWithContentsOfURLError(url IURL, error IError) []objc.Object {
+func Array_ArrayWithContentsOfURLError(url IURL, error unsafe.Pointer) []objc.Object {
 	return ArrayClass.ArrayWithContentsOfURLError(url, error)
 }
 
@@ -557,7 +557,7 @@ func (a_ Array) PathsMatchingExtensions(filterTypes []string) []string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1415805-indexofobjectidenticalto?language=objc
 func (a_ Array) IndexOfObjectIdenticalToInRange(anObject objc.IObject, range_ Range) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectIdenticalTo:inRange:"), objc.Ptr(anObject), range_)
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObjectIdenticalTo:inRange:"), anObject, range_)
 	return rv
 }
 
@@ -589,7 +589,7 @@ func (a_ Array) ObjectAtIndexedSubscript(idx uint) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1409775-addobserver?language=objc
 func (a_ Array) AddObserverForKeyPathOptionsContext(observer objc.IObject, keyPath string, options KeyValueObservingOptions, context unsafe.Pointer) {
-	objc.Call[objc.Void](a_, objc.Sel("addObserver:forKeyPath:options:context:"), objc.Ptr(observer), keyPath, options, context)
+	objc.Call[objc.Void](a_, objc.Sel("addObserver:forKeyPath:options:context:"), observer, keyPath, options, context)
 }
 
 // Returns an array that lists the receiving array’s elements in ascending order, as determined by the comparison method specified by a given NSComparator block. [Full Topic]
@@ -612,7 +612,7 @@ func (a_ Array) IsEqualToArray(otherArray []objc.IObject) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1415248-indexofobject?language=objc
 func (a_ Array) IndexOfObjectInRange(anObject objc.IObject, range_ Range) uint {
-	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:inRange:"), objc.Ptr(anObject), range_)
+	rv := objc.Call[uint](a_, objc.Sel("indexOfObject:inRange:"), anObject, range_)
 	return rv
 }
 
@@ -652,7 +652,7 @@ func (a_ Array) SortedArrayWithOptionsUsingComparator(opts SortOptions, cmptr Co
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1640687-shuffledarraywithrandomsource?language=objc
 func (a_ Array) ShuffledArrayWithRandomSource(randomSource objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](a_, objc.Sel("shuffledArrayWithRandomSource:"), objc.Ptr(randomSource))
+	rv := objc.Call[[]objc.Object](a_, objc.Sel("shuffledArrayWithRandomSource:"), randomSource)
 	return rv
 }
 
@@ -668,7 +668,7 @@ func (a_ Array) IndexesOfObjectsPassingTest(predicate func(obj objc.Object, idx 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1411404-addobserver?language=objc
 func (a_ Array) AddObserverToObjectsAtIndexesForKeyPathOptionsContext(observer objc.IObject, indexes IIndexSet, keyPath string, options KeyValueObservingOptions, context unsafe.Pointer) {
-	objc.Call[objc.Void](a_, objc.Sel("addObserver:toObjectsAtIndexes:forKeyPath:options:context:"), objc.Ptr(observer), objc.Ptr(indexes), keyPath, options, context)
+	objc.Call[objc.Void](a_, objc.Sel("addObserver:toObjectsAtIndexes:forKeyPath:options:context:"), observer, indexes, keyPath, options, context)
 }
 
 // Analyzes the array and returns a “hint” that speeds the sorting of the array when the hint is supplied to [foundation/nsarray/sortedarrayusingfunction]. [Full Topic]

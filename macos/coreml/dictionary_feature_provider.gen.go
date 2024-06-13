@@ -5,7 +5,6 @@ package coreml
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -36,15 +35,15 @@ func DictionaryFeatureProviderFrom(ptr unsafe.Pointer) DictionaryFeatureProvider
 	}
 }
 
-func (d_ DictionaryFeatureProvider) InitWithDictionaryError(dictionary map[string]objc.IObject, error foundation.IError) DictionaryFeatureProvider {
-	rv := objc.Call[DictionaryFeatureProvider](d_, objc.Sel("initWithDictionary:error:"), dictionary, objc.Ptr(error))
+func (d_ DictionaryFeatureProvider) InitWithDictionaryError(dictionary map[string]objc.IObject, error unsafe.Pointer) DictionaryFeatureProvider {
+	rv := objc.Call[DictionaryFeatureProvider](d_, objc.Sel("initWithDictionary:error:"), dictionary, error)
 	return rv
 }
 
 // Creates the feature provider based on a dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mldictionaryfeatureprovider/2879366-initwithdictionary?language=objc
-func NewDictionaryFeatureProviderWithDictionaryError(dictionary map[string]objc.IObject, error foundation.IError) DictionaryFeatureProvider {
+func NewDictionaryFeatureProviderWithDictionaryError(dictionary map[string]objc.IObject, error unsafe.Pointer) DictionaryFeatureProvider {
 	instance := DictionaryFeatureProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
 	instance.Autorelease()
 	return instance

@@ -11,27 +11,27 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition?language=objc
 type PBarsSwipeTransition interface {
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetBarOffset(value float64)
+	SetBarOffset(value float32)
 	HasSetBarOffset() bool
 
 	// optional
-	BarOffset() float64
+	BarOffset() float32
 	HasBarOffset() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 }
 
@@ -50,7 +50,7 @@ func (b_ BarsSwipeTransitionObject) HasSetAngle() bool {
 // The angle, in radians, of the bars. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
-func (b_ BarsSwipeTransitionObject) SetAngle(value float64) {
+func (b_ BarsSwipeTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
 }
 
@@ -61,8 +61,8 @@ func (b_ BarsSwipeTransitionObject) HasAngle() bool {
 // The angle, in radians, of the bars. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228070-angle?language=objc
-func (b_ BarsSwipeTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("angle"))
+func (b_ BarsSwipeTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("angle"))
 	return rv
 }
 
@@ -73,7 +73,7 @@ func (b_ BarsSwipeTransitionObject) HasSetBarOffset() bool {
 // The offset of one bar with respect to another. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228071-baroffset?language=objc
-func (b_ BarsSwipeTransitionObject) SetBarOffset(value float64) {
+func (b_ BarsSwipeTransitionObject) SetBarOffset(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setBarOffset:"), value)
 }
 
@@ -84,8 +84,8 @@ func (b_ BarsSwipeTransitionObject) HasBarOffset() bool {
 // The offset of one bar with respect to another. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228071-baroffset?language=objc
-func (b_ BarsSwipeTransitionObject) BarOffset() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("barOffset"))
+func (b_ BarsSwipeTransitionObject) BarOffset() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("barOffset"))
 	return rv
 }
 
@@ -96,7 +96,7 @@ func (b_ BarsSwipeTransitionObject) HasSetWidth() bool {
 // The width of each bar. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
-func (b_ BarsSwipeTransitionObject) SetWidth(value float64) {
+func (b_ BarsSwipeTransitionObject) SetWidth(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setWidth:"), value)
 }
 
@@ -107,7 +107,7 @@ func (b_ BarsSwipeTransitionObject) HasWidth() bool {
 // The width of each bar. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibarsswipetransition/3228072-width?language=objc
-func (b_ BarsSwipeTransitionObject) Width() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("width"))
+func (b_ BarsSwipeTransitionObject) Width() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("width"))
 	return rv
 }

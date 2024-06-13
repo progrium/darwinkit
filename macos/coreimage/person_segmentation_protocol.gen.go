@@ -66,7 +66,7 @@ func (p_ PersonSegmentationObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipersonsegmentation/3750392-inputimage?language=objc
 func (p_ PersonSegmentationObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PersonSegmentationObject) HasInputImage() bool {

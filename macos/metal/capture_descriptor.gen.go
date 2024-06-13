@@ -102,5 +102,5 @@ func (c_ CaptureDescriptor) OutputURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcapturedescriptor/3237250-outputurl?language=objc
 func (c_ CaptureDescriptor) SetOutputURL(value foundation.IURL) {
-	objc.Call[objc.Void](c_, objc.Sel("setOutputURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setOutputURL:"), value)
 }

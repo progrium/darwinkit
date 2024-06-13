@@ -67,7 +67,7 @@ func (a_ AreaReductionFilterObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareareductionfilter/3547102-inputimage?language=objc
 func (a_ AreaReductionFilterObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), value)
 }
 
 func (a_ AreaReductionFilterObject) HasInputImage() bool {

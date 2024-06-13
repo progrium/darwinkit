@@ -21,7 +21,7 @@ type _MetadataItemClass struct {
 type IMetadataItem interface {
 	objc.IObject
 	LoadValuesAsynchronouslyForKeysCompletionHandler(keys []string, handler func())
-	StatusOfValueForKeyError(key string, outError foundation.IError) KeyValueStatus
+	StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus
 	StartDate() foundation.Date
 	CommonKey() MetadataKey
 	DateValue() foundation.Date
@@ -122,7 +122,7 @@ func MetadataItem_MetadataItemsFromArrayFilteredByIdentifier(metadataItems []IMe
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1390238-metadataitemsfromarray?language=objc
 func (mc _MetadataItemClass) MetadataItemsFromArrayFilteredByMetadataItemFilter(metadataItems []IMetadataItem, metadataItemFilter IMetadataItemFilter) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:filteredByMetadataItemFilter:"), metadataItems, objc.Ptr(metadataItemFilter))
+	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:filteredByMetadataItemFilter:"), metadataItems, metadataItemFilter)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func MetadataItem_MetadataItemsFromArrayFilteredByMetadataItemFilter(metadataIte
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1389374-metadataitemsfromarray?language=objc
 func (mc _MetadataItemClass) MetadataItemsFromArrayWithLocale(metadataItems []IMetadataItem, locale foundation.ILocale) []MetadataItem {
-	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:withLocale:"), metadataItems, objc.Ptr(locale))
+	rv := objc.Call[[]MetadataItem](mc, objc.Sel("metadataItemsFromArray:withLocale:"), metadataItems, locale)
 	return rv
 }
 
@@ -173,8 +173,8 @@ func MetadataItem_IdentifierForKeyKeySpace(key objc.IObject, keySpace MetadataKe
 // Reports whether the value for a given key is immediately available without blocking. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1388523-statusofvalueforkey?language=objc
-func (m_ MetadataItem) StatusOfValueForKeyError(key string, outError foundation.IError) KeyValueStatus {
-	rv := objc.Call[KeyValueStatus](m_, objc.Sel("statusOfValueForKey:error:"), key, objc.Ptr(outError))
+func (m_ MetadataItem) StatusOfValueForKeyError(key string, outError unsafe.Pointer) KeyValueStatus {
+	rv := objc.Call[KeyValueStatus](m_, objc.Sel("statusOfValueForKey:error:"), key, outError)
 	return rv
 }
 
@@ -182,7 +182,7 @@ func (m_ MetadataItem) StatusOfValueForKeyError(key string, outError foundation.
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitem/1387745-metadataitemwithpropertiesofmeta?language=objc
 func (mc _MetadataItemClass) MetadataItemWithPropertiesOfMetadataItemValueLoadingHandler(metadataItem IMetadataItem, handler func(valueRequest MetadataItemValueRequest)) MetadataItem {
-	rv := objc.Call[MetadataItem](mc, objc.Sel("metadataItemWithPropertiesOfMetadataItem:valueLoadingHandler:"), objc.Ptr(metadataItem), handler)
+	rv := objc.Call[MetadataItem](mc, objc.Sel("metadataItemWithPropertiesOfMetadataItem:valueLoadingHandler:"), metadataItem, handler)
 	return rv
 }
 

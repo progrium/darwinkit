@@ -84,7 +84,7 @@ func (p_ PlayerItemMetadataCollector) SetDelegateQueue(delegate PPlayerItemMetad
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadatacollector/1617195-setdelegate?language=objc
 func (p_ PlayerItemMetadataCollector) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // Accesses the metadata collector’s delegate object. [Full Topic]

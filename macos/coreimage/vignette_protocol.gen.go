@@ -11,19 +11,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette?language=objc
 type PVignette interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -50,7 +50,7 @@ func (v_ VignetteObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
-func (v_ VignetteObject) SetRadius(value float64) {
+func (v_ VignetteObject) SetRadius(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setRadius:"), value)
 }
 
@@ -61,8 +61,8 @@ func (v_ VignetteObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228828-radius?language=objc
-func (v_ VignetteObject) Radius() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("radius"))
+func (v_ VignetteObject) Radius() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("radius"))
 	return rv
 }
 
@@ -73,7 +73,7 @@ func (v_ VignetteObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228827-intensity?language=objc
-func (v_ VignetteObject) SetIntensity(value float64) {
+func (v_ VignetteObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setIntensity:"), value)
 }
 
@@ -84,8 +84,8 @@ func (v_ VignetteObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228827-intensity?language=objc
-func (v_ VignetteObject) Intensity() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("intensity"))
+func (v_ VignetteObject) Intensity() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (v_ VignetteObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignette/3228826-inputimage?language=objc
 func (v_ VignetteObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
 }
 
 func (v_ VignetteObject) HasInputImage() bool {

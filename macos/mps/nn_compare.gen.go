@@ -19,8 +19,8 @@ type _NNCompareClass struct {
 // An interface definition for the [NNCompare] class.
 type INNCompare interface {
 	ICNNArithmetic
-	Threshold() float64
-	SetThreshold(value float64)
+	Threshold() float32
+	SetThreshold(value float32)
 	ComparisonType() NNComparisonType
 	SetComparisonType(value NNComparisonType)
 }
@@ -91,15 +91,15 @@ func NNCompare_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) NNC
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
-func (n_ NNCompare) Threshold() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("threshold"))
+func (n_ NNCompare) Threshold() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("threshold"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnncompare/3037376-threshold?language=objc
-func (n_ NNCompare) SetThreshold(value float64) {
+func (n_ NNCompare) SetThreshold(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setThreshold:"), value)
 }
 

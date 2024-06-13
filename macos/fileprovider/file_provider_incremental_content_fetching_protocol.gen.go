@@ -32,6 +32,6 @@ func (f_ FileProviderIncrementalContentFetchingObject) HasFetchContentsForItemWi
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderincrementalcontentfetching/3553297-fetchcontentsforitemwithidentifi?language=objc
 func (f_ FileProviderIncrementalContentFetchingObject) FetchContentsForItemWithIdentifierVersionUsingExistingContentsAtURLExistingVersionRequestCompletionHandler(itemIdentifier FileProviderItemIdentifier, requestedVersion FileProviderItemVersion, existingContents foundation.URL, existingVersion FileProviderItemVersion, request FileProviderRequest, completionHandler func(fileContents foundation.URL, item objc.Object, error foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchContentsForItemWithIdentifier:version:usingExistingContentsAtURL:existingVersion:request:completionHandler:"), itemIdentifier, objc.Ptr(requestedVersion), objc.Ptr(existingContents), objc.Ptr(existingVersion), objc.Ptr(request), completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchContentsForItemWithIdentifier:version:usingExistingContentsAtURL:existingVersion:request:completionHandler:"), itemIdentifier, requestedVersion, existingContents, existingVersion, request, completionHandler)
 	return rv
 }

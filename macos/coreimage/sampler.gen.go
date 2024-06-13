@@ -38,7 +38,7 @@ func SamplerFrom(ptr unsafe.Pointer) Sampler {
 }
 
 func (s_ Sampler) InitWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:keysAndValues:"), append([]any{objc.Ptr(im), key0}, args...)...)
+	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:keysAndValues:"), append([]any{im, key0}, args...)...)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewSamplerWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any)
 }
 
 func (sc _SamplerClass) SamplerWithImage(im IImage) Sampler {
-	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:"), objc.Ptr(im))
+	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:"), im)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func Sampler_SamplerWithImage(im IImage) Sampler {
 }
 
 func (s_ Sampler) InitWithImage(im IImage) Sampler {
-	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:"), objc.Ptr(im))
+	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:"), im)
 	return rv
 }
 
@@ -78,7 +78,7 @@ func NewSamplerWithImage(im IImage) Sampler {
 }
 
 func (sc _SamplerClass) SamplerWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:options:"), objc.Ptr(im), dict)
+	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:options:"), im, dict)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func Sampler_SamplerWithImageOptions(im IImage, dict foundation.Dictionary) Samp
 }
 
 func (s_ Sampler) InitWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
-	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:options:"), objc.Ptr(im), dict)
+	rv := objc.Call[Sampler](s_, objc.Sel("initWithImage:options:"), im, dict)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func NewSamplerWithImageOptions(im IImage, dict foundation.Dictionary) Sampler {
 }
 
 func (sc _SamplerClass) SamplerWithImageKeysAndValues(im IImage, key0 objc.IObject, args ...any) Sampler {
-	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:keysAndValues:"), append([]any{objc.Ptr(im), key0}, args...)...)
+	rv := objc.Call[Sampler](sc, objc.Sel("samplerWithImage:keysAndValues:"), append([]any{im, key0}, args...)...)
 	return rv
 }
 

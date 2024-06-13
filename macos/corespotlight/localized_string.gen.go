@@ -69,15 +69,15 @@ func (l_ LocalizedString) Init() LocalizedString {
 	return rv
 }
 
-func (lc _LocalizedStringClass) StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (lc _LocalizedStringClass) StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497408-stringwithcontentsofurl?language=objc
-func LocalizedString_StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
+func LocalizedString_StringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	return LocalizedStringClass.StringWithContentsOfURLUsedEncodingError(url, enc, error)
 }
 
@@ -93,15 +93,15 @@ func LocalizedString_String() LocalizedString {
 	return LocalizedStringClass.String()
 }
 
-func (l_ LocalizedString) InitWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (l_ LocalizedString) InitWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414472-initwithcontentsofurl?language=objc
-func NewLocalizedStringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
+func NewLocalizedStringWithContentsOfURLUsedEncodingError(url foundation.IURL, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	instance := LocalizedStringClass.Alloc().InitWithContentsOfURLUsedEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
@@ -173,41 +173,41 @@ func LocalizedString_StringWithFormat(format string, args ...any) LocalizedStrin
 	return LocalizedStringClass.StringWithFormat(format, args...)
 }
 
-func (lc _LocalizedStringClass) StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (lc _LocalizedStringClass) StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
-func LocalizedString_StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
+func LocalizedString_StringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	return LocalizedStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
 }
 
-func (l_ LocalizedString) InitWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (l_ LocalizedString) InitWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc
-func NewLocalizedStringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
+func NewLocalizedStringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	instance := LocalizedStringClass.Alloc().InitWithContentsOfURLEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (lc _LocalizedStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (lc _LocalizedStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path and returns by reference the encoding used to interpret the file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497254-stringwithcontentsoffile?language=objc
-func LocalizedString_StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
+func LocalizedString_StringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	return LocalizedStringClass.StringWithContentsOfFileUsedEncodingError(path, enc, error)
 }
 
@@ -225,15 +225,15 @@ func NewLocalizedStringWithFormatLocale(format string, locale objc.IObject, args
 	return instance
 }
 
-func (lc _LocalizedStringClass) StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (lc _LocalizedStringClass) StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](lc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
-func LocalizedString_StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
+func LocalizedString_StringWithContentsOfURLEncodingError(url foundation.IURL, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	return LocalizedStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
@@ -305,15 +305,15 @@ func LocalizedString_StringWithCStringEncoding(cString *uint8, enc foundation.St
 	return LocalizedStringClass.StringWithCStringEncoding(cString, enc)
 }
 
-func (l_ LocalizedString) InitWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (l_ LocalizedString) InitWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path and returns by reference the encoding used to interpret the characters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1418227-initwithcontentsoffile?language=objc
-func NewLocalizedStringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error foundation.IError) LocalizedString {
+func NewLocalizedStringWithContentsOfFileUsedEncodingError(path string, enc *foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	instance := LocalizedStringClass.Alloc().InitWithContentsOfFileUsedEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance
@@ -359,15 +359,15 @@ func NewLocalizedStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Poi
 	return instance
 }
 
-func (l_ LocalizedString) InitWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
-	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (l_ LocalizedString) InitWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
+	rv := objc.Call[LocalizedString](l_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc
-func NewLocalizedStringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error foundation.IError) LocalizedString {
+func NewLocalizedStringWithContentsOfFileEncodingError(path string, enc foundation.StringEncoding, error unsafe.Pointer) LocalizedString {
 	instance := LocalizedStringClass.Alloc().InitWithContentsOfFileEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance

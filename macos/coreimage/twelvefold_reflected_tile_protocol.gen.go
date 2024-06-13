@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile?language=objc
 type PTwelvefoldReflectedTile interface {
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -28,11 +28,11 @@ type PTwelvefoldReflectedTile interface {
 	HasCenter() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (t_ TwelvefoldReflectedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
-func (t_ TwelvefoldReflectedTileObject) SetAngle(value float64) {
+func (t_ TwelvefoldReflectedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
 }
 
@@ -70,8 +70,8 @@ func (t_ TwelvefoldReflectedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228814-angle?language=objc
-func (t_ TwelvefoldReflectedTileObject) Angle() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("angle"))
+func (t_ TwelvefoldReflectedTileObject) Angle() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("angle"))
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (t_ TwelvefoldReflectedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228817-width?language=objc
-func (t_ TwelvefoldReflectedTileObject) SetWidth(value float64) {
+func (t_ TwelvefoldReflectedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setWidth:"), value)
 }
 
@@ -116,8 +116,8 @@ func (t_ TwelvefoldReflectedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228817-width?language=objc
-func (t_ TwelvefoldReflectedTileObject) Width() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("width"))
+func (t_ TwelvefoldReflectedTileObject) Width() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("width"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (t_ TwelvefoldReflectedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwelvefoldreflectedtile/3228816-inputimage?language=objc
 func (t_ TwelvefoldReflectedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TwelvefoldReflectedTileObject) HasInputImage() bool {

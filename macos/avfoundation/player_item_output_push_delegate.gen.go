@@ -54,5 +54,5 @@ func (p_ PlayerItemOutputPushDelegateObject) HasOutputSequenceWasFlushed() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpushdelegate/1390224-outputsequencewasflushed?language=objc
 func (p_ PlayerItemOutputPushDelegateObject) OutputSequenceWasFlushed(output PlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("outputSequenceWasFlushed:"), objc.Ptr(output))
+	objc.Call[objc.Void](p_, objc.Sel("outputSequenceWasFlushed:"), output)
 }

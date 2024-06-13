@@ -21,7 +21,7 @@ type _VideoCompositionRenderContextClass struct {
 type IVideoCompositionRenderContext interface {
 	objc.IObject
 	NewPixelBuffer() corevideo.PixelBufferRef
-	RenderScale() float64
+	RenderScale() float32
 	HighQualityRendering() bool
 	PixelAspectRatio() PixelAspectRatio
 	EdgeWidths() EdgeWidths
@@ -74,8 +74,8 @@ func (v_ VideoCompositionRenderContext) NewPixelBuffer() corevideo.PixelBufferRe
 // A scaling ratio that is applied when rendering frames. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositionrendercontext/1387408-renderscale?language=objc
-func (v_ VideoCompositionRenderContext) RenderScale() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("renderScale"))
+func (v_ VideoCompositionRenderContext) RenderScale() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("renderScale"))
 	return rv
 }
 

@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,23 +14,23 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive?language=objc
 type PBinaryArchive interface {
 	// optional
-	SerializeToURLError(url foundation.URL, error foundation.Error) bool
+	SerializeToURLError(url foundation.URL, error unsafe.Pointer) bool
 	HasSerializeToURLError() bool
 
 	// optional
-	AddTileRenderPipelineFunctionsWithDescriptorError(descriptor TileRenderPipelineDescriptor, error foundation.Error) bool
+	AddTileRenderPipelineFunctionsWithDescriptorError(descriptor TileRenderPipelineDescriptor, error unsafe.Pointer) bool
 	HasAddTileRenderPipelineFunctionsWithDescriptorError() bool
 
 	// optional
-	AddComputePipelineFunctionsWithDescriptorError(descriptor ComputePipelineDescriptor, error foundation.Error) bool
+	AddComputePipelineFunctionsWithDescriptorError(descriptor ComputePipelineDescriptor, error unsafe.Pointer) bool
 	HasAddComputePipelineFunctionsWithDescriptorError() bool
 
 	// optional
-	AddRenderPipelineFunctionsWithDescriptorError(descriptor RenderPipelineDescriptor, error foundation.Error) bool
+	AddRenderPipelineFunctionsWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) bool
 	HasAddRenderPipelineFunctionsWithDescriptorError() bool
 
 	// optional
-	AddFunctionWithDescriptorLibraryError(descriptor FunctionDescriptor, library LibraryObject, error foundation.Error) bool
+	AddFunctionWithDescriptorLibraryError(descriptor FunctionDescriptor, library LibraryObject, error unsafe.Pointer) bool
 	HasAddFunctionWithDescriptorLibraryError() bool
 
 	// optional
@@ -59,8 +61,8 @@ func (b_ BinaryArchiveObject) HasSerializeToURLError() bool {
 // Writes the contents of the archive to a file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive/3553928-serializetourl?language=objc
-func (b_ BinaryArchiveObject) SerializeToURLError(url foundation.URL, error foundation.Error) bool {
-	rv := objc.Call[bool](b_, objc.Sel("serializeToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (b_ BinaryArchiveObject) SerializeToURLError(url foundation.URL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("serializeToURL:error:"), url, error)
 	return rv
 }
 
@@ -71,8 +73,8 @@ func (b_ BinaryArchiveObject) HasAddTileRenderPipelineFunctionsWithDescriptorErr
 // Adds a description of a tile renderer pipeline to the archive. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive/3564419-addtilerenderpipelinefunctionswi?language=objc
-func (b_ BinaryArchiveObject) AddTileRenderPipelineFunctionsWithDescriptorError(descriptor TileRenderPipelineDescriptor, error foundation.Error) bool {
-	rv := objc.Call[bool](b_, objc.Sel("addTileRenderPipelineFunctionsWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (b_ BinaryArchiveObject) AddTileRenderPipelineFunctionsWithDescriptorError(descriptor TileRenderPipelineDescriptor, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("addTileRenderPipelineFunctionsWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -83,8 +85,8 @@ func (b_ BinaryArchiveObject) HasAddComputePipelineFunctionsWithDescriptorError(
 // Adds a description of a compute pipeline to the archive. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive/3553924-addcomputepipelinefunctionswithd?language=objc
-func (b_ BinaryArchiveObject) AddComputePipelineFunctionsWithDescriptorError(descriptor ComputePipelineDescriptor, error foundation.Error) bool {
-	rv := objc.Call[bool](b_, objc.Sel("addComputePipelineFunctionsWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (b_ BinaryArchiveObject) AddComputePipelineFunctionsWithDescriptorError(descriptor ComputePipelineDescriptor, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("addComputePipelineFunctionsWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -95,8 +97,8 @@ func (b_ BinaryArchiveObject) HasAddRenderPipelineFunctionsWithDescriptorError()
 // Adds a description of a render pipeline to the archive. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive/3553925-addrenderpipelinefunctionswithde?language=objc
-func (b_ BinaryArchiveObject) AddRenderPipelineFunctionsWithDescriptorError(descriptor RenderPipelineDescriptor, error foundation.Error) bool {
-	rv := objc.Call[bool](b_, objc.Sel("addRenderPipelineFunctionsWithDescriptor:error:"), objc.Ptr(descriptor), objc.Ptr(error))
+func (b_ BinaryArchiveObject) AddRenderPipelineFunctionsWithDescriptorError(descriptor RenderPipelineDescriptor, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("addRenderPipelineFunctionsWithDescriptor:error:"), descriptor, error)
 	return rv
 }
 
@@ -107,9 +109,9 @@ func (b_ BinaryArchiveObject) HasAddFunctionWithDescriptorLibraryError() bool {
 // Adds a description of a function to the archive. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchive/3750523-addfunctionwithdescriptor?language=objc
-func (b_ BinaryArchiveObject) AddFunctionWithDescriptorLibraryError(descriptor FunctionDescriptor, library LibraryObject, error foundation.Error) bool {
+func (b_ BinaryArchiveObject) AddFunctionWithDescriptorLibraryError(descriptor FunctionDescriptor, library LibraryObject, error unsafe.Pointer) bool {
 	po1 := objc.WrapAsProtocol("MTLLibrary", library)
-	rv := objc.Call[bool](b_, objc.Sel("addFunctionWithDescriptor:library:error:"), objc.Ptr(descriptor), po1, objc.Ptr(error))
+	rv := objc.Call[bool](b_, objc.Sel("addFunctionWithDescriptor:library:error:"), descriptor, po1, error)
 	return rv
 }
 

@@ -38,7 +38,7 @@ func AssetReaderTrackOutputFrom(ptr unsafe.Pointer) AssetReaderTrackOutput {
 }
 
 func (ac _AssetReaderTrackOutputClass) AssetReaderTrackOutputWithTrackOutputSettings(track IAssetTrack, outputSettings map[string]objc.IObject) AssetReaderTrackOutput {
-	rv := objc.Call[AssetReaderTrackOutput](ac, objc.Sel("assetReaderTrackOutputWithTrack:outputSettings:"), objc.Ptr(track), outputSettings)
+	rv := objc.Call[AssetReaderTrackOutput](ac, objc.Sel("assetReaderTrackOutputWithTrack:outputSettings:"), track, outputSettings)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func AssetReaderTrackOutput_AssetReaderTrackOutputWithTrackOutputSettings(track 
 }
 
 func (a_ AssetReaderTrackOutput) InitWithTrackOutputSettings(track IAssetTrack, outputSettings map[string]objc.IObject) AssetReaderTrackOutput {
-	rv := objc.Call[AssetReaderTrackOutput](a_, objc.Sel("initWithTrack:outputSettings:"), objc.Ptr(track), outputSettings)
+	rv := objc.Call[AssetReaderTrackOutput](a_, objc.Sel("initWithTrack:outputSettings:"), track, outputSettings)
 	return rv
 }
 

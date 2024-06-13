@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _FeaturePrintObservationClass struct {
 // An interface definition for the [FeaturePrintObservation] class.
 type IFeaturePrintObservation interface {
 	IObservation
-	ComputeDistanceToFeaturePrintObservationError(outDistance *float64, featurePrint IFeaturePrintObservation, error foundation.IError) bool
+	ComputeDistanceToFeaturePrintObservationError(outDistance *float32, featurePrint IFeaturePrintObservation, error unsafe.Pointer) bool
 	Data() []byte
 	ElementType() ElementType
 	ElementCount() uint
@@ -61,8 +60,8 @@ func (f_ FeaturePrintObservation) Init() FeaturePrintObservation {
 // Computes the distance between two feature print observations. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnfeatureprintobservation/3182823-computedistance?language=objc
-func (f_ FeaturePrintObservation) ComputeDistanceToFeaturePrintObservationError(outDistance *float64, featurePrint IFeaturePrintObservation, error foundation.IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("computeDistance:toFeaturePrintObservation:error:"), outDistance, objc.Ptr(featurePrint), objc.Ptr(error))
+func (f_ FeaturePrintObservation) ComputeDistanceToFeaturePrintObservationError(outDistance *float32, featurePrint IFeaturePrintObservation, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("computeDistance:toFeaturePrintObservation:error:"), outDistance, featurePrint, error)
 	return rv
 }
 

@@ -7,7 +7,6 @@ import (
 
 	"github.com/progrium/macdriver/macos/coregraphics"
 	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -25,9 +24,9 @@ type ICaptureDevice interface {
 	IsTorchModeSupported(torchMode CaptureTorchMode) bool
 	SupportsAVCaptureSessionPreset(preset CaptureSessionPreset) bool
 	HasMediaType(mediaType MediaType) bool
-	LockForConfiguration(outError foundation.IError) bool
+	LockForConfiguration(outError unsafe.Pointer) bool
 	IsExposureModeSupported(exposureMode CaptureExposureMode) bool
-	SetTorchModeOnWithLevelError(torchLevel float64, outError foundation.IError) bool
+	SetTorchModeOnWithLevelError(torchLevel float32, outError unsafe.Pointer) bool
 	IsWhiteBalanceModeSupported(whiteBalanceMode CaptureWhiteBalanceMode) bool
 	UnlockForConfiguration()
 	IsFocusModeSupported(focusMode CaptureFocusMode) bool
@@ -57,7 +56,7 @@ type ICaptureDevice interface {
 	TransportControlsSpeed() CaptureDeviceTransportControlsSpeed
 	LocalizedName() string
 	UniqueID() string
-	TorchLevel() float64
+	TorchLevel() float32
 	FlashMode() CaptureFlashMode
 	SetFlashMode(value CaptureFlashMode)
 	TransportControlsPlaybackMode() CaptureDeviceTransportControlsPlaybackMode
@@ -207,8 +206,8 @@ func CaptureDevice_ShowSystemUserInterface(systemUserInterface CaptureSystemUser
 // Requests exclusive access to configure device hardware properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1387810-lockforconfiguration?language=objc
-func (c_ CaptureDevice) LockForConfiguration(outError foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("lockForConfiguration:"), objc.Ptr(outError))
+func (c_ CaptureDevice) LockForConfiguration(outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("lockForConfiguration:"), outError)
 	return rv
 }
 
@@ -252,8 +251,8 @@ func CaptureDevice_RequestAccessForMediaTypeCompletionHandler(mediaType MediaTyp
 // Sets the illumination level when in torch mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624609-settorchmodeonwithlevel?language=objc
-func (c_ CaptureDevice) SetTorchModeOnWithLevelError(torchLevel float64, outError foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("setTorchModeOnWithLevel:error:"), torchLevel, objc.Ptr(outError))
+func (c_ CaptureDevice) SetTorchModeOnWithLevelError(torchLevel float32, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("setTorchModeOnWithLevel:error:"), torchLevel, outError)
 	return rv
 }
 
@@ -384,7 +383,7 @@ func (c_ CaptureDevice) ActiveInputSource() CaptureDeviceInputSource {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1390141-activeinputsource?language=objc
 func (c_ CaptureDevice) SetActiveInputSource(value ICaptureDeviceInputSource) {
-	objc.Call[objc.Void](c_, objc.Sel("setActiveInputSource:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setActiveInputSource:"), value)
 }
 
 // A Boolean value that indicates whether the Portrait video effect is active on a device. [Full Topic]
@@ -445,7 +444,7 @@ func (c_ CaptureDevice) ActiveFormat() CaptureDeviceFormat {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1389221-activeformat?language=objc
 func (c_ CaptureDevice) SetActiveFormat(value ICaptureDeviceFormat) {
-	objc.Call[objc.Void](c_, objc.Sel("setActiveFormat:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setActiveFormat:"), value)
 }
 
 // A Boolean value that indicates whether the flash is currently available for use. [Full Topic]
@@ -528,8 +527,8 @@ func (c_ CaptureDevice) UniqueID() string {
 // The current torch brightness level. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedevice/1624605-torchlevel?language=objc
-func (c_ CaptureDevice) TorchLevel() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("torchLevel"))
+func (c_ CaptureDevice) TorchLevel() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("torchLevel"))
 	return rv
 }
 

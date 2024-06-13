@@ -20,19 +20,19 @@ type PHatchedScreen interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PHatchedScreen interface {
 	HasCenter() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 }
 
@@ -68,7 +68,7 @@ func (h_ HatchedScreenObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228483-inputimage?language=objc
 func (h_ HatchedScreenObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
 func (h_ HatchedScreenObject) HasInputImage() bool {
@@ -90,7 +90,7 @@ func (h_ HatchedScreenObject) HasSetAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228481-angle?language=objc
-func (h_ HatchedScreenObject) SetAngle(value float64) {
+func (h_ HatchedScreenObject) SetAngle(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setAngle:"), value)
 }
 
@@ -101,8 +101,8 @@ func (h_ HatchedScreenObject) HasAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228481-angle?language=objc
-func (h_ HatchedScreenObject) Angle() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("angle"))
+func (h_ HatchedScreenObject) Angle() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("angle"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (h_ HatchedScreenObject) HasSetWidth() bool {
 // The distance between lines in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228485-width?language=objc
-func (h_ HatchedScreenObject) SetWidth(value float64) {
+func (h_ HatchedScreenObject) SetWidth(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setWidth:"), value)
 }
 
@@ -124,8 +124,8 @@ func (h_ HatchedScreenObject) HasWidth() bool {
 // The distance between lines in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228485-width?language=objc
-func (h_ HatchedScreenObject) Width() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("width"))
+func (h_ HatchedScreenObject) Width() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("width"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (h_ HatchedScreenObject) HasSetSharpness() bool {
 // The amount of sharpening to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228484-sharpness?language=objc
-func (h_ HatchedScreenObject) SetSharpness(value float64) {
+func (h_ HatchedScreenObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setSharpness:"), value)
 }
 
@@ -170,7 +170,7 @@ func (h_ HatchedScreenObject) HasSharpness() bool {
 // The amount of sharpening to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihatchedscreen/3228484-sharpness?language=objc
-func (h_ HatchedScreenObject) Sharpness() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("sharpness"))
+func (h_ HatchedScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("sharpness"))
 	return rv
 }

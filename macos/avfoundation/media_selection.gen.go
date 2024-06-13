@@ -60,7 +60,7 @@ func (m_ MediaSelection) Init() MediaSelection {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselection/1389197-selectedmediaoptioninmediaselect?language=objc
 func (m_ MediaSelection) SelectedMediaOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
-	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("selectedMediaOptionInMediaSelectionGroup:"), objc.Ptr(mediaSelectionGroup))
+	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("selectedMediaOptionInMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func (m_ MediaSelection) SelectedMediaOptionInMediaSelectionGroup(mediaSelection
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselection/1386716-mediaselectioncriteriacanbeappli?language=objc
 func (m_ MediaSelection) MediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) bool {
-	rv := objc.Call[bool](m_, objc.Sel("mediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup:"), objc.Ptr(mediaSelectionGroup))
+	rv := objc.Call[bool](m_, objc.Sel("mediaSelectionCriteriaCanBeAppliedAutomaticallyToMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 

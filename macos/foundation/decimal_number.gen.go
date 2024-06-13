@@ -163,7 +163,7 @@ func DecimalNumber_DecimalNumberWithStringLocale(numberValue string, locale objc
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1409890-decimalnumberbysubtracting?language=objc
 func (d_ DecimalNumber) DecimalNumberBySubtractingWithBehavior(decimalNumber IDecimalNumber, behavior PDecimalNumberBehaviors) DecimalNumber {
 	po1 := objc.WrapAsProtocol("NSDecimalNumberBehaviors", behavior)
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:withBehavior:"), objc.Ptr(decimalNumber), po1)
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:withBehavior:"), decimalNumber, po1)
 	return rv
 }
 
@@ -171,7 +171,7 @@ func (d_ DecimalNumber) DecimalNumberBySubtractingWithBehavior(decimalNumber IDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1409890-decimalnumberbysubtracting?language=objc
 func (d_ DecimalNumber) DecimalNumberBySubtractingWithBehaviorObject(decimalNumber IDecimalNumber, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:withBehavior:"), objc.Ptr(decimalNumber), objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:withBehavior:"), decimalNumber, behaviorObject)
 	return rv
 }
 
@@ -179,7 +179,7 @@ func (d_ DecimalNumber) DecimalNumberBySubtractingWithBehaviorObject(decimalNumb
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1410741-decimalnumberbydividingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByDividingBy(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:"), objc.Ptr(decimalNumber))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:"), decimalNumber)
 	return rv
 }
 
@@ -226,7 +226,7 @@ func (d_ DecimalNumber) DecimalNumberByRoundingAccordingToBehavior(behavior PDec
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1415436-decimalnumberbyroundingaccording?language=objc
 func (d_ DecimalNumber) DecimalNumberByRoundingAccordingToBehaviorObject(behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByRoundingAccordingToBehavior:"), objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByRoundingAccordingToBehavior:"), behaviorObject)
 	return rv
 }
 
@@ -234,7 +234,7 @@ func (d_ DecimalNumber) DecimalNumberByRoundingAccordingToBehaviorObject(behavio
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1416873-decimalnumberbysubtracting?language=objc
 func (d_ DecimalNumber) DecimalNumberBySubtracting(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:"), objc.Ptr(decimalNumber))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberBySubtracting:"), decimalNumber)
 	return rv
 }
 
@@ -274,7 +274,7 @@ func (d_ DecimalNumber) DecimalNumberByRaisingToPowerWithBehavior(power uint, be
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1410484-decimalnumberbyraisingtopower?language=objc
 func (d_ DecimalNumber) DecimalNumberByRaisingToPowerWithBehaviorObject(power uint, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByRaisingToPower:withBehavior:"), power, objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByRaisingToPower:withBehavior:"), power, behaviorObject)
 	return rv
 }
 
@@ -283,7 +283,7 @@ func (d_ DecimalNumber) DecimalNumberByRaisingToPowerWithBehaviorObject(power ui
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1407456-decimalnumberbyadding?language=objc
 func (d_ DecimalNumber) DecimalNumberByAddingWithBehavior(decimalNumber IDecimalNumber, behavior PDecimalNumberBehaviors) DecimalNumber {
 	po1 := objc.WrapAsProtocol("NSDecimalNumberBehaviors", behavior)
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:withBehavior:"), objc.Ptr(decimalNumber), po1)
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:withBehavior:"), decimalNumber, po1)
 	return rv
 }
 
@@ -291,7 +291,7 @@ func (d_ DecimalNumber) DecimalNumberByAddingWithBehavior(decimalNumber IDecimal
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1407456-decimalnumberbyadding?language=objc
 func (d_ DecimalNumber) DecimalNumberByAddingWithBehaviorObject(decimalNumber IDecimalNumber, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:withBehavior:"), objc.Ptr(decimalNumber), objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:withBehavior:"), decimalNumber, behaviorObject)
 	return rv
 }
 
@@ -299,7 +299,7 @@ func (d_ DecimalNumber) DecimalNumberByAddingWithBehaviorObject(decimalNumber ID
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1413203-decimalnumberbyadding?language=objc
 func (d_ DecimalNumber) DecimalNumberByAdding(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:"), objc.Ptr(decimalNumber))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByAdding:"), decimalNumber)
 	return rv
 }
 
@@ -307,7 +307,7 @@ func (d_ DecimalNumber) DecimalNumberByAdding(decimalNumber IDecimalNumber) Deci
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1414243-decimalnumberbymultiplyingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByMultiplyingBy(decimalNumber IDecimalNumber) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:"), objc.Ptr(decimalNumber))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:"), decimalNumber)
 	return rv
 }
 
@@ -324,7 +324,7 @@ func (d_ DecimalNumber) DecimalNumberByMultiplyingByPowerOf10WithBehavior(power 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1414279-decimalnumberbymultiplyingbypowe?language=objc
 func (d_ DecimalNumber) DecimalNumberByMultiplyingByPowerOf10WithBehaviorObject(power int, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingByPowerOf10:withBehavior:"), power, objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingByPowerOf10:withBehavior:"), power, behaviorObject)
 	return rv
 }
 
@@ -333,7 +333,7 @@ func (d_ DecimalNumber) DecimalNumberByMultiplyingByPowerOf10WithBehaviorObject(
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1414874-decimalnumberbymultiplyingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByMultiplyingByWithBehavior(decimalNumber IDecimalNumber, behavior PDecimalNumberBehaviors) DecimalNumber {
 	po1 := objc.WrapAsProtocol("NSDecimalNumberBehaviors", behavior)
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:withBehavior:"), objc.Ptr(decimalNumber), po1)
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:withBehavior:"), decimalNumber, po1)
 	return rv
 }
 
@@ -341,7 +341,7 @@ func (d_ DecimalNumber) DecimalNumberByMultiplyingByWithBehavior(decimalNumber I
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1414874-decimalnumberbymultiplyingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByMultiplyingByWithBehaviorObject(decimalNumber IDecimalNumber, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:withBehavior:"), objc.Ptr(decimalNumber), objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByMultiplyingBy:withBehavior:"), decimalNumber, behaviorObject)
 	return rv
 }
 
@@ -350,7 +350,7 @@ func (d_ DecimalNumber) DecimalNumberByMultiplyingByWithBehaviorObject(decimalNu
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1415619-decimalnumberbydividingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByDividingByWithBehavior(decimalNumber IDecimalNumber, behavior PDecimalNumberBehaviors) DecimalNumber {
 	po1 := objc.WrapAsProtocol("NSDecimalNumberBehaviors", behavior)
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:withBehavior:"), objc.Ptr(decimalNumber), po1)
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:withBehavior:"), decimalNumber, po1)
 	return rv
 }
 
@@ -358,7 +358,7 @@ func (d_ DecimalNumber) DecimalNumberByDividingByWithBehavior(decimalNumber IDec
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdecimalnumber/1415619-decimalnumberbydividingby?language=objc
 func (d_ DecimalNumber) DecimalNumberByDividingByWithBehaviorObject(decimalNumber IDecimalNumber, behaviorObject objc.IObject) DecimalNumber {
-	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:withBehavior:"), objc.Ptr(decimalNumber), objc.Ptr(behaviorObject))
+	rv := objc.Call[DecimalNumber](d_, objc.Sel("decimalNumberByDividingBy:withBehavior:"), decimalNumber, behaviorObject)
 	return rv
 }
 

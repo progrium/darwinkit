@@ -54,8 +54,8 @@ type IAssetWriterInput interface {
 	SetTransform(value coregraphics.AffineTransform)
 	LanguageCode() string
 	SetLanguageCode(value string)
-	PreferredVolume() float64
-	SetPreferredVolume(value float64)
+	PreferredVolume() float32
+	SetPreferredVolume(value float32)
 	MediaType() MediaType
 	PerformsMultiPassEncodingIfSupported() bool
 	SetPerformsMultiPassEncodingIfSupported(value bool)
@@ -161,7 +161,7 @@ func (a_ AssetWriterInput) RequestMediaDataWhenReadyOnQueueUsingBlock(queue disp
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388292-canaddtrackassociationwithtracko?language=objc
 func (a_ AssetWriterInput) CanAddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("canAddTrackAssociationWithTrackOfInput:type:"), objc.Ptr(input), trackAssociationType)
+	rv := objc.Call[bool](a_, objc.Sel("canAddTrackAssociationWithTrackOfInput:type:"), input, trackAssociationType)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func (a_ AssetWriterInput) CanAddTrackAssociationWithTrackOfInputType(input IAss
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1388347-addtrackassociationwithtrackofin?language=objc
 func (a_ AssetWriterInput) AddTrackAssociationWithTrackOfInputType(input IAssetWriterInput, trackAssociationType string) {
-	objc.Call[objc.Void](a_, objc.Sel("addTrackAssociationWithTrackOfInput:type:"), objc.Ptr(input), trackAssociationType)
+	objc.Call[objc.Void](a_, objc.Sel("addTrackAssociationWithTrackOfInput:type:"), input, trackAssociationType)
 }
 
 // Appends a sample buffer to an input to write to the output file. [Full Topic]
@@ -343,7 +343,7 @@ func (a_ AssetWriterInput) SampleReferenceBaseURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1386316-samplereferencebaseurl?language=objc
 func (a_ AssetWriterInput) SetSampleReferenceBaseURL(value foundation.IURL) {
-	objc.Call[objc.Void](a_, objc.Sel("setSampleReferenceBaseURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setSampleReferenceBaseURL:"), value)
 }
 
 // The time scale of the track in the output file. [Full Topic]
@@ -394,15 +394,15 @@ func (a_ AssetWriterInput) SetLanguageCode(value string) {
 // The volume to prefer for playback of the output’s audio data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
-func (a_ AssetWriterInput) PreferredVolume() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("preferredVolume"))
+func (a_ AssetWriterInput) PreferredVolume() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("preferredVolume"))
 	return rv
 }
 
 // The volume to prefer for playback of the output’s audio data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinput/1389949-preferredvolume?language=objc
-func (a_ AssetWriterInput) SetPreferredVolume(value float64) {
+func (a_ AssetWriterInput) SetPreferredVolume(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setPreferredVolume:"), value)
 }
 

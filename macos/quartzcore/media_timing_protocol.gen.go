@@ -36,11 +36,11 @@ type PMediaTiming interface {
 	HasRepeatDuration() bool
 
 	// optional
-	SetRepeatCount(value float64)
+	SetRepeatCount(value float32)
 	HasSetRepeatCount() bool
 
 	// optional
-	RepeatCount() float64
+	RepeatCount() float32
 	HasRepeatCount() bool
 
 	// optional
@@ -52,11 +52,11 @@ type PMediaTiming interface {
 	HasBeginTime() bool
 
 	// optional
-	SetSpeed(value float64)
+	SetSpeed(value float32)
 	HasSetSpeed() bool
 
 	// optional
-	Speed() float64
+	Speed() float32
 	HasSpeed() bool
 
 	// optional
@@ -160,7 +160,7 @@ func (m_ MediaTimingObject) HasSetRepeatCount() bool {
 // Determines the number of times the animation will repeat. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427666-repeatcount?language=objc
-func (m_ MediaTimingObject) SetRepeatCount(value float64) {
+func (m_ MediaTimingObject) SetRepeatCount(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRepeatCount:"), value)
 }
 
@@ -171,8 +171,8 @@ func (m_ MediaTimingObject) HasRepeatCount() bool {
 // Determines the number of times the animation will repeat. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427666-repeatcount?language=objc
-func (m_ MediaTimingObject) RepeatCount() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("repeatCount"))
+func (m_ MediaTimingObject) RepeatCount() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("repeatCount"))
 	return rv
 }
 
@@ -206,7 +206,7 @@ func (m_ MediaTimingObject) HasSetSpeed() bool {
 // Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
-func (m_ MediaTimingObject) SetSpeed(value float64) {
+func (m_ MediaTimingObject) SetSpeed(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setSpeed:"), value)
 }
 
@@ -217,8 +217,8 @@ func (m_ MediaTimingObject) HasSpeed() bool {
 // Specifies how time is mapped to receiver’s time space from the parent time space. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatiming/1427647-speed?language=objc
-func (m_ MediaTimingObject) Speed() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("speed"))
+func (m_ MediaTimingObject) Speed() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("speed"))
 	return rv
 }
 

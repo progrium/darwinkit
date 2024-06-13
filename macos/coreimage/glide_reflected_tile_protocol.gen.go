@@ -20,19 +20,19 @@ type PGlideReflectedTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -60,7 +60,7 @@ func (g_ GlideReflectedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228474-inputimage?language=objc
 func (g_ GlideReflectedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GlideReflectedTileObject) HasInputImage() bool {
@@ -82,7 +82,7 @@ func (g_ GlideReflectedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228475-width?language=objc
-func (g_ GlideReflectedTileObject) SetWidth(value float64) {
+func (g_ GlideReflectedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setWidth:"), value)
 }
 
@@ -93,8 +93,8 @@ func (g_ GlideReflectedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228475-width?language=objc
-func (g_ GlideReflectedTileObject) Width() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("width"))
+func (g_ GlideReflectedTileObject) Width() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("width"))
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (g_ GlideReflectedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228472-angle?language=objc
-func (g_ GlideReflectedTileObject) SetAngle(value float64) {
+func (g_ GlideReflectedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setAngle:"), value)
 }
 
@@ -116,8 +116,8 @@ func (g_ GlideReflectedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglidereflectedtile/3228472-angle?language=objc
-func (g_ GlideReflectedTileObject) Angle() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("angle"))
+func (g_ GlideReflectedTileObject) Angle() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("angle"))
 	return rv
 }
 

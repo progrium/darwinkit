@@ -19,7 +19,7 @@ type _CNNDropoutClass struct {
 // An interface definition for the [CNNDropout] class.
 type ICNNDropout interface {
 	ICNNKernel
-	KeepProbability() float64
+	KeepProbability() float32
 	MaskStrideInPixels() metal.Size
 	Seed() uint
 }
@@ -37,7 +37,7 @@ func CNNDropoutFrom(ptr unsafe.Pointer) CNNDropout {
 	}
 }
 
-func (c_ CNNDropout) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropout {
+func (c_ CNNDropout) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropout {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNDropout](c_, objc.Sel("initWithDevice:keepProbability:seed:maskStrideInPixels:"), po0, keepProbability, seed, maskStrideInPixels)
 	return rv
@@ -46,7 +46,7 @@ func (c_ CNNDropout) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropout/2942522-initwithdevice?language=objc
-func NewCNNDropoutWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropout {
+func NewCNNDropoutWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropout {
 	instance := CNNDropoutClass.Alloc().InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device, keepProbability, seed, maskStrideInPixels)
 	instance.Autorelease()
 	return instance
@@ -105,8 +105,8 @@ func CNNDropout_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CN
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropout/2942524-keepprobability?language=objc
-func (c_ CNNDropout) KeepProbability() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("keepProbability"))
+func (c_ CNNDropout) KeepProbability() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("keepProbability"))
 	return rv
 }
 

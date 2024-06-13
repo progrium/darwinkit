@@ -47,7 +47,7 @@ func (u_ URLAuthenticationChallengeSenderObject) HasCancelAuthenticationChalleng
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1414474-cancelauthenticationchallenge?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) CancelAuthenticationChallenge(challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("cancelAuthenticationChallenge:"), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("cancelAuthenticationChallenge:"), challenge)
 }
 
 func (u_ URLAuthenticationChallengeSenderObject) HasContinueWithoutCredentialForAuthenticationChallenge() bool {
@@ -58,7 +58,7 @@ func (u_ URLAuthenticationChallengeSenderObject) HasContinueWithoutCredentialFor
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1413016-continuewithoutcredentialforauth?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) ContinueWithoutCredentialForAuthenticationChallenge(challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("continueWithoutCredentialForAuthenticationChallenge:"), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("continueWithoutCredentialForAuthenticationChallenge:"), challenge)
 }
 
 func (u_ URLAuthenticationChallengeSenderObject) HasUseCredentialForAuthenticationChallenge() bool {
@@ -69,7 +69,7 @@ func (u_ URLAuthenticationChallengeSenderObject) HasUseCredentialForAuthenticati
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1411062-usecredential?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) UseCredentialForAuthenticationChallenge(credential URLCredential, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("useCredential:forAuthenticationChallenge:"), objc.Ptr(credential), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("useCredential:forAuthenticationChallenge:"), credential, challenge)
 }
 
 func (u_ URLAuthenticationChallengeSenderObject) HasPerformDefaultHandlingForAuthenticationChallenge() bool {
@@ -80,7 +80,7 @@ func (u_ URLAuthenticationChallengeSenderObject) HasPerformDefaultHandlingForAut
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1414590-performdefaulthandlingforauthent?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) PerformDefaultHandlingForAuthenticationChallenge(challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("performDefaultHandlingForAuthenticationChallenge:"), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("performDefaultHandlingForAuthenticationChallenge:"), challenge)
 }
 
 func (u_ URLAuthenticationChallengeSenderObject) HasRejectProtectionSpaceAndContinueWithChallenge() bool {
@@ -91,5 +91,5 @@ func (u_ URLAuthenticationChallengeSenderObject) HasRejectProtectionSpaceAndCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlauthenticationchallengesender/1417331-rejectprotectionspaceandcontinue?language=objc
 func (u_ URLAuthenticationChallengeSenderObject) RejectProtectionSpaceAndContinueWithChallenge(challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("rejectProtectionSpaceAndContinueWithChallenge:"), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("rejectProtectionSpaceAndContinueWithChallenge:"), challenge)
 }

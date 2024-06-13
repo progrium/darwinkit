@@ -103,7 +103,7 @@ func (e_ ExecutionDescriptor) CompilationDescriptor() CompilationDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutiondescriptor/3922625-compilationdescriptor?language=objc
 func (e_ ExecutionDescriptor) SetCompilationDescriptor(value ICompilationDescriptor) {
-	objc.Call[objc.Void](e_, objc.Sel("setCompilationDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setCompilationDescriptor:"), value)
 }
 
 //	[Full Topic]

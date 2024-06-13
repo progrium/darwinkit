@@ -101,7 +101,7 @@ func (e_ ExtensionStreamProperties) Init() ExtensionStreamProperties {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915963-setpropertystate?language=objc
 func (e_ ExtensionStreamProperties) SetPropertyStateForProperty(propertyState IExtensionPropertyState, property ExtensionProperty) {
-	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), objc.Ptr(propertyState), property)
+	objc.Call[objc.Void](e_, objc.Sel("setPropertyState:forProperty:"), propertyState, property)
 }
 
 // A dictionary representation of the property state. [Full Topic]
@@ -131,7 +131,7 @@ func (e_ ExtensionStreamProperties) SinkBufferQueueSize() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915964-sinkbufferqueuesize?language=objc
 func (e_ ExtensionStreamProperties) SetSinkBufferQueueSize(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferQueueSize:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferQueueSize:"), value)
 }
 
 // The maximum duration of a frame. [Full Topic]
@@ -161,7 +161,7 @@ func (e_ ExtensionStreamProperties) SinkBuffersRequiredForStartup() foundation.N
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915966-sinkbuffersrequiredforstartup?language=objc
 func (e_ ExtensionStreamProperties) SetSinkBuffersRequiredForStartup(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkBuffersRequiredForStartup:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSinkBuffersRequiredForStartup:"), value)
 }
 
 // The index of the active format. [Full Topic]
@@ -176,7 +176,7 @@ func (e_ ExtensionStreamProperties) ActiveFormatIndex() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915958-activeformatindex?language=objc
 func (e_ ExtensionStreamProperties) SetActiveFormatIndex(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setActiveFormatIndex:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setActiveFormatIndex:"), value)
 }
 
 // A dictionary representation of a frame duration. [Full Topic]
@@ -206,7 +206,7 @@ func (e_ ExtensionStreamProperties) SinkEndOfData() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915967-sinkendofdata?language=objc
 func (e_ ExtensionStreamProperties) SetSinkEndOfData(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkEndOfData:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSinkEndOfData:"), value)
 }
 
 // The buffer underrun count. [Full Topic]
@@ -221,5 +221,5 @@ func (e_ ExtensionStreamProperties) SinkBufferUnderrunCount() foundation.Number 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstreamproperties/3915965-sinkbufferunderruncount?language=objc
 func (e_ ExtensionStreamProperties) SetSinkBufferUnderrunCount(value foundation.INumber) {
-	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferUnderrunCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setSinkBufferUnderrunCount:"), value)
 }

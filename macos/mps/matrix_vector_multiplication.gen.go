@@ -121,12 +121,12 @@ func NewMatrixVectorMultiplicationWithDevice(device metal.PDevice) MatrixVectorM
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixvectormultiplication/2873084-encodetocommandbuffer?language=objc
 func (m_ MatrixVectorMultiplication) EncodeToCommandBufferInputMatrixInputVectorResultVector(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, inputVector IVector, resultVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:inputVector:resultVector:"), po0, objc.Ptr(inputMatrix), objc.Ptr(inputVector), objc.Ptr(resultVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:inputVector:resultVector:"), po0, inputMatrix, inputVector, resultVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixvectormultiplication/2873084-encodetocommandbuffer?language=objc
 func (m_ MatrixVectorMultiplication) EncodeToCommandBufferObjectInputMatrixInputVectorResultVector(commandBufferObject objc.IObject, inputMatrix IMatrix, inputVector IVector, resultVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:inputVector:resultVector:"), objc.Ptr(commandBufferObject), objc.Ptr(inputMatrix), objc.Ptr(inputVector), objc.Ptr(resultVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:inputVector:resultVector:"), commandBufferObject, inputMatrix, inputVector, resultVector)
 }

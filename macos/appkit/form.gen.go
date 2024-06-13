@@ -55,7 +55,7 @@ func (f_ Form) Init() Form {
 }
 
 func (f_ Form) InitWithFrameModePrototypeNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, cell ICell, rowsHigh int, colsWide int) Form {
-	rv := objc.Call[Form](f_, objc.Sel("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, objc.Ptr(cell), rowsHigh, colsWide)
+	rv := objc.Call[Form](f_, objc.Sel("initWithFrame:mode:prototype:numberOfRows:numberOfColumns:"), frameRect, mode, cell, rowsHigh, colsWide)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func NewFormWithFrame(frameRect foundation.Rect) Form {
 }
 
 func (f_ Form) InitWithFrameModeCellClassNumberOfRowsNumberOfColumns(frameRect foundation.Rect, mode MatrixMode, factoryId objc.IClass, rowsHigh int, colsWide int) Form {
-	rv := objc.Call[Form](f_, objc.Sel("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, objc.Ptr(factoryId), rowsHigh, colsWide)
+	rv := objc.Call[Form](f_, objc.Sel("initWithFrame:mode:cellClass:numberOfRows:numberOfColumns:"), frameRect, mode, factoryId, rowsHigh, colsWide)
 	return rv
 }
 

@@ -54,7 +54,7 @@ func ContentKeySessionFrom(ptr unsafe.Pointer) ContentKeySession {
 }
 
 func (cc _ContentKeySessionClass) ContentKeySessionWithKeySystemStorageDirectoryAtURL(keySystem ContentKeySystem, storageURL foundation.IURL) ContentKeySession {
-	rv := objc.Call[ContentKeySession](cc, objc.Sel("contentKeySessionWithKeySystem:storageDirectoryAtURL:"), keySystem, objc.Ptr(storageURL))
+	rv := objc.Call[ContentKeySession](cc, objc.Sel("contentKeySessionWithKeySystem:storageDirectoryAtURL:"), keySystem, storageURL)
 	return rv
 }
 
@@ -109,14 +109,14 @@ func (c_ ContentKeySession) RemoveContentKeyRecipient(recipient PContentKeyRecip
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799181-removecontentkeyrecipient?language=objc
 func (c_ ContentKeySession) RemoveContentKeyRecipientObject(recipientObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("removeContentKeyRecipient:"), objc.Ptr(recipientObject))
+	objc.Call[objc.Void](c_, objc.Sel("removeContentKeyRecipient:"), recipientObject)
 }
 
 // Returns the expired session reports for content key sessions created with the specified app identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799161-pendingexpiredsessionreportswith?language=objc
 func (cc _ContentKeySessionClass) PendingExpiredSessionReportsWithAppIdentifierStorageDirectoryAtURL(appIdentifier []byte, storageURL foundation.IURL) [][]byte {
-	rv := objc.Call[[][]byte](cc, objc.Sel("pendingExpiredSessionReportsWithAppIdentifier:storageDirectoryAtURL:"), appIdentifier, objc.Ptr(storageURL))
+	rv := objc.Call[[][]byte](cc, objc.Sel("pendingExpiredSessionReportsWithAppIdentifier:storageDirectoryAtURL:"), appIdentifier, storageURL)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func ContentKeySession_PendingExpiredSessionReportsWithAppIdentifierStorageDirec
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799208-renewexpiringresponsedataforcont?language=objc
 func (c_ ContentKeySession) RenewExpiringResponseDataForContentKeyRequest(contentKeyRequest IContentKeyRequest) {
-	objc.Call[objc.Void](c_, objc.Sel("renewExpiringResponseDataForContentKeyRequest:"), objc.Ptr(contentKeyRequest))
+	objc.Call[objc.Void](c_, objc.Sel("renewExpiringResponseDataForContentKeyRequest:"), contentKeyRequest)
 }
 
 // Invalidates the persistable content key and creates a secure server playback context (SPC) to verify the outcome of an invalidation request. [Full Topic]
@@ -145,7 +145,7 @@ func (c_ ContentKeySession) InvalidatePersistableContentKeyOptionsCompletionHand
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799170-removependingexpiredsessionrepor?language=objc
 func (cc _ContentKeySessionClass) RemovePendingExpiredSessionReportsWithAppIdentifierStorageDirectoryAtURL(expiredSessionReports [][]byte, appIdentifier []byte, storageURL foundation.IURL) {
-	objc.Call[objc.Void](cc, objc.Sel("removePendingExpiredSessionReports:withAppIdentifier:storageDirectoryAtURL:"), expiredSessionReports, appIdentifier, objc.Ptr(storageURL))
+	objc.Call[objc.Void](cc, objc.Sel("removePendingExpiredSessionReports:withAppIdentifier:storageDirectoryAtURL:"), expiredSessionReports, appIdentifier, storageURL)
 }
 
 // Removes expired session reports from storage. [Full Topic]
@@ -188,7 +188,7 @@ func (c_ ContentKeySession) SetDelegateQueue(delegate PContentKeySessionDelegate
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799164-setdelegate?language=objc
 func (c_ ContentKeySession) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // Tells the delegate that the specified recipient should have access to the decryption keys loaded with the session. [Full Topic]
@@ -203,7 +203,7 @@ func (c_ ContentKeySession) AddContentKeyRecipient(recipient PContentKeyRecipien
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeysession/2799174-addcontentkeyrecipient?language=objc
 func (c_ ContentKeySession) AddContentKeyRecipientObject(recipientObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("addContentKeyRecipient:"), objc.Ptr(recipientObject))
+	objc.Call[objc.Void](c_, objc.Sel("addContentKeyRecipient:"), recipientObject)
 }
 
 // Tells the delegate to start loading the content decryption key with the specified identifier and initialization data. [Full Topic]

@@ -85,7 +85,7 @@ func (t_ TextInputContext) Init() TextInputContext {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextinputcontext/1528602-handleevent?language=objc
 func (t_ TextInputContext) HandleEvent(event IEvent) bool {
-	rv := objc.Call[bool](t_, objc.Sel("handleEvent:"), objc.Ptr(event))
+	rv := objc.Call[bool](t_, objc.Sel("handleEvent:"), event)
 	return rv
 }
 

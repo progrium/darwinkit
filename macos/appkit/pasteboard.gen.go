@@ -146,7 +146,7 @@ func Pasteboard_PasteboardWithName(name PasteboardName) Pasteboard {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1530088-pasteboardbyfilteringtypesinpast?language=objc
 func (pc _PasteboardClass) PasteboardByFilteringTypesInPasteboard(pboard IPasteboard) Pasteboard {
-	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringTypesInPasteboard:"), objc.Ptr(pboard))
+	rv := objc.Call[Pasteboard](pc, objc.Sel("pasteboardByFilteringTypesInPasteboard:"), pboard)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func (p_ Pasteboard) StringForType(dataType PasteboardType) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1525176-indexofpasteboarditem?language=objc
 func (p_ Pasteboard) IndexOfPasteboardItem(pasteboardItem IPasteboardItem) uint {
-	rv := objc.Call[uint](p_, objc.Sel("indexOfPasteboardItem:"), objc.Ptr(pasteboardItem))
+	rv := objc.Call[uint](p_, objc.Sel("indexOfPasteboardItem:"), pasteboardItem)
 	return rv
 }
 
@@ -247,7 +247,7 @@ func (p_ Pasteboard) CanReadItemWithDataConformingToTypes(types []string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboard/1527279-writefilewrapper?language=objc
 func (p_ Pasteboard) WriteFileWrapper(wrapper foundation.IFileWrapper) bool {
-	rv := objc.Call[bool](p_, objc.Sel("writeFileWrapper:"), objc.Ptr(wrapper))
+	rv := objc.Call[bool](p_, objc.Sel("writeFileWrapper:"), wrapper)
 	return rv
 }
 

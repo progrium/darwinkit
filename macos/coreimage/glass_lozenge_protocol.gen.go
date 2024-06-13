@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge?language=objc
 type PGlassLozenge interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetRefraction(value float64)
+	SetRefraction(value float32)
 	HasSetRefraction() bool
 
 	// optional
-	Refraction() float64
+	Refraction() float32
 	HasRefraction() bool
 
 	// optional
@@ -67,7 +67,7 @@ func (g_ GlassLozengeObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
-func (g_ GlassLozengeObject) SetRadius(value float64) {
+func (g_ GlassLozengeObject) SetRadius(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
 }
 
@@ -78,8 +78,8 @@ func (g_ GlassLozengeObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600164-radius?language=objc
-func (g_ GlassLozengeObject) Radius() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("radius"))
+func (g_ GlassLozengeObject) Radius() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("radius"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (g_ GlassLozengeObject) HasSetRefraction() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600165-refraction?language=objc
-func (g_ GlassLozengeObject) SetRefraction(value float64) {
+func (g_ GlassLozengeObject) SetRefraction(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setRefraction:"), value)
 }
 
@@ -101,8 +101,8 @@ func (g_ GlassLozengeObject) HasRefraction() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600165-refraction?language=objc
-func (g_ GlassLozengeObject) Refraction() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("refraction"))
+func (g_ GlassLozengeObject) Refraction() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("refraction"))
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (g_ GlassLozengeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglasslozenge/3600161-inputimage?language=objc
 func (g_ GlassLozengeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GlassLozengeObject) HasInputImage() bool {

@@ -19,8 +19,8 @@ type _DetectContoursRequestClass struct {
 // An interface definition for the [DetectContoursRequest] class.
 type IDetectContoursRequest interface {
 	IImageBasedRequest
-	ContrastAdjustment() float64
-	SetContrastAdjustment(value float64)
+	ContrastAdjustment() float32
+	SetContrastAdjustment(value float32)
 	DetectsDarkOnLight() bool
 	SetDetectsDarkOnLight(value bool)
 	MaximumImageDimension() uint
@@ -79,15 +79,15 @@ func NewDetectContoursRequestWithCompletionHandler(completionHandler RequestComp
 // The amount by which to adjust the image contrast. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
-func (d_ DetectContoursRequest) ContrastAdjustment() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("contrastAdjustment"))
+func (d_ DetectContoursRequest) ContrastAdjustment() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("contrastAdjustment"))
 	return rv
 }
 
 // The amount by which to adjust the image contrast. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3548236-contrastadjustment?language=objc
-func (d_ DetectContoursRequest) SetContrastAdjustment(value float64) {
+func (d_ DetectContoursRequest) SetContrastAdjustment(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setContrastAdjustment:"), value)
 }
 
@@ -133,5 +133,5 @@ func (d_ DetectContoursRequest) ContrastPivot() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectcontoursrequest/3750961-contrastpivot?language=objc
 func (d_ DetectContoursRequest) SetContrastPivot(value foundation.INumber) {
-	objc.Call[objc.Void](d_, objc.Sel("setContrastPivot:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setContrastPivot:"), value)
 }

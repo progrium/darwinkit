@@ -90,7 +90,7 @@ func (p_ Point) Init() Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3548333-pointbyapplyingvector?language=objc
 func (pc _PointClass) PointByApplyingVectorToPoint(vector IVector, point IPoint) Point {
-	rv := objc.Call[Point](pc, objc.Sel("pointByApplyingVector:toPoint:"), objc.Ptr(vector), objc.Ptr(point))
+	rv := objc.Call[Point](pc, objc.Sel("pointByApplyingVector:toPoint:"), vector, point)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func Point_PointByApplyingVectorToPoint(vector IVector, point IPoint) Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnpoint/3675674-distancetopoint?language=objc
 func (p_ Point) DistanceToPoint(point IPoint) float64 {
-	rv := objc.Call[float64](p_, objc.Sel("distanceToPoint:"), objc.Ptr(point))
+	rv := objc.Call[float64](p_, objc.Sel("distanceToPoint:"), point)
 	return rv
 }
 

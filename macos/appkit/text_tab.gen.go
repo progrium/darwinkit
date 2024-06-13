@@ -75,7 +75,7 @@ func (t_ TextTab) Init() TextTab {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstexttab/1535107-columnterminatorsforlocale?language=objc
 func (tc _TextTabClass) ColumnTerminatorsForLocale(aLocale foundation.ILocale) foundation.CharacterSet {
-	rv := objc.Call[foundation.CharacterSet](tc, objc.Sel("columnTerminatorsForLocale:"), objc.Ptr(aLocale))
+	rv := objc.Call[foundation.CharacterSet](tc, objc.Sel("columnTerminatorsForLocale:"), aLocale)
 	return rv
 }
 

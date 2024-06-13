@@ -30,10 +30,10 @@ type IDocument interface {
 	ShouldCloseWindowControllerDelegateShouldCloseSelectorContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer)
 	RevertDocumentToSaved(sender objc.IObject) objc.Object
 	InvalidateRestorableState()
-	PrintOperationWithSettingsError(printSettings map[PrintInfoAttributeKey]objc.IObject, outError foundation.IError) PrintOperation
+	PrintOperationWithSettingsError(printSettings map[PrintInfoAttributeKey]objc.IObject, outError unsafe.Pointer) PrintOperation
 	RunModalSavePanelForSaveOperationDelegateDidSaveSelectorContextInfo(saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer)
 	Close()
-	FileWrapperOfTypeError(typeName string, outError foundation.IError) foundation.FileWrapper
+	FileWrapperOfTypeError(typeName string, outError unsafe.Pointer) foundation.FileWrapper
 	UpdateUserActivityState(activity foundation.IUserActivity)
 	DuplicateDocumentWithDelegateDidDuplicateSelectorContextInfo(delegate objc.IObject, didDuplicateSelector objc.Selector, contextInfo unsafe.Pointer)
 	LockDocument(sender objc.IObject) objc.Object
@@ -41,12 +41,12 @@ type IDocument interface {
 	FileNameExtensionForTypeSaveOperation(typeName string, saveOperation SaveOperationType) string
 	CanCloseDocumentWithDelegateShouldCloseSelectorContextInfo(delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer)
 	PrepareSharingServicePicker(sharingServicePicker ISharingServicePicker)
-	WriteSafelyToURLOfTypeForSaveOperationError(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError foundation.IError) bool
+	WriteSafelyToURLOfTypeForSaveOperationError(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError unsafe.Pointer) bool
 	RunModalPageLayoutWithPrintInfoDelegateDidRunSelectorContextInfo(printInfo IPrintInfo, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer)
 	PrepareSavePanel(savePanel ISavePanel) bool
 	MoveToURLCompletionHandler(url foundation.IURL, completionHandler func(arg0 foundation.Error))
 	PrintDocumentWithSettingsShowPrintPanelDelegateDidPrintSelectorContextInfo(printSettings map[PrintInfoAttributeKey]objc.IObject, showPrintPanel bool, delegate objc.IObject, didPrintSelector objc.Selector, contextInfo unsafe.Pointer)
-	CheckAutosavingSafetyAndReturnError(outError foundation.IError) bool
+	CheckAutosavingSafetyAndReturnError(outError unsafe.Pointer) bool
 	UnlockDocumentWithCompletionHandler(completionHandler func(didUnlock bool))
 	ScheduleAutosaving()
 	ContinueActivityUsingBlock(block func())
@@ -54,14 +54,14 @@ type IDocument interface {
 	MakeWindowControllers()
 	WindowControllerWillLoadNib(windowController IWindowController)
 	SaveDocumentToPDF(sender objc.IObject) objc.Object
-	DataOfTypeError(typeName string, outError foundation.IError) []byte
+	DataOfTypeError(typeName string, outError unsafe.Pointer) []byte
 	EncodeRestorableStateWithCoderBackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue)
 	SetDisplayName(displayNameOrNil string)
 	ChangeCountTokenForSaveOperation(saveOperation SaveOperationType) objc.Object
 	UpdateChangeCount(change DocumentChangeType)
 	HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object
 	SaveDocument(sender objc.IObject) objc.Object
-	RevertToContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool
+	RevertToContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool
 	PrintDocument(sender objc.IObject) objc.Object
 	SetWindow(window IWindow)
 	WillNotPresentError(error foundation.IError)
@@ -71,7 +71,7 @@ type IDocument interface {
 	EncodeRestorableStateWithCoder(coder foundation.ICoder)
 	DefaultDraftName() string
 	SaveToURLOfTypeForSaveOperationDelegateDidSaveSelectorContextInfo(url foundation.IURL, typeName string, saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer)
-	ReadFromURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool
+	ReadFromURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool
 	PresentError(error foundation.IError) bool
 	RenameDocument(sender objc.IObject) objc.Object
 	PreparePageLayout(pageLayout IPageLayout) bool
@@ -81,9 +81,9 @@ type IDocument interface {
 	ShouldChangePrintInfo(newPrintInfo IPrintInfo) bool
 	PresentErrorModalForWindowDelegateDidPresentSelectorContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer)
 	UnlockDocument(sender objc.IObject) objc.Object
-	WriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError foundation.IError) bool
-	FileAttributesToWriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError foundation.IError) map[string]objc.Object
-	DuplicateAndReturnError(outError foundation.IError) Document
+	WriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError unsafe.Pointer) bool
+	FileAttributesToWriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError unsafe.Pointer) map[string]objc.Object
+	DuplicateAndReturnError(outError unsafe.Pointer) Document
 	WindowControllerDidLoadNib(windowController IWindowController)
 	RunModalPrintOperationDelegateDidRunSelectorContextInfo(printOperation IPrintOperation, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer)
 	StopBrowsingVersionsWithCompletionHandler(completionHandler func())
@@ -92,13 +92,13 @@ type IDocument interface {
 	UpdateChangeCountWithTokenForSaveOperation(changeCountToken objc.IObject, saveOperation SaveOperationType)
 	SaveDocumentTo(sender objc.IObject) objc.Object
 	MoveDocumentWithCompletionHandler(completionHandler func(didMove bool))
-	ReadFromDataOfTypeError(data []byte, typeName string, outError foundation.IError) bool
+	ReadFromDataOfTypeError(data []byte, typeName string, outError unsafe.Pointer) bool
 	SaveDocumentAs(sender objc.IObject) objc.Object
-	ReadFromFileWrapperOfTypeError(fileWrapper foundation.IFileWrapper, typeName string, outError foundation.IError) bool
+	ReadFromFileWrapperOfTypeError(fileWrapper foundation.IFileWrapper, typeName string, outError unsafe.Pointer) bool
 	PerformActivityWithSynchronousWaitingUsingBlock(waitSynchronously bool, block func(arg0 func()))
 	RestoreDocumentWindowWithIdentifierStateCompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(arg0 Window, arg1 foundation.Error))
 	WillPresentError(error foundation.IError) foundation.Error
-	WriteToURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool
+	WriteToURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool
 	DuplicateDocument(sender objc.IObject) objc.Object
 	UnblockUserInteraction()
 	MoveDocument(sender objc.IObject) objc.Object
@@ -163,29 +163,29 @@ func DocumentFrom(ptr unsafe.Pointer) Document {
 	}
 }
 
-func (d_ Document) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), objc.Ptr(urlOrNil), objc.Ptr(contentsURL), typeName, objc.Ptr(outError))
+func (d_ Document) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, outError)
 	return rv
 }
 
 // Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
-func NewDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) Document {
+func NewDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) Document {
 	instance := DocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (d_ Document) InitWithTypeError(typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("initWithType:error:"), typeName, objc.Ptr(outError))
+func (d_ Document) InitWithTypeError(typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("initWithType:error:"), typeName, outError)
 	return rv
 }
 
 // Initializes a document of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515159-initwithtype?language=objc
-func NewDocumentWithTypeError(typeName string, outError foundation.IError) Document {
+func NewDocumentWithTypeError(typeName string, outError unsafe.Pointer) Document {
 	instance := DocumentClass.Alloc().InitWithTypeError(typeName, outError)
 	instance.Autorelease()
 	return instance
@@ -196,15 +196,15 @@ func (d_ Document) Init() Document {
 	return rv
 }
 
-func (d_ Document) InitWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("initWithContentsOfURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (d_ Document) InitWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("initWithContentsOfURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
 // Initializes a document located by a URL of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515097-initwithcontentsofurl?language=objc
-func NewDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) Document {
+func NewDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) Document {
 	instance := DocumentClass.Alloc().InitWithContentsOfURLOfTypeError(url, typeName, outError)
 	instance.Autorelease()
 	return instance
@@ -229,21 +229,21 @@ func NewDocument() Document {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515242-removewindowcontroller?language=objc
 func (d_ Document) RemoveWindowController(windowController IWindowController) {
-	objc.Call[objc.Void](d_, objc.Sel("removeWindowController:"), objc.Ptr(windowController))
+	objc.Call[objc.Void](d_, objc.Sel("removeWindowController:"), windowController)
 }
 
 // Share the document's file using the specified sharing service. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/2902309-sharedocumentwithsharingservice?language=objc
 func (d_ Document) ShareDocumentWithSharingServiceCompletionHandler(sharingService ISharingService, completionHandler func(success bool)) {
-	objc.Call[objc.Void](d_, objc.Sel("shareDocumentWithSharingService:completionHandler:"), objc.Ptr(sharingService), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("shareDocumentWithSharingService:completionHandler:"), sharingService, completionHandler)
 }
 
 // Saves the contents of the document to a file or file package located by a URL, that is formatted to a specified type, for a particular kind of save operation, and invokes the passed-in completion handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515178-savetourl?language=objc
 func (d_ Document) SaveToURLOfTypeForSaveOperationCompletionHandler(url foundation.IURL, typeName string, saveOperation SaveOperationType, completionHandler func(errorOrNil foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("saveToURL:ofType:forSaveOperation:completionHandler:"), objc.Ptr(url), typeName, saveOperation, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("saveToURL:ofType:forSaveOperation:completionHandler:"), url, typeName, saveOperation, completionHandler)
 }
 
 // Invokes the passed-in block on the main thread. [Full Topic]
@@ -264,7 +264,7 @@ func (d_ Document) PerformSynchronousFileAccessUsingBlock(block func()) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1500135-handleprintscriptcommand?language=objc
 func (d_ Document) HandlePrintScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("handlePrintScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](d_, objc.Sel("handlePrintScriptCommand:"), command)
 	return rv
 }
 
@@ -287,7 +287,7 @@ func (d_ Document) AutosaveDocumentWithDelegateDidAutosaveSelectorContextInfo(de
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515247-shouldclosewindowcontroller?language=objc
 func (d_ Document) ShouldCloseWindowControllerDelegateShouldCloseSelectorContextInfo(windowController IWindowController, delegate objc.IObject, shouldCloseSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:"), objc.Ptr(windowController), delegate, shouldCloseSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("shouldCloseWindowController:delegate:shouldCloseSelector:contextInfo:"), windowController, delegate, shouldCloseSelector, contextInfo)
 }
 
 // The action of the File menu item Revert in a document-based app. [Full Topic]
@@ -308,8 +308,8 @@ func (d_ Document) InvalidateRestorableState() {
 // Creates and returns a print operation for the document's contents. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515070-printoperationwithsettings?language=objc
-func (d_ Document) PrintOperationWithSettingsError(printSettings map[PrintInfoAttributeKey]objc.IObject, outError foundation.IError) PrintOperation {
-	rv := objc.Call[PrintOperation](d_, objc.Sel("printOperationWithSettings:error:"), printSettings, objc.Ptr(outError))
+func (d_ Document) PrintOperationWithSettingsError(printSettings map[PrintInfoAttributeKey]objc.IObject, outError unsafe.Pointer) PrintOperation {
+	rv := objc.Call[PrintOperation](d_, objc.Sel("printOperationWithSettings:error:"), printSettings, outError)
 	return rv
 }
 
@@ -330,8 +330,8 @@ func (d_ Document) Close() {
 // Creates and returns a file wrapper that contains the contents of the document, formatted to the specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515089-filewrapperoftype?language=objc
-func (d_ Document) FileWrapperOfTypeError(typeName string, outError foundation.IError) foundation.FileWrapper {
-	rv := objc.Call[foundation.FileWrapper](d_, objc.Sel("fileWrapperOfType:error:"), typeName, objc.Ptr(outError))
+func (d_ Document) FileWrapperOfTypeError(typeName string, outError unsafe.Pointer) foundation.FileWrapper {
+	rv := objc.Call[foundation.FileWrapper](d_, objc.Sel("fileWrapperOfType:error:"), typeName, outError)
 	return rv
 }
 
@@ -339,7 +339,7 @@ func (d_ Document) FileWrapperOfTypeError(typeName string, outError foundation.I
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1529014-updateuseractivitystate?language=objc
 func (d_ Document) UpdateUserActivityState(activity foundation.IUserActivity) {
-	objc.Call[objc.Void](d_, objc.Sel("updateUserActivityState:"), objc.Ptr(activity))
+	objc.Call[objc.Void](d_, objc.Sel("updateUserActivityState:"), activity)
 }
 
 // Creates a new document whose contents are the same as the current document. [Full Topic]
@@ -383,14 +383,14 @@ func (d_ Document) CanCloseDocumentWithDelegateShouldCloseSelectorContextInfo(de
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/2902326-preparesharingservicepicker?language=objc
 func (d_ Document) PrepareSharingServicePicker(sharingServicePicker ISharingServicePicker) {
-	objc.Call[objc.Void](d_, objc.Sel("prepareSharingServicePicker:"), objc.Ptr(sharingServicePicker))
+	objc.Call[objc.Void](d_, objc.Sel("prepareSharingServicePicker:"), sharingServicePicker)
 }
 
 // Writes the contents of the document to a file or file package located by a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515150-writesafelytourl?language=objc
-func (d_ Document) WriteSafelyToURLOfTypeForSaveOperationError(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeSafelyToURL:ofType:forSaveOperation:error:"), objc.Ptr(url), typeName, saveOperation, objc.Ptr(outError))
+func (d_ Document) WriteSafelyToURLOfTypeForSaveOperationError(url foundation.IURL, typeName string, saveOperation SaveOperationType, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeSafelyToURL:ofType:forSaveOperation:error:"), url, typeName, saveOperation, outError)
 	return rv
 }
 
@@ -398,14 +398,14 @@ func (d_ Document) WriteSafelyToURLOfTypeForSaveOperationError(url foundation.IU
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515100-runmodalpagelayoutwithprintinfo?language=objc
 func (d_ Document) RunModalPageLayoutWithPrintInfoDelegateDidRunSelectorContextInfo(printInfo IPrintInfo, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("runModalPageLayoutWithPrintInfo:delegate:didRunSelector:contextInfo:"), objc.Ptr(printInfo), delegate, didRunSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("runModalPageLayoutWithPrintInfo:delegate:didRunSelector:contextInfo:"), printInfo, delegate, didRunSelector, contextInfo)
 }
 
 // Tells the document to customize the specified Save panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515094-preparesavepanel?language=objc
 func (d_ Document) PrepareSavePanel(savePanel ISavePanel) bool {
-	rv := objc.Call[bool](d_, objc.Sel("prepareSavePanel:"), objc.Ptr(savePanel))
+	rv := objc.Call[bool](d_, objc.Sel("prepareSavePanel:"), savePanel)
 	return rv
 }
 
@@ -413,7 +413,7 @@ func (d_ Document) PrepareSavePanel(savePanel ISavePanel) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515057-movetourl?language=objc
 func (d_ Document) MoveToURLCompletionHandler(url foundation.IURL, completionHandler func(arg0 foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("moveToURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("moveToURL:completionHandler:"), url, completionHandler)
 }
 
 // Prints the document's contents, optionally displaying a print panel to the user. [Full Topic]
@@ -426,8 +426,8 @@ func (d_ Document) PrintDocumentWithSettingsShowPrintPanelDelegateDidPrintSelect
 // Returns a Boolean value that indicates whether it is safe to autosave document changes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515061-checkautosavingsafetyandreturner?language=objc
-func (d_ Document) CheckAutosavingSafetyAndReturnError(outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("checkAutosavingSafetyAndReturnError:"), objc.Ptr(outError))
+func (d_ Document) CheckAutosavingSafetyAndReturnError(outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("checkAutosavingSafetyAndReturnError:"), outError)
 	return rv
 }
 
@@ -470,7 +470,7 @@ func (d_ Document) MakeWindowControllers() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515116-windowcontrollerwillloadnib?language=objc
 func (d_ Document) WindowControllerWillLoadNib(windowController IWindowController) {
-	objc.Call[objc.Void](d_, objc.Sel("windowControllerWillLoadNib:"), objc.Ptr(windowController))
+	objc.Call[objc.Void](d_, objc.Sel("windowControllerWillLoadNib:"), windowController)
 }
 
 // Exports a PDF representation of the document’s current contents. [Full Topic]
@@ -484,8 +484,8 @@ func (d_ Document) SaveDocumentToPDF(sender objc.IObject) objc.Object {
 // Creates and returns a data object that contains the contents of the document, formatted to a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515205-dataoftype?language=objc
-func (d_ Document) DataOfTypeError(typeName string, outError foundation.IError) []byte {
-	rv := objc.Call[[]byte](d_, objc.Sel("dataOfType:error:"), typeName, objc.Ptr(outError))
+func (d_ Document) DataOfTypeError(typeName string, outError unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](d_, objc.Sel("dataOfType:error:"), typeName, outError)
 	return rv
 }
 
@@ -493,7 +493,7 @@ func (d_ Document) DataOfTypeError(typeName string, outError foundation.IError) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/2876345-encoderestorablestatewithcoder?language=objc
 func (d_ Document) EncodeRestorableStateWithCoderBackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
-	objc.Call[objc.Void](d_, objc.Sel("encodeRestorableStateWithCoder:backgroundQueue:"), objc.Ptr(coder), objc.Ptr(queue))
+	objc.Call[objc.Void](d_, objc.Sel("encodeRestorableStateWithCoder:backgroundQueue:"), coder, queue)
 }
 
 // Sets the name of this document for presentation to the user. [Full Topic]
@@ -522,7 +522,7 @@ func (d_ Document) UpdateChangeCount(change DocumentChangeType) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1500138-handlesavescriptcommand?language=objc
 func (d_ Document) HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("handleSaveScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](d_, objc.Sel("handleSaveScriptCommand:"), command)
 	return rv
 }
 
@@ -537,8 +537,8 @@ func (d_ Document) SaveDocument(sender objc.IObject) objc.Object {
 // Discards all unsaved document modifications and replaces the document’s contents by reading a file or file package located by a URL of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515122-reverttocontentsofurl?language=objc
-func (d_ Document) RevertToContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("revertToContentsOfURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (d_ Document) RevertToContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("revertToContentsOfURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
@@ -554,28 +554,28 @@ func (d_ Document) PrintDocument(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515217-setwindow?language=objc
 func (d_ Document) SetWindow(window IWindow) {
-	objc.Call[objc.Void](d_, objc.Sel("setWindow:"), objc.Ptr(window))
+	objc.Call[objc.Void](d_, objc.Sel("setWindow:"), window)
 }
 
 // Confirms that the error object is not to be presented to the user and the error cannot be recovered from, so cleanup can be done. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515188-willnotpresenterror?language=objc
 func (d_ Document) WillNotPresentError(error foundation.IError) {
-	objc.Call[objc.Void](d_, objc.Sel("willNotPresentError:"), objc.Ptr(error))
+	objc.Call[objc.Void](d_, objc.Sel("willNotPresentError:"), error)
 }
 
 // Adds the specified window controller to the current document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515179-addwindowcontroller?language=objc
 func (d_ Document) AddWindowController(windowController IWindowController) {
-	objc.Call[objc.Void](d_, objc.Sel("addWindowController:"), objc.Ptr(windowController))
+	objc.Call[objc.Void](d_, objc.Sel("addWindowController:"), windowController)
 }
 
 // Restores the interface-related state of the document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1526237-restorestatewithcoder?language=objc
 func (d_ Document) RestoreStateWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](d_, objc.Sel("restoreStateWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](d_, objc.Sel("restoreStateWithCoder:"), coder)
 }
 
 // Displays all of the document’s windows, bringing them to the front and making them main or key as necessary. [Full Topic]
@@ -589,7 +589,7 @@ func (d_ Document) ShowWindows() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1526257-encoderestorablestatewithcoder?language=objc
 func (d_ Document) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](d_, objc.Sel("encodeRestorableStateWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](d_, objc.Sel("encodeRestorableStateWithCoder:"), coder)
 }
 
 // Returns the default draft name for the document subclass. [Full Topic]
@@ -604,14 +604,14 @@ func (d_ Document) DefaultDraftName() string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515148-savetourl?language=objc
 func (d_ Document) SaveToURLOfTypeForSaveOperationDelegateDidSaveSelectorContextInfo(url foundation.IURL, typeName string, saveOperation SaveOperationType, delegate objc.IObject, didSaveSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:"), objc.Ptr(url), typeName, saveOperation, delegate, didSaveSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("saveToURL:ofType:forSaveOperation:delegate:didSaveSelector:contextInfo:"), url, typeName, saveOperation, delegate, didSaveSelector, contextInfo)
 }
 
 // Sets the contents of this document by reading from a file or file package, of a specified type, located by a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515144-readfromurl?language=objc
-func (d_ Document) ReadFromURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("readFromURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (d_ Document) ReadFromURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("readFromURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
@@ -619,7 +619,7 @@ func (d_ Document) ReadFromURLOfTypeError(url foundation.IURL, typeName string, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515184-presenterror?language=objc
 func (d_ Document) PresentError(error foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("presentError:"), objc.Ptr(error))
+	rv := objc.Call[bool](d_, objc.Sel("presentError:"), error)
 	return rv
 }
 
@@ -635,7 +635,7 @@ func (d_ Document) RenameDocument(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515169-preparepagelayout?language=objc
 func (d_ Document) PreparePageLayout(pageLayout IPageLayout) bool {
-	rv := objc.Call[bool](d_, objc.Sel("preparePageLayout:"), objc.Ptr(pageLayout))
+	rv := objc.Call[bool](d_, objc.Sel("preparePageLayout:"), pageLayout)
 	return rv
 }
 
@@ -652,7 +652,7 @@ func (d_ Document) ValidateUserInterfaceItem(item PValidatedUserInterfaceItem) b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515190-validateuserinterfaceitem?language=objc
 func (d_ Document) ValidateUserInterfaceItemObject(itemObject objc.IObject) bool {
-	rv := objc.Call[bool](d_, objc.Sel("validateUserInterfaceItem:"), objc.Ptr(itemObject))
+	rv := objc.Call[bool](d_, objc.Sel("validateUserInterfaceItem:"), itemObject)
 	return rv
 }
 
@@ -667,7 +667,7 @@ func (d_ Document) AutosaveWithImplicitCancellabilityCompletionHandler(autosavin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515243-shouldchangeprintinfo?language=objc
 func (d_ Document) ShouldChangePrintInfo(newPrintInfo IPrintInfo) bool {
-	rv := objc.Call[bool](d_, objc.Sel("shouldChangePrintInfo:"), objc.Ptr(newPrintInfo))
+	rv := objc.Call[bool](d_, objc.Sel("shouldChangePrintInfo:"), newPrintInfo)
 	return rv
 }
 
@@ -675,7 +675,7 @@ func (d_ Document) ShouldChangePrintInfo(newPrintInfo IPrintInfo) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515051-presenterror?language=objc
 func (d_ Document) PresentErrorModalForWindowDelegateDidPresentSelectorContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), objc.Ptr(error), objc.Ptr(window), delegate, didPresentSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), error, window, delegate, didPresentSelector, contextInfo)
 }
 
 // Unlocks the document in response to the user choosing the Unlock menu item. [Full Topic]
@@ -689,24 +689,24 @@ func (d_ Document) UnlockDocument(sender objc.IObject) objc.Object {
 // Writes the contents of the document to a file or file package located by a URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515203-writetourl?language=objc
-func (d_ Document) WriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToURL:ofType:forSaveOperation:originalContentsURL:error:"), objc.Ptr(url), typeName, saveOperation, objc.Ptr(absoluteOriginalContentsURL), objc.Ptr(outError))
+func (d_ Document) WriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeToURL:ofType:forSaveOperation:originalContentsURL:error:"), url, typeName, saveOperation, absoluteOriginalContentsURL, outError)
 	return rv
 }
 
 // Returns the attributes to write to the file or file package at the specified URL, and targeting the specified type of save operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515062-fileattributestowritetourl?language=objc
-func (d_ Document) FileAttributesToWriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError foundation.IError) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](d_, objc.Sel("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:"), objc.Ptr(url), typeName, saveOperation, objc.Ptr(absoluteOriginalContentsURL), objc.Ptr(outError))
+func (d_ Document) FileAttributesToWriteToURLOfTypeForSaveOperationOriginalContentsURLError(url foundation.IURL, typeName string, saveOperation SaveOperationType, absoluteOriginalContentsURL foundation.IURL, outError unsafe.Pointer) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](d_, objc.Sel("fileAttributesToWriteToURL:ofType:forSaveOperation:originalContentsURL:error:"), url, typeName, saveOperation, absoluteOriginalContentsURL, outError)
 	return rv
 }
 
 // Creates a new document whose contents are the same as the receiver and returns an error object if unsuccessful. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515201-duplicateandreturnerror?language=objc
-func (d_ Document) DuplicateAndReturnError(outError foundation.IError) Document {
-	rv := objc.Call[Document](d_, objc.Sel("duplicateAndReturnError:"), objc.Ptr(outError))
+func (d_ Document) DuplicateAndReturnError(outError unsafe.Pointer) Document {
+	rv := objc.Call[Document](d_, objc.Sel("duplicateAndReturnError:"), outError)
 	return rv
 }
 
@@ -729,14 +729,14 @@ func Document_CanConcurrentlyReadDocumentsOfType(typeName string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515221-windowcontrollerdidloadnib?language=objc
 func (d_ Document) WindowControllerDidLoadNib(windowController IWindowController) {
-	objc.Call[objc.Void](d_, objc.Sel("windowControllerDidLoadNib:"), objc.Ptr(windowController))
+	objc.Call[objc.Void](d_, objc.Sel("windowControllerDidLoadNib:"), windowController)
 }
 
 // Runs the specified print operation modally. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515234-runmodalprintoperation?language=objc
 func (d_ Document) RunModalPrintOperationDelegateDidRunSelectorContextInfo(printOperation IPrintOperation, delegate objc.IObject, didRunSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](d_, objc.Sel("runModalPrintOperation:delegate:didRunSelector:contextInfo:"), objc.Ptr(printOperation), delegate, didRunSelector, contextInfo)
+	objc.Call[objc.Void](d_, objc.Sel("runModalPrintOperation:delegate:didRunSelector:contextInfo:"), printOperation, delegate, didRunSelector, contextInfo)
 }
 
 // Returns the classes that support secure coding. [Full Topic]
@@ -773,7 +773,7 @@ func (d_ Document) RunPageLayout(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1500136-handleclosescriptcommand?language=objc
 func (d_ Document) HandleCloseScriptCommand(command foundation.ICloseCommand) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("handleCloseScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](d_, objc.Sel("handleCloseScriptCommand:"), command)
 	return rv
 }
 
@@ -802,8 +802,8 @@ func (d_ Document) MoveDocumentWithCompletionHandler(completionHandler func(didM
 // Sets the contents of this document by reading from data of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515198-readfromdata?language=objc
-func (d_ Document) ReadFromDataOfTypeError(data []byte, typeName string, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("readFromData:ofType:error:"), data, typeName, objc.Ptr(outError))
+func (d_ Document) ReadFromDataOfTypeError(data []byte, typeName string, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("readFromData:ofType:error:"), data, typeName, outError)
 	return rv
 }
 
@@ -818,8 +818,8 @@ func (d_ Document) SaveDocumentAs(sender objc.IObject) objc.Object {
 // Sets the contents of this document by reading from a file wrapper of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515044-readfromfilewrapper?language=objc
-func (d_ Document) ReadFromFileWrapperOfTypeError(fileWrapper foundation.IFileWrapper, typeName string, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("readFromFileWrapper:ofType:error:"), objc.Ptr(fileWrapper), typeName, objc.Ptr(outError))
+func (d_ Document) ReadFromFileWrapperOfTypeError(fileWrapper foundation.IFileWrapper, typeName string, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("readFromFileWrapper:ofType:error:"), fileWrapper, typeName, outError)
 	return rv
 }
 
@@ -834,22 +834,22 @@ func (d_ Document) PerformActivityWithSynchronousWaitingUsingBlock(waitSynchrono
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1524586-restoredocumentwindowwithidentif?language=objc
 func (d_ Document) RestoreDocumentWindowWithIdentifierStateCompletionHandler(identifier UserInterfaceItemIdentifier, state foundation.ICoder, completionHandler func(arg0 Window, arg1 foundation.Error)) {
-	objc.Call[objc.Void](d_, objc.Sel("restoreDocumentWindowWithIdentifier:state:completionHandler:"), identifier, objc.Ptr(state), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("restoreDocumentWindowWithIdentifier:state:completionHandler:"), identifier, state, completionHandler)
 }
 
 // Called when the receiver is about to present an error. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515229-willpresenterror?language=objc
 func (d_ Document) WillPresentError(error foundation.IError) foundation.Error {
-	rv := objc.Call[foundation.Error](d_, objc.Sel("willPresentError:"), objc.Ptr(error))
+	rv := objc.Call[foundation.Error](d_, objc.Sel("willPresentError:"), error)
 	return rv
 }
 
 // Writes the contents of the document to a file or file package located by a URL, that is formatted to a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515076-writetourl?language=objc
-func (d_ Document) WriteToURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (d_ Document) WriteToURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeToURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
@@ -880,7 +880,7 @@ func (d_ Document) MoveDocument(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515177-canasynchronouslywritetourl?language=objc
 func (d_ Document) CanAsynchronouslyWriteToURLOfTypeForSaveOperation(url foundation.IURL, typeName string, saveOperation SaveOperationType) bool {
-	rv := objc.Call[bool](d_, objc.Sel("canAsynchronouslyWriteToURL:ofType:forSaveOperation:"), objc.Ptr(url), typeName, saveOperation)
+	rv := objc.Call[bool](d_, objc.Sel("canAsynchronouslyWriteToURL:ofType:forSaveOperation:"), url, typeName, saveOperation)
 	return rv
 }
 
@@ -964,7 +964,7 @@ func (d_ Document) UndoManager() foundation.UndoManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515166-undomanager?language=objc
 func (d_ Document) SetUndoManager(value foundation.IUndoManager) {
-	objc.Call[objc.Void](d_, objc.Sel("setUndoManager:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setUndoManager:"), value)
 }
 
 // The printing information associated with the document. [Full Topic]
@@ -979,7 +979,7 @@ func (d_ Document) PrintInfo() PrintInfo {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515163-printinfo?language=objc
 func (d_ Document) SetPrintInfo(value IPrintInfo) {
-	objc.Call[objc.Void](d_, objc.Sel("setPrintInfo:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setPrintInfo:"), value)
 }
 
 // A Boolean value that indicates whether the document is in read-only mode. [Full Topic]
@@ -1163,7 +1163,7 @@ func (d_ Document) FileModificationDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515039-filemodificationdate?language=objc
 func (d_ Document) SetFileModificationDate(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setFileModificationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setFileModificationDate:"), value)
 }
 
 // The name of the document as displayed in the title bars of the document’s windows and in alert dialogs related to the document. [Full Topic]
@@ -1225,7 +1225,7 @@ func (d_ Document) FileURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515038-fileurl?language=objc
 func (d_ Document) SetFileURL(value foundation.IURL) {
-	objc.Call[objc.Void](d_, objc.Sel("setFileURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setFileURL:"), value)
 }
 
 // Returns whether the receiver supports autosaving in place. [Full Topic]
@@ -1294,7 +1294,7 @@ func (d_ Document) AutosavedContentsFileURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515232-autosavedcontentsfileurl?language=objc
 func (d_ Document) SetAutosavedContentsFileURL(value foundation.IURL) {
-	objc.Call[objc.Void](d_, objc.Sel("setAutosavedContentsFileURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setAutosavedContentsFileURL:"), value)
 }
 
 // Returns the document window to use as the parent of a document-modal sheet. [Full Topic]
@@ -1348,5 +1348,5 @@ func (d_ Document) UserActivity() foundation.UserActivity {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1526106-useractivity?language=objc
 func (d_ Document) SetUserActivity(value foundation.IUserActivity) {
-	objc.Call[objc.Void](d_, objc.Sel("setUserActivity:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setUserActivity:"), value)
 }

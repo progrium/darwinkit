@@ -35,7 +35,7 @@ func (c_ CollectionViewSectionHeaderViewObject) HasSetSectionCollapseButton() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewsectionheaderview/1644266-sectioncollapsebutton?language=objc
 func (c_ CollectionViewSectionHeaderViewObject) SetSectionCollapseButton(value Button) {
-	objc.Call[objc.Void](c_, objc.Sel("setSectionCollapseButton:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setSectionCollapseButton:"), value)
 }
 
 func (c_ CollectionViewSectionHeaderViewObject) HasSectionCollapseButton() bool {

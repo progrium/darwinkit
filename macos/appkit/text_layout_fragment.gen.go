@@ -54,7 +54,7 @@ func TextLayoutFragmentFrom(ptr unsafe.Pointer) TextLayoutFragment {
 }
 
 func (t_ TextLayoutFragment) InitWithTextElementRange(textElement ITextElement, rangeInElement ITextRange) TextLayoutFragment {
-	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("initWithTextElement:range:"), objc.Ptr(textElement), objc.Ptr(rangeInElement))
+	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("initWithTextElement:range:"), textElement, rangeInElement)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (t_ TextLayoutFragment) FrameForTextAttachmentAtLocation(location PTextLoca
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutfragment/3809964-framefortextattachmentatlocation?language=objc
 func (t_ TextLayoutFragment) FrameForTextAttachmentAtLocationObject(locationObject objc.IObject) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("frameForTextAttachmentAtLocation:"), objc.Ptr(locationObject))
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("frameForTextAttachmentAtLocation:"), locationObject)
 	return rv
 }
 
@@ -186,7 +186,7 @@ func (t_ TextLayoutFragment) LayoutQueue() foundation.OperationQueue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutfragment/3809969-layoutqueue?language=objc
 func (t_ TextLayoutFragment) SetLayoutQueue(value foundation.IOperationQueue) {
-	objc.Call[objc.Void](t_, objc.Sel("setLayoutQueue:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setLayoutQueue:"), value)
 }
 
 // Returns the amount of space reserved during paragraph layout between the bottom of the last line in the paragraph and the bottom of the text layout fragment. [Full Topic]

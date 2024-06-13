@@ -67,7 +67,7 @@ func (a_ AffineTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffinetile/3228057-inputimage?language=objc
 func (a_ AffineTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), value)
 }
 
 func (a_ AffineTileObject) HasInputImage() bool {

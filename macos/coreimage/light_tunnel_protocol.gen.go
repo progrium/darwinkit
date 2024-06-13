@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel?language=objc
 type PLightTunnel interface {
 	// optional
-	SetRotation(value float64)
+	SetRotation(value float32)
 	HasSetRotation() bool
 
 	// optional
-	Rotation() float64
+	Rotation() float32
 	HasRotation() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PLightTunnel interface {
 	HasCenter() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -59,7 +59,7 @@ func (l_ LightTunnelObject) HasSetRotation() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
-func (l_ LightTunnelObject) SetRotation(value float64) {
+func (l_ LightTunnelObject) SetRotation(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setRotation:"), value)
 }
 
@@ -70,8 +70,8 @@ func (l_ LightTunnelObject) HasRotation() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600174-rotation?language=objc
-func (l_ LightTunnelObject) Rotation() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("rotation"))
+func (l_ LightTunnelObject) Rotation() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("rotation"))
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (l_ LightTunnelObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600172-inputimage?language=objc
 func (l_ LightTunnelObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
 }
 
 func (l_ LightTunnelObject) HasInputImage() bool {
@@ -128,7 +128,7 @@ func (l_ LightTunnelObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600173-radius?language=objc
-func (l_ LightTunnelObject) SetRadius(value float64) {
+func (l_ LightTunnelObject) SetRadius(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setRadius:"), value)
 }
 
@@ -139,7 +139,7 @@ func (l_ LightTunnelObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilighttunnel/3600173-radius?language=objc
-func (l_ LightTunnelObject) Radius() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("radius"))
+func (l_ LightTunnelObject) Radius() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("radius"))
 	return rv
 }

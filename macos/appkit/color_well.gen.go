@@ -123,5 +123,5 @@ func (c_ ColorWell) Color() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorwell/1534546-color?language=objc
 func (c_ ColorWell) SetColor(value IColor) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
 }

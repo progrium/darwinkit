@@ -22,11 +22,11 @@ type IMatrixNeuronGradient interface {
 	EncodeToCommandBufferGradientMatrixInputMatrixBiasVectorResultGradientForDataMatrixResultGradientForBiasVector(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, inputMatrix IMatrix, biasVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForBiasVector IVector)
 	EncodeToCommandBufferObjectGradientMatrixInputMatrixBiasVectorResultGradientForDataMatrixResultGradientForBiasVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, biasVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForBiasVector IVector)
 	SetNeuronToPReLUWithParametersA(A []byte)
-	NeuronParameterB() float64
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64)
-	NeuronParameterA() float64
+	NeuronParameterB() float32
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterA() float32
 	NeuronType() CNNNeuronType
-	NeuronParameterC() float64
+	NeuronParameterC() float32
 	SourceNumberOfFeatureVectors() uint
 	SetSourceNumberOfFeatureVectors(value uint)
 	Alpha() float64
@@ -103,14 +103,14 @@ func (m_ MatrixNeuronGradient) Init() MatrixNeuronGradient {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966675-encodetocommandbuffer?language=objc
 func (m_ MatrixNeuronGradient) EncodeToCommandBufferGradientMatrixInputMatrixBiasVectorResultGradientForDataMatrixResultGradientForBiasVector(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, inputMatrix IMatrix, biasVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForBiasVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:biasVector:resultGradientForDataMatrix:resultGradientForBiasVector:"), po0, objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(biasVector), objc.Ptr(resultGradientForDataMatrix), objc.Ptr(resultGradientForBiasVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:biasVector:resultGradientForDataMatrix:resultGradientForBiasVector:"), po0, gradientMatrix, inputMatrix, biasVector, resultGradientForDataMatrix, resultGradientForBiasVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966675-encodetocommandbuffer?language=objc
 func (m_ MatrixNeuronGradient) EncodeToCommandBufferObjectGradientMatrixInputMatrixBiasVectorResultGradientForDataMatrixResultGradientForBiasVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, biasVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForBiasVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:biasVector:resultGradientForDataMatrix:resultGradientForBiasVector:"), objc.Ptr(commandBufferObject), objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(biasVector), objc.Ptr(resultGradientForDataMatrix), objc.Ptr(resultGradientForBiasVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:biasVector:resultGradientForDataMatrix:resultGradientForBiasVector:"), commandBufferObject, gradientMatrix, inputMatrix, biasVector, resultGradientForDataMatrix, resultGradientForBiasVector)
 }
 
 //	[Full Topic]
@@ -123,23 +123,23 @@ func (m_ MatrixNeuronGradient) SetNeuronToPReLUWithParametersA(A []byte) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966679-neuronparameterb?language=objc
-func (m_ MatrixNeuronGradient) NeuronParameterB() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterB"))
+func (m_ MatrixNeuronGradient) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966683-setneurontype?language=objc
-func (m_ MatrixNeuronGradient) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64) {
+func (m_ MatrixNeuronGradient) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966678-neuronparametera?language=objc
-func (m_ MatrixNeuronGradient) NeuronParameterA() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterA"))
+func (m_ MatrixNeuronGradient) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
 	return rv
 }
 
@@ -154,8 +154,8 @@ func (m_ MatrixNeuronGradient) NeuronType() CNNNeuronType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneurongradient/2966680-neuronparameterc?language=objc
-func (m_ MatrixNeuronGradient) NeuronParameterC() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterC"))
+func (m_ MatrixNeuronGradient) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
 }
 

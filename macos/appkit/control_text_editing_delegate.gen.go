@@ -253,7 +253,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextDidBeginEditing() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/3005176-controltextdidbeginediting?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextDidBeginEditing(obj foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("controlTextDidBeginEditing:"), objc.Ptr(obj))
+	objc.Call[objc.Void](c_, objc.Sel("controlTextDidBeginEditing:"), obj)
 }
 
 func (c_ ControlTextEditingDelegateObject) HasControlIsValidObject() bool {
@@ -264,7 +264,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlIsValidObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428873-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlIsValidObject(control Control, obj objc.Object) bool {
-	rv := objc.Call[bool](c_, objc.Sel("control:isValidObject:"), objc.Ptr(control), obj)
+	rv := objc.Call[bool](c_, objc.Sel("control:isValidObject:"), control, obj)
 	return rv
 }
 
@@ -276,7 +276,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextViewDoCommandBySelector
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428898-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextViewDoCommandBySelector(control Control, textView TextView, commandSelector objc.Selector) bool {
-	rv := objc.Call[bool](c_, objc.Sel("control:textView:doCommandBySelector:"), objc.Ptr(control), objc.Ptr(textView), commandSelector)
+	rv := objc.Call[bool](c_, objc.Sel("control:textView:doCommandBySelector:"), control, textView, commandSelector)
 	return rv
 }
 
@@ -288,7 +288,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextShouldBeginEditing() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428865-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextShouldBeginEditing(control Control, fieldEditor Text) bool {
-	rv := objc.Call[bool](c_, objc.Sel("control:textShouldBeginEditing:"), objc.Ptr(control), objc.Ptr(fieldEditor))
+	rv := objc.Call[bool](c_, objc.Sel("control:textShouldBeginEditing:"), control, fieldEditor)
 	return rv
 }
 
@@ -300,7 +300,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextViewCompletionsForParti
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428925-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextViewCompletionsForPartialWordRangeIndexOfSelectedItem(control Control, textView TextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := objc.Call[[]string](c_, objc.Sel("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), objc.Ptr(control), objc.Ptr(textView), words, charRange, index)
+	rv := objc.Call[[]string](c_, objc.Sel("control:textView:completions:forPartialWordRange:indexOfSelectedItem:"), control, textView, words, charRange, index)
 	return rv
 }
 
@@ -312,7 +312,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlDidFailToValidatePartialStr
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428941-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlDidFailToValidatePartialStringErrorDescription(control Control, string_ string, error string) {
-	objc.Call[objc.Void](c_, objc.Sel("control:didFailToValidatePartialString:errorDescription:"), objc.Ptr(control), string_, error)
+	objc.Call[objc.Void](c_, objc.Sel("control:didFailToValidatePartialString:errorDescription:"), control, string_, error)
 }
 
 func (c_ ControlTextEditingDelegateObject) HasControlTextDidChange() bool {
@@ -323,7 +323,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/3005177-controltextdidchange?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextDidChange(obj foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("controlTextDidChange:"), objc.Ptr(obj))
+	objc.Call[objc.Void](c_, objc.Sel("controlTextDidChange:"), obj)
 }
 
 func (c_ ControlTextEditingDelegateObject) HasControlDidFailToFormatStringErrorDescription() bool {
@@ -334,7 +334,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlDidFailToFormatStringErrorD
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428883-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlDidFailToFormatStringErrorDescription(control Control, string_ string, error string) bool {
-	rv := objc.Call[bool](c_, objc.Sel("control:didFailToFormatString:errorDescription:"), objc.Ptr(control), string_, error)
+	rv := objc.Call[bool](c_, objc.Sel("control:didFailToFormatString:errorDescription:"), control, string_, error)
 	return rv
 }
 
@@ -346,7 +346,7 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextDidEndEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/3005178-controltextdidendediting?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextDidEndEditing(obj foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("controlTextDidEndEditing:"), objc.Ptr(obj))
+	objc.Call[objc.Void](c_, objc.Sel("controlTextDidEndEditing:"), obj)
 }
 
 func (c_ ControlTextEditingDelegateObject) HasControlTextShouldEndEditing() bool {
@@ -357,6 +357,6 @@ func (c_ ControlTextEditingDelegateObject) HasControlTextShouldEndEditing() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroltexteditingdelegate/1428984-control?language=objc
 func (c_ ControlTextEditingDelegateObject) ControlTextShouldEndEditing(control Control, fieldEditor Text) bool {
-	rv := objc.Call[bool](c_, objc.Sel("control:textShouldEndEditing:"), objc.Ptr(control), objc.Ptr(fieldEditor))
+	rv := objc.Call[bool](c_, objc.Sel("control:textShouldEndEditing:"), control, fieldEditor)
 	return rv
 }

@@ -19,11 +19,11 @@ type PGammaAdjust interface {
 	HasInputImage() bool
 
 	// optional
-	SetPower(value float64)
+	SetPower(value float32)
 	HasSetPower() bool
 
 	// optional
-	Power() float64
+	Power() float32
 	HasPower() bool
 }
 
@@ -43,7 +43,7 @@ func (g_ GammaAdjustObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigammaadjust/3228461-inputimage?language=objc
 func (g_ GammaAdjustObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GammaAdjustObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (g_ GammaAdjustObject) HasSetPower() bool {
 // A gamma value to use to correct image brightness. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigammaadjust/3228462-power?language=objc
-func (g_ GammaAdjustObject) SetPower(value float64) {
+func (g_ GammaAdjustObject) SetPower(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setPower:"), value)
 }
 
@@ -76,7 +76,7 @@ func (g_ GammaAdjustObject) HasPower() bool {
 // A gamma value to use to correct image brightness. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigammaadjust/3228462-power?language=objc
-func (g_ GammaAdjustObject) Power() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("power"))
+func (g_ GammaAdjustObject) Power() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("power"))
 	return rv
 }

@@ -135,7 +135,7 @@ type DirectDisplayID uint32
 // The percentage of blend color used in a fade operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgdisplayblendfraction?language=objc
-type DisplayBlendFraction float64
+type DisplayBlendFraction float32
 
 // The configuration parameters that are passed to a display reconfiguration callback function. [Full Topic]
 //
@@ -164,7 +164,7 @@ type DisplayCount uint32
 // The duration in seconds of a fade operation or a fade hardware reservation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgdisplayfadeinterval?language=objc
-type DisplayFadeInterval float64
+type DisplayFadeInterval float32
 
 // A token issued by Quartz when reserving one or more displays for a fade operation during a specified interval. [Full Topic]
 //
@@ -174,7 +174,7 @@ type DisplayFadeReservationToken uint32
 // The time interval for a fade reservation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cgdisplayreservationinterval?language=objc
-type DisplayReservationInterval float64
+type DisplayReservationInterval float32
 
 // Describes a frame update event. [Full Topic]
 //
@@ -451,7 +451,7 @@ const (
 // A value used to map a color generated in software to a color supported by the display hardware. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coregraphics/cggammavalue?language=objc
-type GammaValue float64
+type GammaValue float32
 
 //	[Full Topic]
 //

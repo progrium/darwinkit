@@ -68,35 +68,35 @@ func (g_ Geocoder) Init() Geocoder {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423591-geocodeaddressstring?language=objc
 func (g_ Geocoder) GeocodeAddressStringInRegionCompletionHandler(addressString string, region IRegion, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:completionHandler:"), addressString, objc.Ptr(region), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:completionHandler:"), addressString, region, completionHandler)
 }
 
 // Submits a forward-geocoding requesting using the specified Contacts framework information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890752-geocodepostaladdress?language=objc
 func (g_ Geocoder) GeocodePostalAddressCompletionHandler(postalAddress contacts.IPostalAddress, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:completionHandler:"), objc.Ptr(postalAddress), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:completionHandler:"), postalAddress, completionHandler)
 }
 
 // Submits a forward-geocoding requesting using the specified address string and locale information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890753-geocodeaddressstring?language=objc
 func (g_ Geocoder) GeocodeAddressStringInRegionPreferredLocaleCompletionHandler(addressString string, region IRegion, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:preferredLocale:completionHandler:"), addressString, objc.Ptr(region), objc.Ptr(locale), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("geocodeAddressString:inRegion:preferredLocale:completionHandler:"), addressString, region, locale, completionHandler)
 }
 
 // Submits a reverse-geocoding request for the specified location and locale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2908779-reversegeocodelocation?language=objc
 func (g_ Geocoder) ReverseGeocodeLocationPreferredLocaleCompletionHandler(location ILocation, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:preferredLocale:completionHandler:"), objc.Ptr(location), objc.Ptr(locale), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:preferredLocale:completionHandler:"), location, locale, completionHandler)
 }
 
 // Submits a forward-geocoding requesting using the specified locale and Contacts framework information. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/2890750-geocodepostaladdress?language=objc
 func (g_ Geocoder) GeocodePostalAddressPreferredLocaleCompletionHandler(postalAddress contacts.IPostalAddress, locale foundation.ILocale, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:preferredLocale:completionHandler:"), objc.Ptr(postalAddress), objc.Ptr(locale), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("geocodePostalAddress:preferredLocale:completionHandler:"), postalAddress, locale, completionHandler)
 }
 
 // Cancels a pending geocoding request. [Full Topic]
@@ -117,7 +117,7 @@ func (g_ Geocoder) GeocodeAddressStringCompletionHandler(addressString string, c
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/clgeocoder/1423621-reversegeocodelocation?language=objc
 func (g_ Geocoder) ReverseGeocodeLocationCompletionHandler(location ILocation, completionHandler GeocodeCompletionHandler) {
-	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:completionHandler:"), objc.Ptr(location), completionHandler)
+	objc.Call[objc.Void](g_, objc.Sel("reverseGeocodeLocation:completionHandler:"), location, completionHandler)
 }
 
 // A Boolean value indicating whether the receiver is in the middle of geocoding its value. [Full Topic]

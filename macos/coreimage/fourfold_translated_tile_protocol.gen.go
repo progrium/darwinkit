@@ -20,19 +20,19 @@ type PFourfoldTranslatedTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetAcuteAngle(value float64)
+	SetAcuteAngle(value float32)
 	HasSetAcuteAngle() bool
 
 	// optional
-	AcuteAngle() float64
+	AcuteAngle() float32
 	HasAcuteAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PFourfoldTranslatedTile interface {
 	HasCenter() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -68,7 +68,7 @@ func (f_ FourfoldTranslatedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228458-inputimage?language=objc
 func (f_ FourfoldTranslatedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), value)
 }
 
 func (f_ FourfoldTranslatedTileObject) HasInputImage() bool {
@@ -90,7 +90,7 @@ func (f_ FourfoldTranslatedTileObject) HasSetAcuteAngle() bool {
 // The primary angle for the repeating translated tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228455-acuteangle?language=objc
-func (f_ FourfoldTranslatedTileObject) SetAcuteAngle(value float64) {
+func (f_ FourfoldTranslatedTileObject) SetAcuteAngle(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setAcuteAngle:"), value)
 }
 
@@ -101,8 +101,8 @@ func (f_ FourfoldTranslatedTileObject) HasAcuteAngle() bool {
 // The primary angle for the repeating translated tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228455-acuteangle?language=objc
-func (f_ FourfoldTranslatedTileObject) AcuteAngle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("acuteAngle"))
+func (f_ FourfoldTranslatedTileObject) AcuteAngle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("acuteAngle"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (f_ FourfoldTranslatedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
-func (f_ FourfoldTranslatedTileObject) SetWidth(value float64) {
+func (f_ FourfoldTranslatedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setWidth:"), value)
 }
 
@@ -124,8 +124,8 @@ func (f_ FourfoldTranslatedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228459-width?language=objc
-func (f_ FourfoldTranslatedTileObject) Width() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("width"))
+func (f_ FourfoldTranslatedTileObject) Width() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("width"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (f_ FourfoldTranslatedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
-func (f_ FourfoldTranslatedTileObject) SetAngle(value float64) {
+func (f_ FourfoldTranslatedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
 }
 
@@ -170,7 +170,7 @@ func (f_ FourfoldTranslatedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldtranslatedtile/3228456-angle?language=objc
-func (f_ FourfoldTranslatedTileObject) Angle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("angle"))
+func (f_ FourfoldTranslatedTileObject) Angle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("angle"))
 	return rv
 }

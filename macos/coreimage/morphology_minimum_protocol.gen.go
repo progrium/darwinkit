@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyminimum?language=objc
 type PMorphologyMinimum interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (m_ MorphologyMinimumObject) HasSetRadius() bool {
 // The radius of the circular morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyminimum/3228581-radius?language=objc
-func (m_ MorphologyMinimumObject) SetRadius(value float64) {
+func (m_ MorphologyMinimumObject) SetRadius(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRadius:"), value)
 }
 
@@ -53,8 +53,8 @@ func (m_ MorphologyMinimumObject) HasRadius() bool {
 // The radius of the circular morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyminimum/3228581-radius?language=objc
-func (m_ MorphologyMinimumObject) Radius() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("radius"))
+func (m_ MorphologyMinimumObject) Radius() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("radius"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (m_ MorphologyMinimumObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyminimum/3228580-inputimage?language=objc
 func (m_ MorphologyMinimumObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MorphologyMinimumObject) HasInputImage() bool {

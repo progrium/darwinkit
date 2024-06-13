@@ -76,7 +76,7 @@ func (a_ AnimationDelegateObject) HasAnimationDidStart() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimationdelegate/2097265-animationdidstart?language=objc
 func (a_ AnimationDelegateObject) AnimationDidStart(anim Animation) {
-	objc.Call[objc.Void](a_, objc.Sel("animationDidStart:"), objc.Ptr(anim))
+	objc.Call[objc.Void](a_, objc.Sel("animationDidStart:"), anim)
 }
 
 func (a_ AnimationDelegateObject) HasAnimationDidStopFinished() bool {
@@ -87,5 +87,5 @@ func (a_ AnimationDelegateObject) HasAnimationDidStopFinished() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caanimationdelegate/2097259-animationdidstop?language=objc
 func (a_ AnimationDelegateObject) AnimationDidStopFinished(anim Animation, flag bool) {
-	objc.Call[objc.Void](a_, objc.Sel("animationDidStop:finished:"), objc.Ptr(anim), flag)
+	objc.Call[objc.Void](a_, objc.Sel("animationDidStop:finished:"), anim, flag)
 }

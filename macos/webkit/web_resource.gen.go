@@ -40,7 +40,7 @@ func WebResourceFrom(ptr unsafe.Pointer) WebResource {
 }
 
 func (w_ WebResource) InitWithDataURLMIMETypeTextEncodingNameFrameName(data []byte, URL foundation.IURL, MIMEType string, textEncodingName string, frameName string) WebResource {
-	rv := objc.Call[WebResource](w_, objc.Sel("initWithData:URL:MIMEType:textEncodingName:frameName:"), data, objc.Ptr(URL), MIMEType, textEncodingName, frameName)
+	rv := objc.Call[WebResource](w_, objc.Sel("initWithData:URL:MIMEType:textEncodingName:frameName:"), data, URL, MIMEType, textEncodingName, frameName)
 	return rv
 }
 

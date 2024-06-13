@@ -79,14 +79,14 @@ func (c_ CaptureFileOutput) Init() CaptureFileOutput {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387224-startrecordingtooutputfileurl?language=objc
 func (c_ CaptureFileOutput) StartRecordingToOutputFileURLRecordingDelegate(outputFileURL foundation.IURL, delegate PCaptureFileOutputRecordingDelegate) {
 	po1 := objc.WrapAsProtocol("AVCaptureFileOutputRecordingDelegate", delegate)
-	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:recordingDelegate:"), objc.Ptr(outputFileURL), po1)
+	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:recordingDelegate:"), outputFileURL, po1)
 }
 
 // Starts recording media to the specified output URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1387224-startrecordingtooutputfileurl?language=objc
 func (c_ CaptureFileOutput) StartRecordingToOutputFileURLRecordingDelegateObject(outputFileURL foundation.IURL, delegateObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:recordingDelegate:"), objc.Ptr(outputFileURL), objc.Ptr(delegateObject))
+	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:recordingDelegate:"), outputFileURL, delegateObject)
 }
 
 // Resumes recording to the current output file after it was previously paused using [avfoundation/avcapturefileoutput/pauserecording]. [Full Topic]
@@ -192,7 +192,7 @@ func (c_ CaptureFileOutput) SetDelegate(value PCaptureFileOutputDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutput/1388718-delegate?language=objc
 func (c_ CaptureFileOutput) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The URL to which output is directed. [Full Topic]

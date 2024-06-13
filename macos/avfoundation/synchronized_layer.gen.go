@@ -114,7 +114,7 @@ func SynchronizedLayer_Layer() SynchronizedLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsynchronizedlayer/1388781-synchronizedlayerwithplayeritem?language=objc
 func (sc _SynchronizedLayerClass) SynchronizedLayerWithPlayerItem(playerItem IPlayerItem) SynchronizedLayer {
-	rv := objc.Call[SynchronizedLayer](sc, objc.Sel("synchronizedLayerWithPlayerItem:"), objc.Ptr(playerItem))
+	rv := objc.Call[SynchronizedLayer](sc, objc.Sel("synchronizedLayerWithPlayerItem:"), playerItem)
 	return rv
 }
 
@@ -137,5 +137,5 @@ func (s_ SynchronizedLayer) PlayerItem() PlayerItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsynchronizedlayer/1385679-playeritem?language=objc
 func (s_ SynchronizedLayer) SetPlayerItem(value IPlayerItem) {
-	objc.Call[objc.Void](s_, objc.Sel("setPlayerItem:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPlayerItem:"), value)
 }

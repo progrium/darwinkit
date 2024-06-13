@@ -20,11 +20,11 @@ type PStretchCrop interface {
 	HasSize() bool
 
 	// optional
-	SetCropAmount(value float64)
+	SetCropAmount(value float32)
 	HasSetCropAmount() bool
 
 	// optional
-	CropAmount() float64
+	CropAmount() float32
 	HasCropAmount() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PStretchCrop interface {
 	HasInputImage() bool
 
 	// optional
-	SetCenterStretchAmount(value float64)
+	SetCenterStretchAmount(value float32)
 	HasSetCenterStretchAmount() bool
 
 	// optional
-	CenterStretchAmount() float64
+	CenterStretchAmount() float32
 	HasCenterStretchAmount() bool
 }
 
@@ -82,7 +82,7 @@ func (s_ StretchCropObject) HasSetCropAmount() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600193-cropamount?language=objc
-func (s_ StretchCropObject) SetCropAmount(value float64) {
+func (s_ StretchCropObject) SetCropAmount(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCropAmount:"), value)
 }
 
@@ -93,8 +93,8 @@ func (s_ StretchCropObject) HasCropAmount() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600193-cropamount?language=objc
-func (s_ StretchCropObject) CropAmount() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("cropAmount"))
+func (s_ StretchCropObject) CropAmount() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("cropAmount"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (s_ StretchCropObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600194-inputimage?language=objc
 func (s_ StretchCropObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ StretchCropObject) HasInputImage() bool {
@@ -128,7 +128,7 @@ func (s_ StretchCropObject) HasSetCenterStretchAmount() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600192-centerstretchamount?language=objc
-func (s_ StretchCropObject) SetCenterStretchAmount(value float64) {
+func (s_ StretchCropObject) SetCenterStretchAmount(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCenterStretchAmount:"), value)
 }
 
@@ -139,7 +139,7 @@ func (s_ StretchCropObject) HasCenterStretchAmount() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistretchcrop/3600192-centerstretchamount?language=objc
-func (s_ StretchCropObject) CenterStretchAmount() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("centerStretchAmount"))
+func (s_ StretchCropObject) CenterStretchAmount() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("centerStretchAmount"))
 	return rv
 }

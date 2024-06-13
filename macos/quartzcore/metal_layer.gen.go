@@ -222,7 +222,7 @@ func (m_ MetalLayer) EDRMetadata() EDRMetadata {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametallayer/3182052-edrmetadata?language=objc
 func (m_ MetalLayer) SetEDRMetadata(value IEDRMetadata) {
-	objc.Call[objc.Void](m_, objc.Sel("setEDRMetadata:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setEDRMetadata:"), value)
 }
 
 // The color space of the rendered content. [Full Topic]
@@ -290,7 +290,7 @@ func (m_ MetalLayer) SetDevice(value metal.PDevice) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/cametallayer/1478163-device?language=objc
 func (m_ MetalLayer) SetDeviceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setDevice:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setDevice:"), valueObject)
 }
 
 // A Boolean value that determines whether the layer’s textures are used only for rendering. [Full Topic]

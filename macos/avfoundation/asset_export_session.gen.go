@@ -32,7 +32,7 @@ type IAssetExportSession interface {
 	Asset() Asset
 	AudioMix() AudioMix
 	SetAudioMix(value IAudioMix)
-	Progress() float64
+	Progress() float32
 	MetadataItemFilter() MetadataItemFilter
 	SetMetadataItemFilter(value IMetadataItemFilter)
 	OutputURL() foundation.URL
@@ -72,7 +72,7 @@ func AssetExportSessionFrom(ptr unsafe.Pointer) AssetExportSession {
 }
 
 func (a_ AssetExportSession) InitWithAssetPresetName(asset IAsset, presetName string) AssetExportSession {
-	rv := objc.Call[AssetExportSession](a_, objc.Sel("initWithAsset:presetName:"), objc.Ptr(asset), presetName)
+	rv := objc.Call[AssetExportSession](a_, objc.Sel("initWithAsset:presetName:"), asset, presetName)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewAssetExportSessionWithAssetPresetName(asset IAsset, presetName string) A
 }
 
 func (ac _AssetExportSessionClass) ExportSessionWithAssetPresetName(asset IAsset, presetName string) AssetExportSession {
-	rv := objc.Call[AssetExportSession](ac, objc.Sel("exportSessionWithAsset:presetName:"), objc.Ptr(asset), presetName)
+	rv := objc.Call[AssetExportSession](ac, objc.Sel("exportSessionWithAsset:presetName:"), asset, presetName)
 	return rv
 }
 
@@ -149,7 +149,7 @@ func (a_ AssetExportSession) DetermineCompatibleFileTypesWithCompletionHandler(h
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1385821-determinecompatibilityofexportpr?language=objc
 func (ac _AssetExportSessionClass) DetermineCompatibilityOfExportPresetWithAssetOutputFileTypeCompletionHandler(presetName string, asset IAsset, outputFileType FileType, handler func(compatible bool)) {
-	objc.Call[objc.Void](ac, objc.Sel("determineCompatibilityOfExportPreset:withAsset:outputFileType:completionHandler:"), presetName, objc.Ptr(asset), outputFileType, handler)
+	objc.Call[objc.Void](ac, objc.Sel("determineCompatibilityOfExportPreset:withAsset:outputFileType:completionHandler:"), presetName, asset, outputFileType, handler)
 }
 
 // Determines an export preset’s compatibility to export the asset in a container of the output file type. [Full Topic]
@@ -193,7 +193,7 @@ func (a_ AssetExportSession) DirectoryForTemporaryFiles() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1388699-directoryfortemporaryfiles?language=objc
 func (a_ AssetExportSession) SetDirectoryForTemporaryFiles(value foundation.IURL) {
-	objc.Call[objc.Void](a_, objc.Sel("setDirectoryForTemporaryFiles:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setDirectoryForTemporaryFiles:"), value)
 }
 
 // The metadata an export session writes to the output container file. [Full Topic]
@@ -231,14 +231,14 @@ func (a_ AssetExportSession) AudioMix() AudioMix {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1388155-audiomix?language=objc
 func (a_ AssetExportSession) SetAudioMix(value IAudioMix) {
-	objc.Call[objc.Void](a_, objc.Sel("setAudioMix:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAudioMix:"), value)
 }
 
 // A value that indicates the progress of the export. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1387530-progress?language=objc
-func (a_ AssetExportSession) Progress() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("progress"))
+func (a_ AssetExportSession) Progress() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("progress"))
 	return rv
 }
 
@@ -254,7 +254,7 @@ func (a_ AssetExportSession) MetadataItemFilter() MetadataItemFilter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1390226-metadataitemfilter?language=objc
 func (a_ AssetExportSession) SetMetadataItemFilter(value IMetadataItemFilter) {
-	objc.Call[objc.Void](a_, objc.Sel("setMetadataItemFilter:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setMetadataItemFilter:"), value)
 }
 
 // A URL where an asset export session writes its output. [Full Topic]
@@ -269,7 +269,7 @@ func (a_ AssetExportSession) OutputURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1389970-outputurl?language=objc
 func (a_ AssetExportSession) SetOutputURL(value foundation.IURL) {
-	objc.Call[objc.Void](a_, objc.Sel("setOutputURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setOutputURL:"), value)
 }
 
 // An optional custom object to use when compositing video frames. [Full Topic]
@@ -292,7 +292,7 @@ func (a_ AssetExportSession) VideoComposition() VideoComposition {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetexportsession/1389477-videocomposition?language=objc
 func (a_ AssetExportSession) SetVideoComposition(value IVideoComposition) {
-	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), value)
 }
 
 // The time range of the source asset to export. [Full Topic]

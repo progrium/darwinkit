@@ -55,7 +55,7 @@ func NewTensorDataWithMPSImageBatch(imageBatch *foundation.Array) TensorData {
 }
 
 func (t_ TensorData) InitWithMPSVector(vector mps.IVector) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:"), objc.Ptr(vector))
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:"), vector)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NewTensorDataWithMPSVector(vector mps.IVector) TensorData {
 }
 
 func (t_ TensorData) InitWithMPSMatrix(matrix mps.IMatrix) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSMatrix:"), objc.Ptr(matrix))
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSMatrix:"), matrix)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func NewTensorDataWithMTLBufferShapeDataType(buffer metal.PBuffer, shape *founda
 }
 
 func (t_ TensorData) InitWithDeviceDataShapeDataType(device IDevice, data []byte, shape *foundation.Array, dataType mps.DataType) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithDevice:data:shape:dataType:"), objc.Ptr(device), data, shape, dataType)
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithDevice:data:shape:dataType:"), device, data, shape, dataType)
 	return rv
 }
 
@@ -127,7 +127,7 @@ func NewTensorDataWithMTLBufferShapeDataTypeRowBytes(buffer metal.PBuffer, shape
 }
 
 func (t_ TensorData) InitWithMPSMatrixRank(matrix mps.IMatrix, rank uint) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSMatrix:rank:"), objc.Ptr(matrix), rank)
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSMatrix:rank:"), matrix, rank)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func NewTensorDataWithMPSMatrixRank(matrix mps.IMatrix, rank uint) TensorData {
 }
 
 func (t_ TensorData) InitWithMPSNDArray(ndarray mps.INDArray) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSNDArray:"), objc.Ptr(ndarray))
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSNDArray:"), ndarray)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func NewTensorDataWithMPSNDArray(ndarray mps.INDArray) TensorData {
 }
 
 func (t_ TensorData) InitWithMPSVectorRank(vector mps.IVector, rank uint) TensorData {
-	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:rank:"), objc.Ptr(vector), rank)
+	rv := objc.Call[TensorData](t_, objc.Sel("initWithMPSVector:rank:"), vector, rank)
 	return rv
 }
 

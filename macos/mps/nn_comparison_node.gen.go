@@ -68,7 +68,7 @@ func NNComparisonNode_NodeWithSources(sourceNodes []INNImageNode) NNComparisonNo
 }
 
 func (n_ NNComparisonNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
-	rv := objc.Call[NNComparisonNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNComparisonNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func NewNNComparisonNodeWithLeftSourceRightSource(left INNImageNode, right INNIm
 }
 
 func (nc _NNComparisonNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNComparisonNode {
-	rv := objc.Call[NNComparisonNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNComparisonNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 

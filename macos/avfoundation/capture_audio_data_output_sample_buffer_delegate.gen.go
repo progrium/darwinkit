@@ -55,5 +55,5 @@ func (c_ CaptureAudioDataOutputSampleBufferDelegateObject) HasCaptureOutputDidOu
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiodataoutputsamplebufferdelegate/1386039-captureoutput?language=objc
 func (c_ CaptureAudioDataOutputSampleBufferDelegateObject) CaptureOutputDidOutputSampleBufferFromConnection(output CaptureOutput, sampleBuffer coremedia.SampleBufferRef, connection CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), objc.Ptr(output), sampleBuffer, objc.Ptr(connection))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didOutputSampleBuffer:fromConnection:"), output, sampleBuffer, connection)
 }

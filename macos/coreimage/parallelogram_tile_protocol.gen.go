@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile?language=objc
 type PParallelogramTile interface {
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -36,19 +36,19 @@ type PParallelogramTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetAcuteAngle(value float64)
+	SetAcuteAngle(value float32)
 	HasSetAcuteAngle() bool
 
 	// optional
-	AcuteAngle() float64
+	AcuteAngle() float32
 	HasAcuteAngle() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -67,7 +67,7 @@ func (p_ ParallelogramTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228644-width?language=objc
-func (p_ ParallelogramTileObject) SetWidth(value float64) {
+func (p_ ParallelogramTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setWidth:"), value)
 }
 
@@ -78,8 +78,8 @@ func (p_ ParallelogramTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228644-width?language=objc
-func (p_ ParallelogramTileObject) Width() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("width"))
+func (p_ ParallelogramTileObject) Width() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("width"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (p_ ParallelogramTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228643-inputimage?language=objc
 func (p_ ParallelogramTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ ParallelogramTileObject) HasInputImage() bool {
@@ -136,7 +136,7 @@ func (p_ ParallelogramTileObject) HasSetAcuteAngle() bool {
 // The primary angle for the repeating parallelogram tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228640-acuteangle?language=objc
-func (p_ ParallelogramTileObject) SetAcuteAngle(value float64) {
+func (p_ ParallelogramTileObject) SetAcuteAngle(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setAcuteAngle:"), value)
 }
 
@@ -147,8 +147,8 @@ func (p_ ParallelogramTileObject) HasAcuteAngle() bool {
 // The primary angle for the repeating parallelogram tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228640-acuteangle?language=objc
-func (p_ ParallelogramTileObject) AcuteAngle() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("acuteAngle"))
+func (p_ ParallelogramTileObject) AcuteAngle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("acuteAngle"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (p_ ParallelogramTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
-func (p_ ParallelogramTileObject) SetAngle(value float64) {
+func (p_ ParallelogramTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setAngle:"), value)
 }
 
@@ -170,7 +170,7 @@ func (p_ ParallelogramTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciparallelogramtile/3228641-angle?language=objc
-func (p_ ParallelogramTileObject) Angle() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("angle"))
+func (p_ ParallelogramTileObject) Angle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("angle"))
 	return rv
 }

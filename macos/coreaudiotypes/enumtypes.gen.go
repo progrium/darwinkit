@@ -118,7 +118,7 @@ type FormatID uint32
 // The canonical audio data sample type for input and output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreaudiotypes/audiosampletype?language=objc
-type SampleType float64
+type SampleType float32
 
 // A unique identifier of an audio session. [Full Topic]
 //
@@ -143,7 +143,7 @@ const (
 // The canonical audio data sample type for audio processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreaudiotypes/audiounitsampletype?language=objc
-type UnitSampleType float64
+type UnitSampleType float32
 
 // Constants that define the type of MPEG-4 audio data. [Full Topic]
 //

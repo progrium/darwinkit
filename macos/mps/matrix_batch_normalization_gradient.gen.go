@@ -19,17 +19,17 @@ type _MatrixBatchNormalizationGradientClass struct {
 // An interface definition for the [MatrixBatchNormalizationGradient] class.
 type IMatrixBatchNormalizationGradient interface {
 	IMatrixBinaryKernel
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64)
-	NeuronParameterB() float64
-	NeuronParameterA() float64
-	NeuronParameterC() float64
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterB() float32
+	NeuronParameterA() float32
+	NeuronParameterC() float32
 	NeuronType() CNNNeuronType
 	EncodeToCommandBufferGradientMatrixInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultGradientForDataMatrixResultGradientForGammaVectorResultGradientForBetaVector(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForGammaVector IVector, resultGradientForBetaVector IVector)
 	EncodeToCommandBufferObjectGradientMatrixInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultGradientForDataMatrixResultGradientForGammaVectorResultGradientForBetaVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForGammaVector IVector, resultGradientForBetaVector IVector)
 	SourceNumberOfFeatureVectors() uint
 	SetSourceNumberOfFeatureVectors(value uint)
-	Epsilon() float64
-	SetEpsilon(value float64)
+	Epsilon() float32
+	SetEpsilon(value float32)
 	SourceInputFeatureChannels() uint
 	SetSourceInputFeatureChannels(value uint)
 }
@@ -100,31 +100,31 @@ func (m_ MatrixBatchNormalizationGradient) Init() MatrixBatchNormalizationGradie
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980753-setneurontype?language=objc
-func (m_ MatrixBatchNormalizationGradient) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64) {
+func (m_ MatrixBatchNormalizationGradient) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980750-neuronparameterb?language=objc
-func (m_ MatrixBatchNormalizationGradient) NeuronParameterB() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterB"))
+func (m_ MatrixBatchNormalizationGradient) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980749-neuronparametera?language=objc
-func (m_ MatrixBatchNormalizationGradient) NeuronParameterA() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterA"))
+func (m_ MatrixBatchNormalizationGradient) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980751-neuronparameterc?language=objc
-func (m_ MatrixBatchNormalizationGradient) NeuronParameterC() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterC"))
+func (m_ MatrixBatchNormalizationGradient) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
 }
 
@@ -141,14 +141,14 @@ func (m_ MatrixBatchNormalizationGradient) NeuronType() CNNNeuronType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980745-encodetocommandbuffer?language=objc
 func (m_ MatrixBatchNormalizationGradient) EncodeToCommandBufferGradientMatrixInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultGradientForDataMatrixResultGradientForGammaVectorResultGradientForBetaVector(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForGammaVector IVector, resultGradientForBetaVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:meanVector:varianceVector:gammaVector:betaVector:resultGradientForDataMatrix:resultGradientForGammaVector:resultGradientForBetaVector:"), po0, objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(meanVector), objc.Ptr(varianceVector), objc.Ptr(gammaVector), objc.Ptr(betaVector), objc.Ptr(resultGradientForDataMatrix), objc.Ptr(resultGradientForGammaVector), objc.Ptr(resultGradientForBetaVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:meanVector:varianceVector:gammaVector:betaVector:resultGradientForDataMatrix:resultGradientForGammaVector:resultGradientForBetaVector:"), po0, gradientMatrix, inputMatrix, meanVector, varianceVector, gammaVector, betaVector, resultGradientForDataMatrix, resultGradientForGammaVector, resultGradientForBetaVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980745-encodetocommandbuffer?language=objc
 func (m_ MatrixBatchNormalizationGradient) EncodeToCommandBufferObjectGradientMatrixInputMatrixMeanVectorVarianceVectorGammaVectorBetaVectorResultGradientForDataMatrixResultGradientForGammaVectorResultGradientForBetaVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, meanVector IVector, varianceVector IVector, gammaVector IVector, betaVector IVector, resultGradientForDataMatrix IMatrix, resultGradientForGammaVector IVector, resultGradientForBetaVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:meanVector:varianceVector:gammaVector:betaVector:resultGradientForDataMatrix:resultGradientForGammaVector:resultGradientForBetaVector:"), objc.Ptr(commandBufferObject), objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(meanVector), objc.Ptr(varianceVector), objc.Ptr(gammaVector), objc.Ptr(betaVector), objc.Ptr(resultGradientForDataMatrix), objc.Ptr(resultGradientForGammaVector), objc.Ptr(resultGradientForBetaVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:inputMatrix:meanVector:varianceVector:gammaVector:betaVector:resultGradientForDataMatrix:resultGradientForGammaVector:resultGradientForBetaVector:"), commandBufferObject, gradientMatrix, inputMatrix, meanVector, varianceVector, gammaVector, betaVector, resultGradientForDataMatrix, resultGradientForGammaVector, resultGradientForBetaVector)
 }
 
 //	[Full Topic]
@@ -169,15 +169,15 @@ func (m_ MatrixBatchNormalizationGradient) SetSourceNumberOfFeatureVectors(value
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980746-epsilon?language=objc
-func (m_ MatrixBatchNormalizationGradient) Epsilon() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("epsilon"))
+func (m_ MatrixBatchNormalizationGradient) Epsilon() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixbatchnormalizationgradient/2980746-epsilon?language=objc
-func (m_ MatrixBatchNormalizationGradient) SetEpsilon(value float64) {
+func (m_ MatrixBatchNormalizationGradient) SetEpsilon(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setEpsilon:"), value)
 }
 

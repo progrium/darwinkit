@@ -23,10 +23,10 @@ type ISampleBufferRenderSynchronizer interface {
 	objc.IObject
 	AddRenderer(renderer PQueuedSampleBufferRendering)
 	AddRendererObject(rendererObject objc.IObject)
-	SetRateTimeAtHostTime(rate float64, time coremedia.Time, hostTime coremedia.Time)
+	SetRateTimeAtHostTime(rate float32, time coremedia.Time, hostTime coremedia.Time)
 	RemoveRendererAtTimeCompletionHandler(renderer PQueuedSampleBufferRendering, time coremedia.Time, completionHandler func(didRemoveRenderer bool))
 	RemoveRendererObjectAtTimeCompletionHandler(rendererObject objc.IObject, time coremedia.Time, completionHandler func(didRemoveRenderer bool))
-	SetRateTime(rate float64, time coremedia.Time)
+	SetRateTime(rate float32, time coremedia.Time)
 	AddBoundaryTimeObserverForTimesQueueUsingBlock(times []foundation.IValue, queue dispatch.Queue, block func()) objc.Object
 	CurrentTime() coremedia.Time
 	AddPeriodicTimeObserverForIntervalQueueUsingBlock(interval coremedia.Time, queue dispatch.Queue, block func(time coremedia.Time)) objc.Object
@@ -34,8 +34,8 @@ type ISampleBufferRenderSynchronizer interface {
 	Timebase() coremedia.TimebaseRef
 	DelaysRateChangeUntilHasSufficientMediaData() bool
 	SetDelaysRateChangeUntilHasSufficientMediaData(value bool)
-	Rate() float64
-	SetRate(value float64)
+	Rate() float32
+	SetRate(value float32)
 	Renderers() []QueuedSampleBufferRenderingObject
 }
 
@@ -84,13 +84,13 @@ func (s_ SampleBufferRenderSynchronizer) AddRenderer(renderer PQueuedSampleBuffe
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867828-addrenderer?language=objc
 func (s_ SampleBufferRenderSynchronizer) AddRendererObject(rendererObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), objc.Ptr(rendererObject))
+	objc.Call[objc.Void](s_, objc.Sel("addRenderer:"), rendererObject)
 }
 
 // Sets the playback rate and the relationship between the current time and host time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/3726157-setrate?language=objc
-func (s_ SampleBufferRenderSynchronizer) SetRateTimeAtHostTime(rate float64, time coremedia.Time, hostTime coremedia.Time) {
+func (s_ SampleBufferRenderSynchronizer) SetRateTimeAtHostTime(rate float32, time coremedia.Time, hostTime coremedia.Time) {
 	objc.Call[objc.Void](s_, objc.Sel("setRate:time:atHostTime:"), rate, time, hostTime)
 }
 
@@ -106,13 +106,13 @@ func (s_ SampleBufferRenderSynchronizer) RemoveRendererAtTimeCompletionHandler(r
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867826-removerenderer?language=objc
 func (s_ SampleBufferRenderSynchronizer) RemoveRendererObjectAtTimeCompletionHandler(rendererObject objc.IObject, time coremedia.Time, completionHandler func(didRemoveRenderer bool)) {
-	objc.Call[objc.Void](s_, objc.Sel("removeRenderer:atTime:completionHandler:"), objc.Ptr(rendererObject), time, completionHandler)
+	objc.Call[objc.Void](s_, objc.Sel("removeRenderer:atTime:completionHandler:"), rendererObject, time, completionHandler)
 }
 
 // Sets the renderer’s time and rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867821-setrate?language=objc
-func (s_ SampleBufferRenderSynchronizer) SetRateTime(rate float64, time coremedia.Time) {
+func (s_ SampleBufferRenderSynchronizer) SetRateTime(rate float32, time coremedia.Time) {
 	objc.Call[objc.Void](s_, objc.Sel("setRate:time:"), rate, time)
 }
 
@@ -173,15 +173,15 @@ func (s_ SampleBufferRenderSynchronizer) SetDelaysRateChangeUntilHasSufficientMe
 // The current playback rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867823-rate?language=objc
-func (s_ SampleBufferRenderSynchronizer) Rate() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("rate"))
+func (s_ SampleBufferRenderSynchronizer) Rate() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("rate"))
 	return rv
 }
 
 // The current playback rate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferrendersynchronizer/2867823-rate?language=objc
-func (s_ SampleBufferRenderSynchronizer) SetRate(value float64) {
+func (s_ SampleBufferRenderSynchronizer) SetRate(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setRate:"), value)
 }
 

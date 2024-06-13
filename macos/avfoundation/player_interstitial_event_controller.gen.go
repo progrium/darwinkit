@@ -37,7 +37,7 @@ func PlayerInterstitialEventControllerFrom(ptr unsafe.Pointer) PlayerInterstitia
 }
 
 func (p_ PlayerInterstitialEventController) InitWithPrimaryPlayer(primaryPlayer IPlayer) PlayerInterstitialEventController {
-	rv := objc.Call[PlayerInterstitialEventController](p_, objc.Sel("initWithPrimaryPlayer:"), objc.Ptr(primaryPlayer))
+	rv := objc.Call[PlayerInterstitialEventController](p_, objc.Sel("initWithPrimaryPlayer:"), primaryPlayer)
 	return rv
 }
 
@@ -51,7 +51,7 @@ func NewPlayerInterstitialEventControllerWithPrimaryPlayer(primaryPlayer IPlayer
 }
 
 func (pc _PlayerInterstitialEventControllerClass) InterstitialEventControllerWithPrimaryPlayer(primaryPlayer IPlayer) PlayerInterstitialEventController {
-	rv := objc.Call[PlayerInterstitialEventController](pc, objc.Sel("interstitialEventControllerWithPrimaryPlayer:"), objc.Ptr(primaryPlayer))
+	rv := objc.Call[PlayerInterstitialEventController](pc, objc.Sel("interstitialEventControllerWithPrimaryPlayer:"), primaryPlayer)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (p_ PlayerInterstitialEventController) Init() PlayerInterstitialEventContro
 }
 
 func (pc _PlayerInterstitialEventControllerClass) InterstitialEventMonitorWithPrimaryPlayer(primaryPlayer IPlayer) PlayerInterstitialEventController {
-	rv := objc.Call[PlayerInterstitialEventController](pc, objc.Sel("interstitialEventMonitorWithPrimaryPlayer:"), objc.Ptr(primaryPlayer))
+	rv := objc.Call[PlayerInterstitialEventController](pc, objc.Sel("interstitialEventMonitorWithPrimaryPlayer:"), primaryPlayer)
 	return rv
 }
 

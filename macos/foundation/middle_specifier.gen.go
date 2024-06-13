@@ -54,7 +54,7 @@ func (m_ MiddleSpecifier) Init() MiddleSpecifier {
 }
 
 func (m_ MiddleSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) MiddleSpecifier {
-	rv := objc.Call[MiddleSpecifier](m_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[MiddleSpecifier](m_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewMiddleSpecifierWithContainerClassDescriptionContainerSpecifierKey(classD
 }
 
 func (m_ MiddleSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) MiddleSpecifier {
-	rv := objc.Call[MiddleSpecifier](m_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[MiddleSpecifier](m_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

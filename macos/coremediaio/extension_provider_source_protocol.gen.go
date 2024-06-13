@@ -3,6 +3,8 @@
 package coremediaio
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,11 +14,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource?language=objc
 type PExtensionProviderSource interface {
 	// optional
-	SetProviderPropertiesError(providerProperties ExtensionProviderProperties, outError foundation.Error) bool
+	SetProviderPropertiesError(providerProperties ExtensionProviderProperties, outError unsafe.Pointer) bool
 	HasSetProviderPropertiesError() bool
 
 	// optional
-	ConnectClientError(client ExtensionClient, outError foundation.Error) bool
+	ConnectClientError(client ExtensionClient, outError unsafe.Pointer) bool
 	HasConnectClientError() bool
 
 	// optional
@@ -24,7 +26,7 @@ type PExtensionProviderSource interface {
 	HasDisconnectClient() bool
 
 	// optional
-	ProviderPropertiesForPropertiesError(properties foundation.Set, outError foundation.Error) ExtensionProviderProperties
+	ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties
 	HasProviderPropertiesForPropertiesError() bool
 
 	// optional
@@ -47,8 +49,8 @@ func (e_ ExtensionProviderSourceObject) HasSetProviderPropertiesError() bool {
 // Set the state of provider properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915928-setproviderproperties?language=objc
-func (e_ ExtensionProviderSourceObject) SetProviderPropertiesError(providerProperties ExtensionProviderProperties, outError foundation.Error) bool {
-	rv := objc.Call[bool](e_, objc.Sel("setProviderProperties:error:"), objc.Ptr(providerProperties), objc.Ptr(outError))
+func (e_ ExtensionProviderSourceObject) SetProviderPropertiesError(providerProperties ExtensionProviderProperties, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("setProviderProperties:error:"), providerProperties, outError)
 	return rv
 }
 
@@ -59,8 +61,8 @@ func (e_ ExtensionProviderSourceObject) HasConnectClientError() bool {
 // Connects a client to a source’s provider. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915925-connectclient?language=objc
-func (e_ ExtensionProviderSourceObject) ConnectClientError(client ExtensionClient, outError foundation.Error) bool {
-	rv := objc.Call[bool](e_, objc.Sel("connectClient:error:"), objc.Ptr(client), objc.Ptr(outError))
+func (e_ ExtensionProviderSourceObject) ConnectClientError(client ExtensionClient, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("connectClient:error:"), client, outError)
 	return rv
 }
 
@@ -72,7 +74,7 @@ func (e_ ExtensionProviderSourceObject) HasDisconnectClient() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915926-disconnectclient?language=objc
 func (e_ ExtensionProviderSourceObject) DisconnectClient(client ExtensionClient) {
-	objc.Call[objc.Void](e_, objc.Sel("disconnectClient:"), objc.Ptr(client))
+	objc.Call[objc.Void](e_, objc.Sel("disconnectClient:"), client)
 }
 
 func (e_ ExtensionProviderSourceObject) HasProviderPropertiesForPropertiesError() bool {
@@ -82,8 +84,8 @@ func (e_ ExtensionProviderSourceObject) HasProviderPropertiesForPropertiesError(
 // Gets the state of provider properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovidersource/3915927-providerpropertiesforproperties?language=objc
-func (e_ ExtensionProviderSourceObject) ProviderPropertiesForPropertiesError(properties foundation.Set, outError foundation.Error) ExtensionProviderProperties {
-	rv := objc.Call[ExtensionProviderProperties](e_, objc.Sel("providerPropertiesForProperties:error:"), objc.Ptr(properties), objc.Ptr(outError))
+func (e_ ExtensionProviderSourceObject) ProviderPropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionProviderProperties {
+	rv := objc.Call[ExtensionProviderProperties](e_, objc.Sel("providerPropertiesForProperties:error:"), properties, outError)
 	return rv
 }
 

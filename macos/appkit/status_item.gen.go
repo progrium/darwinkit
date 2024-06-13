@@ -130,7 +130,7 @@ func (s_ StatusItem) Menu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusitem/1535918-menu?language=objc
 func (s_ StatusItem) SetMenu(value IMenu) {
-	objc.Call[objc.Void](s_, objc.Sel("setMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setMenu:"), value)
 }
 
 // The button displayed in the status bar. [Full Topic]

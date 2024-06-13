@@ -35,7 +35,7 @@ func (v_ ViewControllerPresentationAnimatorObject) HasAnimateDismissalOfViewCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator/1434458-animatedismissalofviewcontroller?language=objc
 func (v_ ViewControllerPresentationAnimatorObject) AnimateDismissalOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("animateDismissalOfViewController:fromViewController:"), objc.Ptr(viewController), objc.Ptr(fromViewController))
+	objc.Call[objc.Void](v_, objc.Sel("animateDismissalOfViewController:fromViewController:"), viewController, fromViewController)
 }
 
 func (v_ ViewControllerPresentationAnimatorObject) HasAnimatePresentationOfViewControllerFromViewController() bool {
@@ -46,5 +46,5 @@ func (v_ ViewControllerPresentationAnimatorObject) HasAnimatePresentationOfViewC
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontrollerpresentationanimator/1434396-animatepresentationofviewcontrol?language=objc
 func (v_ ViewControllerPresentationAnimatorObject) AnimatePresentationOfViewControllerFromViewController(viewController ViewController, fromViewController ViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("animatePresentationOfViewController:fromViewController:"), objc.Ptr(viewController), objc.Ptr(fromViewController))
+	objc.Call[objc.Void](v_, objc.Sel("animatePresentationOfViewController:fromViewController:"), viewController, fromViewController)
 }

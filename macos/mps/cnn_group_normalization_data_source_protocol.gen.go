@@ -19,7 +19,7 @@ type PCNNGroupNormalizationDataSource interface {
 	HasUpdateGammaAndBetaWithCommandBufferGroupNormalizationStateBatch() bool
 
 	// optional
-	Beta() *float64
+	Beta() *float32
 	HasBeta() bool
 
 	// optional
@@ -27,7 +27,7 @@ type PCNNGroupNormalizationDataSource interface {
 	HasCopyWithZoneDevice() bool
 
 	// optional
-	Gamma() *float64
+	Gamma() *float32
 	HasGamma() bool
 
 	// optional
@@ -39,7 +39,7 @@ type PCNNGroupNormalizationDataSource interface {
 	HasInitWithCoder() bool
 
 	// optional
-	Epsilon() float64
+	Epsilon() float32
 	HasEpsilon() bool
 
 	// optional
@@ -91,8 +91,8 @@ func (c_ CNNGroupNormalizationDataSourceObject) HasBeta() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationdatasource/3152543-beta?language=objc
-func (c_ CNNGroupNormalizationDataSourceObject) Beta() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("beta"))
+func (c_ CNNGroupNormalizationDataSourceObject) Beta() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("beta"))
 	return rv
 }
 
@@ -116,8 +116,8 @@ func (c_ CNNGroupNormalizationDataSourceObject) HasGamma() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationdatasource/3152547-gamma?language=objc
-func (c_ CNNGroupNormalizationDataSourceObject) Gamma() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("gamma"))
+func (c_ CNNGroupNormalizationDataSourceObject) Gamma() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("gamma"))
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (c_ CNNGroupNormalizationDataSourceObject) HasInitWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationdatasource/3152548-initwithcoder?language=objc
 func (c_ CNNGroupNormalizationDataSourceObject) InitWithCoder(aDecoder foundation.Coder) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), objc.Ptr(aDecoder))
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), aDecoder)
 	return rv
 }
 
@@ -152,8 +152,8 @@ func (c_ CNNGroupNormalizationDataSourceObject) HasEpsilon() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationdatasource/3152546-epsilon?language=objc
-func (c_ CNNGroupNormalizationDataSourceObject) Epsilon() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("epsilon"))
+func (c_ CNNGroupNormalizationDataSourceObject) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (c_ CNNGroupNormalizationDataSourceObject) HasEncodeWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnngroupnormalizationdatasource/3152545-encodewithcoder?language=objc
 func (c_ CNNGroupNormalizationDataSourceObject) EncodeWithCoder(aCoder foundation.Coder) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), objc.Ptr(aCoder))
+	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), aCoder)
 }
 
 func (c_ CNNGroupNormalizationDataSourceObject) HasNumberOfFeatureChannels() bool {

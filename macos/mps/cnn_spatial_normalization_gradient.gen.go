@@ -19,12 +19,12 @@ type _CNNSpatialNormalizationGradientClass struct {
 // An interface definition for the [CNNSpatialNormalizationGradient] class.
 type ICNNSpatialNormalizationGradient interface {
 	ICNNGradientKernel
-	Alpha() float64
-	SetAlpha(value float64)
-	Beta() float64
-	SetBeta(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Alpha() float32
+	SetAlpha(value float32)
+	Beta() float32
+	SetBeta(value float32)
+	Delta() float32
+	SetDelta(value float32)
 }
 
 // A gradient spatial normalization kernel. [Full Topic]
@@ -108,44 +108,44 @@ func CNNSpatialNormalizationGradient_CopyWithZoneDevice(zone unsafe.Pointer, dev
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942478-alpha?language=objc
-func (c_ CNNSpatialNormalizationGradient) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNSpatialNormalizationGradient) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942478-alpha?language=objc
-func (c_ CNNSpatialNormalizationGradient) SetAlpha(value float64) {
+func (c_ CNNSpatialNormalizationGradient) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942470-beta?language=objc
-func (c_ CNNSpatialNormalizationGradient) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNSpatialNormalizationGradient) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942470-beta?language=objc
-func (c_ CNNSpatialNormalizationGradient) SetBeta(value float64) {
+func (c_ CNNSpatialNormalizationGradient) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942486-delta?language=objc
-func (c_ CNNSpatialNormalizationGradient) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNSpatialNormalizationGradient) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradient/2942486-delta?language=objc
-func (c_ CNNSpatialNormalizationGradient) SetDelta(value float64) {
+func (c_ CNNSpatialNormalizationGradient) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }

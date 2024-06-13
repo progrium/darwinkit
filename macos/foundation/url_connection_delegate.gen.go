@@ -98,7 +98,7 @@ func (u_ URLConnectionDelegateObject) HasConnectionShouldUseCredentialStorage() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1414890-connectionshouldusecredentialsto?language=objc
 func (u_ URLConnectionDelegateObject) ConnectionShouldUseCredentialStorage(connection URLConnection) bool {
-	rv := objc.Call[bool](u_, objc.Sel("connectionShouldUseCredentialStorage:"), objc.Ptr(connection))
+	rv := objc.Call[bool](u_, objc.Sel("connectionShouldUseCredentialStorage:"), connection)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func (u_ URLConnectionDelegateObject) HasConnectionDidFailWithError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1418443-connection?language=objc
 func (u_ URLConnectionDelegateObject) ConnectionDidFailWithError(connection URLConnection, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didFailWithError:"), objc.Ptr(connection), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("connection:didFailWithError:"), connection, error)
 }
 
 func (u_ URLConnectionDelegateObject) HasConnectionWillSendRequestForAuthenticationChallenge() bool {
@@ -121,5 +121,5 @@ func (u_ URLConnectionDelegateObject) HasConnectionWillSendRequestForAuthenticat
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondelegate/1414078-connection?language=objc
 func (u_ URLConnectionDelegateObject) ConnectionWillSendRequestForAuthenticationChallenge(connection URLConnection, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:willSendRequestForAuthenticationChallenge:"), objc.Ptr(connection), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("connection:willSendRequestForAuthenticationChallenge:"), connection, challenge)
 }

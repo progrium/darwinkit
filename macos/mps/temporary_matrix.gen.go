@@ -38,7 +38,7 @@ func TemporaryMatrixFrom(ptr unsafe.Pointer) TemporaryMatrix {
 
 func (tc _TemporaryMatrixClass) TemporaryMatrixWithCommandBufferMatrixDescriptor(commandBuffer metal.PCommandBuffer, matrixDescriptor IMatrixDescriptor) TemporaryMatrix {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryMatrix](tc, objc.Sel("temporaryMatrixWithCommandBuffer:matrixDescriptor:"), po0, objc.Ptr(matrixDescriptor))
+	rv := objc.Call[TemporaryMatrix](tc, objc.Sel("temporaryMatrixWithCommandBuffer:matrixDescriptor:"), po0, matrixDescriptor)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func (t_ TemporaryMatrix) Init() TemporaryMatrix {
 
 func (t_ TemporaryMatrix) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) TemporaryMatrix {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewTemporaryMatrixWithBufferOffsetDescriptor(buffer metal.PBuffer, offset u
 
 func (t_ TemporaryMatrix) InitWithBufferDescriptor(buffer metal.PBuffer, descriptor IMatrixDescriptor) TemporaryMatrix {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func NewTemporaryMatrixWithBufferDescriptor(buffer metal.PBuffer, descriptor IMa
 
 func (t_ TemporaryMatrix) InitWithDeviceDescriptor(device metal.PDevice, descriptor IMatrixDescriptor) TemporaryMatrix {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryMatrix](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 

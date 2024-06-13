@@ -54,7 +54,7 @@ func (n_ NNReductionRowMeanNode) Init() NNReductionRowMeanNode {
 }
 
 func (nc _NNReductionRowMeanNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionRowMeanNode {
-	rv := objc.Call[NNReductionRowMeanNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionRowMeanNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionRowMeanNode_NodeWithSource(sourceNode INNImageNode) NNReductionR
 }
 
 func (n_ NNReductionRowMeanNode) InitWithSource(sourceNode INNImageNode) NNReductionRowMeanNode {
-	rv := objc.Call[NNReductionRowMeanNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionRowMeanNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

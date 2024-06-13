@@ -50,7 +50,7 @@ func PictureInPictureControllerFrom(ptr unsafe.Pointer) PictureInPictureControll
 }
 
 func (p_ PictureInPictureController) InitWithContentSource(contentSource IPictureInPictureControllerContentSource) PictureInPictureController {
-	rv := objc.Call[PictureInPictureController](p_, objc.Sel("initWithContentSource:"), objc.Ptr(contentSource))
+	rv := objc.Call[PictureInPictureController](p_, objc.Sel("initWithContentSource:"), contentSource)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func NewPictureInPictureControllerWithContentSource(contentSource IPictureInPict
 }
 
 func (p_ PictureInPictureController) InitWithPlayerLayer(playerLayer avfoundation.IPlayerLayer) PictureInPictureController {
-	rv := objc.Call[PictureInPictureController](p_, objc.Sel("initWithPlayerLayer:"), objc.Ptr(playerLayer))
+	rv := objc.Call[PictureInPictureController](p_, objc.Sel("initWithPlayerLayer:"), playerLayer)
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (p_ PictureInPictureController) SetDelegate(value PPictureInPictureControll
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontroller/1614709-delegate?language=objc
 func (p_ PictureInPictureController) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether the system suspends the controller’s Picture in Picture window. [Full Topic]
@@ -238,7 +238,7 @@ func (p_ PictureInPictureController) ContentSource() PictureInPictureControllerC
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontroller/3750323-contentsource?language=objc
 func (p_ PictureInPictureController) SetContentSource(value IPictureInPictureControllerContentSource) {
-	objc.Call[objc.Void](p_, objc.Sel("setContentSource:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setContentSource:"), value)
 }
 
 // A Boolean value that indicates whether the Picture in Picture window is onscreen. [Full Topic]

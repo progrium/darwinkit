@@ -128,7 +128,7 @@ func PlayerItemFrom(ptr unsafe.Pointer) PlayerItem {
 }
 
 func (pc _PlayerItemClass) PlayerItemWithAsset(asset IAsset) PlayerItem {
-	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithAsset:"), objc.Ptr(asset))
+	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithAsset:"), asset)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func PlayerItem_PlayerItemWithAsset(asset IAsset) PlayerItem {
 }
 
 func (p_ PlayerItem) InitWithURL(URL foundation.IURL) PlayerItem {
-	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NewPlayerItemWithURL(URL foundation.IURL) PlayerItem {
 }
 
 func (pc _PlayerItemClass) PlayerItemWithAssetAutomaticallyLoadedAssetKeys(asset IAsset, automaticallyLoadedAssetKeys []string) PlayerItem {
-	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithAsset:automaticallyLoadedAssetKeys:"), objc.Ptr(asset), automaticallyLoadedAssetKeys)
+	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithAsset:automaticallyLoadedAssetKeys:"), asset, automaticallyLoadedAssetKeys)
 	return rv
 }
 
@@ -166,7 +166,7 @@ func PlayerItem_PlayerItemWithAssetAutomaticallyLoadedAssetKeys(asset IAsset, au
 }
 
 func (p_ PlayerItem) InitWithAsset(asset IAsset) PlayerItem {
-	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithAsset:"), objc.Ptr(asset))
+	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithAsset:"), asset)
 	return rv
 }
 
@@ -180,7 +180,7 @@ func NewPlayerItemWithAsset(asset IAsset) PlayerItem {
 }
 
 func (pc _PlayerItemClass) PlayerItemWithURL(URL foundation.IURL) PlayerItem {
-	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[PlayerItem](pc, objc.Sel("playerItemWithURL:"), URL)
 	return rv
 }
 
@@ -192,7 +192,7 @@ func PlayerItem_PlayerItemWithURL(URL foundation.IURL) PlayerItem {
 }
 
 func (p_ PlayerItem) InitWithAssetAutomaticallyLoadedAssetKeys(asset IAsset, automaticallyLoadedAssetKeys []string) PlayerItem {
-	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithAsset:automaticallyLoadedAssetKeys:"), objc.Ptr(asset), automaticallyLoadedAssetKeys)
+	rv := objc.Call[PlayerItem](p_, objc.Sel("initWithAsset:automaticallyLoadedAssetKeys:"), asset, automaticallyLoadedAssetKeys)
 	return rv
 }
 
@@ -236,14 +236,14 @@ func (p_ PlayerItem) StepByCount(stepCount int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1389782-addoutput?language=objc
 func (p_ PlayerItem) AddOutput(output IPlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("addOutput:"), objc.Ptr(output))
+	objc.Call[objc.Void](p_, objc.Sel("addOutput:"), output)
 }
 
 // Selects the media option in the specified media selection group that best matches the receiver’s automatic selection criteria. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1388268-selectmediaoptionautomaticallyin?language=objc
 func (p_ PlayerItem) SelectMediaOptionAutomaticallyInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) {
-	objc.Call[objc.Void](p_, objc.Sel("selectMediaOptionAutomaticallyInMediaSelectionGroup:"), objc.Ptr(mediaSelectionGroup))
+	objc.Call[objc.Void](p_, objc.Sel("selectMediaOptionAutomaticallyInMediaSelectionGroup:"), mediaSelectionGroup)
 }
 
 // Presents the user the opportunity to authorize the content for playback. [Full Topic]
@@ -257,7 +257,7 @@ func (p_ PlayerItem) RequestContentAuthorizationAsynchronouslyWithTimeoutInterva
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1624164-addmediadatacollector?language=objc
 func (p_ PlayerItem) AddMediaDataCollector(collector IPlayerItemMediaDataCollector) {
-	objc.Call[objc.Void](p_, objc.Sel("addMediaDataCollector:"), objc.Ptr(collector))
+	objc.Call[objc.Void](p_, objc.Sel("addMediaDataCollector:"), collector)
 }
 
 // Returns the current time of the item as a date. [Full Topic]
@@ -279,14 +279,14 @@ func (p_ PlayerItem) SeekToTimeCompletionHandler(time coremedia.Time, completion
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1624163-removemediadatacollector?language=objc
 func (p_ PlayerItem) RemoveMediaDataCollector(collector IPlayerItemMediaDataCollector) {
-	objc.Call[objc.Void](p_, objc.Sel("removeMediaDataCollector:"), objc.Ptr(collector))
+	objc.Call[objc.Void](p_, objc.Sel("removeMediaDataCollector:"), collector)
 }
 
 // Selects a media option in a given media selection group and deselects all other options in that group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1389610-selectmediaoption?language=objc
 func (p_ PlayerItem) SelectMediaOptionInMediaSelectionGroup(mediaSelectionOption IMediaSelectionOption, mediaSelectionGroup IMediaSelectionGroup) {
-	objc.Call[objc.Void](p_, objc.Sel("selectMediaOption:inMediaSelectionGroup:"), objc.Ptr(mediaSelectionOption), objc.Ptr(mediaSelectionGroup))
+	objc.Call[objc.Void](p_, objc.Sel("selectMediaOption:inMediaSelectionGroup:"), mediaSelectionOption, mediaSelectionGroup)
 }
 
 // Sets the current playback time within a specified time bound and invokes the specified block when the seek operation completes or is interrupted. [Full Topic]
@@ -316,7 +316,7 @@ func (p_ PlayerItem) AccessLog() PlayerItemAccessLog {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1389877-seektodate?language=objc
 func (p_ PlayerItem) SeekToDateCompletionHandler(date foundation.IDate, completionHandler func(finished bool)) bool {
-	rv := objc.Call[bool](p_, objc.Sel("seekToDate:completionHandler:"), objc.Ptr(date), completionHandler)
+	rv := objc.Call[bool](p_, objc.Sel("seekToDate:completionHandler:"), date, completionHandler)
 	return rv
 }
 
@@ -339,7 +339,7 @@ func (p_ PlayerItem) CopyWithZone(zone unsafe.Pointer) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1388756-removeoutput?language=objc
 func (p_ PlayerItem) RemoveOutput(output IPlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("removeOutput:"), objc.Ptr(output))
+	objc.Call[objc.Void](p_, objc.Sel("removeOutput:"), output)
 }
 
 // Creates a copy of the object. [Full Topic]
@@ -386,7 +386,7 @@ func (p_ PlayerItem) VideoComposition() VideoComposition {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1388818-videocomposition?language=objc
 func (p_ PlayerItem) SetVideoComposition(value IVideoComposition) {
-	objc.Call[objc.Void](p_, objc.Sel("setVideoComposition:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setVideoComposition:"), value)
 }
 
 // A Boolean value that indicates whether playback starts with the first eligible variant that appears in the stream’s main playlist. [Full Topic]
@@ -647,7 +647,7 @@ func (p_ PlayerItem) AudioMix() AudioMix {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritem/1388037-audiomix?language=objc
 func (p_ PlayerItem) SetAudioMix(value IAudioMix) {
-	objc.Call[objc.Void](p_, objc.Sel("setAudioMix:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setAudioMix:"), value)
 }
 
 // A limit of network bandwidth consumption by the item when connecting over expensive networks. [Full Topic]

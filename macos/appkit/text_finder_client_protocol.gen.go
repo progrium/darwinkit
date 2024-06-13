@@ -119,7 +119,7 @@ func (t_ TextFinderClientObject) HasDrawCharactersInRangeForContentView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderclient/1533760-drawcharactersinrange?language=objc
 func (t_ TextFinderClientObject) DrawCharactersInRangeForContentView(range_ foundation.Range, view View) {
-	objc.Call[objc.Void](t_, objc.Sel("drawCharactersInRange:forContentView:"), range_, objc.Ptr(view))
+	objc.Call[objc.Void](t_, objc.Sel("drawCharactersInRange:forContentView:"), range_, view)
 }
 
 func (t_ TextFinderClientObject) HasStringAtIndexEffectiveRangeEndsWithSearchBoundary() bool {

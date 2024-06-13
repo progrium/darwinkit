@@ -34,7 +34,7 @@ func NNReshapeGradientNodeFrom(ptr unsafe.Pointer) NNReshapeGradientNode {
 }
 
 func (n_ NNReshapeGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNReshapeGradientNode {
-	rv := objc.Call[NNReshapeGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNReshapeGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewNNReshapeGradientNodeWithSourceGradientSourceImageGradientState(sourceGr
 }
 
 func (nc _NNReshapeGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNReshapeGradientNode {
-	rv := objc.Call[NNReshapeGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNReshapeGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 

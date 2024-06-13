@@ -98,7 +98,7 @@ func (s_ SharingServicePickerDelegateObject) HasSharingServicePickerSharingServi
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickerdelegate/1402664-sharingservicepicker?language=objc
 func (s_ SharingServicePickerDelegateObject) SharingServicePickerSharingServicesForItemsProposedSharingServices(sharingServicePicker SharingServicePicker, items []objc.Object, proposedServices []SharingService) []SharingService {
-	rv := objc.Call[[]SharingService](s_, objc.Sel("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), objc.Ptr(sharingServicePicker), items, proposedServices)
+	rv := objc.Call[[]SharingService](s_, objc.Sel("sharingServicePicker:sharingServicesForItems:proposedSharingServices:"), sharingServicePicker, items, proposedServices)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func (s_ SharingServicePickerDelegateObject) HasSharingServicePickerDidChooseSha
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickerdelegate/1402610-sharingservicepicker?language=objc
 func (s_ SharingServicePickerDelegateObject) SharingServicePickerDidChooseSharingService(sharingServicePicker SharingServicePicker, service SharingService) {
-	objc.Call[objc.Void](s_, objc.Sel("sharingServicePicker:didChooseSharingService:"), objc.Ptr(sharingServicePicker), objc.Ptr(service))
+	objc.Call[objc.Void](s_, objc.Sel("sharingServicePicker:didChooseSharingService:"), sharingServicePicker, service)
 }
 
 func (s_ SharingServicePickerDelegateObject) HasSharingServicePickerDelegateForSharingService() bool {
@@ -121,6 +121,6 @@ func (s_ SharingServicePickerDelegateObject) HasSharingServicePickerDelegateForS
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickerdelegate/1402608-sharingservicepicker?language=objc
 func (s_ SharingServicePickerDelegateObject) SharingServicePickerDelegateForSharingService(sharingServicePicker SharingServicePicker, sharingService SharingService) SharingServiceDelegateObject {
-	rv := objc.Call[SharingServiceDelegateObject](s_, objc.Sel("sharingServicePicker:delegateForSharingService:"), objc.Ptr(sharingServicePicker), objc.Ptr(sharingService))
+	rv := objc.Call[SharingServiceDelegateObject](s_, objc.Sel("sharingServicePicker:delegateForSharingService:"), sharingServicePicker, sharingService)
 	return rv
 }

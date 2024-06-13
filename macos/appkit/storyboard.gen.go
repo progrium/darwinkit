@@ -39,7 +39,7 @@ func StoryboardFrom(ptr unsafe.Pointer) Storyboard {
 }
 
 func (sc _StoryboardClass) StoryboardWithNameBundle(name StoryboardName, storyboardBundleOrNil foundation.IBundle) Storyboard {
-	rv := objc.Call[Storyboard](sc, objc.Sel("storyboardWithName:bundle:"), name, objc.Ptr(storyboardBundleOrNil))
+	rv := objc.Call[Storyboard](sc, objc.Sel("storyboardWithName:bundle:"), name, storyboardBundleOrNil)
 	return rv
 }
 

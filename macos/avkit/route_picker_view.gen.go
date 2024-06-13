@@ -83,7 +83,7 @@ func NewRoutePickerViewWithFrame(frameRect foundation.Rect) RoutePickerView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915792-setroutepickerbuttoncolor?language=objc
 func (r_ RoutePickerView) SetRoutePickerButtonColorForState(color appkit.IColor, state RoutePickerViewButtonState) {
-	objc.Call[objc.Void](r_, objc.Sel("setRoutePickerButtonColor:forState:"), objc.Ptr(color), state)
+	objc.Call[objc.Void](r_, objc.Sel("setRoutePickerButtonColor:forState:"), color, state)
 }
 
 // Returns the color of the picker button for the specified state. [Full Topic]
@@ -121,7 +121,7 @@ func (r_ RoutePickerView) Player() avfoundation.Player {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/3201361-player?language=objc
 func (r_ RoutePickerView) SetPlayer(value avfoundation.IPlayer) {
-	objc.Call[objc.Void](r_, objc.Sel("setPlayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setPlayer:"), value)
 }
 
 // The delegate object for the route picker. [Full Topic]
@@ -145,5 +145,5 @@ func (r_ RoutePickerView) SetDelegate(value PRoutePickerViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerview/2915799-delegate?language=objc
 func (r_ RoutePickerView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setDelegate:"), valueObject)
 }

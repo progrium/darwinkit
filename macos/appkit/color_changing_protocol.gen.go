@@ -31,5 +31,5 @@ func (c_ ColorChangingObject) HasChangeColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorchanging/3005175-changecolor?language=objc
 func (c_ ColorChangingObject) ChangeColor(sender ColorPanel) {
-	objc.Call[objc.Void](c_, objc.Sel("changeColor:"), objc.Ptr(sender))
+	objc.Call[objc.Void](c_, objc.Sel("changeColor:"), sender)
 }

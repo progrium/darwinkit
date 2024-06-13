@@ -85,7 +85,7 @@ func MediaSelectionGroup_MediaSelectionOptionsFromArrayWithMediaCharacteristics(
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectiongroup/1387494-mediaselectionoptionsfromarray?language=objc
 func (mc _MediaSelectionGroupClass) MediaSelectionOptionsFromArrayWithLocale(mediaSelectionOptions []IMediaSelectionOption, locale foundation.ILocale) []MediaSelectionOption {
-	rv := objc.Call[[]MediaSelectionOption](mc, objc.Sel("mediaSelectionOptionsFromArray:withLocale:"), mediaSelectionOptions, objc.Ptr(locale))
+	rv := objc.Call[[]MediaSelectionOption](mc, objc.Sel("mediaSelectionOptionsFromArray:withLocale:"), mediaSelectionOptions, locale)
 	return rv
 }
 

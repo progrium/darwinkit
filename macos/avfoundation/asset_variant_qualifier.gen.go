@@ -35,7 +35,7 @@ func AssetVariantQualifierFrom(ptr unsafe.Pointer) AssetVariantQualifier {
 }
 
 func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithPredicate(predicate foundation.IPredicate) AssetVariantQualifier {
-	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithPredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithPredicate:"), predicate)
 	return rv
 }
 
@@ -47,7 +47,7 @@ func AssetVariantQualifier_AssetVariantQualifierWithPredicate(predicate foundati
 }
 
 func (ac _AssetVariantQualifierClass) AssetVariantQualifierWithVariant(variant IAssetVariant) AssetVariantQualifier {
-	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithVariant:"), objc.Ptr(variant))
+	rv := objc.Call[AssetVariantQualifier](ac, objc.Sel("assetVariantQualifierWithVariant:"), variant)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (a_ AssetVariantQualifier) Init() AssetVariantQualifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetvariantqualifier/3750230-predicateforchannelcount?language=objc
 func (ac _AssetVariantQualifierClass) PredicateForChannelCountMediaSelectionOptionOperatorType(channelCount int, mediaSelectionOption IMediaSelectionOption, operatorType foundation.PredicateOperatorType) foundation.Predicate {
-	rv := objc.Call[foundation.Predicate](ac, objc.Sel("predicateForChannelCount:mediaSelectionOption:operatorType:"), channelCount, objc.Ptr(mediaSelectionOption), operatorType)
+	rv := objc.Call[foundation.Predicate](ac, objc.Sel("predicateForChannelCount:mediaSelectionOption:operatorType:"), channelCount, mediaSelectionOption, operatorType)
 	return rv
 }
 

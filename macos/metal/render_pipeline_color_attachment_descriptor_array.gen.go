@@ -67,5 +67,5 @@ func (r_ RenderPipelineColorAttachmentDescriptorArray) ObjectAtIndexedSubscript(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinecolorattachmentdescriptorarray/1514675-setobject?language=objc
 func (r_ RenderPipelineColorAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IRenderPipelineColorAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

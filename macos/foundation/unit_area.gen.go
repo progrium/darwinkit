@@ -54,7 +54,7 @@ func (u_ UnitArea) Init() UnitArea {
 }
 
 func (u_ UnitArea) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitArea {
-	rv := objc.Call[UnitArea](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitArea](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

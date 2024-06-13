@@ -34,7 +34,7 @@ func CNNNeuronReLUNNodeFrom(ptr unsafe.Pointer) CNNNeuronReLUNNode {
 }
 
 func (cc _CNNNeuronReLUNNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronReLUNNode {
-	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -45,34 +45,34 @@ func CNNNeuronReLUNNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronReLUNNo
 	return CNNNeuronReLUNNodeClass.NodeWithSource(sourceNode)
 }
 
-func (cc _CNNNeuronReLUNNodeClass) NodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronReLUNNode {
-	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:a:b:"), objc.Ptr(sourceNode), a, b)
+func (cc _CNNNeuronReLUNNodeClass) NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronReLUNNode {
+	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:a:b:"), sourceNode, a, b)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronrelunnode/2921590-nodewithsource?language=objc
-func CNNNeuronReLUNNode_NodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronReLUNNode {
+func CNNNeuronReLUNNode_NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronReLUNNode {
 	return CNNNeuronReLUNNodeClass.NodeWithSourceAB(sourceNode, a, b)
 }
 
-func (c_ CNNNeuronReLUNNode) InitWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronReLUNNode {
-	rv := objc.Call[CNNNeuronReLUNNode](c_, objc.Sel("initWithSource:a:b:"), objc.Ptr(sourceNode), a, b)
+func (c_ CNNNeuronReLUNNode) InitWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronReLUNNode {
+	rv := objc.Call[CNNNeuronReLUNNode](c_, objc.Sel("initWithSource:a:b:"), sourceNode, a, b)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronrelunnode/2921596-initwithsource?language=objc
-func NewCNNNeuronReLUNNodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronReLUNNode {
+func NewCNNNeuronReLUNNodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronReLUNNode {
 	instance := CNNNeuronReLUNNodeClass.Alloc().InitWithSourceAB(sourceNode, a, b)
 	instance.Autorelease()
 	return instance
 }
 
 func (c_ CNNNeuronReLUNNode) InitWithSource(sourceNode INNImageNode) CNNNeuronReLUNNode {
-	rv := objc.Call[CNNNeuronReLUNNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronReLUNNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (c_ CNNNeuronReLUNNode) Init() CNNNeuronReLUNNode {
 }
 
 func (cc _CNNNeuronReLUNNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronReLUNNode {
-	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronReLUNNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

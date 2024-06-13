@@ -49,7 +49,7 @@ func TextSelectionFrom(ptr unsafe.Pointer) TextSelection {
 }
 
 func (t_ TextSelection) InitWithRangeAffinityGranularity(range_ ITextRange, affinity TextSelectionAffinity, granularity TextSelectionGranularity) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("initWithRange:affinity:granularity:"), objc.Ptr(range_), affinity, granularity)
+	rv := objc.Call[TextSelection](t_, objc.Sel("initWithRange:affinity:granularity:"), range_, affinity, granularity)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (t_ TextSelection) SetSecondarySelectionLocation(value PTextLocation) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselection/3801824-secondaryselectionlocation?language=objc
 func (t_ TextSelection) SetSecondarySelectionLocationObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setSecondarySelectionLocation:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setSecondarySelectionLocation:"), valueObject)
 }
 
 // The template attributes the framework uses for characters that replace the contents of this selection. [Full Topic]

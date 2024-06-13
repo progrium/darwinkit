@@ -38,7 +38,7 @@ func CNNSpatialNormalizationNodeFrom(ptr unsafe.Pointer) CNNSpatialNormalization
 }
 
 func (c_ CNNSpatialNormalizationNode) InitWithSource(sourceNode INNImageNode) CNNSpatialNormalizationNode {
-	rv := objc.Call[CNNSpatialNormalizationNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNSpatialNormalizationNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewCNNSpatialNormalizationNodeWithSource(sourceNode INNImageNode) CNNSpatia
 }
 
 func (c_ CNNSpatialNormalizationNode) InitWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNSpatialNormalizationNode {
-	rv := objc.Call[CNNSpatialNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNSpatialNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NewCNNSpatialNormalizationNodeWithSourceKernelSize(sourceNode INNImageNode,
 }
 
 func (cc _CNNSpatialNormalizationNodeClass) NodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNSpatialNormalizationNode {
-	rv := objc.Call[CNNSpatialNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNSpatialNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (c_ CNNSpatialNormalizationNode) Init() CNNSpatialNormalizationNode {
 }
 
 func (cc _CNNSpatialNormalizationNodeClass) NodeWithSource(sourceNode INNImageNode) CNNSpatialNormalizationNode {
-	rv := objc.Call[CNNSpatialNormalizationNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNSpatialNormalizationNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 

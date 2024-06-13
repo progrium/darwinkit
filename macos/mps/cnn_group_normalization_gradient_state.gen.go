@@ -61,7 +61,7 @@ func (c_ CNNGroupNormalizationGradientState) Init() CNNGroupNormalizationGradien
 
 func (cc _CNNGroupNormalizationGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNGroupNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNGroupNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNGroupNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func CNNGroupNormalizationGradientState_TemporaryStateWithCommandBufferResourceL
 
 func (c_ CNNGroupNormalizationGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNGroupNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNGroupNormalizationGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNGroupNormalizationGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -159,7 +159,7 @@ func CNNGroupNormalizationGradientState_TemporaryStateWithCommandBuffer(cmdBuf m
 
 func (cc _CNNGroupNormalizationGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNGroupNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNGroupNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNGroupNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -172,7 +172,7 @@ func CNNGroupNormalizationGradientState_TemporaryStateWithCommandBufferTextureDe
 
 func (c_ CNNGroupNormalizationGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNGroupNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNGroupNormalizationGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNGroupNormalizationGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

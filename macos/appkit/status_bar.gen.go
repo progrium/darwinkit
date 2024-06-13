@@ -61,7 +61,7 @@ func (s_ StatusBar) Init() StatusBar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstatusbar/1530377-removestatusitem?language=objc
 func (s_ StatusBar) RemoveStatusItem(item IStatusItem) {
-	objc.Call[objc.Void](s_, objc.Sel("removeStatusItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](s_, objc.Sel("removeStatusItem:"), item)
 }
 
 // Returns a newly created status item that has been allotted a specified space within the status bar. [Full Topic]

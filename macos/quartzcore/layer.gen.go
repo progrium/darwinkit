@@ -99,8 +99,8 @@ type ILayer interface {
 	SetPosition(value coregraphics.Point)
 	EdgeAntialiasingMask() EdgeAntialiasingMask
 	SetEdgeAntialiasingMask(value EdgeAntialiasingMask)
-	Opacity() float64
-	SetOpacity(value float64)
+	Opacity() float32
+	SetOpacity(value float32)
 	MinificationFilter() LayerContentsFilter
 	SetMinificationFilter(value LayerContentsFilter)
 	BackgroundFilters() []objc.Object
@@ -134,8 +134,8 @@ type ILayer interface {
 	SetContentsScale(value float64)
 	ShouldRasterize() bool
 	SetShouldRasterize(value bool)
-	MinificationFilterBias() float64
-	SetMinificationFilterBias(value float64)
+	MinificationFilterBias() float32
+	SetMinificationFilterBias(value float32)
 	MaskedCorners() CornerMask
 	SetMaskedCorners(value CornerMask)
 	IsGeometryFlipped() bool
@@ -165,8 +165,8 @@ type ILayer interface {
 	SetRasterizationScale(value float64)
 	CornerCurve() LayerCornerCurve
 	SetCornerCurve(value LayerCornerCurve)
-	ShadowOpacity() float64
-	SetShadowOpacity(value float64)
+	ShadowOpacity() float32
+	SetShadowOpacity(value float32)
 	Delegate() LayerDelegateObject
 	SetDelegate(value PLayerDelegate)
 	SetDelegateObject(valueObject objc.IObject)
@@ -338,7 +338,7 @@ func (l_ Layer) SetAffineTransform(m coregraphics.AffineTransform) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410825-convertpoint?language=objc
 func (l_ Layer) ConvertPointFromLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](l_, objc.Sel("convertPoint:fromLayer:"), p, objc.Ptr(l))
+	rv := objc.Call[coregraphics.Point](l_, objc.Sel("convertPoint:fromLayer:"), p, l)
 	return rv
 }
 
@@ -383,7 +383,7 @@ func (l_ Layer) DrawInContext(ctx coregraphics.ContextRef) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410821-converttime?language=objc
 func (l_ Layer) ConvertTimeFromLayer(t corefoundation.TimeInterval, l ILayer) corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](l_, objc.Sel("convertTime:fromLayer:"), t, objc.Ptr(l))
+	rv := objc.Call[corefoundation.TimeInterval](l_, objc.Sel("convertTime:fromLayer:"), t, l)
 	return rv
 }
 
@@ -391,7 +391,7 @@ func (l_ Layer) ConvertTimeFromLayer(t corefoundation.TimeInterval, l ILayer) co
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410833-addsublayer?language=objc
 func (l_ Layer) AddSublayer(layer ILayer) {
-	objc.Call[objc.Void](l_, objc.Sel("addSublayer:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("addSublayer:"), layer)
 }
 
 // Returns a Boolean indicating whether the layer has been marked as needing an update. [Full Topic]
@@ -406,7 +406,7 @@ func (l_ Layer) NeedsDisplay() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1521899-addconstraint?language=objc
 func (l_ Layer) AddConstraint(c IConstraint) {
-	objc.Call[objc.Void](l_, objc.Sel("addConstraint:"), objc.Ptr(c))
+	objc.Call[objc.Void](l_, objc.Sel("addConstraint:"), c)
 }
 
 // Returns an affine version of the layer’s transform. [Full Topic]
@@ -421,7 +421,7 @@ func (l_ Layer) AffineTransform() coregraphics.AffineTransform {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410944-insertsublayer?language=objc
 func (l_ Layer) InsertSublayerAtIndex(layer ILayer, idx int) {
-	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:atIndex:"), objc.Ptr(layer), idx)
+	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:atIndex:"), layer, idx)
 }
 
 // Returns a Boolean indicating whether the layer content is implicitly flipped when rendered. [Full Topic]
@@ -444,7 +444,7 @@ func (l_ Layer) ContainsPoint(p coregraphics.Point) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410820-replacesublayer?language=objc
 func (l_ Layer) ReplaceSublayerWith(oldLayer ILayer, newLayer ILayer) {
-	objc.Call[objc.Void](l_, objc.Sel("replaceSublayer:with:"), objc.Ptr(oldLayer), objc.Ptr(newLayer))
+	objc.Call[objc.Void](l_, objc.Sel("replaceSublayer:with:"), oldLayer, newLayer)
 }
 
 // Initiates a scroll in the layer’s closest ancestor scroll layer so that the specified point lies at the origin of the scroll layer. [Full Topic]
@@ -458,7 +458,7 @@ func (l_ Layer) ScrollPoint(p coregraphics.Point) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410848-addanimation?language=objc
 func (l_ Layer) AddAnimationForKey(anim IAnimation, key string) {
-	objc.Call[objc.Void](l_, objc.Sel("addAnimation:forKey:"), objc.Ptr(anim), key)
+	objc.Call[objc.Void](l_, objc.Sel("addAnimation:forKey:"), anim, key)
 }
 
 // Remove all animations attached to the layer. [Full Topic]
@@ -472,7 +472,7 @@ func (l_ Layer) RemoveAllAnimations() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410881-convertpoint?language=objc
 func (l_ Layer) ConvertPointToLayer(p coregraphics.Point, l ILayer) coregraphics.Point {
-	rv := objc.Call[coregraphics.Point](l_, objc.Sel("convertPoint:toLayer:"), p, objc.Ptr(l))
+	rv := objc.Call[coregraphics.Point](l_, objc.Sel("convertPoint:toLayer:"), p, l)
 	return rv
 }
 
@@ -495,7 +495,7 @@ func (l_ Layer) AnimationForKey(key string) Animation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410948-convertrect?language=objc
 func (l_ Layer) ConvertRectFromLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](l_, objc.Sel("convertRect:fromLayer:"), r, objc.Ptr(l))
+	rv := objc.Call[coregraphics.Rect](l_, objc.Sel("convertRect:fromLayer:"), r, l)
 	return rv
 }
 
@@ -570,7 +570,7 @@ func (l_ Layer) ResizeWithOldSuperlayerSize(size coregraphics.Size) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410840-insertsublayer?language=objc
 func (l_ Layer) InsertSublayerBelow(layer ILayer, sibling ILayer) {
-	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:below:"), objc.Ptr(layer), objc.Ptr(sibling))
+	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:below:"), layer, sibling)
 }
 
 // Initiates a scroll in the layer’s closest ancestor scroll layer so that the specified rectangle becomes visible. [Full Topic]
@@ -584,7 +584,7 @@ func (l_ Layer) ScrollRectToVisible(r coregraphics.Rect) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410823-converttime?language=objc
 func (l_ Layer) ConvertTimeToLayer(t corefoundation.TimeInterval, l ILayer) corefoundation.TimeInterval {
-	rv := objc.Call[corefoundation.TimeInterval](l_, objc.Sel("convertTime:toLayer:"), t, objc.Ptr(l))
+	rv := objc.Call[corefoundation.TimeInterval](l_, objc.Sel("convertTime:toLayer:"), t, l)
 	return rv
 }
 
@@ -592,7 +592,7 @@ func (l_ Layer) ConvertTimeToLayer(t corefoundation.TimeInterval, l ILayer) core
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410798-insertsublayer?language=objc
 func (l_ Layer) InsertSublayerAbove(layer ILayer, sibling ILayer) {
-	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:above:"), objc.Ptr(layer), objc.Ptr(sibling))
+	objc.Call[objc.Void](l_, objc.Sel("insertSublayer:above:"), layer, sibling)
 }
 
 // Returns a Boolean indicating whether the value of the specified key should be archived. [Full Topic]
@@ -636,7 +636,7 @@ func Layer_DefaultActionForKey(event string) ActionObject {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410742-convertrect?language=objc
 func (l_ Layer) ConvertRectToLayer(r coregraphics.Rect, l ILayer) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](l_, objc.Sel("convertRect:toLayer:"), r, objc.Ptr(l))
+	rv := objc.Call[coregraphics.Rect](l_, objc.Sel("convertRect:toLayer:"), r, l)
 	return rv
 }
 
@@ -921,15 +921,15 @@ func (l_ Layer) SetEdgeAntialiasingMask(value EdgeAntialiasingMask) {
 // The opacity of the receiver. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc
-func (l_ Layer) Opacity() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("opacity"))
+func (l_ Layer) Opacity() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("opacity"))
 	return rv
 }
 
 // The opacity of the receiver. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410933-opacity?language=objc
-func (l_ Layer) SetOpacity(value float64) {
+func (l_ Layer) SetOpacity(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setOpacity:"), value)
 }
 
@@ -1148,7 +1148,7 @@ func (l_ Layer) SetLayoutManager(value PLayoutManager) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410749-layoutmanager?language=objc
 func (l_ Layer) SetLayoutManagerObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setLayoutManager:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](l_, objc.Sel("setLayoutManager:"), valueObject)
 }
 
 // The scale factor applied to the layer. [Full Topic]
@@ -1184,15 +1184,15 @@ func (l_ Layer) SetShouldRasterize(value bool) {
 // The bias factor used by the minification filter to determine the levels of detail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc
-func (l_ Layer) MinificationFilterBias() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("minificationFilterBias"))
+func (l_ Layer) MinificationFilterBias() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("minificationFilterBias"))
 	return rv
 }
 
 // The bias factor used by the minification filter to determine the levels of detail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410775-minificationfilterbias?language=objc
-func (l_ Layer) SetMinificationFilterBias(value float64) {
+func (l_ Layer) SetMinificationFilterBias(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setMinificationFilterBias:"), value)
 }
 
@@ -1381,7 +1381,7 @@ func (l_ Layer) Mask() Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410861-mask?language=objc
 func (l_ Layer) SetMask(value ILayer) {
-	objc.Call[objc.Void](l_, objc.Sel("setMask:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setMask:"), value)
 }
 
 // The scale at which to rasterize content, relative to the coordinate space of the layer. Animatable [Full Topic]
@@ -1417,15 +1417,15 @@ func (l_ Layer) SetCornerCurve(value LayerCornerCurve) {
 // The opacity of the layer’s shadow. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc
-func (l_ Layer) ShadowOpacity() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("shadowOpacity"))
+func (l_ Layer) ShadowOpacity() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("shadowOpacity"))
 	return rv
 }
 
 // The opacity of the layer’s shadow. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410751-shadowopacity?language=objc
-func (l_ Layer) SetShadowOpacity(value float64) {
+func (l_ Layer) SetShadowOpacity(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setShadowOpacity:"), value)
 }
 
@@ -1450,7 +1450,7 @@ func (l_ Layer) SetDelegate(value PLayerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayer/1410984-delegate?language=objc
 func (l_ Layer) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean indicating whether the layer displays its content when facing away from the viewer. Animatable. [Full Topic]

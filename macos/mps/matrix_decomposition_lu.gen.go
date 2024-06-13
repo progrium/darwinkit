@@ -107,12 +107,12 @@ func NewMatrixDecompositionLUWithDevice(device metal.PDevice) MatrixDecompositio
 func (m_ MatrixDecompositionLU) EncodeToCommandBufferSourceMatrixResultMatrixPivotIndicesStatus(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, resultMatrix IMatrix, pivotIndices IMatrix, status metal.PBuffer) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po4 := objc.WrapAsProtocol("MTLBuffer", status)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:pivotIndices:status:"), po0, objc.Ptr(sourceMatrix), objc.Ptr(resultMatrix), objc.Ptr(pivotIndices), po4)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:pivotIndices:status:"), po0, sourceMatrix, resultMatrix, pivotIndices, po4)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixdecompositionlu/2867184-encodetocommandbuffer?language=objc
 func (m_ MatrixDecompositionLU) EncodeToCommandBufferObjectSourceMatrixResultMatrixPivotIndicesStatusObject(commandBufferObject objc.IObject, sourceMatrix IMatrix, resultMatrix IMatrix, pivotIndices IMatrix, statusObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:pivotIndices:status:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), objc.Ptr(resultMatrix), objc.Ptr(pivotIndices), objc.Ptr(statusObject))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:resultMatrix:pivotIndices:status:"), commandBufferObject, sourceMatrix, resultMatrix, pivotIndices, statusObject)
 }

@@ -55,5 +55,5 @@ func (p_ PlayerItemMetadataCollectorPushDelegateObject) HasMetadataCollectorDidC
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadatacollectorpushdelegate/1617190-metadatacollector?language=objc
 func (p_ PlayerItemMetadataCollectorPushDelegateObject) MetadataCollectorDidCollectDateRangeMetadataGroupsIndexesOfNewGroupsIndexesOfModifiedGroups(metadataCollector PlayerItemMetadataCollector, metadataGroups []DateRangeMetadataGroup, indexesOfNewGroups foundation.IndexSet, indexesOfModifiedGroups foundation.IndexSet) {
-	objc.Call[objc.Void](p_, objc.Sel("metadataCollector:didCollectDateRangeMetadataGroups:indexesOfNewGroups:indexesOfModifiedGroups:"), objc.Ptr(metadataCollector), metadataGroups, objc.Ptr(indexesOfNewGroups), objc.Ptr(indexesOfModifiedGroups))
+	objc.Call[objc.Void](p_, objc.Sel("metadataCollector:didCollectDateRangeMetadataGroups:indexesOfNewGroups:indexesOfModifiedGroups:"), metadataCollector, metadataGroups, indexesOfNewGroups, indexesOfModifiedGroups)
 }

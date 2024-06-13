@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom?language=objc
 type PGloom interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -27,11 +27,11 @@ type PGloom interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -50,7 +50,7 @@ func (g_ GloomObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
-func (g_ GloomObject) SetIntensity(value float64) {
+func (g_ GloomObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setIntensity:"), value)
 }
 
@@ -61,8 +61,8 @@ func (g_ GloomObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228478-intensity?language=objc
-func (g_ GloomObject) Intensity() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("intensity"))
+func (g_ GloomObject) Intensity() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (g_ GloomObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228477-inputimage?language=objc
 func (g_ GloomObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GloomObject) HasInputImage() bool {
@@ -96,7 +96,7 @@ func (g_ GloomObject) HasSetRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228479-radius?language=objc
-func (g_ GloomObject) SetRadius(value float64) {
+func (g_ GloomObject) SetRadius(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
 }
 
@@ -107,7 +107,7 @@ func (g_ GloomObject) HasRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigloom/3228479-radius?language=objc
-func (g_ GloomObject) Radius() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("radius"))
+func (g_ GloomObject) Radius() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("radius"))
 	return rv
 }

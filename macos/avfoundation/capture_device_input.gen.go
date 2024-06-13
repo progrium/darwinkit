@@ -5,7 +5,6 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -35,29 +34,29 @@ func CaptureDeviceInputFrom(ptr unsafe.Pointer) CaptureDeviceInput {
 	}
 }
 
-func (c_ CaptureDeviceInput) InitWithDeviceError(device ICaptureDevice, outError foundation.IError) CaptureDeviceInput {
-	rv := objc.Call[CaptureDeviceInput](c_, objc.Sel("initWithDevice:error:"), objc.Ptr(device), objc.Ptr(outError))
+func (c_ CaptureDeviceInput) InitWithDeviceError(device ICaptureDevice, outError unsafe.Pointer) CaptureDeviceInput {
+	rv := objc.Call[CaptureDeviceInput](c_, objc.Sel("initWithDevice:error:"), device, outError)
 	return rv
 }
 
 // Creates an input for the specified capture device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedeviceinput/1387609-initwithdevice?language=objc
-func NewCaptureDeviceInputWithDeviceError(device ICaptureDevice, outError foundation.IError) CaptureDeviceInput {
+func NewCaptureDeviceInputWithDeviceError(device ICaptureDevice, outError unsafe.Pointer) CaptureDeviceInput {
 	instance := CaptureDeviceInputClass.Alloc().InitWithDeviceError(device, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (cc _CaptureDeviceInputClass) DeviceInputWithDeviceError(device ICaptureDevice, outError foundation.IError) CaptureDeviceInput {
-	rv := objc.Call[CaptureDeviceInput](cc, objc.Sel("deviceInputWithDevice:error:"), objc.Ptr(device), objc.Ptr(outError))
+func (cc _CaptureDeviceInputClass) DeviceInputWithDeviceError(device ICaptureDevice, outError unsafe.Pointer) CaptureDeviceInput {
+	rv := objc.Call[CaptureDeviceInput](cc, objc.Sel("deviceInputWithDevice:error:"), device, outError)
 	return rv
 }
 
 // Returns a new input for the specified capture device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturedeviceinput/1450880-deviceinputwithdevice?language=objc
-func CaptureDeviceInput_DeviceInputWithDeviceError(device ICaptureDevice, outError foundation.IError) CaptureDeviceInput {
+func CaptureDeviceInput_DeviceInputWithDeviceError(device ICaptureDevice, outError unsafe.Pointer) CaptureDeviceInput {
 	return CaptureDeviceInputClass.DeviceInputWithDeviceError(device, outError)
 }
 

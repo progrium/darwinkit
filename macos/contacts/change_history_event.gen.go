@@ -67,5 +67,5 @@ func (c_ ChangeHistoryEvent) AcceptEventVisitor(visitor PChangeHistoryEventVisit
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnchangehistoryevent/3113267-accepteventvisitor?language=objc
 func (c_ ChangeHistoryEvent) AcceptEventVisitorObject(visitorObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("acceptEventVisitor:"), objc.Ptr(visitorObject))
+	objc.Call[objc.Void](c_, objc.Sel("acceptEventVisitor:"), visitorObject)
 }

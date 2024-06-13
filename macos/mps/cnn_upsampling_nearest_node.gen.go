@@ -36,7 +36,7 @@ func CNNUpsamplingNearestNodeFrom(ptr unsafe.Pointer) CNNUpsamplingNearestNode {
 }
 
 func (cc _CNNUpsamplingNearestNodeClass) NodeWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingNearestNode {
-	rv := objc.Call[CNNUpsamplingNearestNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY)
+	rv := objc.Call[CNNUpsamplingNearestNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:"), sourceNode, integerScaleFactorX, integerScaleFactorY)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func CNNUpsamplingNearestNode_NodeWithSourceIntegerScaleFactorXIntegerScaleFacto
 }
 
 func (c_ CNNUpsamplingNearestNode) InitWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingNearestNode {
-	rv := objc.Call[CNNUpsamplingNearestNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY)
+	rv := objc.Call[CNNUpsamplingNearestNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:"), sourceNode, integerScaleFactorX, integerScaleFactorY)
 	return rv
 }
 

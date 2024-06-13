@@ -40,7 +40,7 @@ func ComparisonPredicateFrom(ptr unsafe.Pointer) ComparisonPredicate {
 }
 
 func (c_ ComparisonPredicate) InitWithLeftExpressionRightExpressionModifierTypeOptions(lhs IExpression, rhs IExpression, modifier ComparisonPredicateModifier, type_ PredicateOperatorType, options ComparisonPredicateOptions) ComparisonPredicate {
-	rv := objc.Call[ComparisonPredicate](c_, objc.Sel("initWithLeftExpression:rightExpression:modifier:type:options:"), objc.Ptr(lhs), objc.Ptr(rhs), modifier, type_, options)
+	rv := objc.Call[ComparisonPredicate](c_, objc.Sel("initWithLeftExpression:rightExpression:modifier:type:options:"), lhs, rhs, modifier, type_, options)
 	return rv
 }
 
@@ -54,7 +54,7 @@ func NewComparisonPredicateWithLeftExpressionRightExpressionModifierTypeOptions(
 }
 
 func (c_ ComparisonPredicate) InitWithLeftExpressionRightExpressionCustomSelector(lhs IExpression, rhs IExpression, selector objc.Selector) ComparisonPredicate {
-	rv := objc.Call[ComparisonPredicate](c_, objc.Sel("initWithLeftExpression:rightExpression:customSelector:"), objc.Ptr(lhs), objc.Ptr(rhs), selector)
+	rv := objc.Call[ComparisonPredicate](c_, objc.Sel("initWithLeftExpression:rightExpression:customSelector:"), lhs, rhs, selector)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func ComparisonPredicate_PredicateWithSubstitutionVariables(variables map[string
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscomparisonpredicate/1568141-predicatewithleftexpression?language=objc
 func (cc _ComparisonPredicateClass) PredicateWithLeftExpressionRightExpressionCustomSelector(lhs IExpression, rhs IExpression, selector objc.Selector) ComparisonPredicate {
-	rv := objc.Call[ComparisonPredicate](cc, objc.Sel("predicateWithLeftExpression:rightExpression:customSelector:"), objc.Ptr(lhs), objc.Ptr(rhs), selector)
+	rv := objc.Call[ComparisonPredicate](cc, objc.Sel("predicateWithLeftExpression:rightExpression:customSelector:"), lhs, rhs, selector)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func ComparisonPredicate_PredicateWithLeftExpressionRightExpressionCustomSelecto
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscomparisonpredicate/1568140-predicatewithleftexpression?language=objc
 func (cc _ComparisonPredicateClass) PredicateWithLeftExpressionRightExpressionModifierTypeOptions(lhs IExpression, rhs IExpression, modifier ComparisonPredicateModifier, type_ PredicateOperatorType, options ComparisonPredicateOptions) ComparisonPredicate {
-	rv := objc.Call[ComparisonPredicate](cc, objc.Sel("predicateWithLeftExpression:rightExpression:modifier:type:options:"), objc.Ptr(lhs), objc.Ptr(rhs), modifier, type_, options)
+	rv := objc.Call[ComparisonPredicate](cc, objc.Sel("predicateWithLeftExpression:rightExpression:modifier:type:options:"), lhs, rhs, modifier, type_, options)
 	return rv
 }
 

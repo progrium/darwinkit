@@ -153,5 +153,5 @@ func (o_ OperationConfiguration) Container() Container {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationconfiguration/2866232-container?language=objc
 func (o_ OperationConfiguration) SetContainer(value IContainer) {
-	objc.Call[objc.Void](o_, objc.Sel("setContainer:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setContainer:"), value)
 }

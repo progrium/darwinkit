@@ -158,7 +158,7 @@ func (p_ PlayerView) Player() avfoundation.Player {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerview/1416539-player?language=objc
 func (p_ PlayerView) SetPlayer(value avfoundation.IPlayer) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPlayer:"), value)
 }
 
 // A value that determines how the player view displays video content within its bounds. [Full Topic]
@@ -205,7 +205,7 @@ func (p_ PlayerView) SetDelegate(value PPlayerViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerview/3752984-delegate?language=objc
 func (p_ PlayerView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether the player view controller updates the Now Playing info center. [Full Topic]
@@ -311,7 +311,7 @@ func (p_ PlayerView) ActionPopUpButtonMenu() appkit.Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerview/1416543-actionpopupbuttonmenu?language=objc
 func (p_ PlayerView) SetActionPopUpButtonMenu(value appkit.IMenu) {
-	objc.Call[objc.Void](p_, objc.Sel("setActionPopUpButtonMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setActionPopUpButtonMenu:"), value)
 }
 
 // A Boolean value that indicates whether the current player item’s first video frame is ready for display. [Full Topic]
@@ -343,5 +343,5 @@ func (p_ PlayerView) SetPictureInPictureDelegate(value PPlayerViewPictureInPictu
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerview/3172689-pictureinpicturedelegate?language=objc
 func (p_ PlayerView) SetPictureInPictureDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setPictureInPictureDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setPictureInPictureDelegate:"), valueObject)
 }

@@ -35,7 +35,7 @@ func (s_ SaliencyMapObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisaliencymap/3228700-inputimage?language=objc
 func (s_ SaliencyMapObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SaliencyMapObject) HasInputImage() bool {

@@ -98,7 +98,7 @@ func TextCheckingResult_CorrectionCheckingResultWithRangeReplacementString(range
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1410401-datecheckingresultwithrange?language=objc
 func (tc _TextCheckingResultClass) DateCheckingResultWithRangeDate(range_ Range, date IDate) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:"), range_, objc.Ptr(date))
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:"), range_, date)
 	return rv
 }
 
@@ -173,7 +173,7 @@ func TextCheckingResult_CorrectionCheckingResultWithRangeReplacementStringAltern
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1412104-regularexpressioncheckingresultw?language=objc
 func (tc _TextCheckingResultClass) RegularExpressionCheckingResultWithRangesCountRegularExpression(ranges RangePointer, count uint, regularExpression IRegularExpression) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, objc.Ptr(regularExpression))
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("regularExpressionCheckingResultWithRanges:count:regularExpression:"), ranges, count, regularExpression)
 	return rv
 }
 
@@ -219,7 +219,7 @@ func (t_ TextCheckingResult) ResultByAdjustingRangesWithOffset(offset int) TextC
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1416392-datecheckingresultwithrange?language=objc
 func (tc _TextCheckingResultClass) DateCheckingResultWithRangeDateTimeZoneDuration(range_ Range, date IDate, timeZone ITimeZone, duration TimeInterval) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:timeZone:duration:"), range_, objc.Ptr(date), objc.Ptr(timeZone), duration)
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("dateCheckingResultWithRange:date:timeZone:duration:"), range_, date, timeZone, duration)
 	return rv
 }
 
@@ -249,7 +249,7 @@ func TextCheckingResult_AddressCheckingResultWithRangeComponents(range_ Range, c
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1415506-orthographycheckingresultwithran?language=objc
 func (tc _TextCheckingResultClass) OrthographyCheckingResultWithRangeOrthography(range_ Range, orthography IOrthography) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("orthographyCheckingResultWithRange:orthography:"), range_, objc.Ptr(orthography))
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("orthographyCheckingResultWithRange:orthography:"), range_, orthography)
 	return rv
 }
 
@@ -294,7 +294,7 @@ func TextCheckingResult_QuoteCheckingResultWithRangeReplacementString(range_ Ran
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstextcheckingresult/1413056-linkcheckingresultwithrange?language=objc
 func (tc _TextCheckingResultClass) LinkCheckingResultWithRangeURL(range_ Range, url IURL) TextCheckingResult {
-	rv := objc.Call[TextCheckingResult](tc, objc.Sel("linkCheckingResultWithRange:URL:"), range_, objc.Ptr(url))
+	rv := objc.Call[TextCheckingResult](tc, objc.Sel("linkCheckingResultWithRange:URL:"), range_, url)
 	return rv
 }
 

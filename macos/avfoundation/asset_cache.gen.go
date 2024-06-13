@@ -59,7 +59,7 @@ func (a_ AssetCache) Init() AssetCache {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetcache/1823715-mediaselectionoptionsinmediasele?language=objc
 func (a_ AssetCache) MediaSelectionOptionsInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) []MediaSelectionOption {
-	rv := objc.Call[[]MediaSelectionOption](a_, objc.Sel("mediaSelectionOptionsInMediaSelectionGroup:"), objc.Ptr(mediaSelectionGroup))
+	rv := objc.Call[[]MediaSelectionOption](a_, objc.Sel("mediaSelectionOptionsInMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 

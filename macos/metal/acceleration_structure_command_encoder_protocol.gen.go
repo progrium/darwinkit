@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -27,7 +29,7 @@ type PAccelerationStructureCommandEncoder interface {
 	HasCopyAndCompactAccelerationStructureToAccelerationStructure() bool
 
 	// optional
-	UseHeapsCount(heaps HeapObject, count uint)
+	UseHeapsCount(heaps unsafe.Pointer, count uint)
 	HasUseHeapsCount() bool
 
 	// optional
@@ -55,7 +57,7 @@ type PAccelerationStructureCommandEncoder interface {
 	HasUseResourceUsage() bool
 
 	// optional
-	UseResourcesCountUsage(resources ResourceObject, count uint, usage ResourceUsage)
+	UseResourcesCountUsage(resources unsafe.Pointer, count uint, usage ResourceUsage)
 	HasUseResourcesCountUsage() bool
 
 	// optional
@@ -82,7 +84,7 @@ func (a_ AccelerationStructureCommandEncoderObject) RefitAccelerationStructureDe
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", sourceAccelerationStructure)
 	po2 := objc.WrapAsProtocol("MTLAccelerationStructure", destinationAccelerationStructure)
 	po3 := objc.WrapAsProtocol("MTLBuffer", scratchBuffer)
-	objc.Call[objc.Void](a_, objc.Sel("refitAccelerationStructure:descriptor:destination:scratchBuffer:scratchBufferOffset:"), po0, objc.Ptr(descriptor), po2, po3, scratchBufferOffset)
+	objc.Call[objc.Void](a_, objc.Sel("refitAccelerationStructure:descriptor:destination:scratchBuffer:scratchBufferOffset:"), po0, descriptor, po2, po3, scratchBufferOffset)
 }
 
 func (a_ AccelerationStructureCommandEncoderObject) HasUpdateFence() bool {
@@ -130,7 +132,7 @@ func (a_ AccelerationStructureCommandEncoderObject) HasUseHeapsCount() bool {
 // Specifies that an array of heaps containing resources in an argument buffer can be safely used by the acceleration structure pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553903-useheaps?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) UseHeapsCount(heaps HeapObject, count uint) {
+func (a_ AccelerationStructureCommandEncoderObject) UseHeapsCount(heaps unsafe.Pointer, count uint) {
 	po0 := objc.WrapAsProtocol("MTLHeap", heaps)
 	objc.Call[objc.Void](a_, objc.Sel("useHeaps:count:"), po0, count)
 }
@@ -158,7 +160,7 @@ func (a_ AccelerationStructureCommandEncoderObject) HasBuildAccelerationStructur
 func (a_ AccelerationStructureCommandEncoderObject) BuildAccelerationStructureDescriptorScratchBufferScratchBufferOffset(accelerationStructure AccelerationStructureObject, descriptor AccelerationStructureDescriptor, scratchBuffer BufferObject, scratchBufferOffset uint) {
 	po0 := objc.WrapAsProtocol("MTLAccelerationStructure", accelerationStructure)
 	po2 := objc.WrapAsProtocol("MTLBuffer", scratchBuffer)
-	objc.Call[objc.Void](a_, objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"), po0, objc.Ptr(descriptor), po2, scratchBufferOffset)
+	objc.Call[objc.Void](a_, objc.Sel("buildAccelerationStructure:descriptor:scratchBuffer:scratchBufferOffset:"), po0, descriptor, po2, scratchBufferOffset)
 }
 
 func (a_ AccelerationStructureCommandEncoderObject) HasUseHeap() bool {
@@ -216,7 +218,7 @@ func (a_ AccelerationStructureCommandEncoderObject) HasUseResourcesCountUsage() 
 // Specifies that an array of resources in an argument buffer can be safely used by the acceleration structure pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructurecommandencoder/3553905-useresources?language=objc
-func (a_ AccelerationStructureCommandEncoderObject) UseResourcesCountUsage(resources ResourceObject, count uint, usage ResourceUsage) {
+func (a_ AccelerationStructureCommandEncoderObject) UseResourcesCountUsage(resources unsafe.Pointer, count uint, usage ResourceUsage) {
 	po0 := objc.WrapAsProtocol("MTLResource", resources)
 	objc.Call[objc.Void](a_, objc.Sel("useResources:count:usage:"), po0, count, usage)
 }

@@ -47,7 +47,7 @@ func (c_ CollectionViewElementObject) HasWillTransitionFromLayoutToLayout() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1528165-willtransitionfromlayout?language=objc
 func (c_ CollectionViewElementObject) WillTransitionFromLayoutToLayout(oldLayout CollectionViewLayout, newLayout CollectionViewLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("willTransitionFromLayout:toLayout:"), objc.Ptr(oldLayout), objc.Ptr(newLayout))
+	objc.Call[objc.Void](c_, objc.Sel("willTransitionFromLayout:toLayout:"), oldLayout, newLayout)
 }
 
 func (c_ CollectionViewElementObject) HasApplyLayoutAttributes() bool {
@@ -58,7 +58,7 @@ func (c_ CollectionViewElementObject) HasApplyLayoutAttributes() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1528294-applylayoutattributes?language=objc
 func (c_ CollectionViewElementObject) ApplyLayoutAttributes(layoutAttributes CollectionViewLayoutAttributes) {
-	objc.Call[objc.Void](c_, objc.Sel("applyLayoutAttributes:"), objc.Ptr(layoutAttributes))
+	objc.Call[objc.Void](c_, objc.Sel("applyLayoutAttributes:"), layoutAttributes)
 }
 
 func (c_ CollectionViewElementObject) HasDidTransitionFromLayoutToLayout() bool {
@@ -69,7 +69,7 @@ func (c_ CollectionViewElementObject) HasDidTransitionFromLayoutToLayout() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1525851-didtransitionfromlayout?language=objc
 func (c_ CollectionViewElementObject) DidTransitionFromLayoutToLayout(oldLayout CollectionViewLayout, newLayout CollectionViewLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("didTransitionFromLayout:toLayout:"), objc.Ptr(oldLayout), objc.Ptr(newLayout))
+	objc.Call[objc.Void](c_, objc.Sel("didTransitionFromLayout:toLayout:"), oldLayout, newLayout)
 }
 
 func (c_ CollectionViewElementObject) HasPreferredLayoutAttributesFittingAttributes() bool {
@@ -80,7 +80,7 @@ func (c_ CollectionViewElementObject) HasPreferredLayoutAttributesFittingAttribu
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewelement/1528259-preferredlayoutattributesfitting?language=objc
 func (c_ CollectionViewElementObject) PreferredLayoutAttributesFittingAttributes(layoutAttributes CollectionViewLayoutAttributes) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("preferredLayoutAttributesFittingAttributes:"), objc.Ptr(layoutAttributes))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("preferredLayoutAttributesFittingAttributes:"), layoutAttributes)
 	return rv
 }
 

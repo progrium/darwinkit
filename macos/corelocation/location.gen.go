@@ -48,7 +48,7 @@ func LocationFrom(ptr unsafe.Pointer) Location {
 }
 
 func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, objc.Ptr(timestamp))
+	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, timestamp)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func NewLocationWithLatitudeLongitude(latitude LocationDegrees, longitude Locati
 }
 
 func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, objc.Ptr(timestamp))
+	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCo
 }
 
 func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCourseAccuracySpeedSpeedAccuracyTimestampSourceInfo(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, courseAccuracy LocationDirectionAccuracy, speed LocationSpeed, speedAccuracy LocationSpeedAccuracy, timestamp foundation.IDate, sourceInfo ILocationSourceInformation) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:sourceInfo:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, objc.Ptr(timestamp), objc.Ptr(sourceInfo))
+	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:courseAccuracy:speed:speedAccuracy:timestamp:sourceInfo:"), coordinate, altitude, hAccuracy, vAccuracy, course, courseAccuracy, speed, speedAccuracy, timestamp, sourceInfo)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func NewLocationWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseCo
 }
 
 func (l_ Location) InitWithCoordinateAltitudeHorizontalAccuracyVerticalAccuracyCourseSpeedTimestamp(coordinate LocationCoordinate2D, altitude LocationDistance, hAccuracy LocationAccuracy, vAccuracy LocationAccuracy, course LocationDirection, speed LocationSpeed, timestamp foundation.IDate) Location {
-	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:speed:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, speed, objc.Ptr(timestamp))
+	rv := objc.Call[Location](l_, objc.Sel("initWithCoordinate:altitude:horizontalAccuracy:verticalAccuracy:course:speed:timestamp:"), coordinate, altitude, hAccuracy, vAccuracy, course, speed, timestamp)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (l_ Location) Init() Location {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocation/1423689-distancefromlocation?language=objc
 func (l_ Location) DistanceFromLocation(location ILocation) LocationDistance {
-	rv := objc.Call[LocationDistance](l_, objc.Sel("distanceFromLocation:"), objc.Ptr(location))
+	rv := objc.Call[LocationDistance](l_, objc.Sel("distanceFromLocation:"), location)
 	return rv
 }
 

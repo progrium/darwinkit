@@ -41,7 +41,7 @@ func FetchIndexElementDescriptionFrom(ptr unsafe.Pointer) FetchIndexElementDescr
 }
 
 func (f_ FetchIndexElementDescription) InitWithPropertyCollationType(property IPropertyDescription, collationType FetchIndexElementType) FetchIndexElementDescription {
-	rv := objc.Call[FetchIndexElementDescription](f_, objc.Sel("initWithProperty:collationType:"), objc.Ptr(property), collationType)
+	rv := objc.Call[FetchIndexElementDescription](f_, objc.Sel("initWithProperty:collationType:"), property, collationType)
 	return rv
 }
 

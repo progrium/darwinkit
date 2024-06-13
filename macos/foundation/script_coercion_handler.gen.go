@@ -59,7 +59,7 @@ func (s_ ScriptCoercionHandler) Init() ScriptCoercionHandler {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1413218-registercoercer?language=objc
 func (s_ ScriptCoercionHandler) RegisterCoercerSelectorToConvertFromClassToClass(coercer objc.IObject, selector objc.Selector, fromClass objc.IClass, toClass objc.IClass) {
-	objc.Call[objc.Void](s_, objc.Sel("registerCoercer:selector:toConvertFromClass:toClass:"), coercer, selector, objc.Ptr(fromClass), objc.Ptr(toClass))
+	objc.Call[objc.Void](s_, objc.Sel("registerCoercer:selector:toConvertFromClass:toClass:"), coercer, selector, fromClass, toClass)
 }
 
 // Returns the shared NSScriptCoercionHandler for the application. [Full Topic]
@@ -81,6 +81,6 @@ func ScriptCoercionHandler_SharedCoercionHandler() ScriptCoercionHandler {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcoercionhandler/1412034-coercevalue?language=objc
 func (s_ ScriptCoercionHandler) CoerceValueToClass(value objc.IObject, toClass objc.IClass) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("coerceValue:toClass:"), value, objc.Ptr(toClass))
+	rv := objc.Call[objc.Object](s_, objc.Sel("coerceValue:toClass:"), value, toClass)
 	return rv
 }

@@ -28,19 +28,19 @@ type PRippleTransition interface {
 	HasShadingImage() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -91,7 +91,7 @@ func (r_ RippleTransitionObject) HasSetShadingImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228695-shadingimage?language=objc
 func (r_ RippleTransitionObject) SetShadingImage(value Image) {
-	objc.Call[objc.Void](r_, objc.Sel("setShadingImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setShadingImage:"), value)
 }
 
 func (r_ RippleTransitionObject) HasShadingImage() bool {
@@ -113,7 +113,7 @@ func (r_ RippleTransitionObject) HasSetScale() bool {
 // A value that determines whether the ripple starts as a bulge (a higher value) or a dimple (a lower value). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228694-scale?language=objc
-func (r_ RippleTransitionObject) SetScale(value float64) {
+func (r_ RippleTransitionObject) SetScale(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setScale:"), value)
 }
 
@@ -124,8 +124,8 @@ func (r_ RippleTransitionObject) HasScale() bool {
 // A value that determines whether the ripple starts as a bulge (a higher value) or a dimple (a lower value). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228694-scale?language=objc
-func (r_ RippleTransitionObject) Scale() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("scale"))
+func (r_ RippleTransitionObject) Scale() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("scale"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (r_ RippleTransitionObject) HasSetWidth() bool {
 // The width of the ripple. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
-func (r_ RippleTransitionObject) SetWidth(value float64) {
+func (r_ RippleTransitionObject) SetWidth(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setWidth:"), value)
 }
 
@@ -147,8 +147,8 @@ func (r_ RippleTransitionObject) HasWidth() bool {
 // The width of the ripple. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirippletransition/3228696-width?language=objc
-func (r_ RippleTransitionObject) Width() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("width"))
+func (r_ RippleTransitionObject) Width() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("width"))
 	return rv
 }
 

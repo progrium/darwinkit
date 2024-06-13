@@ -55,5 +55,5 @@ func (d_ DeviceBrowserViewDelegateObject) HasDeviceBrowserViewDidEncounterError(
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikdevicebrowserviewdelegate/1443076-devicebrowserview?language=objc
 func (d_ DeviceBrowserViewDelegateObject) DeviceBrowserViewDidEncounterError(deviceBrowserView DeviceBrowserView, error foundation.Error) {
-	objc.Call[objc.Void](d_, objc.Sel("deviceBrowserView:didEncounterError:"), objc.Ptr(deviceBrowserView), objc.Ptr(error))
+	objc.Call[objc.Void](d_, objc.Sel("deviceBrowserView:didEncounterError:"), deviceBrowserView, error)
 }

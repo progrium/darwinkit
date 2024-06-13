@@ -5,7 +5,6 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _PersistableContentKeyRequestClass struct {
 // An interface definition for the [PersistableContentKeyRequest] class.
 type IPersistableContentKeyRequest interface {
 	IContentKeyRequest
-	PersistableContentKeyFromKeyVendorResponseOptionsError(keyVendorResponse []byte, options map[string]objc.IObject, outError foundation.IError) []byte
+	PersistableContentKeyFromKeyVendorResponseOptionsError(keyVendorResponse []byte, options map[string]objc.IObject, outError unsafe.Pointer) []byte
 }
 
 // An object that encapsulates information about a persistable content decryption key request issued from a content key session. [Full Topic]
@@ -58,7 +57,7 @@ func (p_ PersistableContentKeyRequest) Init() PersistableContentKeyRequest {
 // Creates a persistable content key from the content key context data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avpersistablecontentkeyrequest/2799188-persistablecontentkeyfromkeyvend?language=objc
-func (p_ PersistableContentKeyRequest) PersistableContentKeyFromKeyVendorResponseOptionsError(keyVendorResponse []byte, options map[string]objc.IObject, outError foundation.IError) []byte {
-	rv := objc.Call[[]byte](p_, objc.Sel("persistableContentKeyFromKeyVendorResponse:options:error:"), keyVendorResponse, options, objc.Ptr(outError))
+func (p_ PersistableContentKeyRequest) PersistableContentKeyFromKeyVendorResponseOptionsError(keyVendorResponse []byte, options map[string]objc.IObject, outError unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](p_, objc.Sel("persistableContentKeyFromKeyVendorResponse:options:error:"), keyVendorResponse, options, outError)
 	return rv
 }

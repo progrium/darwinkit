@@ -68,5 +68,5 @@ func (d_ DerivedAttributeDescription) DerivationExpression() foundation.Expressi
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsderivedattributedescription/3174854-derivationexpression?language=objc
 func (d_ DerivedAttributeDescription) SetDerivationExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](d_, objc.Sel("setDerivationExpression:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDerivationExpression:"), value)
 }

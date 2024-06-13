@@ -18,7 +18,7 @@ type _NNGramMatrixCalculationNodeClass struct {
 // An interface definition for the [NNGramMatrixCalculationNode] class.
 type INNGramMatrixCalculationNode interface {
 	INNFilterNode
-	Alpha() float64
+	Alpha() float32
 	PropertyCallBack() NNGramMatrixCallbackObject
 	SetPropertyCallBack(value PNNGramMatrixCallback)
 	SetPropertyCallBackObject(valueObject objc.IObject)
@@ -38,7 +38,7 @@ func NNGramMatrixCalculationNodeFrom(ptr unsafe.Pointer) NNGramMatrixCalculation
 }
 
 func (nc _NNGramMatrixCalculationNodeClass) NodeWithSource(sourceNode INNImageNode) NNGramMatrixCalculationNode {
-	rv := objc.Call[NNGramMatrixCalculationNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNGramMatrixCalculationNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NNGramMatrixCalculationNode_NodeWithSource(sourceNode INNImageNode) NNGramM
 }
 
 func (n_ NNGramMatrixCalculationNode) InitWithSource(sourceNode INNImageNode) NNGramMatrixCalculationNode {
-	rv := objc.Call[NNGramMatrixCalculationNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNGramMatrixCalculationNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -63,29 +63,29 @@ func NewNNGramMatrixCalculationNodeWithSource(sourceNode INNImageNode) NNGramMat
 	return instance
 }
 
-func (n_ NNGramMatrixCalculationNode) InitWithSourceAlpha(sourceNode INNImageNode, alpha float64) NNGramMatrixCalculationNode {
-	rv := objc.Call[NNGramMatrixCalculationNode](n_, objc.Sel("initWithSource:alpha:"), objc.Ptr(sourceNode), alpha)
+func (n_ NNGramMatrixCalculationNode) InitWithSourceAlpha(sourceNode INNImageNode, alpha float32) NNGramMatrixCalculationNode {
+	rv := objc.Call[NNGramMatrixCalculationNode](n_, objc.Sel("initWithSource:alpha:"), sourceNode, alpha)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationnode/3114096-initwithsource?language=objc
-func NewNNGramMatrixCalculationNodeWithSourceAlpha(sourceNode INNImageNode, alpha float64) NNGramMatrixCalculationNode {
+func NewNNGramMatrixCalculationNodeWithSourceAlpha(sourceNode INNImageNode, alpha float32) NNGramMatrixCalculationNode {
 	instance := NNGramMatrixCalculationNodeClass.Alloc().InitWithSourceAlpha(sourceNode, alpha)
 	instance.Autorelease()
 	return instance
 }
 
-func (nc _NNGramMatrixCalculationNodeClass) NodeWithSourceAlpha(sourceNode INNImageNode, alpha float64) NNGramMatrixCalculationNode {
-	rv := objc.Call[NNGramMatrixCalculationNode](nc, objc.Sel("nodeWithSource:alpha:"), objc.Ptr(sourceNode), alpha)
+func (nc _NNGramMatrixCalculationNodeClass) NodeWithSourceAlpha(sourceNode INNImageNode, alpha float32) NNGramMatrixCalculationNode {
+	rv := objc.Call[NNGramMatrixCalculationNode](nc, objc.Sel("nodeWithSource:alpha:"), sourceNode, alpha)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationnode/3114098-nodewithsource?language=objc
-func NNGramMatrixCalculationNode_NodeWithSourceAlpha(sourceNode INNImageNode, alpha float64) NNGramMatrixCalculationNode {
+func NNGramMatrixCalculationNode_NodeWithSourceAlpha(sourceNode INNImageNode, alpha float32) NNGramMatrixCalculationNode {
 	return NNGramMatrixCalculationNodeClass.NodeWithSourceAlpha(sourceNode, alpha)
 }
 
@@ -112,8 +112,8 @@ func (n_ NNGramMatrixCalculationNode) Init() NNGramMatrixCalculationNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationnode/3114094-alpha?language=objc
-func (n_ NNGramMatrixCalculationNode) Alpha() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alpha"))
+func (n_ NNGramMatrixCalculationNode) Alpha() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("alpha"))
 	return rv
 }
 
@@ -137,5 +137,5 @@ func (n_ NNGramMatrixCalculationNode) SetPropertyCallBack(value PNNGramMatrixCal
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationnode/3131844-propertycallback?language=objc
 func (n_ NNGramMatrixCalculationNode) SetPropertyCallBackObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setPropertyCallBack:"), valueObject)
 }

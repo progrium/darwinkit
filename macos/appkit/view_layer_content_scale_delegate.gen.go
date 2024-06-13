@@ -55,6 +55,6 @@ func (v_ ViewLayerContentScaleDelegateObject) HasLayerShouldInheritContentsScale
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewlayercontentscaledelegate/3005294-layer?language=objc
 func (v_ ViewLayerContentScaleDelegateObject) LayerShouldInheritContentsScaleFromWindow(layer quartzcore.Layer, newScale float64, window Window) bool {
-	rv := objc.Call[bool](v_, objc.Sel("layer:shouldInheritContentsScale:fromWindow:"), objc.Ptr(layer), newScale, objc.Ptr(window))
+	rv := objc.Call[bool](v_, objc.Sel("layer:shouldInheritContentsScale:fromWindow:"), layer, newScale, window)
 	return rv
 }

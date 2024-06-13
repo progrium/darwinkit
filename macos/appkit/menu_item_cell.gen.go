@@ -86,7 +86,7 @@ func (m_ MenuItemCell) Init() MenuItemCell {
 }
 
 func (m_ MenuItemCell) InitImageCell(image IImage) MenuItemCell {
-	rv := objc.Call[MenuItemCell](m_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[MenuItemCell](m_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (m_ MenuItemCell) KeyEquivalentRectForBounds(cellFrame foundation.Rect) fou
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498863-drawborderandbackgroundwithframe?language=objc
 func (m_ MenuItemCell) DrawBorderAndBackgroundWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawBorderAndBackgroundWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](m_, objc.Sel("drawBorderAndBackgroundWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Returns the rectangle into which the menu item’s state image should be drawn. [Full Topic]
@@ -126,14 +126,14 @@ func (m_ MenuItemCell) StateImageRectForBounds(cellFrame foundation.Rect) founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498876-drawseparatoritemwithframe?language=objc
 func (m_ MenuItemCell) DrawSeparatorItemWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawSeparatorItemWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](m_, objc.Sel("drawSeparatorItemWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Draws the key equivalent associated with the menu item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498851-drawkeyequivalentwithframe?language=objc
 func (m_ MenuItemCell) DrawKeyEquivalentWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawKeyEquivalentWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](m_, objc.Sel("drawKeyEquivalentWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Calculates the minimum required width and height of the receiver’s menu item. [Full Topic]
@@ -147,7 +147,7 @@ func (m_ MenuItemCell) CalcSize() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498854-drawstateimagewithframe?language=objc
 func (m_ MenuItemCell) DrawStateImageWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](m_, objc.Sel("drawStateImageWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](m_, objc.Sel("drawStateImageWithFrame:inView:"), cellFrame, controlView)
 }
 
 // A Boolean value indicating whether the menu item needs to be displayed. [Full Topic]
@@ -185,7 +185,7 @@ func (m_ MenuItemCell) MenuItem() MenuItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemcell/1498871-menuitem?language=objc
 func (m_ MenuItemCell) SetMenuItem(value IMenuItem) {
-	objc.Call[objc.Void](m_, objc.Sel("setMenuItem:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMenuItem:"), value)
 }
 
 // The width of the menu item’s text, measured in points. [Full Topic]

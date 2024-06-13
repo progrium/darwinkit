@@ -125,14 +125,14 @@ func (g_ GestureRecognizer) Init() GestureRecognizer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544863-touchesmovedwithevent?language=objc
 func (g_ GestureRecognizer) TouchesMovedWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesMovedWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("touchesMovedWithEvent:"), event)
 }
 
 // Informs the gesture recognizer that the user has pressed a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1532158-keydown?language=objc
 func (g_ GestureRecognizer) KeyDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("keyDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("keyDown:"), event)
 }
 
 // Overridden to reset the internal state of the gesture recognizer when an attempt completes. [Full Topic]
@@ -146,28 +146,28 @@ func (g_ GestureRecognizer) Reset() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529889-tabletpoint?language=objc
 func (g_ GestureRecognizer) TabletPoint(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("tabletPoint:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("tabletPoint:"), event)
 }
 
 // Informs the gesture recognizer that the user released a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526578-keyup?language=objc
 func (g_ GestureRecognizer) KeyUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("keyUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("keyUp:"), event)
 }
 
 // Informs the gesture recognizer that the user pressed the left mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524901-mousedown?language=objc
 func (g_ GestureRecognizer) MouseDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("mouseDown:"), event)
 }
 
 // Overridden to indicate that the current object can prevent the specified gesture recognizer from recognizing its gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534503-canpreventgesturerecognizer?language=objc
 func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("canPreventGestureRecognizer:"), objc.Ptr(preventedGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("canPreventGestureRecognizer:"), preventedGestureRecognizer)
 	return rv
 }
 
@@ -175,14 +175,14 @@ func (g_ GestureRecognizer) CanPreventGestureRecognizer(preventedGestureRecogniz
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544740-touchesendedwithevent?language=objc
 func (g_ GestureRecognizer) TouchesEndedWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesEndedWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("touchesEndedWithEvent:"), event)
 }
 
 // Overridden to indicate that the specified gesture recognizer can prevent the current object from recognizing a gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534587-canbepreventedbygesturerecognize?language=objc
 func (g_ GestureRecognizer) CanBePreventedByGestureRecognizer(preventingGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("canBePreventedByGestureRecognizer:"), objc.Ptr(preventingGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("canBePreventedByGestureRecognizer:"), preventingGestureRecognizer)
 	return rv
 }
 
@@ -190,84 +190,84 @@ func (g_ GestureRecognizer) CanBePreventedByGestureRecognizer(preventingGestureR
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534433-othermousedown?language=objc
 func (g_ GestureRecognizer) OtherMouseDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseDown:"), event)
 }
 
 // Informs the gesture recognizer that the user released the right mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1525729-rightmouseup?language=objc
 func (g_ GestureRecognizer) RightMouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rightMouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("rightMouseUp:"), event)
 }
 
 // Informs the gesture recognizer that the user released a mouse button other than the left or right one. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527874-othermouseup?language=objc
 func (g_ GestureRecognizer) OtherMouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseUp:"), event)
 }
 
 // Informs the gesture recognizer that the user is performing a rotation gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1531401-rotatewithevent?language=objc
 func (g_ GestureRecognizer) RotateWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rotateWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("rotateWithEvent:"), event)
 }
 
 // Informs the gesture recognizer that the user moved the mouse with the left button pressed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534535-mousedragged?language=objc
 func (g_ GestureRecognizer) MouseDragged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("mouseDragged:"), event)
 }
 
 // Called when one or more fingers first make contact with an NSTouchBar instance on the Touch Bar. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544794-touchesbeganwithevent?language=objc
 func (g_ GestureRecognizer) TouchesBeganWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesBeganWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("touchesBeganWithEvent:"), event)
 }
 
 // Informs the current object that a pressure change occurred on a system that supports pressure sensitivity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527009-pressurechangewithevent?language=objc
 func (g_ GestureRecognizer) PressureChangeWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("pressureChangeWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("pressureChangeWithEvent:"), event)
 }
 
 // Informs the gesture recognizer that the user is performing a pinch gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1528828-magnifywithevent?language=objc
 func (g_ GestureRecognizer) MagnifyWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("magnifyWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("magnifyWithEvent:"), event)
 }
 
 // Called when a system event, such as a low-memory warning, cancels an in-progress touch event in an NSTouchBar object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/2544757-touchescancelledwithevent?language=objc
 func (g_ GestureRecognizer) TouchesCancelledWithEvent(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("touchesCancelledWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("touchesCancelledWithEvent:"), event)
 }
 
 // Informs the gesture recognizer that the user moved the mouse with a button other than the left or right one pressed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1534208-othermousedragged?language=objc
 func (g_ GestureRecognizer) OtherMouseDragged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("otherMouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("otherMouseDragged:"), event)
 }
 
 // Informs the gesture recognizer that the user released the left mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1526116-mouseup?language=objc
 func (g_ GestureRecognizer) MouseUp(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("mouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("mouseUp:"), event)
 }
 
 // Returns the point computed as the location of the gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1524261-locationinview?language=objc
 func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](g_, objc.Sel("locationInView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Point](g_, objc.Sel("locationInView:"), view)
 	return rv
 }
 
@@ -275,7 +275,7 @@ func (g_ GestureRecognizer) LocationInView(view IView) foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1530755-shouldberequiredtofailbygesturer?language=objc
 func (g_ GestureRecognizer) ShouldBeRequiredToFailByGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("shouldBeRequiredToFailByGestureRecognizer:"), objc.Ptr(otherGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("shouldBeRequiredToFailByGestureRecognizer:"), otherGestureRecognizer)
 	return rv
 }
 
@@ -283,14 +283,14 @@ func (g_ GestureRecognizer) ShouldBeRequiredToFailByGestureRecognizer(otherGestu
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529778-rightmousedragged?language=objc
 func (g_ GestureRecognizer) RightMouseDragged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rightMouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("rightMouseDragged:"), event)
 }
 
 // Overridden to indicate that the specified gesture recognizer must fail before the current object begins recognizing its gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1532939-shouldrequirefailureofgesturerec?language=objc
 func (g_ GestureRecognizer) ShouldRequireFailureOfGestureRecognizer(otherGestureRecognizer IGestureRecognizer) bool {
-	rv := objc.Call[bool](g_, objc.Sel("shouldRequireFailureOfGestureRecognizer:"), objc.Ptr(otherGestureRecognizer))
+	rv := objc.Call[bool](g_, objc.Sel("shouldRequireFailureOfGestureRecognizer:"), otherGestureRecognizer)
 	return rv
 }
 
@@ -298,14 +298,14 @@ func (g_ GestureRecognizer) ShouldRequireFailureOfGestureRecognizer(otherGesture
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1532604-flagschanged?language=objc
 func (g_ GestureRecognizer) FlagsChanged(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("flagsChanged:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("flagsChanged:"), event)
 }
 
 // Informs the gesture recognizer that the user pressed the right mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1527421-rightmousedown?language=objc
 func (g_ GestureRecognizer) RightMouseDown(event IEvent) {
-	objc.Call[objc.Void](g_, objc.Sel("rightMouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](g_, objc.Sel("rightMouseDown:"), event)
 }
 
 // A Boolean value that indicates whether magnification events are delivered only after gesture recognition fails. [Full Topic]
@@ -365,7 +365,7 @@ func (g_ GestureRecognizer) PressureConfiguration() PressureConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1535895-pressureconfiguration?language=objc
 func (g_ GestureRecognizer) SetPressureConfiguration(value IPressureConfiguration) {
-	objc.Call[objc.Void](g_, objc.Sel("setPressureConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setPressureConfiguration:"), value)
 }
 
 // A Boolean value that indicates whether other mouse button events are delivered only after gesture recognition fails. [Full Topic]
@@ -495,7 +495,7 @@ func (g_ GestureRecognizer) SetDelegate(value PGestureRecognizerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgesturerecognizer/1529879-delegate?language=objc
 func (g_ GestureRecognizer) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](g_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](g_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The action method to call when the gesture is recognized. [Full Topic]

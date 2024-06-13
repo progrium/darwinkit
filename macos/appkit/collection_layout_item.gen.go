@@ -40,7 +40,7 @@ func CollectionLayoutItemFrom(ptr unsafe.Pointer) CollectionLayoutItem {
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutItem {
-	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
+	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func CollectionLayoutItem_ItemWithLayoutSize(layoutSize ICollectionLayoutSize) C
 }
 
 func (cc _CollectionLayoutItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutItem {
-	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), objc.Ptr(layoutSize), supplementaryItems)
+	rv := objc.Call[CollectionLayoutItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 
@@ -118,7 +118,7 @@ func (c_ CollectionLayoutItem) EdgeSpacing() CollectionLayoutEdgeSpacing {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nscollectionlayoutitem/3199085-edgespacing?language=objc
 func (c_ CollectionLayoutItem) SetEdgeSpacing(value ICollectionLayoutEdgeSpacing) {
-	objc.Call[objc.Void](c_, objc.Sel("setEdgeSpacing:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setEdgeSpacing:"), value)
 }
 
 // An array of the supplementary items attached to the item. [Full Topic]

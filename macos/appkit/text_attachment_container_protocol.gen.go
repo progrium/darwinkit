@@ -36,7 +36,7 @@ func (t_ TextAttachmentContainerObject) HasImageForBoundsTextContainerCharacterI
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentcontainer/1508386-imageforbounds?language=objc
 func (t_ TextAttachmentContainerObject) ImageForBoundsTextContainerCharacterIndex(imageBounds coregraphics.Rect, textContainer TextContainer, charIndex uint) Image {
-	rv := objc.Call[Image](t_, objc.Sel("imageForBounds:textContainer:characterIndex:"), imageBounds, objc.Ptr(textContainer), charIndex)
+	rv := objc.Call[Image](t_, objc.Sel("imageForBounds:textContainer:characterIndex:"), imageBounds, textContainer, charIndex)
 	return rv
 }
 
@@ -48,6 +48,6 @@ func (t_ TextAttachmentContainerObject) HasAttachmentBoundsForTextContainerPropo
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentcontainer/1508382-attachmentboundsfortextcontainer?language=objc
 func (t_ TextAttachmentContainerObject) AttachmentBoundsForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer TextContainer, lineFrag coregraphics.Rect, position coregraphics.Point, charIndex uint) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), objc.Ptr(textContainer), lineFrag, position, charIndex)
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), textContainer, lineFrag, position, charIndex)
 	return rv
 }

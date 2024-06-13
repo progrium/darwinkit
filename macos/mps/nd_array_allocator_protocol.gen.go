@@ -33,6 +33,6 @@ func (n_ NDArrayAllocatorObject) HasArrayForCommandBufferArrayDescriptorKernel()
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarrayallocator/3143490-arrayforcommandbuffer?language=objc
 func (n_ NDArrayAllocatorObject) ArrayForCommandBufferArrayDescriptorKernel(cmdBuf metal.CommandBufferObject, descriptor NDArrayDescriptor, kernel Kernel) NDArray {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("arrayForCommandBuffer:arrayDescriptor:kernel:"), po0, objc.Ptr(descriptor), objc.Ptr(kernel))
+	rv := objc.Call[NDArray](n_, objc.Sel("arrayForCommandBuffer:arrayDescriptor:kernel:"), po0, descriptor, kernel)
 	return rv
 }

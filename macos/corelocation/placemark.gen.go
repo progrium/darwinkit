@@ -53,7 +53,7 @@ func PlacemarkFrom(ptr unsafe.Pointer) Placemark {
 }
 
 func (pc _PlacemarkClass) PlacemarkWithLocationNamePostalAddress(location ILocation, name string, postalAddress contacts.IPostalAddress) Placemark {
-	rv := objc.Call[Placemark](pc, objc.Sel("placemarkWithLocation:name:postalAddress:"), objc.Ptr(location), name, objc.Ptr(postalAddress))
+	rv := objc.Call[Placemark](pc, objc.Sel("placemarkWithLocation:name:postalAddress:"), location, name, postalAddress)
 	return rv
 }
 
@@ -65,7 +65,7 @@ func Placemark_PlacemarkWithLocationNamePostalAddress(location ILocation, name s
 }
 
 func (p_ Placemark) InitWithPlacemark(placemark IPlacemark) Placemark {
-	rv := objc.Call[Placemark](p_, objc.Sel("initWithPlacemark:"), objc.Ptr(placemark))
+	rv := objc.Call[Placemark](p_, objc.Sel("initWithPlacemark:"), placemark)
 	return rv
 }
 

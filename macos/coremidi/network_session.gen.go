@@ -73,7 +73,7 @@ func (n_ NetworkSession) Init() NetworkSession {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworksession/1619346-removeconnection?language=objc
 func (n_ NetworkSession) RemoveConnection(connection INetworkConnection) bool {
-	rv := objc.Call[bool](n_, objc.Sel("removeConnection:"), objc.Ptr(connection))
+	rv := objc.Call[bool](n_, objc.Sel("removeConnection:"), connection)
 	return rv
 }
 
@@ -81,7 +81,7 @@ func (n_ NetworkSession) RemoveConnection(connection INetworkConnection) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworksession/1619369-addconnection?language=objc
 func (n_ NetworkSession) AddConnection(connection INetworkConnection) bool {
-	rv := objc.Call[bool](n_, objc.Sel("addConnection:"), objc.Ptr(connection))
+	rv := objc.Call[bool](n_, objc.Sel("addConnection:"), connection)
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (n_ NetworkSession) DestinationEndpoint() EndpointRef {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworksession/1619361-addcontact?language=objc
 func (n_ NetworkSession) AddContact(contact INetworkHost) bool {
-	rv := objc.Call[bool](n_, objc.Sel("addContact:"), objc.Ptr(contact))
+	rv := objc.Call[bool](n_, objc.Sel("addContact:"), contact)
 	return rv
 }
 
@@ -144,7 +144,7 @@ func (n_ NetworkSession) AddContact(contact INetworkHost) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midinetworksession/1619332-removecontact?language=objc
 func (n_ NetworkSession) RemoveContact(contact INetworkHost) bool {
-	rv := objc.Call[bool](n_, objc.Sel("removeContact:"), objc.Ptr(contact))
+	rv := objc.Call[bool](n_, objc.Sel("removeContact:"), contact)
 	return rv
 }
 

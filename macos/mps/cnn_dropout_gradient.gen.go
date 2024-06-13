@@ -20,7 +20,7 @@ type _CNNDropoutGradientClass struct {
 type ICNNDropoutGradient interface {
 	ICNNGradientKernel
 	MaskStrideInPixels() metal.Size
-	KeepProbability() float64
+	KeepProbability() float32
 	Seed() uint
 }
 
@@ -37,7 +37,7 @@ func CNNDropoutGradientFrom(ptr unsafe.Pointer) CNNDropoutGradient {
 	}
 }
 
-func (c_ CNNDropoutGradient) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradient {
+func (c_ CNNDropoutGradient) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[CNNDropoutGradient](c_, objc.Sel("initWithDevice:keepProbability:seed:maskStrideInPixels:"), po0, keepProbability, seed, maskStrideInPixels)
 	return rv
@@ -46,7 +46,7 @@ func (c_ CNNDropoutGradient) InitWithDeviceKeepProbabilitySeedMaskStrideInPixels
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradient/2942518-initwithdevice?language=objc
-func NewCNNDropoutGradientWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradient {
+func NewCNNDropoutGradientWithDeviceKeepProbabilitySeedMaskStrideInPixels(device metal.PDevice, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradient {
 	instance := CNNDropoutGradientClass.Alloc().InitWithDeviceKeepProbabilitySeedMaskStrideInPixels(device, keepProbability, seed, maskStrideInPixels)
 	instance.Autorelease()
 	return instance
@@ -113,8 +113,8 @@ func (c_ CNNDropoutGradient) MaskStrideInPixels() metal.Size {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradient/2942520-keepprobability?language=objc
-func (c_ CNNDropoutGradient) KeepProbability() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("keepProbability"))
+func (c_ CNNDropoutGradient) KeepProbability() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("keepProbability"))
 	return rv
 }
 

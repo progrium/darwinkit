@@ -67,5 +67,5 @@ func (v_ VertexBufferLayoutDescriptorArray) ObjectAtIndexedSubscript(index uint)
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvertexbufferlayoutdescriptorarray/1550758-setobject?language=objc
 func (v_ VertexBufferLayoutDescriptorArray) SetObjectAtIndexedSubscript(bufferDesc IVertexBufferLayoutDescriptor, index uint) {
-	objc.Call[objc.Void](v_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(bufferDesc), index)
+	objc.Call[objc.Void](v_, objc.Sel("setObject:atIndexedSubscript:"), bufferDesc, index)
 }

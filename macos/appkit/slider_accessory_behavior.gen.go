@@ -58,7 +58,7 @@ func (s_ SliderAccessoryBehavior) Init() SliderAccessoryBehavior {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessorybehavior/2544759-handleaction?language=objc
 func (s_ SliderAccessoryBehavior) HandleAction(sender ISliderAccessory) {
-	objc.Call[objc.Void](s_, objc.Sel("handleAction:"), objc.Ptr(sender))
+	objc.Call[objc.Void](s_, objc.Sel("handleAction:"), sender)
 }
 
 //	[Full Topic]

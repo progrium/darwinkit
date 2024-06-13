@@ -37,7 +37,7 @@ func MetadataItemFrom(ptr unsafe.Pointer) MetadataItem {
 }
 
 func (m_ MetadataItem) InitWithURL(url IURL) MetadataItem {
-	rv := objc.Call[MetadataItem](m_, objc.Sel("initWithURL:"), objc.Ptr(url))
+	rv := objc.Call[MetadataItem](m_, objc.Sel("initWithURL:"), url)
 	return rv
 }
 

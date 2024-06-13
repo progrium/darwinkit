@@ -121,15 +121,15 @@ func MutableArray_ArrayWithArray(array []objc.IObject) MutableArray {
 	return MutableArrayClass.ArrayWithArray(array)
 }
 
-func (m_ MutableArray) InitWithObjectsCount(objects objc.IObject, cnt uint) MutableArray {
-	rv := objc.Call[MutableArray](m_, objc.Sel("initWithObjects:count:"), objc.Ptr(objects), cnt)
+func (m_ MutableArray) InitWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableArray {
+	rv := objc.Call[MutableArray](m_, objc.Sel("initWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Initializes a newly allocated array to include a given number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1415056-initwithobjects?language=objc
-func NewMutableArrayWithObjectsCount(objects objc.IObject, cnt uint) MutableArray {
+func NewMutableArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableArray {
 	instance := MutableArrayClass.Alloc().InitWithObjectsCount(objects, cnt)
 	instance.Autorelease()
 	return instance
@@ -150,7 +150,7 @@ func NewMutableArrayWithArrayCopyItems(array []objc.IObject, flag bool) MutableA
 }
 
 func (mc _MutableArrayClass) ArrayWithObject(anObject objc.IObject) MutableArray {
-	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObject:"), objc.Ptr(anObject))
+	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObject:"), anObject)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func MutableArray_ArrayWithObject(anObject objc.IObject) MutableArray {
 }
 
 func (m_ MutableArray) InitWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	rv := objc.Call[MutableArray](m_, objc.Sel("initWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[MutableArray](m_, objc.Sel("initWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -201,20 +201,20 @@ func NewMutableArrayWithArray(array []objc.IObject) MutableArray {
 	return instance
 }
 
-func (mc _MutableArrayClass) ArrayWithObjectsCount(objects objc.IObject, cnt uint) MutableArray {
-	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObjects:count:"), objc.Ptr(objects), cnt)
+func (mc _MutableArrayClass) ArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableArray {
+	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObjects:count:"), objects, cnt)
 	return rv
 }
 
 // Creates and returns an array that includes a given number of objects from a given C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsarray/1460096-arraywithobjects?language=objc
-func MutableArray_ArrayWithObjectsCount(objects objc.IObject, cnt uint) MutableArray {
+func MutableArray_ArrayWithObjectsCount(objects unsafe.Pointer, cnt uint) MutableArray {
 	return MutableArrayClass.ArrayWithObjectsCount(objects, cnt)
 }
 
 func (mc _MutableArrayClass) ArrayWithObjects(firstObj objc.IObject, args ...any) MutableArray {
-	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObjects:"), append([]any{objc.Ptr(firstObj)}, args...)...)
+	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithObjects:"), append([]any{firstObj}, args...)...)
 	return rv
 }
 
@@ -236,7 +236,7 @@ func (m_ MutableArray) RemoveObjectsInArray(otherArray []objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/3152169-applydifference?language=objc
 func (m_ MutableArray) ApplyDifference(difference IOrderedCollectionDifference) {
-	objc.Call[objc.Void](m_, objc.Sel("applyDifference:"), objc.Ptr(difference))
+	objc.Call[objc.Void](m_, objc.Sel("applyDifference:"), difference)
 }
 
 // Sets the receiving array’s elements to those in another given array. [Full Topic]
@@ -250,7 +250,7 @@ func (m_ MutableArray) SetArray(otherArray []objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1411688-initwithcontentsofurl?language=objc
 func (m_ MutableArray) InitWithContentsOfURL(url IURL) MutableArray {
-	rv := objc.Call[MutableArray](m_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableArray](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -258,7 +258,7 @@ func (m_ MutableArray) InitWithContentsOfURL(url IURL) MutableArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1418287-replaceobjectsatindexes?language=objc
 func (m_ MutableArray) ReplaceObjectsAtIndexesWithObjects(indexes IIndexSet, objects []objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), objc.Ptr(indexes), objects)
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectsAtIndexes:withObjects:"), indexes, objects)
 }
 
 // Removes the object with the highest-valued index in the array [Full Topic]
@@ -272,7 +272,7 @@ func (m_ MutableArray) RemoveLastObject() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1410154-removeobjectsatindexes?language=objc
 func (m_ MutableArray) RemoveObjectsAtIndexes(indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectsAtIndexes:"), indexes)
 }
 
 // Sorts the receiver in ascending order using the specified options and the comparison method specified by a given NSComparator block. [Full Topic]
@@ -286,21 +286,21 @@ func (m_ MutableArray) SortWithOptionsUsingComparator(opts SortOptions, cmptr Co
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1411366-removeobject?language=objc
 func (m_ MutableArray) RemoveObjectInRange(anObject objc.IObject, range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObject:inRange:"), objc.Ptr(anObject), range_)
+	objc.Call[objc.Void](m_, objc.Sel("removeObject:inRange:"), anObject, range_)
 }
 
 // Removes all occurrences of a given object in the array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1417759-removeobjectidenticalto?language=objc
 func (m_ MutableArray) RemoveObjectIdenticalTo(anObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectIdenticalTo:"), objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectIdenticalTo:"), anObject)
 }
 
 // Inserts the objects in the provided array into the receiving array at the specified indexes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1416482-insertobjects?language=objc
 func (m_ MutableArray) InsertObjectsAtIndexes(objects []objc.IObject, indexes IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, objc.Ptr(indexes))
+	objc.Call[objc.Void](m_, objc.Sel("insertObjects:atIndexes:"), objects, indexes)
 }
 
 // Removes the object at index . [Full Topic]
@@ -321,7 +321,7 @@ func (m_ MutableArray) AddObjectsFromArray(otherArray []objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1414510-replaceobjectatindex?language=objc
 func (m_ MutableArray) ReplaceObjectAtIndexWithObject(index uint, anObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), index, objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("replaceObjectAtIndex:withObject:"), index, anObject)
 }
 
 // Sorts the receiver in ascending order using the comparison method specified by a given NSComparator block. [Full Topic]
@@ -335,7 +335,7 @@ func (m_ MutableArray) SortUsingComparator(cmptr Comparator) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1460070-arraywithcontentsofurl?language=objc
 func (mc _MutableArrayClass) ArrayWithContentsOfURL(url IURL) MutableArray {
-	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableArray](mc, objc.Sel("arrayWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -350,7 +350,7 @@ func MutableArray_ArrayWithContentsOfURL(url IURL) MutableArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1410689-removeobject?language=objc
 func (m_ MutableArray) RemoveObject(anObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("removeObject:"), anObject)
 }
 
 // Initializes a newly allocated mutable array with the contents of the file specified by a given path [Full Topic]
@@ -372,7 +372,7 @@ func (m_ MutableArray) ExchangeObjectAtIndexWithObjectAtIndex(idx1 uint, idx2 ui
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1412085-filterusingpredicate?language=objc
 func (m_ MutableArray) FilterUsingPredicate(predicate IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), objc.Ptr(predicate))
+	objc.Call[objc.Void](m_, objc.Sel("filterUsingPredicate:"), predicate)
 }
 
 // Sorts the receiver in ascending order as defined by the comparison function compare. [Full Topic]
@@ -415,14 +415,14 @@ func (m_ MutableArray) RemoveObjectsInRange(range_ Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1460093-setobject?language=objc
 func (m_ MutableArray) SetObjectAtIndexedSubscript(obj objc.IObject, idx uint) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(obj), idx)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
 }
 
 // Inserts a given object at the end of the array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1411274-addobject?language=objc
 func (m_ MutableArray) AddObject(anObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("addObject:"), objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("addObject:"), anObject)
 }
 
 // Sorts the receiver using a given array of sort descriptors. [Full Topic]
@@ -436,7 +436,7 @@ func (m_ MutableArray) SortUsingDescriptors(sortDescriptors []ISortDescriptor) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1415225-removeobjectidenticalto?language=objc
 func (m_ MutableArray) RemoveObjectIdenticalToInRange(anObject objc.IObject, range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectIdenticalTo:inRange:"), objc.Ptr(anObject), range_)
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectIdenticalTo:inRange:"), anObject, range_)
 }
 
 // Replaces the objects in the receiving array specified by one given range with the objects in another array specified by another range. [Full Topic]
@@ -457,7 +457,7 @@ func (m_ MutableArray) ReplaceObjectsInRangeWithObjectsFromArray(range_ Range, o
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutablearray/1416682-insertobject?language=objc
 func (m_ MutableArray) InsertObjectAtIndex(anObject objc.IObject, index uint) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), objc.Ptr(anObject), index)
+	objc.Call[objc.Void](m_, objc.Sel("insertObject:atIndex:"), anObject, index)
 }
 
 // Sorts the receiver in ascending order, as determined by the comparison method specified by a given selector. [Full Topic]

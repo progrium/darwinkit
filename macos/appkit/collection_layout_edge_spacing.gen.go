@@ -38,7 +38,7 @@ func CollectionLayoutEdgeSpacingFrom(ptr unsafe.Pointer) CollectionLayoutEdgeSpa
 }
 
 func (cc _CollectionLayoutEdgeSpacingClass) SpacingForLeadingTopTrailingBottom(leading ICollectionLayoutSpacing, top ICollectionLayoutSpacing, trailing ICollectionLayoutSpacing, bottom ICollectionLayoutSpacing) CollectionLayoutEdgeSpacing {
-	rv := objc.Call[CollectionLayoutEdgeSpacing](cc, objc.Sel("spacingForLeading:top:trailing:bottom:"), objc.Ptr(leading), objc.Ptr(top), objc.Ptr(trailing), objc.Ptr(bottom))
+	rv := objc.Call[CollectionLayoutEdgeSpacing](cc, objc.Sel("spacingForLeading:top:trailing:bottom:"), leading, top, trailing, bottom)
 	return rv
 }
 

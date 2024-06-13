@@ -19,19 +19,19 @@ type PLanczosScaleTransform interface {
 	HasInputImage() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
-	SetAspectRatio(value float64)
+	SetAspectRatio(value float32)
 	HasSetAspectRatio() bool
 
 	// optional
-	AspectRatio() float64
+	AspectRatio() float32
 	HasAspectRatio() bool
 }
 
@@ -51,7 +51,7 @@ func (l_ LanczosScaleTransformObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228517-inputimage?language=objc
 func (l_ LanczosScaleTransformObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
 }
 
 func (l_ LanczosScaleTransformObject) HasInputImage() bool {
@@ -73,7 +73,7 @@ func (l_ LanczosScaleTransformObject) HasSetScale() bool {
 // The scaling factor to use on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228518-scale?language=objc
-func (l_ LanczosScaleTransformObject) SetScale(value float64) {
+func (l_ LanczosScaleTransformObject) SetScale(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setScale:"), value)
 }
 
@@ -84,8 +84,8 @@ func (l_ LanczosScaleTransformObject) HasScale() bool {
 // The scaling factor to use on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228518-scale?language=objc
-func (l_ LanczosScaleTransformObject) Scale() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("scale"))
+func (l_ LanczosScaleTransformObject) Scale() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("scale"))
 	return rv
 }
 
@@ -96,7 +96,7 @@ func (l_ LanczosScaleTransformObject) HasSetAspectRatio() bool {
 // The additional horizontal scaling factor to use on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228516-aspectratio?language=objc
-func (l_ LanczosScaleTransformObject) SetAspectRatio(value float64) {
+func (l_ LanczosScaleTransformObject) SetAspectRatio(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setAspectRatio:"), value)
 }
 
@@ -107,7 +107,7 @@ func (l_ LanczosScaleTransformObject) HasAspectRatio() bool {
 // The additional horizontal scaling factor to use on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilanczosscaletransform/3228516-aspectratio?language=objc
-func (l_ LanczosScaleTransformObject) AspectRatio() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("aspectRatio"))
+func (l_ LanczosScaleTransformObject) AspectRatio() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("aspectRatio"))
 	return rv
 }

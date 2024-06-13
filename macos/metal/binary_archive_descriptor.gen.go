@@ -68,5 +68,5 @@ func (b_ BinaryArchiveDescriptor) Url() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbinaryarchivedescriptor/3553930-url?language=objc
 func (b_ BinaryArchiveDescriptor) SetUrl(value foundation.IURL) {
-	objc.Call[objc.Void](b_, objc.Sel("setUrl:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setUrl:"), value)
 }

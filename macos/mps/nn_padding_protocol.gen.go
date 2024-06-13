@@ -55,7 +55,7 @@ func (n_ NNPaddingObject) HasDestinationImageDescriptorForSourceImagesSourceStat
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnpadding/2867167-destinationimagedescriptorforsou?language=objc
 func (n_ NNPaddingObject) DestinationImageDescriptorForSourceImagesSourceStatesForKernelSuggestedDescriptor(sourceImages []Image, sourceStates []State, kernel Kernel, inDescriptor ImageDescriptor) ImageDescriptor {
-	rv := objc.Call[ImageDescriptor](n_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:forKernel:suggestedDescriptor:"), sourceImages, sourceStates, objc.Ptr(kernel), objc.Ptr(inDescriptor))
+	rv := objc.Call[ImageDescriptor](n_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:forKernel:suggestedDescriptor:"), sourceImages, sourceStates, kernel, inDescriptor)
 	return rv
 }
 

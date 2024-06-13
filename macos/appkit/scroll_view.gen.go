@@ -158,7 +158,7 @@ func (s_ ScrollView) Tile() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403546-addfloatingsubview?language=objc
 func (s_ ScrollView) AddFloatingSubviewForAxis(view IView, axis EventGestureAxis) {
-	objc.Call[objc.Void](s_, objc.Sel("addFloatingSubview:forAxis:"), objc.Ptr(view), axis)
+	objc.Call[objc.Void](s_, objc.Sel("addFloatingSubview:forAxis:"), view, axis)
 }
 
 // Magnifies the content view proportionally such that the given rectangle fits centered in the scroll view. [Full Topic]
@@ -186,7 +186,7 @@ func (s_ ScrollView) FlashScrollers() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403545-framesizeforcontentsize?language=objc
 func (sc _ScrollViewClass) FrameSizeForContentSizeHorizontalScrollerClassVerticalScrollerClassBorderTypeControlSizeScrollerStyle(cSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := objc.Call[foundation.Size](sc, objc.Sel("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), cSize, objc.Ptr(horizontalScrollerClass), objc.Ptr(verticalScrollerClass), type_, controlSize, scrollerStyle)
+	rv := objc.Call[foundation.Size](sc, objc.Sel("frameSizeForContentSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), cSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func ScrollView_FrameSizeForContentSizeHorizontalScrollerClassVerticalScrollerCl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403471-contentsizeforframesize?language=objc
 func (sc _ScrollViewClass) ContentSizeForFrameSizeHorizontalScrollerClassVerticalScrollerClassBorderTypeControlSizeScrollerStyle(fSize foundation.Size, horizontalScrollerClass objc.IClass, verticalScrollerClass objc.IClass, type_ BorderType, controlSize ControlSize, scrollerStyle ScrollerStyle) foundation.Size {
-	rv := objc.Call[foundation.Size](sc, objc.Sel("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), fSize, objc.Ptr(horizontalScrollerClass), objc.Ptr(verticalScrollerClass), type_, controlSize, scrollerStyle)
+	rv := objc.Call[foundation.Size](sc, objc.Sel("contentSizeForFrameSize:horizontalScrollerClass:verticalScrollerClass:borderType:controlSize:scrollerStyle:"), fSize, horizontalScrollerClass, verticalScrollerClass, type_, controlSize, scrollerStyle)
 	return rv
 }
 
@@ -224,7 +224,7 @@ func (s_ ScrollView) HorizontalRulerView() RulerView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403498-horizontalrulerview?language=objc
 func (s_ ScrollView) SetHorizontalRulerView(value IRulerView) {
-	objc.Call[objc.Void](s_, objc.Sel("setHorizontalRulerView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setHorizontalRulerView:"), value)
 }
 
 // The scroll view’s vertical ruler view. [Full Topic]
@@ -239,7 +239,7 @@ func (s_ ScrollView) VerticalRulerView() RulerView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403507-verticalrulerview?language=objc
 func (s_ ScrollView) SetVerticalRulerView(value IRulerView) {
-	objc.Call[objc.Void](s_, objc.Sel("setVerticalRulerView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setVerticalRulerView:"), value)
 }
 
 // The scroll view’s vertical line by line scroll amount. [Full Topic]
@@ -397,7 +397,7 @@ func (s_ ScrollView) HorizontalScroller() Scroller {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403447-horizontalscroller?language=objc
 func (s_ ScrollView) SetHorizontalScroller(value IScroller) {
-	objc.Call[objc.Void](s_, objc.Sel("setHorizontalScroller:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setHorizontalScroller:"), value)
 }
 
 // The scroll view’s horizontal scrolling elasticity mode. [Full Topic]
@@ -442,7 +442,7 @@ func (s_ ScrollView) DocumentCursor() Cursor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403446-documentcursor?language=objc
 func (s_ ScrollView) SetDocumentCursor(value ICursor) {
-	objc.Call[objc.Void](s_, objc.Sel("setDocumentCursor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDocumentCursor:"), value)
 }
 
 // The scroll view’s content view, the view that clips the document view. [Full Topic]
@@ -457,7 +457,7 @@ func (s_ ScrollView) ContentView() ClipView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403547-contentview?language=objc
 func (s_ ScrollView) SetContentView(value IClipView) {
-	objc.Call[objc.Void](s_, objc.Sel("setContentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContentView:"), value)
 }
 
 // The portion of the document view, in its own coordinate system, visible through the scroll view’s content view. [Full Topic]
@@ -525,7 +525,7 @@ func (s_ ScrollView) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403473-backgroundcolor?language=objc
 func (s_ ScrollView) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](s_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The scroller style used by the scroll view. [Full Topic]
@@ -697,7 +697,7 @@ func ScrollView_RulerViewClass() objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403492-rulerviewclass?language=objc
 func (sc _ScrollViewClass) SetRulerViewClass(value objc.IClass) {
-	objc.Call[objc.Void](sc, objc.Sel("setRulerViewClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](sc, objc.Sel("setRulerViewClass:"), value)
 }
 
 // Returns the default class to be used for ruler objects in NSScrollViews. [Full Topic]
@@ -719,7 +719,7 @@ func (s_ ScrollView) VerticalScroller() Scroller {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403526-verticalscroller?language=objc
 func (s_ ScrollView) SetVerticalScroller(value IScroller) {
-	objc.Call[objc.Void](s_, objc.Sel("setVerticalScroller:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setVerticalScroller:"), value)
 }
 
 // A Boolean that indicates whether the scroll view displays its rulers. [Full Topic]
@@ -764,7 +764,7 @@ func (s_ ScrollView) DocumentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrollview/1403485-documentview?language=objc
 func (s_ ScrollView) SetDocumentView(value IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setDocumentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDocumentView:"), value)
 }
 
 // A Boolean that indicates whether the scroll view draws its background. [Full Topic]

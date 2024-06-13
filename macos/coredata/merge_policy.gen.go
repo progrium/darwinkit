@@ -5,7 +5,6 @@ package coredata
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -20,9 +19,9 @@ type _MergePolicyClass struct {
 type IMergePolicy interface {
 	objc.IObject
 	InitWithMergeType(ty MergePolicyType) objc.Object
-	ResolveConstraintConflictsError(list []IConstraintConflict, error foundation.IError) bool
-	ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error foundation.IError) bool
-	ResolveConflictsError(list []objc.IObject, error foundation.IError) bool
+	ResolveConstraintConflictsError(list []IConstraintConflict, error unsafe.Pointer) bool
+	ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool
+	ResolveConflictsError(list []objc.IObject, error unsafe.Pointer) bool
 	MergeType() MergePolicyType
 }
 
@@ -70,24 +69,24 @@ func (m_ MergePolicy) InitWithMergeType(ty MergePolicyType) objc.Object {
 // Resolves the conflicts in a given list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506678-resolveconstraintconflicts?language=objc
-func (m_ MergePolicy) ResolveConstraintConflictsError(list []IConstraintConflict, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("resolveConstraintConflicts:error:"), list, objc.Ptr(error))
+func (m_ MergePolicy) ResolveConstraintConflictsError(list []IConstraintConflict, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("resolveConstraintConflicts:error:"), list, error)
 	return rv
 }
 
 // Resolves the conflicts in a given list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506787-resolveoptimisticlockingversionc?language=objc
-func (m_ MergePolicy) ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("resolveOptimisticLockingVersionConflicts:error:"), list, objc.Ptr(error))
+func (m_ MergePolicy) ResolveOptimisticLockingVersionConflictsError(list []IMergeConflict, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("resolveOptimisticLockingVersionConflicts:error:"), list, error)
 	return rv
 }
 
 // Resolves the conflicts in a given list. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmergepolicy/1506253-resolveconflicts?language=objc
-func (m_ MergePolicy) ResolveConflictsError(list []objc.IObject, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("resolveConflicts:error:"), list, objc.Ptr(error))
+func (m_ MergePolicy) ResolveConflictsError(list []objc.IObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("resolveConflicts:error:"), list, error)
 	return rv
 }
 

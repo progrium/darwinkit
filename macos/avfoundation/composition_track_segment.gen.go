@@ -38,7 +38,7 @@ func CompositionTrackSegmentFrom(ptr unsafe.Pointer) CompositionTrackSegment {
 }
 
 func (c_ CompositionTrackSegment) InitWithURLTrackIDSourceTimeRangeTargetTimeRange(URL foundation.IURL, trackID objc.IObject, sourceTimeRange coremedia.TimeRange, targetTimeRange coremedia.TimeRange) CompositionTrackSegment {
-	rv := objc.Call[CompositionTrackSegment](c_, objc.Sel("initWithURL:trackID:sourceTimeRange:targetTimeRange:"), objc.Ptr(URL), objc.Ptr(trackID), sourceTimeRange, targetTimeRange)
+	rv := objc.Call[CompositionTrackSegment](c_, objc.Sel("initWithURL:trackID:sourceTimeRange:targetTimeRange:"), URL, trackID, sourceTimeRange, targetTimeRange)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func CompositionTrackSegment_CompositionTrackSegmentWithTimeRange(timeRange core
 }
 
 func (cc _CompositionTrackSegmentClass) CompositionTrackSegmentWithURLTrackIDSourceTimeRangeTargetTimeRange(URL foundation.IURL, trackID objc.IObject, sourceTimeRange coremedia.TimeRange, targetTimeRange coremedia.TimeRange) CompositionTrackSegment {
-	rv := objc.Call[CompositionTrackSegment](cc, objc.Sel("compositionTrackSegmentWithURL:trackID:sourceTimeRange:targetTimeRange:"), objc.Ptr(URL), objc.Ptr(trackID), sourceTimeRange, targetTimeRange)
+	rv := objc.Call[CompositionTrackSegment](cc, objc.Sel("compositionTrackSegmentWithURL:trackID:sourceTimeRange:targetTimeRange:"), URL, trackID, sourceTimeRange, targetTimeRange)
 	return rv
 }
 

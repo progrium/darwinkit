@@ -117,7 +117,7 @@ func (i_ ImageHistogramSpecification) EncodeTransformToCommandBufferSourceTextur
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogramspecification/1618854-encodetransformtocommandbuffer?language=objc
 func (i_ ImageHistogramSpecification) EncodeTransformToCommandBufferObjectSourceTextureObjectSourceHistogramObjectSourceHistogramOffsetDesiredHistogramObjectDesiredHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, sourceHistogramObject objc.IObject, sourceHistogramOffset uint, desiredHistogramObject objc.IObject, desiredHistogramOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeTransformToCommandBuffer:sourceTexture:sourceHistogram:sourceHistogramOffset:desiredHistogram:desiredHistogramOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), objc.Ptr(sourceHistogramObject), sourceHistogramOffset, objc.Ptr(desiredHistogramObject), desiredHistogramOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeTransformToCommandBuffer:sourceTexture:sourceHistogram:sourceHistogramOffset:desiredHistogram:desiredHistogramOffset:"), commandBufferObject, sourceObject, sourceHistogramObject, sourceHistogramOffset, desiredHistogramObject, desiredHistogramOffset)
 }
 
 // A structure describing the histogram content. [Full Topic]

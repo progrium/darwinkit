@@ -32,5 +32,5 @@ func (u_ UserActivityRestoringObject) HasRestoreUserActivityState() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuseractivityrestoring/3022485-restoreuseractivitystate?language=objc
 func (u_ UserActivityRestoringObject) RestoreUserActivityState(userActivity foundation.UserActivity) {
-	objc.Call[objc.Void](u_, objc.Sel("restoreUserActivityState:"), objc.Ptr(userActivity))
+	objc.Call[objc.Void](u_, objc.Sel("restoreUserActivityState:"), userActivity)
 }

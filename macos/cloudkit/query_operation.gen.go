@@ -49,7 +49,7 @@ func QueryOperationFrom(ptr unsafe.Pointer) QueryOperation {
 }
 
 func (q_ QueryOperation) InitWithQuery(query IQuery) QueryOperation {
-	rv := objc.Call[QueryOperation](q_, objc.Sel("initWithQuery:"), objc.Ptr(query))
+	rv := objc.Call[QueryOperation](q_, objc.Sel("initWithQuery:"), query)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func (q_ QueryOperation) Init() QueryOperation {
 }
 
 func (q_ QueryOperation) InitWithCursor(cursor IQueryCursor) QueryOperation {
-	rv := objc.Call[QueryOperation](q_, objc.Sel("initWithCursor:"), objc.Ptr(cursor))
+	rv := objc.Call[QueryOperation](q_, objc.Sel("initWithCursor:"), cursor)
 	return rv
 }
 
@@ -108,7 +108,7 @@ func (q_ QueryOperation) Cursor() QueryCursor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1514975-cursor?language=objc
 func (q_ QueryOperation) SetCursor(value IQueryCursor) {
-	objc.Call[objc.Void](q_, objc.Sel("setCursor:"), objc.Ptr(value))
+	objc.Call[objc.Void](q_, objc.Sel("setCursor:"), value)
 }
 
 // The block to execute after CloudKit retrieves all of the records. [Full Topic]
@@ -153,7 +153,7 @@ func (q_ QueryOperation) Query() Query {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515127-query?language=objc
 func (q_ QueryOperation) SetQuery(value IQuery) {
-	objc.Call[objc.Void](q_, objc.Sel("setQuery:"), objc.Ptr(value))
+	objc.Call[objc.Void](q_, objc.Sel("setQuery:"), value)
 }
 
 // The maximum number of records to return at one time. [Full Topic]
@@ -198,5 +198,5 @@ func (q_ QueryOperation) ZoneID() RecordZoneID {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckqueryoperation/1515269-zoneid?language=objc
 func (q_ QueryOperation) SetZoneID(value IRecordZoneID) {
-	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), objc.Ptr(value))
+	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), value)
 }

@@ -66,14 +66,14 @@ func (a_ AsynchronousCIImageFilteringRequest) Init() AsynchronousCIImageFilterin
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1389124-finishwithimage?language=objc
 func (a_ AsynchronousCIImageFilteringRequest) FinishWithImageContext(filteredImage coreimage.IImage, context coreimage.IContext) {
-	objc.Call[objc.Void](a_, objc.Sel("finishWithImage:context:"), objc.Ptr(filteredImage), objc.Ptr(context))
+	objc.Call[objc.Void](a_, objc.Sel("finishWithImage:context:"), filteredImage, context)
 }
 
 // Notifies AVFoundation that you cannot fulfill the image filtering request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasynchronousciimagefilteringrequest/1386608-finishwitherror?language=objc
 func (a_ AsynchronousCIImageFilteringRequest) FinishWithError(error foundation.IError) {
-	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](a_, objc.Sel("finishWithError:"), error)
 }
 
 // The time in the video composition corresponding to the frame being processed. [Full Topic]

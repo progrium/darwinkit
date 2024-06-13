@@ -24,8 +24,8 @@ type IDetectRectanglesRequest interface {
 	SetMaximumAspectRatio(value AspectRatio)
 	MinimumAspectRatio() AspectRatio
 	SetMinimumAspectRatio(value AspectRatio)
-	MinimumSize() float64
-	SetMinimumSize(value float64)
+	MinimumSize() float32
+	SetMinimumSize(value float32)
 	QuadratureTolerance() Degrees
 	SetQuadratureTolerance(value Degrees)
 	MaximumObservations() uint
@@ -127,15 +127,15 @@ func (d_ DetectRectanglesRequest) SetMinimumAspectRatio(value AspectRatio) {
 // The minimum size of a rectangle to detect, as a proportion of the smallest dimension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875374-minimumsize?language=objc
-func (d_ DetectRectanglesRequest) MinimumSize() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("minimumSize"))
+func (d_ DetectRectanglesRequest) MinimumSize() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("minimumSize"))
 	return rv
 }
 
 // The minimum size of a rectangle to detect, as a proportion of the smallest dimension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndetectrectanglesrequest/2875374-minimumsize?language=objc
-func (d_ DetectRectanglesRequest) SetMinimumSize(value float64) {
+func (d_ DetectRectanglesRequest) SetMinimumSize(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setMinimumSize:"), value)
 }
 

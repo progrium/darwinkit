@@ -31,6 +31,6 @@ func (m_ MenuItemValidationObject) HasValidateMenuItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitemvalidation/3005191-validatemenuitem?language=objc
 func (m_ MenuItemValidationObject) ValidateMenuItem(menuItem MenuItem) bool {
-	rv := objc.Call[bool](m_, objc.Sel("validateMenuItem:"), objc.Ptr(menuItem))
+	rv := objc.Call[bool](m_, objc.Sel("validateMenuItem:"), menuItem)
 	return rv
 }

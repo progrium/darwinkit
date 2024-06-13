@@ -125,7 +125,7 @@ func (u_ URLSessionConfiguration) URLCredentialStorage() URLCredentialStorage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1410947-urlcredentialstorage?language=objc
 func (u_ URLSessionConfiguration) SetURLCredentialStorage(value IURLCredentialStorage) {
-	objc.Call[objc.Void](u_, objc.Sel("setURLCredentialStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setURLCredentialStorage:"), value)
 }
 
 // The timeout interval to use when waiting for additional data. [Full Topic]
@@ -358,7 +358,7 @@ func (u_ URLSessionConfiguration) HTTPCookieStorage() HTTPCookieStorage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1411599-httpcookiestorage?language=objc
 func (u_ URLSessionConfiguration) SetHTTPCookieStorage(value IHTTPCookieStorage) {
-	objc.Call[objc.Void](u_, objc.Sel("setHTTPCookieStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setHTTPCookieStorage:"), value)
 }
 
 // A dictionary containing information about the proxy to use within this session. [Full Topic]
@@ -403,7 +403,7 @@ func (u_ URLSessionConfiguration) URLCache() URLCache {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionconfiguration/1410148-urlcache?language=objc
 func (u_ URLSessionConfiguration) SetURLCache(value IURLCache) {
-	objc.Call[objc.Void](u_, objc.Sel("setURLCache:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setURLCache:"), value)
 }
 
 // A dictionary of additional headers to send with requests. [Full Topic]

@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition?language=objc
 type PPageCurlTransition interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -67,7 +67,7 @@ func (p_ PageCurlTransitionObject) HasSetRadius() bool {
 // The radius of the curl. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228621-radius?language=objc
-func (p_ PageCurlTransitionObject) SetRadius(value float64) {
+func (p_ PageCurlTransitionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
 }
 
@@ -78,8 +78,8 @@ func (p_ PageCurlTransitionObject) HasRadius() bool {
 // The radius of the curl. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228621-radius?language=objc
-func (p_ PageCurlTransitionObject) Radius() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("radius"))
+func (p_ PageCurlTransitionObject) Radius() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("radius"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (p_ PageCurlTransitionObject) HasSetAngle() bool {
 // The angle of the curling page. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228618-angle?language=objc
-func (p_ PageCurlTransitionObject) SetAngle(value float64) {
+func (p_ PageCurlTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setAngle:"), value)
 }
 
@@ -101,8 +101,8 @@ func (p_ PageCurlTransitionObject) HasAngle() bool {
 // The angle of the curling page. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228618-angle?language=objc
-func (p_ PageCurlTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("angle"))
+func (p_ PageCurlTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("angle"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (p_ PageCurlTransitionObject) HasSetBacksideImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228619-backsideimage?language=objc
 func (p_ PageCurlTransitionObject) SetBacksideImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setBacksideImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setBacksideImage:"), value)
 }
 
 func (p_ PageCurlTransitionObject) HasBacksideImage() bool {
@@ -137,7 +137,7 @@ func (p_ PageCurlTransitionObject) HasSetShadingImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurltransition/3228622-shadingimage?language=objc
 func (p_ PageCurlTransitionObject) SetShadingImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setShadingImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setShadingImage:"), value)
 }
 
 func (p_ PageCurlTransitionObject) HasShadingImage() bool {

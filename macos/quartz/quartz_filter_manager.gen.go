@@ -119,7 +119,7 @@ func (q_ QuartzFilterManager) SelectedFilter() QuartzFilter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfiltermanager/1503913-selectfilter?language=objc
 func (q_ QuartzFilterManager) SelectFilter(filter IQuartzFilter) bool {
-	rv := objc.Call[bool](q_, objc.Sel("selectFilter:"), objc.Ptr(filter))
+	rv := objc.Call[bool](q_, objc.Sel("selectFilter:"), filter)
 	return rv
 }
 

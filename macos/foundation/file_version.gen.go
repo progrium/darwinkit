@@ -18,8 +18,8 @@ type _FileVersionClass struct {
 // An interface definition for the [FileVersion] class.
 type IFileVersion interface {
 	objc.IObject
-	RemoveAndReturnError(outError IError) bool
-	ReplaceItemAtURLOptionsError(url IURL, options FileVersionReplacingOptions, error IError) URL
+	RemoveAndReturnError(outError unsafe.Pointer) bool
+	ReplaceItemAtURLOptionsError(url IURL, options FileVersionReplacingOptions, error unsafe.Pointer) URL
 	URL() URL
 	ModificationDate() Date
 	IsDiscardable() bool
@@ -72,7 +72,7 @@ func (f_ FileVersion) Init() FileVersion {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1415443-versionofitematurl?language=objc
 func (fc _FileVersionClass) VersionOfItemAtURLForPersistentIdentifier(url IURL, persistentIdentifier objc.IObject) FileVersion {
-	rv := objc.Call[FileVersion](fc, objc.Sel("versionOfItemAtURL:forPersistentIdentifier:"), objc.Ptr(url), persistentIdentifier)
+	rv := objc.Call[FileVersion](fc, objc.Sel("versionOfItemAtURL:forPersistentIdentifier:"), url, persistentIdentifier)
 	return rv
 }
 
@@ -86,15 +86,15 @@ func FileVersion_VersionOfItemAtURLForPersistentIdentifier(url IURL, persistentI
 // Removes all versions of a file, except the current one, from the version store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1411537-removeotherversionsofitematurl?language=objc
-func (fc _FileVersionClass) RemoveOtherVersionsOfItemAtURLError(url IURL, outError IError) bool {
-	rv := objc.Call[bool](fc, objc.Sel("removeOtherVersionsOfItemAtURL:error:"), objc.Ptr(url), objc.Ptr(outError))
+func (fc _FileVersionClass) RemoveOtherVersionsOfItemAtURLError(url IURL, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](fc, objc.Sel("removeOtherVersionsOfItemAtURL:error:"), url, outError)
 	return rv
 }
 
 // Removes all versions of a file, except the current one, from the version store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1411537-removeotherversionsofitematurl?language=objc
-func FileVersion_RemoveOtherVersionsOfItemAtURLError(url IURL, outError IError) bool {
+func FileVersion_RemoveOtherVersionsOfItemAtURLError(url IURL, outError unsafe.Pointer) bool {
 	return FileVersionClass.RemoveOtherVersionsOfItemAtURLError(url, outError)
 }
 
@@ -102,7 +102,7 @@ func FileVersion_RemoveOtherVersionsOfItemAtURLError(url IURL, outError IError) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1411906-temporarydirectoryurlfornewversi?language=objc
 func (fc _FileVersionClass) TemporaryDirectoryURLForNewVersionOfItemAtURL(url IURL) URL {
-	rv := objc.Call[URL](fc, objc.Sel("temporaryDirectoryURLForNewVersionOfItemAtURL:"), objc.Ptr(url))
+	rv := objc.Call[URL](fc, objc.Sel("temporaryDirectoryURLForNewVersionOfItemAtURL:"), url)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func FileVersion_TemporaryDirectoryURLForNewVersionOfItemAtURL(url IURL) URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1418163-otherversionsofitematurl?language=objc
 func (fc _FileVersionClass) OtherVersionsOfItemAtURL(url IURL) []FileVersion {
-	rv := objc.Call[[]FileVersion](fc, objc.Sel("otherVersionsOfItemAtURL:"), objc.Ptr(url))
+	rv := objc.Call[[]FileVersion](fc, objc.Sel("otherVersionsOfItemAtURL:"), url)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func FileVersion_OtherVersionsOfItemAtURL(url IURL) []FileVersion {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1416051-getnonlocalversionsofitematurl?language=objc
 func (fc _FileVersionClass) GetNonlocalVersionsOfItemAtURLCompletionHandler(url IURL, completionHandler func(nonlocalFileVersions []FileVersion, error Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("getNonlocalVersionsOfItemAtURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("getNonlocalVersionsOfItemAtURL:completionHandler:"), url, completionHandler)
 }
 
 //	[Full Topic]
@@ -145,15 +145,15 @@ func FileVersion_GetNonlocalVersionsOfItemAtURLCompletionHandler(url IURL, compl
 // Creates a version of the file at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1413326-addversionofitematurl?language=objc
-func (fc _FileVersionClass) AddVersionOfItemAtURLWithContentsOfURLOptionsError(url IURL, contentsURL IURL, options FileVersionAddingOptions, outError IError) FileVersion {
-	rv := objc.Call[FileVersion](fc, objc.Sel("addVersionOfItemAtURL:withContentsOfURL:options:error:"), objc.Ptr(url), objc.Ptr(contentsURL), options, objc.Ptr(outError))
+func (fc _FileVersionClass) AddVersionOfItemAtURLWithContentsOfURLOptionsError(url IURL, contentsURL IURL, options FileVersionAddingOptions, outError unsafe.Pointer) FileVersion {
+	rv := objc.Call[FileVersion](fc, objc.Sel("addVersionOfItemAtURL:withContentsOfURL:options:error:"), url, contentsURL, options, outError)
 	return rv
 }
 
 // Creates a version of the file at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1413326-addversionofitematurl?language=objc
-func FileVersion_AddVersionOfItemAtURLWithContentsOfURLOptionsError(url IURL, contentsURL IURL, options FileVersionAddingOptions, outError IError) FileVersion {
+func FileVersion_AddVersionOfItemAtURLWithContentsOfURLOptionsError(url IURL, contentsURL IURL, options FileVersionAddingOptions, outError unsafe.Pointer) FileVersion {
 	return FileVersionClass.AddVersionOfItemAtURLWithContentsOfURLOptionsError(url, contentsURL, options, outError)
 }
 
@@ -161,7 +161,7 @@ func FileVersion_AddVersionOfItemAtURLWithContentsOfURLOptionsError(url IURL, co
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1412963-currentversionofitematurl?language=objc
 func (fc _FileVersionClass) CurrentVersionOfItemAtURL(url IURL) FileVersion {
-	rv := objc.Call[FileVersion](fc, objc.Sel("currentVersionOfItemAtURL:"), objc.Ptr(url))
+	rv := objc.Call[FileVersion](fc, objc.Sel("currentVersionOfItemAtURL:"), url)
 	return rv
 }
 
@@ -175,8 +175,8 @@ func FileVersion_CurrentVersionOfItemAtURL(url IURL) FileVersion {
 // Remove this version object and its associated file from the version store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1407486-removeandreturnerror?language=objc
-func (f_ FileVersion) RemoveAndReturnError(outError IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("removeAndReturnError:"), objc.Ptr(outError))
+func (f_ FileVersion) RemoveAndReturnError(outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("removeAndReturnError:"), outError)
 	return rv
 }
 
@@ -184,7 +184,7 @@ func (f_ FileVersion) RemoveAndReturnError(outError IError) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1417854-unresolvedconflictversionsofitem?language=objc
 func (fc _FileVersionClass) UnresolvedConflictVersionsOfItemAtURL(url IURL) []FileVersion {
-	rv := objc.Call[[]FileVersion](fc, objc.Sel("unresolvedConflictVersionsOfItemAtURL:"), objc.Ptr(url))
+	rv := objc.Call[[]FileVersion](fc, objc.Sel("unresolvedConflictVersionsOfItemAtURL:"), url)
 	return rv
 }
 
@@ -198,8 +198,8 @@ func FileVersion_UnresolvedConflictVersionsOfItemAtURL(url IURL) []FileVersion {
 // Replace the contents of the specified file with the contents of the current version’s file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfileversion/1412297-replaceitematurl?language=objc
-func (f_ FileVersion) ReplaceItemAtURLOptionsError(url IURL, options FileVersionReplacingOptions, error IError) URL {
-	rv := objc.Call[URL](f_, objc.Sel("replaceItemAtURL:options:error:"), objc.Ptr(url), options, objc.Ptr(error))
+func (f_ FileVersion) ReplaceItemAtURLOptionsError(url IURL, options FileVersionReplacingOptions, error unsafe.Pointer) URL {
+	rv := objc.Call[URL](f_, objc.Sel("replaceItemAtURL:options:error:"), url, options, error)
 	return rv
 }
 

@@ -43,7 +43,7 @@ func (c_ ComboBoxDataSourceObject) HasComboBoxObjectValueForItemAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436753-combobox?language=objc
 func (c_ ComboBoxDataSourceObject) ComboBoxObjectValueForItemAtIndex(comboBox ComboBox, index int) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("comboBox:objectValueForItemAtIndex:"), objc.Ptr(comboBox), index)
+	rv := objc.Call[objc.Object](c_, objc.Sel("comboBox:objectValueForItemAtIndex:"), comboBox, index)
 	return rv
 }
 
@@ -55,7 +55,7 @@ func (c_ ComboBoxDataSourceObject) HasComboBoxCompletedString() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436733-combobox?language=objc
 func (c_ ComboBoxDataSourceObject) ComboBoxCompletedString(comboBox ComboBox, string_ string) string {
-	rv := objc.Call[string](c_, objc.Sel("comboBox:completedString:"), objc.Ptr(comboBox), string_)
+	rv := objc.Call[string](c_, objc.Sel("comboBox:completedString:"), comboBox, string_)
 	return rv
 }
 
@@ -67,7 +67,7 @@ func (c_ ComboBoxDataSourceObject) HasComboBoxIndexOfItemWithStringValue() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436713-combobox?language=objc
 func (c_ ComboBoxDataSourceObject) ComboBoxIndexOfItemWithStringValue(comboBox ComboBox, string_ string) uint {
-	rv := objc.Call[uint](c_, objc.Sel("comboBox:indexOfItemWithStringValue:"), objc.Ptr(comboBox), string_)
+	rv := objc.Call[uint](c_, objc.Sel("comboBox:indexOfItemWithStringValue:"), comboBox, string_)
 	return rv
 }
 
@@ -79,6 +79,6 @@ func (c_ ComboBoxDataSourceObject) HasNumberOfItemsInComboBox() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdatasource/1436780-numberofitemsincombobox?language=objc
 func (c_ ComboBoxDataSourceObject) NumberOfItemsInComboBox(comboBox ComboBox) int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfItemsInComboBox:"), objc.Ptr(comboBox))
+	rv := objc.Call[int](c_, objc.Sel("numberOfItemsInComboBox:"), comboBox)
 	return rv
 }

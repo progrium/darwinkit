@@ -89,7 +89,7 @@ func (f_ Font) Init() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1529050-setuserfixedpitchfont?language=objc
 func (fc _FontClass) SetUserFixedPitchFont(font IFont) {
-	objc.Call[objc.Void](fc, objc.Sel("setUserFixedPitchFont:"), objc.Ptr(font))
+	objc.Call[objc.Void](fc, objc.Sel("setUserFixedPitchFont:"), font)
 }
 
 // Sets the font used by default for documents and other text under the user’s control, when that font should be fixed-pitch, to the specified font. [Full Topic]
@@ -156,7 +156,7 @@ func Font_TitleBarFontOfSize(fontSize float64) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1525386-fontwithdescriptor?language=objc
 func (fc _FontClass) FontWithDescriptorSize(fontDescriptor IFontDescriptor, fontSize float64) Font {
-	rv := objc.Call[Font](fc, objc.Sel("fontWithDescriptor:size:"), objc.Ptr(fontDescriptor), fontSize)
+	rv := objc.Call[Font](fc, objc.Sel("fontWithDescriptor:size:"), fontDescriptor, fontSize)
 	return rv
 }
 
@@ -238,7 +238,7 @@ func Font_LabelFontOfSize(fontSize float64) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1534538-setincontext?language=objc
 func (f_ Font) SetInContext(graphicsContext IGraphicsContext) {
-	objc.Call[objc.Void](f_, objc.Sel("setInContext:"), objc.Ptr(graphicsContext))
+	objc.Call[objc.Void](f_, objc.Sel("setInContext:"), graphicsContext)
 }
 
 // Returns the standard system font with the specified size and weight. [Full Topic]
@@ -260,7 +260,7 @@ func Font_SystemFontOfSizeWeight(fontSize float64, weight FontWeight) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1525775-fontwithdescriptor?language=objc
 func (fc _FontClass) FontWithDescriptorTextTransform(fontDescriptor IFontDescriptor, textTransform foundation.IAffineTransform) Font {
-	rv := objc.Call[Font](fc, objc.Sel("fontWithDescriptor:textTransform:"), objc.Ptr(fontDescriptor), objc.Ptr(textTransform))
+	rv := objc.Call[Font](fc, objc.Sel("fontWithDescriptor:textTransform:"), fontDescriptor, textTransform)
 	return rv
 }
 
@@ -358,7 +358,7 @@ func Font_MessageFontOfSize(fontSize float64) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfont/1526068-setuserfont?language=objc
 func (fc _FontClass) SetUserFont(font IFont) {
-	objc.Call[objc.Void](fc, objc.Sel("setUserFont:"), objc.Ptr(font))
+	objc.Call[objc.Void](fc, objc.Sel("setUserFont:"), font)
 }
 
 // Sets the font used by default for documents and other text under the user’s control to the specified font. [Full Topic]

@@ -22,21 +22,21 @@ type IManagedObjectContext interface {
 	AssignObjectToPersistentStore(object objc.IObject, store IPersistentStore)
 	Rollback()
 	ObserveValueForKeyPathOfObjectChangeContext(keyPath string, object objc.IObject, change map[string]objc.IObject, context unsafe.Pointer)
-	ExecuteRequestError(request IPersistentStoreRequest, error foundation.IError) PersistentStoreResult
+	ExecuteRequestError(request IPersistentStoreRequest, error unsafe.Pointer) PersistentStoreResult
 	RefreshObjectMergeChanges(object IManagedObject, flag bool)
 	ObjectWithID(objectID IManagedObjectID) ManagedObject
-	SetQueryGenerationFromTokenError(generation IQueryGenerationToken, error foundation.IError) bool
+	SetQueryGenerationFromTokenError(generation IQueryGenerationToken, error unsafe.Pointer) bool
 	DetectConflictsForObject(object IManagedObject)
-	CountForFetchRequestError(request IFetchRequest, error foundation.IError) uint
-	ExecuteFetchRequestError(request IFetchRequest, error foundation.IError) []objc.Object
+	CountForFetchRequestError(request IFetchRequest, error unsafe.Pointer) uint
+	ExecuteFetchRequestError(request IFetchRequest, error unsafe.Pointer) []objc.Object
 	ShouldHandleInaccessibleFaultForObjectIDTriggeredByProperty(fault IManagedObject, oid IManagedObjectID, property IPropertyDescription) bool
 	RefreshAllObjects()
 	DeleteObject(object IManagedObject)
-	ExistingObjectWithIDError(objectID IManagedObjectID, error foundation.IError) ManagedObject
-	ObtainPermanentIDsForObjectsError(objects []IManagedObject, error foundation.IError) bool
+	ExistingObjectWithIDError(objectID IManagedObjectID, error unsafe.Pointer) ManagedObject
+	ObtainPermanentIDsForObjectsError(objects []IManagedObject, error unsafe.Pointer) bool
 	Undo()
 	InsertObject(object IManagedObject)
-	Save(error foundation.IError) bool
+	Save(error unsafe.Pointer) bool
 	Reset()
 	ObjectRegisteredForID(objectID IManagedObjectID) ManagedObject
 	MergeChangesFromContextDidSaveNotification(notification foundation.INotification)
@@ -113,7 +113,7 @@ func (m_ ManagedObjectContext) Init() ManagedObjectContext {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506436-assignobject?language=objc
 func (m_ ManagedObjectContext) AssignObjectToPersistentStore(object objc.IObject, store IPersistentStore) {
-	objc.Call[objc.Void](m_, objc.Sel("assignObject:toPersistentStore:"), object, objc.Ptr(store))
+	objc.Call[objc.Void](m_, objc.Sel("assignObject:toPersistentStore:"), object, store)
 }
 
 // Removes everything from the undo stack, discards all insertions and deletions, and restores updated objects to their last committed values. [Full Topic]
@@ -133,8 +133,8 @@ func (m_ ManagedObjectContext) ObserveValueForKeyPathOfObjectChangeContext(keyPa
 // Passes a request to the persistent store without affecting the contents of the managed object context, and returns a persistent store result. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506834-executerequest?language=objc
-func (m_ ManagedObjectContext) ExecuteRequestError(request IPersistentStoreRequest, error foundation.IError) PersistentStoreResult {
-	rv := objc.Call[PersistentStoreResult](m_, objc.Sel("executeRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (m_ ManagedObjectContext) ExecuteRequestError(request IPersistentStoreRequest, error unsafe.Pointer) PersistentStoreResult {
+	rv := objc.Call[PersistentStoreResult](m_, objc.Sel("executeRequest:error:"), request, error)
 	return rv
 }
 
@@ -142,14 +142,14 @@ func (m_ ManagedObjectContext) ExecuteRequestError(request IPersistentStoreReque
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506224-refreshobject?language=objc
 func (m_ ManagedObjectContext) RefreshObjectMergeChanges(object IManagedObject, flag bool) {
-	objc.Call[objc.Void](m_, objc.Sel("refreshObject:mergeChanges:"), objc.Ptr(object), flag)
+	objc.Call[objc.Void](m_, objc.Sel("refreshObject:mergeChanges:"), object, flag)
 }
 
 // Returns either an existing object from the context or a fault that represents that object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506197-objectwithid?language=objc
 func (m_ ManagedObjectContext) ObjectWithID(objectID IManagedObjectID) ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("objectWithID:"), objc.Ptr(objectID))
+	rv := objc.Call[ManagedObject](m_, objc.Sel("objectWithID:"), objectID)
 	return rv
 }
 
@@ -170,8 +170,8 @@ func ManagedObjectContext_MergeChangesFromRemoteContextSaveIntoContexts(changeNo
 // Sets the query generation this context should use. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1640469-setquerygenerationfromtoken?language=objc
-func (m_ ManagedObjectContext) SetQueryGenerationFromTokenError(generation IQueryGenerationToken, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("setQueryGenerationFromToken:error:"), objc.Ptr(generation), objc.Ptr(error))
+func (m_ ManagedObjectContext) SetQueryGenerationFromTokenError(generation IQueryGenerationToken, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("setQueryGenerationFromToken:error:"), generation, error)
 	return rv
 }
 
@@ -179,22 +179,22 @@ func (m_ ManagedObjectContext) SetQueryGenerationFromTokenError(generation IQuer
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506843-detectconflictsforobject?language=objc
 func (m_ ManagedObjectContext) DetectConflictsForObject(object IManagedObject) {
-	objc.Call[objc.Void](m_, objc.Sel("detectConflictsForObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("detectConflictsForObject:"), object)
 }
 
 // Returns the number of objects the specified request fetches when it executes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506868-countforfetchrequest?language=objc
-func (m_ ManagedObjectContext) CountForFetchRequestError(request IFetchRequest, error foundation.IError) uint {
-	rv := objc.Call[uint](m_, objc.Sel("countForFetchRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (m_ ManagedObjectContext) CountForFetchRequestError(request IFetchRequest, error unsafe.Pointer) uint {
+	rv := objc.Call[uint](m_, objc.Sel("countForFetchRequest:error:"), request, error)
 	return rv
 }
 
 // Returns an array of objects that meet the criteria of the specified fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506672-executefetchrequest?language=objc
-func (m_ ManagedObjectContext) ExecuteFetchRequestError(request IFetchRequest, error foundation.IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](m_, objc.Sel("executeFetchRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (m_ ManagedObjectContext) ExecuteFetchRequestError(request IFetchRequest, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](m_, objc.Sel("executeFetchRequest:error:"), request, error)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func (m_ ManagedObjectContext) ExecuteFetchRequestError(request IFetchRequest, e
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506810-shouldhandleinaccessiblefault?language=objc
 func (m_ ManagedObjectContext) ShouldHandleInaccessibleFaultForObjectIDTriggeredByProperty(fault IManagedObject, oid IManagedObjectID, property IPropertyDescription) bool {
-	rv := objc.Call[bool](m_, objc.Sel("shouldHandleInaccessibleFault:forObjectID:triggeredByProperty:"), objc.Ptr(fault), objc.Ptr(oid), objc.Ptr(property))
+	rv := objc.Call[bool](m_, objc.Sel("shouldHandleInaccessibleFault:forObjectID:triggeredByProperty:"), fault, oid, property)
 	return rv
 }
 
@@ -217,22 +217,22 @@ func (m_ ManagedObjectContext) RefreshAllObjects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506847-deleteobject?language=objc
 func (m_ ManagedObjectContext) DeleteObject(object IManagedObject) {
-	objc.Call[objc.Void](m_, objc.Sel("deleteObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("deleteObject:"), object)
 }
 
 // Returns an existing object from either the context or the persistent store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506686-existingobjectwithid?language=objc
-func (m_ ManagedObjectContext) ExistingObjectWithIDError(objectID IManagedObjectID, error foundation.IError) ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("existingObjectWithID:error:"), objc.Ptr(objectID), objc.Ptr(error))
+func (m_ ManagedObjectContext) ExistingObjectWithIDError(objectID IManagedObjectID, error unsafe.Pointer) ManagedObject {
+	rv := objc.Call[ManagedObject](m_, objc.Sel("existingObjectWithID:error:"), objectID, error)
 	return rv
 }
 
 // Converts to permanent IDs the object IDs of the objects in a given array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506793-obtainpermanentidsforobjects?language=objc
-func (m_ ManagedObjectContext) ObtainPermanentIDsForObjectsError(objects []IManagedObject, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("obtainPermanentIDsForObjects:error:"), objects, objc.Ptr(error))
+func (m_ ManagedObjectContext) ObtainPermanentIDsForObjectsError(objects []IManagedObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("obtainPermanentIDsForObjects:error:"), objects, error)
 	return rv
 }
 
@@ -247,14 +247,14 @@ func (m_ ManagedObjectContext) Undo() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506794-insertobject?language=objc
 func (m_ ManagedObjectContext) InsertObject(object IManagedObject) {
-	objc.Call[objc.Void](m_, objc.Sel("insertObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](m_, objc.Sel("insertObject:"), object)
 }
 
 // Attempts to commit unsaved changes to registered objects to the context’s parent store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506866-save?language=objc
-func (m_ ManagedObjectContext) Save(error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("save:"), objc.Ptr(error))
+func (m_ ManagedObjectContext) Save(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("save:"), error)
 	return rv
 }
 
@@ -269,7 +269,7 @@ func (m_ ManagedObjectContext) Reset() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506789-objectregisteredforid?language=objc
 func (m_ ManagedObjectContext) ObjectRegisteredForID(objectID IManagedObjectID) ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("objectRegisteredForID:"), objc.Ptr(objectID))
+	rv := objc.Call[ManagedObject](m_, objc.Sel("objectRegisteredForID:"), objectID)
 	return rv
 }
 
@@ -277,7 +277,7 @@ func (m_ ManagedObjectContext) ObjectRegisteredForID(objectID IManagedObjectID) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506606-mergechangesfromcontextdidsaveno?language=objc
 func (m_ ManagedObjectContext) MergeChangesFromContextDidSaveNotification(notification foundation.INotification) {
-	objc.Call[objc.Void](m_, objc.Sel("mergeChangesFromContextDidSaveNotification:"), objc.Ptr(notification))
+	objc.Call[objc.Void](m_, objc.Sel("mergeChangesFromContextDidSaveNotification:"), notification)
 }
 
 // Asynchronously performs the specified block on the context’s queue. [Full Topic]
@@ -420,7 +420,7 @@ func (m_ ManagedObjectContext) PersistentStoreCoordinator() PersistentStoreCoord
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506618-persistentstorecoordinator?language=objc
 func (m_ ManagedObjectContext) SetPersistentStoreCoordinator(value IPersistentStoreCoordinator) {
-	objc.Call[objc.Void](m_, objc.Sel("setPersistentStoreCoordinator:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setPersistentStoreCoordinator:"), value)
 }
 
 // The set of objects registered with the context that have uncommitted changes. [Full Topic]
@@ -496,7 +496,7 @@ func (m_ ManagedObjectContext) UndoManager() foundation.UndoManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506663-undomanager?language=objc
 func (m_ ManagedObjectContext) SetUndoManager(value foundation.IUndoManager) {
-	objc.Call[objc.Void](m_, objc.Sel("setUndoManager:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setUndoManager:"), value)
 }
 
 // The parent of the context. [Full Topic]
@@ -511,7 +511,7 @@ func (m_ ManagedObjectContext) ParentContext() ManagedObjectContext {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectcontext/1506529-parentcontext?language=objc
 func (m_ ManagedObjectContext) SetParentContext(value IManagedObjectContext) {
-	objc.Call[objc.Void](m_, objc.Sel("setParentContext:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setParentContext:"), value)
 }
 
 // A Boolean value that indicates whether the context automatically merges changes saved to its persistent store coordinator or parent context. [Full Topic]

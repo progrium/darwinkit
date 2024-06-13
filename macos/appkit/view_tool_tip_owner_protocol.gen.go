@@ -34,6 +34,6 @@ func (v_ ViewToolTipOwnerObject) HasViewStringForToolTipPointUserData() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewtooltipowner/3005296-view?language=objc
 func (v_ ViewToolTipOwnerObject) ViewStringForToolTipPointUserData(view View, tag ToolTipTag, point foundation.Point, data unsafe.Pointer) string {
-	rv := objc.Call[string](v_, objc.Sel("view:stringForToolTip:point:userData:"), objc.Ptr(view), tag, point, data)
+	rv := objc.Call[string](v_, objc.Sel("view:stringForToolTip:point:userData:"), view, tag, point, data)
 	return rv
 }

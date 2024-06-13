@@ -34,7 +34,7 @@ func CNNNeuronReLUNodeFrom(ptr unsafe.Pointer) CNNNeuronReLUNode {
 }
 
 func (cc _CNNNeuronReLUNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronReLUNode {
-	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -46,7 +46,7 @@ func CNNNeuronReLUNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronReLUNode
 }
 
 func (c_ CNNNeuronReLUNode) InitWithSource(sourceNode INNImageNode) CNNNeuronReLUNode {
-	rv := objc.Call[CNNNeuronReLUNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronReLUNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -59,27 +59,27 @@ func NewCNNNeuronReLUNodeWithSource(sourceNode INNImageNode) CNNNeuronReLUNode {
 	return instance
 }
 
-func (cc _CNNNeuronReLUNodeClass) NodeWithSourceA(sourceNode INNImageNode, a float64) CNNNeuronReLUNode {
-	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:a:"), objc.Ptr(sourceNode), a)
+func (cc _CNNNeuronReLUNodeClass) NodeWithSourceA(sourceNode INNImageNode, a float32) CNNNeuronReLUNode {
+	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:a:"), sourceNode, a)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronrelunode/2866494-nodewithsource?language=objc
-func CNNNeuronReLUNode_NodeWithSourceA(sourceNode INNImageNode, a float64) CNNNeuronReLUNode {
+func CNNNeuronReLUNode_NodeWithSourceA(sourceNode INNImageNode, a float32) CNNNeuronReLUNode {
 	return CNNNeuronReLUNodeClass.NodeWithSourceA(sourceNode, a)
 }
 
-func (c_ CNNNeuronReLUNode) InitWithSourceA(sourceNode INNImageNode, a float64) CNNNeuronReLUNode {
-	rv := objc.Call[CNNNeuronReLUNode](c_, objc.Sel("initWithSource:a:"), objc.Ptr(sourceNode), a)
+func (c_ CNNNeuronReLUNode) InitWithSourceA(sourceNode INNImageNode, a float32) CNNNeuronReLUNode {
+	rv := objc.Call[CNNNeuronReLUNode](c_, objc.Sel("initWithSource:a:"), sourceNode, a)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronrelunode/2921462-initwithsource?language=objc
-func NewCNNNeuronReLUNodeWithSourceA(sourceNode INNImageNode, a float64) CNNNeuronReLUNode {
+func NewCNNNeuronReLUNodeWithSourceA(sourceNode INNImageNode, a float32) CNNNeuronReLUNode {
 	instance := CNNNeuronReLUNodeClass.Alloc().InitWithSourceA(sourceNode, a)
 	instance.Autorelease()
 	return instance
@@ -106,7 +106,7 @@ func (c_ CNNNeuronReLUNode) Init() CNNNeuronReLUNode {
 }
 
 func (cc _CNNNeuronReLUNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronReLUNode {
-	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronReLUNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

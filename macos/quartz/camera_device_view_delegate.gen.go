@@ -99,7 +99,7 @@ func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewDidEncounterError() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1505239-cameradeviceview?language=objc
 func (c_ CameraDeviceViewDelegateObject) CameraDeviceViewDidEncounterError(cameraDeviceView CameraDeviceView, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didEncounterError:"), objc.Ptr(cameraDeviceView), objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didEncounterError:"), cameraDeviceView, error)
 }
 
 func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewDidDownloadFileLocationFileDataError() bool {
@@ -110,7 +110,7 @@ func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewDidDownloadFileLocat
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1503524-cameradeviceview?language=objc
 func (c_ CameraDeviceViewDelegateObject) CameraDeviceViewDidDownloadFileLocationFileDataError(cameraDeviceView CameraDeviceView, file objc.Object, url foundation.URL, data []byte, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didDownloadFile:location:fileData:error:"), objc.Ptr(cameraDeviceView), objc.Ptr(file), objc.Ptr(url), data, objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceView:didDownloadFile:location:fileData:error:"), cameraDeviceView, file, url, data, error)
 }
 
 func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewSelectionDidChange() bool {
@@ -121,5 +121,5 @@ func (c_ CameraDeviceViewDelegateObject) HasCameraDeviceViewSelectionDidChange()
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikcameradeviceviewdelegate/1505308-cameradeviceviewselectiondidchan?language=objc
 func (c_ CameraDeviceViewDelegateObject) CameraDeviceViewSelectionDidChange(cameraDeviceView CameraDeviceView) {
-	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceViewSelectionDidChange:"), objc.Ptr(cameraDeviceView))
+	objc.Call[objc.Void](c_, objc.Sel("cameraDeviceViewSelectionDidChange:"), cameraDeviceView)
 }

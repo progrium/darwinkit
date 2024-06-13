@@ -37,7 +37,7 @@ func UserScriptFrom(ptr unsafe.Pointer) UserScript {
 }
 
 func (u_ UserScript) InitWithSourceInjectionTimeForMainFrameOnlyInContentWorld(source string, injectionTime UserScriptInjectionTime, forMainFrameOnly bool, contentWorld IContentWorld) UserScript {
-	rv := objc.Call[UserScript](u_, objc.Sel("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, objc.Ptr(contentWorld))
+	rv := objc.Call[UserScript](u_, objc.Sel("initWithSource:injectionTime:forMainFrameOnly:inContentWorld:"), source, injectionTime, forMainFrameOnly, contentWorld)
 	return rv
 }
 

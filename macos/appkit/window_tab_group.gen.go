@@ -67,21 +67,21 @@ func (w_ WindowTabGroup) Init() WindowTabGroup {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabgroup/2879459-removewindow?language=objc
 func (w_ WindowTabGroup) RemoveWindow(window IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("removeWindow:"), objc.Ptr(window))
+	objc.Call[objc.Void](w_, objc.Sel("removeWindow:"), window)
 }
 
 // Inserts a window at a specific location within the tab group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabgroup/2879455-insertwindow?language=objc
 func (w_ WindowTabGroup) InsertWindowAtIndex(window IWindow, index int) {
-	objc.Call[objc.Void](w_, objc.Sel("insertWindow:atIndex:"), objc.Ptr(window), index)
+	objc.Call[objc.Void](w_, objc.Sel("insertWindow:atIndex:"), window, index)
 }
 
 // Adds a window to the tab group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabgroup/2879450-addwindow?language=objc
 func (w_ WindowTabGroup) AddWindow(window IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("addWindow:"), objc.Ptr(window))
+	objc.Call[objc.Void](w_, objc.Sel("addWindow:"), window)
 }
 
 // A collection of the windows that are currently grouped together by this window tab group. [Full Topic]
@@ -135,5 +135,5 @@ func (w_ WindowTabGroup) SelectedWindow() Window {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtabgroup/2879457-selectedwindow?language=objc
 func (w_ WindowTabGroup) SetSelectedWindow(value IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("setSelectedWindow:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setSelectedWindow:"), value)
 }

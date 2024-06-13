@@ -18,7 +18,7 @@ type _MediaTimingFunctionClass struct {
 // An interface definition for the [MediaTimingFunction] class.
 type IMediaTimingFunction interface {
 	objc.IObject
-	GetControlPointAtIndexValues(idx uint, ptr *float64)
+	GetControlPointAtIndexValues(idx uint, ptr *float32)
 }
 
 // A function that defines the pacing of an animation as a timing curve. [Full Topic]
@@ -34,7 +34,7 @@ func MediaTimingFunctionFrom(ptr unsafe.Pointer) MediaTimingFunction {
 	}
 }
 
-func (m_ MediaTimingFunction) InitWithControlPoints(c1x float64) MediaTimingFunction {
+func (m_ MediaTimingFunction) InitWithControlPoints(c1x float32) MediaTimingFunction {
 	rv := objc.Call[MediaTimingFunction](m_, objc.Sel("initWithControlPoints:"), c1x)
 	return rv
 }
@@ -42,7 +42,7 @@ func (m_ MediaTimingFunction) InitWithControlPoints(c1x float64) MediaTimingFunc
 // Returns an initialized timing function modeled as a cubic Bézier curve using the specified control points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522235-initwithcontrolpoints?language=objc
-func NewMediaTimingFunctionWithControlPoints(c1x float64) MediaTimingFunction {
+func NewMediaTimingFunctionWithControlPoints(c1x float32) MediaTimingFunction {
 	instance := MediaTimingFunctionClass.Alloc().InitWithControlPoints(c1x)
 	instance.Autorelease()
 	return instance
@@ -60,7 +60,7 @@ func MediaTimingFunction_FunctionWithName(name MediaTimingFunctionName) MediaTim
 	return MediaTimingFunctionClass.FunctionWithName(name)
 }
 
-func (mc _MediaTimingFunctionClass) FunctionWithControlPoints(c1x float64) MediaTimingFunction {
+func (mc _MediaTimingFunctionClass) FunctionWithControlPoints(c1x float32) MediaTimingFunction {
 	rv := objc.Call[MediaTimingFunction](mc, objc.Sel("functionWithControlPoints:"), c1x)
 	return rv
 }
@@ -68,7 +68,7 @@ func (mc _MediaTimingFunctionClass) FunctionWithControlPoints(c1x float64) Media
 // Creates and returns a new instance of CAMediaTimingFunction timing function modeled as a cubic Bézier curve using the specified control points. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1574338-functionwithcontrolpoints?language=objc
-func MediaTimingFunction_FunctionWithControlPoints(c1x float64) MediaTimingFunction {
+func MediaTimingFunction_FunctionWithControlPoints(c1x float32) MediaTimingFunction {
 	return MediaTimingFunctionClass.FunctionWithControlPoints(c1x)
 }
 
@@ -95,6 +95,6 @@ func (m_ MediaTimingFunction) Init() MediaTimingFunction {
 // Returns the control point for the specified index. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/camediatimingfunction/1522057-getcontrolpointatindex?language=objc
-func (m_ MediaTimingFunction) GetControlPointAtIndexValues(idx uint, ptr *float64) {
+func (m_ MediaTimingFunction) GetControlPointAtIndexValues(idx uint, ptr *float32) {
 	objc.Call[objc.Void](m_, objc.Sel("getControlPointAtIndex:values:"), idx, ptr)
 }

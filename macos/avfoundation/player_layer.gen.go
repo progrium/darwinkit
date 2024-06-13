@@ -121,7 +121,7 @@ func PlayerLayer_Layer() PlayerLayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlayer/1389308-playerlayerwithplayer?language=objc
 func (pc _PlayerLayerClass) PlayerLayerWithPlayer(player IPlayer) PlayerLayer {
-	rv := objc.Call[PlayerLayer](pc, objc.Sel("playerLayerWithPlayer:"), objc.Ptr(player))
+	rv := objc.Call[PlayerLayer](pc, objc.Sel("playerLayerWithPlayer:"), player)
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (p_ PlayerLayer) Player() Player {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerlayer/1390434-player?language=objc
 func (p_ PlayerLayer) SetPlayer(value IPlayer) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPlayer:"), value)
 }
 
 // A value that specifies how the layer displays the player’s visual content within the layer’s bounds. [Full Topic]

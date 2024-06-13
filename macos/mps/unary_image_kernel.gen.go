@@ -22,7 +22,7 @@ type IUnaryImageKernel interface {
 	EncodeToCommandBufferSourceTextureDestinationTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture metal.PTexture)
 	EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject)
 	SourceRegionForDestinationSize(destinationSize metal.Size) Region
-	EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture metal.PTexture, copyAllocator CopyAllocator) bool
+	EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture unsafe.Pointer, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferObjectInPlaceTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, textureObject objc.IObject, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferSourceImageDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationImage IImage)
 	EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage)
@@ -111,7 +111,7 @@ func (u_ UnaryImageKernel) EncodeToCommandBufferSourceTextureDestinationTexture(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618741-encodetocommandbuffer?language=objc
 func (u_ UnaryImageKernel) EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(destinationTextureObject))
+	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:"), commandBufferObject, sourceTextureObject, destinationTextureObject)
 }
 
 // Determines the region of the source texture that will be read for an encode operation. [Full Topic]
@@ -125,7 +125,7 @@ func (u_ UnaryImageKernel) SourceRegionForDestinationSize(destinationSize metal.
 // This method attempts to apply a kernel in place on a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618873-encodetocommandbuffer?language=objc
-func (u_ UnaryImageKernel) EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture metal.PTexture, copyAllocator CopyAllocator) bool {
+func (u_ UnaryImageKernel) EncodeToCommandBufferInPlaceTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, texture unsafe.Pointer, copyAllocator CopyAllocator) bool {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po1 := objc.WrapAsProtocol("MTLTexture", texture)
 	rv := objc.Call[bool](u_, objc.Sel("encodeToCommandBuffer:inPlaceTexture:fallbackCopyAllocator:"), po0, po1, copyAllocator)
@@ -136,7 +136,7 @@ func (u_ UnaryImageKernel) EncodeToCommandBufferInPlaceTextureFallbackCopyAlloca
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/1618873-encodetocommandbuffer?language=objc
 func (u_ UnaryImageKernel) EncodeToCommandBufferObjectInPlaceTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, textureObject objc.IObject, copyAllocator CopyAllocator) bool {
-	rv := objc.Call[bool](u_, objc.Sel("encodeToCommandBuffer:inPlaceTexture:fallbackCopyAllocator:"), objc.Ptr(commandBufferObject), objc.Ptr(textureObject), copyAllocator)
+	rv := objc.Call[bool](u_, objc.Sel("encodeToCommandBuffer:inPlaceTexture:fallbackCopyAllocator:"), commandBufferObject, textureObject, copyAllocator)
 	return rv
 }
 
@@ -145,14 +145,14 @@ func (u_ UnaryImageKernel) EncodeToCommandBufferObjectInPlaceTextureObjectFallba
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/2866328-encodetocommandbuffer?language=objc
 func (u_ UnaryImageKernel) EncodeToCommandBufferSourceImageDestinationImage(commandBuffer metal.PCommandBuffer, sourceImage IImage, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), po0, objc.Ptr(sourceImage), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), po0, sourceImage, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsunaryimagekernel/2866328-encodetocommandbuffer?language=objc
 func (u_ UnaryImageKernel) EncodeToCommandBufferObjectSourceImageDestinationImage(commandBufferObject objc.IObject, sourceImage IImage, destinationImage IImage) {
-	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceImage), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](u_, objc.Sel("encodeToCommandBuffer:sourceImage:destinationImage:"), commandBufferObject, sourceImage, destinationImage)
 }
 
 // An optional clip rectangle to use when writing data. Only the pixels in the rectangle will be overwritten. [Full Topic]

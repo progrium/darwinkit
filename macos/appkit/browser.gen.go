@@ -181,7 +181,7 @@ func NewBrowserWithFrame(frameRect foundation.Rect) Browser {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407632-candragrowswithindexes?language=objc
 func (b_ Browser) CanDragRowsWithIndexesInColumnWithEvent(rowIndexes foundation.IIndexSet, column int, event IEvent) bool {
-	rv := objc.Call[bool](b_, objc.Sel("canDragRowsWithIndexes:inColumn:withEvent:"), objc.Ptr(rowIndexes), column, objc.Ptr(event))
+	rv := objc.Call[bool](b_, objc.Sel("canDragRowsWithIndexes:inColumn:withEvent:"), rowIndexes, column, event)
 	return rv
 }
 
@@ -242,7 +242,7 @@ func (b_ Browser) FrameOfColumn(column int) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407558-edititematindexpath?language=objc
 func (b_ Browser) EditItemAtIndexPathWithEventSelect(indexPath foundation.IIndexPath, event IEvent, select_ bool) {
-	objc.Call[objc.Void](b_, objc.Sel("editItemAtIndexPath:withEvent:select:"), objc.Ptr(indexPath), objc.Ptr(event), select_)
+	objc.Call[objc.Void](b_, objc.Sel("editItemAtIndexPath:withEvent:select:"), indexPath, event, select_)
 }
 
 // Draws the title for the specified column within the given rectangle. [Full Topic]
@@ -277,14 +277,14 @@ func (b_ Browser) AddColumn() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407805-reloaddataforrowindexes?language=objc
 func (b_ Browser) ReloadDataForRowIndexesInColumn(rowIndexes foundation.IIndexSet, column int) {
-	objc.Call[objc.Void](b_, objc.Sel("reloadDataForRowIndexes:inColumn:"), objc.Ptr(rowIndexes), column)
+	objc.Call[objc.Void](b_, objc.Sel("reloadDataForRowIndexes:inColumn:"), rowIndexes, column)
 }
 
 // Sets the class of the cell to be used by the matrices in the columns of the browser. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407811-setcellclass?language=objc
 func (b_ Browser) SetCellClass(factoryId objc.IClass) {
-	objc.Call[objc.Void](b_, objc.Sel("setCellClass:"), objc.Ptr(factoryId))
+	objc.Call[objc.Void](b_, objc.Sel("setCellClass:"), factoryId)
 }
 
 // Gets the row and column coordinates for the specified point, if a cell exists at that point. [Full Topic]
@@ -299,7 +299,7 @@ func (b_ Browser) GetRowColumnForPoint(row *int, column *int, point foundation.P
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407532-draggingimageforrowswithindexes?language=objc
 func (b_ Browser) DraggingImageForRowsWithIndexesInColumnWithEventOffset(rowIndexes foundation.IIndexSet, column int, event IEvent, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](b_, objc.Sel("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), objc.Ptr(rowIndexes), column, objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](b_, objc.Sel("draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), rowIndexes, column, event, dragImageOffset)
 	return rv
 }
 
@@ -337,7 +337,7 @@ func (b_ Browser) DefaultColumnWidth() float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407673-itematindexpath?language=objc
 func (b_ Browser) ItemAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("itemAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[objc.Object](b_, objc.Sel("itemAtIndexPath:"), indexPath)
 	return rv
 }
 
@@ -383,7 +383,7 @@ func (b_ Browser) ReloadColumn(column int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407608-noteheightofrowswithindexeschang?language=objc
 func (b_ Browser) NoteHeightOfRowsWithIndexesChangedInColumn(indexSet foundation.IIndexSet, columnIndex int) {
-	objc.Call[objc.Void](b_, objc.Sel("noteHeightOfRowsWithIndexesChanged:inColumn:"), objc.Ptr(indexSet), columnIndex)
+	objc.Call[objc.Void](b_, objc.Sel("noteHeightOfRowsWithIndexesChanged:inColumn:"), indexSet, columnIndex)
 }
 
 // Returns the content width for a given column width. [Full Topic]
@@ -436,7 +436,7 @@ func (b_ Browser) LoadedCellAtRowColumn(row int, col int) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407618-selectrowindexes?language=objc
 func (b_ Browser) SelectRowIndexesInColumn(indexes foundation.IIndexSet, column int) {
-	objc.Call[objc.Void](b_, objc.Sel("selectRowIndexes:inColumn:"), objc.Ptr(indexes), column)
+	objc.Call[objc.Void](b_, objc.Sel("selectRowIndexes:inColumn:"), indexes, column)
 }
 
 // Returns the item that contains the children located in the specified column. [Full Topic]
@@ -822,7 +822,7 @@ func (b_ Browser) SelectionIndexPath() foundation.IndexPath {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407507-selectionindexpath?language=objc
 func (b_ Browser) SetSelectionIndexPath(value foundation.IIndexPath) {
-	objc.Call[objc.Void](b_, objc.Sel("setSelectionIndexPath:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setSelectionIndexPath:"), value)
 }
 
 // A Boolean that indicates whether the user can select branch items. [Full Topic]
@@ -951,7 +951,7 @@ func (b_ Browser) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407520-backgroundcolor?language=objc
 func (b_ Browser) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The number of visible columns. [Full Topic]
@@ -1028,5 +1028,5 @@ func (b_ Browser) SetDelegate(value PBrowserDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowser/1407686-delegate?language=objc
 func (b_ Browser) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](b_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](b_, objc.Sel("setDelegate:"), valueObject)
 }

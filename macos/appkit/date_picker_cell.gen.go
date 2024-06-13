@@ -98,7 +98,7 @@ func (d_ DatePickerCell) Init() DatePickerCell {
 }
 
 func (d_ DatePickerCell) InitImageCell(image IImage) DatePickerCell {
-	rv := objc.Call[DatePickerCell](d_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[DatePickerCell](d_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -123,7 +123,7 @@ func (d_ DatePickerCell) MinDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459619-mindate?language=objc
 func (d_ DatePickerCell) SetMinDate(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setMinDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setMinDate:"), value)
 }
 
 // A Boolean value indicating whether the cell draws its background. [Full Topic]
@@ -183,7 +183,7 @@ func (d_ DatePickerCell) MaxDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459640-maxdate?language=objc
 func (d_ DatePickerCell) SetMaxDate(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setMaxDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setMaxDate:"), value)
 }
 
 // The mode in use by the date picker. [Full Topic]
@@ -237,7 +237,7 @@ func (d_ DatePickerCell) SetDelegate(value PDatePickerCellDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459615-delegate?language=objc
 func (d_ DatePickerCell) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The locale used to display dates. [Full Topic]
@@ -252,7 +252,7 @@ func (d_ DatePickerCell) Locale() foundation.Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459625-locale?language=objc
 func (d_ DatePickerCell) SetLocale(value foundation.ILocale) {
-	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
 }
 
 // The calendar used by the date picker. [Full Topic]
@@ -267,7 +267,7 @@ func (d_ DatePickerCell) Calendar() foundation.Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459609-calendar?language=objc
 func (d_ DatePickerCell) SetCalendar(value foundation.ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // The cell’s background color. [Full Topic]
@@ -282,7 +282,7 @@ func (d_ DatePickerCell) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459629-backgroundcolor?language=objc
 func (d_ DatePickerCell) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](d_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The time zone used to display time-related values. [Full Topic]
@@ -297,7 +297,7 @@ func (d_ DatePickerCell) TimeZone() foundation.TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459633-timezone?language=objc
 func (d_ DatePickerCell) SetTimeZone(value foundation.ITimeZone) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
 // The cell’s text color. [Full Topic]
@@ -312,7 +312,7 @@ func (d_ DatePickerCell) TextColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459644-textcolor?language=objc
 func (d_ DatePickerCell) SetTextColor(value IColor) {
-	objc.Call[objc.Void](d_, objc.Sel("setTextColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTextColor:"), value)
 }
 
 // The date currently specified in the picker. [Full Topic]
@@ -327,5 +327,5 @@ func (d_ DatePickerCell) DateValue() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdatepickercell/1459594-datevalue?language=objc
 func (d_ DatePickerCell) SetDateValue(value foundation.IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setDateValue:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDateValue:"), value)
 }

@@ -252,7 +252,7 @@ func (w_ WorkspaceOpenConfiguration) AppleEvent() foundation.AppleEventDescripto
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspaceopenconfiguration/3172706-appleevent?language=objc
 func (w_ WorkspaceOpenConfiguration) SetAppleEvent(value foundation.IAppleEventDescriptor) {
-	objc.Call[objc.Void](w_, objc.Sel("setAppleEvent:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setAppleEvent:"), value)
 }
 
 // The set of environment variables to set in a new app instance. [Full Topic]

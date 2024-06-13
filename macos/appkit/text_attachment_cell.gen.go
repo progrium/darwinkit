@@ -64,7 +64,7 @@ func (t_ TextAttachmentCell) Init() TextAttachmentCell {
 }
 
 func (t_ TextAttachmentCell) InitImageCell(image IImage) TextAttachmentCell {
-	rv := objc.Call[TextAttachmentCell](t_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[TextAttachmentCell](t_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func NewTextAttachmentCellTextCell(string_ string) TextAttachmentCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508402-cellframefortextcontainer?language=objc
 func (t_ TextAttachmentCell) CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer ITextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), objc.Ptr(textContainer), lineFrag, position, charIndex)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), textContainer, lineFrag, position, charIndex)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (t_ TextAttachmentCell) CellFrameForTextContainerProposedLineFragmentGlyphP
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508412-drawwithframe?language=objc
 func (t_ TextAttachmentCell) DrawWithFrameInViewCharacterIndex(cellFrame foundation.Rect, controlView IView, charIndex uint) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:"), cellFrame, objc.Ptr(controlView), charIndex)
+	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:"), cellFrame, controlView, charIndex)
 }
 
 // Returns the text position where you draw the attachment cell’s image, relative to the current point established in the glyph layout. [Full Topic]
@@ -118,14 +118,14 @@ func (t_ TextAttachmentCell) CellBaselineOffset() foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508385-drawwithframe?language=objc
 func (t_ TextAttachmentCell) DrawWithFrameInViewCharacterIndexLayoutManager(cellFrame foundation.Rect, controlView IView, charIndex uint, layoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:layoutManager:"), cellFrame, objc.Ptr(controlView), charIndex, objc.Ptr(layoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:layoutManager:"), cellFrame, controlView, charIndex, layoutManager)
 }
 
 // Allows an attachment to specify the events for which it tracks the mouse. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508399-wantstotrackmouseforevent?language=objc
 func (t_ TextAttachmentCell) WantsToTrackMouseForEventInRectOfViewAtCharacterIndex(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), objc.Ptr(theEvent), cellFrame, objc.Ptr(controlView), charIndex)
+	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), theEvent, cellFrame, controlView, charIndex)
 	return rv
 }
 
@@ -141,7 +141,7 @@ func (t_ TextAttachmentCell) WantsToTrackMouse() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508380-trackmouse?language=objc
 func (t_ TextAttachmentCell) TrackMouseInRectOfViewAtCharacterIndexUntilMouseUp(theEvent IEvent, cellFrame foundation.Rect, controlView IView, charIndex uint, flag bool) bool {
-	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:atCharacterIndex:untilMouseUp:"), objc.Ptr(theEvent), cellFrame, objc.Ptr(controlView), charIndex, flag)
+	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:atCharacterIndex:untilMouseUp:"), theEvent, cellFrame, controlView, charIndex, flag)
 	return rv
 }
 
@@ -157,5 +157,5 @@ func (t_ TextAttachmentCell) Attachment() TextAttachment {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508396-attachment?language=objc
 func (t_ TextAttachmentCell) SetAttachment(value ITextAttachment) {
-	objc.Call[objc.Void](t_, objc.Sel("setAttachment:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setAttachment:"), value)
 }

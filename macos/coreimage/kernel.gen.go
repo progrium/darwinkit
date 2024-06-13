@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -38,27 +37,27 @@ func KernelFrom(ptr unsafe.Pointer) Kernel {
 	}
 }
 
-func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) Kernel {
-	rv := objc.Call[Kernel](kc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, objc.Ptr(error))
+func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) Kernel {
+	rv := objc.Call[Kernel](kc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language (MSL) kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880194-kernelwithfunctionname?language=objc
-func Kernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) Kernel {
+func Kernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) Kernel {
 	return KernelClass.KernelWithFunctionNameFromMetalLibraryDataError(name, data, error)
 }
 
-func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) Kernel {
-	rv := objc.Call[Kernel](kc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, objc.Ptr(error))
+func (kc _KernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) Kernel {
+	rv := objc.Call[Kernel](kc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language kernel function with optional pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880195-kernelwithfunctionname?language=objc
-func Kernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) Kernel {
+func Kernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) Kernel {
 	return KernelClass.KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name, data, format, error)
 }
 
@@ -115,15 +114,15 @@ func (k_ Kernel) SetROISelector(method objc.Selector) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
-func (kc _KernelClass) KernelsWithMetalStringError(source string, error foundation.IError) []Kernel {
-	rv := objc.Call[[]Kernel](kc, objc.Sel("kernelsWithMetalString:error:"), source, objc.Ptr(error))
+func (kc _KernelClass) KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
+	rv := objc.Call[[]Kernel](kc, objc.Sel("kernelsWithMetalString:error:"), source, error)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/3857565-kernelswithmetalstring?language=objc
-func Kernel_KernelsWithMetalStringError(source string, error foundation.IError) []Kernel {
+func Kernel_KernelsWithMetalStringError(source string, error unsafe.Pointer) []Kernel {
 	return KernelClass.KernelsWithMetalStringError(source, error)
 }
 

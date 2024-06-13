@@ -99,7 +99,7 @@ func (a_ Alert) Layout() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalert/1524296-beginsheetmodalforwindow?language=objc
 func (a_ Alert) BeginSheetModalForWindowCompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.Call[objc.Void](a_, objc.Sel("beginSheetModalForWindow:completionHandler:"), objc.Ptr(sheetWindow), handler)
+	objc.Call[objc.Void](a_, objc.Sel("beginSheetModalForWindow:completionHandler:"), sheetWindow, handler)
 }
 
 // Adds a button with a given title to the alert. [Full Topic]
@@ -114,7 +114,7 @@ func (a_ Alert) AddButtonWithTitle(title string) Button {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalert/1531823-alertwitherror?language=objc
 func (ac _AlertClass) AlertWithError(error foundation.IError) Alert {
-	rv := objc.Call[Alert](ac, objc.Sel("alertWithError:"), objc.Ptr(error))
+	rv := objc.Call[Alert](ac, objc.Sel("alertWithError:"), error)
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (a_ Alert) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalert/1530575-accessoryview?language=objc
 func (a_ Alert) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](a_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAccessoryView:"), value)
 }
 
 // The alert’s suppression checkbox. [Full Topic]
@@ -228,7 +228,7 @@ func (a_ Alert) Icon() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalert/1531688-icon?language=objc
 func (a_ Alert) SetIcon(value IImage) {
-	objc.Call[objc.Void](a_, objc.Sel("setIcon:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setIcon:"), value)
 }
 
 // Specifies whether the alert includes a suppression checkbox, which you can employ to allow a user to opt out of seeing the alert again. [Full Topic]
@@ -267,7 +267,7 @@ func (a_ Alert) SetDelegate(value PAlertDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalert/1534327-delegate?language=objc
 func (a_ Alert) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Specifies whether the alert has a help button. [Full Topic]

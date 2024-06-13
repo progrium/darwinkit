@@ -3,6 +3,8 @@
 package appkit
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,7 +22,7 @@ type POpenSavePanelDelegate interface {
 	HasPanelShouldEnableURL() bool
 
 	// optional
-	PanelValidateURLError(sender objc.Object, url foundation.URL, outError foundation.Error) bool
+	PanelValidateURLError(sender objc.Object, url foundation.URL, outError unsafe.Pointer) bool
 	HasPanelValidateURLError() bool
 
 	// optional
@@ -40,7 +42,7 @@ type POpenSavePanelDelegate interface {
 type OpenSavePanelDelegate struct {
 	_PanelUserEnteredFilenameConfirmed func(sender objc.Object, filename string, okFlag bool) string
 	_PanelShouldEnableURL              func(sender objc.Object, url foundation.URL) bool
-	_PanelValidateURLError             func(sender objc.Object, url foundation.URL, outError foundation.Error) bool
+	_PanelValidateURLError             func(sender objc.Object, url foundation.URL, outError unsafe.Pointer) bool
 	_PanelDidChangeToDirectoryURL      func(sender objc.Object, url foundation.URL)
 	_PanelSelectionDidChange           func(sender objc.Object)
 	_PanelWillExpand                   func(sender objc.Object, expanding bool)
@@ -87,14 +89,14 @@ func (di *OpenSavePanelDelegate) HasPanelValidateURLError() bool {
 // Asks the delegate to validate the URL for a file that the user selected. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopensavepaneldelegate/1535141-panel?language=objc
-func (di *OpenSavePanelDelegate) SetPanelValidateURLError(f func(sender objc.Object, url foundation.URL, outError foundation.Error) bool) {
+func (di *OpenSavePanelDelegate) SetPanelValidateURLError(f func(sender objc.Object, url foundation.URL, outError unsafe.Pointer) bool) {
 	di._PanelValidateURLError = f
 }
 
 // Asks the delegate to validate the URL for a file that the user selected. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopensavepaneldelegate/1535141-panel?language=objc
-func (di *OpenSavePanelDelegate) PanelValidateURLError(sender objc.Object, url foundation.URL, outError foundation.Error) bool {
+func (di *OpenSavePanelDelegate) PanelValidateURLError(sender objc.Object, url foundation.URL, outError unsafe.Pointer) bool {
 	return di._PanelValidateURLError(sender, url, outError)
 }
 func (di *OpenSavePanelDelegate) HasPanelDidChangeToDirectoryURL() bool {
@@ -177,7 +179,7 @@ func (o_ OpenSavePanelDelegateObject) HasPanelShouldEnableURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopensavepaneldelegate/1535200-panel?language=objc
 func (o_ OpenSavePanelDelegateObject) PanelShouldEnableURL(sender objc.Object, url foundation.URL) bool {
-	rv := objc.Call[bool](o_, objc.Sel("panel:shouldEnableURL:"), sender, objc.Ptr(url))
+	rv := objc.Call[bool](o_, objc.Sel("panel:shouldEnableURL:"), sender, url)
 	return rv
 }
 
@@ -188,8 +190,8 @@ func (o_ OpenSavePanelDelegateObject) HasPanelValidateURLError() bool {
 // Asks the delegate to validate the URL for a file that the user selected. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopensavepaneldelegate/1535141-panel?language=objc
-func (o_ OpenSavePanelDelegateObject) PanelValidateURLError(sender objc.Object, url foundation.URL, outError foundation.Error) bool {
-	rv := objc.Call[bool](o_, objc.Sel("panel:validateURL:error:"), sender, objc.Ptr(url), objc.Ptr(outError))
+func (o_ OpenSavePanelDelegateObject) PanelValidateURLError(sender objc.Object, url foundation.URL, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](o_, objc.Sel("panel:validateURL:error:"), sender, url, outError)
 	return rv
 }
 
@@ -201,7 +203,7 @@ func (o_ OpenSavePanelDelegateObject) HasPanelDidChangeToDirectoryURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsopensavepaneldelegate/1527117-panel?language=objc
 func (o_ OpenSavePanelDelegateObject) PanelDidChangeToDirectoryURL(sender objc.Object, url foundation.URL) {
-	objc.Call[objc.Void](o_, objc.Sel("panel:didChangeToDirectoryURL:"), sender, objc.Ptr(url))
+	objc.Call[objc.Void](o_, objc.Sel("panel:didChangeToDirectoryURL:"), sender, url)
 }
 
 func (o_ OpenSavePanelDelegateObject) HasPanelSelectionDidChange() bool {

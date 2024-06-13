@@ -165,7 +165,7 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutReferenc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402876-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutReferenceSizeForHeaderInSection(collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:referenceSizeForHeaderInSection:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), section)
+	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:referenceSizeForHeaderInSection:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutSizeForI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402900-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutSizeForItemAtIndexPath(collectionView CollectionView, collectionViewLayout CollectionViewLayout, indexPath foundation.IndexPath) foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:sizeForItemAtIndexPath:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), objc.Ptr(indexPath))
+	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:sizeForItemAtIndexPath:"), collectionView, collectionViewLayout, indexPath)
 	return rv
 }
 
@@ -189,7 +189,7 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutInsetFor
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402874-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutInsetForSectionAtIndex(collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.EdgeInsets {
-	rv := objc.Call[foundation.EdgeInsets](c_, objc.Sel("collectionView:layout:insetForSectionAtIndex:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), section)
+	rv := objc.Call[foundation.EdgeInsets](c_, objc.Sel("collectionView:layout:insetForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutMinimumL
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402887-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutMinimumLineSpacingForSectionAtIndex(collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64 {
-	rv := objc.Call[float64](c_, objc.Sel("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), section)
+	rv := objc.Call[float64](c_, objc.Sel("collectionView:layout:minimumLineSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -213,7 +213,7 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutReferenc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402883-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutReferenceSizeForFooterInSection(collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) foundation.Size {
-	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:referenceSizeForFooterInSection:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), section)
+	rv := objc.Call[foundation.Size](c_, objc.Sel("collectionView:layout:referenceSizeForFooterInSection:"), collectionView, collectionViewLayout, section)
 	return rv
 }
 
@@ -225,6 +225,6 @@ func (c_ CollectionViewDelegateFlowLayoutObject) HasCollectionViewLayoutMinimumI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegateflowlayout/1402879-collectionview?language=objc
 func (c_ CollectionViewDelegateFlowLayoutObject) CollectionViewLayoutMinimumInteritemSpacingForSectionAtIndex(collectionView CollectionView, collectionViewLayout CollectionViewLayout, section int) float64 {
-	rv := objc.Call[float64](c_, objc.Sel("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), objc.Ptr(collectionView), objc.Ptr(collectionViewLayout), section)
+	rv := objc.Call[float64](c_, objc.Sel("collectionView:layout:minimumInteritemSpacingForSectionAtIndex:"), collectionView, collectionViewLayout, section)
 	return rv
 }

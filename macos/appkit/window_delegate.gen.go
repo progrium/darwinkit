@@ -1155,7 +1155,7 @@ func (w_ WindowDelegateObject) HasWindowWillUseFullScreenContentSize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419282-window?language=objc
 func (w_ WindowDelegateObject) WindowWillUseFullScreenContentSize(window Window, proposedSize foundation.Size) foundation.Size {
-	rv := objc.Call[foundation.Size](w_, objc.Sel("window:willUseFullScreenContentSize:"), objc.Ptr(window), proposedSize)
+	rv := objc.Call[foundation.Size](w_, objc.Sel("window:willUseFullScreenContentSize:"), window, proposedSize)
 	return rv
 }
 
@@ -1167,7 +1167,7 @@ func (w_ WindowDelegateObject) HasWindowDidMove() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419674-windowdidmove?language=objc
 func (w_ WindowDelegateObject) WindowDidMove(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidMove:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidMove:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidDeminiaturize() bool {
@@ -1178,7 +1178,7 @@ func (w_ WindowDelegateObject) HasWindowDidDeminiaturize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419296-windowdiddeminiaturize?language=objc
 func (w_ WindowDelegateObject) WindowDidDeminiaturize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidDeminiaturize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidDeminiaturize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidChangeScreenProfile() bool {
@@ -1189,7 +1189,7 @@ func (w_ WindowDelegateObject) HasWindowDidChangeScreenProfile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419581-windowdidchangescreenprofile?language=objc
 func (w_ WindowDelegateObject) WindowDidChangeScreenProfile(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeScreenProfile:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeScreenProfile:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasCustomWindowsToEnterFullScreenForWindowOnScreen() bool {
@@ -1200,7 +1200,7 @@ func (w_ WindowDelegateObject) HasCustomWindowsToEnterFullScreenForWindowOnScree
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419557-customwindowstoenterfullscreenfo?language=objc
 func (w_ WindowDelegateObject) CustomWindowsToEnterFullScreenForWindowOnScreen(window Window, screen Screen) []Window {
-	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToEnterFullScreenForWindow:onScreen:"), objc.Ptr(window), objc.Ptr(screen))
+	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToEnterFullScreenForWindow:onScreen:"), window, screen)
 	return rv
 }
 
@@ -1212,7 +1212,7 @@ func (w_ WindowDelegateObject) HasWindowDidChangeScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419267-windowdidchangescreen?language=objc
 func (w_ WindowDelegateObject) WindowDidChangeScreen(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeScreen:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeScreen:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillUseFullScreenPresentationOptions() bool {
@@ -1223,7 +1223,7 @@ func (w_ WindowDelegateObject) HasWindowWillUseFullScreenPresentationOptions() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419144-window?language=objc
 func (w_ WindowDelegateObject) WindowWillUseFullScreenPresentationOptions(window Window, proposedOptions ApplicationPresentationOptions) ApplicationPresentationOptions {
-	rv := objc.Call[ApplicationPresentationOptions](w_, objc.Sel("window:willUseFullScreenPresentationOptions:"), objc.Ptr(window), proposedOptions)
+	rv := objc.Call[ApplicationPresentationOptions](w_, objc.Sel("window:willUseFullScreenPresentationOptions:"), window, proposedOptions)
 	return rv
 }
 
@@ -1235,7 +1235,7 @@ func (w_ WindowDelegateObject) HasWindowWillBeginSheet() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419408-windowwillbeginsheet?language=objc
 func (w_ WindowDelegateObject) WindowWillBeginSheet(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillBeginSheet:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillBeginSheet:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillReturnFieldEditorToObject() bool {
@@ -1246,7 +1246,7 @@ func (w_ WindowDelegateObject) HasWindowWillReturnFieldEditorToObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419416-windowwillreturnfieldeditor?language=objc
 func (w_ WindowDelegateObject) WindowWillReturnFieldEditorToObject(sender Window, client objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("windowWillReturnFieldEditor:toObject:"), objc.Ptr(sender), client)
+	rv := objc.Call[objc.Object](w_, objc.Sel("windowWillReturnFieldEditor:toObject:"), sender, client)
 	return rv
 }
 
@@ -1258,7 +1258,7 @@ func (w_ WindowDelegateObject) HasWindowShouldClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419380-windowshouldclose?language=objc
 func (w_ WindowDelegateObject) WindowShouldClose(sender Window) bool {
-	rv := objc.Call[bool](w_, objc.Sel("windowShouldClose:"), objc.Ptr(sender))
+	rv := objc.Call[bool](w_, objc.Sel("windowShouldClose:"), sender)
 	return rv
 }
 
@@ -1270,7 +1270,7 @@ func (w_ WindowDelegateObject) HasWindowDidResignKey() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419711-windowdidresignkey?language=objc
 func (w_ WindowDelegateObject) WindowDidResignKey(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidResignKey:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidResignKey:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidEndSheet() bool {
@@ -1281,7 +1281,7 @@ func (w_ WindowDelegateObject) HasWindowDidEndSheet() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419773-windowdidendsheet?language=objc
 func (w_ WindowDelegateObject) WindowDidEndSheet(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidEndSheet:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidEndSheet:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidBecomeKey() bool {
@@ -1292,7 +1292,7 @@ func (w_ WindowDelegateObject) HasWindowDidBecomeKey() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419737-windowdidbecomekey?language=objc
 func (w_ WindowDelegateObject) WindowDidBecomeKey(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidBecomeKey:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidBecomeKey:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillResizeToSize() bool {
@@ -1303,7 +1303,7 @@ func (w_ WindowDelegateObject) HasWindowWillResizeToSize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419292-windowwillresize?language=objc
 func (w_ WindowDelegateObject) WindowWillResizeToSize(sender Window, frameSize foundation.Size) foundation.Size {
-	rv := objc.Call[foundation.Size](w_, objc.Sel("windowWillResize:toSize:"), objc.Ptr(sender), frameSize)
+	rv := objc.Call[foundation.Size](w_, objc.Sel("windowWillResize:toSize:"), sender, frameSize)
 	return rv
 }
 
@@ -1315,7 +1315,7 @@ func (w_ WindowDelegateObject) HasWindowWillMiniaturize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419461-windowwillminiaturize?language=objc
 func (w_ WindowDelegateObject) WindowWillMiniaturize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillMiniaturize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillMiniaturize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillEncodeRestorableState() bool {
@@ -1326,7 +1326,7 @@ func (w_ WindowDelegateObject) HasWindowWillEncodeRestorableState() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419619-window?language=objc
 func (w_ WindowDelegateObject) WindowWillEncodeRestorableState(window Window, state foundation.Coder) {
-	objc.Call[objc.Void](w_, objc.Sel("window:willEncodeRestorableState:"), objc.Ptr(window), objc.Ptr(state))
+	objc.Call[objc.Void](w_, objc.Sel("window:willEncodeRestorableState:"), window, state)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillExitVersionBrowser() bool {
@@ -1337,7 +1337,7 @@ func (w_ WindowDelegateObject) HasWindowWillExitVersionBrowser() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419252-windowwillexitversionbrowser?language=objc
 func (w_ WindowDelegateObject) WindowWillExitVersionBrowser(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillExitVersionBrowser:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillExitVersionBrowser:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidEnterFullScreen() bool {
@@ -1348,7 +1348,7 @@ func (w_ WindowDelegateObject) HasWindowDidEnterFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419116-windowdidenterfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowDidEnterFullScreen(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidEnterFullScreen:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidEnterFullScreen:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidResize() bool {
@@ -1359,7 +1359,7 @@ func (w_ WindowDelegateObject) HasWindowDidResize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419567-windowdidresize?language=objc
 func (w_ WindowDelegateObject) WindowDidResize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidResize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidResize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillMove() bool {
@@ -1370,7 +1370,7 @@ func (w_ WindowDelegateObject) HasWindowWillMove() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419336-windowwillmove?language=objc
 func (w_ WindowDelegateObject) WindowWillMove(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillMove:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillMove:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToExitFullScreenWithDuration() bool {
@@ -1381,7 +1381,7 @@ func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToExitFullScreenWith
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419705-window?language=objc
 func (w_ WindowDelegateObject) WindowStartCustomAnimationToExitFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
-	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToExitFullScreenWithDuration:"), objc.Ptr(window), duration)
+	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToExitFullScreenWithDuration:"), window, duration)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillExitFullScreen() bool {
@@ -1392,7 +1392,7 @@ func (w_ WindowDelegateObject) HasWindowWillExitFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419332-windowwillexitfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowWillExitFullScreen(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillExitFullScreen:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillExitFullScreen:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowShouldPopUpDocumentPathMenu() bool {
@@ -1403,7 +1403,7 @@ func (w_ WindowDelegateObject) HasWindowShouldPopUpDocumentPathMenu() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419465-window?language=objc
 func (w_ WindowDelegateObject) WindowShouldPopUpDocumentPathMenu(window Window, menu Menu) bool {
-	rv := objc.Call[bool](w_, objc.Sel("window:shouldPopUpDocumentPathMenu:"), objc.Ptr(window), objc.Ptr(menu))
+	rv := objc.Call[bool](w_, objc.Sel("window:shouldPopUpDocumentPathMenu:"), window, menu)
 	return rv
 }
 
@@ -1415,7 +1415,7 @@ func (w_ WindowDelegateObject) HasWindowDidMiniaturize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419621-windowdidminiaturize?language=objc
 func (w_ WindowDelegateObject) WindowDidMiniaturize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidMiniaturize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidMiniaturize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillReturnUndoManager() bool {
@@ -1426,7 +1426,7 @@ func (w_ WindowDelegateObject) HasWindowWillReturnUndoManager() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419745-windowwillreturnundomanager?language=objc
 func (w_ WindowDelegateObject) WindowWillReturnUndoManager(window Window) foundation.UndoManager {
-	rv := objc.Call[foundation.UndoManager](w_, objc.Sel("windowWillReturnUndoManager:"), objc.Ptr(window))
+	rv := objc.Call[foundation.UndoManager](w_, objc.Sel("windowWillReturnUndoManager:"), window)
 	return rv
 }
 
@@ -1438,7 +1438,7 @@ func (w_ WindowDelegateObject) HasWindowWillResizeForVersionBrowserWithMaxPrefer
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419360-window?language=objc
 func (w_ WindowDelegateObject) WindowWillResizeForVersionBrowserWithMaxPreferredSizeMaxAllowedSize(window Window, maxPreferredFrameSize foundation.Size, maxAllowedFrameSize foundation.Size) foundation.Size {
-	rv := objc.Call[foundation.Size](w_, objc.Sel("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), objc.Ptr(window), maxPreferredFrameSize, maxAllowedFrameSize)
+	rv := objc.Call[foundation.Size](w_, objc.Sel("window:willResizeForVersionBrowserWithMaxPreferredSize:maxAllowedSize:"), window, maxPreferredFrameSize, maxAllowedFrameSize)
 	return rv
 }
 
@@ -1450,7 +1450,7 @@ func (w_ WindowDelegateObject) HasWindowWillEnterFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419563-windowwillenterfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowWillEnterFullScreen(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillEnterFullScreen:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillEnterFullScreen:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidFailToEnterFullScreen() bool {
@@ -1461,7 +1461,7 @@ func (w_ WindowDelegateObject) HasWindowDidFailToEnterFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419591-windowdidfailtoenterfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowDidFailToEnterFullScreen(window Window) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidFailToEnterFullScreen:"), objc.Ptr(window))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidFailToEnterFullScreen:"), window)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidExpose() bool {
@@ -1472,7 +1472,7 @@ func (w_ WindowDelegateObject) HasWindowDidExpose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419258-windowdidexpose?language=objc
 func (w_ WindowDelegateObject) WindowDidExpose(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidExpose:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidExpose:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidEndLiveResize() bool {
@@ -1483,7 +1483,7 @@ func (w_ WindowDelegateObject) HasWindowDidEndLiveResize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419150-windowdidendliveresize?language=objc
 func (w_ WindowDelegateObject) WindowDidEndLiveResize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidEndLiveResize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidEndLiveResize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowShouldZoomToFrame() bool {
@@ -1494,7 +1494,7 @@ func (w_ WindowDelegateObject) HasWindowShouldZoomToFrame() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419533-windowshouldzoom?language=objc
 func (w_ WindowDelegateObject) WindowShouldZoomToFrame(window Window, newFrame foundation.Rect) bool {
-	rv := objc.Call[bool](w_, objc.Sel("windowShouldZoom:toFrame:"), objc.Ptr(window), newFrame)
+	rv := objc.Call[bool](w_, objc.Sel("windowShouldZoom:toFrame:"), window, newFrame)
 	return rv
 }
 
@@ -1506,7 +1506,7 @@ func (w_ WindowDelegateObject) HasWindowDidBecomeMain() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419190-windowdidbecomemain?language=objc
 func (w_ WindowDelegateObject) WindowDidBecomeMain(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidBecomeMain:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidBecomeMain:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToEnterFullScreenOnScreenWithDuration() bool {
@@ -1517,7 +1517,7 @@ func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToEnterFullScreenOnS
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419709-window?language=objc
 func (w_ WindowDelegateObject) WindowStartCustomAnimationToEnterFullScreenOnScreenWithDuration(window Window, screen Screen, duration foundation.TimeInterval) {
-	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), objc.Ptr(window), objc.Ptr(screen), duration)
+	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToEnterFullScreenOnScreen:withDuration:"), window, screen, duration)
 }
 
 func (w_ WindowDelegateObject) HasWindowShouldDragDocumentWithEventFromWithPasteboard() bool {
@@ -1528,7 +1528,7 @@ func (w_ WindowDelegateObject) HasWindowShouldDragDocumentWithEventFromWithPaste
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419452-window?language=objc
 func (w_ WindowDelegateObject) WindowShouldDragDocumentWithEventFromWithPasteboard(window Window, event Event, dragImageLocation foundation.Point, pasteboard Pasteboard) bool {
-	rv := objc.Call[bool](w_, objc.Sel("window:shouldDragDocumentWithEvent:from:withPasteboard:"), objc.Ptr(window), objc.Ptr(event), dragImageLocation, objc.Ptr(pasteboard))
+	rv := objc.Call[bool](w_, objc.Sel("window:shouldDragDocumentWithEvent:from:withPasteboard:"), window, event, dragImageLocation, pasteboard)
 	return rv
 }
 
@@ -1540,7 +1540,7 @@ func (w_ WindowDelegateObject) HasWindowDidDecodeRestorableState() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419475-window?language=objc
 func (w_ WindowDelegateObject) WindowDidDecodeRestorableState(window Window, state foundation.Coder) {
-	objc.Call[objc.Void](w_, objc.Sel("window:didDecodeRestorableState:"), objc.Ptr(window), objc.Ptr(state))
+	objc.Call[objc.Void](w_, objc.Sel("window:didDecodeRestorableState:"), window, state)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillPositionSheetUsingRect() bool {
@@ -1551,7 +1551,7 @@ func (w_ WindowDelegateObject) HasWindowWillPositionSheetUsingRect() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419611-window?language=objc
 func (w_ WindowDelegateObject) WindowWillPositionSheetUsingRect(window Window, sheet Window, rect foundation.Rect) foundation.Rect {
-	rv := objc.Call[foundation.Rect](w_, objc.Sel("window:willPositionSheet:usingRect:"), objc.Ptr(window), objc.Ptr(sheet), rect)
+	rv := objc.Call[foundation.Rect](w_, objc.Sel("window:willPositionSheet:usingRect:"), window, sheet, rect)
 	return rv
 }
 
@@ -1563,7 +1563,7 @@ func (w_ WindowDelegateObject) HasWindowDidChangeBackingProperties() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419517-windowdidchangebackingproperties?language=objc
 func (w_ WindowDelegateObject) WindowDidChangeBackingProperties(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeBackingProperties:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeBackingProperties:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasCustomWindowsToEnterFullScreenForWindow() bool {
@@ -1574,7 +1574,7 @@ func (w_ WindowDelegateObject) HasCustomWindowsToEnterFullScreenForWindow() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419521-customwindowstoenterfullscreenfo?language=objc
 func (w_ WindowDelegateObject) CustomWindowsToEnterFullScreenForWindow(window Window) []Window {
-	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToEnterFullScreenForWindow:"), objc.Ptr(window))
+	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToEnterFullScreenForWindow:"), window)
 	return rv
 }
 
@@ -1586,7 +1586,7 @@ func (w_ WindowDelegateObject) HasWindowWillUseStandardFrameDefaultFrame() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419684-windowwillusestandardframe?language=objc
 func (w_ WindowDelegateObject) WindowWillUseStandardFrameDefaultFrame(window Window, newFrame foundation.Rect) foundation.Rect {
-	rv := objc.Call[foundation.Rect](w_, objc.Sel("windowWillUseStandardFrame:defaultFrame:"), objc.Ptr(window), newFrame)
+	rv := objc.Call[foundation.Rect](w_, objc.Sel("windowWillUseStandardFrame:defaultFrame:"), window, newFrame)
 	return rv
 }
 
@@ -1598,7 +1598,7 @@ func (w_ WindowDelegateObject) HasWindowDidEnterVersionBrowser() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419064-windowdidenterversionbrowser?language=objc
 func (w_ WindowDelegateObject) WindowDidEnterVersionBrowser(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidEnterVersionBrowser:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidEnterVersionBrowser:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToEnterFullScreenWithDuration() bool {
@@ -1609,7 +1609,7 @@ func (w_ WindowDelegateObject) HasWindowStartCustomAnimationToEnterFullScreenWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419406-window?language=objc
 func (w_ WindowDelegateObject) WindowStartCustomAnimationToEnterFullScreenWithDuration(window Window, duration foundation.TimeInterval) {
-	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToEnterFullScreenWithDuration:"), objc.Ptr(window), duration)
+	objc.Call[objc.Void](w_, objc.Sel("window:startCustomAnimationToEnterFullScreenWithDuration:"), window, duration)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidResignMain() bool {
@@ -1620,7 +1620,7 @@ func (w_ WindowDelegateObject) HasWindowDidResignMain() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419584-windowdidresignmain?language=objc
 func (w_ WindowDelegateObject) WindowDidResignMain(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidResignMain:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidResignMain:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidExitVersionBrowser() bool {
@@ -1631,7 +1631,7 @@ func (w_ WindowDelegateObject) HasWindowDidExitVersionBrowser() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419501-windowdidexitversionbrowser?language=objc
 func (w_ WindowDelegateObject) WindowDidExitVersionBrowser(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidExitVersionBrowser:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidExitVersionBrowser:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillClose() bool {
@@ -1642,7 +1642,7 @@ func (w_ WindowDelegateObject) HasWindowWillClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419605-windowwillclose?language=objc
 func (w_ WindowDelegateObject) WindowWillClose(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillClose:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillClose:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasCustomWindowsToExitFullScreenForWindow() bool {
@@ -1653,7 +1653,7 @@ func (w_ WindowDelegateObject) HasCustomWindowsToExitFullScreenForWindow() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419070-customwindowstoexitfullscreenfor?language=objc
 func (w_ WindowDelegateObject) CustomWindowsToExitFullScreenForWindow(window Window) []Window {
-	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToExitFullScreenForWindow:"), objc.Ptr(window))
+	rv := objc.Call[[]Window](w_, objc.Sel("customWindowsToExitFullScreenForWindow:"), window)
 	return rv
 }
 
@@ -1665,7 +1665,7 @@ func (w_ WindowDelegateObject) HasWindowDidUpdate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419493-windowdidupdate?language=objc
 func (w_ WindowDelegateObject) WindowDidUpdate(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidUpdate:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidUpdate:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillStartLiveResize() bool {
@@ -1676,7 +1676,7 @@ func (w_ WindowDelegateObject) HasWindowWillStartLiveResize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419555-windowwillstartliveresize?language=objc
 func (w_ WindowDelegateObject) WindowWillStartLiveResize(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillStartLiveResize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillStartLiveResize:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidChangeOcclusionState() bool {
@@ -1687,7 +1687,7 @@ func (w_ WindowDelegateObject) HasWindowDidChangeOcclusionState() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419424-windowdidchangeocclusionstate?language=objc
 func (w_ WindowDelegateObject) WindowDidChangeOcclusionState(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeOcclusionState:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidChangeOcclusionState:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidFailToExitFullScreen() bool {
@@ -1698,7 +1698,7 @@ func (w_ WindowDelegateObject) HasWindowDidFailToExitFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419573-windowdidfailtoexitfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowDidFailToExitFullScreen(window Window) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidFailToExitFullScreen:"), objc.Ptr(window))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidFailToExitFullScreen:"), window)
 }
 
 func (w_ WindowDelegateObject) HasWindowDidExitFullScreen() bool {
@@ -1709,7 +1709,7 @@ func (w_ WindowDelegateObject) HasWindowDidExitFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419146-windowdidexitfullscreen?language=objc
 func (w_ WindowDelegateObject) WindowDidExitFullScreen(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowDidExitFullScreen:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowDidExitFullScreen:"), notification)
 }
 
 func (w_ WindowDelegateObject) HasWindowWillEnterVersionBrowser() bool {
@@ -1720,5 +1720,5 @@ func (w_ WindowDelegateObject) HasWindowWillEnterVersionBrowser() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowdelegate/1419463-windowwillenterversionbrowser?language=objc
 func (w_ WindowDelegateObject) WindowWillEnterVersionBrowser(notification foundation.Notification) {
-	objc.Call[objc.Void](w_, objc.Sel("windowWillEnterVersionBrowser:"), objc.Ptr(notification))
+	objc.Call[objc.Void](w_, objc.Sel("windowWillEnterVersionBrowser:"), notification)
 }

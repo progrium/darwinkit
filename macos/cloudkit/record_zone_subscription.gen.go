@@ -37,7 +37,7 @@ func RecordZoneSubscriptionFrom(ptr unsafe.Pointer) RecordZoneSubscription {
 }
 
 func (r_ RecordZoneSubscription) InitWithZoneIDSubscriptionID(zoneID IRecordZoneID, subscriptionID SubscriptionID) RecordZoneSubscription {
-	rv := objc.Call[RecordZoneSubscription](r_, objc.Sel("initWithZoneID:subscriptionID:"), objc.Ptr(zoneID), subscriptionID)
+	rv := objc.Call[RecordZoneSubscription](r_, objc.Sel("initWithZoneID:subscriptionID:"), zoneID, subscriptionID)
 	return rv
 }
 

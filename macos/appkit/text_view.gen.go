@@ -21,7 +21,7 @@ type ITextView interface {
 	IText
 	UseAllLigatures(sender objc.IObject)
 	ShowFindIndicatorForRange(charRange foundation.Range)
-	SmartInsertForStringReplacingRangeBeforeStringAfterString(pasteString string, charRangeToReplace foundation.Range, beforeString string, afterString string)
+	SmartInsertForStringReplacingRangeBeforeStringAfterString(pasteString string, charRangeToReplace foundation.Range, beforeString unsafe.Pointer, afterString unsafe.Pointer)
 	CheckTextInSelection(sender objc.IObject)
 	OrderFrontSpacingPanel(sender objc.IObject)
 	StopSpeaking(sender objc.IObject)
@@ -213,7 +213,7 @@ func TextViewFrom(ptr unsafe.Pointer) TextView {
 }
 
 func (t_ TextView) InitWithFrameTextContainer(frameRect foundation.Rect, container ITextContainer) TextView {
-	rv := objc.Call[TextView](t_, objc.Sel("initWithFrame:textContainer:"), frameRect, objc.Ptr(container))
+	rv := objc.Call[TextView](t_, objc.Sel("initWithFrame:textContainer:"), frameRect, container)
 	return rv
 }
 
@@ -289,7 +289,7 @@ func (t_ TextView) ShowFindIndicatorForRange(charRange foundation.Range) {
 // Determines whether whitespace needs to be added around the string to preserve proper spacing and punctuation when it replaces the characters in the specified range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449544-smartinsertforstring?language=objc
-func (t_ TextView) SmartInsertForStringReplacingRangeBeforeStringAfterString(pasteString string, charRangeToReplace foundation.Range, beforeString string, afterString string) {
+func (t_ TextView) SmartInsertForStringReplacingRangeBeforeStringAfterString(pasteString string, charRangeToReplace foundation.Range, beforeString unsafe.Pointer, afterString unsafe.Pointer) {
 	objc.Call[objc.Void](t_, objc.Sel("smartInsertForString:replacingRange:beforeString:afterString:"), pasteString, charRangeToReplace, beforeString, afterString)
 }
 
@@ -318,7 +318,7 @@ func (t_ TextView) StopSpeaking(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449277-writeselectiontopasteboard?language=objc
 func (t_ TextView) WriteSelectionToPasteboardTypes(pboard IPasteboard, types []PasteboardType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("writeSelectionToPasteboard:types:"), objc.Ptr(pboard), types)
+	rv := objc.Call[bool](t_, objc.Sel("writeSelectionToPasteboard:types:"), pboard, types)
 	return rv
 }
 
@@ -326,7 +326,7 @@ func (t_ TextView) WriteSelectionToPasteboardTypes(pboard IPasteboard, types []P
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449187-writeselectiontopasteboard?language=objc
 func (t_ TextView) WriteSelectionToPasteboardType(pboard IPasteboard, type_ PasteboardType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("writeSelectionToPasteboard:type:"), objc.Ptr(pboard), type_)
+	rv := objc.Call[bool](t_, objc.Sel("writeSelectionToPasteboard:type:"), pboard, type_)
 	return rv
 }
 
@@ -349,7 +349,7 @@ func (t_ TextView) UpdateInsertionPointStateAndRestartTimer(restartFlag bool) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449423-dragimageforselectionwithevent?language=objc
 func (t_ TextView) DragImageForSelectionWithEventOrigin(event IEvent, origin foundation.PointPointer) Image {
-	rv := objc.Call[Image](t_, objc.Sel("dragImageForSelectionWithEvent:origin:"), objc.Ptr(event), origin)
+	rv := objc.Call[Image](t_, objc.Sel("dragImageForSelectionWithEvent:origin:"), event, origin)
 	return rv
 }
 
@@ -488,7 +488,7 @@ func (t_ TextView) DragOperationForDraggingInfoType(dragInfo PDraggingInfo, type
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449176-dragoperationfordragginginfo?language=objc
 func (t_ TextView) DragOperationForDraggingInfoObjectType(dragInfoObject objc.IObject, type_ PasteboardType) DragOperation {
-	rv := objc.Call[DragOperation](t_, objc.Sel("dragOperationForDraggingInfo:type:"), objc.Ptr(dragInfoObject), type_)
+	rv := objc.Call[DragOperation](t_, objc.Sel("dragOperationForDraggingInfo:type:"), dragInfoObject, type_)
 	return rv
 }
 
@@ -630,7 +630,7 @@ func (t_ TextView) LowerBaseline(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449473-handletextcheckingresults?language=objc
 func (t_ TextView) HandleTextCheckingResultsForRangeTypesOptionsOrthographyWordCount(results []foundation.ITextCheckingResult, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.IObject, orthography foundation.IOrthography, wordCount int) {
-	objc.Call[objc.Void](t_, objc.Sel("handleTextCheckingResults:forRange:types:options:orthography:wordCount:"), results, range_, checkingTypes, options, objc.Ptr(orthography), wordCount)
+	objc.Call[objc.Void](t_, objc.Sel("handleTextCheckingResults:forRange:types:options:orthography:wordCount:"), results, range_, checkingTypes, options, orthography, wordCount)
 }
 
 // Sets the color of the selected text. [Full Topic]
@@ -666,7 +666,7 @@ func (t_ TextView) BreakUndoCoalescing() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449232-drawinsertionpointinrect?language=objc
 func (t_ TextView) DrawInsertionPointInRectColorTurnedOn(rect foundation.Rect, color IColor, flag bool) {
-	objc.Call[objc.Void](t_, objc.Sel("drawInsertionPointInRect:color:turnedOn:"), rect, objc.Ptr(color), flag)
+	objc.Call[objc.Void](t_, objc.Sel("drawInsertionPointInRect:color:turnedOn:"), rect, color, flag)
 }
 
 // Changes the state of grammar checking from enabled to disabled and vice versa. [Full Topic]
@@ -680,7 +680,7 @@ func (t_ TextView) ToggleGrammarChecking(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449469-readselectionfrompasteboard?language=objc
 func (t_ TextView) ReadSelectionFromPasteboard(pboard IPasteboard) bool {
-	rv := objc.Call[bool](t_, objc.Sel("readSelectionFromPasteboard:"), objc.Ptr(pboard))
+	rv := objc.Call[bool](t_, objc.Sel("readSelectionFromPasteboard:"), pboard)
 	return rv
 }
 
@@ -796,7 +796,7 @@ func (t_ TextView) CharacterIndexForInsertionAtPoint(point foundation.Point) uin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449190-readselectionfrompasteboard?language=objc
 func (t_ TextView) ReadSelectionFromPasteboardType(pboard IPasteboard, type_ PasteboardType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("readSelectionFromPasteboard:type:"), objc.Ptr(pboard), type_)
+	rv := objc.Call[bool](t_, objc.Sel("readSelectionFromPasteboard:type:"), pboard, type_)
 	return rv
 }
 
@@ -834,7 +834,7 @@ func (t_ TextView) ToggleAutomaticTextCompletion(sender objc.IObject) objc.Objec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449413-dragselectionwithevent?language=objc
 func (t_ TextView) DragSelectionWithEventOffsetSlideBack(event IEvent, mouseOffset foundation.Size, slideBack bool) bool {
-	rv := objc.Call[bool](t_, objc.Sel("dragSelectionWithEvent:offset:slideBack:"), objc.Ptr(event), mouseOffset, slideBack)
+	rv := objc.Call[bool](t_, objc.Sel("dragSelectionWithEvent:offset:slideBack:"), event, mouseOffset, slideBack)
 	return rv
 }
 
@@ -886,7 +886,7 @@ func (t_ TextView) ClickedOnLinkAtIndex(link objc.IObject, charIndex uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/2990526-performvalidatedreplacementinran?language=objc
 func (t_ TextView) PerformValidatedReplacementInRangeWithAttributedString(range_ foundation.Range, attributedString foundation.IAttributedString) bool {
-	rv := objc.Call[bool](t_, objc.Sel("performValidatedReplacementInRange:withAttributedString:"), range_, objc.Ptr(attributedString))
+	rv := objc.Call[bool](t_, objc.Sel("performValidatedReplacementInRange:withAttributedString:"), range_, attributedString)
 	return rv
 }
 
@@ -946,7 +946,7 @@ func (t_ TextView) UseStandardLigatures(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449479-replacetextcontainer?language=objc
 func (t_ TextView) ReplaceTextContainer(newContainer ITextContainer) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceTextContainer:"), objc.Ptr(newContainer))
+	objc.Call[objc.Void](t_, objc.Sel("replaceTextContainer:"), newContainer)
 }
 
 // Releases the drag information still existing after the dragging session has completed. [Full Topic]
@@ -1066,7 +1066,7 @@ func (t_ TextView) DefaultParagraphStyle() ParagraphStyle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449271-defaultparagraphstyle?language=objc
 func (t_ TextView) SetDefaultParagraphStyle(value IParagraphStyle) {
-	objc.Call[objc.Void](t_, objc.Sel("setDefaultParagraphStyle:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setDefaultParagraphStyle:"), value)
 }
 
 // A Boolean value that indicates whether the text view automatically supplies the destination of a link as a tooltip for text that has a link attribute. [Full Topic]
@@ -1334,7 +1334,7 @@ func (t_ TextView) InsertionPointColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449309-insertionpointcolor?language=objc
 func (t_ TextView) SetInsertionPointColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setInsertionPointColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInsertionPointColor:"), value)
 }
 
 // A Boolean value that indicates whether the text view supplies autocompletion suggestions as the user types. [Full Topic]
@@ -1568,7 +1568,7 @@ func (t_ TextView) TextContainer() TextContainer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextview/1449364-textcontainer?language=objc
 func (t_ TextView) SetTextContainer(value ITextContainer) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextContainer:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextContainer:"), value)
 }
 
 // The preferred direction of selection. [Full Topic]

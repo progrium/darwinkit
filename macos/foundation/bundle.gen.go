@@ -18,14 +18,14 @@ type _BundleClass struct {
 // An interface definition for the [Bundle] class.
 type IBundle interface {
 	objc.IObject
-	LoadNibNamedOwnerTopLevelObjects(nibName objc.IObject, owner objc.IObject, topLevelObjects []objc.IObject) bool
+	LoadNibNamedOwnerTopLevelObjects(nibName objc.IObject, owner objc.IObject, topLevelObjects unsafe.Pointer) bool
 	PathForResourceOfType(name string, ext string) string
 	URLForResourceWithExtensionSubdirectoryLocalization(name string, ext string, subpath string, localizationName string) URL
-	LoadAndReturnError(error IError) bool
+	LoadAndReturnError(error unsafe.Pointer) bool
 	LocalizedStringForKeyValueTable(key string, value string, tableName string) string
 	PathForResourceOfTypeInDirectoryForLocalization(name string, ext string, subpath string, localizationName string) string
 	Unload() bool
-	PreflightAndReturnError(error IError) bool
+	PreflightAndReturnError(error unsafe.Pointer) bool
 	Load() bool
 	URLForImageResource(name objc.IObject) URL
 	URLForAuxiliaryExecutable(executableName string) URL
@@ -94,7 +94,7 @@ func Bundle_BundleWithPath(path string) Bundle {
 }
 
 func (b_ Bundle) InitWithURL(url IURL) Bundle {
-	rv := objc.Call[Bundle](b_, objc.Sel("initWithURL:"), objc.Ptr(url))
+	rv := objc.Call[Bundle](b_, objc.Sel("initWithURL:"), url)
 	return rv
 }
 
@@ -108,7 +108,7 @@ func NewBundleWithURL(url IURL) Bundle {
 }
 
 func (bc _BundleClass) BundleWithURL(url IURL) Bundle {
-	rv := objc.Call[Bundle](bc, objc.Sel("bundleWithURL:"), objc.Ptr(url))
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleWithURL:"), url)
 	return rv
 }
 
@@ -156,8 +156,8 @@ func (b_ Bundle) Init() Bundle {
 // Loads a nib from the bundle with the specified file name and owner. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1402909-loadnibnamed?language=objc
-func (b_ Bundle) LoadNibNamedOwnerTopLevelObjects(nibName objc.IObject, owner objc.IObject, topLevelObjects []objc.IObject) bool {
-	rv := objc.Call[bool](b_, objc.Sel("loadNibNamed:owner:topLevelObjects:"), objc.Ptr(nibName), owner, topLevelObjects)
+func (b_ Bundle) LoadNibNamedOwnerTopLevelObjects(nibName objc.IObject, owner objc.IObject, topLevelObjects unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("loadNibNamed:owner:topLevelObjects:"), nibName, owner, topLevelObjects)
 	return rv
 }
 
@@ -173,7 +173,7 @@ func (b_ Bundle) PathForResourceOfType(name string, ext string) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1409807-urlsforresourceswithextension?language=objc
 func (bc _BundleClass) URLsForResourcesWithExtensionSubdirectoryInBundleWithURL(ext string, subpath string, bundleURL IURL) []URL {
-	rv := objc.Call[[]URL](bc, objc.Sel("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, objc.Ptr(bundleURL))
+	rv := objc.Call[[]URL](bc, objc.Sel("URLsForResourcesWithExtension:subdirectory:inBundleWithURL:"), ext, subpath, bundleURL)
 	return rv
 }
 
@@ -203,7 +203,7 @@ func Bundle_PreferredLocalizationsFromArrayForPreferences(localizationsArray []s
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1417717-bundleforclass?language=objc
 func (bc _BundleClass) BundleForClass(aClass objc.IClass) Bundle {
-	rv := objc.Call[Bundle](bc, objc.Sel("bundleForClass:"), objc.Ptr(aClass))
+	rv := objc.Call[Bundle](bc, objc.Sel("bundleForClass:"), aClass)
 	return rv
 }
 
@@ -240,8 +240,8 @@ func (b_ Bundle) URLForResourceWithExtensionSubdirectoryLocalization(name string
 // Loads the bundle’s executable code and returns any errors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1411819-loadandreturnerror?language=objc
-func (b_ Bundle) LoadAndReturnError(error IError) bool {
-	rv := objc.Call[bool](b_, objc.Sel("loadAndReturnError:"), objc.Ptr(error))
+func (b_ Bundle) LoadAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("loadAndReturnError:"), error)
 	return rv
 }
 
@@ -287,8 +287,8 @@ func Bundle_BundleWithIdentifier(identifier string) Bundle {
 // Returns a Boolean value indicating whether the bundle’s executable code could be loaded successfully. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1415083-preflightandreturnerror?language=objc
-func (b_ Bundle) PreflightAndReturnError(error IError) bool {
-	rv := objc.Call[bool](b_, objc.Sel("preflightAndReturnError:"), objc.Ptr(error))
+func (b_ Bundle) PreflightAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](b_, objc.Sel("preflightAndReturnError:"), error)
 	return rv
 }
 
@@ -304,7 +304,7 @@ func (b_ Bundle) Load() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519886-urlforimageresource?language=objc
 func (b_ Bundle) URLForImageResource(name objc.IObject) URL {
-	rv := objc.Call[URL](b_, objc.Sel("URLForImageResource:"), objc.Ptr(name))
+	rv := objc.Call[URL](b_, objc.Sel("URLForImageResource:"), name)
 	return rv
 }
 
@@ -312,7 +312,7 @@ func (b_ Bundle) URLForImageResource(name objc.IObject) URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1416361-urlforresource?language=objc
 func (bc _BundleClass) URLForResourceWithExtensionSubdirectoryInBundleWithURL(name string, ext string, subpath string, bundleURL IURL) URL {
-	rv := objc.Call[URL](bc, objc.Sel("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, objc.Ptr(bundleURL))
+	rv := objc.Call[URL](bc, objc.Sel("URLForResource:withExtension:subdirectory:inBundleWithURL:"), name, ext, subpath, bundleURL)
 	return rv
 }
 
@@ -343,7 +343,7 @@ func (b_ Bundle) ObjectForInfoDictionaryKey(key string) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519854-pathforimageresource?language=objc
 func (b_ Bundle) PathForImageResource(name objc.IObject) string {
-	rv := objc.Call[string](b_, objc.Sel("pathForImageResource:"), objc.Ptr(name))
+	rv := objc.Call[string](b_, objc.Sel("pathForImageResource:"), name)
 	return rv
 }
 
@@ -367,7 +367,7 @@ func (b_ Bundle) LocalizedAttributedStringForKeyValueTable(key string, value str
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1519901-imageforresource?language=objc
 func (b_ Bundle) ImageForResource(name objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("imageForResource:"), objc.Ptr(name))
+	rv := objc.Call[objc.Object](b_, objc.Sel("imageForResource:"), name)
 	return rv
 }
 
@@ -422,7 +422,7 @@ func (b_ Bundle) PathForAuxiliaryExecutable(executableName string) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1477280-pathforsoundresource?language=objc
 func (b_ Bundle) PathForSoundResource(name objc.IObject) string {
-	rv := objc.Call[string](b_, objc.Sel("pathForSoundResource:"), objc.Ptr(name))
+	rv := objc.Call[string](b_, objc.Sel("pathForSoundResource:"), name)
 	return rv
 }
 
@@ -461,7 +461,7 @@ func Bundle_PathForResourceOfTypeInDirectory_(name string, ext string, bundlePat
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbundle/1500918-contexthelpforkey?language=objc
 func (b_ Bundle) ContextHelpForKey(key objc.IObject) AttributedString {
-	rv := objc.Call[AttributedString](b_, objc.Sel("contextHelpForKey:"), objc.Ptr(key))
+	rv := objc.Call[AttributedString](b_, objc.Sel("contextHelpForKey:"), key)
 	return rv
 }
 

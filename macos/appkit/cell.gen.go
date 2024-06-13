@@ -39,7 +39,7 @@ type ICell interface {
 	TakeDoubleValueFrom(sender objc.IObject)
 	TakeFloatValueFrom(sender objc.IObject)
 	CellAttribute(parameter CellAttribute) int
-	GetPeriodicDelayInterval(delay *float64, interval *float64)
+	GetPeriodicDelayInterval(delay *float32, interval *float32)
 	DrawFocusRingMaskWithFrameInView(cellFrame foundation.Rect, controlView IView)
 	TrackMouseInRectOfViewUntilMouseUp(event IEvent, cellFrame foundation.Rect, controlView IView, flag bool) bool
 	SetUpFieldEditorAttributes(textObj IText) Text
@@ -130,8 +130,8 @@ type ICell interface {
 	MouseDownFlags() int
 	Tag() int
 	SetTag(value int)
-	FloatValue() float64
-	SetFloatValue(value float64)
+	FloatValue() float32
+	SetFloatValue(value float32)
 	Type() CellType
 	SetType(value CellType)
 	IsContinuous() bool
@@ -174,7 +174,7 @@ func (c_ Cell) Init() Cell {
 }
 
 func (c_ Cell) InitImageCell(image IImage) Cell {
-	rv := objc.Call[Cell](c_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[Cell](c_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func NewCell() Cell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1532763-fieldeditorforview?language=objc
 func (c_ Cell) FieldEditorForView(controlView IView) TextView {
-	rv := objc.Call[TextView](c_, objc.Sel("fieldEditorForView:"), objc.Ptr(controlView))
+	rv := objc.Call[TextView](c_, objc.Sel("fieldEditorForView:"), controlView)
 	return rv
 }
 
@@ -242,7 +242,7 @@ func (c_ Cell) TakeIntValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1529601-hittestforevent?language=objc
 func (c_ Cell) HitTestForEventInRectOfView(event IEvent, cellFrame foundation.Rect, controlView IView) CellHitResult {
-	rv := objc.Call[CellHitResult](c_, objc.Sel("hitTestForEvent:inRect:ofView:"), objc.Ptr(event), cellFrame, objc.Ptr(controlView))
+	rv := objc.Call[CellHitResult](c_, objc.Sel("hitTestForEvent:inRect:ofView:"), event, cellFrame, controlView)
 	return rv
 }
 
@@ -258,7 +258,7 @@ func (c_ Cell) SendActionOn(mask EventMask) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533600-editwithframe?language=objc
 func (c_ Cell) EditWithFrameInViewEditorDelegateEvent(rect foundation.Rect, controlView IView, textObj IText, delegate objc.IObject, event IEvent) {
-	objc.Call[objc.Void](c_, objc.Sel("editWithFrame:inView:editor:delegate:event:"), rect, objc.Ptr(controlView), objc.Ptr(textObj), delegate, objc.Ptr(event))
+	objc.Call[objc.Void](c_, objc.Sel("editWithFrame:inView:editor:delegate:event:"), rect, controlView, textObj, delegate, event)
 }
 
 // Sets the value of the receiver’s cell to an integer value obtained from the specified object. [Full Topic]
@@ -272,21 +272,21 @@ func (c_ Cell) TakeIntegerValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535574-endediting?language=objc
 func (c_ Cell) EndEditing(textObj IText) {
-	objc.Call[objc.Void](c_, objc.Sel("endEditing:"), objc.Ptr(textObj))
+	objc.Call[objc.Void](c_, objc.Sel("endEditing:"), textObj)
 }
 
 // Selects the specified text range in the cell's field editor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1527438-selectwithframe?language=objc
 func (c_ Cell) SelectWithFrameInViewEditorDelegateStartLength(rect foundation.Rect, controlView IView, textObj IText, delegate objc.IObject, selStart int, selLength int) {
-	objc.Call[objc.Void](c_, objc.Sel("selectWithFrame:inView:editor:delegate:start:length:"), rect, objc.Ptr(controlView), objc.Ptr(textObj), delegate, selStart, selLength)
+	objc.Call[objc.Void](c_, objc.Sel("selectWithFrame:inView:editor:delegate:start:length:"), rect, controlView, textObj, delegate, selStart, selLength)
 }
 
 // Stops tracking mouse events within the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534650-stoptracking?language=objc
 func (c_ Cell) StopTrackingAtInViewMouseIsUp(lastPoint foundation.Point, stopPoint foundation.Point, controlView IView, flag bool) {
-	objc.Call[objc.Void](c_, objc.Sel("stopTracking:at:inView:mouseIsUp:"), lastPoint, stopPoint, objc.Ptr(controlView), flag)
+	objc.Call[objc.Void](c_, objc.Sel("stopTracking:at:inView:mouseIsUp:"), lastPoint, stopPoint, controlView, flag)
 }
 
 // Sets the value for the specified cell attribute. [Full Topic]
@@ -300,7 +300,7 @@ func (c_ Cell) SetCellAttributeTo(parameter CellAttribute, value int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534018-highlightcolorwithframe?language=objc
 func (c_ Cell) HighlightColorWithFrameInView(cellFrame foundation.Rect, controlView IView) Color {
-	rv := objc.Call[Color](c_, objc.Sel("highlightColorWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	rv := objc.Call[Color](c_, objc.Sel("highlightColorWithFrame:inView:"), cellFrame, controlView)
 	return rv
 }
 
@@ -308,7 +308,7 @@ func (c_ Cell) HighlightColorWithFrameInView(cellFrame foundation.Rect, controlV
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1526362-expansionframewithframe?language=objc
 func (c_ Cell) ExpansionFrameWithFrameInView(cellFrame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("expansionFrameWithFrame:inView:"), cellFrame, objc.Ptr(view))
+	rv := objc.Call[foundation.Rect](c_, objc.Sel("expansionFrameWithFrame:inView:"), cellFrame, view)
 	return rv
 }
 
@@ -339,7 +339,7 @@ func (c_ Cell) TitleRectForBounds(rect foundation.Rect) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533933-highlight?language=objc
 func (c_ Cell) HighlightWithFrameInView(flag bool, cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](c_, objc.Sel("highlight:withFrame:inView:"), flag, cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](c_, objc.Sel("highlight:withFrame:inView:"), flag, cellFrame, controlView)
 }
 
 // Sets the value of the receiver’s cell to a double-precision floating-point value obtained from the specified object. [Full Topic]
@@ -367,7 +367,7 @@ func (c_ Cell) CellAttribute(parameter CellAttribute) int {
 // Returns the initial delay and repeat values for continuous sending of action messages to target objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535611-getperiodicdelay?language=objc
-func (c_ Cell) GetPeriodicDelayInterval(delay *float64, interval *float64) {
+func (c_ Cell) GetPeriodicDelayInterval(delay *float32, interval *float32) {
 	objc.Call[objc.Void](c_, objc.Sel("getPeriodicDelay:interval:"), delay, interval)
 }
 
@@ -375,14 +375,14 @@ func (c_ Cell) GetPeriodicDelayInterval(delay *float64, interval *float64) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1524608-drawfocusringmaskwithframe?language=objc
 func (c_ Cell) DrawFocusRingMaskWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](c_, objc.Sel("drawFocusRingMaskWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](c_, objc.Sel("drawFocusRingMaskWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Initiates the mouse tracking behavior in a cell. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1533606-trackmouse?language=objc
 func (c_ Cell) TrackMouseInRectOfViewUntilMouseUp(event IEvent, cellFrame foundation.Rect, controlView IView, flag bool) bool {
-	rv := objc.Call[bool](c_, objc.Sel("trackMouse:inRect:ofView:untilMouseUp:"), objc.Ptr(event), cellFrame, objc.Ptr(controlView), flag)
+	rv := objc.Call[bool](c_, objc.Sel("trackMouse:inRect:ofView:untilMouseUp:"), event, cellFrame, controlView, flag)
 	return rv
 }
 
@@ -390,7 +390,7 @@ func (c_ Cell) TrackMouseInRectOfViewUntilMouseUp(event IEvent, cellFrame founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535864-setupfieldeditorattributes?language=objc
 func (c_ Cell) SetUpFieldEditorAttributes(textObj IText) Text {
-	rv := objc.Call[Text](c_, objc.Sel("setUpFieldEditorAttributes:"), objc.Ptr(textObj))
+	rv := objc.Call[Text](c_, objc.Sel("setUpFieldEditorAttributes:"), textObj)
 	return rv
 }
 
@@ -406,7 +406,7 @@ func (c_ Cell) CellSizeForBounds(rect foundation.Rect) foundation.Size {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1532987-draggingimagecomponentswithframe?language=objc
 func (c_ Cell) DraggingImageComponentsWithFrameInView(frame foundation.Rect, view IView) []DraggingImageComponent {
-	rv := objc.Call[[]DraggingImageComponent](c_, objc.Sel("draggingImageComponentsWithFrame:inView:"), frame, objc.Ptr(view))
+	rv := objc.Call[[]DraggingImageComponent](c_, objc.Sel("draggingImageComponentsWithFrame:inView:"), frame, view)
 	return rv
 }
 
@@ -414,7 +414,7 @@ func (c_ Cell) DraggingImageComponentsWithFrameInView(frame foundation.Rect, vie
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535599-continuetracking?language=objc
 func (c_ Cell) ContinueTrackingAtInView(lastPoint foundation.Point, currentPoint foundation.Point, controlView IView) bool {
-	rv := objc.Call[bool](c_, objc.Sel("continueTracking:at:inView:"), lastPoint, currentPoint, objc.Ptr(controlView))
+	rv := objc.Call[bool](c_, objc.Sel("continueTracking:at:inView:"), lastPoint, currentPoint, controlView)
 	return rv
 }
 
@@ -429,7 +429,7 @@ func (c_ Cell) PerformClick(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534929-focusringmaskboundsforframe?language=objc
 func (c_ Cell) FocusRingMaskBoundsForFrameInView(cellFrame foundation.Rect, controlView IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](c_, objc.Sel("focusRingMaskBoundsForFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	rv := objc.Call[foundation.Rect](c_, objc.Sel("focusRingMaskBoundsForFrame:inView:"), cellFrame, controlView)
 	return rv
 }
 
@@ -444,14 +444,14 @@ func (c_ Cell) SetNextState() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535830-drawwithframe?language=objc
 func (c_ Cell) DrawWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](c_, objc.Sel("drawWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](c_, objc.Sel("drawWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Draws the interior portion of the receiver, which includes the image or text portion but does not include the border. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1531274-drawinteriorwithframe?language=objc
 func (c_ Cell) DrawInteriorWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](c_, objc.Sel("drawInteriorWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](c_, objc.Sel("drawInteriorWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Sets the value of the receiver’s cell to the string value obtained from the specified object. [Full Topic]
@@ -465,7 +465,7 @@ func (c_ Cell) TakeStringValueFrom(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1528566-drawwithexpansionframe?language=objc
 func (c_ Cell) DrawWithExpansionFrameInView(cellFrame foundation.Rect, view IView) {
-	objc.Call[objc.Void](c_, objc.Sel("drawWithExpansionFrame:inView:"), cellFrame, objc.Ptr(view))
+	objc.Call[objc.Void](c_, objc.Sel("drawWithExpansionFrame:inView:"), cellFrame, view)
 }
 
 // Returns the rectangle within which the receiver draws itself [Full Topic]
@@ -480,7 +480,7 @@ func (c_ Cell) DrawingRectForBounds(rect foundation.Rect) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1526663-starttrackingat?language=objc
 func (c_ Cell) StartTrackingAtInView(startPoint foundation.Point, controlView IView) bool {
-	rv := objc.Call[bool](c_, objc.Sel("startTrackingAt:inView:"), startPoint, objc.Ptr(controlView))
+	rv := objc.Call[bool](c_, objc.Sel("startTrackingAt:inView:"), startPoint, controlView)
 	return rv
 }
 
@@ -496,7 +496,7 @@ func (c_ Cell) ImageRectForBounds(rect foundation.Rect) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535924-menuforevent?language=objc
 func (c_ Cell) MenuForEventInRectOfView(event IEvent, cellFrame foundation.Rect, view IView) Menu {
-	rv := objc.Call[Menu](c_, objc.Sel("menuForEvent:inRect:ofView:"), objc.Ptr(event), cellFrame, objc.Ptr(view))
+	rv := objc.Call[Menu](c_, objc.Sel("menuForEvent:inRect:ofView:"), event, cellFrame, view)
 	return rv
 }
 
@@ -504,7 +504,7 @@ func (c_ Cell) MenuForEventInRectOfView(event IEvent, cellFrame foundation.Rect,
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1524496-resetcursorrect?language=objc
 func (c_ Cell) ResetCursorRectInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](c_, objc.Sel("resetCursorRect:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](c_, objc.Sel("resetCursorRect:inView:"), cellFrame, controlView)
 }
 
 // The object that receives the cell’s action messages. [Full Topic]
@@ -610,7 +610,7 @@ func (c_ Cell) AttributedStringValue() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534119-attributedstringvalue?language=objc
 func (c_ Cell) SetAttributedStringValue(value foundation.IAttributedString) {
-	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringValue:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setAttributedStringValue:"), value)
 }
 
 // A Boolean value indicating whether the cell assumes responsibility for undo operations. [Full Topic]
@@ -655,7 +655,7 @@ func (c_ Cell) Menu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1530019-menu?language=objc
 func (c_ Cell) SetMenu(value IMenu) {
-	objc.Call[objc.Void](c_, objc.Sel("setMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setMenu:"), value)
 }
 
 // A Boolean value indicating whether the cell wraps text whose length that exceeds the cell’s frame. [Full Topic]
@@ -911,7 +911,7 @@ func (c_ Cell) ControlView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1535913-controlview?language=objc
 func (c_ Cell) SetControlView(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setControlView:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setControlView:"), value)
 }
 
 // A Boolean value indicating whether the cell accepts first responder status. [Full Topic]
@@ -949,7 +949,7 @@ func (c_ Cell) Formatter() foundation.Formatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1531115-formatter?language=objc
 func (c_ Cell) SetFormatter(value foundation.IFormatter) {
-	objc.Call[objc.Void](c_, objc.Sel("setFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setFormatter:"), value)
 }
 
 // A Boolean value indicating whether the cell’s text can be selected. [Full Topic]
@@ -1070,7 +1070,7 @@ func (c_ Cell) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1526710-font?language=objc
 func (c_ Cell) SetFont(value IFont) {
-	objc.Call[objc.Void](c_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setFont:"), value)
 }
 
 // The modifier flags for the last (left) mouse-down event. [Full Topic]
@@ -1099,15 +1099,15 @@ func (c_ Cell) SetTag(value int) {
 // The cell’s value as a single-precision floating-point number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534292-floatvalue?language=objc
-func (c_ Cell) FloatValue() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("floatValue"))
+func (c_ Cell) FloatValue() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("floatValue"))
 	return rv
 }
 
 // The cell’s value as a single-precision floating-point number. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1534292-floatvalue?language=objc
-func (c_ Cell) SetFloatValue(value float64) {
+func (c_ Cell) SetFloatValue(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setFloatValue:"), value)
 }
 
@@ -1206,7 +1206,7 @@ func (c_ Cell) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscell/1526028-image?language=objc
 func (c_ Cell) SetImage(value IImage) {
-	objc.Call[objc.Void](c_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setImage:"), value)
 }
 
 // The size of the cell. [Full Topic]

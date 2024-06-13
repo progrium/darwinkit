@@ -120,7 +120,7 @@ func (t_ TabViewDelegateObject) HasTabViewDidChangeNumberOfTabViewItems() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391657-tabviewdidchangenumberoftabviewi?language=objc
 func (t_ TabViewDelegateObject) TabViewDidChangeNumberOfTabViewItems(tabView TabView) {
-	objc.Call[objc.Void](t_, objc.Sel("tabViewDidChangeNumberOfTabViewItems:"), objc.Ptr(tabView))
+	objc.Call[objc.Void](t_, objc.Sel("tabViewDidChangeNumberOfTabViewItems:"), tabView)
 }
 
 func (t_ TabViewDelegateObject) HasTabViewDidSelectTabViewItem() bool {
@@ -131,7 +131,7 @@ func (t_ TabViewDelegateObject) HasTabViewDidSelectTabViewItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391582-tabview?language=objc
 func (t_ TabViewDelegateObject) TabViewDidSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), tabView, tabViewItem)
 }
 
 func (t_ TabViewDelegateObject) HasTabViewShouldSelectTabViewItem() bool {
@@ -142,7 +142,7 @@ func (t_ TabViewDelegateObject) HasTabViewShouldSelectTabViewItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391651-tabview?language=objc
 func (t_ TabViewDelegateObject) TabViewShouldSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tabView:shouldSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	rv := objc.Call[bool](t_, objc.Sel("tabView:shouldSelectTabViewItem:"), tabView, tabViewItem)
 	return rv
 }
 
@@ -154,5 +154,5 @@ func (t_ TabViewDelegateObject) HasTabViewWillSelectTabViewItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewdelegate/1391611-tabview?language=objc
 func (t_ TabViewDelegateObject) TabViewWillSelectTabViewItem(tabView TabView, tabViewItem TabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:willSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("tabView:willSelectTabViewItem:"), tabView, tabViewItem)
 }

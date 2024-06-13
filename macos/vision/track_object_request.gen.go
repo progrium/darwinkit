@@ -34,7 +34,7 @@ func TrackObjectRequestFrom(ptr unsafe.Pointer) TrackObjectRequest {
 }
 
 func (t_ TrackObjectRequest) InitWithDetectedObjectObservationCompletionHandler(observation IDetectedObjectObservation, completionHandler RequestCompletionHandler) TrackObjectRequest {
-	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:completionHandler:"), objc.Ptr(observation), completionHandler)
+	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:completionHandler:"), observation, completionHandler)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewTrackObjectRequestWithDetectedObjectObservationCompletionHandler(observa
 }
 
 func (t_ TrackObjectRequest) InitWithDetectedObjectObservation(observation IDetectedObjectObservation) TrackObjectRequest {
-	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:"), objc.Ptr(observation))
+	rv := objc.Call[TrackObjectRequest](t_, objc.Sel("initWithDetectedObjectObservation:"), observation)
 	return rv
 }
 

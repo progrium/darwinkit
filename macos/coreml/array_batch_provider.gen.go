@@ -5,7 +5,6 @@ package coreml
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -35,15 +34,15 @@ func ArrayBatchProviderFrom(ptr unsafe.Pointer) ArrayBatchProvider {
 	}
 }
 
-func (a_ ArrayBatchProvider) InitWithDictionaryError(dictionary map[string][]objc.IObject, error foundation.IError) ArrayBatchProvider {
-	rv := objc.Call[ArrayBatchProvider](a_, objc.Sel("initWithDictionary:error:"), dictionary, objc.Ptr(error))
+func (a_ ArrayBatchProvider) InitWithDictionaryError(dictionary map[string][]objc.IObject, error unsafe.Pointer) ArrayBatchProvider {
+	rv := objc.Call[ArrayBatchProvider](a_, objc.Sel("initWithDictionary:error:"), dictionary, error)
 	return rv
 }
 
 // Creates a batch provider based on feature names and their associated arrays of data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlarraybatchprovider/2962853-initwithdictionary?language=objc
-func NewArrayBatchProviderWithDictionaryError(dictionary map[string][]objc.IObject, error foundation.IError) ArrayBatchProvider {
+func NewArrayBatchProviderWithDictionaryError(dictionary map[string][]objc.IObject, error unsafe.Pointer) ArrayBatchProvider {
 	instance := ArrayBatchProviderClass.Alloc().InitWithDictionaryError(dictionary, error)
 	instance.Autorelease()
 	return instance

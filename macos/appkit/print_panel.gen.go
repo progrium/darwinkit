@@ -102,7 +102,7 @@ func PrintPanel_PrintPanel() PrintPanel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490539-runmodalwithprintinfo?language=objc
 func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
-	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), objc.Ptr(printInfo))
+	rv := objc.Call[int](p_, objc.Sel("runModalWithPrintInfo:"), printInfo)
 	return rv
 }
 
@@ -110,14 +110,14 @@ func (p_ PrintPanel) RunModalWithPrintInfo(printInfo IPrintInfo) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490510-addaccessorycontroller?language=objc
 func (p_ PrintPanel) AddAccessoryController(accessoryController IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), objc.Ptr(accessoryController))
+	objc.Call[objc.Void](p_, objc.Sel("addAccessoryController:"), accessoryController)
 }
 
 // Removes the specified controller and accessory view from the Print panel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintpanel/1490527-removeaccessorycontroller?language=objc
 func (p_ PrintPanel) RemoveAccessoryController(accessoryController IViewController) {
-	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), objc.Ptr(accessoryController))
+	objc.Call[objc.Void](p_, objc.Sel("removeAccessoryController:"), accessoryController)
 }
 
 // Sets the title of the Print panel’s default button. [Full Topic]

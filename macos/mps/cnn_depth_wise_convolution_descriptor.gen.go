@@ -67,7 +67,7 @@ func CNNDepthWiseConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKe
 }
 
 func (cc _CNNDepthWiseConvolutionDescriptorClass) CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNDepthWiseConvolutionDescriptor {
-	rv := objc.Call[CNNDepthWiseConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, objc.Ptr(neuronFilter))
+	rv := objc.Call[CNNDepthWiseConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
 	return rv
 }
 

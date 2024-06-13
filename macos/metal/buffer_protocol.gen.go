@@ -98,7 +98,7 @@ func (b_ BufferObject) HasNewTextureWithDescriptorOffsetBytesPerRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbuffer/1613852-newtexturewithdescriptor?language=objc
 func (b_ BufferObject) NewTextureWithDescriptorOffsetBytesPerRow(descriptor TextureDescriptor, offset uint, bytesPerRow uint) TextureObject {
-	rv := objc.Call[TextureObject](b_, objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"), objc.Ptr(descriptor), offset, bytesPerRow)
+	rv := objc.Call[TextureObject](b_, objc.Sel("newTextureWithDescriptor:offset:bytesPerRow:"), descriptor, offset, bytesPerRow)
 	return rv
 }
 

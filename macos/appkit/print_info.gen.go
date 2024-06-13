@@ -121,7 +121,7 @@ func (p_ PrintInfo) Dictionary() foundation.MutableDictionary {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1530099-takesettingsfrompdfinfo?language=objc
 func (p_ PrintInfo) TakeSettingsFromPDFInfo(inPDFInfo IPDFInfo) {
-	objc.Call[objc.Void](p_, objc.Sel("takeSettingsFromPDFInfo:"), objc.Ptr(inPDFInfo))
+	objc.Call[objc.Void](p_, objc.Sel("takeSettingsFromPDFInfo:"), inPDFInfo)
 }
 
 // Returns a Core Printing object configured with the print info’s print settings information [Full Topic]
@@ -181,7 +181,7 @@ func (p_ PrintInfo) Printer() Printer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1524495-printer?language=objc
 func (p_ PrintInfo) SetPrinter(value IPrinter) {
-	objc.Call[objc.Void](p_, objc.Sel("setPrinter:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPrinter:"), value)
 }
 
 // The width of the left margin. [Full Topic]
@@ -399,7 +399,7 @@ func PrintInfo_SharedPrintInfo() PrintInfo {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsprintinfo/1535610-sharedprintinfo?language=objc
 func (pc _PrintInfoClass) SetSharedPrintInfo(value IPrintInfo) {
-	objc.Call[objc.Void](pc, objc.Sel("setSharedPrintInfo:"), objc.Ptr(value))
+	objc.Call[objc.Void](pc, objc.Sel("setSharedPrintInfo:"), value)
 }
 
 // The shared printing information object. [Full Topic]

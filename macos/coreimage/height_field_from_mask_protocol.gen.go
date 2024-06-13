@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask?language=objc
 type PHeightFieldFromMask interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (h_ HeightFieldFromMaskObject) HasSetRadius() bool {
 // The length of the height-field transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask/3228488-radius?language=objc
-func (h_ HeightFieldFromMaskObject) SetRadius(value float64) {
+func (h_ HeightFieldFromMaskObject) SetRadius(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setRadius:"), value)
 }
 
@@ -53,8 +53,8 @@ func (h_ HeightFieldFromMaskObject) HasRadius() bool {
 // The length of the height-field transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask/3228488-radius?language=objc
-func (h_ HeightFieldFromMaskObject) Radius() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("radius"))
+func (h_ HeightFieldFromMaskObject) Radius() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("radius"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (h_ HeightFieldFromMaskObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciheightfieldfrommask/3228487-inputimage?language=objc
 func (h_ HeightFieldFromMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
 func (h_ HeightFieldFromMaskObject) HasInputImage() bool {

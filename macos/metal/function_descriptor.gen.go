@@ -135,7 +135,7 @@ func (f_ FunctionDescriptor) ConstantValues() FunctionConstantValues {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctiondescriptor/3553993-constantvalues?language=objc
 func (f_ FunctionDescriptor) SetConstantValues(value IFunctionConstantValues) {
-	objc.Call[objc.Void](f_, objc.Sel("setConstantValues:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setConstantValues:"), value)
 }
 
 // A new name for the created function object. [Full Topic]

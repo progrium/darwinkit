@@ -92,7 +92,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCGImageOptions(cgImage coregraphic
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), objc.Ptr(imageURL), options, completionHandler)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), imageURL, options, completionHandler)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func NewGenerateOpticalFlowRequestWithTargetedImageDataOptionsCompletionHandler(
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), objc.Ptr(ciImage), options, completionHandler)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), ciImage, options, completionHandler)
 	return rv
 }
 
@@ -218,7 +218,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCIImageOptionsCompletionHandler(ci
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:"), objc.Ptr(ciImage), orientation, options)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:"), ciImage, orientation, options)
 	return rv
 }
 
@@ -232,7 +232,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCIImageOrientationOptions(ciImage 
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:"), objc.Ptr(imageURL), orientation, options)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:"), imageURL, orientation, options)
 	return rv
 }
 
@@ -246,7 +246,7 @@ func NewGenerateOpticalFlowRequestWithTargetedImageURLOrientationOptions(imageUR
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), objc.Ptr(ciImage), orientation, options, completionHandler)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), ciImage, orientation, options, completionHandler)
 	return rv
 }
 
@@ -302,7 +302,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOptions(sampleBuffer
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), objc.Ptr(imageURL), orientation, options, completionHandler)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), imageURL, orientation, options, completionHandler)
 	return rv
 }
 
@@ -330,7 +330,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCMSampleBufferOrientationOptionsCo
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedCIImageOptions(ciImage coreimage.IImage, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:"), objc.Ptr(ciImage), options)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedCIImage:options:"), ciImage, options)
 	return rv
 }
 
@@ -386,7 +386,7 @@ func NewGenerateOpticalFlowRequestWithTargetedCVPixelBufferOrientationOptionsCom
 }
 
 func (g_ GenerateOpticalFlowRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) GenerateOpticalFlowRequest {
-	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:"), objc.Ptr(imageURL), options)
+	rv := objc.Call[GenerateOpticalFlowRequest](g_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
 	return rv
 }
 

@@ -43,7 +43,7 @@ func SearchableItemFrom(ptr unsafe.Pointer) SearchableItem {
 }
 
 func (s_ SearchableItem) InitWithUniqueIdentifierDomainIdentifierAttributeSet(uniqueIdentifier string, domainIdentifier string, attributeSet ISearchableItemAttributeSet) SearchableItem {
-	rv := objc.Call[SearchableItem](s_, objc.Sel("initWithUniqueIdentifier:domainIdentifier:attributeSet:"), uniqueIdentifier, domainIdentifier, objc.Ptr(attributeSet))
+	rv := objc.Call[SearchableItem](s_, objc.Sel("initWithUniqueIdentifier:domainIdentifier:attributeSet:"), uniqueIdentifier, domainIdentifier, attributeSet)
 	return rv
 }
 
@@ -118,7 +118,7 @@ func (s_ SearchableItem) ExpirationDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621680-expirationdate?language=objc
 func (s_ SearchableItem) SetExpirationDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setExpirationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setExpirationDate:"), value)
 }
 
 // The set of attributes that contain metadata associated with the item in a CSSearchableItemAttributeSet object. [Full Topic]
@@ -133,5 +133,5 @@ func (s_ SearchableItem) AttributeSet() SearchableItemAttributeSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitem/1621649-attributeset?language=objc
 func (s_ SearchableItem) SetAttributeSet(value ISearchableItemAttributeSet) {
-	objc.Call[objc.Void](s_, objc.Sel("setAttributeSet:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAttributeSet:"), value)
 }

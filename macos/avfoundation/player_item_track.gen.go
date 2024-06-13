@@ -20,7 +20,7 @@ type IPlayerItemTrack interface {
 	objc.IObject
 	IsEnabled() bool
 	SetEnabled(value bool)
-	CurrentVideoFrameRate() float64
+	CurrentVideoFrameRate() float32
 	VideoFieldMode() string
 	SetVideoFieldMode(value string)
 	AssetTrack() AssetTrack
@@ -77,8 +77,8 @@ func (p_ PlayerItemTrack) SetEnabled(value bool) {
 // The current frame rate of the video track as it plays. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemtrack/1388956-currentvideoframerate?language=objc
-func (p_ PlayerItemTrack) CurrentVideoFrameRate() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("currentVideoFrameRate"))
+func (p_ PlayerItemTrack) CurrentVideoFrameRate() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("currentVideoFrameRate"))
 	return rv
 }
 

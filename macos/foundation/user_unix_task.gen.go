@@ -60,15 +60,15 @@ func (u_ UserUnixTask) Init() UserUnixTask {
 	return rv
 }
 
-func (u_ UserUnixTask) InitWithURLError(url IURL, error IError) UserUnixTask {
-	rv := objc.Call[UserUnixTask](u_, objc.Sel("initWithURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (u_ UserUnixTask) InitWithURLError(url IURL, error unsafe.Pointer) UserUnixTask {
+	rv := objc.Call[UserUnixTask](u_, objc.Sel("initWithURL:error:"), url, error)
 	return rv
 }
 
 // Return a user script task instance given a URL for a script file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserscripttask/1409998-initwithurl?language=objc
-func NewUserUnixTaskWithURLError(url IURL, error IError) UserUnixTask {
+func NewUserUnixTaskWithURLError(url IURL, error unsafe.Pointer) UserUnixTask {
 	instance := UserUnixTaskClass.Alloc().InitWithURLError(url, error)
 	instance.Autorelease()
 	return instance
@@ -93,7 +93,7 @@ func (u_ UserUnixTask) StandardInput() FileHandle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1407821-standardinput?language=objc
 func (u_ UserUnixTask) SetStandardInput(value IFileHandle) {
-	objc.Call[objc.Void](u_, objc.Sel("setStandardInput:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setStandardInput:"), value)
 }
 
 // The standard output stream. [Full Topic]
@@ -108,7 +108,7 @@ func (u_ UserUnixTask) StandardOutput() FileHandle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1418151-standardoutput?language=objc
 func (u_ UserUnixTask) SetStandardOutput(value IFileHandle) {
-	objc.Call[objc.Void](u_, objc.Sel("setStandardOutput:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setStandardOutput:"), value)
 }
 
 // The standard error stream. [Full Topic]
@@ -123,5 +123,5 @@ func (u_ UserUnixTask) StandardError() FileHandle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuserunixtask/1411522-standarderror?language=objc
 func (u_ UserUnixTask) SetStandardError(value IFileHandle) {
-	objc.Call[objc.Void](u_, objc.Sel("setStandardError:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setStandardError:"), value)
 }

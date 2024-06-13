@@ -19,8 +19,8 @@ type _MutableAudioMixInputParametersClass struct {
 // An interface definition for the [MutableAudioMixInputParameters] class.
 type IMutableAudioMixInputParameters interface {
 	IAudioMixInputParameters
-	SetVolumeAtTime(volume float64, time coremedia.Time)
-	SetVolumeRampFromStartVolumeToEndVolumeTimeRange(startVolume float64, endVolume float64, timeRange coremedia.TimeRange)
+	SetVolumeAtTime(volume float32, time coremedia.Time)
+	SetVolumeRampFromStartVolumeToEndVolumeTimeRange(startVolume float32, endVolume float32, timeRange coremedia.TimeRange)
 	SetAudioTimePitchAlgorithm(value AudioTimePitchAlgorithm)
 	SetAudioTapProcessor(value objc.IObject)
 	SetTrackID(value objc.IObject)
@@ -40,7 +40,7 @@ func MutableAudioMixInputParametersFrom(ptr unsafe.Pointer) MutableAudioMixInput
 }
 
 func (mc _MutableAudioMixInputParametersClass) AudioMixInputParametersWithTrack(track IAssetTrack) MutableAudioMixInputParameters {
-	rv := objc.Call[MutableAudioMixInputParameters](mc, objc.Sel("audioMixInputParametersWithTrack:"), objc.Ptr(track))
+	rv := objc.Call[MutableAudioMixInputParameters](mc, objc.Sel("audioMixInputParametersWithTrack:"), track)
 	return rv
 }
 
@@ -86,14 +86,14 @@ func (m_ MutableAudioMixInputParameters) Init() MutableAudioMixInputParameters {
 // Sets the value of the audio volume starting at the specified time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableaudiomixinputparameters/1389875-setvolume?language=objc
-func (m_ MutableAudioMixInputParameters) SetVolumeAtTime(volume float64, time coremedia.Time) {
+func (m_ MutableAudioMixInputParameters) SetVolumeAtTime(volume float32, time coremedia.Time) {
 	objc.Call[objc.Void](m_, objc.Sel("setVolume:atTime:"), volume, time)
 }
 
 // Sets a volume ramp to apply during a specified time range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableaudiomixinputparameters/1386056-setvolumerampfromstartvolume?language=objc
-func (m_ MutableAudioMixInputParameters) SetVolumeRampFromStartVolumeToEndVolumeTimeRange(startVolume float64, endVolume float64, timeRange coremedia.TimeRange) {
+func (m_ MutableAudioMixInputParameters) SetVolumeRampFromStartVolumeToEndVolumeTimeRange(startVolume float32, endVolume float32, timeRange coremedia.TimeRange) {
 	objc.Call[objc.Void](m_, objc.Sel("setVolumeRampFromStartVolume:toEndVolume:timeRange:"), startVolume, endVolume, timeRange)
 }
 
@@ -108,12 +108,12 @@ func (m_ MutableAudioMixInputParameters) SetAudioTimePitchAlgorithm(value AudioT
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableaudiomixinputparameters/1389296-audiotapprocessor?language=objc
 func (m_ MutableAudioMixInputParameters) SetAudioTapProcessor(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setAudioTapProcessor:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setAudioTapProcessor:"), value)
 }
 
 // The identifier of the audio track to which the parameters should be applied. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutableaudiomixinputparameters/1389209-trackid?language=objc
 func (m_ MutableAudioMixInputParameters) SetTrackID(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setTrackID:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setTrackID:"), value)
 }

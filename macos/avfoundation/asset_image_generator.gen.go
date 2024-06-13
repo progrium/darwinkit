@@ -53,7 +53,7 @@ func AssetImageGeneratorFrom(ptr unsafe.Pointer) AssetImageGenerator {
 }
 
 func (a_ AssetImageGenerator) InitWithAsset(asset IAsset) AssetImageGenerator {
-	rv := objc.Call[AssetImageGenerator](a_, objc.Sel("initWithAsset:"), objc.Ptr(asset))
+	rv := objc.Call[AssetImageGenerator](a_, objc.Sel("initWithAsset:"), asset)
 	return rv
 }
 
@@ -67,7 +67,7 @@ func NewAssetImageGeneratorWithAsset(asset IAsset) AssetImageGenerator {
 }
 
 func (ac _AssetImageGeneratorClass) AssetImageGeneratorWithAsset(asset IAsset) AssetImageGenerator {
-	rv := objc.Call[AssetImageGenerator](ac, objc.Sel("assetImageGeneratorWithAsset:"), objc.Ptr(asset))
+	rv := objc.Call[AssetImageGenerator](ac, objc.Sel("assetImageGeneratorWithAsset:"), asset)
 	return rv
 }
 
@@ -147,7 +147,7 @@ func (a_ AssetImageGenerator) VideoComposition() VideoComposition {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetimagegenerator/1390189-videocomposition?language=objc
 func (a_ AssetImageGenerator) SetVideoComposition(value IVideoComposition) {
-	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setVideoComposition:"), value)
 }
 
 // A maximum length of time before the requested time to allow image generation to occur. [Full Topic]

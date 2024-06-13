@@ -56,7 +56,7 @@ func (r_ RNNMatrixTrainingState) Init() RNNMatrixTrainingState {
 
 func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNMatrixTrainingState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func RNNMatrixTrainingState_TemporaryStateWithCommandBufferResourceList(commandB
 
 func (r_ RNNMatrixTrainingState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func RNNMatrixTrainingState_TemporaryStateWithCommandBuffer(cmdBuf metal.PComman
 
 func (rc _RNNMatrixTrainingStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNMatrixTrainingState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNMatrixTrainingState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func RNNMatrixTrainingState_TemporaryStateWithCommandBufferTextureDescriptor(cmd
 
 func (r_ RNNMatrixTrainingState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNMatrixTrainingState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNMatrixTrainingState](r_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

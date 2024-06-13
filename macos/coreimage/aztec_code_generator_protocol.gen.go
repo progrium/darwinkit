@@ -11,27 +11,27 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator?language=objc
 type PAztecCodeGenerator interface {
 	// optional
-	SetCompactStyle(value float64)
+	SetCompactStyle(value float32)
 	HasSetCompactStyle() bool
 
 	// optional
-	CompactStyle() float64
+	CompactStyle() float32
 	HasCompactStyle() bool
 
 	// optional
-	SetCorrectionLevel(value float64)
+	SetCorrectionLevel(value float32)
 	HasSetCorrectionLevel() bool
 
 	// optional
-	CorrectionLevel() float64
+	CorrectionLevel() float32
 	HasCorrectionLevel() bool
 
 	// optional
-	SetLayers(value float64)
+	SetLayers(value float32)
 	HasSetLayers() bool
 
 	// optional
-	Layers() float64
+	Layers() float32
 	HasLayers() bool
 
 	// optional
@@ -58,7 +58,7 @@ func (a_ AztecCodeGeneratorObject) HasSetCompactStyle() bool {
 // A Boolean that specifies whether to force a compact style Aztec code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228063-compactstyle?language=objc
-func (a_ AztecCodeGeneratorObject) SetCompactStyle(value float64) {
+func (a_ AztecCodeGeneratorObject) SetCompactStyle(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setCompactStyle:"), value)
 }
 
@@ -69,8 +69,8 @@ func (a_ AztecCodeGeneratorObject) HasCompactStyle() bool {
 // A Boolean that specifies whether to force a compact style Aztec code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228063-compactstyle?language=objc
-func (a_ AztecCodeGeneratorObject) CompactStyle() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("compactStyle"))
+func (a_ AztecCodeGeneratorObject) CompactStyle() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("compactStyle"))
 	return rv
 }
 
@@ -81,7 +81,7 @@ func (a_ AztecCodeGeneratorObject) HasSetCorrectionLevel() bool {
 // The Aztec error correction, a value from 5 to 95. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228064-correctionlevel?language=objc
-func (a_ AztecCodeGeneratorObject) SetCorrectionLevel(value float64) {
+func (a_ AztecCodeGeneratorObject) SetCorrectionLevel(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setCorrectionLevel:"), value)
 }
 
@@ -92,8 +92,8 @@ func (a_ AztecCodeGeneratorObject) HasCorrectionLevel() bool {
 // The Aztec error correction, a value from 5 to 95. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228064-correctionlevel?language=objc
-func (a_ AztecCodeGeneratorObject) CorrectionLevel() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("correctionLevel"))
+func (a_ AztecCodeGeneratorObject) CorrectionLevel() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("correctionLevel"))
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (a_ AztecCodeGeneratorObject) HasSetLayers() bool {
 // The number of Aztec layers, a value from 1 to 32. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228065-layers?language=objc
-func (a_ AztecCodeGeneratorObject) SetLayers(value float64) {
+func (a_ AztecCodeGeneratorObject) SetLayers(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setLayers:"), value)
 }
 
@@ -115,8 +115,8 @@ func (a_ AztecCodeGeneratorObject) HasLayers() bool {
 // The number of Aztec layers, a value from 1 to 32. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciazteccodegenerator/3228065-layers?language=objc
-func (a_ AztecCodeGeneratorObject) Layers() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("layers"))
+func (a_ AztecCodeGeneratorObject) Layers() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("layers"))
 	return rv
 }
 

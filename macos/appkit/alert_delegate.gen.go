@@ -54,6 +54,6 @@ func (a_ AlertDelegateObject) HasAlertShowHelp() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsalertdelegate/1526980-alertshowhelp?language=objc
 func (a_ AlertDelegateObject) AlertShowHelp(alert Alert) bool {
-	rv := objc.Call[bool](a_, objc.Sel("alertShowHelp:"), objc.Ptr(alert))
+	rv := objc.Call[bool](a_, objc.Sel("alertShowHelp:"), alert)
 	return rv
 }

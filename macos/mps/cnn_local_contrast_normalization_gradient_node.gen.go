@@ -18,20 +18,20 @@ type _CNNLocalContrastNormalizationGradientNodeClass struct {
 // An interface definition for the [CNNLocalContrastNormalizationGradientNode] class.
 type ICNNLocalContrastNormalizationGradientNode interface {
 	INNGradientFilterNode
-	Pm() float64
-	SetPm(value float64)
-	Beta() float64
-	SetBeta(value float64)
+	Pm() float32
+	SetPm(value float32)
+	Beta() float32
+	SetBeta(value float32)
 	KernelWidth() uint
-	Alpha() float64
-	SetAlpha(value float64)
-	P0() float64
-	SetP0(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Alpha() float32
+	SetAlpha(value float32)
+	P0() float32
+	SetP0(value float32)
+	Delta() float32
+	SetDelta(value float32)
 	KernelHeight() uint
-	Ps() float64
-	SetPs(value float64)
+	Ps() float32
+	SetPs(value float32)
 }
 
 // A representation of a gradient local-contrast normalization kernel. [Full Topic]
@@ -48,7 +48,7 @@ func CNNLocalContrastNormalizationGradientNodeFrom(ptr unsafe.Pointer) CNNLocalC
 }
 
 func (c_ CNNLocalContrastNormalizationGradientNode) InitWithSourceGradientSourceImageGradientStateKernelWidthKernelHeight(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelWidth uint, kernelHeight uint) CNNLocalContrastNormalizationGradientNode {
-	rv := objc.Call[CNNLocalContrastNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelWidth:kernelHeight:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelWidth, kernelHeight)
+	rv := objc.Call[CNNLocalContrastNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelWidth:kernelHeight:"), sourceGradient, sourceImage, gradientState, kernelWidth, kernelHeight)
 	return rv
 }
 
@@ -62,7 +62,7 @@ func NewCNNLocalContrastNormalizationGradientNodeWithSourceGradientSourceImageGr
 }
 
 func (cc _CNNLocalContrastNormalizationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateKernelWidthKernelHeight(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelWidth uint, kernelHeight uint) CNNLocalContrastNormalizationGradientNode {
-	rv := objc.Call[CNNLocalContrastNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelWidth:kernelHeight:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelWidth, kernelHeight)
+	rv := objc.Call[CNNLocalContrastNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelWidth:kernelHeight:"), sourceGradient, sourceImage, gradientState, kernelWidth, kernelHeight)
 	return rv
 }
 
@@ -96,30 +96,30 @@ func (c_ CNNLocalContrastNormalizationGradientNode) Init() CNNLocalContrastNorma
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948053-pm?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) Pm() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("pm"))
+func (c_ CNNLocalContrastNormalizationGradientNode) Pm() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pm"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948053-pm?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetPm(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetPm(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPm:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2947977-beta?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNLocalContrastNormalizationGradientNode) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2947977-beta?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetBeta(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
@@ -134,45 +134,45 @@ func (c_ CNNLocalContrastNormalizationGradientNode) KernelWidth() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2947973-alpha?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNLocalContrastNormalizationGradientNode) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2947973-alpha?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetAlpha(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948017-p0?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) P0() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("p0"))
+func (c_ CNNLocalContrastNormalizationGradientNode) P0() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("p0"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948017-p0?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetP0(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetP0(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setP0:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948014-delta?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNLocalContrastNormalizationGradientNode) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948014-delta?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetDelta(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }
 
@@ -187,14 +187,14 @@ func (c_ CNNLocalContrastNormalizationGradientNode) KernelHeight() uint {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948008-ps?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) Ps() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("ps"))
+func (c_ CNNLocalContrastNormalizationGradientNode) Ps() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("ps"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnlocalcontrastnormalizationgradientnode/2948008-ps?language=objc
-func (c_ CNNLocalContrastNormalizationGradientNode) SetPs(value float64) {
+func (c_ CNNLocalContrastNormalizationGradientNode) SetPs(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPs:"), value)
 }

@@ -93,21 +93,21 @@ func WebsiteDataStore_DefaultDataStore() WebsiteDataStore {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532938-removedataoftypes?language=objc
 func (w_ WebsiteDataStore) RemoveDataOfTypesModifiedSinceCompletionHandler(dataTypes foundation.ISet, date foundation.IDate, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:modifiedSince:completionHandler:"), objc.Ptr(dataTypes), objc.Ptr(date), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:modifiedSince:completionHandler:"), dataTypes, date, completionHandler)
 }
 
 // Removes the specified types of website data from one or more data records. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532936-removedataoftypes?language=objc
 func (w_ WebsiteDataStore) RemoveDataOfTypesForDataRecordsCompletionHandler(dataTypes foundation.ISet, dataRecords []IWebsiteDataRecord, completionHandler func()) {
-	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:forDataRecords:completionHandler:"), objc.Ptr(dataTypes), dataRecords, completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("removeDataOfTypes:forDataRecords:completionHandler:"), dataTypes, dataRecords, completionHandler)
 }
 
 // Fetches the specified types of records from the data store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkwebsitedatastore/1532932-fetchdatarecordsoftypes?language=objc
 func (w_ WebsiteDataStore) FetchDataRecordsOfTypesCompletionHandler(dataTypes foundation.ISet, completionHandler func(arg0 []WebsiteDataRecord)) {
-	objc.Call[objc.Void](w_, objc.Sel("fetchDataRecordsOfTypes:completionHandler:"), objc.Ptr(dataTypes), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("fetchDataRecordsOfTypes:completionHandler:"), dataTypes, completionHandler)
 }
 
 // Creates a new data store object that stores website data in memory, and doesn’t write that data to disk. [Full Topic]

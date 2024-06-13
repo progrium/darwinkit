@@ -92,7 +92,7 @@ func URLComponents_ComponentsWithString(URLString string) URLComponents {
 }
 
 func (uc _URLComponentsClass) ComponentsWithURLResolvingAgainstBaseURL(url IURL, resolve bool) URLComponents {
-	rv := objc.Call[URLComponents](uc, objc.Sel("componentsWithURL:resolvingAgainstBaseURL:"), objc.Ptr(url), resolve)
+	rv := objc.Call[URLComponents](uc, objc.Sel("componentsWithURL:resolvingAgainstBaseURL:"), url, resolve)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func URLComponents_ComponentsWithURLResolvingAgainstBaseURL(url IURL, resolve bo
 }
 
 func (u_ URLComponents) InitWithURLResolvingAgainstBaseURL(url IURL, resolve bool) URLComponents {
-	rv := objc.Call[URLComponents](u_, objc.Sel("initWithURL:resolvingAgainstBaseURL:"), objc.Ptr(url), resolve)
+	rv := objc.Call[URLComponents](u_, objc.Sel("initWithURL:resolvingAgainstBaseURL:"), url, resolve)
 	return rv
 }
 
@@ -150,7 +150,7 @@ func NewURLComponents() URLComponents {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcomponents/1408378-urlrelativetourl?language=objc
 func (u_ URLComponents) URLRelativeToURL(baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("URLRelativeToURL:"), objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("URLRelativeToURL:"), baseURL)
 	return rv
 }
 
@@ -365,7 +365,7 @@ func (u_ URLComponents) Port() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcomponents/1413451-port?language=objc
 func (u_ URLComponents) SetPort(value INumber) {
-	objc.Call[objc.Void](u_, objc.Sel("setPort:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setPort:"), value)
 }
 
 // The path URL component expressed as a URL-encoded string, or nil if not present. [Full Topic]

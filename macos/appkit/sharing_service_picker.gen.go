@@ -76,7 +76,7 @@ func (s_ SharingServicePicker) Init() SharingServicePicker {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepicker/1402706-showrelativetorect?language=objc
 func (s_ SharingServicePicker) ShowRelativeToRectOfViewPreferredEdge(rect foundation.Rect, view IView, preferredEdge foundation.RectEdge) {
-	objc.Call[objc.Void](s_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), rect, objc.Ptr(view), preferredEdge)
+	objc.Call[objc.Void](s_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), rect, view, preferredEdge)
 }
 
 // The object for managing the sharing service picker. [Full Topic]
@@ -100,5 +100,5 @@ func (s_ SharingServicePicker) SetDelegate(value PSharingServicePickerDelegate) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepicker/1402687-delegate?language=objc
 func (s_ SharingServicePicker) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }

@@ -58,7 +58,7 @@ func (f_ FetchDatabaseChangesOperation) Init() FetchDatabaseChangesOperation {
 }
 
 func (f_ FetchDatabaseChangesOperation) InitWithPreviousServerChangeToken(previousServerChangeToken IServerChangeToken) FetchDatabaseChangesOperation {
-	rv := objc.Call[FetchDatabaseChangesOperation](f_, objc.Sel("initWithPreviousServerChangeToken:"), objc.Ptr(previousServerChangeToken))
+	rv := objc.Call[FetchDatabaseChangesOperation](f_, objc.Sel("initWithPreviousServerChangeToken:"), previousServerChangeToken)
 	return rv
 }
 
@@ -218,5 +218,5 @@ func (f_ FetchDatabaseChangesOperation) PreviousServerChangeToken() ServerChange
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchdatabasechangesoperation/1640522-previousserverchangetoken?language=objc
 func (f_ FetchDatabaseChangesOperation) SetPreviousServerChangeToken(value IServerChangeToken) {
-	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
 }

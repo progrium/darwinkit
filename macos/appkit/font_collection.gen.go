@@ -71,15 +71,15 @@ func (f_ FontCollection) MatchingDescriptorsForFamily(family string) []FontDescr
 // Renames the font collection with the specified name and visibility to the second name specified. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497521-renamefontcollectionwithname?language=objc
-func (fc _FontCollectionClass) RenameFontCollectionWithNameVisibilityToNameError(oldName FontCollectionName, visibility FontCollectionVisibility, newName FontCollectionName, outError foundation.IError) bool {
-	rv := objc.Call[bool](fc, objc.Sel("renameFontCollectionWithName:visibility:toName:error:"), oldName, visibility, newName, objc.Ptr(outError))
+func (fc _FontCollectionClass) RenameFontCollectionWithNameVisibilityToNameError(oldName FontCollectionName, visibility FontCollectionVisibility, newName FontCollectionName, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](fc, objc.Sel("renameFontCollectionWithName:visibility:toName:error:"), oldName, visibility, newName, outError)
 	return rv
 }
 
 // Renames the font collection with the specified name and visibility to the second name specified. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497521-renamefontcollectionwithname?language=objc
-func FontCollection_RenameFontCollectionWithNameVisibilityToNameError(oldName FontCollectionName, visibility FontCollectionVisibility, newName FontCollectionName, outError foundation.IError) bool {
+func FontCollection_RenameFontCollectionWithNameVisibilityToNameError(oldName FontCollectionName, visibility FontCollectionVisibility, newName FontCollectionName, outError unsafe.Pointer) bool {
 	return FontCollectionClass.RenameFontCollectionWithNameVisibilityToNameError(oldName, visibility, newName, outError)
 }
 
@@ -101,15 +101,15 @@ func FontCollection_FontCollectionWithDescriptors(queryDescriptors []IFontDescri
 // Remove from view the named font collection with the specified visibility. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497459-hidefontcollectionwithname?language=objc
-func (fc _FontCollectionClass) HideFontCollectionWithNameVisibilityError(name FontCollectionName, visibility FontCollectionVisibility, error foundation.IError) bool {
-	rv := objc.Call[bool](fc, objc.Sel("hideFontCollectionWithName:visibility:error:"), name, visibility, objc.Ptr(error))
+func (fc _FontCollectionClass) HideFontCollectionWithNameVisibilityError(name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](fc, objc.Sel("hideFontCollectionWithName:visibility:error:"), name, visibility, error)
 	return rv
 }
 
 // Remove from view the named font collection with the specified visibility. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497459-hidefontcollectionwithname?language=objc
-func FontCollection_HideFontCollectionWithNameVisibilityError(name FontCollectionName, visibility FontCollectionVisibility, error foundation.IError) bool {
+func FontCollection_HideFontCollectionWithNameVisibilityError(name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
 	return FontCollectionClass.HideFontCollectionWithNameVisibilityError(name, visibility, error)
 }
 
@@ -147,15 +147,15 @@ func (f_ FontCollection) MatchingDescriptorsWithOptions(options map[FontCollecti
 // Make the given font collection visible by giving it a name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
-func (fc _FontCollectionClass) ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error foundation.IError) bool {
-	rv := objc.Call[bool](fc, objc.Sel("showFontCollection:withName:visibility:error:"), objc.Ptr(collection), name, visibility, objc.Ptr(error))
+func (fc _FontCollectionClass) ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](fc, objc.Sel("showFontCollection:withName:visibility:error:"), collection, name, visibility, error)
 	return rv
 }
 
 // Make the given font collection visible by giving it a name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497512-showfontcollection?language=objc
-func FontCollection_ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error foundation.IError) bool {
+func FontCollection_ShowFontCollectionWithNameVisibilityError(collection IFontCollection, name FontCollectionName, visibility FontCollectionVisibility, error unsafe.Pointer) bool {
 	return FontCollectionClass.ShowFontCollectionWithNameVisibilityError(collection, name, visibility, error)
 }
 
@@ -163,7 +163,7 @@ func FontCollection_ShowFontCollectionWithNameVisibilityError(collection IFontCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontcollection/1497481-fontcollectionwithlocale?language=objc
 func (fc _FontCollectionClass) FontCollectionWithLocale(locale foundation.ILocale) FontCollection {
-	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithLocale:"), objc.Ptr(locale))
+	rv := objc.Call[FontCollection](fc, objc.Sel("fontCollectionWithLocale:"), locale)
 	return rv
 }
 

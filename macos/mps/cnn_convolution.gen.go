@@ -65,16 +65,16 @@ func NewCNNConvolutionWithDeviceWeights(device metal.PDevice, weights PCNNConvol
 	return instance
 }
 
-func (c_ CNNConvolution) InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float64, biasTerms *float64, flags CNNConvolutionFlags) CNNConvolution {
+func (c_ CNNConvolution) InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float32, biasTerms *float32, flags CNNConvolutionFlags) CNNConvolution {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolution](c_, objc.Sel("initWithDevice:convolutionDescriptor:kernelWeights:biasTerms:flags:"), po0, objc.Ptr(convolutionDescriptor), kernelWeights, biasTerms, flags)
+	rv := objc.Call[CNNConvolution](c_, objc.Sel("initWithDevice:convolutionDescriptor:kernelWeights:biasTerms:flags:"), po0, convolutionDescriptor, kernelWeights, biasTerms, flags)
 	return rv
 }
 
 // Initializes a convolution kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolution/1648861-initwithdevice?language=objc
-func NewCNNConvolutionWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float64, biasTerms *float64, flags CNNConvolutionFlags) CNNConvolution {
+func NewCNNConvolutionWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device metal.PDevice, convolutionDescriptor ICNNConvolutionDescriptor, kernelWeights *float32, biasTerms *float32, flags CNNConvolutionFlags) CNNConvolution {
 	instance := CNNConvolutionClass.Alloc().InitWithDeviceConvolutionDescriptorKernelWeightsBiasTermsFlags(device, convolutionDescriptor, kernelWeights, biasTerms, flags)
 	instance.Autorelease()
 	return instance
@@ -142,14 +142,14 @@ func (c_ CNNConvolution) ReloadWeightsAndBiasesFromDataSource() {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolution/2953962-reloadweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolution) ReloadWeightsAndBiasesWithCommandBufferState(commandBuffer metal.PCommandBuffer, state ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), po0, objc.Ptr(state))
+	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), po0, state)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolution/2953962-reloadweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolution) ReloadWeightsAndBiasesWithCommandBufferObjectState(commandBufferObject objc.IObject, state ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), objc.Ptr(commandBufferObject), objc.Ptr(state))
+	objc.Call[objc.Void](c_, objc.Sel("reloadWeightsAndBiasesWithCommandBuffer:state:"), commandBufferObject, state)
 }
 
 //	[Full Topic]
@@ -165,7 +165,7 @@ func (c_ CNNConvolution) ExportWeightsAndBiasesWithCommandBufferResultStateCanBe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolution/2953001-exportweightsandbiaseswithcomman?language=objc
 func (c_ CNNConvolution) ExportWeightsAndBiasesWithCommandBufferObjectResultStateCanBeTemporary(commandBufferObject objc.IObject, resultStateCanBeTemporary bool) CNNConvolutionWeightsAndBiasesState {
-	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("exportWeightsAndBiasesWithCommandBuffer:resultStateCanBeTemporary:"), objc.Ptr(commandBufferObject), resultStateCanBeTemporary)
+	rv := objc.Call[CNNConvolutionWeightsAndBiasesState](c_, objc.Sel("exportWeightsAndBiasesWithCommandBuffer:resultStateCanBeTemporary:"), commandBufferObject, resultStateCanBeTemporary)
 	return rv
 }
 

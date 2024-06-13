@@ -54,7 +54,7 @@ func (u_ UnitFrequency) Init() UnitFrequency {
 }
 
 func (u_ UnitFrequency) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitFrequency {
-	rv := objc.Call[UnitFrequency](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitFrequency](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

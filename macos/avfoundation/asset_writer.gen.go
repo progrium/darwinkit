@@ -79,34 +79,34 @@ func AssetWriterFrom(ptr unsafe.Pointer) AssetWriter {
 	}
 }
 
-func (a_ AssetWriter) InitWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError foundation.IError) AssetWriter {
-	rv := objc.Call[AssetWriter](a_, objc.Sel("initWithURL:fileType:error:"), objc.Ptr(outputURL), outputFileType, objc.Ptr(outError))
+func (a_ AssetWriter) InitWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError unsafe.Pointer) AssetWriter {
+	rv := objc.Call[AssetWriter](a_, objc.Sel("initWithURL:fileType:error:"), outputURL, outputFileType, outError)
 	return rv
 }
 
 // Creates an object that writes media data to a container file at the output URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1389201-initwithurl?language=objc
-func NewAssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError foundation.IError) AssetWriter {
+func NewAssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError unsafe.Pointer) AssetWriter {
 	instance := AssetWriterClass.Alloc().InitWithURLFileTypeError(outputURL, outputFileType, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (ac _AssetWriterClass) AssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError foundation.IError) AssetWriter {
-	rv := objc.Call[AssetWriter](ac, objc.Sel("assetWriterWithURL:fileType:error:"), objc.Ptr(outputURL), outputFileType, objc.Ptr(outError))
+func (ac _AssetWriterClass) AssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError unsafe.Pointer) AssetWriter {
+	rv := objc.Call[AssetWriter](ac, objc.Sel("assetWriterWithURL:fileType:error:"), outputURL, outputFileType, outError)
 	return rv
 }
 
 // Returns a new object that writes media data to a container file at the output URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1426663-assetwriterwithurl?language=objc
-func AssetWriter_AssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError foundation.IError) AssetWriter {
+func AssetWriter_AssetWriterWithURLFileTypeError(outputURL foundation.IURL, outputFileType FileType, outError unsafe.Pointer) AssetWriter {
 	return AssetWriterClass.AssetWriterWithURLFileTypeError(outputURL, outputFileType, outError)
 }
 
 func (a_ AssetWriter) InitWithContentType(outputContentType uti.IType) AssetWriter {
-	rv := objc.Call[AssetWriter](a_, objc.Sel("initWithContentType:"), objc.Ptr(outputContentType))
+	rv := objc.Call[AssetWriter](a_, objc.Sel("initWithContentType:"), outputContentType)
 	return rv
 }
 
@@ -143,7 +143,7 @@ func (a_ AssetWriter) Init() AssetWriter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1387863-canaddinput?language=objc
 func (a_ AssetWriter) CanAddInput(input IAssetWriterInput) bool {
-	rv := objc.Call[bool](a_, objc.Sel("canAddInput:"), objc.Ptr(input))
+	rv := objc.Call[bool](a_, objc.Sel("canAddInput:"), input)
 	return rv
 }
 
@@ -158,14 +158,14 @@ func (a_ AssetWriter) CancelWriting() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1385643-addinputgroup?language=objc
 func (a_ AssetWriter) AddInputGroup(inputGroup IAssetWriterInputGroup) {
-	objc.Call[objc.Void](a_, objc.Sel("addInputGroup:"), objc.Ptr(inputGroup))
+	objc.Call[objc.Void](a_, objc.Sel("addInputGroup:"), inputGroup)
 }
 
 // Adds an input to an asset writer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1390389-addinput?language=objc
 func (a_ AssetWriter) AddInput(input IAssetWriterInput) {
-	objc.Call[objc.Void](a_, objc.Sel("addInput:"), objc.Ptr(input))
+	objc.Call[objc.Void](a_, objc.Sel("addInput:"), input)
 }
 
 // Tells the writer to start writing its output. [Full Topic]
@@ -209,7 +209,7 @@ func (a_ AssetWriter) StartSessionAtSourceTime(startTime coremedia.Time) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1386698-canaddinputgroup?language=objc
 func (a_ AssetWriter) CanAddInputGroup(inputGroup IAssetWriterInputGroup) bool {
-	rv := objc.Call[bool](a_, objc.Sel("canAddInputGroup:"), objc.Ptr(inputGroup))
+	rv := objc.Call[bool](a_, objc.Sel("canAddInputGroup:"), inputGroup)
 	return rv
 }
 
@@ -402,7 +402,7 @@ func (a_ AssetWriter) SetDelegate(value PAssetWriterDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/3546585-delegate?language=objc
 func (a_ AssetWriter) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The sequence number of the initial movie fragment. [Full Topic]
@@ -462,5 +462,5 @@ func (a_ AssetWriter) DirectoryForTemporaryFiles() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriter/1387445-directoryfortemporaryfiles?language=objc
 func (a_ AssetWriter) SetDirectoryForTemporaryFiles(value foundation.IURL) {
-	objc.Call[objc.Void](a_, objc.Sel("setDirectoryForTemporaryFiles:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setDirectoryForTemporaryFiles:"), value)
 }

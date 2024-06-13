@@ -74,7 +74,7 @@ func (q_ QueuePlayer) Init() QueuePlayer {
 }
 
 func (qc _QueuePlayerClass) PlayerWithPlayerItem(item IPlayerItem) QueuePlayer {
-	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithPlayerItem:"), objc.Ptr(item))
+	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithPlayerItem:"), item)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func QueuePlayer_PlayerWithPlayerItem(item IPlayerItem) QueuePlayer {
 }
 
 func (qc _QueuePlayerClass) PlayerWithURL(URL foundation.IURL) QueuePlayer {
-	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[QueuePlayer](qc, objc.Sel("playerWithURL:"), URL)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func QueuePlayer_PlayerWithURL(URL foundation.IURL) QueuePlayer {
 }
 
 func (q_ QueuePlayer) InitWithPlayerItem(item IPlayerItem) QueuePlayer {
-	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithPlayerItem:"), objc.Ptr(item))
+	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithPlayerItem:"), item)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func NewQueuePlayerWithPlayerItem(item IPlayerItem) QueuePlayer {
 }
 
 func (q_ QueuePlayer) InitWithURL(URL foundation.IURL) QueuePlayer {
-	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[QueuePlayer](q_, objc.Sel("initWithURL:"), URL)
 	return rv
 }
 
@@ -129,7 +129,7 @@ func NewQueuePlayerWithURL(URL foundation.IURL) QueuePlayer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1388543-insertitem?language=objc
 func (q_ QueuePlayer) InsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) {
-	objc.Call[objc.Void](q_, objc.Sel("insertItem:afterItem:"), objc.Ptr(item), objc.Ptr(afterItem))
+	objc.Call[objc.Void](q_, objc.Sel("insertItem:afterItem:"), item, afterItem)
 }
 
 // Creates an object that plays a queue of items. [Full Topic]
@@ -151,7 +151,7 @@ func (q_ QueuePlayer) AdvanceToNextItem() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1387289-caninsertitem?language=objc
 func (q_ QueuePlayer) CanInsertItemAfterItem(item IPlayerItem, afterItem IPlayerItem) bool {
-	rv := objc.Call[bool](q_, objc.Sel("canInsertItem:afterItem:"), objc.Ptr(item), objc.Ptr(afterItem))
+	rv := objc.Call[bool](q_, objc.Sel("canInsertItem:afterItem:"), item, afterItem)
 	return rv
 }
 
@@ -174,5 +174,5 @@ func (q_ QueuePlayer) RemoveAllItems() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avqueueplayer/1387400-removeitem?language=objc
 func (q_ QueuePlayer) RemoveItem(item IPlayerItem) {
-	objc.Call[objc.Void](q_, objc.Sel("removeItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](q_, objc.Sel("removeItem:"), item)
 }

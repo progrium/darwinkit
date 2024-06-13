@@ -11,7 +11,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcallback?language=objc
 type PNNGramMatrixCallback interface {
 	// optional
-	AlphaForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float64
+	AlphaForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float32
 	HasAlphaForSourceImageDestinationImage() bool
 }
 
@@ -30,7 +30,7 @@ func (n_ NNGramMatrixCallbackObject) HasAlphaForSourceImageDestinationImage() bo
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcallback/3131846-alphaforsourceimage?language=objc
-func (n_ NNGramMatrixCallbackObject) AlphaForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alphaForSourceImage:destinationImage:"), objc.Ptr(sourceImage), objc.Ptr(destinationImage))
+func (n_ NNGramMatrixCallbackObject) AlphaForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float32 {
+	rv := objc.Call[float32](n_, objc.Sel("alphaForSourceImage:destinationImage:"), sourceImage, destinationImage)
 	return rv
 }

@@ -5,7 +5,6 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -14,7 +13,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor?language=objc
 type PEditor interface {
 	// optional
-	CommitEditingAndReturnError(error foundation.Error) bool
+	CommitEditingAndReturnError(error unsafe.Pointer) bool
 	HasCommitEditingAndReturnError() bool
 
 	// optional
@@ -45,8 +44,8 @@ func (e_ EditorObject) HasCommitEditingAndReturnError() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nseditor/3005184-commiteditingandreturnerror?language=objc
-func (e_ EditorObject) CommitEditingAndReturnError(error foundation.Error) bool {
-	rv := objc.Call[bool](e_, objc.Sel("commitEditingAndReturnError:"), objc.Ptr(error))
+func (e_ EditorObject) CommitEditingAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("commitEditingAndReturnError:"), error)
 	return rv
 }
 

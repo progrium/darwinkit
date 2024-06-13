@@ -19,7 +19,7 @@ type _CNNDropoutGradientNodeClass struct {
 // An interface definition for the [CNNDropoutGradientNode] class.
 type ICNNDropoutGradientNode interface {
 	INNGradientFilterNode
-	KeepProbability() float64
+	KeepProbability() float32
 	Seed() uint
 	MaskStrideInPixels() metal.Size
 }
@@ -37,29 +37,29 @@ func CNNDropoutGradientNodeFrom(ptr unsafe.Pointer) CNNDropoutGradientNode {
 	}
 }
 
-func (c_ CNNDropoutGradientNode) InitWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
-	rv := objc.Call[CNNDropoutGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:keepProbability:seed:maskStrideInPixels:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), keepProbability, seed, maskStrideInPixels)
+func (c_ CNNDropoutGradientNode) InitWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
+	rv := objc.Call[CNNDropoutGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:keepProbability:seed:maskStrideInPixels:"), sourceGradient, sourceImage, gradientState, keepProbability, seed, maskStrideInPixels)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2948001-initwithsourcegradient?language=objc
-func NewCNNDropoutGradientNodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
+func NewCNNDropoutGradientNodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
 	instance := CNNDropoutGradientNodeClass.Alloc().InitWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient, sourceImage, gradientState, keepProbability, seed, maskStrideInPixels)
 	instance.Autorelease()
 	return instance
 }
 
-func (cc _CNNDropoutGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
-	rv := objc.Call[CNNDropoutGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:keepProbability:seed:maskStrideInPixels:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), keepProbability, seed, maskStrideInPixels)
+func (cc _CNNDropoutGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
+	rv := objc.Call[CNNDropoutGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:keepProbability:seed:maskStrideInPixels:"), sourceGradient, sourceImage, gradientState, keepProbability, seed, maskStrideInPixels)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2947997-nodewithsourcegradient?language=objc
-func CNNDropoutGradientNode_NodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float64, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
+func CNNDropoutGradientNode_NodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, keepProbability float32, seed uint, maskStrideInPixels metal.Size) CNNDropoutGradientNode {
 	return CNNDropoutGradientNodeClass.NodeWithSourceGradientSourceImageGradientStateKeepProbabilitySeedMaskStrideInPixels(sourceGradient, sourceImage, gradientState, keepProbability, seed, maskStrideInPixels)
 }
 
@@ -86,8 +86,8 @@ func (c_ CNNDropoutGradientNode) Init() CNNDropoutGradientNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnndropoutgradientnode/2947988-keepprobability?language=objc
-func (c_ CNNDropoutGradientNode) KeepProbability() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("keepProbability"))
+func (c_ CNNDropoutGradientNode) KeepProbability() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("keepProbability"))
 	return rv
 }
 

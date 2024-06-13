@@ -91,5 +91,5 @@ func (s_ SharingServicePickerToolbarItem) SetDelegate(value PSharingServicePicke
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickertoolbaritem/3365981-delegate?language=objc
 func (s_ SharingServicePickerToolbarItem) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }

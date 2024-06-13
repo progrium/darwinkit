@@ -19,20 +19,20 @@ type _ImageArithmeticClass struct {
 // An interface definition for the [ImageArithmetic] class.
 type IImageArithmetic interface {
 	IBinaryImageKernel
-	SecondaryScale() float64
-	SetSecondaryScale(value float64)
+	SecondaryScale() float32
+	SetSecondaryScale(value float32)
 	SecondaryStrideInPixels() metal.Size
 	SetSecondaryStrideInPixels(value metal.Size)
-	PrimaryScale() float64
-	SetPrimaryScale(value float64)
+	PrimaryScale() float32
+	SetPrimaryScale(value float32)
 	PrimaryStrideInPixels() metal.Size
 	SetPrimaryStrideInPixels(value metal.Size)
-	Bias() float64
-	SetBias(value float64)
-	MaximumValue() float64
-	SetMaximumValue(value float64)
-	MinimumValue() float64
-	SetMinimumValue(value float64)
+	Bias() float32
+	SetBias(value float32)
+	MaximumValue() float32
+	SetMaximumValue(value float32)
+	MinimumValue() float32
+	SetMinimumValue(value float32)
 }
 
 // Base class for basic arithmetic nodes [Full Topic]
@@ -101,15 +101,15 @@ func ImageArithmetic_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevic
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866601-secondaryscale?language=objc
-func (i_ ImageArithmetic) SecondaryScale() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("secondaryScale"))
+func (i_ ImageArithmetic) SecondaryScale() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("secondaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866601-secondaryscale?language=objc
-func (i_ ImageArithmetic) SetSecondaryScale(value float64) {
+func (i_ ImageArithmetic) SetSecondaryScale(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setSecondaryScale:"), value)
 }
 
@@ -131,15 +131,15 @@ func (i_ ImageArithmetic) SetSecondaryStrideInPixels(value metal.Size) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866602-primaryscale?language=objc
-func (i_ ImageArithmetic) PrimaryScale() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("primaryScale"))
+func (i_ ImageArithmetic) PrimaryScale() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("primaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866602-primaryscale?language=objc
-func (i_ ImageArithmetic) SetPrimaryScale(value float64) {
+func (i_ ImageArithmetic) SetPrimaryScale(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setPrimaryScale:"), value)
 }
 
@@ -161,44 +161,44 @@ func (i_ ImageArithmetic) SetPrimaryStrideInPixels(value metal.Size) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866609-bias?language=objc
-func (i_ ImageArithmetic) Bias() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("bias"))
+func (i_ ImageArithmetic) Bias() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("bias"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2866609-bias?language=objc
-func (i_ ImageArithmetic) SetBias(value float64) {
+func (i_ ImageArithmetic) SetBias(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setBias:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2942356-maximumvalue?language=objc
-func (i_ ImageArithmetic) MaximumValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("maximumValue"))
+func (i_ ImageArithmetic) MaximumValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("maximumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2942356-maximumvalue?language=objc
-func (i_ ImageArithmetic) SetMaximumValue(value float64) {
+func (i_ ImageArithmetic) SetMaximumValue(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setMaximumValue:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2942357-minimumvalue?language=objc
-func (i_ ImageArithmetic) MinimumValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("minimumValue"))
+func (i_ ImageArithmetic) MinimumValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("minimumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagearithmetic/2942357-minimumvalue?language=objc
-func (i_ ImageArithmetic) SetMinimumValue(value float64) {
+func (i_ ImageArithmetic) SetMinimumValue(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setMinimumValue:"), value)
 }

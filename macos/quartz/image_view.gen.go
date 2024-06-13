@@ -165,7 +165,7 @@ func (i_ ImageView) SetRotationAngleCenterPoint(rotationAngle float64, centerPoi
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageview/1504283-setoverlay?language=objc
 func (i_ ImageView) SetOverlayForType(layer quartzcore.ILayer, layerType string) {
-	objc.Call[objc.Void](i_, objc.Sel("setOverlay:forType:"), objc.Ptr(layer), layerType)
+	objc.Call[objc.Void](i_, objc.Sel("setOverlay:forType:"), layer, layerType)
 }
 
 // Flips an image along the vertical axis. [Full Topic]
@@ -297,7 +297,7 @@ func (i_ ImageView) ZoomIn(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageview/1505314-setimagewithurl?language=objc
 func (i_ ImageView) SetImageWithURL(url foundation.IURL) {
-	objc.Call[objc.Void](i_, objc.Sel("setImageWithURL:"), objc.Ptr(url))
+	objc.Call[objc.Void](i_, objc.Sel("setImageWithURL:"), url)
 }
 
 // Zooms the image so that it fits in the specified rectangle. [Full Topic]
@@ -477,7 +477,7 @@ func (i_ ImageView) ImageCorrection() coreimage.Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageview/1503698-imagecorrection?language=objc
 func (i_ ImageView) SetImageCorrection(value coreimage.IFilter) {
-	objc.Call[objc.Void](i_, objc.Sel("setImageCorrection:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setImageCorrection:"), value)
 }
 
 // Specifies the background color for the image view. [Full Topic]
@@ -492,7 +492,7 @@ func (i_ ImageView) BackgroundColor() appkit.Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageview/1503567-backgroundcolor?language=objc
 func (i_ ImageView) SetBackgroundColor(value appkit.IColor) {
-	objc.Call[objc.Void](i_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // Specifies the drag-and-drop support state for the image view. [Full Topic]

@@ -27,10 +27,20 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoptimization?language=objc
 type Optimization uint64
 
+const (
+	OptimizationLevel0 Optimization = 0
+	OptimizationLevel1 Optimization = 1
+)
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphoptimizationprofile?language=objc
 type OptimizationProfile uint64
+
+const (
+	OptimizationProfilePerformance     OptimizationProfile = 0
+	OptimizationProfilePowerEfficiency OptimizationProfile = 1
+)
 
 //	[Full Topic]
 //
@@ -76,20 +86,51 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphpoolingreturnindicesmode?language=objc
 type PoolingReturnIndicesMode uint
 
+const (
+	PoolingReturnIndicesGlobalFlatten1D PoolingReturnIndicesMode = 1
+	PoolingReturnIndicesGlobalFlatten2D PoolingReturnIndicesMode = 2
+	PoolingReturnIndicesGlobalFlatten3D PoolingReturnIndicesMode = 3
+	PoolingReturnIndicesGlobalFlatten4D PoolingReturnIndicesMode = 4
+	PoolingReturnIndicesLocalFlatten1D  PoolingReturnIndicesMode = 5
+	PoolingReturnIndicesLocalFlatten2D  PoolingReturnIndicesMode = 6
+	PoolingReturnIndicesLocalFlatten3D  PoolingReturnIndicesMode = 7
+	PoolingReturnIndicesLocalFlatten4D  PoolingReturnIndicesMode = 8
+	PoolingReturnIndicesNone            PoolingReturnIndicesMode = 0
+)
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrnnactivation?language=objc
 type RNNActivation uint
+
+const (
+	RNNActivationHardSigmoid RNNActivation = 4
+	RNNActivationNone        RNNActivation = 0
+	RNNActivationRelu        RNNActivation = 1
+	RNNActivationSigmoid     RNNActivation = 3
+	RNNActivationTanh        RNNActivation = 2
+)
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomdistribution?language=objc
 type RandomDistribution uint64
 
+const (
+	RandomDistributionNormal          RandomDistribution = 1
+	RandomDistributionTruncatedNormal RandomDistribution = 2
+	RandomDistributionUniform         RandomDistribution = 0
+)
+
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphrandomnormalsamplingmethod?language=objc
 type RandomNormalSamplingMethod uint64
+
+const (
+	RandomNormalSamplingBoxMuller RandomNormalSamplingMethod = 1
+	RandomNormalSamplingInvCDF    RandomNormalSamplingMethod = 0
+)
 
 //	[Full Topic]
 //

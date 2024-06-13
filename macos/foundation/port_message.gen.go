@@ -40,7 +40,7 @@ func PortMessageFrom(ptr unsafe.Pointer) PortMessage {
 }
 
 func (p_ PortMessage) InitWithSendPortReceivePortComponents(sendPort IPort, replyPort IPort, components []objc.IObject) PortMessage {
-	rv := objc.Call[PortMessage](p_, objc.Sel("initWithSendPort:receivePort:components:"), objc.Ptr(sendPort), objc.Ptr(replyPort), components)
+	rv := objc.Call[PortMessage](p_, objc.Sel("initWithSendPort:receivePort:components:"), sendPort, replyPort, components)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (p_ PortMessage) Init() PortMessage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsportmessage/1407464-sendbeforedate?language=objc
 func (p_ PortMessage) SendBeforeDate(date IDate) bool {
-	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:"), objc.Ptr(date))
+	rv := objc.Call[bool](p_, objc.Sel("sendBeforeDate:"), date)
 	return rv
 }
 

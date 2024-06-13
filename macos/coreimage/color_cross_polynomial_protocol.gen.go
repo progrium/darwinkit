@@ -59,7 +59,7 @@ func (c_ ColorCrossPolynomialObject) HasSetBlueCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228129-bluecoefficients?language=objc
 func (c_ ColorCrossPolynomialObject) SetBlueCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), value)
 }
 
 func (c_ ColorCrossPolynomialObject) HasBlueCoefficients() bool {
@@ -82,7 +82,7 @@ func (c_ ColorCrossPolynomialObject) HasSetRedCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228132-redcoefficients?language=objc
 func (c_ ColorCrossPolynomialObject) SetRedCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setRedCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setRedCoefficients:"), value)
 }
 
 func (c_ ColorCrossPolynomialObject) HasRedCoefficients() bool {
@@ -105,7 +105,7 @@ func (c_ ColorCrossPolynomialObject) HasSetGreenCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228130-greencoefficients?language=objc
 func (c_ ColorCrossPolynomialObject) SetGreenCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setGreenCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setGreenCoefficients:"), value)
 }
 
 func (c_ ColorCrossPolynomialObject) HasGreenCoefficients() bool {
@@ -128,7 +128,7 @@ func (c_ ColorCrossPolynomialObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcrosspolynomial/3228131-inputimage?language=objc
 func (c_ ColorCrossPolynomialObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorCrossPolynomialObject) HasInputImage() bool {

@@ -80,7 +80,7 @@ func (t_ TextAttachmentCellObject) HasHighlightWithFrameInView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508384-highlight?language=objc
 func (t_ TextAttachmentCellObject) HighlightWithFrameInView(flag bool, cellFrame foundation.Rect, controlView View) {
-	objc.Call[objc.Void](t_, objc.Sel("highlight:withFrame:inView:"), flag, cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](t_, objc.Sel("highlight:withFrame:inView:"), flag, cellFrame, controlView)
 }
 
 func (t_ TextAttachmentCellObject) HasCellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex() bool {
@@ -91,7 +91,7 @@ func (t_ TextAttachmentCellObject) HasCellFrameForTextContainerProposedLineFragm
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508402-cellframefortextcontainer?language=objc
 func (t_ TextAttachmentCellObject) CellFrameForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(textContainer TextContainer, lineFrag foundation.Rect, position foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), objc.Ptr(textContainer), lineFrag, position, charIndex)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("cellFrameForTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), textContainer, lineFrag, position, charIndex)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (t_ TextAttachmentCellObject) HasDrawWithFrameInViewCharacterIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508412-drawwithframe?language=objc
 func (t_ TextAttachmentCellObject) DrawWithFrameInViewCharacterIndex(cellFrame foundation.Rect, controlView View, charIndex uint) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:"), cellFrame, objc.Ptr(controlView), charIndex)
+	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:"), cellFrame, controlView, charIndex)
 }
 
 func (t_ TextAttachmentCellObject) HasCellSize() bool {
@@ -138,7 +138,7 @@ func (t_ TextAttachmentCellObject) HasDrawWithFrameInViewCharacterIndexLayoutMan
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508385-drawwithframe?language=objc
 func (t_ TextAttachmentCellObject) DrawWithFrameInViewCharacterIndexLayoutManager(cellFrame foundation.Rect, controlView View, charIndex uint, layoutManager LayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:layoutManager:"), cellFrame, objc.Ptr(controlView), charIndex, objc.Ptr(layoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:characterIndex:layoutManager:"), cellFrame, controlView, charIndex, layoutManager)
 }
 
 func (t_ TextAttachmentCellObject) HasTrackMouseInRectOfViewUntilMouseUp() bool {
@@ -149,7 +149,7 @@ func (t_ TextAttachmentCellObject) HasTrackMouseInRectOfViewUntilMouseUp() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508418-trackmouse?language=objc
 func (t_ TextAttachmentCellObject) TrackMouseInRectOfViewUntilMouseUp(theEvent Event, cellFrame foundation.Rect, controlView View, flag bool) bool {
-	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:untilMouseUp:"), objc.Ptr(theEvent), cellFrame, objc.Ptr(controlView), flag)
+	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:untilMouseUp:"), theEvent, cellFrame, controlView, flag)
 	return rv
 }
 
@@ -161,7 +161,7 @@ func (t_ TextAttachmentCellObject) HasWantsToTrackMouseForEventInRectOfViewAtCha
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508399-wantstotrackmouseforevent?language=objc
 func (t_ TextAttachmentCellObject) WantsToTrackMouseForEventInRectOfViewAtCharacterIndex(theEvent Event, cellFrame foundation.Rect, controlView View, charIndex uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), objc.Ptr(theEvent), cellFrame, objc.Ptr(controlView), charIndex)
+	rv := objc.Call[bool](t_, objc.Sel("wantsToTrackMouseForEvent:inRect:ofView:atCharacterIndex:"), theEvent, cellFrame, controlView, charIndex)
 	return rv
 }
 
@@ -185,7 +185,7 @@ func (t_ TextAttachmentCellObject) HasTrackMouseInRectOfViewAtCharacterIndexUnti
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508380-trackmouse?language=objc
 func (t_ TextAttachmentCellObject) TrackMouseInRectOfViewAtCharacterIndexUntilMouseUp(theEvent Event, cellFrame foundation.Rect, controlView View, charIndex uint, flag bool) bool {
-	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:atCharacterIndex:untilMouseUp:"), objc.Ptr(theEvent), cellFrame, objc.Ptr(controlView), charIndex, flag)
+	rv := objc.Call[bool](t_, objc.Sel("trackMouse:inRect:ofView:atCharacterIndex:untilMouseUp:"), theEvent, cellFrame, controlView, charIndex, flag)
 	return rv
 }
 
@@ -197,7 +197,7 @@ func (t_ TextAttachmentCellObject) HasDrawWithFrameInView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508392-drawwithframe?language=objc
 func (t_ TextAttachmentCellObject) DrawWithFrameInView(cellFrame foundation.Rect, controlView View) {
-	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](t_, objc.Sel("drawWithFrame:inView:"), cellFrame, controlView)
 }
 
 func (t_ TextAttachmentCellObject) HasSetAttachment() bool {
@@ -208,7 +208,7 @@ func (t_ TextAttachmentCellObject) HasSetAttachment() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/1508388-nstextattachmentcell/1508396-attachment?language=objc
 func (t_ TextAttachmentCellObject) SetAttachment(value TextAttachment) {
-	objc.Call[objc.Void](t_, objc.Sel("setAttachment:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setAttachment:"), value)
 }
 
 func (t_ TextAttachmentCellObject) HasAttachment() bool {

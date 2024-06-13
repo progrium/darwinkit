@@ -104,7 +104,7 @@ func (c_ CaptureVideoDataOutput) SetSampleBufferDelegateQueue(sampleBufferDelega
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideodataoutput/1389008-setsamplebufferdelegate?language=objc
 func (c_ CaptureVideoDataOutput) SetSampleBufferDelegateObjectQueue(sampleBufferDelegateObject objc.IObject, sampleBufferCallbackQueue dispatch.Queue) {
-	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), objc.Ptr(sampleBufferDelegateObject), sampleBufferCallbackQueue)
+	objc.Call[objc.Void](c_, objc.Sel("setSampleBufferDelegate:queue:"), sampleBufferDelegateObject, sampleBufferCallbackQueue)
 }
 
 // A dictionary that contains the compression settings for the output. [Full Topic]

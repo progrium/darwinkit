@@ -67,7 +67,7 @@ func (c_ ColorPolynomialObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228174-inputimage?language=objc
 func (c_ ColorPolynomialObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorPolynomialObject) HasInputImage() bool {
@@ -90,7 +90,7 @@ func (c_ ColorPolynomialObject) HasSetAlphaCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228171-alphacoefficients?language=objc
 func (c_ ColorPolynomialObject) SetAlphaCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setAlphaCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setAlphaCoefficients:"), value)
 }
 
 func (c_ ColorPolynomialObject) HasAlphaCoefficients() bool {
@@ -113,7 +113,7 @@ func (c_ ColorPolynomialObject) HasSetRedCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228175-redcoefficients?language=objc
 func (c_ ColorPolynomialObject) SetRedCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setRedCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setRedCoefficients:"), value)
 }
 
 func (c_ ColorPolynomialObject) HasRedCoefficients() bool {
@@ -136,7 +136,7 @@ func (c_ ColorPolynomialObject) HasSetGreenCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228173-greencoefficients?language=objc
 func (c_ ColorPolynomialObject) SetGreenCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setGreenCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setGreenCoefficients:"), value)
 }
 
 func (c_ ColorPolynomialObject) HasGreenCoefficients() bool {
@@ -159,7 +159,7 @@ func (c_ ColorPolynomialObject) HasSetBlueCoefficients() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorpolynomial/3228172-bluecoefficients?language=objc
 func (c_ ColorPolynomialObject) SetBlueCoefficients(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBlueCoefficients:"), value)
 }
 
 func (c_ ColorPolynomialObject) HasBlueCoefficients() bool {

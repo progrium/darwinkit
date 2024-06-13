@@ -71,7 +71,7 @@ func NewPathComponentCellTextCell(string_ string) PathComponentCell {
 }
 
 func (p_ PathComponentCell) InitImageCell(image IImage) PathComponentCell {
-	rv := objc.Call[PathComponentCell](p_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[PathComponentCell](p_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -96,5 +96,5 @@ func (p_ PathComponentCell) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcomponentcell/1534779-url?language=objc
 func (p_ PathComponentCell) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }

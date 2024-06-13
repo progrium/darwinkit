@@ -105,15 +105,15 @@ func PurgeableData_DataWithLength(length uint) PurgeableData {
 	return PurgeableDataClass.DataWithLength(length)
 }
 
-func (pc _PurgeableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (pc _PurgeableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object by reading every byte from the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
-func PurgeableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
+func PurgeableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
 	return PurgeableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 }
 
@@ -155,15 +155,15 @@ func PurgeableData_DataWithData(data []byte) PurgeableData {
 	return PurgeableDataClass.DataWithData(data)
 }
 
-func (pc _PurgeableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (pc _PurgeableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object containing the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547238-datawithcontentsofurl?language=objc
-func PurgeableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
+func PurgeableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
 	return PurgeableDataClass.DataWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 }
 
@@ -209,29 +209,29 @@ func NewPurgeableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, len
 	return instance
 }
 
-func (p_ PurgeableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (p_ PurgeableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1407864-initwithcontentsofurl?language=objc
-func NewPurgeableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
+func NewPurgeableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
 	instance := PurgeableDataClass.Alloc().InitWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
 }
 
-func (p_ PurgeableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (p_ PurgeableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func NewPurgeableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) PurgeableData {
+func NewPurgeableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) PurgeableData {
 	instance := PurgeableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
@@ -250,7 +250,7 @@ func PurgeableData_DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) 
 }
 
 func (p_ PurgeableData) InitWithContentsOfURL(url IURL) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[PurgeableData](p_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -356,7 +356,7 @@ func NewPurgeableDataWithData(data []byte) PurgeableData {
 }
 
 func (pc _PurgeableDataClass) DataWithContentsOfURL(url IURL) PurgeableData {
-	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[PurgeableData](pc, objc.Sel("dataWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -367,29 +367,29 @@ func PurgeableData_DataWithContentsOfURL(url IURL) PurgeableData {
 	return PurgeableDataClass.DataWithContentsOfURL(url)
 }
 
-func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (p_ PurgeableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by compressing the data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
-func PurgeableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
+func PurgeableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
 	instance := PurgeableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (p_ PurgeableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
-	rv := objc.Call[PurgeableData](p_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (p_ PurgeableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
+	rv := objc.Call[PurgeableData](p_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by decompressing data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
-func PurgeableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) PurgeableData {
+func PurgeableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) PurgeableData {
 	instance := PurgeableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance

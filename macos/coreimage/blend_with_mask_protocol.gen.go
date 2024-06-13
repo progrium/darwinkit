@@ -51,7 +51,7 @@ func (b_ BlendWithMaskObject) HasSetMaskImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228082-maskimage?language=objc
 func (b_ BlendWithMaskObject) SetMaskImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setMaskImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setMaskImage:"), value)
 }
 
 func (b_ BlendWithMaskObject) HasMaskImage() bool {
@@ -74,7 +74,7 @@ func (b_ BlendWithMaskObject) HasSetBackgroundImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228080-backgroundimage?language=objc
 func (b_ BlendWithMaskObject) SetBackgroundImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setBackgroundImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBackgroundImage:"), value)
 }
 
 func (b_ BlendWithMaskObject) HasBackgroundImage() bool {
@@ -97,7 +97,7 @@ func (b_ BlendWithMaskObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendwithmask/3228081-inputimage?language=objc
 func (b_ BlendWithMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BlendWithMaskObject) HasInputImage() bool {

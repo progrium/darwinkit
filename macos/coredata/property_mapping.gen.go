@@ -102,5 +102,5 @@ func (p_ PropertyMapping) ValueExpression() foundation.Expression {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspropertymapping/1506819-valueexpression?language=objc
 func (p_ PropertyMapping) SetValueExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](p_, objc.Sel("setValueExpression:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setValueExpression:"), value)
 }

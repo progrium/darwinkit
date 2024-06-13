@@ -114,7 +114,7 @@ func NewMutableIndexSetWithIndexesInRange(range_ Range) MutableIndexSet {
 }
 
 func (m_ MutableIndexSet) InitWithIndexSet(indexSet IIndexSet) MutableIndexSet {
-	rv := objc.Call[MutableIndexSet](m_, objc.Sel("initWithIndexSet:"), objc.Ptr(indexSet))
+	rv := objc.Call[MutableIndexSet](m_, objc.Sel("initWithIndexSet:"), indexSet)
 	return rv
 }
 
@@ -164,7 +164,7 @@ func (m_ MutableIndexSet) RemoveAllIndexes() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableindexset/1414594-addindexes?language=objc
 func (m_ MutableIndexSet) AddIndexes(indexSet IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("addIndexes:"), objc.Ptr(indexSet))
+	objc.Call[objc.Void](m_, objc.Sel("addIndexes:"), indexSet)
 }
 
 // Adds the indexes in an index range to the receiver. [Full Topic]
@@ -185,7 +185,7 @@ func (m_ MutableIndexSet) AddIndex(value uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableindexset/1412018-removeindexes?language=objc
 func (m_ MutableIndexSet) RemoveIndexes(indexSet IIndexSet) {
-	objc.Call[objc.Void](m_, objc.Sel("removeIndexes:"), objc.Ptr(indexSet))
+	objc.Call[objc.Void](m_, objc.Sel("removeIndexes:"), indexSet)
 }
 
 // Removes the indexes in an index range from the receiver. [Full Topic]

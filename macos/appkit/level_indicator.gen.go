@@ -190,7 +190,7 @@ func (l_ LevelIndicator) RatingImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902327-ratingimage?language=objc
 func (l_ LevelIndicator) SetRatingImage(value IImage) {
-	objc.Call[objc.Void](l_, objc.Sel("setRatingImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setRatingImage:"), value)
 }
 
 // The receiver’s warning value. [Full Topic]
@@ -235,7 +235,7 @@ func (l_ LevelIndicator) WarningFillColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902307-warningfillcolor?language=objc
 func (l_ LevelIndicator) SetWarningFillColor(value IColor) {
-	objc.Call[objc.Void](l_, objc.Sel("setWarningFillColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setWarningFillColor:"), value)
 }
 
 //	[Full Topic]
@@ -250,7 +250,7 @@ func (l_ LevelIndicator) FillColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902325-fillcolor?language=objc
 func (l_ LevelIndicator) SetFillColor(value IColor) {
-	objc.Call[objc.Void](l_, objc.Sel("setFillColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setFillColor:"), value)
 }
 
 //	[Full Topic]
@@ -310,7 +310,7 @@ func (l_ LevelIndicator) RatingPlaceholderImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902328-ratingplaceholderimage?language=objc
 func (l_ LevelIndicator) SetRatingPlaceholderImage(value IImage) {
-	objc.Call[objc.Void](l_, objc.Sel("setRatingPlaceholderImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setRatingPlaceholderImage:"), value)
 }
 
 // The receiver’s maximum value. [Full Topic]
@@ -355,5 +355,5 @@ func (l_ LevelIndicator) CriticalFillColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslevelindicator/2902316-criticalfillcolor?language=objc
 func (l_ LevelIndicator) SetCriticalFillColor(value IColor) {
-	objc.Call[objc.Void](l_, objc.Sel("setCriticalFillColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setCriticalFillColor:"), value)
 }

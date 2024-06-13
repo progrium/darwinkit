@@ -38,7 +38,7 @@ func IncrementalStoreNodeFrom(ptr unsafe.Pointer) IncrementalStoreNode {
 }
 
 func (i_ IncrementalStoreNode) InitWithObjectIDWithValuesVersion(objectID IManagedObjectID, values map[string]objc.IObject, version uint64) IncrementalStoreNode {
-	rv := objc.Call[IncrementalStoreNode](i_, objc.Sel("initWithObjectID:withValues:version:"), objc.Ptr(objectID), values, version)
+	rv := objc.Call[IncrementalStoreNode](i_, objc.Sel("initWithObjectID:withValues:version:"), objectID, values, version)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (i_ IncrementalStoreNode) UpdateWithValuesVersion(values map[string]objc.IO
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstorenode/1506442-valueforpropertydescription?language=objc
 func (i_ IncrementalStoreNode) ValueForPropertyDescription(prop IPropertyDescription) objc.Object {
-	rv := objc.Call[objc.Object](i_, objc.Sel("valueForPropertyDescription:"), objc.Ptr(prop))
+	rv := objc.Call[objc.Object](i_, objc.Sel("valueForPropertyDescription:"), prop)
 	return rv
 }
 

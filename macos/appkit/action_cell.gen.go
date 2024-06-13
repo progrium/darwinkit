@@ -54,7 +54,7 @@ func (a_ ActionCell) Init() ActionCell {
 }
 
 func (a_ ActionCell) InitImageCell(image IImage) ActionCell {
-	rv := objc.Call[ActionCell](a_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[ActionCell](a_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

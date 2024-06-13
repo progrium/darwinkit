@@ -79,7 +79,7 @@ func (p_ PathCell) Init() PathCell {
 }
 
 func (p_ PathCell) InitImageCell(image IImage) PathCell {
-	rv := objc.Call[PathCell](p_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[PathCell](p_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func NewPathCellTextCell(string_ string) PathCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1534143-rectofpathcomponentcell?language=objc
 func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCell, frame foundation.Rect, view IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](p_, objc.Sel("rectOfPathComponentCell:withFrame:inView:"), objc.Ptr(cell), frame, objc.Ptr(view))
+	rv := objc.Call[foundation.Rect](p_, objc.Sel("rectOfPathComponentCell:withFrame:inView:"), cell, frame, view)
 	return rv
 }
 
@@ -118,14 +118,14 @@ func (p_ PathCell) RectOfPathComponentCellWithFrameInView(cell IPathComponentCel
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1526407-mouseentered?language=objc
 func (p_ PathCell) MouseEnteredWithFrameInView(event IEvent, frame foundation.Rect, view IView) {
-	objc.Call[objc.Void](p_, objc.Sel("mouseEntered:withFrame:inView:"), objc.Ptr(event), frame, objc.Ptr(view))
+	objc.Call[objc.Void](p_, objc.Sel("mouseEntered:withFrame:inView:"), event, frame, view)
 }
 
 // Returns the cell located at the given point within the given frame of the given view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1528185-pathcomponentcellatpoint?language=objc
 func (p_ PathCell) PathComponentCellAtPointWithFrameInView(point foundation.Point, frame foundation.Rect, view IView) PathComponentCell {
-	rv := objc.Call[PathComponentCell](p_, objc.Sel("pathComponentCellAtPoint:withFrame:inView:"), point, frame, objc.Ptr(view))
+	rv := objc.Call[PathComponentCell](p_, objc.Sel("pathComponentCellAtPoint:withFrame:inView:"), point, frame, view)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (p_ PathCell) PathComponentCellAtPointWithFrameInView(point foundation.Poin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525878-mouseexited?language=objc
 func (p_ PathCell) MouseExitedWithFrameInView(event IEvent, frame foundation.Rect, view IView) {
-	objc.Call[objc.Void](p_, objc.Sel("mouseExited:withFrame:inView:"), objc.Ptr(event), frame, objc.Ptr(view))
+	objc.Call[objc.Void](p_, objc.Sel("mouseExited:withFrame:inView:"), event, frame, view)
 }
 
 // Sets the array of NSPathComponentCell objects currently being displayed. [Full Topic]
@@ -186,7 +186,7 @@ func (p_ PathCell) PlaceholderAttributedString() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1524552-placeholderattributedstring?language=objc
 func (p_ PathCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 // Returns the placeholder string. [Full Topic]
@@ -231,7 +231,7 @@ func (p_ PathCell) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1525034-url?language=objc
 func (p_ PathCell) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }
 
 // Sets the receiver’s delegate. [Full Topic]
@@ -255,7 +255,7 @@ func (p_ PathCell) SetDelegate(value PPathCellDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1532834-delegate?language=objc
 func (p_ PathCell) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Sets the receiver’s path style. [Full Topic]
@@ -285,7 +285,7 @@ func (p_ PathCell) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcell/1527481-backgroundcolor?language=objc
 func (p_ PathCell) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // Sets the receiver’s double-click action. [Full Topic]

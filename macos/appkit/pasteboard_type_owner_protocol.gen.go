@@ -35,7 +35,7 @@ func (p_ PasteboardTypeOwnerObject) HasPasteboardProvideDataForType() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner/3005193-pasteboard?language=objc
 func (p_ PasteboardTypeOwnerObject) PasteboardProvideDataForType(sender Pasteboard, type_ PasteboardType) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboard:provideDataForType:"), objc.Ptr(sender), type_)
+	objc.Call[objc.Void](p_, objc.Sel("pasteboard:provideDataForType:"), sender, type_)
 }
 
 func (p_ PasteboardTypeOwnerObject) HasPasteboardChangedOwner() bool {
@@ -46,5 +46,5 @@ func (p_ PasteboardTypeOwnerObject) HasPasteboardChangedOwner() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboardtypeowner/3005194-pasteboardchangedowner?language=objc
 func (p_ PasteboardTypeOwnerObject) PasteboardChangedOwner(sender Pasteboard) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboardChangedOwner:"), objc.Ptr(sender))
+	objc.Call[objc.Void](p_, objc.Sel("pasteboardChangedOwner:"), sender)
 }

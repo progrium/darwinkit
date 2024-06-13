@@ -20,19 +20,19 @@ type PTwirlDistortion interface {
 	HasCenter() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -82,7 +82,7 @@ func (t_ TwirlDistortionObject) HasSetAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
-func (t_ TwirlDistortionObject) SetAngle(value float64) {
+func (t_ TwirlDistortionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
 }
 
@@ -93,8 +93,8 @@ func (t_ TwirlDistortionObject) HasAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600203-angle?language=objc
-func (t_ TwirlDistortionObject) Angle() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("angle"))
+func (t_ TwirlDistortionObject) Angle() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("angle"))
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (t_ TwirlDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600206-radius?language=objc
-func (t_ TwirlDistortionObject) SetRadius(value float64) {
+func (t_ TwirlDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setRadius:"), value)
 }
 
@@ -116,8 +116,8 @@ func (t_ TwirlDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600206-radius?language=objc
-func (t_ TwirlDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("radius"))
+func (t_ TwirlDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("radius"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (t_ TwirlDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citwirldistortion/3600205-inputimage?language=objc
 func (t_ TwirlDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TwirlDistortionObject) HasInputImage() bool {

@@ -77,7 +77,7 @@ func (t_ TextStorageDelegateObject) HasTextStorageDidProcessEditingRangeChangeIn
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstoragedelegate/1534375-textstorage?language=objc
 func (t_ TextStorageDelegateObject) TextStorageDidProcessEditingRangeChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	objc.Call[objc.Void](t_, objc.Sel("textStorage:didProcessEditing:range:changeInLength:"), objc.Ptr(textStorage), editedMask, editedRange, delta)
+	objc.Call[objc.Void](t_, objc.Sel("textStorage:didProcessEditing:range:changeInLength:"), textStorage, editedMask, editedRange, delta)
 }
 
 func (t_ TextStorageDelegateObject) HasTextStorageWillProcessEditingRangeChangeInLength() bool {
@@ -88,5 +88,5 @@ func (t_ TextStorageDelegateObject) HasTextStorageWillProcessEditingRangeChangeI
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstoragedelegate/1534795-textstorage?language=objc
 func (t_ TextStorageDelegateObject) TextStorageWillProcessEditingRangeChangeInLength(textStorage TextStorage, editedMask TextStorageEditActions, editedRange foundation.Range, delta int) {
-	objc.Call[objc.Void](t_, objc.Sel("textStorage:willProcessEditing:range:changeInLength:"), objc.Ptr(textStorage), editedMask, editedRange, delta)
+	objc.Call[objc.Void](t_, objc.Sel("textStorage:willProcessEditing:range:changeInLength:"), textStorage, editedMask, editedRange, delta)
 }

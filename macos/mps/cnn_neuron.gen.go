@@ -19,10 +19,10 @@ type _CNNNeuronClass struct {
 // An interface definition for the [CNNNeuron] class.
 type ICNNNeuron interface {
 	ICNNKernel
-	A() float64
-	B() float64
+	A() float32
+	B() float32
 	Data() []byte
-	C() float64
+	C() float32
 	NeuronType() CNNNeuronType
 }
 
@@ -41,7 +41,7 @@ func CNNNeuronFrom(ptr unsafe.Pointer) CNNNeuron {
 
 func (c_ CNNNeuron) InitWithDeviceNeuronDescriptor(device metal.PDevice, neuronDescriptor INNNeuronDescriptor) CNNNeuron {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNeuron](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, objc.Ptr(neuronDescriptor))
+	rv := objc.Call[CNNNeuron](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, neuronDescriptor)
 	return rv
 }
 
@@ -107,16 +107,16 @@ func CNNNeuron_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) CNN
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuron/2942297-a?language=objc
-func (c_ CNNNeuron) A() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("a"))
+func (c_ CNNNeuron) A() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("a"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuron/2942306-b?language=objc
-func (c_ CNNNeuron) B() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("b"))
+func (c_ CNNNeuron) B() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("b"))
 	return rv
 }
 
@@ -131,8 +131,8 @@ func (c_ CNNNeuron) Data() []byte {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuron/2942303-c?language=objc
-func (c_ CNNNeuron) C() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("c"))
+func (c_ CNNNeuron) C() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("c"))
 	return rv
 }
 

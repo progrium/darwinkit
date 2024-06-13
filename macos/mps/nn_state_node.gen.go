@@ -80,7 +80,7 @@ func (n_ NNStateNode) SetHandle(value PHandle) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnstatenode/2866426-handle?language=objc
 func (n_ NNStateNode) SetHandleObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setHandle:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setHandle:"), valueObject)
 }
 
 //	[Full Topic]

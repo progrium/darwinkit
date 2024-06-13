@@ -123,14 +123,14 @@ func NDArrayBinarySecondaryGradientKernel_CopyWithZoneDevice(zone unsafe.Pointer
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143518-encodetocommandbuffer?language=objc
 func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), po0, objc.Ptr(primarySourceArray), objc.Ptr(secondarySourceArray), objc.Ptr(gradient), objc.Ptr(state), objc.Ptr(destination))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), po0, primarySourceArray, secondarySourceArray, gradient, state, destination)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143518-encodetocommandbuffer?language=objc
 func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferObjectPrimarySourceArraySecondarySourceArraySourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState, destination INDArray) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), objc.Ptr(cmdBufObject), objc.Ptr(primarySourceArray), objc.Ptr(secondarySourceArray), objc.Ptr(gradient), objc.Ptr(state), objc.Ptr(destination))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:destinationArray:"), cmdBufObject, primarySourceArray, secondarySourceArray, gradient, state, destination)
 }
 
 //	[Full Topic]
@@ -138,7 +138,7 @@ func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferObjectPrimar
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143517-encodetocommandbuffer?language=objc
 func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferPrimarySourceArraySecondarySourceArraySourceGradientGradientState(cmdBuf metal.PCommandBuffer, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState) NDArray {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:"), po0, objc.Ptr(primarySourceArray), objc.Ptr(secondarySourceArray), objc.Ptr(gradient), objc.Ptr(state))
+	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:"), po0, primarySourceArray, secondarySourceArray, gradient, state)
 	return rv
 }
 
@@ -146,6 +146,6 @@ func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferPrimarySourc
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraybinarysecondarygradientkernel/3143517-encodetocommandbuffer?language=objc
 func (n_ NDArrayBinarySecondaryGradientKernel) EncodeToCommandBufferObjectPrimarySourceArraySecondarySourceArraySourceGradientGradientState(cmdBufObject objc.IObject, primarySourceArray INDArray, secondarySourceArray INDArray, gradient INDArray, state IState) NDArray {
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:"), objc.Ptr(cmdBufObject), objc.Ptr(primarySourceArray), objc.Ptr(secondarySourceArray), objc.Ptr(gradient), objc.Ptr(state))
+	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:primarySourceArray:secondarySourceArray:sourceGradient:gradientState:"), cmdBufObject, primarySourceArray, secondarySourceArray, gradient, state)
 	return rv
 }

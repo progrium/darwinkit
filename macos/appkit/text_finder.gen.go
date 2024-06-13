@@ -172,7 +172,7 @@ func (t_ TextFinder) SetFindBarContainer(value PTextFinderBarContainer) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1526748-findbarcontainer?language=objc
 func (t_ TextFinder) SetFindBarContainerObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setFindBarContainer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setFindBarContainer:"), valueObject)
 }
 
 // Invoke to specify that the find indicator needs updating when not contained within a scroll view. [Full Topic]
@@ -210,5 +210,5 @@ func (t_ TextFinder) SetClient(value PTextFinderClient) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinder/1533813-client?language=objc
 func (t_ TextFinder) SetClientObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setClient:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setClient:"), valueObject)
 }

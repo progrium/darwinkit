@@ -556,11 +556,11 @@ type PAccessibility interface {
 	HasIsAccessibilityFrontmost() bool
 
 	// optional
-	SetAccessibilityLabelValue(value float64)
+	SetAccessibilityLabelValue(value float32)
 	HasSetAccessibilityLabelValue() bool
 
 	// optional
-	AccessibilityLabelValue() float64
+	AccessibilityLabelValue() float32
 	HasAccessibilityLabelValue() bool
 
 	// optional
@@ -1788,7 +1788,7 @@ func (a_ AccessibilityObject) HasSetAccessibilityURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibility/1535157-accessibilityurl?language=objc
 func (a_ AccessibilityObject) SetAccessibilityURL(value foundation.URL) {
-	objc.Call[objc.Void](a_, objc.Sel("setAccessibilityURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAccessibilityURL:"), value)
 }
 
 func (a_ AccessibilityObject) HasAccessibilityURL() bool {
@@ -2684,7 +2684,7 @@ func (a_ AccessibilityObject) HasSetAccessibilityLabelValue() bool {
 // The value of the label accessibility element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibility/1535108-accessibilitylabelvalue?language=objc
-func (a_ AccessibilityObject) SetAccessibilityLabelValue(value float64) {
+func (a_ AccessibilityObject) SetAccessibilityLabelValue(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setAccessibilityLabelValue:"), value)
 }
 
@@ -2695,8 +2695,8 @@ func (a_ AccessibilityObject) HasAccessibilityLabelValue() bool {
 // The value of the label accessibility element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibility/1535108-accessibilitylabelvalue?language=objc
-func (a_ AccessibilityObject) AccessibilityLabelValue() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("accessibilityLabelValue"))
+func (a_ AccessibilityObject) AccessibilityLabelValue() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("accessibilityLabelValue"))
 	return rv
 }
 

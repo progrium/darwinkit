@@ -48,7 +48,7 @@ func MatrixFrom(ptr unsafe.Pointer) Matrix {
 
 func (m_ Matrix) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IMatrixDescriptor) Matrix {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Matrix](m_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, objc.Ptr(descriptor))
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
 	return rv
 }
 
@@ -63,7 +63,7 @@ func NewMatrixWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, desc
 
 func (m_ Matrix) InitWithBufferDescriptor(buffer metal.PBuffer, descriptor IMatrixDescriptor) Matrix {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Matrix](m_, objc.Sel("initWithBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -78,7 +78,7 @@ func NewMatrixWithBufferDescriptor(buffer metal.PBuffer, descriptor IMatrixDescr
 
 func (m_ Matrix) InitWithDeviceDescriptor(device metal.PDevice, descriptor IMatrixDescriptor) Matrix {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[Matrix](m_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[Matrix](m_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func (m_ Matrix) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrix/2942571-synchronizeoncommandbuffer?language=objc
 func (m_ Matrix) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("synchronizeOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](m_, objc.Sel("synchronizeOnCommandBuffer:"), commandBufferObject)
 }
 
 // The number of rows in the matrix. [Full Topic]

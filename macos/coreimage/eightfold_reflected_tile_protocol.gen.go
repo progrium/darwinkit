@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile?language=objc
 type PEightfoldReflectedTile interface {
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -28,11 +28,11 @@ type PEightfoldReflectedTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (e_ EightfoldReflectedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile/3228251-width?language=objc
-func (e_ EightfoldReflectedTileObject) SetWidth(value float64) {
+func (e_ EightfoldReflectedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setWidth:"), value)
 }
 
@@ -70,8 +70,8 @@ func (e_ EightfoldReflectedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile/3228251-width?language=objc
-func (e_ EightfoldReflectedTileObject) Width() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("width"))
+func (e_ EightfoldReflectedTileObject) Width() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("width"))
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (e_ EightfoldReflectedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile/3228250-inputimage?language=objc
 func (e_ EightfoldReflectedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), value)
 }
 
 func (e_ EightfoldReflectedTileObject) HasInputImage() bool {
@@ -105,7 +105,7 @@ func (e_ EightfoldReflectedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile/3228248-angle?language=objc
-func (e_ EightfoldReflectedTileObject) SetAngle(value float64) {
+func (e_ EightfoldReflectedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setAngle:"), value)
 }
 
@@ -116,8 +116,8 @@ func (e_ EightfoldReflectedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cieightfoldreflectedtile/3228248-angle?language=objc
-func (e_ EightfoldReflectedTileObject) Angle() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("angle"))
+func (e_ EightfoldReflectedTileObject) Angle() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("angle"))
 	return rv
 }
 

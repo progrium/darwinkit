@@ -79,7 +79,7 @@ func NewPanGestureRecognizerWithTargetAction(target objc.IObject, action objc.Se
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515532-velocityinview?language=objc
 func (p_ PanGestureRecognizer) VelocityInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](p_, objc.Sel("velocityInView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Point](p_, objc.Sel("velocityInView:"), view)
 	return rv
 }
 
@@ -87,7 +87,7 @@ func (p_ PanGestureRecognizer) VelocityInView(view IView) foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515531-translationinview?language=objc
 func (p_ PanGestureRecognizer) TranslationInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](p_, objc.Sel("translationInView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Point](p_, objc.Sel("translationInView:"), view)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (p_ PanGestureRecognizer) TranslationInView(view IView) foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspangesturerecognizer/1515533-settranslation?language=objc
 func (p_ PanGestureRecognizer) SetTranslationInView(translation foundation.Point, view IView) {
-	objc.Call[objc.Void](p_, objc.Sel("setTranslation:inView:"), translation, objc.Ptr(view))
+	objc.Call[objc.Void](p_, objc.Sel("setTranslation:inView:"), translation, view)
 }
 
 // The number of necessary touches on a Touch Bar for the gesture recognizer to match. [Full Topic]

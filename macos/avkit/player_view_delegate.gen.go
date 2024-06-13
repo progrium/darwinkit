@@ -142,7 +142,7 @@ func (p_ PlayerViewDelegateObject) HasPlayerViewWillExitFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewdelegate/3752990-playerviewwillexitfullscreen?language=objc
 func (p_ PlayerViewDelegateObject) PlayerViewWillExitFullScreen(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewWillExitFullScreen:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewWillExitFullScreen:"), playerView)
 }
 
 func (p_ PlayerViewDelegateObject) HasPlayerViewWillEnterFullScreen() bool {
@@ -153,7 +153,7 @@ func (p_ PlayerViewDelegateObject) HasPlayerViewWillEnterFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewdelegate/3752989-playerviewwillenterfullscreen?language=objc
 func (p_ PlayerViewDelegateObject) PlayerViewWillEnterFullScreen(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewWillEnterFullScreen:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewWillEnterFullScreen:"), playerView)
 }
 
 func (p_ PlayerViewDelegateObject) HasPlayerViewDidExitFullScreen() bool {
@@ -164,7 +164,7 @@ func (p_ PlayerViewDelegateObject) HasPlayerViewDidExitFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewdelegate/3752988-playerviewdidexitfullscreen?language=objc
 func (p_ PlayerViewDelegateObject) PlayerViewDidExitFullScreen(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidExitFullScreen:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidExitFullScreen:"), playerView)
 }
 
 func (p_ PlayerViewDelegateObject) HasPlayerViewRestoreUserInterfaceForFullScreenExitWithCompletionHandler() bool {
@@ -175,7 +175,7 @@ func (p_ PlayerViewDelegateObject) HasPlayerViewRestoreUserInterfaceForFullScree
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewdelegate/3752986-playerview?language=objc
 func (p_ PlayerViewDelegateObject) PlayerViewRestoreUserInterfaceForFullScreenExitWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("playerView:restoreUserInterfaceForFullScreenExitWithCompletionHandler:"), objc.Ptr(playerView), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playerView:restoreUserInterfaceForFullScreenExitWithCompletionHandler:"), playerView, completionHandler)
 }
 
 func (p_ PlayerViewDelegateObject) HasPlayerViewDidEnterFullScreen() bool {
@@ -186,5 +186,5 @@ func (p_ PlayerViewDelegateObject) HasPlayerViewDidEnterFullScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewdelegate/3752987-playerviewdidenterfullscreen?language=objc
 func (p_ PlayerViewDelegateObject) PlayerViewDidEnterFullScreen(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidEnterFullScreen:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidEnterFullScreen:"), playerView)
 }

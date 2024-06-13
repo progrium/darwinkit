@@ -83,29 +83,29 @@ func (t_ TextStorage) Init() TextStorage {
 	return rv
 }
 
-func (t_ TextStorage) InitWithHTMLBaseURLDocumentAttributes(data []byte, base foundation.IURL, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithHTML:baseURL:documentAttributes:"), data, objc.Ptr(base), dict)
+func (t_ TextStorage) InitWithHTMLBaseURLDocumentAttributes(data []byte, base foundation.IURL, dict unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithHTML:baseURL:documentAttributes:"), data, base, dict)
 	return rv
 }
 
 // Creates an attributed string from the HTML in the specified data object and base URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524624-initwithhtml?language=objc
-func NewTextStorageWithHTMLBaseURLDocumentAttributes(data []byte, base foundation.IURL, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithHTMLBaseURLDocumentAttributes(data []byte, base foundation.IURL, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithHTMLBaseURLDocumentAttributes(data, base, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithContentsOfMarkdownFileAtURL:options:baseURL:error:"), objc.Ptr(markdownFile), objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (t_ TextStorage) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithContentsOfMarkdownFileAtURL:options:baseURL:error:"), markdownFile, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from the contents of a specified URL that contains Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746872-initwithcontentsofmarkdownfileat?language=objc
-func NewTextStorageWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+func NewTextStorageWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile foundation.IURL, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
 	instance.Autorelease()
 	return instance
@@ -126,7 +126,7 @@ func NewTextStorageWithStringAttributes(str string, attrs map[foundation.Attribu
 }
 
 func (tc _TextStorageClass) LocalizedAttributedStringWithFormat(format foundation.IAttributedString, args ...any) TextStorage {
-	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{objc.Ptr(format)}, args...)...)
+	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func TextStorage_LocalizedAttributedStringWithFormat(format foundation.IAttribut
 }
 
 func (t_ TextStorage) InitWithAttributedString(attrStr foundation.IAttributedString) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithAttributedString:"), objc.Ptr(attrStr))
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithAttributedString:"), attrStr)
 	return rv
 }
 
@@ -151,21 +151,21 @@ func NewTextStorageWithAttributedString(attrStr foundation.IAttributedString) Te
 	return instance
 }
 
-func (t_ TextStorage) InitWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithData:options:documentAttributes:error:"), data, options, dict, objc.Ptr(error))
+func (t_ TextStorage) InitWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer, error unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithData:options:documentAttributes:error:"), data, options, dict, error)
 	return rv
 }
 
 // Creates an attributed string from the data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc
-func NewTextStorageWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
+func NewTextStorageWithDataOptionsDocumentAttributesError(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer, error unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithRTFDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func (t_ TextStorage) InitWithRTFDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	rv := objc.Call[TextStorage](t_, objc.Sel("initWithRTF:documentAttributes:"), data, dict)
 	return rv
 }
@@ -173,14 +173,14 @@ func (t_ TextStorage) InitWithRTFDocumentAttributes(data []byte, dict map[Attrib
 // Creates an attributed string by decoding the stream of RTF commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc
-func NewTextStorageWithRTFDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithRTFDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
 func (t_ TextStorage) InitWithFormatOptionsLocale(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, locale foundation.ILocale, args ...any) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithFormat:options:locale:"), append([]any{objc.Ptr(format), options, objc.Ptr(locale)}, args...)...)
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithFormat:options:locale:"), append([]any{format, options, locale}, args...)...)
 	return rv
 }
 
@@ -193,35 +193,35 @@ func NewTextStorageWithFormatOptionsLocale(format foundation.IAttributedString, 
 	return instance
 }
 
-func (t_ TextStorage) InitWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithRTFDFileWrapper:documentAttributes:"), objc.Ptr(wrapper), dict)
+func (t_ TextStorage) InitWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithRTFDFileWrapper:documentAttributes:"), wrapper, dict)
 	return rv
 }
 
 // Creates an attributed string from the specified file wrapper that contains an RTFD document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1533594-initwithrtfdfilewrapper?language=objc
-func NewTextStorageWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithRTFDFileWrapperDocumentAttributes(wrapper foundation.IFileWrapper, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithMarkdown:options:baseURL:error:"), markdown, objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (t_ TextStorage) InitWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithMarkdown:options:baseURL:error:"), markdown, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746875-initwithmarkdown?language=objc
-func NewTextStorageWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+func NewTextStorageWithMarkdownOptionsBaseURLError(markdown []byte, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func (t_ TextStorage) InitWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer) TextStorage {
 	rv := objc.Call[TextStorage](t_, objc.Sel("initWithHTML:options:documentAttributes:"), data, options, dict)
 	return rv
 }
@@ -229,14 +229,14 @@ func (t_ TextStorage) InitWithHTMLOptionsDocumentAttributes(data []byte, options
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc
-func NewTextStorageWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithHTMLOptionsDocumentAttributes(data []byte, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
 	instance.Autorelease()
 	return instance
 }
 
 func (tc _TextStorageClass) LocalizedAttributedStringWithFormatOptions(format foundation.IAttributedString, options foundation.AttributedStringFormattingOptions, args ...any) TextStorage {
-	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:options:"), append([]any{objc.Ptr(format), options}, args...)...)
+	rv := objc.Call[TextStorage](tc, objc.Sel("localizedAttributedStringWithFormat:options:"), append([]any{format, options}, args...)...)
 	return rv
 }
 
@@ -247,7 +247,7 @@ func TextStorage_LocalizedAttributedStringWithFormatOptions(format foundation.IA
 	return TextStorageClass.LocalizedAttributedStringWithFormatOptions(format, options, args...)
 }
 
-func (t_ TextStorage) InitWithDocFormatDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func (t_ TextStorage) InitWithDocFormatDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	rv := objc.Call[TextStorage](t_, objc.Sel("initWithDocFormat:documentAttributes:"), data, dict)
 	return rv
 }
@@ -255,41 +255,41 @@ func (t_ TextStorage) InitWithDocFormatDocumentAttributes(data []byte, dict map[
 // Creates an attributed string from Microsoft Word format data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc
-func NewTextStorageWithDocFormatDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithDocFormatDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithMarkdownString:options:baseURL:error:"), markdownString, objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (t_ TextStorage) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithMarkdownString:options:baseURL:error:"), markdownString, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from a Markdown-formatted string using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746876-initwithmarkdownstring?language=objc
-func NewTextStorageWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error foundation.IError) TextStorage {
+func NewTextStorageWithMarkdownStringOptionsBaseURLError(markdownString string, options foundation.IAttributedStringMarkdownParsingOptions, baseURL foundation.IURL, error unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithURLOptionsDocumentAttributesError(url foundation.IURL, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
-	rv := objc.Call[TextStorage](t_, objc.Sel("initWithURL:options:documentAttributes:error:"), objc.Ptr(url), options, dict, objc.Ptr(error))
+func (t_ TextStorage) InitWithURLOptionsDocumentAttributesError(url foundation.IURL, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer, error unsafe.Pointer) TextStorage {
+	rv := objc.Call[TextStorage](t_, objc.Sel("initWithURL:options:documentAttributes:error:"), url, options, dict, error)
 	return rv
 }
 
 // Creates an attributed string from the contents of the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530490-initwithurl?language=objc
-func NewTextStorageWithURLOptionsDocumentAttributesError(url foundation.IURL, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict map[AttributedStringDocumentAttributeKey]objc.IObject, error foundation.IError) TextStorage {
+func NewTextStorageWithURLOptionsDocumentAttributesError(url foundation.IURL, options map[AttributedStringDocumentReadingOptionKey]objc.IObject, dict unsafe.Pointer, error unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithURLOptionsDocumentAttributesError(url, options, dict, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithHTMLDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func (t_ TextStorage) InitWithHTMLDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	rv := objc.Call[TextStorage](t_, objc.Sel("initWithHTML:documentAttributes:"), data, dict)
 	return rv
 }
@@ -297,13 +297,13 @@ func (t_ TextStorage) InitWithHTMLDocumentAttributes(data []byte, dict map[Attri
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1525953-initwithhtml?language=objc
-func NewTextStorageWithHTMLDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithHTMLDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithHTMLDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (t_ TextStorage) InitWithRTFDDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func (t_ TextStorage) InitWithRTFDDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	rv := objc.Call[TextStorage](t_, objc.Sel("initWithRTFD:documentAttributes:"), data, dict)
 	return rv
 }
@@ -311,7 +311,7 @@ func (t_ TextStorage) InitWithRTFDDocumentAttributes(data []byte, dict map[Attri
 // Creates an attributed string by decoding the stream of RTFD commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc
-func NewTextStorageWithRTFDDocumentAttributes(data []byte, dict map[AttributedStringDocumentAttributeKey]objc.IObject) TextStorage {
+func NewTextStorageWithRTFDDocumentAttributes(data []byte, dict unsafe.Pointer) TextStorage {
 	instance := TextStorageClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
@@ -335,7 +335,7 @@ func NewTextStorageWithString(str string) TextStorage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorage/1533459-addlayoutmanager?language=objc
 func (t_ TextStorage) AddLayoutManager(aLayoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("addLayoutManager:"), objc.Ptr(aLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("addLayoutManager:"), aLayoutManager)
 }
 
 // Cleans up changes to the text storage object and notifies its delegate and layout managers of changes. [Full Topic]
@@ -363,7 +363,7 @@ func (t_ TextStorage) EnsureAttributesAreFixedInRange(range_ foundation.Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorage/1528755-removelayoutmanager?language=objc
 func (t_ TextStorage) RemoveLayoutManager(aLayoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("removeLayoutManager:"), objc.Ptr(aLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("removeLayoutManager:"), aLayoutManager)
 }
 
 // Tracks changes made to the text storage object, allowing the text storage to record the full extent of changes. [Full Topic]
@@ -385,7 +385,7 @@ func (t_ TextStorage) ForegroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextstorage/1527175-foregroundcolor?language=objc
 func (t_ TextStorage) SetForegroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setForegroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setForegroundColor:"), value)
 }
 
 // The text storage contents as an array of characters. [Full Topic]
@@ -445,7 +445,7 @@ func (t_ TextStorage) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextstorage/1535365-font?language=objc
 func (t_ TextStorage) SetFont(value IFont) {
-	objc.Call[objc.Void](t_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFont:"), value)
 }
 
 // The text storage contents as an array of paragraphs. [Full Topic]
@@ -508,7 +508,7 @@ func (t_ TextStorage) SetDelegate(value PTextStorageDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorage/1532704-delegate?language=objc
 func (t_ TextStorage) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The observer for the text storage object. [Full Topic]
@@ -532,7 +532,7 @@ func (t_ TextStorage) SetTextStorageObserver(value PTextStorageObserving) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorage/3824756-textstorageobserver?language=objc
 func (t_ TextStorage) SetTextStorageObserverObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextStorageObserver:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setTextStorageObserver:"), valueObject)
 }
 
 // The layout managers for the text storage object. [Full Topic]

@@ -19,8 +19,8 @@ type _ImageConvolutionClass struct {
 // An interface definition for the [ImageConvolution] class.
 type IImageConvolution interface {
 	IUnaryImageKernel
-	Bias() float64
-	SetBias(value float64)
+	Bias() float32
+	SetBias(value float32)
 	KernelWidth() uint
 	KernelHeight() uint
 }
@@ -38,7 +38,7 @@ func ImageConvolutionFrom(ptr unsafe.Pointer) ImageConvolution {
 	}
 }
 
-func (i_ ImageConvolution) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImageConvolution {
+func (i_ ImageConvolution) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageConvolution {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageConvolution](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:weights:"), po0, kernelWidth, kernelHeight, kernelWeights)
 	return rv
@@ -47,7 +47,7 @@ func (i_ ImageConvolution) InitWithDeviceKernelWidthKernelHeightWeights(device m
 // Initializes a convolution filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618902-initwithdevice?language=objc
-func NewImageConvolutionWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImageConvolution {
+func NewImageConvolutionWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageConvolution {
 	instance := ImageConvolutionClass.Alloc().InitWithDeviceKernelWidthKernelHeightWeights(device, kernelWidth, kernelHeight, kernelWeights)
 	instance.Autorelease()
 	return instance
@@ -106,15 +106,15 @@ func ImageConvolution_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevi
 // The value added to a convolved pixel before it is converted back to its intended storage format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618841-bias?language=objc
-func (i_ ImageConvolution) Bias() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("bias"))
+func (i_ ImageConvolution) Bias() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("bias"))
 	return rv
 }
 
 // The value added to a convolved pixel before it is converted back to its intended storage format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageconvolution/1618841-bias?language=objc
-func (i_ ImageConvolution) SetBias(value float64) {
+func (i_ ImageConvolution) SetBias(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setBias:"), value)
 }
 

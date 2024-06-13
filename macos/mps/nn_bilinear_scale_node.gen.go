@@ -55,7 +55,7 @@ func (n_ NNBilinearScaleNode) Init() NNBilinearScaleNode {
 }
 
 func (n_ NNBilinearScaleNode) InitWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNBilinearScaleNode {
-	rv := objc.Call[NNBilinearScaleNode](n_, objc.Sel("initWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNBilinearScaleNode](n_, objc.Sel("initWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func NewNNBilinearScaleNodeWithSourceOutputSize(sourceNode INNImageNode, size me
 
 func (n_ NNBilinearScaleNode) InitWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNBilinearScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNBilinearScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNBilinearScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func NewNNBilinearScaleNodeWithSourceTransformProviderOutputSize(sourceNode INNI
 }
 
 func (nc _NNBilinearScaleNodeClass) NodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNBilinearScaleNode {
-	rv := objc.Call[NNBilinearScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNBilinearScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func NNBilinearScaleNode_NodeWithSourceOutputSize(sourceNode INNImageNode, size 
 
 func (nc _NNBilinearScaleNodeClass) NodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNBilinearScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNBilinearScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNBilinearScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 

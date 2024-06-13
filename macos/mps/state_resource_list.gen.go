@@ -66,7 +66,7 @@ func (s_ StateResourceList) Init() StateResourceList {
 }
 
 func (sc _StateResourceListClass) ResourceListWithTextureDescriptors(d metal.ITextureDescriptor, args ...any) StateResourceList {
-	rv := objc.Call[StateResourceList](sc, objc.Sel("resourceListWithTextureDescriptors:"), append([]any{objc.Ptr(d)}, args...)...)
+	rv := objc.Call[StateResourceList](sc, objc.Sel("resourceListWithTextureDescriptors:"), append([]any{d}, args...)...)
 	return rv
 }
 
@@ -103,5 +103,5 @@ func (s_ StateResourceList) AppendBuffer(size uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstateresourcelist/2947894-appendtexture?language=objc
 func (s_ StateResourceList) AppendTexture(descriptor metal.ITextureDescriptor) {
-	objc.Call[objc.Void](s_, objc.Sel("appendTexture:"), objc.Ptr(descriptor))
+	objc.Call[objc.Void](s_, objc.Sel("appendTexture:"), descriptor)
 }

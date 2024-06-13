@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coreml"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -20,9 +19,9 @@ type _RecognizedPointsObservationClass struct {
 // An interface definition for the [RecognizedPointsObservation] class.
 type IRecognizedPointsObservation interface {
 	IObservation
-	RecognizedPointsForGroupKeyError(groupKey RecognizedPointGroupKey, error foundation.IError) map[RecognizedPointKey]RecognizedPoint
-	RecognizedPointForKeyError(pointKey RecognizedPointKey, error foundation.IError) RecognizedPoint
-	KeypointsMultiArrayAndReturnError(error foundation.IError) coreml.MultiArray
+	RecognizedPointsForGroupKeyError(groupKey RecognizedPointGroupKey, error unsafe.Pointer) map[RecognizedPointKey]RecognizedPoint
+	RecognizedPointForKeyError(pointKey RecognizedPointKey, error unsafe.Pointer) RecognizedPoint
+	KeypointsMultiArrayAndReturnError(error unsafe.Pointer) coreml.MultiArray
 	AvailableGroupKeys() []RecognizedPointGroupKey
 	AvailableKeys() []RecognizedPointKey
 }
@@ -63,24 +62,24 @@ func (r_ RecognizedPointsObservation) Init() RecognizedPointsObservation {
 // Retrieves the recognized points for a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3618962-recognizedpointsforgroupkey?language=objc
-func (r_ RecognizedPointsObservation) RecognizedPointsForGroupKeyError(groupKey RecognizedPointGroupKey, error foundation.IError) map[RecognizedPointKey]RecognizedPoint {
-	rv := objc.Call[map[RecognizedPointKey]RecognizedPoint](r_, objc.Sel("recognizedPointsForGroupKey:error:"), groupKey, objc.Ptr(error))
+func (r_ RecognizedPointsObservation) RecognizedPointsForGroupKeyError(groupKey RecognizedPointGroupKey, error unsafe.Pointer) map[RecognizedPointKey]RecognizedPoint {
+	rv := objc.Call[map[RecognizedPointKey]RecognizedPoint](r_, objc.Sel("recognizedPointsForGroupKey:error:"), groupKey, error)
 	return rv
 }
 
 // Retrieves a recognized point for a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3656175-recognizedpointforkey?language=objc
-func (r_ RecognizedPointsObservation) RecognizedPointForKeyError(pointKey RecognizedPointKey, error foundation.IError) RecognizedPoint {
-	rv := objc.Call[RecognizedPoint](r_, objc.Sel("recognizedPointForKey:error:"), pointKey, objc.Ptr(error))
+func (r_ RecognizedPointsObservation) RecognizedPointForKeyError(pointKey RecognizedPointKey, error unsafe.Pointer) RecognizedPoint {
+	rv := objc.Call[RecognizedPoint](r_, objc.Sel("recognizedPointForKey:error:"), pointKey, error)
 	return rv
 }
 
 // Retrieves the grouping of normalized point coordinates and confidence scores in a format compatible with Core ML. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedpointsobservation/3618961-keypointsmultiarrayandreturnerro?language=objc
-func (r_ RecognizedPointsObservation) KeypointsMultiArrayAndReturnError(error foundation.IError) coreml.MultiArray {
-	rv := objc.Call[coreml.MultiArray](r_, objc.Sel("keypointsMultiArrayAndReturnError:"), objc.Ptr(error))
+func (r_ RecognizedPointsObservation) KeypointsMultiArrayAndReturnError(error unsafe.Pointer) coreml.MultiArray {
+	rv := objc.Call[coreml.MultiArray](r_, objc.Sel("keypointsMultiArrayAndReturnError:"), error)
 	return rv
 }
 

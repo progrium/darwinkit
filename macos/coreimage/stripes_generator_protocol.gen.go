@@ -20,11 +20,11 @@ type PStripesGenerator interface {
 	HasColor0() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PStripesGenerator interface {
 	HasCenter() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 
 	// optional
@@ -68,7 +68,7 @@ func (s_ StripesGeneratorObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228762-color0?language=objc
 func (s_ StripesGeneratorObject) SetColor0(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), value)
 }
 
 func (s_ StripesGeneratorObject) HasColor0() bool {
@@ -90,7 +90,7 @@ func (s_ StripesGeneratorObject) HasSetWidth() bool {
 // The width of a stripe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228765-width?language=objc
-func (s_ StripesGeneratorObject) SetWidth(value float64) {
+func (s_ StripesGeneratorObject) SetWidth(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setWidth:"), value)
 }
 
@@ -101,8 +101,8 @@ func (s_ StripesGeneratorObject) HasWidth() bool {
 // The width of a stripe. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228765-width?language=objc
-func (s_ StripesGeneratorObject) Width() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("width"))
+func (s_ StripesGeneratorObject) Width() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("width"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (s_ StripesGeneratorObject) HasSetSharpness() bool {
 // The sharpness of the stripe pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228764-sharpness?language=objc
-func (s_ StripesGeneratorObject) SetSharpness(value float64) {
+func (s_ StripesGeneratorObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setSharpness:"), value)
 }
 
@@ -147,8 +147,8 @@ func (s_ StripesGeneratorObject) HasSharpness() bool {
 // The sharpness of the stripe pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228764-sharpness?language=objc
-func (s_ StripesGeneratorObject) Sharpness() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("sharpness"))
+func (s_ StripesGeneratorObject) Sharpness() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("sharpness"))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (s_ StripesGeneratorObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistripesgenerator/3228763-color1?language=objc
 func (s_ StripesGeneratorObject) SetColor1(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor1:"), value)
 }
 
 func (s_ StripesGeneratorObject) HasColor1() bool {

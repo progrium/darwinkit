@@ -3,6 +3,8 @@
 package foundation
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -11,7 +13,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfastenumeration?language=objc
 type PFastEnumeration interface {
 	// optional
-	CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer objc.Object, len uint) uint
+	CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer unsafe.Pointer, len uint) uint
 	HasCountByEnumeratingWithStateObjectsCount() bool
 }
 
@@ -30,7 +32,7 @@ func (f_ FastEnumerationObject) HasCountByEnumeratingWithStateObjectsCount() boo
 // Returns by reference a C array of objects over which the sender should iterate, and as the return value the number of objects in the array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfastenumeration/1412867-countbyenumeratingwithstate?language=objc
-func (f_ FastEnumerationObject) CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer objc.Object, len uint) uint {
+func (f_ FastEnumerationObject) CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer unsafe.Pointer, len uint) uint {
 	rv := objc.Call[uint](f_, objc.Sel("countByEnumeratingWithState:objects:count:"), state, buffer, len)
 	return rv
 }

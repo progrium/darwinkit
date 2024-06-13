@@ -27,11 +27,11 @@ type PShadedMaterial interface {
 	HasInputImage() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 }
 
@@ -51,7 +51,7 @@ func (s_ ShadedMaterialObject) HasSetShadingImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228707-shadingimage?language=objc
 func (s_ ShadedMaterialObject) SetShadingImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setShadingImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setShadingImage:"), value)
 }
 
 func (s_ ShadedMaterialObject) HasShadingImage() bool {
@@ -74,7 +74,7 @@ func (s_ ShadedMaterialObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228705-inputimage?language=objc
 func (s_ ShadedMaterialObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ ShadedMaterialObject) HasInputImage() bool {
@@ -96,7 +96,7 @@ func (s_ ShadedMaterialObject) HasSetScale() bool {
 // The scale of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
-func (s_ ShadedMaterialObject) SetScale(value float64) {
+func (s_ ShadedMaterialObject) SetScale(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setScale:"), value)
 }
 
@@ -107,7 +107,7 @@ func (s_ ShadedMaterialObject) HasScale() bool {
 // The scale of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cishadedmaterial/3228706-scale?language=objc
-func (s_ ShadedMaterialObject) Scale() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("scale"))
+func (s_ ShadedMaterialObject) Scale() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("scale"))
 	return rv
 }

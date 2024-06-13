@@ -61,7 +61,7 @@ func RNNMatrixTrainingLayerFrom(ptr unsafe.Pointer) RNNMatrixTrainingLayer {
 
 func (r_ RNNMatrixTrainingLayer) InitWithDeviceRnnDescriptorTrainableWeights(device metal.PDevice, rnnDescriptor IRNNDescriptor, trainableWeights foundation.IMutableArray) RNNMatrixTrainingLayer {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixTrainingLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:trainableWeights:"), po0, objc.Ptr(rnnDescriptor), objc.Ptr(trainableWeights))
+	rv := objc.Call[RNNMatrixTrainingLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:trainableWeights:"), po0, rnnDescriptor, trainableWeights)
 	return rv
 }
 
@@ -128,7 +128,7 @@ func NewRNNMatrixTrainingLayerWithDevice(device metal.PDevice) RNNMatrixTraining
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966787-createweightmatrices?language=objc
 func (r_ RNNMatrixTrainingLayer) CreateWeightMatrices(matricesOut foundation.IMutableArray) {
-	objc.Call[objc.Void](r_, objc.Sel("createWeightMatrices:"), objc.Ptr(matricesOut))
+	objc.Call[objc.Void](r_, objc.Sel("createWeightMatrices:"), matricesOut)
 }
 
 //	[Full Topic]
@@ -136,14 +136,14 @@ func (r_ RNNMatrixTrainingLayer) CreateWeightMatrices(matricesOut foundation.IMu
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966790-encodeforwardsequencetocommandbu?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferSourceMatricesSourceOffsetsDestinationMatricesDestinationOffsetsTrainingStatesRecurrentInputStateRecurrentOutputStatesWeights(commandBuffer metal.PCommandBuffer, sourceMatrices []IMatrix, sourceOffsets *uint, destinationMatrices []IMatrix, destinationOffsets *uint, trainingStates foundation.IMutableArray, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray, weights []IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), po0, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, objc.Ptr(trainingStates), objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), po0, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, trainingStates, recurrentInputState, recurrentOutputStates, weights)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966790-encodeforwardsequencetocommandbu?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferObjectSourceMatricesSourceOffsetsDestinationMatricesDestinationOffsetsTrainingStatesRecurrentInputStateRecurrentOutputStatesWeights(commandBufferObject objc.IObject, sourceMatrices []IMatrix, sourceOffsets *uint, destinationMatrices []IMatrix, destinationOffsets *uint, trainingStates foundation.IMutableArray, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray, weights []IMatrix) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), objc.Ptr(commandBufferObject), sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, objc.Ptr(trainingStates), objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), commandBufferObject, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, trainingStates, recurrentInputState, recurrentOutputStates, weights)
 }
 
 //	[Full Topic]
@@ -151,14 +151,14 @@ func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferObjectSourc
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966789-encodeforwardsequencetocommandbu?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferSourceMatricesDestinationMatricesTrainingStatesWeights(commandBuffer metal.PCommandBuffer, sourceMatrices []IMatrix, destinationMatrices []IMatrix, trainingStates foundation.IMutableArray, weights []IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:destinationMatrices:trainingStates:weights:"), po0, sourceMatrices, destinationMatrices, objc.Ptr(trainingStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:destinationMatrices:trainingStates:weights:"), po0, sourceMatrices, destinationMatrices, trainingStates, weights)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966789-encodeforwardsequencetocommandbu?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferObjectSourceMatricesDestinationMatricesTrainingStatesWeights(commandBufferObject objc.IObject, sourceMatrices []IMatrix, destinationMatrices []IMatrix, trainingStates foundation.IMutableArray, weights []IMatrix) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:destinationMatrices:trainingStates:weights:"), objc.Ptr(commandBufferObject), sourceMatrices, destinationMatrices, objc.Ptr(trainingStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeForwardSequenceToCommandBuffer:sourceMatrices:destinationMatrices:trainingStates:weights:"), commandBufferObject, sourceMatrices, destinationMatrices, trainingStates, weights)
 }
 
 //	[Full Topic]
@@ -166,14 +166,14 @@ func (r_ RNNMatrixTrainingLayer) EncodeForwardSequenceToCommandBufferObjectSourc
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966788-encodecopyweightstocommandbuffer?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeCopyWeightsToCommandBufferWeightsMatrixIdMatrixCopyFromWeightsToMatrixMatrixOffset(commandBuffer metal.PCommandBuffer, weights []IMatrix, matrixId RNNMatrixId, matrix IMatrix, copyFromWeightsToMatrix bool, matrixOffset metal.Origin) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeCopyWeightsToCommandBuffer:weights:matrixId:matrix:copyFromWeightsToMatrix:matrixOffset:"), po0, weights, matrixId, objc.Ptr(matrix), copyFromWeightsToMatrix, matrixOffset)
+	objc.Call[objc.Void](r_, objc.Sel("encodeCopyWeightsToCommandBuffer:weights:matrixId:matrix:copyFromWeightsToMatrix:matrixOffset:"), po0, weights, matrixId, matrix, copyFromWeightsToMatrix, matrixOffset)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966788-encodecopyweightstocommandbuffer?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeCopyWeightsToCommandBufferObjectWeightsMatrixIdMatrixCopyFromWeightsToMatrixMatrixOffset(commandBufferObject objc.IObject, weights []IMatrix, matrixId RNNMatrixId, matrix IMatrix, copyFromWeightsToMatrix bool, matrixOffset metal.Origin) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeCopyWeightsToCommandBuffer:weights:matrixId:matrix:copyFromWeightsToMatrix:matrixOffset:"), objc.Ptr(commandBufferObject), weights, matrixId, objc.Ptr(matrix), copyFromWeightsToMatrix, matrixOffset)
+	objc.Call[objc.Void](r_, objc.Sel("encodeCopyWeightsToCommandBuffer:weights:matrixId:matrix:copyFromWeightsToMatrix:matrixOffset:"), commandBufferObject, weights, matrixId, matrix, copyFromWeightsToMatrix, matrixOffset)
 }
 
 //	[Full Topic]
@@ -181,14 +181,14 @@ func (r_ RNNMatrixTrainingLayer) EncodeCopyWeightsToCommandBufferObjectWeightsMa
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966785-createtemporaryweightgradientmat?language=objc
 func (r_ RNNMatrixTrainingLayer) CreateTemporaryWeightGradientMatricesDataTypeCommandBuffer(matricesOut foundation.IMutableArray, dataType DataType, commandBuffer metal.PCommandBuffer) {
 	po2 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("createTemporaryWeightGradientMatrices:dataType:commandBuffer:"), objc.Ptr(matricesOut), dataType, po2)
+	objc.Call[objc.Void](r_, objc.Sel("createTemporaryWeightGradientMatrices:dataType:commandBuffer:"), matricesOut, dataType, po2)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966785-createtemporaryweightgradientmat?language=objc
 func (r_ RNNMatrixTrainingLayer) CreateTemporaryWeightGradientMatricesDataTypeCommandBufferObject(matricesOut foundation.IMutableArray, dataType DataType, commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("createTemporaryWeightGradientMatrices:dataType:commandBuffer:"), objc.Ptr(matricesOut), dataType, objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](r_, objc.Sel("createTemporaryWeightGradientMatrices:dataType:commandBuffer:"), matricesOut, dataType, commandBufferObject)
 }
 
 //	[Full Topic]
@@ -196,21 +196,21 @@ func (r_ RNNMatrixTrainingLayer) CreateTemporaryWeightGradientMatricesDataTypeCo
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966791-encodegradientsequencetocommandb?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeGradientSequenceToCommandBufferForwardSourcesForwardSourceOffsetsSourceGradientsSourceGradientOffsetsDestinationGradientsDestinationOffsetsWeightGradientsTrainingStatesRecurrentInputStateRecurrentOutputStatesWeights(commandBuffer metal.PCommandBuffer, forwardSources []IMatrix, forwardSourceOffsets *uint, sourceGradients []IMatrix, sourceGradientOffsets *uint, destinationGradients []IMatrix, destinationOffsets *uint, weightGradients []IMatrix, trainingStates []IRNNMatrixTrainingState, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray, weights []IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:forwardSourceOffsets:sourceGradients:sourceGradientOffsets:destinationGradients:destinationOffsets:weightGradients:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), po0, forwardSources, forwardSourceOffsets, sourceGradients, sourceGradientOffsets, destinationGradients, destinationOffsets, weightGradients, trainingStates, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:forwardSourceOffsets:sourceGradients:sourceGradientOffsets:destinationGradients:destinationOffsets:weightGradients:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), po0, forwardSources, forwardSourceOffsets, sourceGradients, sourceGradientOffsets, destinationGradients, destinationOffsets, weightGradients, trainingStates, recurrentInputState, recurrentOutputStates, weights)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966791-encodegradientsequencetocommandb?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeGradientSequenceToCommandBufferObjectForwardSourcesForwardSourceOffsetsSourceGradientsSourceGradientOffsetsDestinationGradientsDestinationOffsetsWeightGradientsTrainingStatesRecurrentInputStateRecurrentOutputStatesWeights(commandBufferObject objc.IObject, forwardSources []IMatrix, forwardSourceOffsets *uint, sourceGradients []IMatrix, sourceGradientOffsets *uint, destinationGradients []IMatrix, destinationOffsets *uint, weightGradients []IMatrix, trainingStates []IRNNMatrixTrainingState, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray, weights []IMatrix) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:forwardSourceOffsets:sourceGradients:sourceGradientOffsets:destinationGradients:destinationOffsets:weightGradients:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), objc.Ptr(commandBufferObject), forwardSources, forwardSourceOffsets, sourceGradients, sourceGradientOffsets, destinationGradients, destinationOffsets, weightGradients, trainingStates, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates), weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:forwardSourceOffsets:sourceGradients:sourceGradientOffsets:destinationGradients:destinationOffsets:weightGradients:trainingStates:recurrentInputState:recurrentOutputStates:weights:"), commandBufferObject, forwardSources, forwardSourceOffsets, sourceGradients, sourceGradientOffsets, destinationGradients, destinationOffsets, weightGradients, trainingStates, recurrentInputState, recurrentOutputStates, weights)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966786-createweightgradientmatrices?language=objc
 func (r_ RNNMatrixTrainingLayer) CreateWeightGradientMatricesDataType(matricesOut foundation.IMutableArray, dataType DataType) {
-	objc.Call[objc.Void](r_, objc.Sel("createWeightGradientMatrices:dataType:"), objc.Ptr(matricesOut), dataType)
+	objc.Call[objc.Void](r_, objc.Sel("createWeightGradientMatrices:dataType:"), matricesOut, dataType)
 }
 
 //	[Full Topic]
@@ -225,7 +225,7 @@ func (r_ RNNMatrixTrainingLayer) EncodeGradientSequenceToCommandBufferForwardSou
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixtraininglayer/2966792-encodegradientsequencetocommandb?language=objc
 func (r_ RNNMatrixTrainingLayer) EncodeGradientSequenceToCommandBufferObjectForwardSourcesSourceGradientsDestinationGradientsWeightGradientsTrainingStatesWeights(commandBufferObject objc.IObject, forwardSources []IMatrix, sourceGradients []IMatrix, destinationGradients []IMatrix, weightGradients []IMatrix, trainingStates []IRNNMatrixTrainingState, weights []IMatrix) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:sourceGradients:destinationGradients:weightGradients:trainingStates:weights:"), objc.Ptr(commandBufferObject), forwardSources, sourceGradients, destinationGradients, weightGradients, trainingStates, weights)
+	objc.Call[objc.Void](r_, objc.Sel("encodeGradientSequenceToCommandBuffer:forwardSources:sourceGradients:destinationGradients:weightGradients:trainingStates:weights:"), commandBufferObject, forwardSources, sourceGradients, destinationGradients, weightGradients, trainingStates, weights)
 }
 
 //	[Full Topic]

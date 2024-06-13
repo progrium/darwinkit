@@ -54,5 +54,5 @@ func (p_ PortDelegateObject) HasHandlePortMessage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsportdelegate/1399513-handleportmessage?language=objc
 func (p_ PortDelegateObject) HandlePortMessage(message PortMessage) {
-	objc.Call[objc.Void](p_, objc.Sel("handlePortMessage:"), objc.Ptr(message))
+	objc.Call[objc.Void](p_, objc.Sel("handlePortMessage:"), message)
 }

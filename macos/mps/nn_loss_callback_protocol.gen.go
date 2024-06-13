@@ -11,7 +11,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlosscallback?language=objc
 type PNNLossCallback interface {
 	// optional
-	ScalarWeightForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float64
+	ScalarWeightForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float32
 	HasScalarWeightForSourceImageDestinationImage() bool
 }
 
@@ -30,7 +30,7 @@ func (n_ NNLossCallbackObject) HasScalarWeightForSourceImageDestinationImage() b
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlosscallback/3131851-scalarweightforsourceimage?language=objc
-func (n_ NNLossCallbackObject) ScalarWeightForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float64 {
-	rv := objc.Call[float64](n_, objc.Sel("scalarWeightForSourceImage:destinationImage:"), objc.Ptr(sourceImage), objc.Ptr(destinationImage))
+func (n_ NNLossCallbackObject) ScalarWeightForSourceImageDestinationImage(sourceImage Image, destinationImage Image) float32 {
+	rv := objc.Call[float32](n_, objc.Sel("scalarWeightForSourceImage:destinationImage:"), sourceImage, destinationImage)
 	return rv
 }

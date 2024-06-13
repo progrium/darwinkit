@@ -35,7 +35,7 @@ func (f_ FontChangingObject) HasValidModesForFontPanel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005181-validmodesforfontpanel?language=objc
 func (f_ FontChangingObject) ValidModesForFontPanel(fontPanel FontPanel) FontPanelModeMask {
-	rv := objc.Call[FontPanelModeMask](f_, objc.Sel("validModesForFontPanel:"), objc.Ptr(fontPanel))
+	rv := objc.Call[FontPanelModeMask](f_, objc.Sel("validModesForFontPanel:"), fontPanel)
 	return rv
 }
 
@@ -47,5 +47,5 @@ func (f_ FontChangingObject) HasChangeFont() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontchanging/3005180-changefont?language=objc
 func (f_ FontChangingObject) ChangeFont(sender FontManager) {
-	objc.Call[objc.Void](f_, objc.Sel("changeFont:"), objc.Ptr(sender))
+	objc.Call[objc.Void](f_, objc.Sel("changeFont:"), sender)
 }

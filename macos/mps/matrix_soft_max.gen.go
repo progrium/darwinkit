@@ -95,14 +95,14 @@ func (m_ MatrixSoftMax) Init() MatrixSoftMax {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmax/2935563-encodetocommandbuffer?language=objc
 func (m_ MatrixSoftMax) EncodeToCommandBufferInputMatrixResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultMatrix:"), po0, objc.Ptr(inputMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultMatrix:"), po0, inputMatrix, resultMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmax/2935563-encodetocommandbuffer?language=objc
 func (m_ MatrixSoftMax) EncodeToCommandBufferObjectInputMatrixResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, resultMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultMatrix:"), commandBufferObject, inputMatrix, resultMatrix)
 }
 
 //	[Full Topic]

@@ -33,8 +33,8 @@ type IURLSessionTask interface {
 	CountOfBytesExpectedToReceive() int64
 	CountOfBytesClientExpectsToSend() int64
 	SetCountOfBytesClientExpectsToSend(value int64)
-	Priority() float64
-	SetPriority(value float64)
+	Priority() float32
+	SetPriority(value float32)
 	State() URLSessionTaskState
 	PrefersIncrementalDelivery() bool
 	SetPrefersIncrementalDelivery(value bool)
@@ -170,7 +170,7 @@ func (u_ URLSessionTask) SetDelegate(value PURLSessionTaskDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontask/3746977-delegate?language=objc
 func (u_ URLSessionTask) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](u_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The number of bytes that the task expects to receive in the response body. [Full Topic]
@@ -199,15 +199,15 @@ func (u_ URLSessionTask) SetCountOfBytesClientExpectsToSend(value int64) {
 // The relative priority at which you’d like a host to handle the task, specified as a floating point value between 0.0 (lowest priority) and 1.0 (highest priority). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontask/1410569-priority?language=objc
-func (u_ URLSessionTask) Priority() float64 {
-	rv := objc.Call[float64](u_, objc.Sel("priority"))
+func (u_ URLSessionTask) Priority() float32 {
+	rv := objc.Call[float32](u_, objc.Sel("priority"))
 	return rv
 }
 
 // The relative priority at which you’d like a host to handle the task, specified as a floating point value between 0.0 (lowest priority) and 1.0 (highest priority). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontask/1410569-priority?language=objc
-func (u_ URLSessionTask) SetPriority(value float64) {
+func (u_ URLSessionTask) SetPriority(value float32) {
 	objc.Call[objc.Void](u_, objc.Sel("setPriority:"), value)
 }
 
@@ -293,7 +293,7 @@ func (u_ URLSessionTask) EarliestBeginDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiontask/2873413-earliestbegindate?language=objc
 func (u_ URLSessionTask) SetEarliestBeginDate(value IDate) {
-	objc.Call[objc.Void](u_, objc.Sel("setEarliestBeginDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setEarliestBeginDate:"), value)
 }
 
 // The number of bytes that the task expects to send in the request body. [Full Topic]

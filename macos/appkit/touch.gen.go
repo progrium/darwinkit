@@ -67,7 +67,7 @@ func (t_ Touch) Init() Touch {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouch/2588251-previouslocationinview?language=objc
 func (t_ Touch) PreviousLocationInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](t_, objc.Sel("previousLocationInView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Point](t_, objc.Sel("previousLocationInView:"), view)
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (t_ Touch) PreviousLocationInView(view IView) foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouch/2588250-locationinview?language=objc
 func (t_ Touch) LocationInView(view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](t_, objc.Sel("locationInView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.Point](t_, objc.Sel("locationInView:"), view)
 	return rv
 }
 

@@ -149,7 +149,7 @@ func (t_ TileRenderPipelineDescriptor) SetTileFunction(value PFunction) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinedescriptor/2866354-tilefunction?language=objc
 func (t_ TileRenderPipelineDescriptor) SetTileFunctionObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setTileFunction:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setTileFunction:"), valueObject)
 }
 
 // Functions that you can specify as function arguments for the tile shader when encoding commands that use the pipeline. [Full Topic]
@@ -164,7 +164,7 @@ func (t_ TileRenderPipelineDescriptor) LinkedFunctions() LinkedFunctions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltilerenderpipelinedescriptor/3750586-linkedfunctions?language=objc
 func (t_ TileRenderPipelineDescriptor) SetLinkedFunctions(value ILinkedFunctions) {
-	objc.Call[objc.Void](t_, objc.Sel("setLinkedFunctions:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setLinkedFunctions:"), value)
 }
 
 // An array of attachments that store color data. [Full Topic]

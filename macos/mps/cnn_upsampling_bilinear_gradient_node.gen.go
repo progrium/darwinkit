@@ -36,7 +36,7 @@ func CNNUpsamplingBilinearGradientNodeFrom(ptr unsafe.Pointer) CNNUpsamplingBili
 }
 
 func (c_ CNNUpsamplingBilinearGradientNode) InitWithSourceGradientSourceImageGradientStateScaleFactorXScaleFactorY(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, scaleFactorX float64, scaleFactorY float64) CNNUpsamplingBilinearGradientNode {
-	rv := objc.Call[CNNUpsamplingBilinearGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), scaleFactorX, scaleFactorY)
+	rv := objc.Call[CNNUpsamplingBilinearGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), sourceGradient, sourceImage, gradientState, scaleFactorX, scaleFactorY)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCNNUpsamplingBilinearGradientNodeWithSourceGradientSourceImageGradientSt
 }
 
 func (cc _CNNUpsamplingBilinearGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateScaleFactorXScaleFactorY(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, scaleFactorX float64, scaleFactorY float64) CNNUpsamplingBilinearGradientNode {
-	rv := objc.Call[CNNUpsamplingBilinearGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), scaleFactorX, scaleFactorY)
+	rv := objc.Call[CNNUpsamplingBilinearGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:scaleFactorX:scaleFactorY:"), sourceGradient, sourceImage, gradientState, scaleFactorX, scaleFactorY)
 	return rv
 }
 

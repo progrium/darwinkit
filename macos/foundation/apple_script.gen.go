@@ -18,9 +18,9 @@ type _AppleScriptClass struct {
 // An interface definition for the [AppleScript] class.
 type IAppleScript interface {
 	objc.IObject
-	ExecuteAndReturnError(errorInfo map[string]objc.IObject) AppleEventDescriptor
-	CompileAndReturnError(errorInfo map[string]objc.IObject) bool
-	ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo map[string]objc.IObject) AppleEventDescriptor
+	ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor
+	CompileAndReturnError(errorInfo unsafe.Pointer) bool
+	ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo unsafe.Pointer) AppleEventDescriptor
 	IsCompiled() bool
 	RichTextSource() AttributedString
 	Source() string
@@ -39,15 +39,15 @@ func AppleScriptFrom(ptr unsafe.Pointer) AppleScript {
 	}
 }
 
-func (a_ AppleScript) InitWithContentsOfURLError(url IURL, errorInfo map[string]objc.IObject) AppleScript {
-	rv := objc.Call[AppleScript](a_, objc.Sel("initWithContentsOfURL:error:"), objc.Ptr(url), errorInfo)
+func (a_ AppleScript) InitWithContentsOfURLError(url IURL, errorInfo unsafe.Pointer) AppleScript {
+	rv := objc.Call[AppleScript](a_, objc.Sel("initWithContentsOfURL:error:"), url, errorInfo)
 	return rv
 }
 
 // Initializes a newly allocated script instance from the source identified by the passed URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1412508-initwithcontentsofurl?language=objc
-func NewAppleScriptWithContentsOfURLError(url IURL, errorInfo map[string]objc.IObject) AppleScript {
+func NewAppleScriptWithContentsOfURLError(url IURL, errorInfo unsafe.Pointer) AppleScript {
 	instance := AppleScriptClass.Alloc().InitWithContentsOfURLError(url, errorInfo)
 	instance.Autorelease()
 	return instance
@@ -90,7 +90,7 @@ func (a_ AppleScript) Init() AppleScript {
 // Executes the receiver, compiling it first if it is not already compiled. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410034-executeandreturnerror?language=objc
-func (a_ AppleScript) ExecuteAndReturnError(errorInfo map[string]objc.IObject) AppleEventDescriptor {
+func (a_ AppleScript) ExecuteAndReturnError(errorInfo unsafe.Pointer) AppleEventDescriptor {
 	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAndReturnError:"), errorInfo)
 	return rv
 }
@@ -98,7 +98,7 @@ func (a_ AppleScript) ExecuteAndReturnError(errorInfo map[string]objc.IObject) A
 // Compiles the receiver, if it is not already compiled. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1407582-compileandreturnerror?language=objc
-func (a_ AppleScript) CompileAndReturnError(errorInfo map[string]objc.IObject) bool {
+func (a_ AppleScript) CompileAndReturnError(errorInfo unsafe.Pointer) bool {
 	rv := objc.Call[bool](a_, objc.Sel("compileAndReturnError:"), errorInfo)
 	return rv
 }
@@ -106,8 +106,8 @@ func (a_ AppleScript) CompileAndReturnError(errorInfo map[string]objc.IObject) b
 // Executes an Apple event in the context of the receiver, as a means of allowing the application to invoke a handler in the script. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsapplescript/1410807-executeappleevent?language=objc
-func (a_ AppleScript) ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo map[string]objc.IObject) AppleEventDescriptor {
-	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAppleEvent:error:"), objc.Ptr(event), errorInfo)
+func (a_ AppleScript) ExecuteAppleEventError(event IAppleEventDescriptor, errorInfo unsafe.Pointer) AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("executeAppleEvent:error:"), event, errorInfo)
 	return rv
 }
 

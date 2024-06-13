@@ -48,7 +48,7 @@ func StepperTouchBarItemFrom(ptr unsafe.Pointer) StepperTouchBarItem {
 }
 
 func (sc _StepperTouchBarItemClass) StepperTouchBarItemWithIdentifierFormatter(identifier TouchBarItemIdentifier, formatter foundation.IFormatter) StepperTouchBarItem {
-	rv := objc.Call[StepperTouchBarItem](sc, objc.Sel("stepperTouchBarItemWithIdentifier:formatter:"), identifier, objc.Ptr(formatter))
+	rv := objc.Call[StepperTouchBarItem](sc, objc.Sel("stepperTouchBarItemWithIdentifier:formatter:"), identifier, formatter)
 	return rv
 }
 

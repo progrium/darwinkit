@@ -135,7 +135,7 @@ func (c_ ComputePipelineDescriptor) SetComputeFunction(value PFunction) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinedescriptor/1414917-computefunction?language=objc
 func (c_ ComputePipelineDescriptor) SetComputeFunctionObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setComputeFunction:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setComputeFunction:"), valueObject)
 }
 
 // The functions that you can specify as function arguments when encoding commands that use this pipeline. [Full Topic]
@@ -150,7 +150,7 @@ func (c_ ComputePipelineDescriptor) LinkedFunctions() LinkedFunctions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinedescriptor/3553963-linkedfunctions?language=objc
 func (c_ ComputePipelineDescriptor) SetLinkedFunctions(value ILinkedFunctions) {
-	objc.Call[objc.Void](c_, objc.Sel("setLinkedFunctions:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setLinkedFunctions:"), value)
 }
 
 // The binary archives that contain any precompiled shader functions you want to link. [Full Topic]
@@ -225,7 +225,7 @@ func (c_ ComputePipelineDescriptor) StageInputDescriptor() StageInputOutputDescr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputepipelinedescriptor/2092373-stageinputdescriptor?language=objc
 func (c_ ComputePipelineDescriptor) SetStageInputDescriptor(value IStageInputOutputDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setStageInputDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setStageInputDescriptor:"), value)
 }
 
 // The buffer mutability options for a compute pipeline's kernel function. [Full Topic]

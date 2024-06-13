@@ -54,6 +54,6 @@ func (a_ AccessibilityCustomRotorItemSearchDelegateObject) HasRotorResultForSear
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotoritemsearchdelegate/2876324-rotor?language=objc
 func (a_ AccessibilityCustomRotorItemSearchDelegateObject) RotorResultForSearchParameters(rotor AccessibilityCustomRotor, searchParameters AccessibilityCustomRotorSearchParameters) AccessibilityCustomRotorItemResult {
-	rv := objc.Call[AccessibilityCustomRotorItemResult](a_, objc.Sel("rotor:resultForSearchParameters:"), objc.Ptr(rotor), objc.Ptr(searchParameters))
+	rv := objc.Call[AccessibilityCustomRotorItemResult](a_, objc.Sel("rotor:resultForSearchParameters:"), rotor, searchParameters)
 	return rv
 }

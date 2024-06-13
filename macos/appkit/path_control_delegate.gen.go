@@ -164,7 +164,7 @@ func (p_ PathControlDelegateObject) HasPathControlShouldDragItemWithPasteboard()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1526752-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlShouldDragItemWithPasteboard(pathControl PathControl, pathItem PathControlItem, pasteboard Pasteboard) bool {
-	rv := objc.Call[bool](p_, objc.Sel("pathControl:shouldDragItem:withPasteboard:"), objc.Ptr(pathControl), objc.Ptr(pathItem), objc.Ptr(pasteboard))
+	rv := objc.Call[bool](p_, objc.Sel("pathControl:shouldDragItem:withPasteboard:"), pathControl, pathItem, pasteboard)
 	return rv
 }
 
@@ -176,7 +176,7 @@ func (p_ PathControlDelegateObject) HasPathControlShouldDragPathComponentCellWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1533453-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlShouldDragPathComponentCellWithPasteboard(pathControl PathControl, pathComponentCell PathComponentCell, pasteboard Pasteboard) bool {
-	rv := objc.Call[bool](p_, objc.Sel("pathControl:shouldDragPathComponentCell:withPasteboard:"), objc.Ptr(pathControl), objc.Ptr(pathComponentCell), objc.Ptr(pasteboard))
+	rv := objc.Call[bool](p_, objc.Sel("pathControl:shouldDragPathComponentCell:withPasteboard:"), pathControl, pathComponentCell, pasteboard)
 	return rv
 }
 
@@ -189,7 +189,7 @@ func (p_ PathControlDelegateObject) HasPathControlValidateDrop() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1528554-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlValidateDrop(pathControl PathControl, info DraggingInfoObject) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[DragOperation](p_, objc.Sel("pathControl:validateDrop:"), objc.Ptr(pathControl), po1)
+	rv := objc.Call[DragOperation](p_, objc.Sel("pathControl:validateDrop:"), pathControl, po1)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (p_ PathControlDelegateObject) HasPathControlWillDisplayOpenPanel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1530012-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlWillDisplayOpenPanel(pathControl PathControl, openPanel OpenPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("pathControl:willDisplayOpenPanel:"), objc.Ptr(pathControl), objc.Ptr(openPanel))
+	objc.Call[objc.Void](p_, objc.Sel("pathControl:willDisplayOpenPanel:"), pathControl, openPanel)
 }
 
 func (p_ PathControlDelegateObject) HasPathControlAcceptDrop() bool {
@@ -213,7 +213,7 @@ func (p_ PathControlDelegateObject) HasPathControlAcceptDrop() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1528517-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlAcceptDrop(pathControl PathControl, info DraggingInfoObject) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[bool](p_, objc.Sel("pathControl:acceptDrop:"), objc.Ptr(pathControl), po1)
+	rv := objc.Call[bool](p_, objc.Sel("pathControl:acceptDrop:"), pathControl, po1)
 	return rv
 }
 
@@ -225,5 +225,5 @@ func (p_ PathControlDelegateObject) HasPathControlWillPopUpMenu() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontroldelegate/1531724-pathcontrol?language=objc
 func (p_ PathControlDelegateObject) PathControlWillPopUpMenu(pathControl PathControl, menu Menu) {
-	objc.Call[objc.Void](p_, objc.Sel("pathControl:willPopUpMenu:"), objc.Ptr(pathControl), objc.Ptr(menu))
+	objc.Call[objc.Void](p_, objc.Sel("pathControl:willPopUpMenu:"), pathControl, menu)
 }

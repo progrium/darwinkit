@@ -1210,6 +1210,11 @@ const (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltexturecompressiontype?language=objc
 type TextureCompressionType int
 
+const (
+	TextureCompressionTypeLossless TextureCompressionType = 0
+	TextureCompressionTypeLossy    TextureCompressionType = 1
+)
+
 // A set of options to choose from when creating a texture swizzle pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtltextureswizzle?language=objc

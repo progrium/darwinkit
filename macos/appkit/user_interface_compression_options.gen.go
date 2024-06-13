@@ -40,7 +40,7 @@ func UserInterfaceCompressionOptionsFrom(ptr unsafe.Pointer) UserInterfaceCompre
 }
 
 func (u_ UserInterfaceCompressionOptions) InitWithCompressionOptions(options foundation.ISet) UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("initWithCompressionOptions:"), objc.Ptr(options))
+	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("initWithCompressionOptions:"), options)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func NewUserInterfaceCompressionOptions() UserInterfaceCompressionOptions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909983-containsoptions?language=objc
 func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.Call[bool](u_, objc.Sel("containsOptions:"), objc.Ptr(options))
+	rv := objc.Call[bool](u_, objc.Sel("containsOptions:"), options)
 	return rv
 }
 
@@ -99,7 +99,7 @@ func (u_ UserInterfaceCompressionOptions) ContainsOptions(options IUserInterface
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909977-intersectsoptions?language=objc
 func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfaceCompressionOptions) bool {
-	rv := objc.Call[bool](u_, objc.Sel("intersectsOptions:"), objc.Ptr(options))
+	rv := objc.Call[bool](u_, objc.Sel("intersectsOptions:"), options)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (u_ UserInterfaceCompressionOptions) IntersectsOptions(options IUserInterfa
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909965-optionsbyaddingoptions?language=objc
 func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByAddingOptions:"), objc.Ptr(options))
+	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByAddingOptions:"), options)
 	return rv
 }
 
@@ -115,7 +115,7 @@ func (u_ UserInterfaceCompressionOptions) OptionsByAddingOptions(options IUserIn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsuserinterfacecompressionoptions/2909969-optionsbyremovingoptions?language=objc
 func (u_ UserInterfaceCompressionOptions) OptionsByRemovingOptions(options IUserInterfaceCompressionOptions) UserInterfaceCompressionOptions {
-	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByRemovingOptions:"), objc.Ptr(options))
+	rv := objc.Call[UserInterfaceCompressionOptions](u_, objc.Sel("optionsByRemovingOptions:"), options)
 	return rv
 }
 

@@ -19,9 +19,9 @@ type _ImageThresholdBinaryInverseClass struct {
 // An interface definition for the [ImageThresholdBinaryInverse] class.
 type IImageThresholdBinaryInverse interface {
 	IUnaryImageKernel
-	MaximumValue() float64
-	Transform() *float64
-	ThresholdValue() float64
+	MaximumValue() float32
+	Transform() *float32
+	ThresholdValue() float32
 }
 
 // A filter that returns 0 for each pixel with a value greater than a specified threshold or a specified value otherwise. [Full Topic]
@@ -37,7 +37,7 @@ func ImageThresholdBinaryInverseFrom(ptr unsafe.Pointer) ImageThresholdBinaryInv
 	}
 }
 
-func (i_ ImageThresholdBinaryInverse) InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, maximumValue float64, transform *float64) ImageThresholdBinaryInverse {
+func (i_ ImageThresholdBinaryInverse) InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, maximumValue float32, transform *float32) ImageThresholdBinaryInverse {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageThresholdBinaryInverse](i_, objc.Sel("initWithDevice:thresholdValue:maximumValue:linearGrayColorTransform:"), po0, thresholdValue, maximumValue, transform)
 	return rv
@@ -46,7 +46,7 @@ func (i_ ImageThresholdBinaryInverse) InitWithDeviceThresholdValueMaximumValueLi
 // Initializes the kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinaryinverse/1618903-initwithdevice?language=objc
-func NewImageThresholdBinaryInverseWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, maximumValue float64, transform *float64) ImageThresholdBinaryInverse {
+func NewImageThresholdBinaryInverseWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, maximumValue float32, transform *float32) ImageThresholdBinaryInverse {
 	instance := ImageThresholdBinaryInverseClass.Alloc().InitWithDeviceThresholdValueMaximumValueLinearGrayColorTransform(device, thresholdValue, maximumValue, transform)
 	instance.Autorelease()
 	return instance
@@ -105,23 +105,23 @@ func ImageThresholdBinaryInverse_CopyWithZoneDevice(zone unsafe.Pointer, device 
 // The maximum value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinaryinverse/1618906-maximumvalue?language=objc
-func (i_ ImageThresholdBinaryInverse) MaximumValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("maximumValue"))
+func (i_ ImageThresholdBinaryInverse) MaximumValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("maximumValue"))
 	return rv
 }
 
 // The color transform used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinaryinverse/1618904-transform?language=objc
-func (i_ ImageThresholdBinaryInverse) Transform() *float64 {
-	rv := objc.Call[*float64](i_, objc.Sel("transform"))
+func (i_ ImageThresholdBinaryInverse) Transform() *float32 {
+	rv := objc.Call[*float32](i_, objc.Sel("transform"))
 	return rv
 }
 
 // The threshold value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdbinaryinverse/1618845-thresholdvalue?language=objc
-func (i_ ImageThresholdBinaryInverse) ThresholdValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("thresholdValue"))
+func (i_ ImageThresholdBinaryInverse) ThresholdValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
 	return rv
 }

@@ -54,7 +54,7 @@ func (u_ UnitMass) Init() UnitMass {
 }
 
 func (u_ UnitMass) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitMass {
-	rv := objc.Call[UnitMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

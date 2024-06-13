@@ -135,7 +135,7 @@ func GraphicsContext_CurrentContextDrawingToScreen() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgraphicscontext/1529827-graphicscontextwithbitmapimagere?language=objc
 func (gc _GraphicsContextClass) GraphicsContextWithBitmapImageRep(bitmapRep IBitmapImageRep) GraphicsContext {
-	rv := objc.Call[GraphicsContext](gc, objc.Sel("graphicsContextWithBitmapImageRep:"), objc.Ptr(bitmapRep))
+	rv := objc.Call[GraphicsContext](gc, objc.Sel("graphicsContextWithBitmapImageRep:"), bitmapRep)
 	return rv
 }
 
@@ -171,7 +171,7 @@ func GraphicsContext_RestoreGraphicsState_() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgraphicscontext/1532883-graphicscontextwithwindow?language=objc
 func (gc _GraphicsContextClass) GraphicsContextWithWindow(window IWindow) GraphicsContext {
-	rv := objc.Call[GraphicsContext](gc, objc.Sel("graphicsContextWithWindow:"), objc.Ptr(window))
+	rv := objc.Call[GraphicsContext](gc, objc.Sel("graphicsContextWithWindow:"), window)
 	return rv
 }
 
@@ -316,7 +316,7 @@ func GraphicsContext_CurrentContext() GraphicsContext {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgraphicscontext/1535352-currentcontext?language=objc
 func (gc _GraphicsContextClass) SetCurrentContext(value IGraphicsContext) {
-	objc.Call[objc.Void](gc, objc.Sel("setCurrentContext:"), objc.Ptr(value))
+	objc.Call[objc.Void](gc, objc.Sel("setCurrentContext:"), value)
 }
 
 // Returns the current graphics context of the current thread. [Full Topic]

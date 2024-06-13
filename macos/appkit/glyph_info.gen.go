@@ -60,7 +60,7 @@ func (g_ GlyphInfo) Init() GlyphInfo {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphinfo/2887154-glyphinfowithcgglyph?language=objc
 func (gc _GlyphInfoClass) GlyphInfoWithCGGlyphForFontBaseString(glyph coregraphics.Glyph, font IFont, string_ string) GlyphInfo {
-	rv := objc.Call[GlyphInfo](gc, objc.Sel("glyphInfoWithCGGlyph:forFont:baseString:"), glyph, objc.Ptr(font), string_)
+	rv := objc.Call[GlyphInfo](gc, objc.Sel("glyphInfoWithCGGlyph:forFont:baseString:"), glyph, font, string_)
 	return rv
 }
 

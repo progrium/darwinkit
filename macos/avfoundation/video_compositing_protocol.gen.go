@@ -67,7 +67,7 @@ func (v_ VideoCompositingObject) HasPrerollForRenderingUsingHint() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3227886-prerollforrenderingusinghint?language=objc
 func (v_ VideoCompositingObject) PrerollForRenderingUsingHint(renderHint VideoCompositionRenderHint) {
-	objc.Call[objc.Void](v_, objc.Sel("prerollForRenderingUsingHint:"), objc.Ptr(renderHint))
+	objc.Call[objc.Void](v_, objc.Sel("prerollForRenderingUsingHint:"), renderHint)
 }
 
 func (v_ VideoCompositingObject) HasAnticipateRenderingUsingHint() bool {
@@ -78,7 +78,7 @@ func (v_ VideoCompositingObject) HasAnticipateRenderingUsingHint() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/3227885-anticipaterenderingusinghint?language=objc
 func (v_ VideoCompositingObject) AnticipateRenderingUsingHint(renderHint VideoCompositionRenderHint) {
-	objc.Call[objc.Void](v_, objc.Sel("anticipateRenderingUsingHint:"), objc.Ptr(renderHint))
+	objc.Call[objc.Void](v_, objc.Sel("anticipateRenderingUsingHint:"), renderHint)
 }
 
 func (v_ VideoCompositingObject) HasCancelAllPendingVideoCompositionRequests() bool {
@@ -100,7 +100,7 @@ func (v_ VideoCompositingObject) HasStartVideoCompositionRequest() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1388894-startvideocompositionrequest?language=objc
 func (v_ VideoCompositingObject) StartVideoCompositionRequest(asyncVideoCompositionRequest AsynchronousVideoCompositionRequest) {
-	objc.Call[objc.Void](v_, objc.Sel("startVideoCompositionRequest:"), objc.Ptr(asyncVideoCompositionRequest))
+	objc.Call[objc.Void](v_, objc.Sel("startVideoCompositionRequest:"), asyncVideoCompositionRequest)
 }
 
 func (v_ VideoCompositingObject) HasRenderContextChanged() bool {
@@ -111,7 +111,7 @@ func (v_ VideoCompositingObject) HasRenderContextChanged() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avvideocompositing/1390363-rendercontextchanged?language=objc
 func (v_ VideoCompositingObject) RenderContextChanged(newRenderContext VideoCompositionRenderContext) {
-	objc.Call[objc.Void](v_, objc.Sel("renderContextChanged:"), objc.Ptr(newRenderContext))
+	objc.Call[objc.Void](v_, objc.Sel("renderContextChanged:"), newRenderContext)
 }
 
 func (v_ VideoCompositingObject) HasSupportsWideColorSourceFrames() bool {

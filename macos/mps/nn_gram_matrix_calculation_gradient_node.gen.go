@@ -18,7 +18,7 @@ type _NNGramMatrixCalculationGradientNodeClass struct {
 // An interface definition for the [NNGramMatrixCalculationGradientNode] class.
 type INNGramMatrixCalculationGradientNode interface {
 	INNGradientFilterNode
-	Alpha() float64
+	Alpha() float32
 }
 
 //	[Full Topic]
@@ -34,20 +34,20 @@ func NNGramMatrixCalculationGradientNodeFrom(ptr unsafe.Pointer) NNGramMatrixCal
 	}
 }
 
-func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float64) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:alpha:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), alpha)
+func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
+	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:alpha:"), sourceGradient, sourceImage, gradientState, alpha)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114092-nodewithsourcegradient?language=objc
-func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float64) NNGramMatrixCalculationGradientNode {
+func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
 	return NNGramMatrixCalculationGradientNodeClass.NodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient, sourceImage, gradientState, alpha)
 }
 
 func (nc _NNGramMatrixCalculationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNGramMatrixCalculationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -59,7 +59,7 @@ func NNGramMatrixCalculationGradientNode_NodeWithSourceGradientSourceImageGradie
 }
 
 func (n_ NNGramMatrixCalculationGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -72,15 +72,15 @@ func NewNNGramMatrixCalculationGradientNodeWithSourceGradientSourceImageGradient
 	return instance
 }
 
-func (n_ NNGramMatrixCalculationGradientNode) InitWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float64) NNGramMatrixCalculationGradientNode {
-	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:alpha:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), alpha)
+func (n_ NNGramMatrixCalculationGradientNode) InitWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
+	rv := objc.Call[NNGramMatrixCalculationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:alpha:"), sourceGradient, sourceImage, gradientState, alpha)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114090-initwithsourcegradient?language=objc
-func NewNNGramMatrixCalculationGradientNodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float64) NNGramMatrixCalculationGradientNode {
+func NewNNGramMatrixCalculationGradientNodeWithSourceGradientSourceImageGradientStateAlpha(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, alpha float32) NNGramMatrixCalculationGradientNode {
 	instance := NNGramMatrixCalculationGradientNodeClass.Alloc().InitWithSourceGradientSourceImageGradientStateAlpha(sourceGradient, sourceImage, gradientState, alpha)
 	instance.Autorelease()
 	return instance
@@ -109,7 +109,7 @@ func (n_ NNGramMatrixCalculationGradientNode) Init() NNGramMatrixCalculationGrad
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculationgradientnode/3114088-alpha?language=objc
-func (n_ NNGramMatrixCalculationGradientNode) Alpha() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alpha"))
+func (n_ NNGramMatrixCalculationGradientNode) Alpha() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("alpha"))
 	return rv
 }

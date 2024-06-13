@@ -34,7 +34,7 @@ func NNInitialGradientNodeFrom(ptr unsafe.Pointer) NNInitialGradientNode {
 }
 
 func (n_ NNInitialGradientNode) InitWithSource(source INNImageNode) NNInitialGradientNode {
-	rv := objc.Call[NNInitialGradientNode](n_, objc.Sel("initWithSource:"), objc.Ptr(source))
+	rv := objc.Call[NNInitialGradientNode](n_, objc.Sel("initWithSource:"), source)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewNNInitialGradientNodeWithSource(source INNImageNode) NNInitialGradientNo
 }
 
 func (nc _NNInitialGradientNodeClass) NodeWithSource(source INNImageNode) NNInitialGradientNode {
-	rv := objc.Call[NNInitialGradientNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(source))
+	rv := objc.Call[NNInitialGradientNode](nc, objc.Sel("nodeWithSource:"), source)
 	return rv
 }
 

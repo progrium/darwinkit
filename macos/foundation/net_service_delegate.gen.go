@@ -230,7 +230,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidNotResolve() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1414161-netservice?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidNotResolve(sender NetService, errorDict map[string]Number) {
-	objc.Call[objc.Void](n_, objc.Sel("netService:didNotResolve:"), objc.Ptr(sender), errorDict)
+	objc.Call[objc.Void](n_, objc.Sel("netService:didNotResolve:"), sender, errorDict)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidResolveAddress() bool {
@@ -241,7 +241,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidResolveAddress() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1408457-netservicedidresolveaddress?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidResolveAddress(sender NetService) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceDidResolveAddress:"), objc.Ptr(sender))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceDidResolveAddress:"), sender)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidStop() bool {
@@ -252,7 +252,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidStop() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1409726-netservicedidstop?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidStop(sender NetService) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceDidStop:"), objc.Ptr(sender))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceDidStop:"), sender)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidAcceptConnectionWithInputStreamOutputStream() bool {
@@ -263,7 +263,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidAcceptConnectionWithInputStre
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1407489-netservice?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidAcceptConnectionWithInputStreamOutputStream(sender NetService, inputStream InputStream, outputStream OutputStream) {
-	objc.Call[objc.Void](n_, objc.Sel("netService:didAcceptConnectionWithInputStream:outputStream:"), objc.Ptr(sender), objc.Ptr(inputStream), objc.Ptr(outputStream))
+	objc.Call[objc.Void](n_, objc.Sel("netService:didAcceptConnectionWithInputStream:outputStream:"), sender, inputStream, outputStream)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidPublish() bool {
@@ -274,7 +274,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidPublish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1416802-netservicedidpublish?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidPublish(sender NetService) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceDidPublish:"), objc.Ptr(sender))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceDidPublish:"), sender)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidUpdateTXTRecordData() bool {
@@ -285,7 +285,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidUpdateTXTRecordData() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1413199-netservice?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidUpdateTXTRecordData(sender NetService, data []byte) {
-	objc.Call[objc.Void](n_, objc.Sel("netService:didUpdateTXTRecordData:"), objc.Ptr(sender), data)
+	objc.Call[objc.Void](n_, objc.Sel("netService:didUpdateTXTRecordData:"), sender, data)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceWillPublish() bool {
@@ -296,7 +296,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceWillPublish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1414277-netservicewillpublish?language=objc
 func (n_ NetServiceDelegateObject) NetServiceWillPublish(sender NetService) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceWillPublish:"), objc.Ptr(sender))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceWillPublish:"), sender)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceDidNotPublish() bool {
@@ -307,7 +307,7 @@ func (n_ NetServiceDelegateObject) HasNetServiceDidNotPublish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1417101-netservice?language=objc
 func (n_ NetServiceDelegateObject) NetServiceDidNotPublish(sender NetService, errorDict map[string]Number) {
-	objc.Call[objc.Void](n_, objc.Sel("netService:didNotPublish:"), objc.Ptr(sender), errorDict)
+	objc.Call[objc.Void](n_, objc.Sel("netService:didNotPublish:"), sender, errorDict)
 }
 
 func (n_ NetServiceDelegateObject) HasNetServiceWillResolve() bool {
@@ -318,5 +318,5 @@ func (n_ NetServiceDelegateObject) HasNetServiceWillResolve() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnetservicedelegate/1416022-netservicewillresolve?language=objc
 func (n_ NetServiceDelegateObject) NetServiceWillResolve(sender NetService) {
-	objc.Call[objc.Void](n_, objc.Sel("netServiceWillResolve:"), objc.Ptr(sender))
+	objc.Call[objc.Void](n_, objc.Sel("netServiceWillResolve:"), sender)
 }

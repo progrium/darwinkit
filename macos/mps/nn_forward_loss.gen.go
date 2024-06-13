@@ -20,22 +20,22 @@ type _NNForwardLossClass struct {
 // An interface definition for the [NNForwardLoss] class.
 type INNForwardLoss interface {
 	ICNNKernel
-	EncodeBatchToCommandBufferSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array
-	EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array
+	EncodeBatchToCommandBufferSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
+	EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array
 	EncodeBatchToCommandBufferSourceImagesLabelsWeightsDestinationStatesDestinationImages(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array)
 	EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array)
 	NumberOfClasses() uint
 	LossType() CNNLossType
-	LabelSmoothing() float64
-	SetLabelSmoothing(value float64)
+	LabelSmoothing() float32
+	SetLabelSmoothing(value float32)
 	ReduceAcrossBatch() bool
-	Weight() float64
-	SetWeight(value float64)
+	Weight() float32
+	SetWeight(value float32)
 	ReductionType() CNNReductionType
-	Epsilon() float64
-	SetEpsilon(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Epsilon() float32
+	SetEpsilon(value float32)
+	Delta() float32
+	SetDelta(value float32)
 }
 
 //	[Full Topic]
@@ -53,7 +53,7 @@ func NNForwardLossFrom(ptr unsafe.Pointer) NNForwardLoss {
 
 func (n_ NNForwardLoss) InitWithDeviceLossDescriptor(device metal.PDevice, lossDescriptor ICNNLossDescriptor) NNForwardLoss {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNForwardLoss](n_, objc.Sel("initWithDevice:lossDescriptor:"), po0, objc.Ptr(lossDescriptor))
+	rv := objc.Call[NNForwardLoss](n_, objc.Sel("initWithDevice:lossDescriptor:"), po0, lossDescriptor)
 	return rv
 }
 
@@ -119,7 +119,7 @@ func NNForwardLoss_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice)
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131799-encodebatchtocommandbuffer?language=objc
-func (n_ NNForwardLoss) EncodeBatchToCommandBufferSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array {
+func (n_ NNForwardLoss) EncodeBatchToCommandBufferSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:weights:destinationStates:destinationStateIsTemporary:"), po0, sourceImages, labels, weights, outStates, isTemporary)
 	return rv
@@ -128,8 +128,8 @@ func (n_ NNForwardLoss) EncodeBatchToCommandBufferSourceImagesLabelsWeightsDesti
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131799-encodebatchtocommandbuffer?language=objc
-func (n_ NNForwardLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates *foundation.Array, isTemporary bool) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:weights:destinationStates:destinationStateIsTemporary:"), objc.Ptr(commandBufferObject), sourceImages, labels, weights, outStates, isTemporary)
+func (n_ NNForwardLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationStateIsTemporary(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, outStates unsafe.Pointer, isTemporary bool) *foundation.Array {
+	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:weights:destinationStates:destinationStateIsTemporary:"), commandBufferObject, sourceImages, labels, weights, outStates, isTemporary)
 	return rv
 }
 
@@ -145,7 +145,7 @@ func (n_ NNForwardLoss) EncodeBatchToCommandBufferSourceImagesLabelsWeightsDesti
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131798-encodebatchtocommandbuffer?language=objc
 func (n_ NNForwardLoss) EncodeBatchToCommandBufferObjectSourceImagesLabelsWeightsDestinationStatesDestinationImages(commandBufferObject objc.IObject, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, destinationStates *foundation.Array, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:weights:destinationStates:destinationImages:"), objc.Ptr(commandBufferObject), sourceImages, labels, weights, destinationStates, destinationImages)
+	objc.Call[objc.Void](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:labels:weights:destinationStates:destinationImages:"), commandBufferObject, sourceImages, labels, weights, destinationStates, destinationImages)
 }
 
 //	[Full Topic]
@@ -167,15 +167,15 @@ func (n_ NNForwardLoss) LossType() CNNLossType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131803-labelsmoothing?language=objc
-func (n_ NNForwardLoss) LabelSmoothing() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("labelSmoothing"))
+func (n_ NNForwardLoss) LabelSmoothing() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("labelSmoothing"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131803-labelsmoothing?language=objc
-func (n_ NNForwardLoss) SetLabelSmoothing(value float64) {
+func (n_ NNForwardLoss) SetLabelSmoothing(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setLabelSmoothing:"), value)
 }
 
@@ -190,15 +190,15 @@ func (n_ NNForwardLoss) ReduceAcrossBatch() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131807-weight?language=objc
-func (n_ NNForwardLoss) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNForwardLoss) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131807-weight?language=objc
-func (n_ NNForwardLoss) SetWeight(value float64) {
+func (n_ NNForwardLoss) SetWeight(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setWeight:"), value)
 }
 
@@ -213,29 +213,29 @@ func (n_ NNForwardLoss) ReductionType() CNNReductionType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131800-epsilon?language=objc
-func (n_ NNForwardLoss) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNForwardLoss) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131800-epsilon?language=objc
-func (n_ NNForwardLoss) SetEpsilon(value float64) {
+func (n_ NNForwardLoss) SetEpsilon(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setEpsilon:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131797-delta?language=objc
-func (n_ NNForwardLoss) Delta() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("delta"))
+func (n_ NNForwardLoss) Delta() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnforwardloss/3131797-delta?language=objc
-func (n_ NNForwardLoss) SetDelta(value float64) {
+func (n_ NNForwardLoss) SetDelta(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setDelta:"), value)
 }

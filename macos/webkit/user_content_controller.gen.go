@@ -88,7 +88,7 @@ func (u_ UserContentController) AddScriptMessageHandlerName(scriptMessageHandler
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537172-addscriptmessagehandler?language=objc
 func (u_ UserContentController) AddScriptMessageHandlerObjectName(scriptMessageHandlerObject objc.IObject, name string) {
-	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:name:"), objc.Ptr(scriptMessageHandlerObject), name)
+	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:name:"), scriptMessageHandlerObject, name)
 }
 
 // Installs a message handler that you can call from the specified content world in your JavaScript code. [Full Topic]
@@ -96,14 +96,14 @@ func (u_ UserContentController) AddScriptMessageHandlerObjectName(scriptMessageH
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585112-addscriptmessagehandler?language=objc
 func (u_ UserContentController) AddScriptMessageHandlerContentWorldName(scriptMessageHandler PScriptMessageHandler, world IContentWorld, name string) {
 	po0 := objc.WrapAsProtocol("WKScriptMessageHandler", scriptMessageHandler)
-	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:contentWorld:name:"), po0, objc.Ptr(world), name)
+	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:contentWorld:name:"), po0, world, name)
 }
 
 // Installs a message handler that you can call from the specified content world in your JavaScript code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585112-addscriptmessagehandler?language=objc
 func (u_ UserContentController) AddScriptMessageHandlerObjectContentWorldName(scriptMessageHandlerObject objc.IObject, world IContentWorld, name string) {
-	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:contentWorld:name:"), objc.Ptr(scriptMessageHandlerObject), objc.Ptr(world), name)
+	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandler:contentWorld:name:"), scriptMessageHandlerObject, world, name)
 }
 
 // Removes all user scripts from the web view. [Full Topic]
@@ -125,21 +125,21 @@ func (u_ UserContentController) RemoveAllContentRuleLists() {
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585113-addscriptmessagehandlerwithreply?language=objc
 func (u_ UserContentController) AddScriptMessageHandlerWithReplyContentWorldName(scriptMessageHandlerWithReply PScriptMessageHandlerWithReply, contentWorld IContentWorld, name string) {
 	po0 := objc.WrapAsProtocol("WKScriptMessageHandlerWithReply", scriptMessageHandlerWithReply)
-	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandlerWithReply:contentWorld:name:"), po0, objc.Ptr(contentWorld), name)
+	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandlerWithReply:contentWorld:name:"), po0, contentWorld, name)
 }
 
 // Installs a message handler that returns a reply to your JavaScript code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585113-addscriptmessagehandlerwithreply?language=objc
 func (u_ UserContentController) AddScriptMessageHandlerWithReplyObjectContentWorldName(scriptMessageHandlerWithReplyObject objc.IObject, contentWorld IContentWorld, name string) {
-	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandlerWithReply:contentWorld:name:"), objc.Ptr(scriptMessageHandlerWithReplyObject), objc.Ptr(contentWorld), name)
+	objc.Call[objc.Void](u_, objc.Sel("addScriptMessageHandlerWithReply:contentWorld:name:"), scriptMessageHandlerWithReplyObject, contentWorld, name)
 }
 
 // Adds the specified content rule list to the content controller object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/2902756-addcontentrulelist?language=objc
 func (u_ UserContentController) AddContentRuleList(contentRuleList IContentRuleList) {
-	objc.Call[objc.Void](u_, objc.Sel("addContentRuleList:"), objc.Ptr(contentRuleList))
+	objc.Call[objc.Void](u_, objc.Sel("addContentRuleList:"), contentRuleList)
 }
 
 // Uninstalls the custom message handler with the specified name from your JavaScript code. [Full Topic]
@@ -153,28 +153,28 @@ func (u_ UserContentController) RemoveScriptMessageHandlerForName(name string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585115-removeallscriptmessagehandlersfr?language=objc
 func (u_ UserContentController) RemoveAllScriptMessageHandlersFromContentWorld(contentWorld IContentWorld) {
-	objc.Call[objc.Void](u_, objc.Sel("removeAllScriptMessageHandlersFromContentWorld:"), objc.Ptr(contentWorld))
+	objc.Call[objc.Void](u_, objc.Sel("removeAllScriptMessageHandlersFromContentWorld:"), contentWorld)
 }
 
 // Injects the specified script into the webpage’s content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/1537448-adduserscript?language=objc
 func (u_ UserContentController) AddUserScript(userScript IUserScript) {
-	objc.Call[objc.Void](u_, objc.Sel("addUserScript:"), objc.Ptr(userScript))
+	objc.Call[objc.Void](u_, objc.Sel("addUserScript:"), userScript)
 }
 
 // Uninstalls a custom message handler from the specified content world in your JavaScript code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/3585116-removescriptmessagehandlerfornam?language=objc
 func (u_ UserContentController) RemoveScriptMessageHandlerForNameContentWorld(name string, contentWorld IContentWorld) {
-	objc.Call[objc.Void](u_, objc.Sel("removeScriptMessageHandlerForName:contentWorld:"), name, objc.Ptr(contentWorld))
+	objc.Call[objc.Void](u_, objc.Sel("removeScriptMessageHandlerForName:contentWorld:"), name, contentWorld)
 }
 
 // Removes the specified rule list from the content controller object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkusercontentcontroller/2902763-removecontentrulelist?language=objc
 func (u_ UserContentController) RemoveContentRuleList(contentRuleList IContentRuleList) {
-	objc.Call[objc.Void](u_, objc.Sel("removeContentRuleList:"), objc.Ptr(contentRuleList))
+	objc.Call[objc.Void](u_, objc.Sel("removeContentRuleList:"), contentRuleList)
 }
 
 // The user scripts associated with the user content controller. [Full Topic]

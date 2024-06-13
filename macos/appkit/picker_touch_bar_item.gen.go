@@ -138,7 +138,7 @@ func (p_ PickerTouchBarItem) LabelAtIndex(index int) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspickertouchbaritem/3237208-setimage?language=objc
 func (p_ PickerTouchBarItem) SetImageAtIndex(image IImage, index int) {
-	objc.Call[objc.Void](p_, objc.Sel("setImage:atIndex:"), objc.Ptr(image), index)
+	objc.Call[objc.Void](p_, objc.Sel("setImage:atIndex:"), image, index)
 }
 
 //	[Full Topic]
@@ -287,7 +287,7 @@ func (p_ PickerTouchBarItem) CollapsedRepresentationImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspickertouchbaritem/3237195-collapsedrepresentationimage?language=objc
 func (p_ PickerTouchBarItem) SetCollapsedRepresentationImage(value IImage) {
-	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentationImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setCollapsedRepresentationImage:"), value)
 }
 
 //	[Full Topic]
@@ -302,7 +302,7 @@ func (p_ PickerTouchBarItem) SelectionColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspickertouchbaritem/3237206-selectioncolor?language=objc
 func (p_ PickerTouchBarItem) SetSelectionColor(value IColor) {
-	objc.Call[objc.Void](p_, objc.Sel("setSelectionColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setSelectionColor:"), value)
 }
 
 //	[Full Topic]

@@ -33,34 +33,34 @@ func CNNNeuronSoftPlusNodeFrom(ptr unsafe.Pointer) CNNNeuronSoftPlusNode {
 	}
 }
 
-func (c_ CNNNeuronSoftPlusNode) InitWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](c_, objc.Sel("initWithSource:a:b:"), objc.Ptr(sourceNode), a, b)
+func (c_ CNNNeuronSoftPlusNode) InitWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
+	rv := objc.Call[CNNNeuronSoftPlusNode](c_, objc.Sel("initWithSource:a:b:"), sourceNode, a, b)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2866413-initwithsource?language=objc
-func NewCNNNeuronSoftPlusNodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronSoftPlusNode {
+func NewCNNNeuronSoftPlusNodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
 	instance := CNNNeuronSoftPlusNodeClass.Alloc().InitWithSourceAB(sourceNode, a, b)
 	instance.Autorelease()
 	return instance
 }
 
-func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:a:b:"), objc.Ptr(sourceNode), a, b)
+func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
+	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:a:b:"), sourceNode, a, b)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnneuronsoftplusnode/2866450-nodewithsource?language=objc
-func CNNNeuronSoftPlusNode_NodeWithSourceAB(sourceNode INNImageNode, a float64, b float64) CNNNeuronSoftPlusNode {
+func CNNNeuronSoftPlusNode_NodeWithSourceAB(sourceNode INNImageNode, a float32, b float32) CNNNeuronSoftPlusNode {
 	return CNNNeuronSoftPlusNodeClass.NodeWithSourceAB(sourceNode, a, b)
 }
 
 func (c_ CNNNeuronSoftPlusNode) InitWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronSoftPlusNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func NewCNNNeuronSoftPlusNodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPl
 }
 
 func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (c_ CNNNeuronSoftPlusNode) Init() CNNNeuronSoftPlusNode {
 }
 
 func (cc _CNNNeuronSoftPlusNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronSoftPlusNode {
-	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronSoftPlusNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

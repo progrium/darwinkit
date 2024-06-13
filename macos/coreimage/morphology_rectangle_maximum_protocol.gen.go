@@ -19,19 +19,19 @@ type PMorphologyRectangleMaximum interface {
 	HasInputImage() bool
 
 	// optional
-	SetHeight(value float64)
+	SetHeight(value float32)
 	HasSetHeight() bool
 
 	// optional
-	Height() float64
+	Height() float32
 	HasHeight() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 }
 
@@ -51,7 +51,7 @@ func (m_ MorphologyRectangleMaximumObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum/3228584-inputimage?language=objc
 func (m_ MorphologyRectangleMaximumObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MorphologyRectangleMaximumObject) HasInputImage() bool {
@@ -73,7 +73,7 @@ func (m_ MorphologyRectangleMaximumObject) HasSetHeight() bool {
 // The height, in pixels, of the morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum/3228583-height?language=objc
-func (m_ MorphologyRectangleMaximumObject) SetHeight(value float64) {
+func (m_ MorphologyRectangleMaximumObject) SetHeight(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setHeight:"), value)
 }
 
@@ -84,8 +84,8 @@ func (m_ MorphologyRectangleMaximumObject) HasHeight() bool {
 // The height, in pixels, of the morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum/3228583-height?language=objc
-func (m_ MorphologyRectangleMaximumObject) Height() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("height"))
+func (m_ MorphologyRectangleMaximumObject) Height() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("height"))
 	return rv
 }
 
@@ -96,7 +96,7 @@ func (m_ MorphologyRectangleMaximumObject) HasSetWidth() bool {
 // The width, in pixels, of the morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum/3228585-width?language=objc
-func (m_ MorphologyRectangleMaximumObject) SetWidth(value float64) {
+func (m_ MorphologyRectangleMaximumObject) SetWidth(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setWidth:"), value)
 }
 
@@ -107,7 +107,7 @@ func (m_ MorphologyRectangleMaximumObject) HasWidth() bool {
 // The width, in pixels, of the morphological structuring element. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimorphologyrectanglemaximum/3228585-width?language=objc
-func (m_ MorphologyRectangleMaximumObject) Width() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("width"))
+func (m_ MorphologyRectangleMaximumObject) Width() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("width"))
 	return rv
 }

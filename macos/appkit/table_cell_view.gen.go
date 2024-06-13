@@ -129,7 +129,7 @@ func (t_ TableCellView) ImageView() ImageView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483213-imageview?language=objc
 func (t_ TableCellView) SetImageView(value IImageView) {
-	objc.Call[objc.Void](t_, objc.Sel("setImageView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImageView:"), value)
 }
 
 // Returns the row size style. [Full Topic]
@@ -159,5 +159,5 @@ func (t_ TableCellView) TextField() TextField {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecellview/1483202-textfield?language=objc
 func (t_ TableCellView) SetTextField(value ITextField) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextField:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextField:"), value)
 }

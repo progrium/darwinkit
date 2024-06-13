@@ -65,7 +65,7 @@ func (u_ URLSessionWebSocketTask) Init() URLSessionWebSocketTask {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsockettask/3181205-sendmessage?language=objc
 func (u_ URLSessionWebSocketTask) SendMessageCompletionHandler(message IURLSessionWebSocketMessage, completionHandler func(error Error)) {
-	objc.Call[objc.Void](u_, objc.Sel("sendMessage:completionHandler:"), objc.Ptr(message), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("sendMessage:completionHandler:"), message, completionHandler)
 }
 
 // Sends a ping frame from the client side, with a closure to receive the pong from the server endpoint. [Full Topic]

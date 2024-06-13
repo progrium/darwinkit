@@ -61,7 +61,7 @@ func (s_ SliderAccessory) Init() SliderAccessory {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544660-accessorywithimage?language=objc
 func (sc _SliderAccessoryClass) AccessoryWithImage(image IImage) SliderAccessory {
-	rv := objc.Call[SliderAccessory](sc, objc.Sel("accessoryWithImage:"), objc.Ptr(image))
+	rv := objc.Call[SliderAccessory](sc, objc.Sel("accessoryWithImage:"), image)
 	return rv
 }
 
@@ -99,5 +99,5 @@ func (s_ SliderAccessory) Behavior() SliderAccessoryBehavior {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslideraccessory/2544656-behavior?language=objc
 func (s_ SliderAccessory) SetBehavior(value ISliderAccessoryBehavior) {
-	objc.Call[objc.Void](s_, objc.Sel("setBehavior:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setBehavior:"), value)
 }

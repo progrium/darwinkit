@@ -61,7 +61,7 @@ func (m_ MetadataItemValueRequest) Init() MetadataItemValueRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmetadataitemvaluerequest/1390783-respondwitherror?language=objc
 func (m_ MetadataItemValueRequest) RespondWithError(error foundation.IError) {
-	objc.Call[objc.Void](m_, objc.Sel("respondWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](m_, objc.Sel("respondWithError:"), error)
 }
 
 // Returns the metadata item’s value. [Full Topic]

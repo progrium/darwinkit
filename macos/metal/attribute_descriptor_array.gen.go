@@ -59,7 +59,7 @@ func (a_ AttributeDescriptorArray) Init() AttributeDescriptorArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlattributedescriptorarray/2097293-setobject?language=objc
 func (a_ AttributeDescriptorArray) SetObjectAtIndexedSubscript(attributeDesc IAttributeDescriptor, index uint) {
-	objc.Call[objc.Void](a_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attributeDesc), index)
+	objc.Call[objc.Void](a_, objc.Sel("setObject:atIndexedSubscript:"), attributeDesc, index)
 }
 
 // Returns the state of the specified attribute. [Full Topic]

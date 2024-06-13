@@ -35,7 +35,7 @@ func CNNYOLOLossNodeFrom(ptr unsafe.Pointer) CNNYOLOLossNode {
 }
 
 func (cc _CNNYOLOLossNodeClass) NodeWithSourceLossDescriptor(source INNImageNode, descriptor ICNNYOLOLossDescriptor) CNNYOLOLossNode {
-	rv := objc.Call[CNNYOLOLossNode](cc, objc.Sel("nodeWithSource:lossDescriptor:"), objc.Ptr(source), objc.Ptr(descriptor))
+	rv := objc.Call[CNNYOLOLossNode](cc, objc.Sel("nodeWithSource:lossDescriptor:"), source, descriptor)
 	return rv
 }
 
@@ -47,7 +47,7 @@ func CNNYOLOLossNode_NodeWithSourceLossDescriptor(source INNImageNode, descripto
 }
 
 func (c_ CNNYOLOLossNode) InitWithSourceLossDescriptor(source INNImageNode, descriptor ICNNYOLOLossDescriptor) CNNYOLOLossNode {
-	rv := objc.Call[CNNYOLOLossNode](c_, objc.Sel("initWithSource:lossDescriptor:"), objc.Ptr(source), objc.Ptr(descriptor))
+	rv := objc.Call[CNNYOLOLossNode](c_, objc.Sel("initWithSource:lossDescriptor:"), source, descriptor)
 	return rv
 }
 

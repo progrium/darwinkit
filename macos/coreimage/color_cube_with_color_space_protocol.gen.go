@@ -28,11 +28,11 @@ type PColorCubeWithColorSpace interface {
 	HasInputImage() bool
 
 	// optional
-	SetCubeDimension(value float64)
+	SetCubeDimension(value float32)
 	HasSetCubeDimension() bool
 
 	// optional
-	CubeDimension() float64
+	CubeDimension() float32
 	HasCubeDimension() bool
 
 	// optional
@@ -83,7 +83,7 @@ func (c_ ColorCubeWithColorSpaceObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228141-inputimage?language=objc
 func (c_ ColorCubeWithColorSpaceObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorCubeWithColorSpaceObject) HasInputImage() bool {
@@ -105,7 +105,7 @@ func (c_ ColorCubeWithColorSpaceObject) HasSetCubeDimension() bool {
 // The length, in texels, of each side of the cube texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228140-cubedimension?language=objc
-func (c_ ColorCubeWithColorSpaceObject) SetCubeDimension(value float64) {
+func (c_ ColorCubeWithColorSpaceObject) SetCubeDimension(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setCubeDimension:"), value)
 }
 
@@ -116,8 +116,8 @@ func (c_ ColorCubeWithColorSpaceObject) HasCubeDimension() bool {
 // The length, in texels, of each side of the cube texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcubewithcolorspace/3228140-cubedimension?language=objc
-func (c_ ColorCubeWithColorSpaceObject) CubeDimension() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("cubeDimension"))
+func (c_ ColorCubeWithColorSpaceObject) CubeDimension() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("cubeDimension"))
 	return rv
 }
 

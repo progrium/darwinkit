@@ -21,7 +21,7 @@ type IDateFormatter interface {
 	StringFromDate(date IDate) string
 	SetLocalizedDateFormatFromTemplate(dateFormatTemplate string)
 	DateFromString(string_ string) Date
-	GetObjectValueForStringRangeError(obj objc.IObject, string_ string, rangep *Range, error IError) bool
+	GetObjectValueForStringRangeError(obj unsafe.Pointer, string_ string, rangep *Range, error unsafe.Pointer) bool
 	ShortStandaloneQuarterSymbols() []string
 	SetShortStandaloneQuarterSymbols(value []string)
 	QuarterSymbols() []string
@@ -129,7 +129,7 @@ func (d_ DateFormatter) Init() DateFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1415810-stringfromdate?language=objc
 func (d_ DateFormatter) StringFromDate(date IDate) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDate:"), objc.Ptr(date))
+	rv := objc.Call[string](d_, objc.Sel("stringFromDate:"), date)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (d_ DateFormatter) StringFromDate(date IDate) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1415241-localizedstringfromdate?language=objc
 func (dc _DateFormatterClass) LocalizedStringFromDateDateStyleTimeStyle(date IDate, dstyle DateFormatterStyle, tstyle DateFormatterStyle) string {
-	rv := objc.Call[string](dc, objc.Sel("localizedStringFromDate:dateStyle:timeStyle:"), objc.Ptr(date), dstyle, tstyle)
+	rv := objc.Call[string](dc, objc.Sel("localizedStringFromDate:dateStyle:timeStyle:"), date, dstyle, tstyle)
 	return rv
 }
 
@@ -166,8 +166,8 @@ func (d_ DateFormatter) DateFromString(string_ string) Date {
 // Returns by reference a date representation of a specified string and its date range, as well as a Boolean value that indicates whether the system can parse the string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1409248-getobjectvalue?language=objc
-func (d_ DateFormatter) GetObjectValueForStringRangeError(obj objc.IObject, string_ string, rangep *Range, error IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("getObjectValue:forString:range:error:"), obj, string_, rangep, objc.Ptr(error))
+func (d_ DateFormatter) GetObjectValueForStringRangeError(obj unsafe.Pointer, string_ string, rangep *Range, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("getObjectValue:forString:range:error:"), obj, string_, rangep, error)
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (d_ DateFormatter) GetObjectValueForStringRangeError(obj objc.IObject, stri
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1408112-dateformatfromtemplate?language=objc
 func (dc _DateFormatterClass) DateFormatFromTemplateOptionsLocale(tmplate string, opts uint, locale ILocale) string {
-	rv := objc.Call[string](dc, objc.Sel("dateFormatFromTemplate:options:locale:"), tmplate, opts, objc.Ptr(locale))
+	rv := objc.Call[string](dc, objc.Sel("dateFormatFromTemplate:options:locale:"), tmplate, opts, locale)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (d_ DateFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1411973-locale?language=objc
 func (d_ DateFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
 }
 
 // The standalone quarter symbols for the receiver. [Full Topic]
@@ -273,7 +273,7 @@ func (d_ DateFormatter) TwoDigitStartDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1417203-twodigitstartdate?language=objc
 func (d_ DateFormatter) SetTwoDigitStartDate(value IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setTwoDigitStartDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTwoDigitStartDate:"), value)
 }
 
 // The array of very short standalone weekday symbols for the receiver. [Full Topic]
@@ -362,7 +362,7 @@ func (d_ DateFormatter) TimeZone() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1411406-timezone?language=objc
 func (d_ DateFormatter) SetTimeZone(value ITimeZone) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
 // The calendar for the receiver. [Full Topic]
@@ -377,7 +377,7 @@ func (d_ DateFormatter) Calendar() Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1413675-calendar?language=objc
 func (d_ DateFormatter) SetCalendar(value ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // The array of short weekday symbols for the receiver. [Full Topic]
@@ -422,7 +422,7 @@ func (d_ DateFormatter) DefaultDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1408312-defaultdate?language=objc
 func (d_ DateFormatter) SetDefaultDate(value IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setDefaultDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDefaultDate:"), value)
 }
 
 // The AM symbol for the receiver. [Full Topic]
@@ -647,7 +647,7 @@ func (d_ DateFormatter) GregorianStartDate() Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateformatter/1416389-gregorianstartdate?language=objc
 func (d_ DateFormatter) SetGregorianStartDate(value IDate) {
-	objc.Call[objc.Void](d_, objc.Sel("setGregorianStartDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setGregorianStartDate:"), value)
 }
 
 // The array of short month symbols for the receiver. [Full Topic]

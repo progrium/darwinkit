@@ -73,7 +73,7 @@ func (c_ ContactPicker) Close() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522591-showrelativetorect?language=objc
 func (c_ ContactPicker) ShowRelativeToRectOfViewPreferredEdge(positioningRect foundation.Rect, positioningView appkit.IView, preferredEdge foundation.RectEdge) {
-	objc.Call[objc.Void](c_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, objc.Ptr(positioningView), preferredEdge)
+	objc.Call[objc.Void](c_, objc.Sel("showRelativeToRect:ofView:preferredEdge:"), positioningRect, positioningView, preferredEdge)
 }
 
 // The keys to be displayed when a contact is expanded. [Full Topic]
@@ -112,5 +112,5 @@ func (c_ ContactPicker) SetDelegate(value PContactPickerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpicker/1522588-delegate?language=objc
 func (c_ ContactPicker) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }

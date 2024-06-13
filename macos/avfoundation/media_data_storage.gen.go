@@ -36,7 +36,7 @@ func MediaDataStorageFrom(ptr unsafe.Pointer) MediaDataStorage {
 }
 
 func (m_ MediaDataStorage) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) MediaDataStorage {
-	rv := objc.Call[MediaDataStorage](m_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[MediaDataStorage](m_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 

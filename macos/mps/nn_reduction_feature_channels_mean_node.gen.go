@@ -54,7 +54,7 @@ func (n_ NNReductionFeatureChannelsMeanNode) Init() NNReductionFeatureChannelsMe
 }
 
 func (nc _NNReductionFeatureChannelsMeanNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsMeanNode {
-	rv := objc.Call[NNReductionFeatureChannelsMeanNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsMeanNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionFeatureChannelsMeanNode_NodeWithSource(sourceNode INNImageNode) 
 }
 
 func (n_ NNReductionFeatureChannelsMeanNode) InitWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsMeanNode {
-	rv := objc.Call[NNReductionFeatureChannelsMeanNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsMeanNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

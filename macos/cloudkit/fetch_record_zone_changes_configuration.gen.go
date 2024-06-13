@@ -101,5 +101,5 @@ func (f_ FetchRecordZoneChangesConfiguration) PreviousServerChangeToken() Server
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckfetchrecordzonechangesconfiguration/2980662-previousserverchangetoken?language=objc
 func (f_ FetchRecordZoneChangesConfiguration) SetPreviousServerChangeToken(value IServerChangeToken) {
-	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setPreviousServerChangeToken:"), value)
 }

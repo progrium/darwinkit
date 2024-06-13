@@ -57,7 +57,7 @@ func (c_ CNNConvolutionTransposeGradientState) Init() CNNConvolutionTransposeGra
 
 func (cc _CNNConvolutionTransposeGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNConvolutionTransposeGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNConvolutionTransposeGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNConvolutionTransposeGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func CNNConvolutionTransposeGradientState_TemporaryStateWithCommandBufferResourc
 
 func (c_ CNNConvolutionTransposeGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNConvolutionTransposeGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolutionTransposeGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionTransposeGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func CNNConvolutionTransposeGradientState_TemporaryStateWithCommandBuffer(cmdBuf
 
 func (cc _CNNConvolutionTransposeGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNConvolutionTransposeGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNConvolutionTransposeGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNConvolutionTransposeGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -168,7 +168,7 @@ func CNNConvolutionTransposeGradientState_TemporaryStateWithCommandBufferTexture
 
 func (c_ CNNConvolutionTransposeGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNConvolutionTransposeGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNConvolutionTransposeGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNConvolutionTransposeGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

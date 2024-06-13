@@ -36,7 +36,7 @@ func UniqueIDSpecifierFrom(ptr unsafe.Pointer) UniqueIDSpecifier {
 }
 
 func (u_ UniqueIDSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyUniqueID(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, uniqueID objc.IObject) UniqueIDSpecifier {
-	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:uniqueID:"), objc.Ptr(classDesc), objc.Ptr(container), property, uniqueID)
+	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:uniqueID:"), classDesc, container, property, uniqueID)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func (u_ UniqueIDSpecifier) Init() UniqueIDSpecifier {
 }
 
 func (u_ UniqueIDSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
-	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func NewUniqueIDSpecifierWithContainerClassDescriptionContainerSpecifierKey(clas
 }
 
 func (u_ UniqueIDSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) UniqueIDSpecifier {
-	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[UniqueIDSpecifier](u_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

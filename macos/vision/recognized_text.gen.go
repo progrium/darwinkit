@@ -19,7 +19,7 @@ type _RecognizedTextClass struct {
 // An interface definition for the [RecognizedText] class.
 type IRecognizedText interface {
 	objc.IObject
-	BoundingBoxForRangeError(range_ foundation.Range, error foundation.IError) RectangleObservation
+	BoundingBoxForRangeError(range_ foundation.Range, error unsafe.Pointer) RectangleObservation
 	String() string
 	Confidence() Confidence
 }
@@ -60,8 +60,8 @@ func (r_ RecognizedText) Init() RecognizedText {
 // Calculates the bounding box around the characters in the range of a string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizedtext/3152634-boundingboxforrange?language=objc
-func (r_ RecognizedText) BoundingBoxForRangeError(range_ foundation.Range, error foundation.IError) RectangleObservation {
-	rv := objc.Call[RectangleObservation](r_, objc.Sel("boundingBoxForRange:error:"), range_, objc.Ptr(error))
+func (r_ RecognizedText) BoundingBoxForRangeError(range_ foundation.Range, error unsafe.Pointer) RectangleObservation {
+	rv := objc.Call[RectangleObservation](r_, objc.Sel("boundingBoxForRange:error:"), range_, error)
 	return rv
 }
 

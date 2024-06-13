@@ -38,7 +38,7 @@ func PlayerInterstitialEventMonitorFrom(ptr unsafe.Pointer) PlayerInterstitialEv
 }
 
 func (p_ PlayerInterstitialEventMonitor) InitWithPrimaryPlayer(primaryPlayer IPlayer) PlayerInterstitialEventMonitor {
-	rv := objc.Call[PlayerInterstitialEventMonitor](p_, objc.Sel("initWithPrimaryPlayer:"), objc.Ptr(primaryPlayer))
+	rv := objc.Call[PlayerInterstitialEventMonitor](p_, objc.Sel("initWithPrimaryPlayer:"), primaryPlayer)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewPlayerInterstitialEventMonitorWithPrimaryPlayer(primaryPlayer IPlayer) P
 }
 
 func (pc _PlayerInterstitialEventMonitorClass) InterstitialEventMonitorWithPrimaryPlayer(primaryPlayer IPlayer) PlayerInterstitialEventMonitor {
-	rv := objc.Call[PlayerInterstitialEventMonitor](pc, objc.Sel("interstitialEventMonitorWithPrimaryPlayer:"), objc.Ptr(primaryPlayer))
+	rv := objc.Call[PlayerInterstitialEventMonitor](pc, objc.Sel("interstitialEventMonitorWithPrimaryPlayer:"), primaryPlayer)
 	return rv
 }
 

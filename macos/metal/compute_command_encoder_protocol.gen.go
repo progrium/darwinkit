@@ -18,7 +18,7 @@ type PComputeCommandEncoder interface {
 	HasMemoryBarrierWithScope() bool
 
 	// optional
-	UseHeapsCount(heaps HeapObject, count uint)
+	UseHeapsCount(heaps unsafe.Pointer, count uint)
 	HasUseHeapsCount() bool
 
 	// optional
@@ -38,15 +38,15 @@ type PComputeCommandEncoder interface {
 	HasSetIntersectionFunctionTableAtBufferIndex() bool
 
 	// optional
-	SetIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables IntersectionFunctionTableObject, range_ foundation.Range)
+	SetIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range)
 	HasSetIntersectionFunctionTablesWithBufferRange() bool
 
 	// optional
-	SetTexturesWithRange(textures TextureObject, range_ foundation.Range)
+	SetTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
 	HasSetTexturesWithRange() bool
 
 	// optional
-	MemoryBarrierWithResourcesCount(resources ResourceObject, count uint)
+	MemoryBarrierWithResourcesCount(resources unsafe.Pointer, count uint)
 	HasMemoryBarrierWithResourcesCount() bool
 
 	// optional
@@ -58,7 +58,7 @@ type PComputeCommandEncoder interface {
 	HasSetAccelerationStructureAtBufferIndex() bool
 
 	// optional
-	SetSamplerStatesWithRange(samplers SamplerStateObject, range_ foundation.Range)
+	SetSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
 	HasSetSamplerStatesWithRange() bool
 
 	// optional
@@ -66,7 +66,7 @@ type PComputeCommandEncoder interface {
 	HasSetStageInRegion() bool
 
 	// optional
-	SetVisibleFunctionTablesWithBufferRange(visibleFunctionTables VisibleFunctionTableObject, range_ foundation.Range)
+	SetVisibleFunctionTablesWithBufferRange(visibleFunctionTables unsafe.Pointer, range_ foundation.Range)
 	HasSetVisibleFunctionTablesWithBufferRange() bool
 
 	// optional
@@ -90,7 +90,7 @@ type PComputeCommandEncoder interface {
 	HasDispatchThreadgroupsThreadsPerThreadgroup() bool
 
 	// optional
-	SetSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers SamplerStateObject, lodMinClamps *float64, lodMaxClamps *float64, range_ foundation.Range)
+	SetSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range)
 	HasSetSamplerStatesLodMinClampsLodMaxClampsWithRange() bool
 
 	// optional
@@ -102,7 +102,7 @@ type PComputeCommandEncoder interface {
 	HasUseResourceUsage() bool
 
 	// optional
-	SetSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float64, lodMaxClamp float64, index uint)
+	SetSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint)
 	HasSetSamplerStateLodMinClampLodMaxClampAtIndex() bool
 
 	// optional
@@ -122,7 +122,7 @@ type PComputeCommandEncoder interface {
 	HasSetVisibleFunctionTableAtBufferIndex() bool
 
 	// optional
-	SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range)
+	SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
 	HasSetBuffersOffsetsWithRange() bool
 
 	// optional
@@ -134,7 +134,7 @@ type PComputeCommandEncoder interface {
 	HasSetComputePipelineState() bool
 
 	// optional
-	UseResourcesCountUsage(resources ResourceObject, count uint, usage ResourceUsage)
+	UseResourcesCountUsage(resources unsafe.Pointer, count uint, usage ResourceUsage)
 	HasUseResourcesCountUsage() bool
 
 	// optional
@@ -180,7 +180,7 @@ func (c_ ComputeCommandEncoderObject) HasUseHeapsCount() bool {
 // Specifies that an array of heaps containing resources in an argument buffer can be safely used by a compute pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/2866538-useheaps?language=objc
-func (c_ ComputeCommandEncoderObject) UseHeapsCount(heaps HeapObject, count uint) {
+func (c_ ComputeCommandEncoderObject) UseHeapsCount(heaps unsafe.Pointer, count uint) {
 	po0 := objc.WrapAsProtocol("MTLHeap", heaps)
 	objc.Call[objc.Void](c_, objc.Sel("useHeaps:count:"), po0, count)
 }
@@ -239,7 +239,7 @@ func (c_ ComputeCommandEncoderObject) HasSetIntersectionFunctionTablesWithBuffer
 // Sets an array of intersection function tables for the compute function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/3566538-setintersectionfunctiontables?language=objc
-func (c_ ComputeCommandEncoderObject) SetIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables IntersectionFunctionTableObject, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetIntersectionFunctionTablesWithBufferRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTables)
 	objc.Call[objc.Void](c_, objc.Sel("setIntersectionFunctionTables:withBufferRange:"), po0, range_)
 }
@@ -251,7 +251,7 @@ func (c_ ComputeCommandEncoderObject) HasSetTexturesWithRange() bool {
 // Sets an array of textures for the compute function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/1443148-settextures?language=objc
-func (c_ ComputeCommandEncoderObject) SetTexturesWithRange(textures TextureObject, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLTexture", textures)
 	objc.Call[objc.Void](c_, objc.Sel("setTextures:withRange:"), po0, range_)
 }
@@ -263,7 +263,7 @@ func (c_ ComputeCommandEncoderObject) HasMemoryBarrierWithResourcesCount() bool 
 // Encodes a barrier so that changes to a set of resources made by commands encoded before the barrier are completed before further commands are executed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/2966552-memorybarrierwithresources?language=objc
-func (c_ ComputeCommandEncoderObject) MemoryBarrierWithResourcesCount(resources ResourceObject, count uint) {
+func (c_ ComputeCommandEncoderObject) MemoryBarrierWithResourcesCount(resources unsafe.Pointer, count uint) {
 	po0 := objc.WrapAsProtocol("MTLResource", resources)
 	objc.Call[objc.Void](c_, objc.Sel("memoryBarrierWithResources:count:"), po0, count)
 }
@@ -299,7 +299,7 @@ func (c_ ComputeCommandEncoderObject) HasSetSamplerStatesWithRange() bool {
 // Sets multiple samplers for the compute function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/1443155-setsamplerstates?language=objc
-func (c_ ComputeCommandEncoderObject) SetSamplerStatesWithRange(samplers SamplerStateObject, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
 	objc.Call[objc.Void](c_, objc.Sel("setSamplerStates:withRange:"), po0, range_)
 }
@@ -322,7 +322,7 @@ func (c_ ComputeCommandEncoderObject) HasSetVisibleFunctionTablesWithBufferRange
 // Sets an array of visible function tables for the compute function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/3566540-setvisiblefunctiontables?language=objc
-func (c_ ComputeCommandEncoderObject) SetVisibleFunctionTablesWithBufferRange(visibleFunctionTables VisibleFunctionTableObject, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetVisibleFunctionTablesWithBufferRange(visibleFunctionTables unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", visibleFunctionTables)
 	objc.Call[objc.Void](c_, objc.Sel("setVisibleFunctionTables:withBufferRange:"), po0, range_)
 }
@@ -392,7 +392,7 @@ func (c_ ComputeCommandEncoderObject) HasSetSamplerStatesLodMinClampsLodMaxClamp
 // Sets multiple samplers for the compute function, specifying clamp values for the level of detail of each sampler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/1443128-setsamplerstates?language=objc
-func (c_ ComputeCommandEncoderObject) SetSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers SamplerStateObject, lodMinClamps *float64, lodMaxClamps *float64, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetSamplerStatesLodMinClampsLodMaxClampsWithRange(samplers unsafe.Pointer, lodMinClamps *float32, lodMaxClamps *float32, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
 	objc.Call[objc.Void](c_, objc.Sel("setSamplerStates:lodMinClamps:lodMaxClamps:withRange:"), po0, lodMinClamps, lodMaxClamps, range_)
 }
@@ -428,7 +428,7 @@ func (c_ ComputeCommandEncoderObject) HasSetSamplerStateLodMinClampLodMaxClampAt
 // Sets a sampler for the compute function, specifying clamp values for the level of detail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/1443153-setsamplerstate?language=objc
-func (c_ ComputeCommandEncoderObject) SetSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float64, lodMaxClamp float64, index uint) {
+func (c_ ComputeCommandEncoderObject) SetSamplerStateLodMinClampLodMaxClampAtIndex(sampler SamplerStateObject, lodMinClamp float32, lodMaxClamp float32, index uint) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", sampler)
 	objc.Call[objc.Void](c_, objc.Sel("setSamplerState:lodMinClamp:lodMaxClamp:atIndex:"), po0, lodMinClamp, lodMaxClamp, index)
 }
@@ -488,7 +488,7 @@ func (c_ ComputeCommandEncoderObject) HasSetBuffersOffsetsWithRange() bool {
 // Sets an array of buffers for the compute function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/1443134-setbuffers?language=objc
-func (c_ ComputeCommandEncoderObject) SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range) {
+func (c_ ComputeCommandEncoderObject) SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
 	objc.Call[objc.Void](c_, objc.Sel("setBuffers:offsets:withRange:"), po0, offsets, range_)
 }
@@ -523,7 +523,7 @@ func (c_ ComputeCommandEncoderObject) HasUseResourcesCountUsage() bool {
 // Specifies that an array of resources in an argument buffer can be safely used by a compute pass. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcomputecommandencoder/2866561-useresources?language=objc
-func (c_ ComputeCommandEncoderObject) UseResourcesCountUsage(resources ResourceObject, count uint, usage ResourceUsage) {
+func (c_ ComputeCommandEncoderObject) UseResourcesCountUsage(resources unsafe.Pointer, count uint, usage ResourceUsage) {
 	po0 := objc.WrapAsProtocol("MTLResource", resources)
 	objc.Call[objc.Void](c_, objc.Sel("useResources:count:usage:"), po0, count, usage)
 }

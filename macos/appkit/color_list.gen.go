@@ -22,7 +22,7 @@ type IColorList interface {
 	SetColorForKey(color IColor, key ColorName)
 	RemoveFile()
 	ColorWithKey(key ColorName) Color
-	WriteToURLError(url foundation.IURL, errPtr foundation.IError) bool
+	WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool
 	InsertColorKeyAtIndex(color IColor, key ColorName, loc uint)
 	RemoveColorWithKey(key ColorName)
 	IsEditable() bool
@@ -95,7 +95,7 @@ func (c_ ColorList) Init() ColorList {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522130-setcolor?language=objc
 func (c_ ColorList) SetColorForKey(color IColor, key ColorName) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:forKey:"), objc.Ptr(color), key)
+	objc.Call[objc.Void](c_, objc.Sel("setColor:forKey:"), color, key)
 }
 
 // Removes the file from which the list was created, if the file is in a standard search path and owned by the user. [Full Topic]
@@ -116,8 +116,8 @@ func (c_ ColorList) ColorWithKey(key ColorName) Color {
 // Saves the color list to the file at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/2269695-writetourl?language=objc
-func (c_ ColorList) WriteToURLError(url foundation.IURL, errPtr foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("writeToURL:error:"), objc.Ptr(url), objc.Ptr(errPtr))
+func (c_ ColorList) WriteToURLError(url foundation.IURL, errPtr unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("writeToURL:error:"), url, errPtr)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (c_ ColorList) WriteToURLError(url foundation.IURL, errPtr foundation.IErro
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorlist/1522137-insertcolor?language=objc
 func (c_ ColorList) InsertColorKeyAtIndex(color IColor, key ColorName, loc uint) {
-	objc.Call[objc.Void](c_, objc.Sel("insertColor:key:atIndex:"), objc.Ptr(color), key, loc)
+	objc.Call[objc.Void](c_, objc.Sel("insertColor:key:atIndex:"), color, key, loc)
 }
 
 // Searches the available color lists array and returns the color list with the specified name. [Full Topic]

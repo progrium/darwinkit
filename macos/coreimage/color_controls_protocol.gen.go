@@ -19,27 +19,27 @@ type PColorControls interface {
 	HasInputImage() bool
 
 	// optional
-	SetContrast(value float64)
+	SetContrast(value float32)
 	HasSetContrast() bool
 
 	// optional
-	Contrast() float64
+	Contrast() float32
 	HasContrast() bool
 
 	// optional
-	SetBrightness(value float64)
+	SetBrightness(value float32)
 	HasSetBrightness() bool
 
 	// optional
-	Brightness() float64
+	Brightness() float32
 	HasBrightness() bool
 
 	// optional
-	SetSaturation(value float64)
+	SetSaturation(value float32)
 	HasSetSaturation() bool
 
 	// optional
-	Saturation() float64
+	Saturation() float32
 	HasSaturation() bool
 }
 
@@ -59,7 +59,7 @@ func (c_ ColorControlsObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228126-inputimage?language=objc
 func (c_ ColorControlsObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorControlsObject) HasInputImage() bool {
@@ -81,7 +81,7 @@ func (c_ ColorControlsObject) HasSetContrast() bool {
 // The amount of contrast to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228125-contrast?language=objc
-func (c_ ColorControlsObject) SetContrast(value float64) {
+func (c_ ColorControlsObject) SetContrast(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setContrast:"), value)
 }
 
@@ -92,8 +92,8 @@ func (c_ ColorControlsObject) HasContrast() bool {
 // The amount of contrast to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228125-contrast?language=objc
-func (c_ ColorControlsObject) Contrast() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("contrast"))
+func (c_ ColorControlsObject) Contrast() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("contrast"))
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (c_ ColorControlsObject) HasSetBrightness() bool {
 // The amount of brightness to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228124-brightness?language=objc
-func (c_ ColorControlsObject) SetBrightness(value float64) {
+func (c_ ColorControlsObject) SetBrightness(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBrightness:"), value)
 }
 
@@ -115,8 +115,8 @@ func (c_ ColorControlsObject) HasBrightness() bool {
 // The amount of brightness to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228124-brightness?language=objc
-func (c_ ColorControlsObject) Brightness() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("brightness"))
+func (c_ ColorControlsObject) Brightness() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("brightness"))
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (c_ ColorControlsObject) HasSetSaturation() bool {
 // The amount of saturation to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
-func (c_ ColorControlsObject) SetSaturation(value float64) {
+func (c_ ColorControlsObject) SetSaturation(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setSaturation:"), value)
 }
 
@@ -138,7 +138,7 @@ func (c_ ColorControlsObject) HasSaturation() bool {
 // The amount of saturation to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorcontrols/3228127-saturation?language=objc
-func (c_ ColorControlsObject) Saturation() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("saturation"))
+func (c_ ColorControlsObject) Saturation() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("saturation"))
 	return rv
 }

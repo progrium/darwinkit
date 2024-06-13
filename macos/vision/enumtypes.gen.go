@@ -15,7 +15,7 @@ const (
 // A type alias for expressing rectangle aspect ratios in Vision. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnaspectratio?language=objc
-type AspectRatio float64
+type AspectRatio float32
 
 // The barcode symbologies that the framework detects. [Full Topic]
 //
@@ -62,12 +62,12 @@ const (
 // A type alias for the confidence value of an observation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnconfidence?language=objc
-type Confidence float64
+type Confidence float32
 
 // A typealias for expressing tolerance angles in Vision. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vndegrees?language=objc
-type Degrees float64
+type Degrees float32
 
 // An enumeration of the type of element in feature print data. [Full Topic]
 //

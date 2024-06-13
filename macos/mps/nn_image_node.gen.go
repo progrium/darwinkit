@@ -48,7 +48,7 @@ func NNImageNodeFrom(ptr unsafe.Pointer) NNImageNode {
 }
 
 func (nc _NNImageNodeClass) ExportedNodeWithHandle(handle objc.IObject) NNImageNode {
-	rv := objc.Call[NNImageNode](nc, objc.Sel("exportedNodeWithHandle:"), objc.Ptr(handle))
+	rv := objc.Call[NNImageNode](nc, objc.Sel("exportedNodeWithHandle:"), handle)
 	return rv
 }
 
@@ -60,7 +60,7 @@ func NNImageNode_ExportedNodeWithHandle(handle objc.IObject) NNImageNode {
 }
 
 func (n_ NNImageNode) InitWithHandle(handle objc.IObject) NNImageNode {
-	rv := objc.Call[NNImageNode](n_, objc.Sel("initWithHandle:"), objc.Ptr(handle))
+	rv := objc.Call[NNImageNode](n_, objc.Sel("initWithHandle:"), handle)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func NewNNImageNodeWithHandle(handle objc.IObject) NNImageNode {
 }
 
 func (nc _NNImageNodeClass) NodeWithHandle(handle objc.IObject) NNImageNode {
-	rv := objc.Call[NNImageNode](nc, objc.Sel("nodeWithHandle:"), objc.Ptr(handle))
+	rv := objc.Call[NNImageNode](nc, objc.Sel("nodeWithHandle:"), handle)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func (n_ NNImageNode) SetImageAllocator(value PImageAllocator) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnimagenode/2866490-imageallocator?language=objc
 func (n_ NNImageNode) SetImageAllocatorObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setImageAllocator:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setImageAllocator:"), valueObject)
 }
 
 //	[Full Topic]
@@ -163,7 +163,7 @@ func (n_ NNImageNode) SetHandle(value PHandle) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnimagenode/2866406-handle?language=objc
 func (n_ NNImageNode) SetHandleObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setHandle:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setHandle:"), valueObject)
 }
 
 //	[Full Topic]

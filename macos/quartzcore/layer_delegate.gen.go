@@ -143,7 +143,7 @@ func (l_ LayerDelegateObject) HasDrawLayerInContext() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097262-drawlayer?language=objc
 func (l_ LayerDelegateObject) DrawLayerInContext(layer Layer, ctx coregraphics.ContextRef) {
-	objc.Call[objc.Void](l_, objc.Sel("drawLayer:inContext:"), objc.Ptr(layer), ctx)
+	objc.Call[objc.Void](l_, objc.Sel("drawLayer:inContext:"), layer, ctx)
 }
 
 func (l_ LayerDelegateObject) HasDisplayLayer() bool {
@@ -154,7 +154,7 @@ func (l_ LayerDelegateObject) HasDisplayLayer() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097261-displaylayer?language=objc
 func (l_ LayerDelegateObject) DisplayLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("displayLayer:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("displayLayer:"), layer)
 }
 
 func (l_ LayerDelegateObject) HasLayoutSublayersOfLayer() bool {
@@ -165,7 +165,7 @@ func (l_ LayerDelegateObject) HasLayoutSublayersOfLayer() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097257-layoutsublayersoflayer?language=objc
 func (l_ LayerDelegateObject) LayoutSublayersOfLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), layer)
 }
 
 func (l_ LayerDelegateObject) HasActionForLayerForKey() bool {
@@ -176,7 +176,7 @@ func (l_ LayerDelegateObject) HasActionForLayerForKey() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097264-actionforlayer?language=objc
 func (l_ LayerDelegateObject) ActionForLayerForKey(layer Layer, event string) ActionObject {
-	rv := objc.Call[ActionObject](l_, objc.Sel("actionForLayer:forKey:"), objc.Ptr(layer), event)
+	rv := objc.Call[ActionObject](l_, objc.Sel("actionForLayer:forKey:"), layer, event)
 	return rv
 }
 
@@ -188,5 +188,5 @@ func (l_ LayerDelegateObject) HasLayerWillDraw() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayerdelegate/2097263-layerwilldraw?language=objc
 func (l_ LayerDelegateObject) LayerWillDraw(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("layerWillDraw:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("layerWillDraw:"), layer)
 }

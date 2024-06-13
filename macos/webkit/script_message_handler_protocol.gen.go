@@ -31,5 +31,5 @@ func (s_ ScriptMessageHandlerObject) HasUserContentControllerDidReceiveScriptMes
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkscriptmessagehandler/1396222-usercontentcontroller?language=objc
 func (s_ ScriptMessageHandlerObject) UserContentControllerDidReceiveScriptMessage(userContentController UserContentController, message ScriptMessage) {
-	objc.Call[objc.Void](s_, objc.Sel("userContentController:didReceiveScriptMessage:"), objc.Ptr(userContentController), objc.Ptr(message))
+	objc.Call[objc.Void](s_, objc.Sel("userContentController:didReceiveScriptMessage:"), userContentController, message)
 }

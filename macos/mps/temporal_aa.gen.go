@@ -23,8 +23,8 @@ type ITemporalAA interface {
 	EncodeWithCoder(coder foundation.ICoder)
 	EncodeToCommandBufferSourceTexturePreviousTextureDestinationTextureMotionVectorTextureDepthTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, previousTexture metal.PTexture, destinationTexture metal.PTexture, motionVectorTexture metal.PTexture, depthTexture metal.PTexture)
 	EncodeToCommandBufferObjectSourceTextureObjectPreviousTextureObjectDestinationTextureObjectMotionVectorTextureObjectDepthTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, previousTextureObject objc.IObject, destinationTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthTextureObject objc.IObject)
-	BlendFactor() float64
-	SetBlendFactor(value float64)
+	BlendFactor() float32
+	SetBlendFactor(value float32)
 }
 
 //	[Full Topic]
@@ -94,7 +94,7 @@ func (t_ TemporalAA) Init() TemporalAA {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143585-encodewithcoder?language=objc
 func (t_ TemporalAA) EncodeWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](t_, objc.Sel("encodeWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](t_, objc.Sel("encodeWithCoder:"), coder)
 }
 
 //	[Full Topic]
@@ -114,20 +114,20 @@ func (t_ TemporalAA) EncodeToCommandBufferSourceTexturePreviousTextureDestinatio
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143584-encodetocommandbuffer?language=objc
 func (t_ TemporalAA) EncodeToCommandBufferObjectSourceTextureObjectPreviousTextureObjectDestinationTextureObjectMotionVectorTextureObjectDepthTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, previousTextureObject objc.IObject, destinationTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthTextureObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("encodeToCommandBuffer:sourceTexture:previousTexture:destinationTexture:motionVectorTexture:depthTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(previousTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(motionVectorTextureObject), objc.Ptr(depthTextureObject))
+	objc.Call[objc.Void](t_, objc.Sel("encodeToCommandBuffer:sourceTexture:previousTexture:destinationTexture:motionVectorTexture:depthTexture:"), commandBufferObject, sourceTextureObject, previousTextureObject, destinationTextureObject, motionVectorTextureObject, depthTextureObject)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143582-blendfactor?language=objc
-func (t_ TemporalAA) BlendFactor() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("blendFactor"))
+func (t_ TemporalAA) BlendFactor() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("blendFactor"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpstemporalaa/3143582-blendfactor?language=objc
-func (t_ TemporalAA) SetBlendFactor(value float64) {
+func (t_ TemporalAA) SetBlendFactor(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setBlendFactor:"), value)
 }

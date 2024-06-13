@@ -28,19 +28,19 @@ type PBumpDistortion interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 }
 
@@ -83,7 +83,7 @@ func (b_ BumpDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600108-inputimage?language=objc
 func (b_ BumpDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BumpDistortionObject) HasInputImage() bool {
@@ -105,7 +105,7 @@ func (b_ BumpDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600109-radius?language=objc
-func (b_ BumpDistortionObject) SetRadius(value float64) {
+func (b_ BumpDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
 }
 
@@ -116,8 +116,8 @@ func (b_ BumpDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600109-radius?language=objc
-func (b_ BumpDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("radius"))
+func (b_ BumpDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }
 
@@ -128,7 +128,7 @@ func (b_ BumpDistortionObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
-func (b_ BumpDistortionObject) SetScale(value float64) {
+func (b_ BumpDistortionObject) SetScale(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
 }
 
@@ -139,7 +139,7 @@ func (b_ BumpDistortionObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortion/3600110-scale?language=objc
-func (b_ BumpDistortionObject) Scale() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("scale"))
+func (b_ BumpDistortionObject) Scale() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("scale"))
 	return rv
 }

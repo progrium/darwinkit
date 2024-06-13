@@ -123,7 +123,7 @@ func (c_ ComboBoxDelegateObject) HasComboBoxWillDismiss() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436763-comboboxwilldismiss?language=objc
 func (c_ ComboBoxDelegateObject) ComboBoxWillDismiss(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillDismiss:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillDismiss:"), notification)
 }
 
 func (c_ ComboBoxDelegateObject) HasComboBoxSelectionIsChanging() bool {
@@ -134,7 +134,7 @@ func (c_ ComboBoxDelegateObject) HasComboBoxSelectionIsChanging() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436715-comboboxselectionischanging?language=objc
 func (c_ ComboBoxDelegateObject) ComboBoxSelectionIsChanging(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionIsChanging:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionIsChanging:"), notification)
 }
 
 func (c_ ComboBoxDelegateObject) HasComboBoxSelectionDidChange() bool {
@@ -145,7 +145,7 @@ func (c_ ComboBoxDelegateObject) HasComboBoxSelectionDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436769-comboboxselectiondidchange?language=objc
 func (c_ ComboBoxDelegateObject) ComboBoxSelectionDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxSelectionDidChange:"), notification)
 }
 
 func (c_ ComboBoxDelegateObject) HasComboBoxWillPopUp() bool {
@@ -156,5 +156,5 @@ func (c_ ComboBoxDelegateObject) HasComboBoxWillPopUp() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxdelegate/1436784-comboboxwillpopup?language=objc
 func (c_ ComboBoxDelegateObject) ComboBoxWillPopUp(notification foundation.Notification) {
-	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillPopUp:"), objc.Ptr(notification))
+	objc.Call[objc.Void](c_, objc.Sel("comboBoxWillPopUp:"), notification)
 }

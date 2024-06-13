@@ -61,7 +61,7 @@ func (a_ AssetDownloadURLSession) Init() AssetDownloadURLSession {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/3751761-assetdownloadtaskwithconfigurati?language=objc
 func (a_ AssetDownloadURLSession) AssetDownloadTaskWithConfiguration(downloadConfiguration IAssetDownloadConfiguration) AssetDownloadTask {
-	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithConfiguration:"), objc.Ptr(downloadConfiguration))
+	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithConfiguration:"), downloadConfiguration)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func (a_ AssetDownloadURLSession) AssetDownloadTaskWithConfiguration(downloadCon
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1650938-assetdownloadtaskwithurlasset?language=objc
 func (a_ AssetDownloadURLSession) AssetDownloadTaskWithURLAssetAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, title string, artworkData []byte, options map[string]objc.IObject) AssetDownloadTask {
-	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithURLAsset:assetTitle:assetArtworkData:options:"), objc.Ptr(URLAsset), title, artworkData, options)
+	rv := objc.Call[AssetDownloadTask](a_, objc.Sel("assetDownloadTaskWithURLAsset:assetTitle:assetArtworkData:options:"), URLAsset, title, artworkData, options)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (a_ AssetDownloadURLSession) AssetDownloadTaskWithURLAssetAssetTitleAssetAr
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/2897242-aggregateassetdownloadtaskwithur?language=objc
 func (a_ AssetDownloadURLSession) AggregateAssetDownloadTaskWithURLAssetMediaSelectionsAssetTitleAssetArtworkDataOptions(URLAsset IURLAsset, mediaSelections []IMediaSelection, title string, artworkData []byte, options map[string]objc.IObject) AggregateAssetDownloadTask {
-	rv := objc.Call[AggregateAssetDownloadTask](a_, objc.Sel("aggregateAssetDownloadTaskWithURLAsset:mediaSelections:assetTitle:assetArtworkData:options:"), objc.Ptr(URLAsset), mediaSelections, title, artworkData, options)
+	rv := objc.Call[AggregateAssetDownloadTask](a_, objc.Sel("aggregateAssetDownloadTaskWithURLAsset:mediaSelections:assetTitle:assetArtworkData:options:"), URLAsset, mediaSelections, title, artworkData, options)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (a_ AssetDownloadURLSession) AggregateAssetDownloadTaskWithURLAssetMediaSel
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1621015-sessionwithconfiguration?language=objc
 func (ac _AssetDownloadURLSessionClass) SessionWithConfigurationAssetDownloadDelegateDelegateQueue(configuration foundation.IURLSessionConfiguration, delegate PAssetDownloadDelegate, delegateQueue foundation.IOperationQueue) AssetDownloadURLSession {
 	po1 := objc.WrapAsProtocol("AVAssetDownloadDelegate", delegate)
-	rv := objc.Call[AssetDownloadURLSession](ac, objc.Sel("sessionWithConfiguration:assetDownloadDelegate:delegateQueue:"), objc.Ptr(configuration), po1, objc.Ptr(delegateQueue))
+	rv := objc.Call[AssetDownloadURLSession](ac, objc.Sel("sessionWithConfiguration:assetDownloadDelegate:delegateQueue:"), configuration, po1, delegateQueue)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func AssetDownloadURLSession_SessionWithConfigurationAssetDownloadDelegateDelega
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadurlsession/1621015-sessionwithconfiguration?language=objc
 func (ac _AssetDownloadURLSessionClass) SessionWithConfigurationAssetDownloadDelegateObjectDelegateQueue(configuration foundation.IURLSessionConfiguration, delegateObject objc.IObject, delegateQueue foundation.IOperationQueue) AssetDownloadURLSession {
-	rv := objc.Call[AssetDownloadURLSession](ac, objc.Sel("sessionWithConfiguration:assetDownloadDelegate:delegateQueue:"), objc.Ptr(configuration), objc.Ptr(delegateObject), objc.Ptr(delegateQueue))
+	rv := objc.Call[AssetDownloadURLSession](ac, objc.Sel("sessionWithConfiguration:assetDownloadDelegate:delegateQueue:"), configuration, delegateObject, delegateQueue)
 	return rv
 }
 

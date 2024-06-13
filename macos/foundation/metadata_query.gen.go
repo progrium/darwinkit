@@ -167,7 +167,7 @@ func (m_ MetadataQuery) Predicate() Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1411478-predicate?language=objc
 func (m_ MetadataQuery) SetPredicate(value IPredicate) {
-	objc.Call[objc.Void](m_, objc.Sel("setPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setPredicate:"), value)
 }
 
 // An array containing the search scopes. [Full Topic]
@@ -228,7 +228,7 @@ func (m_ MetadataQuery) OperationQueue() OperationQueue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1410953-operationqueue?language=objc
 func (m_ MetadataQuery) SetOperationQueue(value IOperationQueue) {
-	objc.Call[objc.Void](m_, objc.Sel("setOperationQueue:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setOperationQueue:"), value)
 }
 
 // A Boolean value that indicates whether the receiver is in the initial gathering phase of the query. (read-only) [Full Topic]
@@ -320,7 +320,7 @@ func (m_ MetadataQuery) SetDelegate(value PMetadataQueryDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmetadataquery/1413181-delegate?language=objc
 func (m_ MetadataQuery) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // An array containing hierarchical groups of query results. (read-only) [Full Topic]

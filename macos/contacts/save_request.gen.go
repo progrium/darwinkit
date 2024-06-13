@@ -71,70 +71,70 @@ func (s_ SaveRequest) Init() SaveRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402970-deletecontact?language=objc
 func (s_ SaveRequest) DeleteContact(contact IMutableContact) {
-	objc.Call[objc.Void](s_, objc.Sel("deleteContact:"), objc.Ptr(contact))
+	objc.Call[objc.Void](s_, objc.Sel("deleteContact:"), contact)
 }
 
 // Deletes a group from the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402859-deletegroup?language=objc
 func (s_ SaveRequest) DeleteGroup(group IMutableGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("deleteGroup:"), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("deleteGroup:"), group)
 }
 
 // Adds a group to the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1402821-addgroup?language=objc
 func (s_ SaveRequest) AddGroupToContainerWithIdentifier(group IMutableGroup, identifier string) {
-	objc.Call[objc.Void](s_, objc.Sel("addGroup:toContainerWithIdentifier:"), objc.Ptr(group), identifier)
+	objc.Call[objc.Void](s_, objc.Sel("addGroup:toContainerWithIdentifier:"), group, identifier)
 }
 
 // Adds a contact as a member of a group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403180-addmember?language=objc
 func (s_ SaveRequest) AddMemberToGroup(contact IContact, group IGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("addMember:toGroup:"), objc.Ptr(contact), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("addMember:toGroup:"), contact, group)
 }
 
 // Updates an existing group in the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403387-updategroup?language=objc
 func (s_ SaveRequest) UpdateGroup(group IMutableGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("updateGroup:"), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("updateGroup:"), group)
 }
 
 // Removes a contact as a member of a group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403373-removemember?language=objc
 func (s_ SaveRequest) RemoveMemberFromGroup(contact IContact, group IGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("removeMember:fromGroup:"), objc.Ptr(contact), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("removeMember:fromGroup:"), contact, group)
 }
 
 // Adds the specified contact to the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403036-addcontact?language=objc
 func (s_ SaveRequest) AddContactToContainerWithIdentifier(contact IMutableContact, identifier string) {
-	objc.Call[objc.Void](s_, objc.Sel("addContact:toContainerWithIdentifier:"), objc.Ptr(contact), identifier)
+	objc.Call[objc.Void](s_, objc.Sel("addContact:toContainerWithIdentifier:"), contact, identifier)
 }
 
 // Add the specified group to a parent group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403342-addsubgroup?language=objc
 func (s_ SaveRequest) AddSubgroupToGroup(subgroup IGroup, group IGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("addSubgroup:toGroup:"), objc.Ptr(subgroup), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("addSubgroup:toGroup:"), subgroup, group)
 }
 
 // Remove a subgroup from the specified parent group. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403018-removesubgroup?language=objc
 func (s_ SaveRequest) RemoveSubgroupFromGroup(subgroup IGroup, group IGroup) {
-	objc.Call[objc.Void](s_, objc.Sel("removeSubgroup:fromGroup:"), objc.Ptr(subgroup), objc.Ptr(group))
+	objc.Call[objc.Void](s_, objc.Sel("removeSubgroup:fromGroup:"), subgroup, group)
 }
 
 // Updates an existing contact in the contact store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnsaverequest/1403074-updatecontact?language=objc
 func (s_ SaveRequest) UpdateContact(contact IMutableContact) {
-	objc.Call[objc.Void](s_, objc.Sel("updateContact:"), objc.Ptr(contact))
+	objc.Call[objc.Void](s_, objc.Sel("updateContact:"), contact)
 }
 
 //	[Full Topic]

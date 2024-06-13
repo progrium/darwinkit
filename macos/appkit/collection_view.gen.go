@@ -142,7 +142,7 @@ func NewCollectionViewWithFrame(frameRect foundation.Rect) CollectionView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528249-draggingimageforitemsatindexes?language=objc
 func (c_ CollectionView) DraggingImageForItemsAtIndexesWithEventOffset(indexes foundation.IIndexSet, event IEvent, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](c_, objc.Sel("draggingImageForItemsAtIndexes:withEvent:offset:"), objc.Ptr(indexes), objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](c_, objc.Sel("draggingImageForItemsAtIndexes:withEvent:offset:"), indexes, event, dragImageOffset)
 	return rv
 }
 
@@ -173,28 +173,28 @@ func (c_ CollectionView) MoveSectionToSection(section int, newSection int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1525656-selectitemsatindexpaths?language=objc
 func (c_ CollectionView) SelectItemsAtIndexPathsScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition) {
-	objc.Call[objc.Void](c_, objc.Sel("selectItemsAtIndexPaths:scrollPosition:"), objc.Ptr(indexPaths), scrollPosition)
+	objc.Call[objc.Void](c_, objc.Sel("selectItemsAtIndexPaths:scrollPosition:"), indexPaths, scrollPosition)
 }
 
 // Inserts new items into the collection view at the specified locations. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528267-insertitemsatindexpaths?language=objc
 func (c_ CollectionView) InsertItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("insertItemsAtIndexPaths:"), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("insertItemsAtIndexPaths:"), indexPaths)
 }
 
 // Deletes the specified sections and their contained items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1527083-deletesections?language=objc
 func (c_ CollectionView) DeleteSections(sections foundation.IIndexSet) {
-	objc.Call[objc.Void](c_, objc.Sel("deleteSections:"), objc.Ptr(sections))
+	objc.Call[objc.Void](c_, objc.Sel("deleteSections:"), sections)
 }
 
 // Returns the layout information for the supplementary view at the specified index path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1526721-layoutattributesforsupplementary?language=objc
 func (c_ CollectionView) LayoutAttributesForSupplementaryElementOfKindAtIndexPath(kind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForSupplementaryElementOfKind:atIndexPath:"), kind, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForSupplementaryElementOfKind:atIndexPath:"), kind, indexPath)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func (c_ CollectionView) LayoutAttributesForSupplementaryElementOfKindAtIndexPat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528174-registernib?language=objc
 func (c_ CollectionView) RegisterNibForItemWithIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](c_, objc.Sel("registerNib:forItemWithIdentifier:"), objc.Ptr(nib), identifier)
+	objc.Call[objc.Void](c_, objc.Sel("registerNib:forItemWithIdentifier:"), nib, identifier)
 }
 
 // Collapses the section in which the sender resides into a single horizontally scrollable row. [Full Topic]
@@ -217,7 +217,7 @@ func (c_ CollectionView) ToggleSectionCollapse(sender objc.IObject) objc.Object 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528184-itematindexpath?language=objc
 func (c_ CollectionView) ItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.Call[CollectionViewItem](c_, objc.Sel("itemAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewItem](c_, objc.Sel("itemAtIndexPath:"), indexPath)
 	return rv
 }
 
@@ -225,7 +225,7 @@ func (c_ CollectionView) ItemAtIndexPath(indexPath foundation.IIndexPath) Collec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528268-registerclass?language=objc
 func (c_ CollectionView) RegisterClassForItemWithIdentifier(itemClass objc.IClass, identifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](c_, objc.Sel("registerClass:forItemWithIdentifier:"), objc.Ptr(itemClass), identifier)
+	objc.Call[objc.Void](c_, objc.Sel("registerClass:forItemWithIdentifier:"), itemClass, identifier)
 }
 
 // Returns the index path of the item at the specified point. [Full Topic]
@@ -240,7 +240,7 @@ func (c_ CollectionView) IndexPathForItemAtPoint(point foundation.Point) foundat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528277-indexpathforitem?language=objc
 func (c_ CollectionView) IndexPathForItem(item ICollectionViewItem) foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathForItem:"), objc.Ptr(item))
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathForItem:"), item)
 	return rv
 }
 
@@ -256,7 +256,7 @@ func (c_ CollectionView) FrameForItemAtIndex(index uint) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528233-registerclass?language=objc
 func (c_ CollectionView) RegisterClassForSupplementaryViewOfKindWithIdentifier(viewClass objc.IClass, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](c_, objc.Sel("registerClass:forSupplementaryViewOfKind:withIdentifier:"), objc.Ptr(viewClass), kind, identifier)
+	objc.Call[objc.Void](c_, objc.Sel("registerClass:forSupplementaryViewOfKind:withIdentifier:"), viewClass, kind, identifier)
 }
 
 // Returns an array of the actively managed items in the collection view. [Full Topic]
@@ -310,21 +310,21 @@ func (c_ CollectionView) ItemAtIndex(index uint) CollectionViewItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528166-reloaditemsatindexpaths?language=objc
 func (c_ CollectionView) ReloadItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadItemsAtIndexPaths:"), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("reloadItemsAtIndexPaths:"), indexPaths)
 }
 
 // Removes the specified items from the current selection. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528172-deselectitemsatindexpaths?language=objc
 func (c_ CollectionView) DeselectItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("deselectItemsAtIndexPaths:"), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("deselectItemsAtIndexPaths:"), indexPaths)
 }
 
 // Creates or returns a reusable item object of the specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528240-makeitemwithidentifier?language=objc
 func (c_ CollectionView) MakeItemWithIdentifierForIndexPath(identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) CollectionViewItem {
-	rv := objc.Call[CollectionViewItem](c_, objc.Sel("makeItemWithIdentifier:forIndexPath:"), identifier, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewItem](c_, objc.Sel("makeItemWithIdentifier:forIndexPath:"), identifier, indexPath)
 	return rv
 }
 
@@ -332,7 +332,7 @@ func (c_ CollectionView) MakeItemWithIdentifierForIndexPath(identifier UserInter
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528191-draggingimageforitemsatindexpath?language=objc
 func (c_ CollectionView) DraggingImageForItemsAtIndexPathsWithEventOffset(indexPaths foundation.ISet, event IEvent, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](c_, objc.Sel("draggingImageForItemsAtIndexPaths:withEvent:offset:"), objc.Ptr(indexPaths), objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](c_, objc.Sel("draggingImageForItemsAtIndexPaths:withEvent:offset:"), indexPaths, event, dragImageOffset)
 	return rv
 }
 
@@ -340,7 +340,7 @@ func (c_ CollectionView) DraggingImageForItemsAtIndexPathsWithEventOffset(indexP
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1524880-supplementaryviewforelementkind?language=objc
 func (c_ CollectionView) SupplementaryViewForElementKindAtIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) View {
-	rv := objc.Call[View](c_, objc.Sel("supplementaryViewForElementKind:atIndexPath:"), elementKind, objc.Ptr(indexPath))
+	rv := objc.Call[View](c_, objc.Sel("supplementaryViewForElementKind:atIndexPath:"), elementKind, indexPath)
 	return rv
 }
 
@@ -348,14 +348,14 @@ func (c_ CollectionView) SupplementaryViewForElementKindAtIndexPath(elementKind 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1527005-registernib?language=objc
 func (c_ CollectionView) RegisterNibForSupplementaryViewOfKindWithIdentifier(nib INib, kind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](c_, objc.Sel("registerNib:forSupplementaryViewOfKind:withIdentifier:"), objc.Ptr(nib), kind, identifier)
+	objc.Call[objc.Void](c_, objc.Sel("registerNib:forSupplementaryViewOfKind:withIdentifier:"), nib, kind, identifier)
 }
 
 // Returns the layout information for the item at the specified index path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528243-layoutattributesforitematindexpa?language=objc
 func (c_ CollectionView) LayoutAttributesForItemAtIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForItemAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](c_, objc.Sel("layoutAttributesForItemAtIndexPath:"), indexPath)
 	return rv
 }
 
@@ -363,14 +363,14 @@ func (c_ CollectionView) LayoutAttributesForItemAtIndexPath(indexPath foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1526126-insertsections?language=objc
 func (c_ CollectionView) InsertSections(sections foundation.IIndexSet) {
-	objc.Call[objc.Void](c_, objc.Sel("insertSections:"), objc.Ptr(sections))
+	objc.Call[objc.Void](c_, objc.Sel("insertSections:"), sections)
 }
 
 // Reloads the data in the specified sections of the collection view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528306-reloadsections?language=objc
 func (c_ CollectionView) ReloadSections(sections foundation.IIndexSet) {
-	objc.Call[objc.Void](c_, objc.Sel("reloadSections:"), objc.Ptr(sections))
+	objc.Call[objc.Void](c_, objc.Sel("reloadSections:"), sections)
 }
 
 // Returns an array of the actively managed supplementary views in the collection view. [Full Topic]
@@ -400,7 +400,7 @@ func (c_ CollectionView) NumberOfItemsInSection(section int) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528302-makesupplementaryviewofkind?language=objc
 func (c_ CollectionView) MakeSupplementaryViewOfKindWithIdentifierForIndexPath(elementKind CollectionViewSupplementaryElementKind, identifier UserInterfaceItemIdentifier, indexPath foundation.IIndexPath) View {
-	rv := objc.Call[View](c_, objc.Sel("makeSupplementaryViewOfKind:withIdentifier:forIndexPath:"), elementKind, identifier, objc.Ptr(indexPath))
+	rv := objc.Call[View](c_, objc.Sel("makeSupplementaryViewOfKind:withIdentifier:forIndexPath:"), elementKind, identifier, indexPath)
 	return rv
 }
 
@@ -408,14 +408,14 @@ func (c_ CollectionView) MakeSupplementaryViewOfKindWithIdentifierForIndexPath(e
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528128-deleteitemsatindexpaths?language=objc
 func (c_ CollectionView) DeleteItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("deleteItemsAtIndexPaths:"), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("deleteItemsAtIndexPaths:"), indexPaths)
 }
 
 // Moves an item from one location to another in the collection view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528159-moveitematindexpath?language=objc
 func (c_ CollectionView) MoveItemAtIndexPathToIndexPath(indexPath foundation.IIndexPath, newIndexPath foundation.IIndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("moveItemAtIndexPath:toIndexPath:"), objc.Ptr(indexPath), objc.Ptr(newIndexPath))
+	objc.Call[objc.Void](c_, objc.Sel("moveItemAtIndexPath:toIndexPath:"), indexPath, newIndexPath)
 }
 
 // Encapsulates multiple insert, delete, reload, and move operations into a single animated operation. [Full Topic]
@@ -429,7 +429,7 @@ func (c_ CollectionView) PerformBatchUpdatesCompletionHandler(updates func(), co
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528227-scrolltoitemsatindexpaths?language=objc
 func (c_ CollectionView) ScrollToItemsAtIndexPathsScrollPosition(indexPaths foundation.ISet, scrollPosition CollectionViewScrollPosition) {
-	objc.Call[objc.Void](c_, objc.Sel("scrollToItemsAtIndexPaths:scrollPosition:"), objc.Ptr(indexPaths), scrollPosition)
+	objc.Call[objc.Void](c_, objc.Sel("scrollToItemsAtIndexPaths:scrollPosition:"), indexPaths, scrollPosition)
 }
 
 // The number of sections in the collection view. [Full Topic]
@@ -506,7 +506,7 @@ func (c_ CollectionView) SetPrefetchDataSource(value PCollectionViewPrefetching)
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/2879292-prefetchdatasource?language=objc
 func (c_ CollectionView) SetPrefetchDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setPrefetchDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setPrefetchDataSource:"), valueObject)
 }
 
 // An array that provides data for the collection view. [Full Topic]
@@ -536,7 +536,7 @@ func (c_ CollectionView) CollectionViewLayout() CollectionViewLayout {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528271-collectionviewlayout?language=objc
 func (c_ CollectionView) SetCollectionViewLayout(value ICollectionViewLayout) {
-	objc.Call[objc.Void](c_, objc.Sel("setCollectionViewLayout:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setCollectionViewLayout:"), value)
 }
 
 // An array containing the collection view’s background colors. [Full Topic]
@@ -581,7 +581,7 @@ func (c_ CollectionView) SelectionIndexPaths() foundation.Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528275-selectionindexpaths?language=objc
 func (c_ CollectionView) SetSelectionIndexPaths(value foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("setSelectionIndexPaths:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setSelectionIndexPaths:"), value)
 }
 
 // The indexes of the currently selected items. [Full Topic]
@@ -596,7 +596,7 @@ func (c_ CollectionView) SelectionIndexes() foundation.IndexSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1525505-selectionindexes?language=objc
 func (c_ CollectionView) SetSelectionIndexes(value foundation.IIndexSet) {
-	objc.Call[objc.Void](c_, objc.Sel("setSelectionIndexes:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setSelectionIndexes:"), value)
 }
 
 // The background view placed behind all items and supplementary views. [Full Topic]
@@ -611,7 +611,7 @@ func (c_ CollectionView) BackgroundView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528250-backgroundview?language=objc
 func (c_ CollectionView) SetBackgroundView(value IView) {
-	objc.Call[objc.Void](c_, objc.Sel("setBackgroundView:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBackgroundView:"), value)
 }
 
 // The collection view’s delegate object. [Full Topic]
@@ -635,7 +635,7 @@ func (c_ CollectionView) SetDelegate(value PCollectionViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528246-delegate?language=objc
 func (c_ CollectionView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value indicating whether the collection view is the first responder. [Full Topic]
@@ -667,5 +667,5 @@ func (c_ CollectionView) SetDataSource(value PCollectionViewDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionview/1528222-datasource?language=objc
 func (c_ CollectionView) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), valueObject)
 }

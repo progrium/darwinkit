@@ -101,7 +101,7 @@ func (s_ SearchToolbarItem) SearchField() SearchField {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchtoolbaritem/3634330-searchfield?language=objc
 func (s_ SearchToolbarItem) SetSearchField(value ISearchField) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchField:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSearchField:"), value)
 }
 
 // A Boolean value that enables the cancel button in the search field to resign the first responder in addition to clearing the contents. [Full Topic]

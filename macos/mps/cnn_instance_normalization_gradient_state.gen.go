@@ -61,7 +61,7 @@ func (c_ CNNInstanceNormalizationGradientState) Init() CNNInstanceNormalizationG
 
 func (cc _CNNInstanceNormalizationGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNInstanceNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNInstanceNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNInstanceNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func CNNInstanceNormalizationGradientState_TemporaryStateWithCommandBufferResour
 
 func (c_ CNNInstanceNormalizationGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNInstanceNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNInstanceNormalizationGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNInstanceNormalizationGradientState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -159,7 +159,7 @@ func CNNInstanceNormalizationGradientState_TemporaryStateWithCommandBuffer(cmdBu
 
 func (cc _CNNInstanceNormalizationGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNInstanceNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNInstanceNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNInstanceNormalizationGradientState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -172,7 +172,7 @@ func CNNInstanceNormalizationGradientState_TemporaryStateWithCommandBufferTextur
 
 func (c_ CNNInstanceNormalizationGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNInstanceNormalizationGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNInstanceNormalizationGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNInstanceNormalizationGradientState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

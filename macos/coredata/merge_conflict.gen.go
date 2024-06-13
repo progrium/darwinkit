@@ -40,7 +40,7 @@ func MergeConflictFrom(ptr unsafe.Pointer) MergeConflict {
 }
 
 func (m_ MergeConflict) InitWithSourceNewVersionOldVersionCachedSnapshotPersistedSnapshot(srcObject IManagedObject, newvers uint, oldvers uint, cachesnap map[string]objc.IObject, persnap map[string]objc.IObject) MergeConflict {
-	rv := objc.Call[MergeConflict](m_, objc.Sel("initWithSource:newVersion:oldVersion:cachedSnapshot:persistedSnapshot:"), objc.Ptr(srcObject), newvers, oldvers, cachesnap, persnap)
+	rv := objc.Call[MergeConflict](m_, objc.Sel("initWithSource:newVersion:oldVersion:cachedSnapshot:persistedSnapshot:"), srcObject, newvers, oldvers, cachesnap, persnap)
 	return rv
 }
 

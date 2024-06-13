@@ -83,7 +83,7 @@ func ProgressFrom(ptr unsafe.Pointer) Progress {
 }
 
 func (p_ Progress) InitWithParentUserInfo(parentProgressOrNil IProgress, userInfoOrNil map[ProgressUserInfoKey]objc.IObject) Progress {
-	rv := objc.Call[Progress](p_, objc.Sel("initWithParent:userInfo:"), objc.Ptr(parentProgressOrNil), userInfoOrNil)
+	rv := objc.Call[Progress](p_, objc.Sel("initWithParent:userInfo:"), parentProgressOrNil, userInfoOrNil)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (p_ Progress) Init() Progress {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/1417260-addchild?language=objc
 func (p_ Progress) AddChildWithPendingUnitCount(child IProgress, inUnitCount int64) {
-	objc.Call[objc.Void](p_, objc.Sel("addChild:withPendingUnitCount:"), objc.Ptr(child), inUnitCount)
+	objc.Call[objc.Void](p_, objc.Sel("addChild:withPendingUnitCount:"), child, inUnitCount)
 }
 
 // Sets the progress object as the current object of the current thread, and assigns the amount of work for the next suboperation progress object to perform. [Full Topic]
@@ -235,7 +235,7 @@ func Progress_RemoveSubscriber(subscriber objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/1409014-progresswithtotalunitcount?language=objc
 func (pc _ProgressClass) ProgressWithTotalUnitCountParentPendingUnitCount(unitCount int64, parent IProgress, portionOfParentTotalUnitCount int64) Progress {
-	rv := objc.Call[Progress](pc, objc.Sel("progressWithTotalUnitCount:parent:pendingUnitCount:"), unitCount, objc.Ptr(parent), portionOfParentTotalUnitCount)
+	rv := objc.Call[Progress](pc, objc.Sel("progressWithTotalUnitCount:parent:pendingUnitCount:"), unitCount, parent, portionOfParentTotalUnitCount)
 	return rv
 }
 
@@ -264,7 +264,7 @@ func (p_ Progress) Unpublish() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/1418475-addsubscriberforfileurl?language=objc
 func (pc _ProgressClass) AddSubscriberForFileURLWithPublishingHandler(url IURL, publishingHandler ProgressPublishingHandler) objc.Object {
-	rv := objc.Call[objc.Object](pc, objc.Sel("addSubscriberForFileURL:withPublishingHandler:"), objc.Ptr(url), publishingHandler)
+	rv := objc.Call[objc.Object](pc, objc.Sel("addSubscriberForFileURL:withPublishingHandler:"), url, publishingHandler)
 	return rv
 }
 
@@ -287,7 +287,7 @@ func (p_ Progress) FileTotalCount() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/2868045-filetotalcount?language=objc
 func (p_ Progress) SetFileTotalCount(value INumber) {
-	objc.Call[objc.Void](p_, objc.Sel("setFileTotalCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setFileTotalCount:"), value)
 }
 
 // An object that represents the kind of progress for the progress object. [Full Topic]
@@ -317,7 +317,7 @@ func (p_ Progress) FileURL() URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/2865663-fileurl?language=objc
 func (p_ Progress) SetFileURL(value IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setFileURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setFileURL:"), value)
 }
 
 // A value that represents the speed of data processing, in bytes per second. [Full Topic]
@@ -332,7 +332,7 @@ func (p_ Progress) Throughput() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/2868052-throughput?language=objc
 func (p_ Progress) SetThroughput(value INumber) {
-	objc.Call[objc.Void](p_, objc.Sel("setThroughput:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setThroughput:"), value)
 }
 
 // A Boolean value that indicates whether the receiver is tracking work that you can cancel. [Full Topic]
@@ -408,7 +408,7 @@ func (p_ Progress) EstimatedTimeRemaining() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/2868041-estimatedtimeremaining?language=objc
 func (p_ Progress) SetEstimatedTimeRemaining(value INumber) {
-	objc.Call[objc.Void](p_, objc.Sel("setEstimatedTimeRemaining:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setEstimatedTimeRemaining:"), value)
 }
 
 // The number of completed units of work for the current job. [Full Topic]
@@ -568,5 +568,5 @@ func (p_ Progress) FileCompletedCount() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsprogress/2868050-filecompletedcount?language=objc
 func (p_ Progress) SetFileCompletedCount(value INumber) {
-	objc.Call[objc.Void](p_, objc.Sel("setFileCompletedCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setFileCompletedCount:"), value)
 }

@@ -187,7 +187,7 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceWillShareItems() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402642-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceWillShareItems(sharingService SharingService, items []objc.Object) {
-	objc.Call[objc.Void](s_, objc.Sel("sharingService:willShareItems:"), objc.Ptr(sharingService), items)
+	objc.Call[objc.Void](s_, objc.Sel("sharingService:willShareItems:"), sharingService, items)
 }
 
 func (s_ SharingServiceDelegateObject) HasSharingServiceTransitionImageForShareItemContentRect() bool {
@@ -198,7 +198,7 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceTransitionImageForShareI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402622-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceTransitionImageForShareItemContentRect(sharingService SharingService, item objc.Object, contentRect *foundation.Rect) Image {
-	rv := objc.Call[Image](s_, objc.Sel("sharingService:transitionImageForShareItem:contentRect:"), objc.Ptr(sharingService), item, contentRect)
+	rv := objc.Call[Image](s_, objc.Sel("sharingService:transitionImageForShareItem:contentRect:"), sharingService, item, contentRect)
 	return rv
 }
 
@@ -210,7 +210,7 @@ func (s_ SharingServiceDelegateObject) HasAnchoringViewForSharingServiceShowRela
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1644711-anchoringviewforsharingservice?language=objc
 func (s_ SharingServiceDelegateObject) AnchoringViewForSharingServiceShowRelativeToRectPreferredEdge(sharingService SharingService, positioningRect *foundation.Rect, preferredEdge *foundation.RectEdge) View {
-	rv := objc.Call[View](s_, objc.Sel("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), objc.Ptr(sharingService), positioningRect, preferredEdge)
+	rv := objc.Call[View](s_, objc.Sel("anchoringViewForSharingService:showRelativeToRect:preferredEdge:"), sharingService, positioningRect, preferredEdge)
 	return rv
 }
 
@@ -222,7 +222,7 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceDidShareItems() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402638-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceDidShareItems(sharingService SharingService, items []objc.Object) {
-	objc.Call[objc.Void](s_, objc.Sel("sharingService:didShareItems:"), objc.Ptr(sharingService), items)
+	objc.Call[objc.Void](s_, objc.Sel("sharingService:didShareItems:"), sharingService, items)
 }
 
 func (s_ SharingServiceDelegateObject) HasSharingServiceSourceWindowForShareItemsSharingContentScope() bool {
@@ -233,7 +233,7 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceSourceWindowForShareItem
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402679-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceSourceWindowForShareItemsSharingContentScope(sharingService SharingService, items []objc.Object, sharingContentScope *SharingContentScope) Window {
-	rv := objc.Call[Window](s_, objc.Sel("sharingService:sourceWindowForShareItems:sharingContentScope:"), objc.Ptr(sharingService), items, sharingContentScope)
+	rv := objc.Call[Window](s_, objc.Sel("sharingService:sourceWindowForShareItems:sharingContentScope:"), sharingService, items, sharingContentScope)
 	return rv
 }
 
@@ -245,7 +245,7 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceSourceFrameOnScreenForSh
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402695-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceSourceFrameOnScreenForShareItem(sharingService SharingService, item objc.Object) foundation.Rect {
-	rv := objc.Call[foundation.Rect](s_, objc.Sel("sharingService:sourceFrameOnScreenForShareItem:"), objc.Ptr(sharingService), item)
+	rv := objc.Call[foundation.Rect](s_, objc.Sel("sharingService:sourceFrameOnScreenForShareItem:"), sharingService, item)
 	return rv
 }
 
@@ -257,5 +257,5 @@ func (s_ SharingServiceDelegateObject) HasSharingServiceDidFailToShareItemsError
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicedelegate/1402710-sharingservice?language=objc
 func (s_ SharingServiceDelegateObject) SharingServiceDidFailToShareItemsError(sharingService SharingService, items []objc.Object, error foundation.Error) {
-	objc.Call[objc.Void](s_, objc.Sel("sharingService:didFailToShareItems:error:"), objc.Ptr(sharingService), items, objc.Ptr(error))
+	objc.Call[objc.Void](s_, objc.Sel("sharingService:didFailToShareItems:error:"), sharingService, items, error)
 }

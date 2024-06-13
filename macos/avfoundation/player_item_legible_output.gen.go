@@ -89,7 +89,7 @@ func (p_ PlayerItemLegibleOutput) SetDelegateQueue(delegate PPlayerItemLegibleOu
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutput/1386204-setdelegate?language=objc
 func (p_ PlayerItemLegibleOutput) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // A string identifier indicating the degree of text styling to be applied to attributed strings vended by the  object. [Full Topic]

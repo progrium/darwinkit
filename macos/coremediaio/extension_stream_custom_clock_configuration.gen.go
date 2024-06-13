@@ -41,7 +41,7 @@ func ExtensionStreamCustomClockConfigurationFrom(ptr unsafe.Pointer) ExtensionSt
 }
 
 func (ec _ExtensionStreamCustomClockConfigurationClass) CustomClockConfigurationWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
-	rv := objc.Call[ExtensionStreamCustomClockConfiguration](ec, objc.Sel("customClockConfigurationWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, objc.Ptr(sourceIdentifier), getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
+	rv := objc.Call[ExtensionStreamCustomClockConfiguration](ec, objc.Sel("customClockConfigurationWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func ExtensionStreamCustomClockConfiguration_CustomClockConfigurationWithClockNa
 }
 
 func (e_ ExtensionStreamCustomClockConfiguration) InitWithClockNameSourceIdentifierGetTimeCallMinimumIntervalNumberOfEventsForRateSmoothingNumberOfAveragesForRateSmoothing(clockName string, sourceIdentifier foundation.IUUID, getTimeCallMinimumInterval coremedia.Time, numberOfEventsForRateSmoothing uint32, numberOfAveragesForRateSmoothing uint32) ExtensionStreamCustomClockConfiguration {
-	rv := objc.Call[ExtensionStreamCustomClockConfiguration](e_, objc.Sel("initWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, objc.Ptr(sourceIdentifier), getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
+	rv := objc.Call[ExtensionStreamCustomClockConfiguration](e_, objc.Sel("initWithClockName:sourceIdentifier:getTimeCallMinimumInterval:numberOfEventsForRateSmoothing:numberOfAveragesForRateSmoothing:"), clockName, sourceIdentifier, getTimeCallMinimumInterval, numberOfEventsForRateSmoothing, numberOfAveragesForRateSmoothing)
 	return rv
 }
 

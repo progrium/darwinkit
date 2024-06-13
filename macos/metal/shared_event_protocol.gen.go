@@ -43,7 +43,7 @@ func (s_ SharedEventObject) HasNotifyListenerAtValueBlock() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsharedevent/2966574-notifylistener?language=objc
 func (s_ SharedEventObject) NotifyListenerAtValueBlock(listener SharedEventListener, value uint64, block SharedEventNotificationBlock) {
-	objc.Call[objc.Void](s_, objc.Sel("notifyListener:atValue:block:"), objc.Ptr(listener), value, block)
+	objc.Call[objc.Void](s_, objc.Sel("notifyListener:atValue:block:"), listener, value, block)
 }
 
 func (s_ SharedEventObject) HasNewSharedEventHandle() bool {

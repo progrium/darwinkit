@@ -68,7 +68,7 @@ func NewMatrixRandomMTGP32WithDeviceDestinationDataTypeSeed(device metal.PDevice
 
 func (m_ MatrixRandomMTGP32) InitWithDeviceDestinationDataTypeSeedDistributionDescriptor(device metal.PDevice, destinationDataType DataType, seed uint, distributionDescriptor IMatrixRandomDistributionDescriptor) MatrixRandomMTGP32 {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[MatrixRandomMTGP32](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, objc.Ptr(distributionDescriptor))
+	rv := objc.Call[MatrixRandomMTGP32](m_, objc.Sel("initWithDevice:destinationDataType:seed:distributionDescriptor:"), po0, destinationDataType, seed, distributionDescriptor)
 	return rv
 }
 
@@ -128,5 +128,5 @@ func (m_ MatrixRandomMTGP32) SynchronizeStateOnCommandBuffer(commandBuffer metal
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixrandommtgp32/3242868-synchronizestateoncommandbuffer?language=objc
 func (m_ MatrixRandomMTGP32) SynchronizeStateOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("synchronizeStateOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](m_, objc.Sel("synchronizeStateOnCommandBuffer:"), commandBufferObject)
 }

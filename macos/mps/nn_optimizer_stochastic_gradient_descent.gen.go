@@ -29,7 +29,7 @@ type INNOptimizerStochasticGradientDescent interface {
 	EncodeToCommandBufferObjectConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsResultState(commandBufferObject objc.IObject, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState)
 	EncodeToCommandBufferInputGradientVectorInputValuesVectorInputMomentumVectorResultValuesVector(commandBuffer metal.PCommandBuffer, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, resultValuesVector IVector)
 	EncodeToCommandBufferObjectInputGradientVectorInputValuesVectorInputMomentumVectorResultValuesVector(commandBufferObject objc.IObject, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, resultValuesVector IVector)
-	MomentumScale() float64
+	MomentumScale() float32
 	UseNestrovMomentum() bool
 	UseNesterovMomentum() bool
 }
@@ -47,7 +47,7 @@ func NNOptimizerStochasticGradientDescentFrom(ptr unsafe.Pointer) NNOptimizerSto
 	}
 }
 
-func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerStochasticGradientDescent {
+func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerStochasticGradientDescent {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNOptimizerStochasticGradientDescent](n_, objc.Sel("initWithDevice:learningRate:"), po0, learningRate)
 	return rv
@@ -56,37 +56,37 @@ func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceLearningRate(device
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/2966741-initwithdevice?language=objc
-func NewNNOptimizerStochasticGradientDescentWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerStochasticGradientDescent {
+func NewNNOptimizerStochasticGradientDescentWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerStochasticGradientDescent {
 	instance := NNOptimizerStochasticGradientDescentClass.Alloc().InitWithDeviceLearningRate(device, learningRate)
 	instance.Autorelease()
 	return instance
 }
 
-func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceMomentumScaleUseNestrovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float64, useNestrovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
+func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceMomentumScaleUseNestrovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float32, useNestrovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNOptimizerStochasticGradientDescent](n_, objc.Sel("initWithDevice:momentumScale:useNestrovMomentum:optimizerDescriptor:"), po0, momentumScale, useNestrovMomentum, objc.Ptr(optimizerDescriptor))
+	rv := objc.Call[NNOptimizerStochasticGradientDescent](n_, objc.Sel("initWithDevice:momentumScale:useNestrovMomentum:optimizerDescriptor:"), po0, momentumScale, useNestrovMomentum, optimizerDescriptor)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/2966742-initwithdevice?language=objc
-func NewNNOptimizerStochasticGradientDescentWithDeviceMomentumScaleUseNestrovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float64, useNestrovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
+func NewNNOptimizerStochasticGradientDescentWithDeviceMomentumScaleUseNestrovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float32, useNestrovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
 	instance := NNOptimizerStochasticGradientDescentClass.Alloc().InitWithDeviceMomentumScaleUseNestrovMomentumOptimizerDescriptor(device, momentumScale, useNestrovMomentum, optimizerDescriptor)
 	instance.Autorelease()
 	return instance
 }
 
-func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceMomentumScaleUseNesterovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float64, useNesterovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
+func (n_ NNOptimizerStochasticGradientDescent) InitWithDeviceMomentumScaleUseNesterovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float32, useNesterovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNOptimizerStochasticGradientDescent](n_, objc.Sel("initWithDevice:momentumScale:useNesterovMomentum:optimizerDescriptor:"), po0, momentumScale, useNesterovMomentum, objc.Ptr(optimizerDescriptor))
+	rv := objc.Call[NNOptimizerStochasticGradientDescent](n_, objc.Sel("initWithDevice:momentumScale:useNesterovMomentum:optimizerDescriptor:"), po0, momentumScale, useNesterovMomentum, optimizerDescriptor)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3675591-initwithdevice?language=objc
-func NewNNOptimizerStochasticGradientDescentWithDeviceMomentumScaleUseNesterovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float64, useNesterovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
+func NewNNOptimizerStochasticGradientDescentWithDeviceMomentumScaleUseNesterovMomentumOptimizerDescriptor(device metal.PDevice, momentumScale float32, useNesterovMomentum bool, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerStochasticGradientDescent {
 	instance := NNOptimizerStochasticGradientDescentClass.Alloc().InitWithDeviceMomentumScaleUseNesterovMomentumOptimizerDescriptor(device, momentumScale, useNesterovMomentum, optimizerDescriptor)
 	instance.Autorelease()
 	return instance
@@ -147,14 +147,14 @@ func NewNNOptimizerStochasticGradientDescentWithDevice(device metal.PDevice) NNO
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3013785-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:resultState:"), po0, objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:resultState:"), po0, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3013785-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectBatchNormalizationGradientStateBatchNormalizationSourceStateInputMomentumVectorsResultState(commandBufferObject objc.IObject, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputMomentumVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputMomentumVectors:resultState:"), commandBufferObject, batchNormalizationGradientState, batchNormalizationSourceState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
@@ -162,14 +162,14 @@ func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectBatchN
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3197828-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferInputGradientMatrixInputValuesMatrixInputMomentumMatrixResultValuesMatrix(commandBuffer metal.PCommandBuffer, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, resultValuesMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:resultValuesMatrix:"), po0, objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:resultValuesMatrix:"), po0, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3197828-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectInputGradientMatrixInputValuesMatrixInputMomentumMatrixResultValuesMatrix(commandBufferObject objc.IObject, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputMomentumMatrix IMatrix, resultValuesMatrix IMatrix) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:resultValuesMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputMomentumMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputMomentumMatrix:resultValuesMatrix:"), commandBufferObject, inputGradientMatrix, inputValuesMatrix, inputMomentumMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
@@ -177,14 +177,14 @@ func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectInputG
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3019336-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferBatchNormalizationStateInputMomentumVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:resultState:"), po0, objc.Ptr(batchNormalizationState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:resultState:"), po0, batchNormalizationState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3019336-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectBatchNormalizationStateInputMomentumVectorsResultState(commandBufferObject objc.IObject, batchNormalizationState ICNNBatchNormalizationState, inputMomentumVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputMomentumVectors:resultState:"), commandBufferObject, batchNormalizationState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
@@ -192,14 +192,14 @@ func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectBatchN
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3013786-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsResultState(commandBuffer metal.PCommandBuffer, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:resultState:"), po0, objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:resultState:"), po0, convolutionGradientState, convolutionSourceState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/3013786-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectConvolutionGradientStateConvolutionSourceStateInputMomentumVectorsResultState(commandBufferObject objc.IObject, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputMomentumVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputMomentumVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputMomentumVectors:resultState:"), commandBufferObject, convolutionGradientState, convolutionSourceState, inputMomentumVectors, resultState)
 }
 
 //	[Full Topic]
@@ -207,21 +207,21 @@ func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectConvol
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/2966740-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferInputGradientVectorInputValuesVectorInputMomentumVectorResultValuesVector(commandBuffer metal.PCommandBuffer, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, resultValuesVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:resultValuesVector:"), po0, objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:resultValuesVector:"), po0, inputGradientVector, inputValuesVector, inputMomentumVector, resultValuesVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/2966740-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerStochasticGradientDescent) EncodeToCommandBufferObjectInputGradientVectorInputValuesVectorInputMomentumVectorResultValuesVector(commandBufferObject objc.IObject, inputGradientVector IVector, inputValuesVector IVector, inputMomentumVector IVector, resultValuesVector IVector) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:resultValuesVector:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputMomentumVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputMomentumVector:resultValuesVector:"), commandBufferObject, inputGradientVector, inputValuesVector, inputMomentumVector, resultValuesVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerstochasticgradientdescent/2966743-momentumscale?language=objc
-func (n_ NNOptimizerStochasticGradientDescent) MomentumScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("momentumScale"))
+func (n_ NNOptimizerStochasticGradientDescent) MomentumScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("momentumScale"))
 	return rv
 }
 

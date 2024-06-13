@@ -98,7 +98,7 @@ func Filter_BokehBlurFilter() Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1562058-apply?language=objc
 func (f_ Filter) Apply(k IKernel, args ...any) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:"), append([]any{objc.Ptr(k)}, args...)...)
+	rv := objc.Call[Image](f_, objc.Sel("apply:"), append([]any{k}, args...)...)
 	return rv
 }
 
@@ -1365,7 +1365,7 @@ func Filter_RegisterFilterNameConstructorClassAttributes(name string, anObject P
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1437889-registerfiltername?language=objc
 func (fc _FilterClass) RegisterFilterNameConstructorObjectClassAttributes(name string, anObjectObject objc.IObject, attributes map[string]objc.IObject) {
-	objc.Call[objc.Void](fc, objc.Sel("registerFilterName:constructor:classAttributes:"), name, objc.Ptr(anObjectObject), attributes)
+	objc.Call[objc.Void](fc, objc.Sel("registerFilterName:constructor:classAttributes:"), name, anObjectObject, attributes)
 }
 
 // Publishes a custom filter that is not packaged as an image unit. [Full Topic]
@@ -3224,7 +3224,7 @@ func Filter_MorphologyGradientFilter() Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifilter/1438077-apply?language=objc
 func (f_ Filter) ApplyArgumentsOptions(k IKernel, args []objc.IObject, dict map[string]objc.IObject) Image {
-	rv := objc.Call[Image](f_, objc.Sel("apply:arguments:options:"), objc.Ptr(k), args, dict)
+	rv := objc.Call[Image](f_, objc.Sel("apply:arguments:options:"), k, args, dict)
 	return rv
 }
 

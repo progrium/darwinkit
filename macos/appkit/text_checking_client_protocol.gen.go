@@ -95,7 +95,7 @@ func (t_ TextCheckingClientObject) HasReplaceCharactersInRangeWithAnnotatedStrin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcheckingclient/3242723-replacecharactersinrange?language=objc
 func (t_ TextCheckingClientObject) ReplaceCharactersInRangeWithAnnotatedString(range_ foundation.Range, annotatedString foundation.AttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withAnnotatedString:"), range_, objc.Ptr(annotatedString))
+	objc.Call[objc.Void](t_, objc.Sel("replaceCharactersInRange:withAnnotatedString:"), range_, annotatedString)
 }
 
 func (t_ TextCheckingClientObject) HasAddAnnotationsRange() bool {

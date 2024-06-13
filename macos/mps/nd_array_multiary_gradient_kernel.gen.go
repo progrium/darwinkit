@@ -123,7 +123,7 @@ func NewNDArrayMultiaryGradientKernelWithDevice(device metal.PDevice) NDArrayMul
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143522-encodetocommandbuffer?language=objc
 func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferSourceArraysSourceGradientGradientState(cmdBuf metal.PCommandBuffer, sources []INDArray, gradient INDArray, state IState) NDArray {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:"), po0, sources, objc.Ptr(gradient), objc.Ptr(state))
+	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:"), po0, sources, gradient, state)
 	return rv
 }
 
@@ -131,7 +131,7 @@ func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferSourceArraysSourceG
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143522-encodetocommandbuffer?language=objc
 func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferObjectSourceArraysSourceGradientGradientState(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState) NDArray {
-	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:"), objc.Ptr(cmdBufObject), sources, objc.Ptr(gradient), objc.Ptr(state))
+	rv := objc.Call[NDArray](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:"), cmdBufObject, sources, gradient, state)
 	return rv
 }
 
@@ -140,12 +140,12 @@ func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferObjectSourceArraysS
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143523-encodetocommandbuffer?language=objc
 func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferSourceArraysSourceGradientGradientStateDestinationArray(cmdBuf metal.PCommandBuffer, sources []INDArray, gradient INDArray, state IState, destination INDArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), po0, sources, objc.Ptr(gradient), objc.Ptr(state), objc.Ptr(destination))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), po0, sources, gradient, state, destination)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarygradientkernel/3143523-encodetocommandbuffer?language=objc
 func (n_ NDArrayMultiaryGradientKernel) EncodeToCommandBufferObjectSourceArraysSourceGradientGradientStateDestinationArray(cmdBufObject objc.IObject, sources []INDArray, gradient INDArray, state IState, destination INDArray) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), objc.Ptr(cmdBufObject), sources, objc.Ptr(gradient), objc.Ptr(state), objc.Ptr(destination))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:sourceArrays:sourceGradient:gradientState:destinationArray:"), cmdBufObject, sources, gradient, state, destination)
 }

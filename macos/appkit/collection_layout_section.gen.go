@@ -48,7 +48,7 @@ func CollectionLayoutSectionFrom(ptr unsafe.Pointer) CollectionLayoutSection {
 }
 
 func (cc _CollectionLayoutSectionClass) SectionWithGroup(group ICollectionLayoutGroup) CollectionLayoutSection {
-	rv := objc.Call[CollectionLayoutSection](cc, objc.Sel("sectionWithGroup:"), objc.Ptr(group))
+	rv := objc.Call[CollectionLayoutSection](cc, objc.Sel("sectionWithGroup:"), group)
 	return rv
 }
 

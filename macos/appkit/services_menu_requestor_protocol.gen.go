@@ -35,7 +35,7 @@ func (s_ ServicesMenuRequestorObject) HasReadSelectionFromPasteboard() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsservicesmenurequestor/1428481-readselectionfrompasteboard?language=objc
 func (s_ ServicesMenuRequestorObject) ReadSelectionFromPasteboard(pboard Pasteboard) bool {
-	rv := objc.Call[bool](s_, objc.Sel("readSelectionFromPasteboard:"), objc.Ptr(pboard))
+	rv := objc.Call[bool](s_, objc.Sel("readSelectionFromPasteboard:"), pboard)
 	return rv
 }
 
@@ -47,6 +47,6 @@ func (s_ ServicesMenuRequestorObject) HasWriteSelectionToPasteboardTypes() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsservicesmenurequestor/1428477-writeselectiontopasteboard?language=objc
 func (s_ ServicesMenuRequestorObject) WriteSelectionToPasteboardTypes(pboard Pasteboard, types []PasteboardType) bool {
-	rv := objc.Call[bool](s_, objc.Sel("writeSelectionToPasteboard:types:"), objc.Ptr(pboard), types)
+	rv := objc.Call[bool](s_, objc.Sel("writeSelectionToPasteboard:types:"), pboard, types)
 	return rv
 }

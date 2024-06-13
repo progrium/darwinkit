@@ -29,7 +29,7 @@ type IWorkspace interface {
 	OpenURLConfigurationCompletionHandler(url foundation.IURL, configuration IWorkspaceOpenConfiguration, completionHandler func(app RunningApplication, error foundation.Error))
 	URLsForApplicationsToOpenURL(url foundation.IURL) []foundation.URL
 	NoteFileSystemChanged(path string)
-	SetDesktopImageURLForScreenOptionsError(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error foundation.IError) bool
+	SetDesktopImageURLForScreenOptionsError(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error unsafe.Pointer) bool
 	URLsForApplicationsToOpenContentType(contentType uti.IType) []foundation.URL
 	ActivateFileViewerSelectingURLs(fileURLs []foundation.IURL)
 	ExtendPowerOffBy(requested int) int
@@ -46,14 +46,14 @@ type IWorkspace interface {
 	SetDefaultApplicationAtURLToOpenContentTypeOfFileAtURLCompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error))
 	DesktopImageOptionsForScreen(screen IScreen) map[WorkspaceDesktopImageOptionKey]objc.Object
 	OpenURLsWithApplicationAtURLConfigurationCompletionHandler(urls []foundation.IURL, applicationURL foundation.IURL, configuration IWorkspaceOpenConfiguration, completionHandler func(app RunningApplication, error foundation.Error))
-	UnmountAndEjectDeviceAtURLError(url foundation.IURL, error foundation.IError) bool
+	UnmountAndEjectDeviceAtURLError(url foundation.IURL, error unsafe.Pointer) bool
 	HideOtherApplications()
 	ShowSearchResultsForQueryString(queryString string) bool
 	URLsForApplicationsWithBundleIdentifier(bundleIdentifier string) []foundation.URL
 	SetIconForFileOptions(image IImage, fullPath string, options WorkspaceIconCreationOptions) bool
 	SetDefaultApplicationAtURLToOpenURLsWithSchemeCompletionHandler(applicationURL foundation.IURL, urlScheme string, completionHandler func(error foundation.Error))
 	URLForApplicationToOpenURL(url foundation.IURL) foundation.URL
-	GetFileSystemInfoForPathIsRemovableIsWritableIsUnmountableDescriptionType(fullPath string, removableFlag *bool, writableFlag *bool, unmountableFlag *bool, description string, fileSystemType string) bool
+	GetFileSystemInfoForPathIsRemovableIsWritableIsUnmountableDescriptionType(fullPath string, removableFlag *bool, writableFlag *bool, unmountableFlag *bool, description unsafe.Pointer, fileSystemType unsafe.Pointer) bool
 	AccessibilityDisplayShouldIncreaseContrast() bool
 	AccessibilityDisplayShouldDifferentiateWithoutColor() bool
 	AccessibilityDisplayShouldInvertColors() bool
@@ -106,7 +106,7 @@ func (w_ Workspace) Init() Workspace {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3753004-setdefaultapplicationaturl?language=objc
 func (w_ Workspace) SetDefaultApplicationAtURLToOpenFileAtURLCompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenFileAtURL:completionHandler:"), objc.Ptr(applicationURL), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenFileAtURL:completionHandler:"), applicationURL, url, completionHandler)
 }
 
 // Duplicates the specified URLS asynchronously in the same manner as the Finder. [Full Topic]
@@ -120,7 +120,7 @@ func (w_ Workspace) DuplicateURLsCompletionHandler(URLs []foundation.IURL, handl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3752998-urlforapplicationtoopencontentty?language=objc
 func (w_ Workspace) URLForApplicationToOpenContentType(contentType uti.IType) foundation.URL {
-	rv := objc.Call[foundation.URL](w_, objc.Sel("URLForApplicationToOpenContentType:"), objc.Ptr(contentType))
+	rv := objc.Call[foundation.URL](w_, objc.Sel("URLForApplicationToOpenContentType:"), contentType)
 	return rv
 }
 
@@ -128,7 +128,7 @@ func (w_ Workspace) URLForApplicationToOpenContentType(contentType uti.IType) fo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3172700-openapplicationaturl?language=objc
 func (w_ Workspace) OpenApplicationAtURLConfigurationCompletionHandler(applicationURL foundation.IURL, configuration IWorkspaceOpenConfiguration, completionHandler func(app RunningApplication, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("openApplicationAtURL:configuration:completionHandler:"), objc.Ptr(applicationURL), objc.Ptr(configuration), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("openApplicationAtURL:configuration:completionHandler:"), applicationURL, configuration, completionHandler)
 }
 
 // Unmounts and ejects the device at the specified path. [Full Topic]
@@ -143,7 +143,7 @@ func (w_ Workspace) UnmountAndEjectDeviceAtPath(path string) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1530635-desktopimageurlforscreen?language=objc
 func (w_ Workspace) DesktopImageURLForScreen(screen IScreen) foundation.URL {
-	rv := objc.Call[foundation.URL](w_, objc.Sel("desktopImageURLForScreen:"), objc.Ptr(screen))
+	rv := objc.Call[foundation.URL](w_, objc.Sel("desktopImageURLForScreen:"), screen)
 	return rv
 }
 
@@ -151,14 +151,14 @@ func (w_ Workspace) DesktopImageURLForScreen(screen IScreen) foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3172701-openurl?language=objc
 func (w_ Workspace) OpenURLConfigurationCompletionHandler(url foundation.IURL, configuration IWorkspaceOpenConfiguration, completionHandler func(app RunningApplication, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("openURL:configuration:completionHandler:"), objc.Ptr(url), objc.Ptr(configuration), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("openURL:configuration:completionHandler:"), url, configuration, completionHandler)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3753000-urlsforapplicationstoopenurl?language=objc
 func (w_ Workspace) URLsForApplicationsToOpenURL(url foundation.IURL) []foundation.URL {
-	rv := objc.Call[[]foundation.URL](w_, objc.Sel("URLsForApplicationsToOpenURL:"), objc.Ptr(url))
+	rv := objc.Call[[]foundation.URL](w_, objc.Sel("URLsForApplicationsToOpenURL:"), url)
 	return rv
 }
 
@@ -172,8 +172,8 @@ func (w_ Workspace) NoteFileSystemChanged(path string) {
 // Sets the desktop image for the given screen to the image at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1527228-setdesktopimageurl?language=objc
-func (w_ Workspace) SetDesktopImageURLForScreenOptionsError(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error foundation.IError) bool {
-	rv := objc.Call[bool](w_, objc.Sel("setDesktopImageURL:forScreen:options:error:"), objc.Ptr(url), objc.Ptr(screen), options, objc.Ptr(error))
+func (w_ Workspace) SetDesktopImageURLForScreenOptionsError(url foundation.IURL, screen IScreen, options map[WorkspaceDesktopImageOptionKey]objc.IObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](w_, objc.Sel("setDesktopImageURL:forScreen:options:error:"), url, screen, options, error)
 	return rv
 }
 
@@ -181,7 +181,7 @@ func (w_ Workspace) SetDesktopImageURLForScreenOptionsError(url foundation.IURL,
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3752999-urlsforapplicationstoopencontent?language=objc
 func (w_ Workspace) URLsForApplicationsToOpenContentType(contentType uti.IType) []foundation.URL {
-	rv := objc.Call[[]foundation.URL](w_, objc.Sel("URLsForApplicationsToOpenContentType:"), objc.Ptr(contentType))
+	rv := objc.Call[[]foundation.URL](w_, objc.Sel("URLsForApplicationsToOpenContentType:"), contentType)
 	return rv
 }
 
@@ -226,14 +226,14 @@ func (w_ Workspace) SelectFileInFileViewerRootedAtPath(fullPath string, rootFull
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3753002-setdefaultapplicationaturl?language=objc
 func (w_ Workspace) SetDefaultApplicationAtURLToOpenContentTypeCompletionHandler(applicationURL foundation.IURL, contentType uti.IType, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenContentType:completionHandler:"), objc.Ptr(applicationURL), objc.Ptr(contentType), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenContentType:completionHandler:"), applicationURL, contentType, completionHandler)
 }
 
 // Opens the location at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1533463-openurl?language=objc
 func (w_ Workspace) OpenURL(url foundation.IURL) bool {
-	rv := objc.Call[bool](w_, objc.Sel("openURL:"), objc.Ptr(url))
+	rv := objc.Call[bool](w_, objc.Sel("openURL:"), url)
 	return rv
 }
 
@@ -273,7 +273,7 @@ func (w_ Workspace) IconForFile(fullPath string) Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3553230-iconforcontenttype?language=objc
 func (w_ Workspace) IconForContentType(contentType uti.IType) Image {
-	rv := objc.Call[Image](w_, objc.Sel("iconForContentType:"), objc.Ptr(contentType))
+	rv := objc.Call[Image](w_, objc.Sel("iconForContentType:"), contentType)
 	return rv
 }
 
@@ -281,14 +281,14 @@ func (w_ Workspace) IconForContentType(contentType uti.IType) Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3753003-setdefaultapplicationaturl?language=objc
 func (w_ Workspace) SetDefaultApplicationAtURLToOpenContentTypeOfFileAtURLCompletionHandler(applicationURL foundation.IURL, url foundation.IURL, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenContentTypeOfFileAtURL:completionHandler:"), objc.Ptr(applicationURL), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenContentTypeOfFileAtURL:completionHandler:"), applicationURL, url, completionHandler)
 }
 
 // Returns the desktop image options for the given screen. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1530855-desktopimageoptionsforscreen?language=objc
 func (w_ Workspace) DesktopImageOptionsForScreen(screen IScreen) map[WorkspaceDesktopImageOptionKey]objc.Object {
-	rv := objc.Call[map[WorkspaceDesktopImageOptionKey]objc.Object](w_, objc.Sel("desktopImageOptionsForScreen:"), objc.Ptr(screen))
+	rv := objc.Call[map[WorkspaceDesktopImageOptionKey]objc.Object](w_, objc.Sel("desktopImageOptionsForScreen:"), screen)
 	return rv
 }
 
@@ -296,14 +296,14 @@ func (w_ Workspace) DesktopImageOptionsForScreen(screen IScreen) map[WorkspaceDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3172702-openurls?language=objc
 func (w_ Workspace) OpenURLsWithApplicationAtURLConfigurationCompletionHandler(urls []foundation.IURL, applicationURL foundation.IURL, configuration IWorkspaceOpenConfiguration, completionHandler func(app RunningApplication, error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("openURLs:withApplicationAtURL:configuration:completionHandler:"), urls, objc.Ptr(applicationURL), objc.Ptr(configuration), completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("openURLs:withApplicationAtURL:configuration:completionHandler:"), urls, applicationURL, configuration, completionHandler)
 }
 
 // Attempts to eject the volume mounted at the given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1530469-unmountandejectdeviceaturl?language=objc
-func (w_ Workspace) UnmountAndEjectDeviceAtURLError(url foundation.IURL, error foundation.IError) bool {
-	rv := objc.Call[bool](w_, objc.Sel("unmountAndEjectDeviceAtURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (w_ Workspace) UnmountAndEjectDeviceAtURLError(url foundation.IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](w_, objc.Sel("unmountAndEjectDeviceAtURL:error:"), url, error)
 	return rv
 }
 
@@ -334,7 +334,7 @@ func (w_ Workspace) URLsForApplicationsWithBundleIdentifier(bundleIdentifier str
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1529882-seticon?language=objc
 func (w_ Workspace) SetIconForFileOptions(image IImage, fullPath string, options WorkspaceIconCreationOptions) bool {
-	rv := objc.Call[bool](w_, objc.Sel("setIcon:forFile:options:"), objc.Ptr(image), fullPath, options)
+	rv := objc.Call[bool](w_, objc.Sel("setIcon:forFile:options:"), image, fullPath, options)
 	return rv
 }
 
@@ -342,21 +342,21 @@ func (w_ Workspace) SetIconForFileOptions(image IImage, fullPath string, options
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/3753005-setdefaultapplicationaturl?language=objc
 func (w_ Workspace) SetDefaultApplicationAtURLToOpenURLsWithSchemeCompletionHandler(applicationURL foundation.IURL, urlScheme string, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:"), objc.Ptr(applicationURL), urlScheme, completionHandler)
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultApplicationAtURL:toOpenURLsWithScheme:completionHandler:"), applicationURL, urlScheme, completionHandler)
 }
 
 // Returns the URL to the default app that would be opened. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1533391-urlforapplicationtoopenurl?language=objc
 func (w_ Workspace) URLForApplicationToOpenURL(url foundation.IURL) foundation.URL {
-	rv := objc.Call[foundation.URL](w_, objc.Sel("URLForApplicationToOpenURL:"), objc.Ptr(url))
+	rv := objc.Call[foundation.URL](w_, objc.Sel("URLForApplicationToOpenURL:"), url)
 	return rv
 }
 
 // Returns information about the file system at the specified path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsworkspace/1526987-getfilesysteminfoforpath?language=objc
-func (w_ Workspace) GetFileSystemInfoForPathIsRemovableIsWritableIsUnmountableDescriptionType(fullPath string, removableFlag *bool, writableFlag *bool, unmountableFlag *bool, description string, fileSystemType string) bool {
+func (w_ Workspace) GetFileSystemInfoForPathIsRemovableIsWritableIsUnmountableDescriptionType(fullPath string, removableFlag *bool, writableFlag *bool, unmountableFlag *bool, description unsafe.Pointer, fileSystemType unsafe.Pointer) bool {
 	rv := objc.Call[bool](w_, objc.Sel("getFileSystemInfoForPath:isRemovable:isWritable:isUnmountable:description:type:"), fullPath, removableFlag, writableFlag, unmountableFlag, description, fileSystemType)
 	return rv
 }

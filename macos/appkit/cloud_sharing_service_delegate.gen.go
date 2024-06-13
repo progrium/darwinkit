@@ -121,7 +121,7 @@ func (c_ CloudSharingServiceDelegateObject) HasOptionsForSharingServiceShareProv
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644694-optionsforsharingservice?language=objc
 func (c_ CloudSharingServiceDelegateObject) OptionsForSharingServiceShareProvider(cloudKitSharingService SharingService, provider foundation.ItemProvider) CloudKitSharingServiceOptions {
-	rv := objc.Call[CloudKitSharingServiceOptions](c_, objc.Sel("optionsForSharingService:shareProvider:"), objc.Ptr(cloudKitSharingService), objc.Ptr(provider))
+	rv := objc.Call[CloudKitSharingServiceOptions](c_, objc.Sel("optionsForSharingService:shareProvider:"), cloudKitSharingService, provider)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (c_ CloudSharingServiceDelegateObject) HasSharingServiceDidStopSharing() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644709-sharingservice?language=objc
 func (c_ CloudSharingServiceDelegateObject) SharingServiceDidStopSharing(sharingService SharingService, share objc.Object) {
-	objc.Call[objc.Void](c_, objc.Sel("sharingService:didStopSharing:"), objc.Ptr(sharingService), objc.Ptr(share))
+	objc.Call[objc.Void](c_, objc.Sel("sharingService:didStopSharing:"), sharingService, share)
 }
 
 func (c_ CloudSharingServiceDelegateObject) HasSharingServiceDidCompleteForItemsError() bool {
@@ -144,7 +144,7 @@ func (c_ CloudSharingServiceDelegateObject) HasSharingServiceDidCompleteForItems
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644666-sharingservice?language=objc
 func (c_ CloudSharingServiceDelegateObject) SharingServiceDidCompleteForItemsError(sharingService SharingService, items []objc.Object, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("sharingService:didCompleteForItems:error:"), objc.Ptr(sharingService), items, objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("sharingService:didCompleteForItems:error:"), sharingService, items, error)
 }
 
 func (c_ CloudSharingServiceDelegateObject) HasSharingServiceDidSaveShare() bool {
@@ -155,5 +155,5 @@ func (c_ CloudSharingServiceDelegateObject) HasSharingServiceDidSaveShare() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscloudsharingservicedelegate/1644712-sharingservice?language=objc
 func (c_ CloudSharingServiceDelegateObject) SharingServiceDidSaveShare(sharingService SharingService, share objc.Object) {
-	objc.Call[objc.Void](c_, objc.Sel("sharingService:didSaveShare:"), objc.Ptr(sharingService), objc.Ptr(share))
+	objc.Call[objc.Void](c_, objc.Sel("sharingService:didSaveShare:"), sharingService, share)
 }

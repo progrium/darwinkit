@@ -34,7 +34,7 @@ func CNNLogSoftMaxGradientNodeFrom(ptr unsafe.Pointer) CNNLogSoftMaxGradientNode
 }
 
 func (cc _CNNLogSoftMaxGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNLogSoftMaxGradientNode {
-	rv := objc.Call[CNNLogSoftMaxGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNLogSoftMaxGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -46,7 +46,7 @@ func CNNLogSoftMaxGradientNode_NodeWithSourceGradientSourceImageGradientState(so
 }
 
 func (c_ CNNLogSoftMaxGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNLogSoftMaxGradientNode {
-	rv := objc.Call[CNNLogSoftMaxGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNLogSoftMaxGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 

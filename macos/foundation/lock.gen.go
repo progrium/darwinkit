@@ -61,7 +61,7 @@ func (l_ Lock) Init() Lock {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslock/1411133-lockbeforedate?language=objc
 func (l_ Lock) LockBeforeDate(limit IDate) bool {
-	rv := objc.Call[bool](l_, objc.Sel("lockBeforeDate:"), objc.Ptr(limit))
+	rv := objc.Call[bool](l_, objc.Sel("lockBeforeDate:"), limit)
 	return rv
 }
 

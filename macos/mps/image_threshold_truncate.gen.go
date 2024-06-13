@@ -19,8 +19,8 @@ type _ImageThresholdTruncateClass struct {
 // An interface definition for the [ImageThresholdTruncate] class.
 type IImageThresholdTruncate interface {
 	IUnaryImageKernel
-	ThresholdValue() float64
-	Transform() *float64
+	ThresholdValue() float32
+	Transform() *float32
 }
 
 // A filter that clamps the return value to an upper specified value. [Full Topic]
@@ -36,7 +36,7 @@ func ImageThresholdTruncateFrom(ptr unsafe.Pointer) ImageThresholdTruncate {
 	}
 }
 
-func (i_ ImageThresholdTruncate) InitWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, transform *float64) ImageThresholdTruncate {
+func (i_ ImageThresholdTruncate) InitWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, transform *float32) ImageThresholdTruncate {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageThresholdTruncate](i_, objc.Sel("initWithDevice:thresholdValue:linearGrayColorTransform:"), po0, thresholdValue, transform)
 	return rv
@@ -45,7 +45,7 @@ func (i_ ImageThresholdTruncate) InitWithDeviceThresholdValueLinearGrayColorTran
 // Initializes the kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618818-initwithdevice?language=objc
-func NewImageThresholdTruncateWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, transform *float64) ImageThresholdTruncate {
+func NewImageThresholdTruncateWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, transform *float32) ImageThresholdTruncate {
 	instance := ImageThresholdTruncateClass.Alloc().InitWithDeviceThresholdValueLinearGrayColorTransform(device, thresholdValue, transform)
 	instance.Autorelease()
 	return instance
@@ -104,15 +104,15 @@ func ImageThresholdTruncate_CopyWithZoneDevice(zone unsafe.Pointer, device metal
 // The threshold value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618882-thresholdvalue?language=objc
-func (i_ ImageThresholdTruncate) ThresholdValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("thresholdValue"))
+func (i_ ImageThresholdTruncate) ThresholdValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
 	return rv
 }
 
 // The color transform used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtruncate/1618787-transform?language=objc
-func (i_ ImageThresholdTruncate) Transform() *float64 {
-	rv := objc.Call[*float64](i_, objc.Sel("transform"))
+func (i_ ImageThresholdTruncate) Transform() *float32 {
+	rv := objc.Call[*float32](i_, objc.Sel("transform"))
 	return rv
 }

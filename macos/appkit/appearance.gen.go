@@ -39,7 +39,7 @@ func AppearanceFrom(ptr unsafe.Pointer) Appearance {
 }
 
 func (a_ Appearance) InitWithAppearanceNamedBundle(name AppearanceName, bundle foundation.IBundle) Appearance {
-	rv := objc.Call[Appearance](a_, objc.Sel("initWithAppearanceNamed:bundle:"), name, objc.Ptr(bundle))
+	rv := objc.Call[Appearance](a_, objc.Sel("initWithAppearanceNamed:bundle:"), name, bundle)
 	return rv
 }
 

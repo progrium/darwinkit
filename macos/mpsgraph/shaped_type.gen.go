@@ -78,7 +78,7 @@ func (s_ ShapedType) Init() ShapedType {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphshapedtype/3600281-isequalto?language=objc
 func (s_ ShapedType) IsEqualTo(object IShapedType) bool {
-	rv := objc.Call[bool](s_, objc.Sel("isEqualTo:"), objc.Ptr(object))
+	rv := objc.Call[bool](s_, objc.Sel("isEqualTo:"), object)
 	return rv
 }
 

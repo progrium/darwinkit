@@ -18,10 +18,10 @@ type _TransitionClass struct {
 // An interface definition for the [Transition] class.
 type ITransition interface {
 	IAnimation
-	StartProgress() float64
-	SetStartProgress(value float64)
-	EndProgress() float64
-	SetEndProgress(value float64)
+	StartProgress() float32
+	SetStartProgress(value float32)
+	EndProgress() float32
+	SetEndProgress(value float32)
 	Subtype() TransitionSubtype
 	SetSubtype(value TransitionSubtype)
 	Filter() objc.Object
@@ -78,30 +78,30 @@ func Transition_Animation() Transition {
 // Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
-func (t_ Transition) StartProgress() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("startProgress"))
+func (t_ Transition) StartProgress() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("startProgress"))
 	return rv
 }
 
 // Indicates the start point of the receiver as a fraction of the entire transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412511-startprogress?language=objc
-func (t_ Transition) SetStartProgress(value float64) {
+func (t_ Transition) SetStartProgress(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setStartProgress:"), value)
 }
 
 // Indicates the end point of the receiver as a fraction of the entire transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412509-endprogress?language=objc
-func (t_ Transition) EndProgress() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("endProgress"))
+func (t_ Transition) EndProgress() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("endProgress"))
 	return rv
 }
 
 // Indicates the end point of the receiver as a fraction of the entire transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransition/1412509-endprogress?language=objc
-func (t_ Transition) SetEndProgress(value float64) {
+func (t_ Transition) SetEndProgress(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setEndProgress:"), value)
 }
 

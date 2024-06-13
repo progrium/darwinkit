@@ -36,7 +36,7 @@ func ReferenceFrom(ptr unsafe.Pointer) Reference {
 }
 
 func (r_ Reference) InitWithRecordIDAction(recordID IRecordID, action ReferenceAction) Reference {
-	rv := objc.Call[Reference](r_, objc.Sel("initWithRecordID:action:"), objc.Ptr(recordID), action)
+	rv := objc.Call[Reference](r_, objc.Sel("initWithRecordID:action:"), recordID, action)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewReferenceWithRecordIDAction(recordID IRecordID, action ReferenceAction) 
 }
 
 func (r_ Reference) InitWithRecordAction(record IRecord, action ReferenceAction) Reference {
-	rv := objc.Call[Reference](r_, objc.Sel("initWithRecord:action:"), objc.Ptr(record), action)
+	rv := objc.Call[Reference](r_, objc.Sel("initWithRecord:action:"), record, action)
 	return rv
 }
 

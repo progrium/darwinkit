@@ -76,7 +76,7 @@ func (p_ PlayerItemOutputPullDelegateObject) HasOutputMediaDataWillChange() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387498-outputmediadatawillchange?language=objc
 func (p_ PlayerItemOutputPullDelegateObject) OutputMediaDataWillChange(sender PlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("outputMediaDataWillChange:"), objc.Ptr(sender))
+	objc.Call[objc.Void](p_, objc.Sel("outputMediaDataWillChange:"), sender)
 }
 
 func (p_ PlayerItemOutputPullDelegateObject) HasOutputSequenceWasFlushed() bool {
@@ -87,5 +87,5 @@ func (p_ PlayerItemOutputPullDelegateObject) HasOutputSequenceWasFlushed() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemoutputpulldelegate/1387279-outputsequencewasflushed?language=objc
 func (p_ PlayerItemOutputPullDelegateObject) OutputSequenceWasFlushed(output PlayerItemOutput) {
-	objc.Call[objc.Void](p_, objc.Sel("outputSequenceWasFlushed:"), objc.Ptr(output))
+	objc.Call[objc.Void](p_, objc.Sel("outputSequenceWasFlushed:"), output)
 }

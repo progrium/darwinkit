@@ -38,7 +38,7 @@ func TemporaryVectorFrom(ptr unsafe.Pointer) TemporaryVector {
 
 func (tc _TemporaryVectorClass) TemporaryVectorWithCommandBufferDescriptor(commandBuffer metal.PCommandBuffer, descriptor IVectorDescriptor) TemporaryVector {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryVector](tc, objc.Sel("temporaryVectorWithCommandBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryVector](tc, objc.Sel("temporaryVectorWithCommandBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func (t_ TemporaryVector) Init() TemporaryVector {
 
 func (t_ TemporaryVector) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) TemporaryVector {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func NewTemporaryVectorWithBufferOffsetDescriptor(buffer metal.PBuffer, offset u
 
 func (t_ TemporaryVector) InitWithDeviceDescriptor(device metal.PDevice, descriptor IVectorDescriptor) TemporaryVector {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func NewTemporaryVectorWithDeviceDescriptor(device metal.PDevice, descriptor IVe
 
 func (t_ TemporaryVector) InitWithBufferDescriptor(buffer metal.PBuffer, descriptor IVectorDescriptor) TemporaryVector {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[TemporaryVector](t_, objc.Sel("initWithBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 

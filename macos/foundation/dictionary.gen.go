@@ -29,10 +29,10 @@ type IDictionary interface {
 	FileModificationDate() Date
 	FileOwnerAccountID() Number
 	EnumerateKeysAndObjectsUsingBlock(block func(key objc.Object, obj objc.Object, stop *bool))
-	WriteToURLError(url IURL, error IError) bool
+	WriteToURLError(url IURL, error unsafe.Pointer) bool
 	DescriptionWithLocaleIndent(locale objc.IObject, level uint) string
 	FileIsAppendOnly() bool
-	InitWithContentsOfURLError(url IURL, error IError) map[string]objc.Object
+	InitWithContentsOfURLError(url IURL, error unsafe.Pointer) map[string]objc.Object
 	ObjectsForKeysNotFoundMarker(keys []objc.IObject, marker objc.IObject) []objc.Object
 	KeysSortedByValueUsingComparator(cmptr Comparator) []objc.Object
 	FileCreationDate() Date
@@ -40,7 +40,7 @@ type IDictionary interface {
 	FileHFSCreatorCode() uint
 	FileOwnerAccountName() string
 	KeyEnumerator() Enumerator
-	GetObjectsAndKeysCount(objects objc.IObject, keys objc.IObject, count uint)
+	GetObjectsAndKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, count uint)
 	ObjectForKeyedSubscript(key objc.IObject) objc.Object
 	FileType() string
 	FileGroupOwnerAccountName() string
@@ -48,7 +48,7 @@ type IDictionary interface {
 	KeysOfEntriesPassingTest(predicate func(key objc.Object, obj objc.Object, stop *bool) bool) Set
 	FileSystemFileNumber() uint
 	EnumerateKeysAndObjectsWithOptionsUsingBlock(opts EnumerationOptions, block func(key objc.Object, obj objc.Object, stop *bool))
-	CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer objc.IObject, len uint) uint
+	CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer unsafe.Pointer, len uint) uint
 	FilePosixPermissions() uint
 	FileIsImmutable() bool
 	FileSize() int64
@@ -132,16 +132,16 @@ func Dictionary_DictionaryWithObjectsForKeys(objects []objc.IObject, keys []PCop
 	return DictionaryClass.DictionaryWithObjectsForKeys(objects, keys)
 }
 
-func (dc _DictionaryClass) DictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) Dictionary {
+func (dc _DictionaryClass) DictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) Dictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", keys)
-	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObjects:forKeys:count:"), objc.Ptr(objects), po1, cnt)
+	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObjects:forKeys:count:"), objects, po1, cnt)
 	return rv
 }
 
 // Creates a dictionary containing a specified number of objects from a C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574184-dictionarywithobjects?language=objc
-func Dictionary_DictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) Dictionary {
+func Dictionary_DictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) Dictionary {
 	return DictionaryClass.DictionaryWithObjectsForKeysCount(objects, keys, cnt)
 }
 
@@ -185,16 +185,16 @@ func NewDictionaryWithDictionaryCopyItems(otherDictionary Dictionary, flag bool)
 	return instance
 }
 
-func (d_ Dictionary) InitWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) Dictionary {
+func (d_ Dictionary) InitWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) Dictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", keys)
-	rv := objc.Call[Dictionary](d_, objc.Sel("initWithObjects:forKeys:count:"), objc.Ptr(objects), po1, cnt)
+	rv := objc.Call[Dictionary](d_, objc.Sel("initWithObjects:forKeys:count:"), objects, po1, cnt)
 	return rv
 }
 
 // Initializes a newly allocated dictionary with the specified number of key-value pairs constructed from the provided C arrays of keys and objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1412631-initwithobjects?language=objc
-func NewDictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) Dictionary {
+func NewDictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) Dictionary {
 	instance := DictionaryClass.Alloc().InitWithObjectsForKeysCount(objects, keys, cnt)
 	instance.Autorelease()
 	return instance
@@ -214,7 +214,7 @@ func Dictionary_DictionaryWithDictionary(dict Dictionary) Dictionary {
 
 func (dc _DictionaryClass) DictionaryWithObjectForKey(object objc.IObject, key PCopying) Dictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", key)
-	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObject:forKey:"), objc.Ptr(object), po1)
+	rv := objc.Call[Dictionary](dc, objc.Sel("dictionaryWithObject:forKey:"), object, po1)
 	return rv
 }
 
@@ -259,15 +259,15 @@ func (d_ Dictionary) FileSystemNumber() int {
 // Creates a dictionary using the keys and values found in a resource specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/2879163-dictionarywithcontentsofurl?language=objc
-func (dc _DictionaryClass) DictionaryWithContentsOfURLError(url IURL, error IError) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](dc, objc.Sel("dictionaryWithContentsOfURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (dc _DictionaryClass) DictionaryWithContentsOfURLError(url IURL, error unsafe.Pointer) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](dc, objc.Sel("dictionaryWithContentsOfURL:error:"), url, error)
 	return rv
 }
 
 // Creates a dictionary using the keys and values found in a resource specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/2879163-dictionarywithcontentsofurl?language=objc
-func Dictionary_DictionaryWithContentsOfURLError(url IURL, error IError) map[string]objc.Object {
+func Dictionary_DictionaryWithContentsOfURLError(url IURL, error unsafe.Pointer) map[string]objc.Object {
 	return DictionaryClass.DictionaryWithContentsOfURLError(url, error)
 }
 
@@ -345,8 +345,8 @@ func (d_ Dictionary) EnumerateKeysAndObjectsUsingBlock(block func(key objc.Objec
 // Writes a property list representation of the contents of the dictionary to a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/2879139-writetourl?language=objc
-func (d_ Dictionary) WriteToURLError(url IURL, error IError) bool {
-	rv := objc.Call[bool](d_, objc.Sel("writeToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (d_ Dictionary) WriteToURLError(url IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](d_, objc.Sel("writeToURL:error:"), url, error)
 	return rv
 }
 
@@ -369,8 +369,8 @@ func (d_ Dictionary) FileIsAppendOnly() bool {
 // Initializes a newly allocated dictionary using the keys and values found at a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/2879140-initwithcontentsofurl?language=objc
-func (d_ Dictionary) InitWithContentsOfURLError(url IURL, error IError) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](d_, objc.Sel("initWithContentsOfURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (d_ Dictionary) InitWithContentsOfURLError(url IURL, error unsafe.Pointer) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](d_, objc.Sel("initWithContentsOfURL:error:"), url, error)
 	return rv
 }
 
@@ -378,7 +378,7 @@ func (d_ Dictionary) InitWithContentsOfURLError(url IURL, error IError) map[stri
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1408769-objectsforkeys?language=objc
 func (d_ Dictionary) ObjectsForKeysNotFoundMarker(keys []objc.IObject, marker objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](d_, objc.Sel("objectsForKeys:notFoundMarker:"), keys, objc.Ptr(marker))
+	rv := objc.Call[[]objc.Object](d_, objc.Sel("objectsForKeys:notFoundMarker:"), keys, marker)
 	return rv
 }
 
@@ -448,15 +448,15 @@ func (d_ Dictionary) KeyEnumerator() Enumerator {
 // Returns by reference C arrays of the keys and values in the dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1409973-getobjects?language=objc
-func (d_ Dictionary) GetObjectsAndKeysCount(objects objc.IObject, keys objc.IObject, count uint) {
-	objc.Call[objc.Void](d_, objc.Sel("getObjects:andKeys:count:"), objc.Ptr(objects), objc.Ptr(keys), count)
+func (d_ Dictionary) GetObjectsAndKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, count uint) {
+	objc.Call[objc.Void](d_, objc.Sel("getObjects:andKeys:count:"), objects, keys, count)
 }
 
 // Returns the value associated with a given key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1415430-objectforkeyedsubscript?language=objc
 func (d_ Dictionary) ObjectForKeyedSubscript(key objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("objectForKeyedSubscript:"), objc.Ptr(key))
+	rv := objc.Call[objc.Object](d_, objc.Sel("objectForKeyedSubscript:"), key)
 	return rv
 }
 
@@ -510,8 +510,8 @@ func (d_ Dictionary) EnumerateKeysAndObjectsWithOptionsUsingBlock(opts Enumerati
 // Returns by reference a C array of objects over which the sender should iterate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/2865769-countbyenumeratingwithstate?language=objc
-func (d_ Dictionary) CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer objc.IObject, len uint) uint {
-	rv := objc.Call[uint](d_, objc.Sel("countByEnumeratingWithState:objects:count:"), state, objc.Ptr(buffer), len)
+func (d_ Dictionary) CountByEnumeratingWithStateObjectsCount(state *FastEnumerationState, buffer unsafe.Pointer, len uint) uint {
+	rv := objc.Call[uint](d_, objc.Sel("countByEnumeratingWithState:objects:count:"), state, buffer, len)
 	return rv
 }
 
@@ -543,7 +543,7 @@ func (d_ Dictionary) FileSize() int64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1417147-allkeysforobject?language=objc
 func (d_ Dictionary) AllKeysForObject(anObject objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](d_, objc.Sel("allKeysForObject:"), objc.Ptr(anObject))
+	rv := objc.Call[[]objc.Object](d_, objc.Sel("allKeysForObject:"), anObject)
 	return rv
 }
 
@@ -551,7 +551,7 @@ func (d_ Dictionary) AllKeysForObject(anObject objc.IObject) []objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1414347-objectforkey?language=objc
 func (d_ Dictionary) ObjectForKey(aKey objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("objectForKey:"), objc.Ptr(aKey))
+	rv := objc.Call[objc.Object](d_, objc.Sel("objectForKey:"), aKey)
 	return rv
 }
 

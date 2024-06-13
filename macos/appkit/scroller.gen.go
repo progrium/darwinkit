@@ -130,7 +130,7 @@ func (s_ Scroller) DrawKnob() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscroller/1523594-trackknob?language=objc
 func (s_ Scroller) TrackKnob(event IEvent) {
-	objc.Call[objc.Void](s_, objc.Sel("trackKnob:"), objc.Ptr(event))
+	objc.Call[objc.Void](s_, objc.Sel("trackKnob:"), event)
 }
 
 // Draws the portion of the scroller’s track, possibly including the line increment and decrement arrow buttons, that falls in the given rectangle. [Full Topic]

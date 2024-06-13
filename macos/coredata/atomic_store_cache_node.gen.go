@@ -40,7 +40,7 @@ func AtomicStoreCacheNodeFrom(ptr unsafe.Pointer) AtomicStoreCacheNode {
 }
 
 func (a_ AtomicStoreCacheNode) InitWithObjectID(moid IManagedObjectID) AtomicStoreCacheNode {
-	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("initWithObjectID:"), objc.Ptr(moid))
+	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("initWithObjectID:"), moid)
 	return rv
 }
 
@@ -108,5 +108,5 @@ func (a_ AtomicStoreCacheNode) PropertyCache() foundation.MutableDictionary {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstorecachenode/1506283-propertycache?language=objc
 func (a_ AtomicStoreCacheNode) SetPropertyCache(value foundation.IMutableDictionary) {
-	objc.Call[objc.Void](a_, objc.Sel("setPropertyCache:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setPropertyCache:"), value)
 }

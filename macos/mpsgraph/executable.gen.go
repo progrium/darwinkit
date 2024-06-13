@@ -70,7 +70,7 @@ func (e_ Executable) Init() Executable {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787595-runwithmtlcommandqueue?language=objc
 func (e_ Executable) RunWithMTLCommandQueueInputsArrayResultsArrayExecutionDescriptor(commandQueue metal.PCommandQueue, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData {
 	po0 := objc.WrapAsProtocol("MTLCommandQueue", commandQueue)
-	rv := objc.Call[[]TensorData](e_, objc.Sel("runWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), po0, inputsArray, resultsArray, objc.Ptr(executionDescriptor))
+	rv := objc.Call[[]TensorData](e_, objc.Sel("runWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), po0, inputsArray, resultsArray, executionDescriptor)
 	return rv
 }
 
@@ -78,7 +78,7 @@ func (e_ Executable) RunWithMTLCommandQueueInputsArrayResultsArrayExecutionDescr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787595-runwithmtlcommandqueue?language=objc
 func (e_ Executable) RunWithMTLCommandQueueObjectInputsArrayResultsArrayExecutionDescriptor(commandQueueObject objc.IObject, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData {
-	rv := objc.Call[[]TensorData](e_, objc.Sel("runWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), objc.Ptr(commandQueueObject), inputsArray, resultsArray, objc.Ptr(executionDescriptor))
+	rv := objc.Call[[]TensorData](e_, objc.Sel("runWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), commandQueueObject, inputsArray, resultsArray, executionDescriptor)
 	return rv
 }
 
@@ -87,7 +87,7 @@ func (e_ Executable) RunWithMTLCommandQueueObjectInputsArrayResultsArrayExecutio
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787594-runasyncwithmtlcommandqueue?language=objc
 func (e_ Executable) RunAsyncWithMTLCommandQueueInputsArrayResultsArrayExecutionDescriptor(commandQueue metal.PCommandQueue, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData {
 	po0 := objc.WrapAsProtocol("MTLCommandQueue", commandQueue)
-	rv := objc.Call[[]TensorData](e_, objc.Sel("runAsyncWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), po0, inputsArray, resultsArray, objc.Ptr(executionDescriptor))
+	rv := objc.Call[[]TensorData](e_, objc.Sel("runAsyncWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), po0, inputsArray, resultsArray, executionDescriptor)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (e_ Executable) RunAsyncWithMTLCommandQueueInputsArrayResultsArrayExecution
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787594-runasyncwithmtlcommandqueue?language=objc
 func (e_ Executable) RunAsyncWithMTLCommandQueueObjectInputsArrayResultsArrayExecutionDescriptor(commandQueueObject objc.IObject, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData {
-	rv := objc.Call[[]TensorData](e_, objc.Sel("runAsyncWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), objc.Ptr(commandQueueObject), inputsArray, resultsArray, objc.Ptr(executionDescriptor))
+	rv := objc.Call[[]TensorData](e_, objc.Sel("runAsyncWithMTLCommandQueue:inputsArray:resultsArray:executionDescriptor:"), commandQueueObject, inputsArray, resultsArray, executionDescriptor)
 	return rv
 }
 
@@ -103,14 +103,14 @@ func (e_ Executable) RunAsyncWithMTLCommandQueueObjectInputsArrayResultsArrayExe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787596-specializewithdevice?language=objc
 func (e_ Executable) SpecializeWithDeviceInputTypesCompilationDescriptor(device IDevice, inputTypes []IType, compilationDescriptor ICompilationDescriptor) {
-	objc.Call[objc.Void](e_, objc.Sel("specializeWithDevice:inputTypes:compilationDescriptor:"), objc.Ptr(device), inputTypes, objc.Ptr(compilationDescriptor))
+	objc.Call[objc.Void](e_, objc.Sel("specializeWithDevice:inputTypes:compilationDescriptor:"), device, inputTypes, compilationDescriptor)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraphexecutable/3787591-encodetocommandbuffer?language=objc
 func (e_ Executable) EncodeToCommandBufferInputsArrayResultsArrayExecutionDescriptor(commandBuffer mps.ICommandBuffer, inputsArray []ITensorData, resultsArray []ITensorData, executionDescriptor IExecutableExecutionDescriptor) []TensorData {
-	rv := objc.Call[[]TensorData](e_, objc.Sel("encodeToCommandBuffer:inputsArray:resultsArray:executionDescriptor:"), objc.Ptr(commandBuffer), inputsArray, resultsArray, objc.Ptr(executionDescriptor))
+	rv := objc.Call[[]TensorData](e_, objc.Sel("encodeToCommandBuffer:inputsArray:resultsArray:executionDescriptor:"), commandBuffer, inputsArray, resultsArray, executionDescriptor)
 	return rv
 }
 

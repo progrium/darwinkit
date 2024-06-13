@@ -122,7 +122,7 @@ func (t_ ToneCurveObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citonecurve/3228792-inputimage?language=objc
 func (t_ ToneCurveObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ ToneCurveObject) HasInputImage() bool {

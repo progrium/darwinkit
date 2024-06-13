@@ -78,7 +78,7 @@ func NewTokenFieldCellTextCell(string_ string) TokenFieldCell {
 }
 
 func (t_ TokenFieldCell) InitImageCell(image IImage) TokenFieldCell {
-	rv := objc.Call[TokenFieldCell](t_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[TokenFieldCell](t_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -163,7 +163,7 @@ func (t_ TokenFieldCell) TokenizingCharacterSet() foundation.CharacterSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcell/1523822-tokenizingcharacterset?language=objc
 func (t_ TokenFieldCell) SetTokenizingCharacterSet(value foundation.ICharacterSet) {
-	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTokenizingCharacterSet:"), value)
 }
 
 // The receiver’s delegate. [Full Topic]
@@ -187,5 +187,5 @@ func (t_ TokenFieldCell) SetDelegate(value PTokenFieldCellDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcell/1523813-delegate?language=objc
 func (t_ TokenFieldCell) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }

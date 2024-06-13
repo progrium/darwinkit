@@ -88,7 +88,7 @@ func NewWindowControllerWithWindowNibName(windowNibName NibName) WindowControlle
 }
 
 func (w_ WindowController) InitWithWindow(window IWindow) WindowController {
-	rv := objc.Call[WindowController](w_, objc.Sel("initWithWindow:"), objc.Ptr(window))
+	rv := objc.Call[WindowController](w_, objc.Sel("initWithWindow:"), window)
 	return rv
 }
 
@@ -245,7 +245,7 @@ func (w_ WindowController) ContentViewController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcontroller/1532552-contentviewcontroller?language=objc
 func (w_ WindowController) SetContentViewController(value IViewController) {
-	objc.Call[objc.Void](w_, objc.Sel("setContentViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setContentViewController:"), value)
 }
 
 // The document associated with the window controller. [Full Topic]
@@ -275,7 +275,7 @@ func (w_ WindowController) Window() Window {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowcontroller/1535593-window?language=objc
 func (w_ WindowController) SetWindow(value IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("setWindow:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setWindow:"), value)
 }
 
 // The name under which the frame rectangle of the window owned by the receiver is stored in the defaults database. [Full Topic]

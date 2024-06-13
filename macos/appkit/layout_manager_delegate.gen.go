@@ -320,7 +320,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldUseTemporaryAttribut
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutmanagerdelegate/1403085-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldUseTemporaryAttributesForDrawingToScreenAtCharacterIndexEffectiveRange(layoutManager LayoutManager, attrs map[foundation.AttributedStringKey]objc.Object, toScreen bool, charIndex uint, effectiveCharRange foundation.RangePointer) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](l_, objc.Sel("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:"), objc.Ptr(layoutManager), attrs, toScreen, charIndex, effectiveCharRange)
+	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](l_, objc.Sel("layoutManager:shouldUseTemporaryAttributes:forDrawingToScreen:atCharacterIndex:effectiveRange:"), layoutManager, attrs, toScreen, charIndex, effectiveCharRange)
 	return rv
 }
 
@@ -332,7 +332,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerParagraphSpacingAfterGlyph
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403076-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerParagraphSpacingAfterGlyphAtIndexWithProposedLineFragmentRect(layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("layoutManager:paragraphSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), objc.Ptr(layoutManager), glyphIndex, rect)
+	rv := objc.Call[float64](l_, objc.Sel("layoutManager:paragraphSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
 	return rv
 }
 
@@ -344,7 +344,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldBreakLineByHyphenati
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403128-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldBreakLineByHyphenatingBeforeCharacterAtIndex(layoutManager LayoutManager, charIndex uint) bool {
-	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldBreakLineByHyphenatingBeforeCharacterAtIndex:"), objc.Ptr(layoutManager), charIndex)
+	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldBreakLineByHyphenatingBeforeCharacterAtIndex:"), layoutManager, charIndex)
 	return rv
 }
 
@@ -356,7 +356,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldGenerateGlyphsProper
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403073-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldGenerateGlyphsPropertiesCharacterIndexesFontForGlyphRange(layoutManager LayoutManager, glyphs *coregraphics.Glyph, props *GlyphProperty, charIndexes *uint, aFont Font, glyphRange foundation.Range) uint {
-	rv := objc.Call[uint](l_, objc.Sel("layoutManager:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:"), objc.Ptr(layoutManager), glyphs, props, charIndexes, objc.Ptr(aFont), glyphRange)
+	rv := objc.Call[uint](l_, objc.Sel("layoutManager:shouldGenerateGlyphs:properties:characterIndexes:font:forGlyphRange:"), layoutManager, glyphs, props, charIndexes, aFont, glyphRange)
 	return rv
 }
 
@@ -368,7 +368,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerDidCompleteLayoutForTextCo
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1402926-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerDidCompleteLayoutForTextContainerAtEnd(layoutManager LayoutManager, textContainer TextContainer, layoutFinishedFlag bool) {
-	objc.Call[objc.Void](l_, objc.Sel("layoutManager:didCompleteLayoutForTextContainer:atEnd:"), objc.Ptr(layoutManager), objc.Ptr(textContainer), layoutFinishedFlag)
+	objc.Call[objc.Void](l_, objc.Sel("layoutManager:didCompleteLayoutForTextContainer:atEnd:"), layoutManager, textContainer, layoutFinishedFlag)
 }
 
 func (l_ LayoutManagerDelegateObject) HasLayoutManagerLineSpacingAfterGlyphAtIndexWithProposedLineFragmentRect() bool {
@@ -379,7 +379,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerLineSpacingAfterGlyphAtInd
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1402948-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerLineSpacingAfterGlyphAtIndexWithProposedLineFragmentRect(layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("layoutManager:lineSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), objc.Ptr(layoutManager), glyphIndex, rect)
+	rv := objc.Call[float64](l_, objc.Sel("layoutManager:lineSpacingAfterGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
 	return rv
 }
 
@@ -391,7 +391,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldUseActionForControlC
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403167-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldUseActionForControlCharacterAtIndex(layoutManager LayoutManager, action ControlCharacterAction, charIndex uint) ControlCharacterAction {
-	rv := objc.Call[ControlCharacterAction](l_, objc.Sel("layoutManager:shouldUseAction:forControlCharacterAtIndex:"), objc.Ptr(layoutManager), action, charIndex)
+	rv := objc.Call[ControlCharacterAction](l_, objc.Sel("layoutManager:shouldUseAction:forControlCharacterAtIndex:"), layoutManager, action, charIndex)
 	return rv
 }
 
@@ -403,7 +403,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerParagraphSpacingBeforeGlyp
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403177-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerParagraphSpacingBeforeGlyphAtIndexWithProposedLineFragmentRect(layoutManager LayoutManager, glyphIndex uint, rect foundation.Rect) float64 {
-	rv := objc.Call[float64](l_, objc.Sel("layoutManager:paragraphSpacingBeforeGlyphAtIndex:withProposedLineFragmentRect:"), objc.Ptr(layoutManager), glyphIndex, rect)
+	rv := objc.Call[float64](l_, objc.Sel("layoutManager:paragraphSpacingBeforeGlyphAtIndex:withProposedLineFragmentRect:"), layoutManager, glyphIndex, rect)
 	return rv
 }
 
@@ -415,7 +415,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldBreakLineByWordBefor
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403051-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldBreakLineByWordBeforeCharacterAtIndex(layoutManager LayoutManager, charIndex uint) bool {
-	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldBreakLineByWordBeforeCharacterAtIndex:"), objc.Ptr(layoutManager), charIndex)
+	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldBreakLineByWordBeforeCharacterAtIndex:"), layoutManager, charIndex)
 	return rv
 }
 
@@ -427,7 +427,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerDidInvalidateLayout() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1402993-layoutmanagerdidinvalidatelayout?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerDidInvalidateLayout(sender LayoutManager) {
-	objc.Call[objc.Void](l_, objc.Sel("layoutManagerDidInvalidateLayout:"), objc.Ptr(sender))
+	objc.Call[objc.Void](l_, objc.Sel("layoutManagerDidInvalidateLayout:"), sender)
 }
 
 func (l_ LayoutManagerDelegateObject) HasLayoutManagerBoundingBoxForControlGlyphAtIndexForTextContainerProposedLineFragmentGlyphPositionCharacterIndex() bool {
@@ -438,7 +438,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerBoundingBoxForControlGlyph
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1402922-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerBoundingBoxForControlGlyphAtIndexForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(layoutManager LayoutManager, glyphIndex uint, textContainer TextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutManager:boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), objc.Ptr(layoutManager), glyphIndex, objc.Ptr(textContainer), proposedRect, glyphPosition, charIndex)
+	rv := objc.Call[foundation.Rect](l_, objc.Sel("layoutManager:boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), layoutManager, glyphIndex, textContainer, proposedRect, glyphPosition, charIndex)
 	return rv
 }
 
@@ -450,7 +450,7 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerTextContainerDidChangeGeom
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403049-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerTextContainerDidChangeGeometryFromSize(layoutManager LayoutManager, textContainer TextContainer, oldSize foundation.Size) {
-	objc.Call[objc.Void](l_, objc.Sel("layoutManager:textContainer:didChangeGeometryFromSize:"), objc.Ptr(layoutManager), objc.Ptr(textContainer), oldSize)
+	objc.Call[objc.Void](l_, objc.Sel("layoutManager:textContainer:didChangeGeometryFromSize:"), layoutManager, textContainer, oldSize)
 }
 
 func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldSetLineFragmentRectLineFragmentUsedRectBaselineOffsetInTextContainerForGlyphRange() bool {
@@ -461,6 +461,6 @@ func (l_ LayoutManagerDelegateObject) HasLayoutManagerShouldSetLineFragmentRectL
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutmanagerdelegate/1403122-layoutmanager?language=objc
 func (l_ LayoutManagerDelegateObject) LayoutManagerShouldSetLineFragmentRectLineFragmentUsedRectBaselineOffsetInTextContainerForGlyphRange(layoutManager LayoutManager, lineFragmentRect *foundation.Rect, lineFragmentUsedRect *foundation.Rect, baselineOffset *float64, textContainer TextContainer, glyphRange foundation.Range) bool {
-	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldSetLineFragmentRect:lineFragmentUsedRect:baselineOffset:inTextContainer:forGlyphRange:"), objc.Ptr(layoutManager), lineFragmentRect, lineFragmentUsedRect, baselineOffset, objc.Ptr(textContainer), glyphRange)
+	rv := objc.Call[bool](l_, objc.Sel("layoutManager:shouldSetLineFragmentRect:lineFragmentUsedRect:baselineOffset:inTextContainer:forGlyphRange:"), layoutManager, lineFragmentRect, lineFragmentUsedRect, baselineOffset, textContainer, glyphRange)
 	return rv
 }

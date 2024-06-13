@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -88,46 +87,46 @@ func ImageProcessorKernel_FormatForInputAtIndex(input int) Format {
 // Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
-func (ic _ImageProcessorKernelClass) ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error foundation.IError) Image {
-	rv := objc.Call[Image](ic, objc.Sel("applyWithExtent:inputs:arguments:error:"), extent, inputs, args, objc.Ptr(error))
+func (ic _ImageProcessorKernelClass) ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
+	rv := objc.Call[Image](ic, objc.Sel("applyWithExtent:inputs:arguments:error:"), extent, inputs, args, error)
 	return rv
 }
 
 // Method to override when applying a custom image processor kernel to an image and returning the result. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138284-applywithextent?language=objc
-func ImageProcessorKernel_ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error foundation.IError) Image {
+func ImageProcessorKernel_ApplyWithExtentInputsArgumentsError(extent coregraphics.Rect, inputs []IImage, args map[string]objc.IObject, error unsafe.Pointer) Image {
 	return ImageProcessorKernelClass.ApplyWithExtentInputsArgumentsError(extent, inputs, args, error)
 }
 
 // Method to override for customizing the kernel's image processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
-func (ic _ImageProcessorKernelClass) ProcessWithInputsArgumentsOutputError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, output PImageProcessorOutput, error foundation.IError) bool {
+func (ic _ImageProcessorKernelClass) ProcessWithInputsArgumentsOutputError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, output PImageProcessorOutput, error unsafe.Pointer) bool {
 	po2 := objc.WrapAsProtocol("CIImageProcessorOutput", output)
-	rv := objc.Call[bool](ic, objc.Sel("processWithInputs:arguments:output:error:"), inputs, arguments, po2, objc.Ptr(error))
+	rv := objc.Call[bool](ic, objc.Sel("processWithInputs:arguments:output:error:"), inputs, arguments, po2, error)
 	return rv
 }
 
 // Method to override for customizing the kernel's image processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
-func ImageProcessorKernel_ProcessWithInputsArgumentsOutputError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, output PImageProcessorOutput, error foundation.IError) bool {
+func ImageProcessorKernel_ProcessWithInputsArgumentsOutputError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, output PImageProcessorOutput, error unsafe.Pointer) bool {
 	return ImageProcessorKernelClass.ProcessWithInputsArgumentsOutputError(inputs, arguments, output, error)
 }
 
 // Method to override for customizing the kernel's image processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
-func (ic _ImageProcessorKernelClass) ProcessWithInputsArgumentsOutputObjectError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, outputObject objc.IObject, error foundation.IError) bool {
-	rv := objc.Call[bool](ic, objc.Sel("processWithInputs:arguments:output:error:"), inputs, arguments, objc.Ptr(outputObject), objc.Ptr(error))
+func (ic _ImageProcessorKernelClass) ProcessWithInputsArgumentsOutputObjectError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, outputObject objc.IObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](ic, objc.Sel("processWithInputs:arguments:output:error:"), inputs, arguments, outputObject, error)
 	return rv
 }
 
 // Method to override for customizing the kernel's image processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageprocessorkernel/2138290-processwithinputs?language=objc
-func ImageProcessorKernel_ProcessWithInputsArgumentsOutputObjectError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, outputObject objc.IObject, error foundation.IError) bool {
+func ImageProcessorKernel_ProcessWithInputsArgumentsOutputObjectError(inputs []PImageProcessorInput, arguments map[string]objc.IObject, outputObject objc.IObject, error unsafe.Pointer) bool {
 	return ImageProcessorKernelClass.ProcessWithInputsArgumentsOutputObjectError(inputs, arguments, outputObject, error)
 }
 

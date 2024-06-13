@@ -20,7 +20,7 @@ type _ButtonCellClass struct {
 type IButtonCell interface {
 	IActionCell
 	MouseExited(event IEvent)
-	SetPeriodicDelayInterval(delay float64, interval float64)
+	SetPeriodicDelayInterval(delay float32, interval float32)
 	MouseEntered(event IEvent)
 	SetButtonType(type_ ButtonType)
 	DrawBezelWithFrameInView(frame foundation.Rect, controlView IView)
@@ -73,7 +73,7 @@ func ButtonCellFrom(ptr unsafe.Pointer) ButtonCell {
 }
 
 func (b_ ButtonCell) InitImageCell(image IImage) ButtonCell {
-	rv := objc.Call[ButtonCell](b_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[ButtonCell](b_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -124,13 +124,13 @@ func (b_ ButtonCell) Init() ButtonCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1530776-mouseexited?language=objc
 func (b_ ButtonCell) MouseExited(event IEvent) {
-	objc.Call[objc.Void](b_, objc.Sel("mouseExited:"), objc.Ptr(event))
+	objc.Call[objc.Void](b_, objc.Sel("mouseExited:"), event)
 }
 
 // Sets the message delay and interval for the button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1525725-setperiodicdelay?language=objc
-func (b_ ButtonCell) SetPeriodicDelayInterval(delay float64, interval float64) {
+func (b_ ButtonCell) SetPeriodicDelayInterval(delay float32, interval float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setPeriodicDelay:interval:"), delay, interval)
 }
 
@@ -138,7 +138,7 @@ func (b_ ButtonCell) SetPeriodicDelayInterval(delay float64, interval float64) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1524997-mouseentered?language=objc
 func (b_ ButtonCell) MouseEntered(event IEvent) {
-	objc.Call[objc.Void](b_, objc.Sel("mouseEntered:"), objc.Ptr(event))
+	objc.Call[objc.Void](b_, objc.Sel("mouseEntered:"), event)
 }
 
 // Sets how the button highlights while pressed and how it shows its state. [Full Topic]
@@ -152,14 +152,14 @@ func (b_ ButtonCell) SetButtonType(type_ ButtonType) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1524939-drawbezelwithframe?language=objc
 func (b_ ButtonCell) DrawBezelWithFrameInView(frame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](b_, objc.Sel("drawBezelWithFrame:inView:"), frame, objc.Ptr(controlView))
+	objc.Call[objc.Void](b_, objc.Sel("drawBezelWithFrame:inView:"), frame, controlView)
 }
 
 // Draws the button’s title centered vertically in a specified rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1528861-drawtitle?language=objc
 func (b_ ButtonCell) DrawTitleWithFrameInView(title foundation.IAttributedString, frame foundation.Rect, controlView IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](b_, objc.Sel("drawTitle:withFrame:inView:"), objc.Ptr(title), frame, objc.Ptr(controlView))
+	rv := objc.Call[foundation.Rect](b_, objc.Sel("drawTitle:withFrame:inView:"), title, frame, controlView)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (b_ ButtonCell) DrawTitleWithFrameInView(title foundation.IAttributedString
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1531792-drawimage?language=objc
 func (b_ ButtonCell) DrawImageWithFrameInView(image IImage, frame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](b_, objc.Sel("drawImage:withFrame:inView:"), objc.Ptr(image), frame, objc.Ptr(controlView))
+	objc.Call[objc.Void](b_, objc.Sel("drawImage:withFrame:inView:"), image, frame, controlView)
 }
 
 // The mask that identifies the modifier keys for the button's key equivalent. [Full Topic]
@@ -249,7 +249,7 @@ func (b_ ButtonCell) AlternateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1527064-alternateimage?language=objc
 func (b_ ButtonCell) SetAlternateImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
 }
 
 // A Boolean value that indicates if the button’s image and text appear “dim” when the button is disabled. [Full Topic]
@@ -294,7 +294,7 @@ func (b_ ButtonCell) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1529743-backgroundcolor?language=objc
 func (b_ ButtonCell) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The sound that’s played when the user presses the button (that is during a mouse-down event). [Full Topic]
@@ -309,7 +309,7 @@ func (b_ ButtonCell) Sound() Sound {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1525955-sound?language=objc
 func (b_ ButtonCell) SetSound(value ISound) {
-	objc.Call[objc.Void](b_, objc.Sel("setSound:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setSound:"), value)
 }
 
 // A set of flags that indicate how the button highlights when it receives a mouse-down event (that is, when the button is pressed). [Full Topic]
@@ -369,7 +369,7 @@ func (b_ ButtonCell) AttributedAlternateTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1526922-attributedalternatetitle?language=objc
 func (b_ ButtonCell) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), value)
 }
 
 // The title displayed by the button when it’s in its normal state as an attributed string. [Full Topic]
@@ -384,7 +384,7 @@ func (b_ ButtonCell) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttoncell/1529303-attributedtitle?language=objc
 func (b_ ButtonCell) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](b_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // The flags that indicate how the button cell shows its alternate state. [Full Topic]

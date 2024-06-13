@@ -22,12 +22,12 @@ type ICNNSpatialNormalizationGradientNode interface {
 	SetKernelWidth(value uint)
 	KernelHeight() uint
 	SetKernelHeight(value uint)
-	Beta() float64
-	SetBeta(value float64)
-	Alpha() float64
-	SetAlpha(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Beta() float32
+	SetBeta(value float32)
+	Alpha() float32
+	SetAlpha(value float32)
+	Delta() float32
+	SetDelta(value float32)
 }
 
 // A representation of a gradient spatial normalization kernel. [Full Topic]
@@ -44,7 +44,7 @@ func CNNSpatialNormalizationGradientNodeFrom(ptr unsafe.Pointer) CNNSpatialNorma
 }
 
 func (c_ CNNSpatialNormalizationGradientNode) InitWithSourceGradientSourceImageGradientStateKernelSize(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelSize uint) CNNSpatialNormalizationGradientNode {
-	rv := objc.Call[CNNSpatialNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelSize:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelSize)
+	rv := objc.Call[CNNSpatialNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelSize:"), sourceGradient, sourceImage, gradientState, kernelSize)
 	return rv
 }
 
@@ -58,7 +58,7 @@ func NewCNNSpatialNormalizationGradientNodeWithSourceGradientSourceImageGradient
 }
 
 func (cc _CNNSpatialNormalizationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateKernelSize(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelSize uint) CNNSpatialNormalizationGradientNode {
-	rv := objc.Call[CNNSpatialNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelSize:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelSize)
+	rv := objc.Call[CNNSpatialNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelSize:"), sourceGradient, sourceImage, gradientState, kernelSize)
 	return rv
 }
 
@@ -122,44 +122,44 @@ func (c_ CNNSpatialNormalizationGradientNode) SetKernelHeight(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948006-beta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNSpatialNormalizationGradientNode) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948006-beta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetBeta(value float64) {
+func (c_ CNNSpatialNormalizationGradientNode) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948027-alpha?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNSpatialNormalizationGradientNode) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2948027-alpha?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetAlpha(value float64) {
+func (c_ CNNSpatialNormalizationGradientNode) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNSpatialNormalizationGradientNode) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnspatialnormalizationgradientnode/2947968-delta?language=objc
-func (c_ CNNSpatialNormalizationGradientNode) SetDelta(value float64) {
+func (c_ CNNSpatialNormalizationGradientNode) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }

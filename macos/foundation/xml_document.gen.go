@@ -22,11 +22,11 @@ type IXMLDocument interface {
 	SetChildren(children []IXMLNode)
 	InsertChildAtIndex(child IXMLNode, index uint)
 	SetRootElement(root IXMLElement)
-	ObjectByApplyingXSLTArgumentsError(xslt []byte, arguments map[string]string, error IError) objc.Object
-	ObjectByApplyingXSLTAtURLArgumentsError(xsltURL IURL, argument map[string]string, error IError) objc.Object
-	ValidateAndReturnError(error IError) bool
+	ObjectByApplyingXSLTArgumentsError(xslt []byte, arguments map[string]string, error unsafe.Pointer) objc.Object
+	ObjectByApplyingXSLTAtURLArgumentsError(xsltURL IURL, argument map[string]string, error unsafe.Pointer) objc.Object
+	ValidateAndReturnError(error unsafe.Pointer) bool
 	XMLDataWithOptions(options XMLNodeOptions) []byte
-	ObjectByApplyingXSLTStringArgumentsError(xslt string, arguments map[string]string, error IError) objc.Object
+	ObjectByApplyingXSLTStringArgumentsError(xslt string, arguments map[string]string, error unsafe.Pointer) objc.Object
 	RootElement() XMLElement
 	ReplaceChildAtIndexWithNode(index uint, node IXMLNode)
 	InsertChildrenAtIndex(children []IXMLNode, index uint)
@@ -64,36 +64,36 @@ func (x_ XMLDocument) Init() XMLDocument {
 	return rv
 }
 
-func (x_ XMLDocument) InitWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error IError) XMLDocument {
-	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithXMLString:options:error:"), string_, mask, objc.Ptr(error))
+func (x_ XMLDocument) InitWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
+	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithXMLString:options:error:"), string_, mask, error)
 	return rv
 }
 
 // Initializes and returns an NSXMLDocument object created from a string containing XML markup text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1416228-initwithxmlstring?language=objc
-func NewXMLDocumentWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error IError) XMLDocument {
+func NewXMLDocumentWithXMLStringOptionsError(string_ string, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
 	instance := XMLDocumentClass.Alloc().InitWithXMLStringOptionsError(string_, mask, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (x_ XMLDocument) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDocument {
-	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithContentsOfURL:options:error:"), objc.Ptr(url), mask, objc.Ptr(error))
+func (x_ XMLDocument) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
+	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithContentsOfURL:options:error:"), url, mask, error)
 	return rv
 }
 
 // Initializes and returns an NSXMLDocument object created from the XML or HTML contents of a URL-referenced source [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1418467-initwithcontentsofurl?language=objc
-func NewXMLDocumentWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDocument {
+func NewXMLDocumentWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
 	instance := XMLDocumentClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
 	instance.Autorelease()
 	return instance
 }
 
 func (x_ XMLDocument) InitWithRootElement(element IXMLElement) XMLDocument {
-	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithRootElement:"), objc.Ptr(element))
+	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithRootElement:"), element)
 	return rv
 }
 
@@ -106,15 +106,15 @@ func NewXMLDocumentWithRootElement(element IXMLElement) XMLDocument {
 	return instance
 }
 
-func (x_ XMLDocument) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDocument {
-	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithData:options:error:"), data, mask, objc.Ptr(error))
+func (x_ XMLDocument) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
+	rv := objc.Call[XMLDocument](x_, objc.Sel("initWithData:options:error:"), data, mask, error)
 	return rv
 }
 
 // Initializes and returns an NSXMLDocument object created from an NSData object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1413086-initwithdata?language=objc
-func NewXMLDocumentWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDocument {
+func NewXMLDocumentWithDataOptionsError(data []byte, mask XMLNodeOptions, error unsafe.Pointer) XMLDocument {
 	instance := XMLDocumentClass.Alloc().InitWithDataOptionsError(data, mask, error)
 	instance.Autorelease()
 	return instance
@@ -167,7 +167,7 @@ func NewXMLDocumentWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XML
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1415740-addchild?language=objc
 func (x_ XMLDocument) AddChild(child IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addChild:"), objc.Ptr(child))
+	objc.Call[objc.Void](x_, objc.Sel("addChild:"), child)
 }
 
 // Sets the child nodes of the receiver. [Full Topic]
@@ -181,37 +181,37 @@ func (x_ XMLDocument) SetChildren(children []IXMLNode) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1413912-insertchild?language=objc
 func (x_ XMLDocument) InsertChildAtIndex(child IXMLNode, index uint) {
-	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), objc.Ptr(child), index)
+	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), child, index)
 }
 
 // Set the root element of the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1415610-setrootelement?language=objc
 func (x_ XMLDocument) SetRootElement(root IXMLElement) {
-	objc.Call[objc.Void](x_, objc.Sel("setRootElement:"), objc.Ptr(root))
+	objc.Call[objc.Void](x_, objc.Sel("setRootElement:"), root)
 }
 
 // Applies the XSLT pattern rules and templates (specified as a data object) to the receiver and returns a document object containing transformed XML or HTML markup. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1415843-objectbyapplyingxslt?language=objc
-func (x_ XMLDocument) ObjectByApplyingXSLTArgumentsError(xslt []byte, arguments map[string]string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLT:arguments:error:"), xslt, arguments, objc.Ptr(error))
+func (x_ XMLDocument) ObjectByApplyingXSLTArgumentsError(xslt []byte, arguments map[string]string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLT:arguments:error:"), xslt, arguments, error)
 	return rv
 }
 
 // Applies the XSLT pattern rules and templates located at a specified URL to the receiver and returns a document object containing transformed XML markup or an NSData object containing plain text, RTF text, and so on. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1410606-objectbyapplyingxsltaturl?language=objc
-func (x_ XMLDocument) ObjectByApplyingXSLTAtURLArgumentsError(xsltURL IURL, argument map[string]string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLTAtURL:arguments:error:"), objc.Ptr(xsltURL), argument, objc.Ptr(error))
+func (x_ XMLDocument) ObjectByApplyingXSLTAtURLArgumentsError(xsltURL IURL, argument map[string]string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLTAtURL:arguments:error:"), xsltURL, argument, error)
 	return rv
 }
 
 // Validates the document against the governing schema and returns whether the document conforms to the schema. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1408561-validateandreturnerror?language=objc
-func (x_ XMLDocument) ValidateAndReturnError(error IError) bool {
-	rv := objc.Call[bool](x_, objc.Sel("validateAndReturnError:"), objc.Ptr(error))
+func (x_ XMLDocument) ValidateAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](x_, objc.Sel("validateAndReturnError:"), error)
 	return rv
 }
 
@@ -226,8 +226,8 @@ func (x_ XMLDocument) XMLDataWithOptions(options XMLNodeOptions) []byte {
 // Applies the XSLT pattern rules and templates (specified as a string) to the receiver and returns a document object containing transformed XML or HTML markup. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1409737-objectbyapplyingxsltstring?language=objc
-func (x_ XMLDocument) ObjectByApplyingXSLTStringArgumentsError(xslt string, arguments map[string]string, error IError) objc.Object {
-	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLTString:arguments:error:"), xslt, arguments, objc.Ptr(error))
+func (x_ XMLDocument) ObjectByApplyingXSLTStringArgumentsError(xslt string, arguments map[string]string, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](x_, objc.Sel("objectByApplyingXSLTString:arguments:error:"), xslt, arguments, error)
 	return rv
 }
 
@@ -243,7 +243,7 @@ func (x_ XMLDocument) RootElement() XMLElement {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1416857-replacechildatindex?language=objc
 func (x_ XMLDocument) ReplaceChildAtIndexWithNode(index uint, node IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, objc.Ptr(node))
+	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, node)
 }
 
 // Inserts an array of children at a specified position in the receiver’s array of children. [Full Topic]
@@ -264,7 +264,7 @@ func (x_ XMLDocument) RemoveChildAtIndex(index uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1409660-replacementclassforclass?language=objc
 func (xc _XMLDocumentClass) ReplacementClassForClass(cls objc.IClass) objc.Class {
-	rv := objc.Call[objc.Class](xc, objc.Sel("replacementClassForClass:"), objc.Ptr(cls))
+	rv := objc.Call[objc.Class](xc, objc.Sel("replacementClassForClass:"), cls)
 	return rv
 }
 
@@ -317,7 +317,7 @@ func (x_ XMLDocument) DTD() XMLDTD {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldocument/1418474-dtd?language=objc
 func (x_ XMLDocument) SetDTD(value IXMLDTD) {
-	objc.Call[objc.Void](x_, objc.Sel("setDTD:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setDTD:"), value)
 }
 
 // Sets a Boolean value that specifies whether the receiver represents a standalone XML document. [Full Topic]

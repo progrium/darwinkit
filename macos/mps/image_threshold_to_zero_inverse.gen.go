@@ -19,8 +19,8 @@ type _ImageThresholdToZeroInverseClass struct {
 // An interface definition for the [ImageThresholdToZeroInverse] class.
 type IImageThresholdToZeroInverse interface {
 	IUnaryImageKernel
-	Transform() *float64
-	ThresholdValue() float64
+	Transform() *float32
+	ThresholdValue() float32
 }
 
 // A filter that returns 0 for each pixel with a value greater than a specified threshold or the original value otherwise. [Full Topic]
@@ -36,7 +36,7 @@ func ImageThresholdToZeroInverseFrom(ptr unsafe.Pointer) ImageThresholdToZeroInv
 	}
 }
 
-func (i_ ImageThresholdToZeroInverse) InitWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, transform *float64) ImageThresholdToZeroInverse {
+func (i_ ImageThresholdToZeroInverse) InitWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, transform *float32) ImageThresholdToZeroInverse {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageThresholdToZeroInverse](i_, objc.Sel("initWithDevice:thresholdValue:linearGrayColorTransform:"), po0, thresholdValue, transform)
 	return rv
@@ -45,7 +45,7 @@ func (i_ ImageThresholdToZeroInverse) InitWithDeviceThresholdValueLinearGrayColo
 // Initializes the kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtozeroinverse/1618911-initwithdevice?language=objc
-func NewImageThresholdToZeroInverseWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float64, transform *float64) ImageThresholdToZeroInverse {
+func NewImageThresholdToZeroInverseWithDeviceThresholdValueLinearGrayColorTransform(device metal.PDevice, thresholdValue float32, transform *float32) ImageThresholdToZeroInverse {
 	instance := ImageThresholdToZeroInverseClass.Alloc().InitWithDeviceThresholdValueLinearGrayColorTransform(device, thresholdValue, transform)
 	instance.Autorelease()
 	return instance
@@ -104,15 +104,15 @@ func ImageThresholdToZeroInverse_CopyWithZoneDevice(zone unsafe.Pointer, device 
 // The color transform used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtozeroinverse/1618828-transform?language=objc
-func (i_ ImageThresholdToZeroInverse) Transform() *float64 {
-	rv := objc.Call[*float64](i_, objc.Sel("transform"))
+func (i_ ImageThresholdToZeroInverse) Transform() *float32 {
+	rv := objc.Call[*float32](i_, objc.Sel("transform"))
 	return rv
 }
 
 // The threshold value used to initialize the threshold filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagethresholdtozeroinverse/1618914-thresholdvalue?language=objc
-func (i_ ImageThresholdToZeroInverse) ThresholdValue() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("thresholdValue"))
+func (i_ ImageThresholdToZeroInverse) ThresholdValue() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("thresholdValue"))
 	return rv
 }

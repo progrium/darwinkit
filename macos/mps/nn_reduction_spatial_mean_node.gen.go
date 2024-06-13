@@ -54,7 +54,7 @@ func (n_ NNReductionSpatialMeanNode) Init() NNReductionSpatialMeanNode {
 }
 
 func (nc _NNReductionSpatialMeanNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionSpatialMeanNode {
-	rv := objc.Call[NNReductionSpatialMeanNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionSpatialMeanNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionSpatialMeanNode_NodeWithSource(sourceNode INNImageNode) NNReduct
 }
 
 func (n_ NNReductionSpatialMeanNode) InitWithSource(sourceNode INNImageNode) NNReductionSpatialMeanNode {
-	rv := objc.Call[NNReductionSpatialMeanNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionSpatialMeanNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

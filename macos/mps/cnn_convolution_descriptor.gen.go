@@ -19,7 +19,7 @@ type _CNNConvolutionDescriptorClass struct {
 // An interface definition for the [CNNConvolutionDescriptor] class.
 type ICNNConvolutionDescriptor interface {
 	objc.IObject
-	SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float64, variance *float64, gamma *float64, beta *float64, epsilon float64)
+	SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32)
 	EncodeWithCoder(aCoder foundation.ICoder)
 	KernelWidth() uint
 	SetKernelWidth(value uint)
@@ -71,7 +71,7 @@ func CNNConvolutionDescriptor_CnnConvolutionDescriptorWithKernelWidthKernelHeigh
 }
 
 func (cc _CNNConvolutionDescriptorClass) CnnConvolutionDescriptorWithKernelWidthKernelHeightInputFeatureChannelsOutputFeatureChannelsNeuronFilter(kernelWidth uint, kernelHeight uint, inputFeatureChannels uint, outputFeatureChannels uint, neuronFilter ICNNNeuron) CNNConvolutionDescriptor {
-	rv := objc.Call[CNNConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, objc.Ptr(neuronFilter))
+	rv := objc.Call[CNNConvolutionDescriptor](cc, objc.Sel("cnnConvolutionDescriptorWithKernelWidth:kernelHeight:inputFeatureChannels:outputFeatureChannels:neuronFilter:"), kernelWidth, kernelHeight, inputFeatureChannels, outputFeatureChannels, neuronFilter)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (c_ CNNConvolutionDescriptor) Init() CNNConvolutionDescriptor {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2867057-setbatchnormalizationparametersf?language=objc
-func (c_ CNNConvolutionDescriptor) SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float64, variance *float64, gamma *float64, beta *float64, epsilon float64) {
+func (c_ CNNConvolutionDescriptor) SetBatchNormalizationParametersForInferenceWithMeanVarianceGammaBetaEpsilon(mean *float32, variance *float32, gamma *float32, beta *float32, epsilon float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBatchNormalizationParametersForInferenceWithMean:variance:gamma:beta:epsilon:"), mean, variance, gamma, beta, epsilon)
 }
 
@@ -113,7 +113,7 @@ func (c_ CNNConvolutionDescriptor) SetBatchNormalizationParametersForInferenceWi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2866972-encodewithcoder?language=objc
 func (c_ CNNConvolutionDescriptor) EncodeWithCoder(aCoder foundation.ICoder) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), objc.Ptr(aCoder))
+	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), aCoder)
 }
 
 // The width of the kernel window. [Full Topic]
@@ -158,7 +158,7 @@ func (c_ CNNConvolutionDescriptor) Neuron() CNNNeuron {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/1829442-neuron?language=objc
 func (c_ CNNConvolutionDescriptor) SetNeuron(value ICNNNeuron) {
-	objc.Call[objc.Void](c_, objc.Sel("setNeuron:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setNeuron:"), value)
 }
 
 // The number of feature channels per pixel in the input image. [Full Topic]
@@ -278,7 +278,7 @@ func (c_ CNNConvolutionDescriptor) FusedNeuronDescriptor() NNNeuronDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnconvolutiondescriptor/2953957-fusedneurondescriptor?language=objc
 func (c_ CNNConvolutionDescriptor) SetFusedNeuronDescriptor(value INNNeuronDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setFusedNeuronDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setFusedNeuronDescriptor:"), value)
 }
 
 //	[Full Topic]

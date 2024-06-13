@@ -630,7 +630,7 @@ func (t_ TextViewDelegateObject) HasTextViewDoubleClickedOnCellInRectAtIndex() b
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449333-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewDoubleClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
 	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:doubleClickedOnCell:inRect:atIndex:"), objc.Ptr(textView), po1, cellFrame, charIndex)
+	objc.Call[objc.Void](t_, objc.Sel("textView:doubleClickedOnCell:inRect:atIndex:"), textView, po1, cellFrame, charIndex)
 }
 
 func (t_ TextViewDelegateObject) HasTextViewShouldSetSpellingStateRange() bool {
@@ -641,7 +641,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldSetSpellingStateRange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449284-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldSetSpellingStateRange(textView TextView, value int, affectedCharRange foundation.Range) int {
-	rv := objc.Call[int](t_, objc.Sel("textView:shouldSetSpellingState:range:"), objc.Ptr(textView), value, affectedCharRange)
+	rv := objc.Call[int](t_, objc.Sel("textView:shouldSetSpellingState:range:"), textView, value, affectedCharRange)
 	return rv
 }
 
@@ -653,7 +653,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldSelectCandidateAtIndex() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544682-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldSelectCandidateAtIndex(textView TextView, index uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldSelectCandidateAtIndex:"), objc.Ptr(textView), index)
+	rv := objc.Call[bool](t_, objc.Sel("textView:shouldSelectCandidateAtIndex:"), textView, index)
 	return rv
 }
 
@@ -665,7 +665,7 @@ func (t_ TextViewDelegateObject) HasUndoManagerForTextView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449225-undomanagerfortextview?language=objc
 func (t_ TextViewDelegateObject) UndoManagerForTextView(view TextView) foundation.UndoManager {
-	rv := objc.Call[foundation.UndoManager](t_, objc.Sel("undoManagerForTextView:"), objc.Ptr(view))
+	rv := objc.Call[foundation.UndoManager](t_, objc.Sel("undoManagerForTextView:"), view)
 	return rv
 }
 
@@ -677,7 +677,7 @@ func (t_ TextViewDelegateObject) HasTextViewCandidatesForSelectedRange_() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544692-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewCandidatesForSelectedRange_(textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:candidates:forSelectedRange:"), objc.Ptr(textView), candidates, selectedRange)
+	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:candidates:forSelectedRange:"), textView, candidates, selectedRange)
 	return rv
 }
 
@@ -690,7 +690,7 @@ func (t_ TextViewDelegateObject) HasTextViewWriteCellAtIndexToPasteboardType() b
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449294-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWriteCellAtIndexToPasteboardType(view TextView, cell TextAttachmentCellObject, charIndex uint, pboard Pasteboard, type_ PasteboardType) bool {
 	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	rv := objc.Call[bool](t_, objc.Sel("textView:writeCell:atIndex:toPasteboard:type:"), objc.Ptr(view), po1, charIndex, objc.Ptr(pboard), type_)
+	rv := objc.Call[bool](t_, objc.Sel("textView:writeCell:atIndex:toPasteboard:type:"), view, po1, charIndex, pboard, type_)
 	return rv
 }
 
@@ -702,7 +702,7 @@ func (t_ TextViewDelegateObject) HasTextViewDidChangeTypingAttributes() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449303-textviewdidchangetypingattribute?language=objc
 func (t_ TextViewDelegateObject) TextViewDidChangeTypingAttributes(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeTypingAttributes:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeTypingAttributes:"), notification)
 }
 
 func (t_ TextViewDelegateObject) HasTextViewDoCommandBySelector() bool {
@@ -713,7 +713,7 @@ func (t_ TextViewDelegateObject) HasTextViewDoCommandBySelector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449419-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewDoCommandBySelector(textView TextView, commandSelector objc.Selector) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:doCommandBySelector:"), objc.Ptr(textView), commandSelector)
+	rv := objc.Call[bool](t_, objc.Sel("textView:doCommandBySelector:"), textView, commandSelector)
 	return rv
 }
 
@@ -725,7 +725,7 @@ func (t_ TextViewDelegateObject) HasTextViewCompletionsForPartialWordRangeIndexO
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449260-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewCompletionsForPartialWordRangeIndexOfSelectedItem(textView TextView, words []string, charRange foundation.Range, index *int) []string {
-	rv := objc.Call[[]string](t_, objc.Sel("textView:completions:forPartialWordRange:indexOfSelectedItem:"), objc.Ptr(textView), words, charRange, index)
+	rv := objc.Call[[]string](t_, objc.Sel("textView:completions:forPartialWordRange:indexOfSelectedItem:"), textView, words, charRange, index)
 	return rv
 }
 
@@ -737,7 +737,7 @@ func (t_ TextViewDelegateObject) HasTextViewDidChangeSelection() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449363-textviewdidchangeselection?language=objc
 func (t_ TextViewDelegateObject) TextViewDidChangeSelection(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeSelection:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textViewDidChangeSelection:"), notification)
 }
 
 func (t_ TextViewDelegateObject) HasTextViewWillChangeSelectionFromCharacterRangesToCharacterRanges() bool {
@@ -748,7 +748,7 @@ func (t_ TextViewDelegateObject) HasTextViewWillChangeSelectionFromCharacterRang
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449264-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWillChangeSelectionFromCharacterRangesToCharacterRanges(textView TextView, oldSelectedCharRanges []foundation.Value, newSelectedCharRanges []foundation.Value) []foundation.Value {
-	rv := objc.Call[[]foundation.Value](t_, objc.Sel("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), objc.Ptr(textView), oldSelectedCharRanges, newSelectedCharRanges)
+	rv := objc.Call[[]foundation.Value](t_, objc.Sel("textView:willChangeSelectionFromCharacterRanges:toCharacterRanges:"), textView, oldSelectedCharRanges, newSelectedCharRanges)
 	return rv
 }
 
@@ -760,7 +760,7 @@ func (t_ TextViewDelegateObject) HasTextViewWillCheckTextInRangeOptionsTypes() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449307-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWillCheckTextInRangeOptionsTypes(view TextView, range_ foundation.Range, options map[TextCheckingOptionKey]objc.Object, checkingTypes *foundation.TextCheckingTypes) map[TextCheckingOptionKey]objc.Object {
-	rv := objc.Call[map[TextCheckingOptionKey]objc.Object](t_, objc.Sel("textView:willCheckTextInRange:options:types:"), objc.Ptr(view), range_, options, checkingTypes)
+	rv := objc.Call[map[TextCheckingOptionKey]objc.Object](t_, objc.Sel("textView:willCheckTextInRange:options:types:"), view, range_, options, checkingTypes)
 	return rv
 }
 
@@ -772,7 +772,7 @@ func (t_ TextViewDelegateObject) HasTextViewWillChangeSelectionFromCharacterRang
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449227-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWillChangeSelectionFromCharacterRangeToCharacterRange(textView TextView, oldSelectedCharRange foundation.Range, newSelectedCharRange foundation.Range) foundation.Range {
-	rv := objc.Call[foundation.Range](t_, objc.Sel("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), objc.Ptr(textView), oldSelectedCharRange, newSelectedCharRange)
+	rv := objc.Call[foundation.Range](t_, objc.Sel("textView:willChangeSelectionFromCharacterRange:toCharacterRange:"), textView, oldSelectedCharRange, newSelectedCharRange)
 	return rv
 }
 
@@ -784,7 +784,7 @@ func (t_ TextViewDelegateObject) HasTextViewClickedOnLinkAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449527-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewClickedOnLinkAtIndex(textView TextView, link objc.Object, charIndex uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:clickedOnLink:atIndex:"), objc.Ptr(textView), link, charIndex)
+	rv := objc.Call[bool](t_, objc.Sel("textView:clickedOnLink:atIndex:"), textView, link, charIndex)
 	return rv
 }
 
@@ -796,7 +796,7 @@ func (t_ TextViewDelegateObject) HasTextViewWillShowSharingServicePickerForItems
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449339-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWillShowSharingServicePickerForItems(textView TextView, servicePicker SharingServicePicker, items []objc.Object) SharingServicePicker {
-	rv := objc.Call[SharingServicePicker](t_, objc.Sel("textView:willShowSharingServicePicker:forItems:"), objc.Ptr(textView), objc.Ptr(servicePicker), items)
+	rv := objc.Call[SharingServicePicker](t_, objc.Sel("textView:willShowSharingServicePicker:forItems:"), textView, servicePicker, items)
 	return rv
 }
 
@@ -808,7 +808,7 @@ func (t_ TextViewDelegateObject) HasTextViewDidCheckTextInRangeTypesOptionsResul
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449317-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewDidCheckTextInRangeTypesOptionsResultsOrthographyWordCount(view TextView, range_ foundation.Range, checkingTypes foundation.TextCheckingTypes, options map[TextCheckingOptionKey]objc.Object, results []foundation.TextCheckingResult, orthography foundation.Orthography, wordCount int) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), objc.Ptr(view), range_, checkingTypes, options, results, objc.Ptr(orthography), wordCount)
+	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textView:didCheckTextInRange:types:options:results:orthography:wordCount:"), view, range_, checkingTypes, options, results, orthography, wordCount)
 	return rv
 }
 
@@ -820,7 +820,7 @@ func (t_ TextViewDelegateObject) HasTextViewURLForContentsOfTextAttachmentAtInde
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449194-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewURLForContentsOfTextAttachmentAtIndex(textView TextView, textAttachment TextAttachment, charIndex uint) foundation.URL {
-	rv := objc.Call[foundation.URL](t_, objc.Sel("textView:URLForContentsOfTextAttachment:atIndex:"), objc.Ptr(textView), objc.Ptr(textAttachment), charIndex)
+	rv := objc.Call[foundation.URL](t_, objc.Sel("textView:URLForContentsOfTextAttachment:atIndex:"), textView, textAttachment, charIndex)
 	return rv
 }
 
@@ -832,7 +832,7 @@ func (t_ TextViewDelegateObject) HasTextViewWillDisplayToolTipForCharacterAtInde
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449411-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWillDisplayToolTipForCharacterAtIndex(textView TextView, tooltip string, characterIndex uint) string {
-	rv := objc.Call[string](t_, objc.Sel("textView:willDisplayToolTip:forCharacterAtIndex:"), objc.Ptr(textView), tooltip, characterIndex)
+	rv := objc.Call[string](t_, objc.Sel("textView:willDisplayToolTip:forCharacterAtIndex:"), textView, tooltip, characterIndex)
 	return rv
 }
 
@@ -845,7 +845,7 @@ func (t_ TextViewDelegateObject) HasTextViewWritablePasteboardTypesForCellAtInde
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449485-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewWritablePasteboardTypesForCellAtIndex(view TextView, cell TextAttachmentCellObject, charIndex uint) []PasteboardType {
 	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	rv := objc.Call[[]PasteboardType](t_, objc.Sel("textView:writablePasteboardTypesForCell:atIndex:"), objc.Ptr(view), po1, charIndex)
+	rv := objc.Call[[]PasteboardType](t_, objc.Sel("textView:writablePasteboardTypesForCell:atIndex:"), view, po1, charIndex)
 	return rv
 }
 
@@ -857,7 +857,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldChangeTypingAttributesToAttrib
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449376-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldChangeTypingAttributesToAttributes(textView TextView, oldTypingAttributes map[string]objc.Object, newTypingAttributes map[foundation.AttributedStringKey]objc.Object) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textView:shouldChangeTypingAttributes:toAttributes:"), objc.Ptr(textView), oldTypingAttributes, newTypingAttributes)
+	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("textView:shouldChangeTypingAttributes:toAttributes:"), textView, oldTypingAttributes, newTypingAttributes)
 	return rv
 }
 
@@ -869,7 +869,7 @@ func (t_ TextViewDelegateObject) HasTextViewMenuForEventAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449341-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewMenuForEventAtIndex(view TextView, menu Menu, event Event, charIndex uint) Menu {
-	rv := objc.Call[Menu](t_, objc.Sel("textView:menu:forEvent:atIndex:"), objc.Ptr(view), objc.Ptr(menu), objc.Ptr(event), charIndex)
+	rv := objc.Call[Menu](t_, objc.Sel("textView:menu:forEvent:atIndex:"), view, menu, event, charIndex)
 	return rv
 }
 
@@ -881,7 +881,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldChangeTextInRangesReplacementS
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449206-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldChangeTextInRangesReplacementStrings(textView TextView, affectedRanges []foundation.Value, replacementStrings []string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRanges:replacementStrings:"), objc.Ptr(textView), affectedRanges, replacementStrings)
+	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRanges:replacementStrings:"), textView, affectedRanges, replacementStrings)
 	return rv
 }
 
@@ -893,7 +893,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldUpdateTouchBarItemIdentifiers(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544799-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldUpdateTouchBarItemIdentifiers(textView TextView, identifiers []TouchBarItemIdentifier) []TouchBarItemIdentifier {
-	rv := objc.Call[[]TouchBarItemIdentifier](t_, objc.Sel("textView:shouldUpdateTouchBarItemIdentifiers:"), objc.Ptr(textView), identifiers)
+	rv := objc.Call[[]TouchBarItemIdentifier](t_, objc.Sel("textView:shouldUpdateTouchBarItemIdentifiers:"), textView, identifiers)
 	return rv
 }
 
@@ -906,7 +906,7 @@ func (t_ TextViewDelegateObject) HasTextViewClickedOnCellInRectAtIndex() bool {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449335-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewClickedOnCellInRectAtIndex(textView TextView, cell TextAttachmentCellObject, cellFrame foundation.Rect, charIndex uint) {
 	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:clickedOnCell:inRect:atIndex:"), objc.Ptr(textView), po1, cellFrame, charIndex)
+	objc.Call[objc.Void](t_, objc.Sel("textView:clickedOnCell:inRect:atIndex:"), textView, po1, cellFrame, charIndex)
 }
 
 func (t_ TextViewDelegateObject) HasTextViewDraggedCellInRectEventAtIndex() bool {
@@ -918,7 +918,7 @@ func (t_ TextViewDelegateObject) HasTextViewDraggedCellInRectEventAtIndex() bool
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449154-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewDraggedCellInRectEventAtIndex(view TextView, cell TextAttachmentCellObject, rect foundation.Rect, event Event, charIndex uint) {
 	po1 := objc.WrapAsProtocol("NSTextAttachmentCell", cell)
-	objc.Call[objc.Void](t_, objc.Sel("textView:draggedCell:inRect:event:atIndex:"), objc.Ptr(view), po1, rect, objc.Ptr(event), charIndex)
+	objc.Call[objc.Void](t_, objc.Sel("textView:draggedCell:inRect:event:atIndex:"), view, po1, rect, event, charIndex)
 }
 
 func (t_ TextViewDelegateObject) HasTextViewShouldChangeTextInRangeReplacementString() bool {
@@ -929,7 +929,7 @@ func (t_ TextViewDelegateObject) HasTextViewShouldChangeTextInRangeReplacementSt
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/1449325-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewShouldChangeTextInRangeReplacementString(textView TextView, affectedCharRange foundation.Range, replacementString string) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRange:replacementString:"), objc.Ptr(textView), affectedCharRange, replacementString)
+	rv := objc.Call[bool](t_, objc.Sel("textView:shouldChangeTextInRange:replacementString:"), textView, affectedCharRange, replacementString)
 	return rv
 }
 
@@ -941,6 +941,6 @@ func (t_ TextViewDelegateObject) HasTextViewCandidatesForSelectedRange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextviewdelegate/2544744-textview?language=objc
 func (t_ TextViewDelegateObject) TextViewCandidatesForSelectedRange(textView TextView, selectedRange foundation.Range) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("textView:candidatesForSelectedRange:"), objc.Ptr(textView), selectedRange)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("textView:candidatesForSelectedRange:"), textView, selectedRange)
 	return rv
 }

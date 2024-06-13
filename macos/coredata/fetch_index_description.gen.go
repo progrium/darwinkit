@@ -125,5 +125,5 @@ func (f_ FetchIndexDescription) PartialIndexPredicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchindexdescription/2887058-partialindexpredicate?language=objc
 func (f_ FetchIndexDescription) SetPartialIndexPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](f_, objc.Sel("setPartialIndexPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setPartialIndexPredicate:"), value)
 }

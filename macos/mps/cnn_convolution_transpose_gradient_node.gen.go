@@ -35,7 +35,7 @@ func CNNConvolutionTransposeGradientNodeFrom(ptr unsafe.Pointer) CNNConvolutionT
 
 func (cc _CNNConvolutionTransposeGradientNodeClass) NodeWithSourceGradientSourceImageConvolutionTransposeGradientStateWeights(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState ICNNConvolutionTransposeGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeGradientNode {
 	po3 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:convolutionTransposeGradientState:weights:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), po3)
+	rv := objc.Call[CNNConvolutionTransposeGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:convolutionTransposeGradientState:weights:"), sourceGradient, sourceImage, gradientState, po3)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func CNNConvolutionTransposeGradientNode_NodeWithSourceGradientSourceImageConvol
 
 func (c_ CNNConvolutionTransposeGradientNode) InitWithSourceGradientSourceImageConvolutionTransposeGradientStateWeights(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState ICNNConvolutionTransposeGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeGradientNode {
 	po3 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:convolutionTransposeGradientState:weights:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), po3)
+	rv := objc.Call[CNNConvolutionTransposeGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:convolutionTransposeGradientState:weights:"), sourceGradient, sourceImage, gradientState, po3)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (c_ CNNConvolutionTransposeGradientNode) Init() CNNConvolutionTransposeGrad
 
 func (cc _CNNConvolutionTransposeGradientNodeClass) NodeWithSourceGradientSourceImageConvolutionGradientStateWeights(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState ICNNConvolutionGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeGradientNode {
 	po3 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:convolutionGradientState:weights:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), po3)
+	rv := objc.Call[CNNConvolutionTransposeGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:convolutionGradientState:weights:"), sourceGradient, sourceImage, gradientState, po3)
 	return rv
 }
 
@@ -96,7 +96,7 @@ func CNNConvolutionTransposeGradientNode_NodeWithSourceGradientSourceImageConvol
 
 func (c_ CNNConvolutionTransposeGradientNode) InitWithSourceGradientSourceImageConvolutionGradientStateWeights(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState ICNNConvolutionGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeGradientNode {
 	po3 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:convolutionGradientState:weights:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), po3)
+	rv := objc.Call[CNNConvolutionTransposeGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:convolutionGradientState:weights:"), sourceGradient, sourceImage, gradientState, po3)
 	return rv
 }
 

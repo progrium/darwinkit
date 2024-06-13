@@ -120,7 +120,7 @@ func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinato
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750294-playbackcoordinator?language=objc
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssueBufferingCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, bufferingCommand DelegatingPlaybackCoordinatorBufferingCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueBufferingCommand:completionHandler:"), objc.Ptr(coordinator), objc.Ptr(bufferingCommand), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueBufferingCommand:completionHandler:"), coordinator, bufferingCommand, completionHandler)
 }
 
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssueSeekCommandCompletionHandler() bool {
@@ -131,7 +131,7 @@ func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinato
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750298-playbackcoordinator?language=objc
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssueSeekCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, seekCommand DelegatingPlaybackCoordinatorSeekCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueSeekCommand:completionHandler:"), objc.Ptr(coordinator), objc.Ptr(seekCommand), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssueSeekCommand:completionHandler:"), coordinator, seekCommand, completionHandler)
 }
 
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssuePauseCommandCompletionHandler() bool {
@@ -142,7 +142,7 @@ func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinato
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750295-playbackcoordinator?language=objc
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssuePauseCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, pauseCommand DelegatingPlaybackCoordinatorPauseCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssuePauseCommand:completionHandler:"), objc.Ptr(coordinator), objc.Ptr(pauseCommand), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssuePauseCommand:completionHandler:"), coordinator, pauseCommand, completionHandler)
 }
 
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinatorDidIssuePlayCommandCompletionHandler() bool {
@@ -153,5 +153,5 @@ func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) HasPlaybackCoordinato
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplaybackcoordinatorplaybackcontroldelegate/3750296-playbackcoordinator?language=objc
 func (p_ PlaybackCoordinatorPlaybackControlDelegateObject) PlaybackCoordinatorDidIssuePlayCommandCompletionHandler(coordinator DelegatingPlaybackCoordinator, playCommand DelegatingPlaybackCoordinatorPlayCommand, completionHandler func()) {
-	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssuePlayCommand:completionHandler:"), objc.Ptr(coordinator), objc.Ptr(playCommand), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playbackCoordinator:didIssuePlayCommand:completionHandler:"), coordinator, playCommand, completionHandler)
 }

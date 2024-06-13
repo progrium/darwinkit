@@ -54,7 +54,7 @@ func (u_ UnitConcentrationMass) Init() UnitConcentrationMass {
 }
 
 func (u_ UnitConcentrationMass) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitConcentrationMass {
-	rv := objc.Call[UnitConcentrationMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitConcentrationMass](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

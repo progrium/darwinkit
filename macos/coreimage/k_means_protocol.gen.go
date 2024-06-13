@@ -27,11 +27,11 @@ type PKMeans interface {
 	HasCount() bool
 
 	// optional
-	SetPasses(value float64)
+	SetPasses(value float32)
 	HasSetPasses() bool
 
 	// optional
-	Passes() float64
+	Passes() float32
 	HasPasses() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (k_ KMeansObject) HasSetInputMeans() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547131-inputmeans?language=objc
 func (k_ KMeansObject) SetInputMeans(value Image) {
-	objc.Call[objc.Void](k_, objc.Sel("setInputMeans:"), objc.Ptr(value))
+	objc.Call[objc.Void](k_, objc.Sel("setInputMeans:"), value)
 }
 
 func (k_ KMeansObject) HasInputMeans() bool {
@@ -104,7 +104,7 @@ func (k_ KMeansObject) HasSetPasses() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
-func (k_ KMeansObject) SetPasses(value float64) {
+func (k_ KMeansObject) SetPasses(value float32) {
 	objc.Call[objc.Void](k_, objc.Sel("setPasses:"), value)
 }
 
@@ -115,8 +115,8 @@ func (k_ KMeansObject) HasPasses() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikmeans/3547132-passes?language=objc
-func (k_ KMeansObject) Passes() float64 {
-	rv := objc.Call[float64](k_, objc.Sel("passes"))
+func (k_ KMeansObject) Passes() float32 {
+	rv := objc.Call[float32](k_, objc.Sel("passes"))
 	return rv
 }
 

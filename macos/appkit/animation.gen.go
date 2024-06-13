@@ -42,9 +42,9 @@ type IAnimation interface {
 	SetAnimationCurve(value AnimationCurve)
 	AnimationBlockingMode() AnimationBlockingMode
 	SetAnimationBlockingMode(value AnimationBlockingMode)
-	CurrentValue() float64
-	FrameRate() float64
-	SetFrameRate(value float64)
+	CurrentValue() float32
+	FrameRate() float32
+	SetFrameRate(value float32)
 }
 
 // An object that manages the timing and progress of animations in the user interface. [Full Topic]
@@ -105,14 +105,14 @@ func (a_ Animation) ClearStartAnimation() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1530363-stopwhenanimation?language=objc
 func (a_ Animation) StopWhenAnimationReachesProgress(animation IAnimation, stopProgress AnimationProgress) {
-	objc.Call[objc.Void](a_, objc.Sel("stopWhenAnimation:reachesProgress:"), objc.Ptr(animation), stopProgress)
+	objc.Call[objc.Void](a_, objc.Sel("stopWhenAnimation:reachesProgress:"), animation, stopProgress)
 }
 
 // Starts running the animation represented by the receiver when another animation reaches a specific progress mark. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526774-startwhenanimation?language=objc
 func (a_ Animation) StartWhenAnimationReachesProgress(animation IAnimation, startProgress AnimationProgress) {
-	objc.Call[objc.Void](a_, objc.Sel("startWhenAnimation:reachesProgress:"), objc.Ptr(animation), startProgress)
+	objc.Call[objc.Void](a_, objc.Sel("startWhenAnimation:reachesProgress:"), animation, startProgress)
 }
 
 // Adds the progress mark to the receiver. [Full Topic]
@@ -209,7 +209,7 @@ func (a_ Animation) SetDelegate(value PAnimationDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1524439-delegate?language=objc
 func (a_ Animation) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The duration of the animation, in seconds. [Full Topic]
@@ -268,22 +268,22 @@ func (a_ Animation) SetAnimationBlockingMode(value AnimationBlockingMode) {
 // The current value of the animation effect, based on the current progress [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1531043-currentvalue?language=objc
-func (a_ Animation) CurrentValue() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("currentValue"))
+func (a_ Animation) CurrentValue() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("currentValue"))
 	return rv
 }
 
 // The number of frame updates per second to generate for the animation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
-func (a_ Animation) FrameRate() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("frameRate"))
+func (a_ Animation) FrameRate() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("frameRate"))
 	return rv
 }
 
 // The number of frame updates per second to generate for the animation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimation/1526694-framerate?language=objc
-func (a_ Animation) SetFrameRate(value float64) {
+func (a_ Animation) SetFrameRate(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setFrameRate:"), value)
 }

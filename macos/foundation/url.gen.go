@@ -18,28 +18,28 @@ type _URLClass struct {
 // An interface definition for the [URL] class.
 type IURL interface {
 	objc.IObject
-	CheckResourceIsReachableAndReturnError(error IError) bool
+	CheckResourceIsReachableAndReturnError(error unsafe.Pointer) bool
 	GetFileSystemRepresentationMaxLength(buffer *uint8, maxBufferLength uint) bool
 	StopAccessingSecurityScopedResource()
-	SetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool
+	SetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error unsafe.Pointer) bool
 	FileReferenceURL() URL
 	URLByAppendingPathComponentIsDirectory(pathComponent string, isDirectory bool) URL
-	GetPromisedItemResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool
+	GetPromisedItemResourceValueForKeyError(value unsafe.Pointer, key URLResourceKey, error unsafe.Pointer) bool
 	URLByAppendingPathComponent(pathComponent string) URL
-	PromisedItemResourceValuesForKeysError(keys []URLResourceKey, error IError) map[URLResourceKey]objc.Object
+	PromisedItemResourceValuesForKeysError(keys []URLResourceKey, error unsafe.Pointer) map[URLResourceKey]objc.Object
 	URLByAppendingPathExtensionForType(contentType objc.IObject) URL
-	SetResourceValuesError(keyedValues map[URLResourceKey]objc.IObject, error IError) bool
+	SetResourceValuesError(keyedValues map[URLResourceKey]objc.IObject, error unsafe.Pointer) bool
 	URLByAppendingPathComponentConformingToType(partialName string, contentType objc.IObject) URL
-	BookmarkDataWithOptionsIncludingResourceValuesForKeysRelativeToURLError(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error IError) []byte
-	GetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool
+	BookmarkDataWithOptionsIncludingResourceValuesForKeysRelativeToURLError(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error unsafe.Pointer) []byte
+	GetResourceValueForKeyError(value unsafe.Pointer, key URLResourceKey, error unsafe.Pointer) bool
 	WriteToPasteboard(pasteBoard objc.IObject)
 	SetTemporaryResourceValueForKey(value objc.IObject, key URLResourceKey)
 	RemoveAllCachedResourceValues()
 	StartAccessingSecurityScopedResource() bool
-	ResourceValuesForKeysError(keys []URLResourceKey, error IError) map[URLResourceKey]objc.Object
+	ResourceValuesForKeysError(keys []URLResourceKey, error unsafe.Pointer) map[URLResourceKey]objc.Object
 	URLByAppendingPathExtension(pathExtension string) URL
 	RemoveCachedResourceValueForKey(key URLResourceKey)
-	CheckPromisedItemIsReachableAndReturnError(error IError) bool
+	CheckPromisedItemIsReachableAndReturnError(error unsafe.Pointer) bool
 	IsFileReferenceURL() bool
 	PathComponents() []string
 	Path() string
@@ -84,7 +84,7 @@ func URLFrom(ptr unsafe.Pointer) URL {
 }
 
 func (u_ URL) InitWithStringRelativeToURL(URLString string, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initWithString:relativeToURL:"), URLString, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initWithString:relativeToURL:"), URLString, baseURL)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func NewURLWithStringRelativeToURL(URLString string, baseURL IURL) URL {
 }
 
 func (u_ URL) InitFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uint8, isDir bool, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, baseURL)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func NewURLFileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uin
 }
 
 func (u_ URL) InitAbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initAbsoluteURLWithDataRepresentation:relativeToURL:"), data, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initAbsoluteURLWithDataRepresentation:relativeToURL:"), data, baseURL)
 	return rv
 }
 
@@ -126,7 +126,7 @@ func NewURLAbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL I
 }
 
 func (u_ URL) InitFileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithPath:isDirectory:relativeToURL:"), path, isDir, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithPath:isDirectory:relativeToURL:"), path, isDir, baseURL)
 	return rv
 }
 
@@ -153,22 +153,22 @@ func NewURLFileURLWithPathIsDirectory(path string, isDir bool) URL {
 	return instance
 }
 
-func (u_ URL) InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, objc.Ptr(relativeURL), isStale, objc.Ptr(error))
+func (u_ URL) InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error unsafe.Pointer) URL {
+	rv := objc.Call[URL](u_, objc.Sel("initByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, relativeURL, isStale, error)
 	return rv
 }
 
 // Initializes a newly created NSURL that points to a location specified by resolving bookmark data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1413475-initbyresolvingbookmarkdata?language=objc
-func NewURLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
+func NewURLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error unsafe.Pointer) URL {
 	instance := URLClass.Alloc().InitByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData, options, relativeURL, isStale, error)
 	instance.Autorelease()
 	return instance
 }
 
 func (u_ URL) InitWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initWithDataRepresentation:relativeToURL:"), data, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initWithDataRepresentation:relativeToURL:"), data, baseURL)
 	return rv
 }
 
@@ -181,15 +181,15 @@ func NewURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
 	return instance
 }
 
-func (uc _URLClass) URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
-	rv := objc.Call[URL](uc, objc.Sel("URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, objc.Ptr(relativeURL), isStale, objc.Ptr(error))
+func (uc _URLClass) URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error unsafe.Pointer) URL {
+	rv := objc.Call[URL](uc, objc.Sel("URLByResolvingBookmarkData:options:relativeToURL:bookmarkDataIsStale:error:"), bookmarkData, options, relativeURL, isStale, error)
 	return rv
 }
 
 // Returns a new URL made by resolving bookmark data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1572035-urlbyresolvingbookmarkdata?language=objc
-func URL_URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error IError) URL {
+func URL_URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData []byte, options URLBookmarkResolutionOptions, relativeURL IURL, isStale *bool, error unsafe.Pointer) URL {
 	return URLClass.URLByResolvingBookmarkDataOptionsRelativeToURLBookmarkDataIsStaleError(bookmarkData, options, relativeURL, isStale, error)
 }
 
@@ -222,7 +222,7 @@ func NewURLFileURLWithPath(path string) URL {
 }
 
 func (uc _URLClass) URLWithStringRelativeToURL(URLString string, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("URLWithString:relativeToURL:"), URLString, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("URLWithString:relativeToURL:"), URLString, baseURL)
 	return rv
 }
 
@@ -245,20 +245,20 @@ func URL_URLWithString(URLString string) URL {
 	return URLClass.URLWithString(URLString)
 }
 
-func (uc _URLClass) URLByResolvingAliasFileAtURLOptionsError(url IURL, options URLBookmarkResolutionOptions, error IError) URL {
-	rv := objc.Call[URL](uc, objc.Sel("URLByResolvingAliasFileAtURL:options:error:"), objc.Ptr(url), options, objc.Ptr(error))
+func (uc _URLClass) URLByResolvingAliasFileAtURLOptionsError(url IURL, options URLBookmarkResolutionOptions, error unsafe.Pointer) URL {
+	rv := objc.Call[URL](uc, objc.Sel("URLByResolvingAliasFileAtURL:options:error:"), url, options, error)
 	return rv
 }
 
 // Returns a new URL made by resolving the alias file at url. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1416404-urlbyresolvingaliasfileaturl?language=objc
-func URL_URLByResolvingAliasFileAtURLOptionsError(url IURL, options URLBookmarkResolutionOptions, error IError) URL {
+func URL_URLByResolvingAliasFileAtURLOptionsError(url IURL, options URLBookmarkResolutionOptions, error unsafe.Pointer) URL {
 	return URLClass.URLByResolvingAliasFileAtURLOptionsError(url, options, error)
 }
 
 func (u_ URL) InitFileURLWithPathRelativeToURL(path string, baseURL IURL) URL {
-	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithPath:relativeToURL:"), path, objc.Ptr(baseURL))
+	rv := objc.Call[URL](u_, objc.Sel("initFileURLWithPath:relativeToURL:"), path, baseURL)
 	return rv
 }
 
@@ -294,8 +294,8 @@ func (u_ URL) Init() URL {
 // Returns whether the resource pointed to by a file URL can be reached. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1410597-checkresourceisreachableandretur?language=objc
-func (u_ URL) CheckResourceIsReachableAndReturnError(error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("checkResourceIsReachableAndReturnError:"), objc.Ptr(error))
+func (u_ URL) CheckResourceIsReachableAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("checkResourceIsReachableAndReturnError:"), error)
 	return rv
 }
 
@@ -333,7 +333,7 @@ func URL_FileURLWithPath(path string) URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1525106-urlfrompasteboard?language=objc
 func (uc _URLClass) URLFromPasteboard(pasteBoard objc.IObject) URL {
-	rv := objc.Call[URL](uc, objc.Sel("URLFromPasteboard:"), objc.Ptr(pasteBoard))
+	rv := objc.Call[URL](uc, objc.Sel("URLFromPasteboard:"), pasteBoard)
 	return rv
 }
 
@@ -362,8 +362,8 @@ func URL_FileURLWithPathIsDirectory(path string, isDir bool) URL {
 // Sets the URL’s resource property for a given key to a given value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1413819-setresourcevalue?language=objc
-func (u_ URL) SetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("setResourceValue:forKey:error:"), value, key, objc.Ptr(error))
+func (u_ URL) SetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("setResourceValue:forKey:error:"), value, key, error)
 	return rv
 }
 
@@ -378,15 +378,15 @@ func (u_ URL) FileReferenceURL() URL {
 // Creates an alias file on disk at a specified location with specified bookmark data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408532-writebookmarkdata?language=objc
-func (uc _URLClass) WriteBookmarkDataToURLOptionsError(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error IError) bool {
-	rv := objc.Call[bool](uc, objc.Sel("writeBookmarkData:toURL:options:error:"), bookmarkData, objc.Ptr(bookmarkFileURL), options, objc.Ptr(error))
+func (uc _URLClass) WriteBookmarkDataToURLOptionsError(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](uc, objc.Sel("writeBookmarkData:toURL:options:error:"), bookmarkData, bookmarkFileURL, options, error)
 	return rv
 }
 
 // Creates an alias file on disk at a specified location with specified bookmark data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408532-writebookmarkdata?language=objc
-func URL_WriteBookmarkDataToURLOptionsError(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error IError) bool {
+func URL_WriteBookmarkDataToURLOptionsError(bookmarkData []byte, bookmarkFileURL IURL, options URLBookmarkFileCreationOptions, error unsafe.Pointer) bool {
 	return URLClass.WriteBookmarkDataToURLOptionsError(bookmarkData, bookmarkFileURL, options, error)
 }
 
@@ -401,8 +401,8 @@ func (u_ URL) URLByAppendingPathComponentIsDirectory(pathComponent string, isDir
 // Returns the value of the resource property for the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1414238-getpromiseditemresourcevalue?language=objc
-func (u_ URL) GetPromisedItemResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("getPromisedItemResourceValue:forKey:error:"), value, key, objc.Ptr(error))
+func (u_ URL) GetPromisedItemResourceValueForKeyError(value unsafe.Pointer, key URLResourceKey, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("getPromisedItemResourceValue:forKey:error:"), value, key, error)
 	return rv
 }
 
@@ -410,7 +410,7 @@ func (u_ URL) GetPromisedItemResourceValueForKeyError(value objc.IObject, key UR
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1572042-urlwithdatarepresentation?language=objc
 func (uc _URLClass) URLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("URLWithDataRepresentation:relativeToURL:"), data, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("URLWithDataRepresentation:relativeToURL:"), data, baseURL)
 	return rv
 }
 
@@ -432,8 +432,8 @@ func (u_ URL) URLByAppendingPathComponent(pathComponent string) URL {
 // Returns the resource values for the properties identified by specified array of keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1407746-promiseditemresourcevaluesforkey?language=objc
-func (u_ URL) PromisedItemResourceValuesForKeysError(keys []URLResourceKey, error IError) map[URLResourceKey]objc.Object {
-	rv := objc.Call[map[URLResourceKey]objc.Object](u_, objc.Sel("promisedItemResourceValuesForKeys:error:"), keys, objc.Ptr(error))
+func (u_ URL) PromisedItemResourceValuesForKeysError(keys []URLResourceKey, error unsafe.Pointer) map[URLResourceKey]objc.Object {
+	rv := objc.Call[map[URLResourceKey]objc.Object](u_, objc.Sel("promisedItemResourceValuesForKeys:error:"), keys, error)
 	return rv
 }
 
@@ -456,15 +456,15 @@ func URL_ResourceValuesForKeysFromBookmarkData(keys []URLResourceKey, bookmarkDa
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/3584837-urlbyappendingpathextensionforty?language=objc
 func (u_ URL) URLByAppendingPathExtensionForType(contentType objc.IObject) URL {
-	rv := objc.Call[URL](u_, objc.Sel("URLByAppendingPathExtensionForType:"), objc.Ptr(contentType))
+	rv := objc.Call[URL](u_, objc.Sel("URLByAppendingPathExtensionForType:"), contentType)
 	return rv
 }
 
 // Sets the URL’s resource properties for a given set of keys to a given set of values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408208-setresourcevalues?language=objc
-func (u_ URL) SetResourceValuesError(keyedValues map[URLResourceKey]objc.IObject, error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("setResourceValues:error:"), keyedValues, objc.Ptr(error))
+func (u_ URL) SetResourceValuesError(keyedValues map[URLResourceKey]objc.IObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("setResourceValues:error:"), keyedValues, error)
 	return rv
 }
 
@@ -472,15 +472,15 @@ func (u_ URL) SetResourceValuesError(keyedValues map[URLResourceKey]objc.IObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/3564810-urlbyappendingpathcomponent?language=objc
 func (u_ URL) URLByAppendingPathComponentConformingToType(partialName string, contentType objc.IObject) URL {
-	rv := objc.Call[URL](u_, objc.Sel("URLByAppendingPathComponent:conformingToType:"), partialName, objc.Ptr(contentType))
+	rv := objc.Call[URL](u_, objc.Sel("URLByAppendingPathComponent:conformingToType:"), partialName, contentType)
 	return rv
 }
 
 // Returns a bookmark for the URL, created with specified options and resource values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1417795-bookmarkdatawithoptions?language=objc
-func (u_ URL) BookmarkDataWithOptionsIncludingResourceValuesForKeysRelativeToURLError(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error IError) []byte {
-	rv := objc.Call[[]byte](u_, objc.Sel("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:"), options, keys, objc.Ptr(relativeURL), objc.Ptr(error))
+func (u_ URL) BookmarkDataWithOptionsIncludingResourceValuesForKeysRelativeToURLError(options URLBookmarkCreationOptions, keys []URLResourceKey, relativeURL IURL, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](u_, objc.Sel("bookmarkDataWithOptions:includingResourceValuesForKeys:relativeToURL:error:"), options, keys, relativeURL, error)
 	return rv
 }
 
@@ -502,8 +502,8 @@ func URL_FileURLWithPathComponents(components []string) URL {
 // Returns the value of the resource property for the specified key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408874-getresourcevalue?language=objc
-func (u_ URL) GetResourceValueForKeyError(value objc.IObject, key URLResourceKey, error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("getResourceValue:forKey:error:"), value, key, objc.Ptr(error))
+func (u_ URL) GetResourceValueForKeyError(value unsafe.Pointer, key URLResourceKey, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("getResourceValue:forKey:error:"), value, key, error)
 	return rv
 }
 
@@ -511,7 +511,7 @@ func (u_ URL) GetResourceValueForKeyError(value objc.IObject, key URLResourceKey
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1413020-fileurlwithpath?language=objc
 func (uc _URLClass) FileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("fileURLWithPath:isDirectory:relativeToURL:"), path, isDir, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("fileURLWithPath:isDirectory:relativeToURL:"), path, isDir, baseURL)
 	return rv
 }
 
@@ -526,7 +526,7 @@ func URL_FileURLWithPathIsDirectoryRelativeToURL(path string, isDir bool, baseUR
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1412404-absoluteurlwithdatarepresentatio?language=objc
 func (uc _URLClass) AbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("absoluteURLWithDataRepresentation:relativeToURL:"), data, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("absoluteURLWithDataRepresentation:relativeToURL:"), data, baseURL)
 	return rv
 }
 
@@ -541,7 +541,7 @@ func URL_AbsoluteURLWithDataRepresentationRelativeToURL(data []byte, baseURL IUR
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1532980-writetopasteboard?language=objc
 func (u_ URL) WriteToPasteboard(pasteBoard objc.IObject) {
-	objc.Call[objc.Void](u_, objc.Sel("writeToPasteboard:"), objc.Ptr(pasteBoard))
+	objc.Call[objc.Void](u_, objc.Sel("writeToPasteboard:"), pasteBoard)
 }
 
 // Sets a temporary resource value on the URL object. [Full Topic]
@@ -555,7 +555,7 @@ func (u_ URL) SetTemporaryResourceValueForKey(value objc.IObject, key URLResourc
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1413201-fileurlwithpath?language=objc
 func (uc _URLClass) FileURLWithPathRelativeToURL(path string, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("fileURLWithPath:relativeToURL:"), path, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("fileURLWithPath:relativeToURL:"), path, baseURL)
 	return rv
 }
 
@@ -576,15 +576,15 @@ func (u_ URL) RemoveAllCachedResourceValues() {
 // Initializes and returns bookmark data derived from an alias file pointed to by a specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408344-bookmarkdatawithcontentsofurl?language=objc
-func (uc _URLClass) BookmarkDataWithContentsOfURLError(bookmarkFileURL IURL, error IError) []byte {
-	rv := objc.Call[[]byte](uc, objc.Sel("bookmarkDataWithContentsOfURL:error:"), objc.Ptr(bookmarkFileURL), objc.Ptr(error))
+func (uc _URLClass) BookmarkDataWithContentsOfURLError(bookmarkFileURL IURL, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](uc, objc.Sel("bookmarkDataWithContentsOfURL:error:"), bookmarkFileURL, error)
 	return rv
 }
 
 // Initializes and returns bookmark data derived from an alias file pointed to by a specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1408344-bookmarkdatawithcontentsofurl?language=objc
-func URL_BookmarkDataWithContentsOfURLError(bookmarkFileURL IURL, error IError) []byte {
+func URL_BookmarkDataWithContentsOfURLError(bookmarkFileURL IURL, error unsafe.Pointer) []byte {
 	return URLClass.BookmarkDataWithContentsOfURLError(bookmarkFileURL, error)
 }
 
@@ -599,8 +599,8 @@ func (u_ URL) StartAccessingSecurityScopedResource() bool {
 // Returns the resource values for the properties identified by specified array of keys. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1417657-resourcevaluesforkeys?language=objc
-func (u_ URL) ResourceValuesForKeysError(keys []URLResourceKey, error IError) map[URLResourceKey]objc.Object {
-	rv := objc.Call[map[URLResourceKey]objc.Object](u_, objc.Sel("resourceValuesForKeys:error:"), keys, objc.Ptr(error))
+func (u_ URL) ResourceValuesForKeysError(keys []URLResourceKey, error unsafe.Pointer) map[URLResourceKey]objc.Object {
+	rv := objc.Call[map[URLResourceKey]objc.Object](u_, objc.Sel("resourceValuesForKeys:error:"), keys, error)
 	return rv
 }
 
@@ -622,8 +622,8 @@ func (u_ URL) RemoveCachedResourceValueForKey(key URLResourceKey) {
 // Returns whether the promised item can be reached. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1410411-checkpromiseditemisreachableandr?language=objc
-func (u_ URL) CheckPromisedItemIsReachableAndReturnError(error IError) bool {
-	rv := objc.Call[bool](u_, objc.Sel("checkPromisedItemIsReachableAndReturnError:"), objc.Ptr(error))
+func (u_ URL) CheckPromisedItemIsReachableAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](u_, objc.Sel("checkPromisedItemIsReachableAndReturnError:"), error)
 	return rv
 }
 
@@ -639,7 +639,7 @@ func (u_ URL) IsFileReferenceURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurl/1411492-fileurlwithfilesystemrepresentat?language=objc
 func (uc _URLClass) FileURLWithFileSystemRepresentationIsDirectoryRelativeToURL(path *uint8, isDir bool, baseURL IURL) URL {
-	rv := objc.Call[URL](uc, objc.Sel("fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, objc.Ptr(baseURL))
+	rv := objc.Call[URL](uc, objc.Sel("fileURLWithFileSystemRepresentation:isDirectory:relativeToURL:"), path, isDir, baseURL)
 	return rv
 }
 

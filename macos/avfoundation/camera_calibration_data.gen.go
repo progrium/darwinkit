@@ -20,7 +20,7 @@ type _CameraCalibrationDataClass struct {
 // An interface definition for the [CameraCalibrationData] class.
 type ICameraCalibrationData interface {
 	objc.IObject
-	PixelSize() float64
+	PixelSize() float32
 	IntrinsicMatrix() kernel.Matrix_float3x3
 	InverseLensDistortionLookupTable() []byte
 	LensDistortionCenter() coregraphics.Point
@@ -65,8 +65,8 @@ func (c_ CameraCalibrationData) Init() CameraCalibrationData {
 // The size, in millimeters, of one image pixel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcameracalibrationdata/2881128-pixelsize?language=objc
-func (c_ CameraCalibrationData) PixelSize() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("pixelSize"))
+func (c_ CameraCalibrationData) PixelSize() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("pixelSize"))
 	return rv
 }
 

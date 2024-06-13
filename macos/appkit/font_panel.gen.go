@@ -62,7 +62,7 @@ func (f_ FontPanel) Init() FontPanel {
 }
 
 func (fc _FontPanelClass) WindowWithContentViewController(contentViewController IViewController) FontPanel {
-	rv := objc.Call[FontPanel](fc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[FontPanel](fc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func FontPanel_WindowWithContentViewController(contentViewController IViewContro
 }
 
 func (f_ FontPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) FontPanel {
-	rv := objc.Call[FontPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[FontPanel](f_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -112,14 +112,14 @@ func (f_ FontPanel) ReloadDefaultFontFamilies() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1532648-setpanelfont?language=objc
 func (f_ FontPanel) SetPanelFontIsMultiple(fontObj IFont, flag bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setPanelFont:isMultiple:"), objc.Ptr(fontObj), flag)
+	objc.Call[objc.Void](f_, objc.Sel("setPanelFont:isMultiple:"), fontObj, flag)
 }
 
 // Converts the specified font using the settings in the receiver, with the aid of the shared NSFontManager if necessary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535338-panelconvertfont?language=objc
 func (f_ FontPanel) PanelConvertFont(fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("panelConvertFont:"), objc.Ptr(fontObj))
+	rv := objc.Call[Font](f_, objc.Sel("panelConvertFont:"), fontObj)
 	return rv
 }
 
@@ -180,5 +180,5 @@ func (f_ FontPanel) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontpanel/1535927-accessoryview?language=objc
 func (f_ FontPanel) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](f_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setAccessoryView:"), value)
 }

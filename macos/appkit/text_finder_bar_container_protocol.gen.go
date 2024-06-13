@@ -74,7 +74,7 @@ func (t_ TextFinderBarContainerObject) HasSetFindBarView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfinderbarcontainer/1531692-findbarview?language=objc
 func (t_ TextFinderBarContainerObject) SetFindBarView(value View) {
-	objc.Call[objc.Void](t_, objc.Sel("setFindBarView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFindBarView:"), value)
 }
 
 func (t_ TextFinderBarContainerObject) HasFindBarView() bool {

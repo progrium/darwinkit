@@ -44,7 +44,7 @@ func CoreDataCoreSpotlightDelegateFrom(ptr unsafe.Pointer) CoreDataCoreSpotlight
 }
 
 func (c_ CoreDataCoreSpotlightDelegate) InitForStoreWithDescriptionCoordinator(description IPersistentStoreDescription, psc IPersistentStoreCoordinator) CoreDataCoreSpotlightDelegate {
-	rv := objc.Call[CoreDataCoreSpotlightDelegate](c_, objc.Sel("initForStoreWithDescription:coordinator:"), objc.Ptr(description), objc.Ptr(psc))
+	rv := objc.Call[CoreDataCoreSpotlightDelegate](c_, objc.Sel("initForStoreWithDescription:coordinator:"), description, psc)
 	return rv
 }
 
@@ -103,14 +103,14 @@ func (c_ CoreDataCoreSpotlightDelegate) StopSpotlightIndexing() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897201-searchableindex?language=objc
 func (c_ CoreDataCoreSpotlightDelegate) SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex objc.IObject, acknowledgementHandler func()) {
-	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexAllSearchableItemsWithAcknowledgementHandler:"), objc.Ptr(searchableIndex), acknowledgementHandler)
+	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexAllSearchableItemsWithAcknowledgementHandler:"), searchableIndex, acknowledgementHandler)
 }
 
 // Returns the searchable attributes for the specified managed object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897197-attributesetforobject?language=objc
 func (c_ CoreDataCoreSpotlightDelegate) AttributeSetForObject(object IManagedObject) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("attributeSetForObject:"), objc.Ptr(object))
+	rv := objc.Call[objc.Object](c_, objc.Sel("attributeSetForObject:"), object)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (c_ CoreDataCoreSpotlightDelegate) DeleteSpotlightIndexWithCompletionHandle
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nscoredatacorespotlightdelegate/2897198-searchableindex?language=objc
 func (c_ CoreDataCoreSpotlightDelegate) SearchableIndexReindexSearchableItemsWithIdentifiersAcknowledgementHandler(searchableIndex objc.IObject, identifiers []string, acknowledgementHandler func()) {
-	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexSearchableItemsWithIdentifiers:acknowledgementHandler:"), objc.Ptr(searchableIndex), identifiers, acknowledgementHandler)
+	objc.Call[objc.Void](c_, objc.Sel("searchableIndex:reindexSearchableItemsWithIdentifiers:acknowledgementHandler:"), searchableIndex, identifiers, acknowledgementHandler)
 }
 
 // Returns the domain identifier. [Full Topic]

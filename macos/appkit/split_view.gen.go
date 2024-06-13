@@ -127,7 +127,7 @@ func (s_ SplitView) SetHoldingPriorityForSubviewAtIndex(priority LayoutPriority,
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455271-removearrangedsubview?language=objc
 func (s_ SplitView) RemoveArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("removeArrangedSubview:"), view)
 }
 
 // Returns the minimum possible position of the divider at the specified index. [Full Topic]
@@ -156,14 +156,14 @@ func (s_ SplitView) SetPositionOfDividerAtIndex(position float64, dividerIndex i
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455295-addarrangedsubview?language=objc
 func (s_ SplitView) AddArrangedSubview(view IView) {
-	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("addArrangedSubview:"), view)
 }
 
 // Returns whether the specified view is in a collapsed state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455311-issubviewcollapsed?language=objc
 func (s_ SplitView) IsSubviewCollapsed(subview IView) bool {
-	rv := objc.Call[bool](s_, objc.Sel("isSubviewCollapsed:"), objc.Ptr(subview))
+	rv := objc.Call[bool](s_, objc.Sel("isSubviewCollapsed:"), subview)
 	return rv
 }
 
@@ -171,7 +171,7 @@ func (s_ SplitView) IsSubviewCollapsed(subview IView) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455321-insertarrangedsubview?language=objc
 func (s_ SplitView) InsertArrangedSubviewAtIndex(view IView, index int) {
-	objc.Call[objc.Void](s_, objc.Sel("insertArrangedSubview:atIndex:"), objc.Ptr(view), index)
+	objc.Call[objc.Void](s_, objc.Sel("insertArrangedSubview:atIndex:"), view, index)
 }
 
 // The color of the dividers that the split view draws between subviews. [Full Topic]
@@ -249,7 +249,7 @@ func (s_ SplitView) SetDelegate(value PSplitViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssplitview/1455306-delegate?language=objc
 func (s_ SplitView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that determines whether the split view arranges all of its subviews as split panes. [Full Topic]

@@ -39,7 +39,7 @@ func CNNLossLabelsFrom(ptr unsafe.Pointer) CNNLossLabels {
 
 func (c_ CNNLossLabels) InitWithDeviceLossImageSizeLabelsDescriptorWeightsDescriptor(device metal.PDevice, lossImageSize metal.Size, labelsDescriptor ICNNLossDataDescriptor, weightsDescriptor ICNNLossDataDescriptor) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:lossImageSize:labelsDescriptor:weightsDescriptor:"), po0, lossImageSize, objc.Ptr(labelsDescriptor), objc.Ptr(weightsDescriptor))
+	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:lossImageSize:labelsDescriptor:weightsDescriptor:"), po0, lossImageSize, labelsDescriptor, weightsDescriptor)
 	return rv
 }
 
@@ -54,7 +54,7 @@ func NewCNNLossLabelsWithDeviceLossImageSizeLabelsDescriptorWeightsDescriptor(de
 
 func (c_ CNNLossLabels) InitWithDeviceLossImageSizeLabelsImageWeightsImage(device metal.PDevice, lossImageSize metal.Size, labelsImage IImage, weightsImage IImage) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:lossImageSize:labelsImage:weightsImage:"), po0, lossImageSize, objc.Ptr(labelsImage), objc.Ptr(weightsImage))
+	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:lossImageSize:labelsImage:weightsImage:"), po0, lossImageSize, labelsImage, weightsImage)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NewCNNLossLabelsWithDeviceLossImageSizeLabelsImageWeightsImage(device metal
 
 func (c_ CNNLossLabels) InitWithDeviceLabelsDescriptor(device metal.PDevice, labelsDescriptor ICNNLossDataDescriptor) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:labelsDescriptor:"), po0, objc.Ptr(labelsDescriptor))
+	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:labelsDescriptor:"), po0, labelsDescriptor)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (c_ CNNLossLabels) Init() CNNLossLabels {
 
 func (cc _CNNLossLabelsClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNLossLabels](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNLossLabels](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func CNNLossLabels_TemporaryStateWithCommandBufferResourceList(commandBuffer met
 
 func (c_ CNNLossLabels) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func CNNLossLabels_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) 
 
 func (cc _CNNLossLabelsClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNLossLabels](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNLossLabels](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -215,7 +215,7 @@ func CNNLossLabels_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal
 
 func (c_ CNNLossLabels) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNLossLabels {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNLossLabels](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

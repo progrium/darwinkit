@@ -98,7 +98,7 @@ func NewColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1532199-writetopasteboard?language=objc
 func (c_ Color) WriteToPasteboard(pasteBoard IPasteboard) {
-	objc.Call[objc.Void](c_, objc.Sel("writeToPasteboard:"), objc.Ptr(pasteBoard))
+	objc.Call[objc.Void](c_, objc.Sel("writeToPasteboard:"), pasteBoard)
 }
 
 // Returns the color object’s RGB component and opacity values in the respective arguments. [Full Topic]
@@ -179,7 +179,7 @@ func Color_ColorWithDeviceHueSaturationBrightnessAlpha(hue float64, saturation f
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1535057-colorfrompasteboard?language=objc
 func (cc _ColorClass) ColorFromPasteboard(pasteBoard IPasteboard) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorFromPasteboard:"), objc.Ptr(pasteBoard))
+	rv := objc.Call[Color](cc, objc.Sel("colorFromPasteboard:"), pasteBoard)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (c_ Color) GetHueSaturationBrightnessAlpha(hue *float64, saturation *float6
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1527379-colorusingcolorspace?language=objc
 func (c_ Color) ColorUsingColorSpace(space IColorSpace) Color {
-	rv := objc.Call[Color](c_, objc.Sel("colorUsingColorSpace:"), objc.Ptr(space))
+	rv := objc.Call[Color](c_, objc.Sel("colorUsingColorSpace:"), space)
 	return rv
 }
 
@@ -239,7 +239,7 @@ func Color_ColorWithCGColor(cgColor coregraphics.ColorRef) Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1533762-colorwithcolorspace?language=objc
 func (cc _ColorClass) ColorWithColorSpaceComponentsCount(space IColorSpace, components *float64, numberOfComponents int) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithColorSpace:components:count:"), objc.Ptr(space), components, numberOfComponents)
+	rv := objc.Call[Color](cc, objc.Sel("colorWithColorSpace:components:count:"), space, components, numberOfComponents)
 	return rv
 }
 
@@ -254,7 +254,7 @@ func Color_ColorWithColorSpaceComponentsCount(space IColorSpace, components *flo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1524689-blendedcolorwithfraction?language=objc
 func (c_ Color) BlendedColorWithFractionOfColor(fraction float64, color IColor) Color {
-	rv := objc.Call[Color](c_, objc.Sel("blendedColorWithFraction:ofColor:"), fraction, objc.Ptr(color))
+	rv := objc.Call[Color](c_, objc.Sel("blendedColorWithFraction:ofColor:"), fraction, color)
 	return rv
 }
 
@@ -299,7 +299,7 @@ func Color_ColorWithDeviceRedGreenBlueAlpha(red float64, green float64, blue flo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/2876294-colornamed?language=objc
 func (cc _ColorClass) ColorNamedBundle(name ColorName, bundle foundation.IBundle) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorNamed:bundle:"), name, objc.Ptr(bundle))
+	rv := objc.Call[Color](cc, objc.Sel("colorNamed:bundle:"), name, bundle)
 	return rv
 }
 
@@ -389,7 +389,7 @@ func Color_ColorWithCalibratedWhiteAlpha(white float64, alpha float64) Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1527422-colorwithpatternimage?language=objc
 func (cc _ColorClass) ColorWithPatternImage(image IImage) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithPatternImage:"), objc.Ptr(image))
+	rv := objc.Call[Color](cc, objc.Sel("colorWithPatternImage:"), image)
 	return rv
 }
 
@@ -419,7 +419,7 @@ func Color_ColorWithGenericGamma22WhiteAlpha(white float64, alpha float64) Color
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1525446-colorwithcicolor?language=objc
 func (cc _ColorClass) ColorWithCIColor(color coreimage.IColor) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithCIColor:"), objc.Ptr(color))
+	rv := objc.Call[Color](cc, objc.Sel("colorWithCIColor:"), color)
 	return rv
 }
 
@@ -554,7 +554,7 @@ func (c_ Color) ColorWithSystemEffect(systemEffect ColorSystemEffect) Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolor/1644595-colorwithcolorspace?language=objc
 func (cc _ColorClass) ColorWithColorSpaceHueSaturationBrightnessAlpha(space IColorSpace, hue float64, saturation float64, brightness float64, alpha float64) Color {
-	rv := objc.Call[Color](cc, objc.Sel("colorWithColorSpace:hue:saturation:brightness:alpha:"), objc.Ptr(space), hue, saturation, brightness, alpha)
+	rv := objc.Call[Color](cc, objc.Sel("colorWithColorSpace:hue:saturation:brightness:alpha:"), space, hue, saturation, brightness, alpha)
 	return rv
 }
 

@@ -80,14 +80,14 @@ func CaptureAudioFileOutput_AvailableOutputFileTypes() []FileType {
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiofileoutput/1387420-startrecordingtooutputfileurl?language=objc
 func (c_ CaptureAudioFileOutput) StartRecordingToOutputFileURLOutputFileTypeRecordingDelegate(outputFileURL foundation.IURL, fileType FileType, delegate PCaptureFileOutputRecordingDelegate) {
 	po2 := objc.WrapAsProtocol("AVCaptureFileOutputRecordingDelegate", delegate)
-	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:outputFileType:recordingDelegate:"), objc.Ptr(outputFileURL), fileType, po2)
+	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:outputFileType:recordingDelegate:"), outputFileURL, fileType, po2)
 }
 
 // Tells the receiver to start recording to a new file of the specified format, and specifies a delegate that will be notified when recording is finished. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptureaudiofileoutput/1387420-startrecordingtooutputfileurl?language=objc
 func (c_ CaptureAudioFileOutput) StartRecordingToOutputFileURLOutputFileTypeRecordingDelegateObject(outputFileURL foundation.IURL, fileType FileType, delegateObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:outputFileType:recordingDelegate:"), objc.Ptr(outputFileURL), fileType, objc.Ptr(delegateObject))
+	objc.Call[objc.Void](c_, objc.Sel("startRecordingToOutputFileURL:outputFileType:recordingDelegate:"), outputFileURL, fileType, delegateObject)
 }
 
 // The settings used to decode or re-encode audio before it is output by the receiver. [Full Topic]

@@ -145,7 +145,7 @@ func NewColorWithRedGreenBlue(r float64, g float64, b float64) Color {
 }
 
 func (c_ Color) InitWithColor(color objc.IObject) Color {
-	rv := objc.Call[Color](c_, objc.Sel("initWithColor:"), objc.Ptr(color))
+	rv := objc.Call[Color](c_, objc.Sel("initWithColor:"), color)
 	return rv
 }
 

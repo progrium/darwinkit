@@ -54,7 +54,7 @@ func (n_ NNReductionColumnMinNode) Init() NNReductionColumnMinNode {
 }
 
 func (nc _NNReductionColumnMinNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionColumnMinNode {
-	rv := objc.Call[NNReductionColumnMinNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionColumnMinNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionColumnMinNode_NodeWithSource(sourceNode INNImageNode) NNReductio
 }
 
 func (n_ NNReductionColumnMinNode) InitWithSource(sourceNode INNImageNode) NNReductionColumnMinNode {
-	rv := objc.Call[NNReductionColumnMinNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionColumnMinNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

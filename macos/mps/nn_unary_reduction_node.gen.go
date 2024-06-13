@@ -37,7 +37,7 @@ func NNUnaryReductionNodeFrom(ptr unsafe.Pointer) NNUnaryReductionNode {
 }
 
 func (nc _NNUnaryReductionNodeClass) NodeWithSource(sourceNode INNImageNode) NNUnaryReductionNode {
-	rv := objc.Call[NNUnaryReductionNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNUnaryReductionNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func NNUnaryReductionNode_NodeWithSource(sourceNode INNImageNode) NNUnaryReducti
 }
 
 func (n_ NNUnaryReductionNode) InitWithSource(sourceNode INNImageNode) NNUnaryReductionNode {
-	rv := objc.Call[NNUnaryReductionNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNUnaryReductionNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

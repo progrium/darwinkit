@@ -67,5 +67,5 @@ func (b_ BlitPassSampleBufferAttachmentDescriptorArray) ObjectAtIndexedSubscript
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptorarray/3564429-setobject?language=objc
 func (b_ BlitPassSampleBufferAttachmentDescriptorArray) SetObjectAtIndexedSubscript(attachment IBlitPassSampleBufferAttachmentDescriptor, attachmentIndex uint) {
-	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(attachment), attachmentIndex)
+	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), attachment, attachmentIndex)
 }

@@ -48,7 +48,7 @@ func (u_ URLSchemeTaskObject) HasDidReceiveResponse() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890839-didreceiveresponse?language=objc
 func (u_ URLSchemeTaskObject) DidReceiveResponse(response foundation.URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("didReceiveResponse:"), objc.Ptr(response))
+	objc.Call[objc.Void](u_, objc.Sel("didReceiveResponse:"), response)
 }
 
 func (u_ URLSchemeTaskObject) HasDidReceiveData() bool {
@@ -81,7 +81,7 @@ func (u_ URLSchemeTaskObject) HasDidFailWithError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkurlschemetask/2890841-didfailwitherror?language=objc
 func (u_ URLSchemeTaskObject) DidFailWithError(error foundation.Error) {
-	objc.Call[objc.Void](u_, objc.Sel("didFailWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("didFailWithError:"), error)
 }
 
 func (u_ URLSchemeTaskObject) HasRequest() bool {

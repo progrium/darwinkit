@@ -46,7 +46,7 @@ func VectorFrom(ptr unsafe.Pointer) Vector {
 
 func (v_ Vector) InitWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, descriptor IVectorDescriptor) Vector {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Vector](v_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, objc.Ptr(descriptor))
+	rv := objc.Call[Vector](v_, objc.Sel("initWithBuffer:offset:descriptor:"), po0, offset, descriptor)
 	return rv
 }
 
@@ -61,7 +61,7 @@ func NewVectorWithBufferOffsetDescriptor(buffer metal.PBuffer, offset uint, desc
 
 func (v_ Vector) InitWithDeviceDescriptor(device metal.PDevice, descriptor IVectorDescriptor) Vector {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[Vector](v_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[Vector](v_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func NewVectorWithDeviceDescriptor(device metal.PDevice, descriptor IVectorDescr
 
 func (v_ Vector) InitWithBufferDescriptor(buffer metal.PBuffer, descriptor IVectorDescriptor) Vector {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffer)
-	rv := objc.Call[Vector](v_, objc.Sel("initWithBuffer:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[Vector](v_, objc.Sel("initWithBuffer:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (v_ Vector) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsvector/2942568-synchronizeoncommandbuffer?language=objc
 func (v_ Vector) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](v_, objc.Sel("synchronizeOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](v_, objc.Sel("synchronizeOnCommandBuffer:"), commandBufferObject)
 }
 
 //	[Full Topic]

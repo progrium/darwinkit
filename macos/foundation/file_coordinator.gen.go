@@ -18,16 +18,16 @@ type _FileCoordinatorClass struct {
 // An interface definition for the [FileCoordinator] class.
 type IFileCoordinator interface {
 	objc.IObject
-	CoordinateWritingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(url1 IURL, options1 FileCoordinatorWritingOptions, url2 IURL, options2 FileCoordinatorWritingOptions, outError IError, writer func(newURL1 URL, newURL2 URL))
+	CoordinateWritingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(url1 IURL, options1 FileCoordinatorWritingOptions, url2 IURL, options2 FileCoordinatorWritingOptions, outError unsafe.Pointer, writer func(newURL1 URL, newURL2 URL))
 	ItemAtURLDidChangeUbiquityAttributes(url IURL, attributes ISet)
 	ItemAtURLWillMoveToURL(oldURL IURL, newURL IURL)
 	Cancel()
-	CoordinateReadingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(readingURL IURL, readingOptions FileCoordinatorReadingOptions, writingURL IURL, writingOptions FileCoordinatorWritingOptions, outError IError, readerWriter func(newReadingURL URL, newWritingURL URL))
-	PrepareForReadingItemsAtURLsOptionsWritingItemsAtURLsOptionsErrorByAccessor(readingURLs []IURL, readingOptions FileCoordinatorReadingOptions, writingURLs []IURL, writingOptions FileCoordinatorWritingOptions, outError IError, batchAccessor func(arg0 func()))
+	CoordinateReadingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(readingURL IURL, readingOptions FileCoordinatorReadingOptions, writingURL IURL, writingOptions FileCoordinatorWritingOptions, outError unsafe.Pointer, readerWriter func(newReadingURL URL, newWritingURL URL))
+	PrepareForReadingItemsAtURLsOptionsWritingItemsAtURLsOptionsErrorByAccessor(readingURLs []IURL, readingOptions FileCoordinatorReadingOptions, writingURLs []IURL, writingOptions FileCoordinatorWritingOptions, outError unsafe.Pointer, batchAccessor func(arg0 func()))
 	CoordinateAccessWithIntentsQueueByAccessor(intents []IFileAccessIntent, queue IOperationQueue, accessor func(error Error))
 	ItemAtURLDidMoveToURL(oldURL IURL, newURL IURL)
-	CoordinateWritingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorWritingOptions, outError IError, writer func(newURL URL))
-	CoordinateReadingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorReadingOptions, outError IError, reader func(newURL URL))
+	CoordinateWritingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorWritingOptions, outError unsafe.Pointer, writer func(newURL URL))
+	CoordinateReadingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorReadingOptions, outError unsafe.Pointer, reader func(newURL URL))
 	PurposeIdentifier() string
 	SetPurposeIdentifier(value string)
 }
@@ -83,15 +83,15 @@ func (f_ FileCoordinator) Init() FileCoordinator {
 // Initiates a write operation that involves a secondary write operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1408970-coordinatewritingitematurl?language=objc
-func (f_ FileCoordinator) CoordinateWritingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(url1 IURL, options1 FileCoordinatorWritingOptions, url2 IURL, options2 FileCoordinatorWritingOptions, outError IError, writer func(newURL1 URL, newURL2 URL)) {
-	objc.Call[objc.Void](f_, objc.Sel("coordinateWritingItemAtURL:options:writingItemAtURL:options:error:byAccessor:"), objc.Ptr(url1), options1, objc.Ptr(url2), options2, objc.Ptr(outError), writer)
+func (f_ FileCoordinator) CoordinateWritingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(url1 IURL, options1 FileCoordinatorWritingOptions, url2 IURL, options2 FileCoordinatorWritingOptions, outError unsafe.Pointer, writer func(newURL1 URL, newURL2 URL)) {
+	objc.Call[objc.Void](f_, objc.Sel("coordinateWritingItemAtURL:options:writingItemAtURL:options:error:byAccessor:"), url1, options1, url2, options2, outError, writer)
 }
 
 // Tells observing file providers that the item's ubiquity attributes have changed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/2909000-itematurl?language=objc
 func (f_ FileCoordinator) ItemAtURLDidChangeUbiquityAttributes(url IURL, attributes ISet) {
-	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:didChangeUbiquityAttributes:"), objc.Ptr(url), objc.Ptr(attributes))
+	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:didChangeUbiquityAttributes:"), url, attributes)
 }
 
 // Registers the specified file presenter object so that it can receive notifications. [Full Topic]
@@ -113,7 +113,7 @@ func FileCoordinator_AddFilePresenter(filePresenter PFilePresenter) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1408668-itematurl?language=objc
 func (f_ FileCoordinator) ItemAtURLWillMoveToURL(oldURL IURL, newURL IURL) {
-	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:willMoveToURL:"), objc.Ptr(oldURL), objc.Ptr(newURL))
+	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:willMoveToURL:"), oldURL, newURL)
 }
 
 // Cancels any active file coordination calls. [Full Topic]
@@ -126,22 +126,22 @@ func (f_ FileCoordinator) Cancel() {
 // Initiates a read operation that contains a follow-up write operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1413385-coordinatereadingitematurl?language=objc
-func (f_ FileCoordinator) CoordinateReadingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(readingURL IURL, readingOptions FileCoordinatorReadingOptions, writingURL IURL, writingOptions FileCoordinatorWritingOptions, outError IError, readerWriter func(newReadingURL URL, newWritingURL URL)) {
-	objc.Call[objc.Void](f_, objc.Sel("coordinateReadingItemAtURL:options:writingItemAtURL:options:error:byAccessor:"), objc.Ptr(readingURL), readingOptions, objc.Ptr(writingURL), writingOptions, objc.Ptr(outError), readerWriter)
+func (f_ FileCoordinator) CoordinateReadingItemAtURLOptionsWritingItemAtURLOptionsErrorByAccessor(readingURL IURL, readingOptions FileCoordinatorReadingOptions, writingURL IURL, writingOptions FileCoordinatorWritingOptions, outError unsafe.Pointer, readerWriter func(newReadingURL URL, newWritingURL URL)) {
+	objc.Call[objc.Void](f_, objc.Sel("coordinateReadingItemAtURL:options:writingItemAtURL:options:error:byAccessor:"), readingURL, readingOptions, writingURL, writingOptions, outError, readerWriter)
 }
 
 // Prepare to read or write from multiple files in a single batch operation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1412420-prepareforreadingitemsaturls?language=objc
-func (f_ FileCoordinator) PrepareForReadingItemsAtURLsOptionsWritingItemsAtURLsOptionsErrorByAccessor(readingURLs []IURL, readingOptions FileCoordinatorReadingOptions, writingURLs []IURL, writingOptions FileCoordinatorWritingOptions, outError IError, batchAccessor func(arg0 func())) {
-	objc.Call[objc.Void](f_, objc.Sel("prepareForReadingItemsAtURLs:options:writingItemsAtURLs:options:error:byAccessor:"), readingURLs, readingOptions, writingURLs, writingOptions, objc.Ptr(outError), batchAccessor)
+func (f_ FileCoordinator) PrepareForReadingItemsAtURLsOptionsWritingItemsAtURLsOptionsErrorByAccessor(readingURLs []IURL, readingOptions FileCoordinatorReadingOptions, writingURLs []IURL, writingOptions FileCoordinatorWritingOptions, outError unsafe.Pointer, batchAccessor func(arg0 func())) {
+	objc.Call[objc.Void](f_, objc.Sel("prepareForReadingItemsAtURLs:options:writingItemsAtURLs:options:error:byAccessor:"), readingURLs, readingOptions, writingURLs, writingOptions, outError, batchAccessor)
 }
 
 // Performs a number of coordinated-read or -write operations asynchronously. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1411533-coordinateaccesswithintents?language=objc
 func (f_ FileCoordinator) CoordinateAccessWithIntentsQueueByAccessor(intents []IFileAccessIntent, queue IOperationQueue, accessor func(error Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("coordinateAccessWithIntents:queue:byAccessor:"), intents, objc.Ptr(queue), accessor)
+	objc.Call[objc.Void](f_, objc.Sel("coordinateAccessWithIntents:queue:byAccessor:"), intents, queue, accessor)
 }
 
 // Unregisters the specified file presenter object. [Full Topic]
@@ -163,21 +163,21 @@ func FileCoordinator_RemoveFilePresenter(filePresenter PFilePresenter) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1410328-itematurl?language=objc
 func (f_ FileCoordinator) ItemAtURLDidMoveToURL(oldURL IURL, newURL IURL) {
-	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:didMoveToURL:"), objc.Ptr(oldURL), objc.Ptr(newURL))
+	objc.Call[objc.Void](f_, objc.Sel("itemAtURL:didMoveToURL:"), oldURL, newURL)
 }
 
 // Initiates a write operation on a single file or directory using the specified options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1413344-coordinatewritingitematurl?language=objc
-func (f_ FileCoordinator) CoordinateWritingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorWritingOptions, outError IError, writer func(newURL URL)) {
-	objc.Call[objc.Void](f_, objc.Sel("coordinateWritingItemAtURL:options:error:byAccessor:"), objc.Ptr(url), options, objc.Ptr(outError), writer)
+func (f_ FileCoordinator) CoordinateWritingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorWritingOptions, outError unsafe.Pointer, writer func(newURL URL)) {
+	objc.Call[objc.Void](f_, objc.Sel("coordinateWritingItemAtURL:options:error:byAccessor:"), url, options, outError, writer)
 }
 
 // Initiates a read operation on a single file or directory using the specified options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilecoordinator/1407416-coordinatereadingitematurl?language=objc
-func (f_ FileCoordinator) CoordinateReadingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorReadingOptions, outError IError, reader func(newURL URL)) {
-	objc.Call[objc.Void](f_, objc.Sel("coordinateReadingItemAtURL:options:error:byAccessor:"), objc.Ptr(url), options, objc.Ptr(outError), reader)
+func (f_ FileCoordinator) CoordinateReadingItemAtURLOptionsErrorByAccessor(url IURL, options FileCoordinatorReadingOptions, outError unsafe.Pointer, reader func(newURL URL)) {
+	objc.Call[objc.Void](f_, objc.Sel("coordinateReadingItemAtURL:options:error:byAccessor:"), url, options, outError, reader)
 }
 
 // Returns an array containing the currently registered file presenter objects. [Full Topic]

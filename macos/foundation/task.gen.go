@@ -23,7 +23,7 @@ type ITask interface {
 	Resume() bool
 	Terminate()
 	WaitUntilExit()
-	LaunchAndReturnError(error IError) bool
+	LaunchAndReturnError(error unsafe.Pointer) bool
 	StandardInput() objc.Object
 	SetStandardInput(value objc.IObject)
 	TerminationReason() TaskTerminationReason
@@ -84,15 +84,15 @@ func NewTask() Task {
 // Creates and runs a task with a specified executable and arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstask/2890108-launchedtaskwithexecutableurl?language=objc
-func (tc _TaskClass) LaunchedTaskWithExecutableURLArgumentsErrorTerminationHandler(url IURL, arguments []string, error IError, terminationHandler func(arg0 Task)) Task {
-	rv := objc.Call[Task](tc, objc.Sel("launchedTaskWithExecutableURL:arguments:error:terminationHandler:"), objc.Ptr(url), arguments, objc.Ptr(error), terminationHandler)
+func (tc _TaskClass) LaunchedTaskWithExecutableURLArgumentsErrorTerminationHandler(url IURL, arguments []string, error unsafe.Pointer, terminationHandler func(arg0 Task)) Task {
+	rv := objc.Call[Task](tc, objc.Sel("launchedTaskWithExecutableURL:arguments:error:terminationHandler:"), url, arguments, error, terminationHandler)
 	return rv
 }
 
 // Creates and runs a task with a specified executable and arguments. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstask/2890108-launchedtaskwithexecutableurl?language=objc
-func Task_LaunchedTaskWithExecutableURLArgumentsErrorTerminationHandler(url IURL, arguments []string, error IError, terminationHandler func(arg0 Task)) Task {
+func Task_LaunchedTaskWithExecutableURLArgumentsErrorTerminationHandler(url IURL, arguments []string, error unsafe.Pointer, terminationHandler func(arg0 Task)) Task {
 	return TaskClass.LaunchedTaskWithExecutableURLArgumentsErrorTerminationHandler(url, arguments, error, terminationHandler)
 }
 
@@ -136,8 +136,8 @@ func (t_ Task) WaitUntilExit() {
 // Runs the process with the current environment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstask/2890105-launchandreturnerror?language=objc
-func (t_ Task) LaunchAndReturnError(error IError) bool {
-	rv := objc.Call[bool](t_, objc.Sel("launchAndReturnError:"), objc.Ptr(error))
+func (t_ Task) LaunchAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](t_, objc.Sel("launchAndReturnError:"), error)
 	return rv
 }
 
@@ -260,7 +260,7 @@ func (t_ Task) ExecutableURL() URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstask/2890106-executableurl?language=objc
 func (t_ Task) SetExecutableURL(value IURL) {
-	objc.Call[objc.Void](t_, objc.Sel("setExecutableURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setExecutableURL:"), value)
 }
 
 // A completion block the system invokes when the task completes. [Full Topic]
@@ -290,7 +290,7 @@ func (t_ Task) CurrentDirectoryURL() URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nstask/2890107-currentdirectoryurl?language=objc
 func (t_ Task) SetCurrentDirectoryURL(value IURL) {
-	objc.Call[objc.Void](t_, objc.Sel("setCurrentDirectoryURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setCurrentDirectoryURL:"), value)
 }
 
 // The default quality of service level the system applies to operations the task executes. [Full Topic]

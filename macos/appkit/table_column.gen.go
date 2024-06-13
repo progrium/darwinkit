@@ -172,7 +172,7 @@ func (t_ TableColumn) SortDescriptorPrototype() foundation.SortDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecolumn/1534663-sortdescriptorprototype?language=objc
 func (t_ TableColumn) SetSortDescriptorPrototype(value foundation.ISortDescriptor) {
-	objc.Call[objc.Void](t_, objc.Sel("setSortDescriptorPrototype:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setSortDescriptorPrototype:"), value)
 }
 
 // The table column’s maximum width, in points. [Full Topic]
@@ -217,7 +217,7 @@ func (t_ TableColumn) TableView() TableView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecolumn/1535908-tableview?language=objc
 func (t_ TableColumn) SetTableView(value ITableView) {
-	objc.Call[objc.Void](t_, objc.Sel("setTableView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTableView:"), value)
 }
 
 // The cell used to draw the table column’s header. [Full Topic]
@@ -232,7 +232,7 @@ func (t_ TableColumn) HeaderCell() TableHeaderCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstablecolumn/1525137-headercell?language=objc
 func (t_ TableColumn) SetHeaderCell(value ITableHeaderCell) {
-	objc.Call[objc.Void](t_, objc.Sel("setHeaderCell:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setHeaderCell:"), value)
 }
 
 // The table column’s minimum width, in points. [Full Topic]

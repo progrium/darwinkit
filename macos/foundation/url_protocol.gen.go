@@ -41,7 +41,7 @@ func URLProtocolFrom(ptr unsafe.Pointer) URLProtocol {
 
 func (u_ URLProtocol) InitWithTaskCachedResponseClient(task IURLSessionTask, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
 	po2 := objc.WrapAsProtocol("NSURLProtocolClient", client)
-	rv := objc.Call[URLProtocol](u_, objc.Sel("initWithTask:cachedResponse:client:"), objc.Ptr(task), objc.Ptr(cachedResponse), po2)
+	rv := objc.Call[URLProtocol](u_, objc.Sel("initWithTask:cachedResponse:client:"), task, cachedResponse, po2)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func NewURLProtocolWithTaskCachedResponseClient(task IURLSessionTask, cachedResp
 
 func (u_ URLProtocol) InitWithRequestCachedResponseClient(request IURLRequest, cachedResponse ICachedURLResponse, client PURLProtocolClient) URLProtocol {
 	po2 := objc.WrapAsProtocol("NSURLProtocolClient", client)
-	rv := objc.Call[URLProtocol](u_, objc.Sel("initWithRequest:cachedResponse:client:"), objc.Ptr(request), objc.Ptr(cachedResponse), po2)
+	rv := objc.Call[URLProtocol](u_, objc.Sel("initWithRequest:cachedResponse:client:"), request, cachedResponse, po2)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (u_ URLProtocol) Init() URLProtocol {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407208-registerclass?language=objc
 func (uc _URLProtocolClass) RegisterClass(protocolClass objc.IClass) bool {
-	rv := objc.Call[bool](uc, objc.Sel("registerClass:"), objc.Ptr(protocolClass))
+	rv := objc.Call[bool](uc, objc.Sel("registerClass:"), protocolClass)
 	return rv
 }
 
@@ -108,7 +108,7 @@ func URLProtocol_RegisterClass(protocolClass objc.IClass) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407897-setproperty?language=objc
 func (uc _URLProtocolClass) SetPropertyForKeyInRequest(value objc.IObject, key string, request IMutableURLRequest) {
-	objc.Call[objc.Void](uc, objc.Sel("setProperty:forKey:inRequest:"), value, key, objc.Ptr(request))
+	objc.Call[objc.Void](uc, objc.Sel("setProperty:forKey:inRequest:"), value, key, request)
 }
 
 // Sets the property associated with the specified key in the specified request. [Full Topic]
@@ -129,7 +129,7 @@ func (u_ URLProtocol) StopLoading() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416997-caninitwithtask?language=objc
 func (uc _URLProtocolClass) CanInitWithTask(task IURLSessionTask) bool {
-	rv := objc.Call[bool](uc, objc.Sel("canInitWithTask:"), objc.Ptr(task))
+	rv := objc.Call[bool](uc, objc.Sel("canInitWithTask:"), task)
 	return rv
 }
 
@@ -144,7 +144,7 @@ func URLProtocol_CanInitWithTask(task IURLSessionTask) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1410008-requestiscacheequivalent?language=objc
 func (uc _URLProtocolClass) RequestIsCacheEquivalentToRequest(a IURLRequest, b IURLRequest) bool {
-	rv := objc.Call[bool](uc, objc.Sel("requestIsCacheEquivalent:toRequest:"), objc.Ptr(a), objc.Ptr(b))
+	rv := objc.Call[bool](uc, objc.Sel("requestIsCacheEquivalent:toRequest:"), a, b)
 	return rv
 }
 
@@ -159,7 +159,7 @@ func URLProtocol_RequestIsCacheEquivalentToRequest(a IURLRequest, b IURLRequest)
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1407740-removepropertyforkey?language=objc
 func (uc _URLProtocolClass) RemovePropertyForKeyInRequest(key string, request IMutableURLRequest) {
-	objc.Call[objc.Void](uc, objc.Sel("removePropertyForKey:inRequest:"), key, objc.Ptr(request))
+	objc.Call[objc.Void](uc, objc.Sel("removePropertyForKey:inRequest:"), key, request)
 }
 
 // Removes the property associated with the specified key in the specified request. [Full Topic]
@@ -173,7 +173,7 @@ func URLProtocol_RemovePropertyForKeyInRequest(key string, request IMutableURLRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1409131-unregisterclass?language=objc
 func (uc _URLProtocolClass) UnregisterClass(protocolClass objc.IClass) {
-	objc.Call[objc.Void](uc, objc.Sel("unregisterClass:"), objc.Ptr(protocolClass))
+	objc.Call[objc.Void](uc, objc.Sel("unregisterClass:"), protocolClass)
 }
 
 // Unregisters the specified subclass of NSURLProtocol. [Full Topic]
@@ -187,7 +187,7 @@ func URLProtocol_UnregisterClass(protocolClass objc.IClass) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1416521-propertyforkey?language=objc
 func (uc _URLProtocolClass) PropertyForKeyInRequest(key string, request IURLRequest) objc.Object {
-	rv := objc.Call[objc.Object](uc, objc.Sel("propertyForKey:inRequest:"), key, objc.Ptr(request))
+	rv := objc.Call[objc.Object](uc, objc.Sel("propertyForKey:inRequest:"), key, request)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func URLProtocol_PropertyForKeyInRequest(key string, request IURLRequest) objc.O
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1411389-caninitwithrequest?language=objc
 func (uc _URLProtocolClass) CanInitWithRequest(request IURLRequest) bool {
-	rv := objc.Call[bool](uc, objc.Sel("canInitWithRequest:"), objc.Ptr(request))
+	rv := objc.Call[bool](uc, objc.Sel("canInitWithRequest:"), request)
 	return rv
 }
 
@@ -224,7 +224,7 @@ func (u_ URLProtocol) StartLoading() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlprotocol/1408650-canonicalrequestforrequest?language=objc
 func (uc _URLProtocolClass) CanonicalRequestForRequest(request IURLRequest) URLRequest {
-	rv := objc.Call[URLRequest](uc, objc.Sel("canonicalRequestForRequest:"), objc.Ptr(request))
+	rv := objc.Call[URLRequest](uc, objc.Sel("canonicalRequestForRequest:"), request)
 	return rv
 }
 

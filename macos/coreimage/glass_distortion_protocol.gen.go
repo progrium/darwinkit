@@ -20,11 +20,11 @@ type PGlassDistortion interface {
 	HasInputImage() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -60,7 +60,7 @@ func (g_ GlassDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600157-inputimage?language=objc
 func (g_ GlassDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GlassDistortionObject) HasInputImage() bool {
@@ -82,7 +82,7 @@ func (g_ GlassDistortionObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600158-scale?language=objc
-func (g_ GlassDistortionObject) SetScale(value float64) {
+func (g_ GlassDistortionObject) SetScale(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setScale:"), value)
 }
 
@@ -93,8 +93,8 @@ func (g_ GlassDistortionObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600158-scale?language=objc
-func (g_ GlassDistortionObject) Scale() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("scale"))
+func (g_ GlassDistortionObject) Scale() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("scale"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (g_ GlassDistortionObject) HasSetTextureImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciglassdistortion/3600159-textureimage?language=objc
 func (g_ GlassDistortionObject) SetTextureImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setTextureImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setTextureImage:"), value)
 }
 
 func (g_ GlassDistortionObject) HasTextureImage() bool {

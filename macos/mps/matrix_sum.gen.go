@@ -19,14 +19,14 @@ type _MatrixSumClass struct {
 // An interface definition for the [MatrixSum] class.
 type IMatrixSum interface {
 	IKernel
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64)
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
 	NeuronType() CNNNeuronType
 	EncodeToCommandBufferSourceMatricesResultMatrixScaleVectorOffsetVectorBiasVectorStartIndex(buffer metal.PCommandBuffer, sourceMatrices []IMatrix, resultMatrix IMatrix, scaleVector IVector, offsetVector IVector, biasVector IVector, startIndex uint)
 	EncodeToCommandBufferObjectSourceMatricesResultMatrixScaleVectorOffsetVectorBiasVectorStartIndex(bufferObject objc.IObject, sourceMatrices []IMatrix, resultMatrix IMatrix, scaleVector IVector, offsetVector IVector, biasVector IVector, startIndex uint)
-	NeuronParameterC() float64
+	NeuronParameterC() float32
 	Transpose() bool
-	NeuronParameterB() float64
-	NeuronParameterA() float64
+	NeuronParameterB() float32
+	NeuronParameterA() float32
 	Columns() uint
 	ResultMatrixOrigin() metal.Origin
 	SetResultMatrixOrigin(value metal.Origin)
@@ -115,7 +115,7 @@ func NewMatrixSumWithDevice(device metal.PDevice) MatrixSum {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935617-setneurontype?language=objc
-func (m_ MatrixSum) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64) {
+func (m_ MatrixSum) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
 }
 
@@ -132,21 +132,21 @@ func (m_ MatrixSum) NeuronType() CNNNeuronType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935613-encodetocommandbuffer?language=objc
 func (m_ MatrixSum) EncodeToCommandBufferSourceMatricesResultMatrixScaleVectorOffsetVectorBiasVectorStartIndex(buffer metal.PCommandBuffer, sourceMatrices []IMatrix, resultMatrix IMatrix, scaleVector IVector, offsetVector IVector, biasVector IVector, startIndex uint) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", buffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrices:resultMatrix:scaleVector:offsetVector:biasVector:startIndex:"), po0, sourceMatrices, objc.Ptr(resultMatrix), objc.Ptr(scaleVector), objc.Ptr(offsetVector), objc.Ptr(biasVector), startIndex)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrices:resultMatrix:scaleVector:offsetVector:biasVector:startIndex:"), po0, sourceMatrices, resultMatrix, scaleVector, offsetVector, biasVector, startIndex)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935613-encodetocommandbuffer?language=objc
 func (m_ MatrixSum) EncodeToCommandBufferObjectSourceMatricesResultMatrixScaleVectorOffsetVectorBiasVectorStartIndex(bufferObject objc.IObject, sourceMatrices []IMatrix, resultMatrix IMatrix, scaleVector IVector, offsetVector IVector, biasVector IVector, startIndex uint) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrices:resultMatrix:scaleVector:offsetVector:biasVector:startIndex:"), objc.Ptr(bufferObject), sourceMatrices, objc.Ptr(resultMatrix), objc.Ptr(scaleVector), objc.Ptr(offsetVector), objc.Ptr(biasVector), startIndex)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrices:resultMatrix:scaleVector:offsetVector:biasVector:startIndex:"), bufferObject, sourceMatrices, resultMatrix, scaleVector, offsetVector, biasVector, startIndex)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935618-neuronparameterc?language=objc
-func (m_ MatrixSum) NeuronParameterC() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterC"))
+func (m_ MatrixSum) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
 }
 
@@ -161,16 +161,16 @@ func (m_ MatrixSum) Transpose() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935616-neuronparameterb?language=objc
-func (m_ MatrixSum) NeuronParameterB() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterB"))
+func (m_ MatrixSum) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsum/2935624-neuronparametera?language=objc
-func (m_ MatrixSum) NeuronParameterA() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterA"))
+func (m_ MatrixSum) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
 	return rv
 }
 

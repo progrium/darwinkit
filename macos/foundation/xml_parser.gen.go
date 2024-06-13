@@ -54,7 +54,7 @@ func XMLParserFrom(ptr unsafe.Pointer) XMLParser {
 }
 
 func (x_ XMLParser) InitWithContentsOfURL(url IURL) XMLParser {
-	rv := objc.Call[XMLParser](x_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[XMLParser](x_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewXMLParserWithContentsOfURL(url IURL) XMLParser {
 }
 
 func (x_ XMLParser) InitWithStream(stream IInputStream) XMLParser {
-	rv := objc.Call[XMLParser](x_, objc.Sel("initWithStream:"), objc.Ptr(stream))
+	rv := objc.Call[XMLParser](x_, objc.Sel("initWithStream:"), stream)
 	return rv
 }
 
@@ -211,7 +211,7 @@ func (x_ XMLParser) SetDelegate(value PXMLParserDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1416209-delegate?language=objc
 func (x_ XMLParser) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](x_, objc.Sel("setDelegate:"), valueObject)
 }
 
 //	[Full Topic]
@@ -226,7 +226,7 @@ func (x_ XMLParser) AllowedExternalEntityURLs() Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparser/1412380-allowedexternalentityurls?language=objc
 func (x_ XMLParser) SetAllowedExternalEntityURLs(value ISet) {
-	objc.Call[objc.Void](x_, objc.Sel("setAllowedExternalEntityURLs:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setAllowedExternalEntityURLs:"), value)
 }
 
 // The system identifier of the external entity referenced in the XML document. [Full Topic]

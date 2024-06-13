@@ -106,7 +106,7 @@ func NewComboBoxCellTextCell(string_ string) ComboBoxCell {
 }
 
 func (c_ ComboBoxCell) InitImageCell(image IImage) ComboBoxCell {
-	rv := objc.Call[ComboBoxCell](c_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[ComboBoxCell](c_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -270,7 +270,7 @@ func (c_ ComboBoxCell) SetDataSource(value PComboBoxCellDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcell/1410266-datasource?language=objc
 func (c_ ComboBoxCell) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), valueObject)
 }
 
 // The maximum number of items visible in the pop-up list at any one time. [Full Topic]

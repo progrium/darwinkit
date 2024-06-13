@@ -19,8 +19,8 @@ type _NNGramMatrixCalculationClass struct {
 // An interface definition for the [NNGramMatrixCalculation] class.
 type INNGramMatrixCalculation interface {
 	ICNNKernel
-	Alpha() float64
-	SetAlpha(value float64)
+	Alpha() float32
+	SetAlpha(value float32)
 }
 
 //	[Full Topic]
@@ -51,7 +51,7 @@ func NewNNGramMatrixCalculationWithDevice(device metal.PDevice) NNGramMatrixCalc
 	return instance
 }
 
-func (n_ NNGramMatrixCalculation) InitWithDeviceAlpha(device metal.PDevice, alpha float64) NNGramMatrixCalculation {
+func (n_ NNGramMatrixCalculation) InitWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculation {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNGramMatrixCalculation](n_, objc.Sel("initWithDevice:alpha:"), po0, alpha)
 	return rv
@@ -60,7 +60,7 @@ func (n_ NNGramMatrixCalculation) InitWithDeviceAlpha(device metal.PDevice, alph
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculation/3114080-initwithdevice?language=objc
-func NewNNGramMatrixCalculationWithDeviceAlpha(device metal.PDevice, alpha float64) NNGramMatrixCalculation {
+func NewNNGramMatrixCalculationWithDeviceAlpha(device metal.PDevice, alpha float32) NNGramMatrixCalculation {
 	instance := NNGramMatrixCalculationClass.Alloc().InitWithDeviceAlpha(device, alpha)
 	instance.Autorelease()
 	return instance
@@ -104,14 +104,14 @@ func NNGramMatrixCalculation_CopyWithZoneDevice(zone unsafe.Pointer, device meta
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculation/3114077-alpha?language=objc
-func (n_ NNGramMatrixCalculation) Alpha() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("alpha"))
+func (n_ NNGramMatrixCalculation) Alpha() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngrammatrixcalculation/3114077-alpha?language=objc
-func (n_ NNGramMatrixCalculation) SetAlpha(value float64) {
+func (n_ NNGramMatrixCalculation) SetAlpha(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setAlpha:"), value)
 }

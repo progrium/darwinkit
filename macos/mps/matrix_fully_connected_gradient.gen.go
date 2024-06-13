@@ -101,14 +101,14 @@ func (m_ MatrixFullyConnectedGradient) Init() MatrixFullyConnectedGradient {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966666-encodegradientforweightsandbiast?language=objc
 func (m_ MatrixFullyConnectedGradient) EncodeGradientForWeightsAndBiasToCommandBufferGradientMatrixInputMatrixResultGradientForWeightMatrixResultGradientForBiasVector(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, inputMatrix IMatrix, resultGradientForWeightMatrix IMatrix, resultGradientForBiasVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForWeightsAndBiasToCommandBuffer:gradientMatrix:inputMatrix:resultGradientForWeightMatrix:resultGradientForBiasVector:"), po0, objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(resultGradientForWeightMatrix), objc.Ptr(resultGradientForBiasVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForWeightsAndBiasToCommandBuffer:gradientMatrix:inputMatrix:resultGradientForWeightMatrix:resultGradientForBiasVector:"), po0, gradientMatrix, inputMatrix, resultGradientForWeightMatrix, resultGradientForBiasVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966666-encodegradientforweightsandbiast?language=objc
 func (m_ MatrixFullyConnectedGradient) EncodeGradientForWeightsAndBiasToCommandBufferObjectGradientMatrixInputMatrixResultGradientForWeightMatrixResultGradientForBiasVector(commandBufferObject objc.IObject, gradientMatrix IMatrix, inputMatrix IMatrix, resultGradientForWeightMatrix IMatrix, resultGradientForBiasVector IVector) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForWeightsAndBiasToCommandBuffer:gradientMatrix:inputMatrix:resultGradientForWeightMatrix:resultGradientForBiasVector:"), objc.Ptr(commandBufferObject), objc.Ptr(gradientMatrix), objc.Ptr(inputMatrix), objc.Ptr(resultGradientForWeightMatrix), objc.Ptr(resultGradientForBiasVector))
+	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForWeightsAndBiasToCommandBuffer:gradientMatrix:inputMatrix:resultGradientForWeightMatrix:resultGradientForBiasVector:"), commandBufferObject, gradientMatrix, inputMatrix, resultGradientForWeightMatrix, resultGradientForBiasVector)
 }
 
 //	[Full Topic]
@@ -116,14 +116,14 @@ func (m_ MatrixFullyConnectedGradient) EncodeGradientForWeightsAndBiasToCommandB
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966665-encodegradientfordatatocommandbu?language=objc
 func (m_ MatrixFullyConnectedGradient) EncodeGradientForDataToCommandBufferGradientMatrixWeightMatrixResultGradientForDataMatrix(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, weightMatrix IMatrix, resultGradientForDataMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForDataToCommandBuffer:gradientMatrix:weightMatrix:resultGradientForDataMatrix:"), po0, objc.Ptr(gradientMatrix), objc.Ptr(weightMatrix), objc.Ptr(resultGradientForDataMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForDataToCommandBuffer:gradientMatrix:weightMatrix:resultGradientForDataMatrix:"), po0, gradientMatrix, weightMatrix, resultGradientForDataMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnectedgradient/2966665-encodegradientfordatatocommandbu?language=objc
 func (m_ MatrixFullyConnectedGradient) EncodeGradientForDataToCommandBufferObjectGradientMatrixWeightMatrixResultGradientForDataMatrix(commandBufferObject objc.IObject, gradientMatrix IMatrix, weightMatrix IMatrix, resultGradientForDataMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForDataToCommandBuffer:gradientMatrix:weightMatrix:resultGradientForDataMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(gradientMatrix), objc.Ptr(weightMatrix), objc.Ptr(resultGradientForDataMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeGradientForDataToCommandBuffer:gradientMatrix:weightMatrix:resultGradientForDataMatrix:"), commandBufferObject, gradientMatrix, weightMatrix, resultGradientForDataMatrix)
 }
 
 //	[Full Topic]

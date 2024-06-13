@@ -35,7 +35,7 @@ func CNNFullyConnectedNodeFrom(ptr unsafe.Pointer) CNNFullyConnectedNode {
 
 func (c_ CNNFullyConnectedNode) InitWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNFullyConnectedNode](c_, objc.Sel("initWithSource:weights:"), objc.Ptr(sourceNode), po1)
+	rv := objc.Call[CNNFullyConnectedNode](c_, objc.Sel("initWithSource:weights:"), sourceNode, po1)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCNNFullyConnectedNodeWithSourceWeights(sourceNode INNImageNode, weights 
 
 func (cc _CNNFullyConnectedNodeClass) NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNFullyConnectedNode {
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNFullyConnectedNode](cc, objc.Sel("nodeWithSource:weights:"), objc.Ptr(sourceNode), po1)
+	rv := objc.Call[CNNFullyConnectedNode](cc, objc.Sel("nodeWithSource:weights:"), sourceNode, po1)
 	return rv
 }
 

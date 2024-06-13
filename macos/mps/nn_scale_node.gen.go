@@ -35,7 +35,7 @@ func NNScaleNodeFrom(ptr unsafe.Pointer) NNScaleNode {
 }
 
 func (n_ NNScaleNode) InitWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNScaleNode {
-	rv := objc.Call[NNScaleNode](n_, objc.Sel("initWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNScaleNode](n_, objc.Sel("initWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewNNScaleNodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size
 
 func (n_ NNScaleNode) InitWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNScaleNode](n_, objc.Sel("initWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func NewNNScaleNodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode
 }
 
 func (nc _NNScaleNodeClass) NodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Size) NNScaleNode {
-	rv := objc.Call[NNScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[NNScaleNode](nc, objc.Sel("nodeWithSource:outputSize:"), sourceNode, size)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func NNScaleNode_NodeWithSourceOutputSize(sourceNode INNImageNode, size metal.Si
 
 func (nc _NNScaleNodeClass) NodeWithSourceTransformProviderOutputSize(sourceNode INNImageNode, transformProvider PImageTransformProvider, size metal.Size) NNScaleNode {
 	po1 := objc.WrapAsProtocol("MPSImageTransformProvider", transformProvider)
-	rv := objc.Call[NNScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), objc.Ptr(sourceNode), po1, size)
+	rv := objc.Call[NNScaleNode](nc, objc.Sel("nodeWithSource:transformProvider:outputSize:"), sourceNode, po1, size)
 	return rv
 }
 

@@ -71,7 +71,7 @@ func (n_ NotificationCenter) AddObserverSelectorNameObject(observer objc.IObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1410472-postnotification?language=objc
 func (n_ NotificationCenter) PostNotification(notification INotification) {
-	objc.Call[objc.Void](n_, objc.Sel("postNotification:"), objc.Ptr(notification))
+	objc.Call[objc.Void](n_, objc.Sel("postNotification:"), notification)
 }
 
 // Removes matching entries from the notification center's dispatch table. [Full Topic]
@@ -92,7 +92,7 @@ func (n_ NotificationCenter) RemoveObserver(observer objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationcenter/1411723-addobserverforname?language=objc
 func (n_ NotificationCenter) AddObserverForNameObjectQueueUsingBlock(name NotificationName, obj objc.IObject, queue IOperationQueue, block func(notification Notification)) objc.Object {
-	rv := objc.Call[objc.Object](n_, objc.Sel("addObserverForName:object:queue:usingBlock:"), name, obj, objc.Ptr(queue), block)
+	rv := objc.Call[objc.Object](n_, objc.Sel("addObserverForName:object:queue:usingBlock:"), name, obj, queue, block)
 	return rv
 }
 

@@ -59,7 +59,7 @@ func (d_ Detector) Init() Detector {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1437884-detectoroftype?language=objc
 func (dc _DetectorClass) DetectorOfTypeContextOptions(type_ string, context IContext, options map[string]objc.IObject) Detector {
-	rv := objc.Call[Detector](dc, objc.Sel("detectorOfType:context:options:"), type_, objc.Ptr(context), options)
+	rv := objc.Call[Detector](dc, objc.Sel("detectorOfType:context:options:"), type_, context, options)
 	return rv
 }
 
@@ -74,7 +74,7 @@ func Detector_DetectorOfTypeContextOptions(type_ string, context IContext, optio
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1438049-featuresinimage?language=objc
 func (d_ Detector) FeaturesInImage(image IImage) []Feature {
-	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:"), objc.Ptr(image))
+	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:"), image)
 	return rv
 }
 
@@ -82,6 +82,6 @@ func (d_ Detector) FeaturesInImage(image IImage) []Feature {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidetector/1438189-featuresinimage?language=objc
 func (d_ Detector) FeaturesInImageOptions(image IImage, options map[string]objc.IObject) []Feature {
-	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:options:"), objc.Ptr(image), options)
+	rv := objc.Call[[]Feature](d_, objc.Sel("featuresInImage:options:"), image, options)
 	return rv
 }

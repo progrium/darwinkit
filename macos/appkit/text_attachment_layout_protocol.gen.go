@@ -42,7 +42,7 @@ func (t_ TextAttachmentLayoutObject) HasAttachmentBoundsForAttributesLocationTex
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentlayout/3857590-attachmentboundsforattributes?language=objc
 func (t_ TextAttachmentLayoutObject) AttachmentBoundsForAttributesLocationTextContainerProposedLineFragmentPosition(attributes map[foundation.AttributedStringKey]objc.Object, location TextLocationObject, textContainer TextContainer, proposedLineFragment coregraphics.Rect, position coregraphics.Point) coregraphics.Rect {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, po1, objc.Ptr(textContainer), proposedLineFragment, position)
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("attachmentBoundsForAttributes:location:textContainer:proposedLineFragment:position:"), attributes, po1, textContainer, proposedLineFragment, position)
 	return rv
 }
 
@@ -55,7 +55,7 @@ func (t_ TextAttachmentLayoutObject) HasImageForBoundsAttributesLocationTextCont
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentlayout/3857591-imageforbounds?language=objc
 func (t_ TextAttachmentLayoutObject) ImageForBoundsAttributesLocationTextContainer(bounds coregraphics.Rect, attributes map[foundation.AttributedStringKey]objc.Object, location TextLocationObject, textContainer TextContainer) Image {
 	po2 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[Image](t_, objc.Sel("imageForBounds:attributes:location:textContainer:"), bounds, attributes, po2, objc.Ptr(textContainer))
+	rv := objc.Call[Image](t_, objc.Sel("imageForBounds:attributes:location:textContainer:"), bounds, attributes, po2, textContainer)
 	return rv
 }
 
@@ -68,6 +68,6 @@ func (t_ TextAttachmentLayoutObject) HasViewProviderForParentViewLocationTextCon
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachmentlayout/3857592-viewproviderforparentview?language=objc
 func (t_ TextAttachmentLayoutObject) ViewProviderForParentViewLocationTextContainer(parentView View, location TextLocationObject, textContainer TextContainer) TextAttachmentViewProvider {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextAttachmentViewProvider](t_, objc.Sel("viewProviderForParentView:location:textContainer:"), objc.Ptr(parentView), po1, objc.Ptr(textContainer))
+	rv := objc.Call[TextAttachmentViewProvider](t_, objc.Sel("viewProviderForParentView:location:textContainer:"), parentView, po1, textContainer)
 	return rv
 }

@@ -118,7 +118,7 @@ func (t_ TabView) TabViewItemAtPoint(point foundation.Point) TabViewItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391584-inserttabviewitem?language=objc
 func (t_ TabView) InsertTabViewItemAtIndex(tabViewItem ITabViewItem, index int) {
-	objc.Call[objc.Void](t_, objc.Sel("insertTabViewItem:atIndex:"), objc.Ptr(tabViewItem), index)
+	objc.Call[objc.Void](t_, objc.Sel("insertTabViewItem:atIndex:"), tabViewItem, index)
 }
 
 // This action method selects the last tab view item. [Full Topic]
@@ -139,7 +139,7 @@ func (t_ TabView) TakeSelectedTabViewItemFromSender(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391604-indexoftabviewitem?language=objc
 func (t_ TabView) IndexOfTabViewItem(tabViewItem ITabViewItem) int {
-	rv := objc.Call[int](t_, objc.Sel("indexOfTabViewItem:"), objc.Ptr(tabViewItem))
+	rv := objc.Call[int](t_, objc.Sel("indexOfTabViewItem:"), tabViewItem)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (t_ TabView) TabViewItemAtIndex(index int) TabViewItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391641-removetabviewitem?language=objc
 func (t_ TabView) RemoveTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), tabViewItem)
 }
 
 // This action method selects the first tab view item. [Full Topic]
@@ -191,7 +191,7 @@ func (t_ TabView) IndexOfTabViewItemWithIdentifier(identifier objc.IObject) int 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391649-selecttabviewitem?language=objc
 func (t_ TabView) SelectTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("selectTabViewItem:"), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("selectTabViewItem:"), tabViewItem)
 }
 
 // This action method selects the next tab view item in the sequence. [Full Topic]
@@ -205,7 +205,7 @@ func (t_ TabView) SelectNextTabViewItem(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391607-addtabviewitem?language=objc
 func (t_ TabView) AddTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), tabViewItem)
 }
 
 // Selects the tab view item specified by index. [Full Topic]
@@ -274,7 +274,7 @@ func (t_ TabView) SetDelegate(value PTabViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391615-delegate?language=objc
 func (t_ TabView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The number of items in the tab view’s array of tab view items. [Full Topic]
@@ -373,7 +373,7 @@ func (t_ TabView) Font() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabview/1391617-font?language=objc
 func (t_ TabView) SetFont(value IFont) {
-	objc.Call[objc.Void](t_, objc.Sel("setFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFont:"), value)
 }
 
 // The tab type to display the tabs. [Full Topic]

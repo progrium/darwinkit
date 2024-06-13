@@ -85,7 +85,7 @@ func ViewControllerFrom(ptr unsafe.Pointer) ViewController {
 }
 
 func (v_ ViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) ViewController {
-	rv := objc.Call[ViewController](v_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[ViewController](v_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -144,14 +144,14 @@ func (v_ ViewController) ViewWillDisappear() {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434431-presentviewcontroller?language=objc
 func (v_ ViewController) PresentViewControllerAnimator(viewController IViewController, animator PViewControllerPresentationAnimator) {
 	po1 := objc.WrapAsProtocol("NSViewControllerPresentationAnimator", animator)
-	objc.Call[objc.Void](v_, objc.Sel("presentViewController:animator:"), objc.Ptr(viewController), po1)
+	objc.Call[objc.Void](v_, objc.Sel("presentViewController:animator:"), viewController, po1)
 }
 
 // Presents another view controller using a specified, custom animator for presentation and dismissal. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434431-presentviewcontroller?language=objc
 func (v_ ViewController) PresentViewControllerAnimatorObject(viewController IViewController, animatorObject objc.IObject) {
-	objc.Call[objc.Void](v_, objc.Sel("presentViewController:animator:"), objc.Ptr(viewController), objc.Ptr(animatorObject))
+	objc.Call[objc.Void](v_, objc.Sel("presentViewController:animator:"), viewController, animatorObject)
 }
 
 //	[Full Topic]
@@ -180,7 +180,7 @@ func (v_ ViewController) ViewWillAppear() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434434-preferredcontentsizedidchangefor?language=objc
 func (v_ ViewController) PreferredContentSizeDidChangeForViewController(viewController IViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("preferredContentSizeDidChangeForViewController:"), objc.Ptr(viewController))
+	objc.Call[objc.Void](v_, objc.Sel("preferredContentSizeDidChangeForViewController:"), viewController)
 }
 
 // Returns whether the receiver was able to commit any pending edits. [Full Topic]
@@ -195,7 +195,7 @@ func (v_ ViewController) CommitEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434462-presentviewcontrollerasmodalwind?language=objc
 func (v_ ViewController) PresentViewControllerAsModalWindow(viewController IViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("presentViewControllerAsModalWindow:"), objc.Ptr(viewController))
+	objc.Call[objc.Void](v_, objc.Sel("presentViewControllerAsModalWindow:"), viewController)
 }
 
 // Called after the view controller’s view is removed from the view hierarchy in a window. [Full Topic]
@@ -216,7 +216,7 @@ func (v_ ViewController) LoadView() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434407-transitionfromviewcontroller?language=objc
 func (v_ ViewController) TransitionFromViewControllerToViewControllerOptionsCompletionHandler(fromViewController IViewController, toViewController IViewController, options ViewControllerTransitionOptions, completion func()) {
-	objc.Call[objc.Void](v_, objc.Sel("transitionFromViewController:toViewController:options:completionHandler:"), objc.Ptr(fromViewController), objc.Ptr(toViewController), options, completion)
+	objc.Call[objc.Void](v_, objc.Sel("transitionFromViewController:toViewController:options:completionHandler:"), fromViewController, toViewController, options, completion)
 }
 
 // Called when the view controller’s view is fully transitioned onto the screen. [Full Topic]
@@ -237,14 +237,14 @@ func (v_ ViewController) ViewDidLayout() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434437-insertchildviewcontroller?language=objc
 func (v_ ViewController) InsertChildViewControllerAtIndex(childViewController IViewController, index int) {
-	objc.Call[objc.Void](v_, objc.Sel("insertChildViewController:atIndex:"), objc.Ptr(childViewController), index)
+	objc.Call[objc.Void](v_, objc.Sel("insertChildViewController:atIndex:"), childViewController, index)
 }
 
 // A convenience method for adding a child view controller at the end of the [appkit/nsviewcontroller/childviewcontrollers] array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434501-addchildviewcontroller?language=objc
 func (v_ ViewController) AddChildViewController(childViewController IViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("addChildViewController:"), objc.Ptr(childViewController))
+	objc.Call[objc.Void](v_, objc.Sel("addChildViewController:"), childViewController)
 }
 
 // For a view controller that is part of an app extension, called when its view is about to be resized. [Full Topic]
@@ -272,21 +272,21 @@ func (v_ ViewController) RemoveFromParentViewController() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434413-dismissviewcontroller?language=objc
 func (v_ ViewController) DismissViewController(viewController IViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("dismissViewController:"), objc.Ptr(viewController))
+	objc.Call[objc.Void](v_, objc.Sel("dismissViewController:"), viewController)
 }
 
 // Presents another view controller as a sheet. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434489-presentviewcontrollerassheet?language=objc
 func (v_ ViewController) PresentViewControllerAsSheet(viewController IViewController) {
-	objc.Call[objc.Void](v_, objc.Sel("presentViewControllerAsSheet:"), objc.Ptr(viewController))
+	objc.Call[objc.Void](v_, objc.Sel("presentViewControllerAsSheet:"), viewController)
 }
 
 // Presents another view controller as a popover. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434422-presentviewcontroller?language=objc
 func (v_ ViewController) PresentViewControllerAsPopoverRelativeToRectOfViewPreferredEdgeBehavior(viewController IViewController, positioningRect foundation.Rect, positioningView IView, preferredEdge foundation.RectEdge, behavior PopoverBehavior) {
-	objc.Call[objc.Void](v_, objc.Sel("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:"), objc.Ptr(viewController), positioningRect, objc.Ptr(positioningView), preferredEdge, behavior)
+	objc.Call[objc.Void](v_, objc.Sel("presentViewController:asPopoverRelativeToRect:ofView:preferredEdge:behavior:"), viewController, positioningRect, positioningView, preferredEdge, behavior)
 }
 
 // Called during Auto Layout constraint updating to enable the view controller to mediate the process. [Full Topic]
@@ -416,7 +416,7 @@ func (v_ ViewController) SourceItemView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434479-sourceitemview?language=objc
 func (v_ ViewController) SetSourceItemView(value IView) {
-	objc.Call[objc.Void](v_, objc.Sel("setSourceItemView:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setSourceItemView:"), value)
 }
 
 // The view controller’s primary view. [Full Topic]
@@ -431,7 +431,7 @@ func (v_ ViewController) View() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsviewcontroller/1434401-view?language=objc
 func (v_ ViewController) SetView(value IView) {
-	objc.Call[objc.Void](v_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setView:"), value)
 }
 
 // For a view controller that is part of an app extension, the app extension context. [Full Topic]

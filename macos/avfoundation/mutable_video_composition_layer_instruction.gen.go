@@ -20,8 +20,8 @@ type _MutableVideoCompositionLayerInstructionClass struct {
 // An interface definition for the [MutableVideoCompositionLayerInstruction] class.
 type IMutableVideoCompositionLayerInstruction interface {
 	IVideoCompositionLayerInstruction
-	SetOpacityAtTime(opacity float64, time coremedia.Time)
-	SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float64, endOpacity float64, timeRange coremedia.TimeRange)
+	SetOpacityAtTime(opacity float32, time coremedia.Time)
+	SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float32, endOpacity float32, timeRange coremedia.TimeRange)
 	SetTransformRampFromStartTransformToEndTransformTimeRange(startTransform coregraphics.AffineTransform, endTransform coregraphics.AffineTransform, timeRange coremedia.TimeRange)
 	SetCropRectangleRampFromStartCropRectangleToEndCropRectangleTimeRange(startCropRectangle coregraphics.Rect, endCropRectangle coregraphics.Rect, timeRange coremedia.TimeRange)
 	SetTransformAtTime(transform coregraphics.AffineTransform, time coremedia.Time)
@@ -55,7 +55,7 @@ func MutableVideoCompositionLayerInstruction_VideoCompositionLayerInstruction() 
 }
 
 func (mc _MutableVideoCompositionLayerInstructionClass) VideoCompositionLayerInstructionWithAssetTrack(track IAssetTrack) MutableVideoCompositionLayerInstruction {
-	rv := objc.Call[MutableVideoCompositionLayerInstruction](mc, objc.Sel("videoCompositionLayerInstructionWithAssetTrack:"), objc.Ptr(track))
+	rv := objc.Call[MutableVideoCompositionLayerInstruction](mc, objc.Sel("videoCompositionLayerInstructionWithAssetTrack:"), track)
 	return rv
 }
 
@@ -89,14 +89,14 @@ func (m_ MutableVideoCompositionLayerInstruction) Init() MutableVideoComposition
 // Sets the opacity value at a specific time within the time range of the instruction. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1390758-setopacity?language=objc
-func (m_ MutableVideoCompositionLayerInstruction) SetOpacityAtTime(opacity float64, time coremedia.Time) {
+func (m_ MutableVideoCompositionLayerInstruction) SetOpacityAtTime(opacity float32, time coremedia.Time) {
 	objc.Call[objc.Void](m_, objc.Sel("setOpacity:atTime:"), opacity, time)
 }
 
 // Sets an opacity ramp to apply during a specified time range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1387532-setopacityrampfromstartopacity?language=objc
-func (m_ MutableVideoCompositionLayerInstruction) SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float64, endOpacity float64, timeRange coremedia.TimeRange) {
+func (m_ MutableVideoCompositionLayerInstruction) SetOpacityRampFromStartOpacityToEndOpacityTimeRange(startOpacity float32, endOpacity float32, timeRange coremedia.TimeRange) {
 	objc.Call[objc.Void](m_, objc.Sel("setOpacityRampFromStartOpacity:toEndOpacity:timeRange:"), startOpacity, endOpacity, timeRange)
 }
 
@@ -132,5 +132,5 @@ func (m_ MutableVideoCompositionLayerInstruction) SetCropRectangleAtTime(cropRec
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablevideocompositionlayerinstruction/1387222-trackid?language=objc
 func (m_ MutableVideoCompositionLayerInstruction) SetTrackID(value objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setTrackID:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setTrackID:"), value)
 }

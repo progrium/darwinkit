@@ -37,7 +37,7 @@ func HTTPURLResponseFrom(ptr unsafe.Pointer) HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) InitWithURLStatusCodeHTTPVersionHeaderFields(url IURL, statusCode int, HTTPVersion string, headerFields map[string]string) HTTPURLResponse {
-	rv := objc.Call[HTTPURLResponse](h_, objc.Sel("initWithURL:statusCode:HTTPVersion:headerFields:"), objc.Ptr(url), statusCode, HTTPVersion, headerFields)
+	rv := objc.Call[HTTPURLResponse](h_, objc.Sel("initWithURL:statusCode:HTTPVersion:headerFields:"), url, statusCode, HTTPVersion, headerFields)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func (h_ HTTPURLResponse) Init() HTTPURLResponse {
 }
 
 func (h_ HTTPURLResponse) InitWithURLMIMETypeExpectedContentLengthTextEncodingName(URL IURL, MIMEType string, length int, name string) HTTPURLResponse {
-	rv := objc.Call[HTTPURLResponse](h_, objc.Sel("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), objc.Ptr(URL), MIMEType, length, name)
+	rv := objc.Call[HTTPURLResponse](h_, objc.Sel("initWithURL:MIMEType:expectedContentLength:textEncodingName:"), URL, MIMEType, length, name)
 	return rv
 }
 

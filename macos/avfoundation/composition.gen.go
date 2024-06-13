@@ -61,7 +61,7 @@ func (c_ Composition) Init() Composition {
 }
 
 func (cc _CompositionClass) AssetWithURL(URL foundation.IURL) Composition {
-	rv := objc.Call[Composition](cc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[Composition](cc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func Composition_AssetWithURL(URL foundation.IURL) Composition {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcomposition/1388473-trackwithtrackid?language=objc
 func (c_ Composition) TrackWithTrackID(trackID objc.IObject) CompositionTrack {
-	rv := objc.Call[CompositionTrack](c_, objc.Sel("trackWithTrackID:"), objc.Ptr(trackID))
+	rv := objc.Call[CompositionTrack](c_, objc.Sel("trackWithTrackID:"), trackID)
 	return rv
 }
 

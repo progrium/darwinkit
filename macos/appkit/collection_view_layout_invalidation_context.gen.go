@@ -70,21 +70,21 @@ func (c_ CollectionViewLayoutInvalidationContext) Init() CollectionViewLayoutInv
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1526592-invalidateitemsatindexpaths?language=objc
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateItemsAtIndexPaths(indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateItemsAtIndexPaths:"), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("invalidateItemsAtIndexPaths:"), indexPaths)
 }
 
 // Marks the specified decoration views as invalid so that their layout information can be updated. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1535363-invalidatedecorationelementsofki?language=objc
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateDecorationElementsOfKindAtIndexPaths(elementKind CollectionViewDecorationElementKind, indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("invalidateDecorationElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
 // Marks the specified supplementary views as invalid so that their layout information can be updated. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutinvalidationcontext/1533990-invalidatesupplementaryelementso?language=objc
 func (c_ CollectionViewLayoutInvalidationContext) InvalidateSupplementaryElementsOfKindAtIndexPaths(elementKind CollectionViewSupplementaryElementKind, indexPaths foundation.ISet) {
-	objc.Call[objc.Void](c_, objc.Sel("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("invalidateSupplementaryElementsOfKind:atIndexPaths:"), elementKind, indexPaths)
 }
 
 // The delta value to add to the collection view’s content offset. [Full Topic]

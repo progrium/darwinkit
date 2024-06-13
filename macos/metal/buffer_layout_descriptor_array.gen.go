@@ -59,7 +59,7 @@ func (b_ BufferLayoutDescriptorArray) Init() BufferLayoutDescriptorArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlbufferlayoutdescriptorarray/2097295-setobject?language=objc
 func (b_ BufferLayoutDescriptorArray) SetObjectAtIndexedSubscript(bufferDesc IBufferLayoutDescriptor, index uint) {
-	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(bufferDesc), index)
+	objc.Call[objc.Void](b_, objc.Sel("setObject:atIndexedSubscript:"), bufferDesc, index)
 }
 
 // Returns the state of the specified buffer layout. [Full Topic]

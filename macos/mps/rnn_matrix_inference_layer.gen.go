@@ -52,7 +52,7 @@ func RNNMatrixInferenceLayerFrom(ptr unsafe.Pointer) RNNMatrixInferenceLayer {
 
 func (r_ RNNMatrixInferenceLayer) InitWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNMatrixInferenceLayer {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNMatrixInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, objc.Ptr(rnnDescriptor))
+	rv := objc.Call[RNNMatrixInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, rnnDescriptor)
 	return rv
 }
 
@@ -135,14 +135,14 @@ func NewRNNMatrixInferenceLayerWithDevice(device metal.PDevice) RNNMatrixInferen
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixinferencelayer/2966781-encodesequencetocommandbuffer?language=objc
 func (r_ RNNMatrixInferenceLayer) EncodeSequenceToCommandBufferSourceMatricesSourceOffsetsDestinationMatricesDestinationOffsetsRecurrentInputStateRecurrentOutputStates(commandBuffer metal.PCommandBuffer, sourceMatrices []IMatrix, sourceOffsets *uint, destinationMatrices []IMatrix, destinationOffsets *uint, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:recurrentInputState:recurrentOutputStates:"), po0, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:recurrentInputState:recurrentOutputStates:"), po0, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixinferencelayer/2966781-encodesequencetocommandbuffer?language=objc
 func (r_ RNNMatrixInferenceLayer) EncodeSequenceToCommandBufferObjectSourceMatricesSourceOffsetsDestinationMatricesDestinationOffsetsRecurrentInputStateRecurrentOutputStates(commandBufferObject objc.IObject, sourceMatrices []IMatrix, sourceOffsets *uint, destinationMatrices []IMatrix, destinationOffsets *uint, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:recurrentInputState:recurrentOutputStates:"), objc.Ptr(commandBufferObject), sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:sourceOffsets:destinationMatrices:destinationOffsets:recurrentInputState:recurrentOutputStates:"), commandBufferObject, sourceMatrices, sourceOffsets, destinationMatrices, destinationOffsets, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]
@@ -150,14 +150,14 @@ func (r_ RNNMatrixInferenceLayer) EncodeSequenceToCommandBufferObjectSourceMatri
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixinferencelayer/2865705-encodesequencetocommandbuffer?language=objc
 func (r_ RNNMatrixInferenceLayer) EncodeSequenceToCommandBufferSourceMatricesDestinationMatricesRecurrentInputStateRecurrentOutputStates(commandBuffer metal.PCommandBuffer, sourceMatrices []IMatrix, destinationMatrices []IMatrix, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:destinationMatrices:recurrentInputState:recurrentOutputStates:"), po0, sourceMatrices, destinationMatrices, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:destinationMatrices:recurrentInputState:recurrentOutputStates:"), po0, sourceMatrices, destinationMatrices, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixinferencelayer/2865705-encodesequencetocommandbuffer?language=objc
 func (r_ RNNMatrixInferenceLayer) EncodeSequenceToCommandBufferObjectSourceMatricesDestinationMatricesRecurrentInputStateRecurrentOutputStates(commandBufferObject objc.IObject, sourceMatrices []IMatrix, destinationMatrices []IMatrix, recurrentInputState IRNNRecurrentMatrixState, recurrentOutputStates foundation.IMutableArray) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:destinationMatrices:recurrentInputState:recurrentOutputStates:"), objc.Ptr(commandBufferObject), sourceMatrices, destinationMatrices, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceMatrices:destinationMatrices:recurrentInputState:recurrentOutputStates:"), commandBufferObject, sourceMatrices, destinationMatrices, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]
@@ -172,7 +172,7 @@ func (r_ RNNMatrixInferenceLayer) EncodeBidirectionalSequenceToCommandBufferSour
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnmatrixinferencelayer/2865698-encodebidirectionalsequencetocom?language=objc
 func (r_ RNNMatrixInferenceLayer) EncodeBidirectionalSequenceToCommandBufferObjectSourceSequenceDestinationForwardMatricesDestinationBackwardMatrices(commandBufferObject objc.IObject, sourceSequence []IMatrix, destinationForwardMatrices []IMatrix, destinationBackwardMatrices []IMatrix) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeBidirectionalSequenceToCommandBuffer:sourceSequence:destinationForwardMatrices:destinationBackwardMatrices:"), objc.Ptr(commandBufferObject), sourceSequence, destinationForwardMatrices, destinationBackwardMatrices)
+	objc.Call[objc.Void](r_, objc.Sel("encodeBidirectionalSequenceToCommandBuffer:sourceSequence:destinationForwardMatrices:destinationBackwardMatrices:"), commandBufferObject, sourceSequence, destinationForwardMatrices, destinationBackwardMatrices)
 }
 
 //	[Full Topic]

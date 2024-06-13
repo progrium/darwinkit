@@ -3,6 +3,8 @@
 package coreml
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,7 +14,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlwritable?language=objc
 type PWritable interface {
 	// optional
-	WriteToURLError(url foundation.URL, error foundation.Error) bool
+	WriteToURLError(url foundation.URL, error unsafe.Pointer) bool
 	HasWriteToURLError() bool
 }
 
@@ -31,7 +33,7 @@ func (w_ WritableObject) HasWriteToURLError() bool {
 // Exports a machine learning file to the file system. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlwritable/3197650-writetourl?language=objc
-func (w_ WritableObject) WriteToURLError(url foundation.URL, error foundation.Error) bool {
-	rv := objc.Call[bool](w_, objc.Sel("writeToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (w_ WritableObject) WriteToURLError(url foundation.URL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](w_, objc.Sel("writeToURL:error:"), url, error)
 	return rv
 }

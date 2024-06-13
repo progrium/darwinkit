@@ -47,5 +47,5 @@ func (d_ DockTilePlugInObject) HasSetDockTile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktileplugin/1534120-setdocktile?language=objc
 func (d_ DockTilePlugInObject) SetDockTile(dockTile DockTile) {
-	objc.Call[objc.Void](d_, objc.Sel("setDockTile:"), objc.Ptr(dockTile))
+	objc.Call[objc.Void](d_, objc.Sel("setDockTile:"), dockTile)
 }

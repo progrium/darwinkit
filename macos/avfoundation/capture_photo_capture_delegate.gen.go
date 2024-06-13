@@ -143,7 +143,7 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidFinishCaptureForR
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778618-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidFinishCaptureForResolvedSettingsError(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishCaptureForResolvedSettings:error:"), objc.Ptr(output), objc.Ptr(resolvedSettings), objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishCaptureForResolvedSettings:error:"), output, resolvedSettings, error)
 }
 
 func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillCapturePhotoForResolvedSettings() bool {
@@ -154,7 +154,7 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillCapturePhotoForR
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778625-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputWillCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willCapturePhotoForResolvedSettings:"), objc.Ptr(output), objc.Ptr(resolvedSettings))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willCapturePhotoForResolvedSettings:"), output, resolvedSettings)
 }
 
 func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidFinishProcessingPhotoError() bool {
@@ -165,7 +165,7 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidFinishProcessingP
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/2873949-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidFinishProcessingPhotoError(output CapturePhotoOutput, photo CapturePhoto, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishProcessingPhoto:error:"), objc.Ptr(output), objc.Ptr(photo), objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishProcessingPhoto:error:"), output, photo, error)
 }
 
 func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidCapturePhotoForResolvedSettings() bool {
@@ -176,7 +176,7 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputDidCapturePhotoForRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778632-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputDidCapturePhotoForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didCapturePhotoForResolvedSettings:"), objc.Ptr(output), objc.Ptr(resolvedSettings))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didCapturePhotoForResolvedSettings:"), output, resolvedSettings)
 }
 
 func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillBeginCaptureForResolvedSettings() bool {
@@ -187,5 +187,5 @@ func (c_ CapturePhotoCaptureDelegateObject) HasCaptureOutputWillBeginCaptureForR
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturephotocapturedelegate/1778621-captureoutput?language=objc
 func (c_ CapturePhotoCaptureDelegateObject) CaptureOutputWillBeginCaptureForResolvedSettings(output CapturePhotoOutput, resolvedSettings CaptureResolvedPhotoSettings) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willBeginCaptureForResolvedSettings:"), objc.Ptr(output), objc.Ptr(resolvedSettings))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willBeginCaptureForResolvedSettings:"), output, resolvedSettings)
 }

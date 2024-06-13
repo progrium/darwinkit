@@ -96,7 +96,7 @@ func (o_ Operation) Group() OperationGroup {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866228-group?language=objc
 func (o_ Operation) SetGroup(value IOperationGroup) {
-	objc.Call[objc.Void](o_, objc.Sel("setGroup:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setGroup:"), value)
 }
 
 // The operation’s configuration. [Full Topic]
@@ -111,5 +111,5 @@ func (o_ Operation) Configuration() OperationConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperation/2866213-configuration?language=objc
 func (o_ Operation) SetConfiguration(value IOperationConfiguration) {
-	objc.Call[objc.Void](o_, objc.Sel("setConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setConfiguration:"), value)
 }

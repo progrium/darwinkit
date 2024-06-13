@@ -36,7 +36,7 @@ func CNNBinaryConvolutionFrom(ptr unsafe.Pointer) CNNBinaryConvolution {
 	}
 }
 
-func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float64, outputScaleTerms *float64, inputBiasTerms *float64, inputScaleTerms *float64, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
+func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float32, outputScaleTerms *float32, inputBiasTerms *float32, inputScaleTerms *float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", convolutionData)
 	rv := objc.Call[CNNBinaryConvolution](c_, objc.Sel("initWithDevice:convolutionData:outputBiasTerms:outputScaleTerms:inputBiasTerms:inputScaleTerms:type:flags:"), po0, po1, outputBiasTerms, outputScaleTerms, inputBiasTerms, inputScaleTerms, type_, flags)
@@ -46,13 +46,13 @@ func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataOutputBiasTermsOutpu
 // Initializes a binary convolution kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbinaryconvolution/2866978-initwithdevice?language=objc
-func NewCNNBinaryConvolutionWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float64, outputScaleTerms *float64, inputBiasTerms *float64, inputScaleTerms *float64, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
+func NewCNNBinaryConvolutionWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, outputBiasTerms *float32, outputScaleTerms *float32, inputBiasTerms *float32, inputScaleTerms *float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
 	instance := CNNBinaryConvolutionClass.Alloc().InitWithDeviceConvolutionDataOutputBiasTermsOutputScaleTermsInputBiasTermsInputScaleTermsTypeFlags(device, convolutionData, outputBiasTerms, outputScaleTerms, inputBiasTerms, inputScaleTerms, type_, flags)
 	instance.Autorelease()
 	return instance
 }
 
-func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataScaleValueTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, scaleValue float64, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
+func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataScaleValueTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, scaleValue float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", convolutionData)
 	rv := objc.Call[CNNBinaryConvolution](c_, objc.Sel("initWithDevice:convolutionData:scaleValue:type:flags:"), po0, po1, scaleValue, type_, flags)
@@ -62,7 +62,7 @@ func (c_ CNNBinaryConvolution) InitWithDeviceConvolutionDataScaleValueTypeFlags(
 // Initializes a binary convolution kernel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbinaryconvolution/2866981-initwithdevice?language=objc
-func NewCNNBinaryConvolutionWithDeviceConvolutionDataScaleValueTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, scaleValue float64, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
+func NewCNNBinaryConvolutionWithDeviceConvolutionDataScaleValueTypeFlags(device metal.PDevice, convolutionData PCNNConvolutionDataSource, scaleValue float32, type_ CNNBinaryConvolutionType, flags CNNBinaryConvolutionFlags) CNNBinaryConvolution {
 	instance := CNNBinaryConvolutionClass.Alloc().InitWithDeviceConvolutionDataScaleValueTypeFlags(device, convolutionData, scaleValue, type_, flags)
 	instance.Autorelease()
 	return instance

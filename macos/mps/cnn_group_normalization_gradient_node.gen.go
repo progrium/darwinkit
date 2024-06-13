@@ -34,7 +34,7 @@ func CNNGroupNormalizationGradientNodeFrom(ptr unsafe.Pointer) CNNGroupNormaliza
 }
 
 func (c_ CNNGroupNormalizationGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNGroupNormalizationGradientNode {
-	rv := objc.Call[CNNGroupNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNGroupNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewCNNGroupNormalizationGradientNodeWithSourceGradientSourceImageGradientSt
 }
 
 func (cc _CNNGroupNormalizationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNGroupNormalizationGradientNode {
-	rv := objc.Call[CNNGroupNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNGroupNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 

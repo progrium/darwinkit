@@ -117,7 +117,7 @@ func (i_ ImageFindKeypoints) EncodeToCommandBufferSourceTextureRegionsNumberOfRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagefindkeypoints/2873307-encodetocommandbuffer?language=objc
 func (i_ ImageFindKeypoints) EncodeToCommandBufferObjectSourceTextureObjectRegionsNumberOfRegionsKeypointCountBufferObjectKeypointCountBufferOffsetKeypointDataBufferObjectKeypointDataBufferOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, regions *metal.Region, numberOfRegions uint, keypointCountBufferObject objc.IObject, keypointCountBufferOffset uint, keypointDataBufferObject objc.IObject, keypointDataBufferOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:regions:numberOfRegions:keypointCountBuffer:keypointCountBufferOffset:keypointDataBuffer:keypointDataBufferOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), regions, numberOfRegions, objc.Ptr(keypointCountBufferObject), keypointCountBufferOffset, objc.Ptr(keypointDataBufferObject), keypointDataBufferOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:regions:numberOfRegions:keypointCountBuffer:keypointCountBufferOffset:keypointDataBuffer:keypointDataBufferOffset:"), commandBufferObject, sourceObject, regions, numberOfRegions, keypointCountBufferObject, keypointCountBufferOffset, keypointDataBufferObject, keypointDataBufferOffset)
 }
 
 //	[Full Topic]

@@ -31,7 +31,7 @@ type IAssetTrack interface {
 	MakeSampleCursorWithPresentationTimeStamp(presentationTimeStamp coremedia.Time) SampleCursor
 	IsDecodable() bool
 	CommonMetadata() []MetadataItem
-	EstimatedDataRate() float64
+	EstimatedDataRate() float32
 	LanguageCode() string
 	HasAudioSampleDependencies() bool
 	Asset() Asset
@@ -41,12 +41,12 @@ type IAssetTrack interface {
 	TrackID() objc.Object
 	AvailableMetadataFormats() []MetadataFormat
 	MinFrameDuration() coremedia.Time
-	PreferredVolume() float64
+	PreferredVolume() float32
 	RequiresFrameReordering() bool
 	IsPlayable() bool
 	FormatDescriptions() []objc.Object
 	PreferredTransform() coregraphics.AffineTransform
-	NominalFrameRate() float64
+	NominalFrameRate() float32
 	TimeRange() coremedia.TimeRange
 	CanProvideSampleCursors() bool
 	NaturalSize() coregraphics.Size
@@ -170,8 +170,8 @@ func (a_ AssetTrack) CommonMetadata() []MetadataItem {
 // The estimated data rate, in bits per second, of the media that the track references. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassettrack/1389758-estimateddatarate?language=objc
-func (a_ AssetTrack) EstimatedDataRate() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("estimatedDataRate"))
+func (a_ AssetTrack) EstimatedDataRate() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("estimatedDataRate"))
 	return rv
 }
 
@@ -250,8 +250,8 @@ func (a_ AssetTrack) MinFrameDuration() coremedia.Time {
 // The track’s volume preference for playing its audible media. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassettrack/1388832-preferredvolume?language=objc
-func (a_ AssetTrack) PreferredVolume() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("preferredVolume"))
+func (a_ AssetTrack) PreferredVolume() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("preferredVolume"))
 	return rv
 }
 
@@ -290,8 +290,8 @@ func (a_ AssetTrack) PreferredTransform() coregraphics.AffineTransform {
 // The frame rate of the track, in frames per second. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassettrack/1386182-nominalframerate?language=objc
-func (a_ AssetTrack) NominalFrameRate() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("nominalFrameRate"))
+func (a_ AssetTrack) NominalFrameRate() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("nominalFrameRate"))
 	return rv
 }
 

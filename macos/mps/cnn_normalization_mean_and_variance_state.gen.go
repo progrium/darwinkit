@@ -87,7 +87,7 @@ func (c_ CNNNormalizationMeanAndVarianceState) Init() CNNNormalizationMeanAndVar
 
 func (cc _CNNNormalizationMeanAndVarianceStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNNormalizationMeanAndVarianceState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationMeanAndVarianceState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNNormalizationMeanAndVarianceState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -100,7 +100,7 @@ func CNNNormalizationMeanAndVarianceState_TemporaryStateWithCommandBufferResourc
 
 func (c_ CNNNormalizationMeanAndVarianceState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNNormalizationMeanAndVarianceState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -185,7 +185,7 @@ func CNNNormalizationMeanAndVarianceState_TemporaryStateWithCommandBuffer(cmdBuf
 
 func (cc _CNNNormalizationMeanAndVarianceStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNNormalizationMeanAndVarianceState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNNormalizationMeanAndVarianceState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNNormalizationMeanAndVarianceState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -198,7 +198,7 @@ func CNNNormalizationMeanAndVarianceState_TemporaryStateWithCommandBufferTexture
 
 func (c_ CNNNormalizationMeanAndVarianceState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNNormalizationMeanAndVarianceState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

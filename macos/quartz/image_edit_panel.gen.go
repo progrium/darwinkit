@@ -61,7 +61,7 @@ func (i_ ImageEditPanel) Init() ImageEditPanel {
 }
 
 func (ic _ImageEditPanelClass) WindowWithContentViewController(contentViewController appkit.IViewController) ImageEditPanel {
-	rv := objc.Call[ImageEditPanel](ic, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[ImageEditPanel](ic, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -73,7 +73,7 @@ func ImageEditPanel_WindowWithContentViewController(contentViewController appkit
 }
 
 func (i_ ImageEditPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool, screen appkit.IScreen) ImageEditPanel {
-	rv := objc.Call[ImageEditPanel](i_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[ImageEditPanel](i_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -150,5 +150,5 @@ func (i_ ImageEditPanel) SetDataSource(value PImageEditPanelDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikimageeditpanel/1503831-datasource?language=objc
 func (i_ ImageEditPanel) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](i_, objc.Sel("setDataSource:"), valueObject)
 }

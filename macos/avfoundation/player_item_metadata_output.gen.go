@@ -87,7 +87,7 @@ func (p_ PlayerItemMetadataOutput) SetDelegateQueue(delegate PPlayerItemMetadata
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadataoutput/1385728-setdelegate?language=objc
 func (p_ PlayerItemMetadataOutput) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // The time interval, in seconds, the player item metadata output object messages its delegate earlier than normal. [Full Topic]

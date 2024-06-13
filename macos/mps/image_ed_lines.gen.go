@@ -21,21 +21,21 @@ type IImageEDLines interface {
 	IKernel
 	EncodeToCommandBufferSourceTextureDestinationTextureEndpointBufferEndpointOffset(commandBuffer metal.PCommandBuffer, source metal.PTexture, dest metal.PTexture, endpointBuffer metal.PBuffer, endpointOffset uint)
 	EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectEndpointBufferObjectEndpointOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, destObject objc.IObject, endpointBufferObject objc.IObject, endpointOffset uint)
-	GradientThreshold() float64
-	SetGradientThreshold(value float64)
+	GradientThreshold() float32
+	SetGradientThreshold(value float32)
 	ClipRectSource() metal.Region
 	SetClipRectSource(value metal.Region)
 	DetailRatio() int
 	SetDetailRatio(value int)
-	LineErrorThreshold() float64
-	SetLineErrorThreshold(value float64)
-	MergeLocalityThreshold() float64
-	SetMergeLocalityThreshold(value float64)
+	LineErrorThreshold() float32
+	SetLineErrorThreshold(value float32)
+	MergeLocalityThreshold() float32
+	SetMergeLocalityThreshold(value float32)
 	MinLineLength() int
 	SetMinLineLength(value int)
 	MaxLines() uint
 	SetMaxLines(value uint)
-	GaussianSigma() float64
+	GaussianSigma() float32
 }
 
 //	[Full Topic]
@@ -51,7 +51,7 @@ func ImageEDLinesFrom(ptr unsafe.Pointer) ImageEDLines {
 	}
 }
 
-func (i_ ImageEDLines) InitWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRatioGradientThresholdLineErrorThresholdMergeLocalityThreshold(device metal.PDevice, gaussianSigma float64, minLineLength int, maxLines uint, detailRatio int, gradientThreshold float64, lineErrorThreshold float64, mergeLocalityThreshold float64) ImageEDLines {
+func (i_ ImageEDLines) InitWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRatioGradientThresholdLineErrorThresholdMergeLocalityThreshold(device metal.PDevice, gaussianSigma float32, minLineLength int, maxLines uint, detailRatio int, gradientThreshold float32, lineErrorThreshold float32, mergeLocalityThreshold float32) ImageEDLines {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageEDLines](i_, objc.Sel("initWithDevice:gaussianSigma:minLineLength:maxLines:detailRatio:gradientThreshold:lineErrorThreshold:mergeLocalityThreshold:"), po0, gaussianSigma, minLineLength, maxLines, detailRatio, gradientThreshold, lineErrorThreshold, mergeLocalityThreshold)
 	return rv
@@ -60,7 +60,7 @@ func (i_ ImageEDLines) InitWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRat
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618921-initwithdevice?language=objc
-func NewImageEDLinesWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRatioGradientThresholdLineErrorThresholdMergeLocalityThreshold(device metal.PDevice, gaussianSigma float64, minLineLength int, maxLines uint, detailRatio int, gradientThreshold float64, lineErrorThreshold float64, mergeLocalityThreshold float64) ImageEDLines {
+func NewImageEDLinesWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRatioGradientThresholdLineErrorThresholdMergeLocalityThreshold(device metal.PDevice, gaussianSigma float32, minLineLength int, maxLines uint, detailRatio int, gradientThreshold float32, lineErrorThreshold float32, mergeLocalityThreshold float32) ImageEDLines {
 	instance := ImageEDLinesClass.Alloc().InitWithDeviceGaussianSigmaMinLineLengthMaxLinesDetailRatioGradientThresholdLineErrorThresholdMergeLocalityThreshold(device, gaussianSigma, minLineLength, maxLines, detailRatio, gradientThreshold, lineErrorThreshold, mergeLocalityThreshold)
 	instance.Autorelease()
 	return instance
@@ -131,21 +131,21 @@ func (i_ ImageEDLines) EncodeToCommandBufferSourceTextureDestinationTextureEndpo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618917-encodetocommandbuffer?language=objc
 func (i_ ImageEDLines) EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectEndpointBufferObjectEndpointOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, destObject objc.IObject, endpointBufferObject objc.IObject, endpointOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:endpointBuffer:endpointOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), objc.Ptr(destObject), objc.Ptr(endpointBufferObject), endpointOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:endpointBuffer:endpointOffset:"), commandBufferObject, sourceObject, destObject, endpointBufferObject, endpointOffset)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618919-gradientthreshold?language=objc
-func (i_ ImageEDLines) GradientThreshold() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("gradientThreshold"))
+func (i_ ImageEDLines) GradientThreshold() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("gradientThreshold"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618919-gradientthreshold?language=objc
-func (i_ ImageEDLines) SetGradientThreshold(value float64) {
+func (i_ ImageEDLines) SetGradientThreshold(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setGradientThreshold:"), value)
 }
 
@@ -182,30 +182,30 @@ func (i_ ImageEDLines) SetDetailRatio(value int) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
-func (i_ ImageEDLines) LineErrorThreshold() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("lineErrorThreshold"))
+func (i_ ImageEDLines) LineErrorThreshold() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("lineErrorThreshold"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618922-lineerrorthreshold?language=objc
-func (i_ ImageEDLines) SetLineErrorThreshold(value float64) {
+func (i_ ImageEDLines) SetLineErrorThreshold(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setLineErrorThreshold:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618924-mergelocalitythreshold?language=objc
-func (i_ ImageEDLines) MergeLocalityThreshold() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("mergeLocalityThreshold"))
+func (i_ ImageEDLines) MergeLocalityThreshold() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("mergeLocalityThreshold"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618924-mergelocalitythreshold?language=objc
-func (i_ ImageEDLines) SetMergeLocalityThreshold(value float64) {
+func (i_ ImageEDLines) SetMergeLocalityThreshold(value float32) {
 	objc.Call[objc.Void](i_, objc.Sel("setMergeLocalityThreshold:"), value)
 }
 
@@ -242,7 +242,7 @@ func (i_ ImageEDLines) SetMaxLines(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimageedlines/3618918-gaussiansigma?language=objc
-func (i_ ImageEDLines) GaussianSigma() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("gaussianSigma"))
+func (i_ ImageEDLines) GaussianSigma() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("gaussianSigma"))
 	return rv
 }

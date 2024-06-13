@@ -69,7 +69,7 @@ func NewImageLaplacianPyramidAddWithDevice(device metal.PDevice) ImageLaplacianP
 	return instance
 }
 
-func (i_ ImageLaplacianPyramidAdd) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float64) ImageLaplacianPyramidAdd {
+func (i_ ImageLaplacianPyramidAdd) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImageLaplacianPyramidAdd {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageLaplacianPyramidAdd](i_, objc.Sel("initWithDevice:centerWeight:"), po0, centerWeight)
 	return rv
@@ -78,13 +78,13 @@ func (i_ ImageLaplacianPyramidAdd) InitWithDeviceCenterWeight(device metal.PDevi
 // Initialize a downwards 5-tap image pyramid with a central weight parameter and device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648889-initwithdevice?language=objc
-func NewImageLaplacianPyramidAddWithDeviceCenterWeight(device metal.PDevice, centerWeight float64) ImageLaplacianPyramidAdd {
+func NewImageLaplacianPyramidAddWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImageLaplacianPyramidAdd {
 	instance := ImageLaplacianPyramidAddClass.Alloc().InitWithDeviceCenterWeight(device, centerWeight)
 	instance.Autorelease()
 	return instance
 }
 
-func (i_ ImageLaplacianPyramidAdd) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImageLaplacianPyramidAdd {
+func (i_ ImageLaplacianPyramidAdd) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageLaplacianPyramidAdd {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageLaplacianPyramidAdd](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:weights:"), po0, kernelWidth, kernelHeight, kernelWeights)
 	return rv
@@ -93,7 +93,7 @@ func (i_ ImageLaplacianPyramidAdd) InitWithDeviceKernelWidthKernelHeightWeights(
 // Initialize a downwards n-tap image pyramid with a custom filter kernel and device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648821-initwithdevice?language=objc
-func NewImageLaplacianPyramidAddWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImageLaplacianPyramidAdd {
+func NewImageLaplacianPyramidAddWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImageLaplacianPyramidAdd {
 	instance := ImageLaplacianPyramidAddClass.Alloc().InitWithDeviceKernelWidthKernelHeightWeights(device, kernelWidth, kernelHeight, kernelWeights)
 	instance.Autorelease()
 	return instance

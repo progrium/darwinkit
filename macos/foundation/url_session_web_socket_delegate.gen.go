@@ -76,7 +76,7 @@ func (u_ URLSessionWebSocketDelegateObject) HasURLSessionWebSocketTaskDidOpenWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181189-urlsession?language=objc
 func (u_ URLSessionWebSocketDelegateObject) URLSessionWebSocketTaskDidOpenWithProtocol(session URLSession, webSocketTask URLSessionWebSocketTask, protocol string) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didOpenWithProtocol:"), objc.Ptr(session), objc.Ptr(webSocketTask), protocol)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didOpenWithProtocol:"), session, webSocketTask, protocol)
 }
 
 func (u_ URLSessionWebSocketDelegateObject) HasURLSessionWebSocketTaskDidCloseWithCodeReason() bool {
@@ -87,5 +87,5 @@ func (u_ URLSessionWebSocketDelegateObject) HasURLSessionWebSocketTaskDidCloseWi
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionwebsocketdelegate/3181188-urlsession?language=objc
 func (u_ URLSessionWebSocketDelegateObject) URLSessionWebSocketTaskDidCloseWithCodeReason(session URLSession, webSocketTask URLSessionWebSocketTask, closeCode URLSessionWebSocketCloseCode, reason []byte) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didCloseWithCode:reason:"), objc.Ptr(session), objc.Ptr(webSocketTask), closeCode, reason)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:webSocketTask:didCloseWithCode:reason:"), session, webSocketTask, closeCode, reason)
 }

@@ -19,8 +19,8 @@ type _ContoursObservationClass struct {
 // An interface definition for the [ContoursObservation] class.
 type IContoursObservation interface {
 	IObservation
-	ContourAtIndexError(contourIndex int, error foundation.IError) Contour
-	ContourAtIndexPathError(indexPath foundation.IIndexPath, error foundation.IError) Contour
+	ContourAtIndexError(contourIndex int, error unsafe.Pointer) Contour
+	ContourAtIndexPathError(indexPath foundation.IIndexPath, error unsafe.Pointer) Contour
 	TopLevelContours() []Contour
 	ContourCount() int
 	TopLevelContourCount() int
@@ -63,16 +63,16 @@ func (c_ ContoursObservation) Init() ContoursObservation {
 // Retrieves the contour object at the specified index, irrespective of hierarchy. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548360-contouratindex?language=objc
-func (c_ ContoursObservation) ContourAtIndexError(contourIndex int, error foundation.IError) Contour {
-	rv := objc.Call[Contour](c_, objc.Sel("contourAtIndex:error:"), contourIndex, objc.Ptr(error))
+func (c_ ContoursObservation) ContourAtIndexError(contourIndex int, error unsafe.Pointer) Contour {
+	rv := objc.Call[Contour](c_, objc.Sel("contourAtIndex:error:"), contourIndex, error)
 	return rv
 }
 
 // Retrieves the contour object at the specified index path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vncontoursobservation/3548361-contouratindexpath?language=objc
-func (c_ ContoursObservation) ContourAtIndexPathError(indexPath foundation.IIndexPath, error foundation.IError) Contour {
-	rv := objc.Call[Contour](c_, objc.Sel("contourAtIndexPath:error:"), objc.Ptr(indexPath), objc.Ptr(error))
+func (c_ ContoursObservation) ContourAtIndexPathError(indexPath foundation.IIndexPath, error unsafe.Pointer) Contour {
+	rv := objc.Call[Contour](c_, objc.Sel("contourAtIndexPath:error:"), indexPath, error)
 	return rv
 }
 

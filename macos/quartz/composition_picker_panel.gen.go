@@ -56,7 +56,7 @@ func (c_ CompositionPickerPanel) Init() CompositionPickerPanel {
 }
 
 func (cc _CompositionPickerPanelClass) WindowWithContentViewController(contentViewController appkit.IViewController) CompositionPickerPanel {
-	rv := objc.Call[CompositionPickerPanel](cc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[CompositionPickerPanel](cc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func CompositionPickerPanel_WindowWithContentViewController(contentViewControlle
 }
 
 func (c_ CompositionPickerPanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style appkit.WindowStyleMask, backingStoreType appkit.BackingStoreType, flag bool, screen appkit.IScreen) CompositionPickerPanel {
-	rv := objc.Call[CompositionPickerPanel](c_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[CompositionPickerPanel](c_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 

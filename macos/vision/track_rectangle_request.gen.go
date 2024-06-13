@@ -34,7 +34,7 @@ func TrackRectangleRequestFrom(ptr unsafe.Pointer) TrackRectangleRequest {
 }
 
 func (t_ TrackRectangleRequest) InitWithRectangleObservation(observation IRectangleObservation) TrackRectangleRequest {
-	rv := objc.Call[TrackRectangleRequest](t_, objc.Sel("initWithRectangleObservation:"), objc.Ptr(observation))
+	rv := objc.Call[TrackRectangleRequest](t_, objc.Sel("initWithRectangleObservation:"), observation)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewTrackRectangleRequestWithRectangleObservation(observation IRectangleObse
 }
 
 func (t_ TrackRectangleRequest) InitWithRectangleObservationCompletionHandler(observation IRectangleObservation, completionHandler RequestCompletionHandler) TrackRectangleRequest {
-	rv := objc.Call[TrackRectangleRequest](t_, objc.Sel("initWithRectangleObservation:completionHandler:"), objc.Ptr(observation), completionHandler)
+	rv := objc.Call[TrackRectangleRequest](t_, objc.Sel("initWithRectangleObservation:completionHandler:"), observation, completionHandler)
 	return rv
 }
 

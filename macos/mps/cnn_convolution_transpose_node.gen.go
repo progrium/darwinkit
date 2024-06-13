@@ -35,7 +35,7 @@ func CNNConvolutionTransposeNodeFrom(ptr unsafe.Pointer) CNNConvolutionTranspose
 
 func (c_ CNNConvolutionTransposeNode) InitWithSourceConvolutionGradientStateWeights(sourceNode INNImageNode, convolutionGradientState ICNNConvolutionGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeNode {
 	po2 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeNode](c_, objc.Sel("initWithSource:convolutionGradientState:weights:"), objc.Ptr(sourceNode), objc.Ptr(convolutionGradientState), po2)
+	rv := objc.Call[CNNConvolutionTransposeNode](c_, objc.Sel("initWithSource:convolutionGradientState:weights:"), sourceNode, convolutionGradientState, po2)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCNNConvolutionTransposeNodeWithSourceConvolutionGradientStateWeights(sou
 
 func (cc _CNNConvolutionTransposeNodeClass) NodeWithSourceConvolutionGradientStateWeights(sourceNode INNImageNode, convolutionGradientState ICNNConvolutionGradientStateNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeNode {
 	po2 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeNode](cc, objc.Sel("nodeWithSource:convolutionGradientState:weights:"), objc.Ptr(sourceNode), objc.Ptr(convolutionGradientState), po2)
+	rv := objc.Call[CNNConvolutionTransposeNode](cc, objc.Sel("nodeWithSource:convolutionGradientState:weights:"), sourceNode, convolutionGradientState, po2)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (c_ CNNConvolutionTransposeNode) Init() CNNConvolutionTransposeNode {
 
 func (cc _CNNConvolutionTransposeNodeClass) NodeWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeNode {
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeNode](cc, objc.Sel("nodeWithSource:weights:"), objc.Ptr(sourceNode), po1)
+	rv := objc.Call[CNNConvolutionTransposeNode](cc, objc.Sel("nodeWithSource:weights:"), sourceNode, po1)
 	return rv
 }
 
@@ -96,7 +96,7 @@ func CNNConvolutionTransposeNode_NodeWithSourceWeights(sourceNode INNImageNode, 
 
 func (c_ CNNConvolutionTransposeNode) InitWithSourceWeights(sourceNode INNImageNode, weights PCNNConvolutionDataSource) CNNConvolutionTransposeNode {
 	po1 := objc.WrapAsProtocol("MPSCNNConvolutionDataSource", weights)
-	rv := objc.Call[CNNConvolutionTransposeNode](c_, objc.Sel("initWithSource:weights:"), objc.Ptr(sourceNode), po1)
+	rv := objc.Call[CNNConvolutionTransposeNode](c_, objc.Sel("initWithSource:weights:"), sourceNode, po1)
 	return rv
 }
 

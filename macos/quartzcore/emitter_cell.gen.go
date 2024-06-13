@@ -23,28 +23,28 @@ type IEmitterCell interface {
 	ShouldArchiveValueForKey(key string) bool
 	SpinRange() float64
 	SetSpinRange(value float64)
-	GreenRange() float64
-	SetGreenRange(value float64)
+	GreenRange() float32
+	SetGreenRange(value float32)
 	MagnificationFilter() string
 	SetMagnificationFilter(value string)
 	XAcceleration() float64
 	SetXAcceleration(value float64)
-	AlphaRange() float64
-	SetAlphaRange(value float64)
+	AlphaRange() float32
+	SetAlphaRange(value float32)
 	ScaleSpeed() float64
 	SetScaleSpeed(value float64)
 	Contents() objc.Object
 	SetContents(value objc.IObject)
-	BirthRate() float64
-	SetBirthRate(value float64)
+	BirthRate() float32
+	SetBirthRate(value float32)
 	EmitterCells() []EmitterCell
 	SetEmitterCells(value []IEmitterCell)
 	ContentsScale() float64
 	SetContentsScale(value float64)
-	BlueRange() float64
-	SetBlueRange(value float64)
-	MinificationFilterBias() float64
-	SetMinificationFilterBias(value float64)
+	BlueRange() float32
+	SetBlueRange(value float32)
+	MinificationFilterBias() float32
+	SetMinificationFilterBias(value float32)
 	ScaleRange() float64
 	SetScaleRange(value float64)
 	YAcceleration() float64
@@ -59,14 +59,14 @@ type IEmitterCell interface {
 	SetEmissionLongitude(value float64)
 	Color() coregraphics.ColorRef
 	SetColor(value coregraphics.ColorRef)
-	BlueSpeed() float64
-	SetBlueSpeed(value float64)
-	RedRange() float64
-	SetRedRange(value float64)
+	BlueSpeed() float32
+	SetBlueSpeed(value float32)
+	RedRange() float32
+	SetRedRange(value float32)
 	ZAcceleration() float64
 	SetZAcceleration(value float64)
-	LifetimeRange() float64
-	SetLifetimeRange(value float64)
+	LifetimeRange() float32
+	SetLifetimeRange(value float32)
 	ContentsRect() coregraphics.Rect
 	SetContentsRect(value coregraphics.Rect)
 	Velocity() float64
@@ -79,18 +79,18 @@ type IEmitterCell interface {
 	SetEmissionLatitude(value float64)
 	Scale() float64
 	SetScale(value float64)
-	RedSpeed() float64
-	SetRedSpeed(value float64)
+	RedSpeed() float32
+	SetRedSpeed(value float32)
 	EmissionRange() float64
 	SetEmissionRange(value float64)
-	AlphaSpeed() float64
-	SetAlphaSpeed(value float64)
-	Lifetime() float64
-	SetLifetime(value float64)
+	AlphaSpeed() float32
+	SetAlphaSpeed(value float32)
+	Lifetime() float32
+	SetLifetime(value float32)
 	Style() foundation.Dictionary
 	SetStyle(value foundation.Dictionary)
-	GreenSpeed() float64
-	SetGreenSpeed(value float64)
+	GreenSpeed() float32
+	SetGreenSpeed(value float32)
 }
 
 // The definition of a particle emitted by a CAEmitterLayer. [Full Topic]
@@ -179,15 +179,15 @@ func (e_ EmitterCell) SetSpinRange(value float64) {
 // The amount by which the green color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521867-greenrange?language=objc
-func (e_ EmitterCell) GreenRange() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("greenRange"))
+func (e_ EmitterCell) GreenRange() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("greenRange"))
 	return rv
 }
 
 // The amount by which the green color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521867-greenrange?language=objc
-func (e_ EmitterCell) SetGreenRange(value float64) {
+func (e_ EmitterCell) SetGreenRange(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setGreenRange:"), value)
 }
 
@@ -224,15 +224,15 @@ func (e_ EmitterCell) SetXAcceleration(value float64) {
 // The amount by which the alpha component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522110-alpharange?language=objc
-func (e_ EmitterCell) AlphaRange() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("alphaRange"))
+func (e_ EmitterCell) AlphaRange() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("alphaRange"))
 	return rv
 }
 
 // The amount by which the alpha component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522110-alpharange?language=objc
-func (e_ EmitterCell) SetAlphaRange(value float64) {
+func (e_ EmitterCell) SetAlphaRange(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setAlphaRange:"), value)
 }
 
@@ -269,15 +269,15 @@ func (e_ EmitterCell) SetContents(value objc.IObject) {
 // The number of emitted objects created every second. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522100-birthrate?language=objc
-func (e_ EmitterCell) BirthRate() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("birthRate"))
+func (e_ EmitterCell) BirthRate() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("birthRate"))
 	return rv
 }
 
 // The number of emitted objects created every second. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522100-birthrate?language=objc
-func (e_ EmitterCell) SetBirthRate(value float64) {
+func (e_ EmitterCell) SetBirthRate(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setBirthRate:"), value)
 }
 
@@ -314,30 +314,30 @@ func (e_ EmitterCell) SetContentsScale(value float64) {
 // The amount by which the blue color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522158-bluerange?language=objc
-func (e_ EmitterCell) BlueRange() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("blueRange"))
+func (e_ EmitterCell) BlueRange() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("blueRange"))
 	return rv
 }
 
 // The amount by which the blue color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522158-bluerange?language=objc
-func (e_ EmitterCell) SetBlueRange(value float64) {
+func (e_ EmitterCell) SetBlueRange(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setBlueRange:"), value)
 }
 
 // The bias factor used by the minification filter to determine the levels of detail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521907-minificationfilterbias?language=objc
-func (e_ EmitterCell) MinificationFilterBias() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("minificationFilterBias"))
+func (e_ EmitterCell) MinificationFilterBias() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("minificationFilterBias"))
 	return rv
 }
 
 // The bias factor used by the minification filter to determine the levels of detail. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521907-minificationfilterbias?language=objc
-func (e_ EmitterCell) SetMinificationFilterBias(value float64) {
+func (e_ EmitterCell) SetMinificationFilterBias(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setMinificationFilterBias:"), value)
 }
 
@@ -449,30 +449,30 @@ func (e_ EmitterCell) SetColor(value coregraphics.ColorRef) {
 // The speed, in seconds, at which the blue color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522082-bluespeed?language=objc
-func (e_ EmitterCell) BlueSpeed() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("blueSpeed"))
+func (e_ EmitterCell) BlueSpeed() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("blueSpeed"))
 	return rv
 }
 
 // The speed, in seconds, at which the blue color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522082-bluespeed?language=objc
-func (e_ EmitterCell) SetBlueSpeed(value float64) {
+func (e_ EmitterCell) SetBlueSpeed(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setBlueSpeed:"), value)
 }
 
 // The amount by which the red color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522176-redrange?language=objc
-func (e_ EmitterCell) RedRange() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("redRange"))
+func (e_ EmitterCell) RedRange() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("redRange"))
 	return rv
 }
 
 // The amount by which the red color component of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522176-redrange?language=objc
-func (e_ EmitterCell) SetRedRange(value float64) {
+func (e_ EmitterCell) SetRedRange(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setRedRange:"), value)
 }
 
@@ -494,15 +494,15 @@ func (e_ EmitterCell) SetZAcceleration(value float64) {
 // The mean value by which the [quartzcore/caemittercell/lifetime] of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522101-lifetimerange?language=objc
-func (e_ EmitterCell) LifetimeRange() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("lifetimeRange"))
+func (e_ EmitterCell) LifetimeRange() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("lifetimeRange"))
 	return rv
 }
 
 // The mean value by which the [quartzcore/caemittercell/lifetime] of the cell can vary. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522101-lifetimerange?language=objc
-func (e_ EmitterCell) SetLifetimeRange(value float64) {
+func (e_ EmitterCell) SetLifetimeRange(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setLifetimeRange:"), value)
 }
 
@@ -599,15 +599,15 @@ func (e_ EmitterCell) SetScale(value float64) {
 // The speed, in seconds, at which the red color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521859-redspeed?language=objc
-func (e_ EmitterCell) RedSpeed() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("redSpeed"))
+func (e_ EmitterCell) RedSpeed() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("redSpeed"))
 	return rv
 }
 
 // The speed, in seconds, at which the red color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521859-redspeed?language=objc
-func (e_ EmitterCell) SetRedSpeed(value float64) {
+func (e_ EmitterCell) SetRedSpeed(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setRedSpeed:"), value)
 }
 
@@ -629,30 +629,30 @@ func (e_ EmitterCell) SetEmissionRange(value float64) {
 // The speed, in seconds, at which the alpha component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522120-alphaspeed?language=objc
-func (e_ EmitterCell) AlphaSpeed() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("alphaSpeed"))
+func (e_ EmitterCell) AlphaSpeed() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("alphaSpeed"))
 	return rv
 }
 
 // The speed, in seconds, at which the alpha component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522120-alphaspeed?language=objc
-func (e_ EmitterCell) SetAlphaSpeed(value float64) {
+func (e_ EmitterCell) SetAlphaSpeed(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setAlphaSpeed:"), value)
 }
 
 // The lifetime of the cell, in seconds. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522075-lifetime?language=objc
-func (e_ EmitterCell) Lifetime() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("lifetime"))
+func (e_ EmitterCell) Lifetime() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("lifetime"))
 	return rv
 }
 
 // The lifetime of the cell, in seconds. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1522075-lifetime?language=objc
-func (e_ EmitterCell) SetLifetime(value float64) {
+func (e_ EmitterCell) SetLifetime(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setLifetime:"), value)
 }
 
@@ -674,14 +674,14 @@ func (e_ EmitterCell) SetStyle(value foundation.Dictionary) {
 // The speed, in seconds, at which the green color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521946-greenspeed?language=objc
-func (e_ EmitterCell) GreenSpeed() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("greenSpeed"))
+func (e_ EmitterCell) GreenSpeed() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("greenSpeed"))
 	return rv
 }
 
 // The speed, in seconds, at which the green color component changes over the lifetime of the cell. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemittercell/1521946-greenspeed?language=objc
-func (e_ EmitterCell) SetGreenSpeed(value float64) {
+func (e_ EmitterCell) SetGreenSpeed(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setGreenSpeed:"), value)
 }

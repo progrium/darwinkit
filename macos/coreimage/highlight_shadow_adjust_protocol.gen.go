@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust?language=objc
 type PHighlightShadowAdjust interface {
 	// optional
-	SetHighlightAmount(value float64)
+	SetHighlightAmount(value float32)
 	HasSetHighlightAmount() bool
 
 	// optional
-	HighlightAmount() float64
+	HighlightAmount() float32
 	HasHighlightAmount() bool
 
 	// optional
@@ -27,19 +27,19 @@ type PHighlightShadowAdjust interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetShadowAmount(value float64)
+	SetShadowAmount(value float32)
 	HasSetShadowAmount() bool
 
 	// optional
-	ShadowAmount() float64
+	ShadowAmount() float32
 	HasShadowAmount() bool
 }
 
@@ -58,7 +58,7 @@ func (h_ HighlightShadowAdjustObject) HasSetHighlightAmount() bool {
 // The amount of adjustment to the highlights in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228494-highlightamount?language=objc
-func (h_ HighlightShadowAdjustObject) SetHighlightAmount(value float64) {
+func (h_ HighlightShadowAdjustObject) SetHighlightAmount(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setHighlightAmount:"), value)
 }
 
@@ -69,8 +69,8 @@ func (h_ HighlightShadowAdjustObject) HasHighlightAmount() bool {
 // The amount of adjustment to the highlights in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228494-highlightamount?language=objc
-func (h_ HighlightShadowAdjustObject) HighlightAmount() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("highlightAmount"))
+func (h_ HighlightShadowAdjustObject) HighlightAmount() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("highlightAmount"))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (h_ HighlightShadowAdjustObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228495-inputimage?language=objc
 func (h_ HighlightShadowAdjustObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
 func (h_ HighlightShadowAdjustObject) HasInputImage() bool {
@@ -104,7 +104,7 @@ func (h_ HighlightShadowAdjustObject) HasSetRadius() bool {
 // The shadow highlight radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228496-radius?language=objc
-func (h_ HighlightShadowAdjustObject) SetRadius(value float64) {
+func (h_ HighlightShadowAdjustObject) SetRadius(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setRadius:"), value)
 }
 
@@ -115,8 +115,8 @@ func (h_ HighlightShadowAdjustObject) HasRadius() bool {
 // The shadow highlight radius. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228496-radius?language=objc
-func (h_ HighlightShadowAdjustObject) Radius() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("radius"))
+func (h_ HighlightShadowAdjustObject) Radius() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("radius"))
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (h_ HighlightShadowAdjustObject) HasSetShadowAmount() bool {
 // The amount of adjustment to the shadows in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228497-shadowamount?language=objc
-func (h_ HighlightShadowAdjustObject) SetShadowAmount(value float64) {
+func (h_ HighlightShadowAdjustObject) SetShadowAmount(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setShadowAmount:"), value)
 }
 
@@ -138,7 +138,7 @@ func (h_ HighlightShadowAdjustObject) HasShadowAmount() bool {
 // The amount of adjustment to the shadows in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihighlightshadowadjust/3228497-shadowamount?language=objc
-func (h_ HighlightShadowAdjustObject) ShadowAmount() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("shadowAmount"))
+func (h_ HighlightShadowAdjustObject) ShadowAmount() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("shadowAmount"))
 	return rv
 }

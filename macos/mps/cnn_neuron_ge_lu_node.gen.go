@@ -34,7 +34,7 @@ func CNNNeuronGeLUNodeFrom(ptr unsafe.Pointer) CNNNeuronGeLUNode {
 }
 
 func (c_ CNNNeuronGeLUNode) InitWithSource(sourceNode INNImageNode) CNNNeuronGeLUNode {
-	rv := objc.Call[CNNNeuronGeLUNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronGeLUNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewCNNNeuronGeLUNodeWithSource(sourceNode INNImageNode) CNNNeuronGeLUNode {
 }
 
 func (cc _CNNNeuronGeLUNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronGeLUNode {
-	rv := objc.Call[CNNNeuronGeLUNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronGeLUNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func (c_ CNNNeuronGeLUNode) Init() CNNNeuronGeLUNode {
 }
 
 func (cc _CNNNeuronGeLUNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronGeLUNode {
-	rv := objc.Call[CNNNeuronGeLUNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronGeLUNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

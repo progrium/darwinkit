@@ -54,7 +54,7 @@ func TextAttachmentFrom(ptr unsafe.Pointer) TextAttachment {
 }
 
 func (t_ TextAttachment) InitWithFileWrapper(fileWrapper foundation.IFileWrapper) TextAttachment {
-	rv := objc.Call[TextAttachment](t_, objc.Sel("initWithFileWrapper:"), objc.Ptr(fileWrapper))
+	rv := objc.Call[TextAttachment](t_, objc.Sel("initWithFileWrapper:"), fileWrapper)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (t_ TextAttachment) Init() TextAttachment {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachment/3857586-registertextattachmentviewprovid?language=objc
 func (tc _TextAttachmentClass) RegisterTextAttachmentViewProviderClassForFileType(textAttachmentViewProviderClass objc.IClass, fileType string) {
-	objc.Call[objc.Void](tc, objc.Sel("registerTextAttachmentViewProviderClass:forFileType:"), objc.Ptr(textAttachmentViewProviderClass), fileType)
+	objc.Call[objc.Void](tc, objc.Sel("registerTextAttachmentViewProviderClass:forFileType:"), textAttachmentViewProviderClass, fileType)
 }
 
 // Registers a specific file type with the attachment view provider. [Full Topic]
@@ -150,7 +150,7 @@ func (t_ TextAttachment) SetAttachmentCell(value PTextAttachmentCell) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextattachment/1508413-attachmentcell?language=objc
 func (t_ TextAttachment) SetAttachmentCellObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setAttachmentCell:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setAttachmentCell:"), valueObject)
 }
 
 // An instance of the relevant image class that represents the contents of the text attachment object. [Full Topic]
@@ -165,7 +165,7 @@ func (t_ TextAttachment) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachment/1508378-image?language=objc
 func (t_ TextAttachment) SetImage(value IImage) {
-	objc.Call[objc.Void](t_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }
 
 // The contents for the text attachment. [Full Topic]
@@ -225,7 +225,7 @@ func (t_ TextAttachment) FileWrapper() foundation.FileWrapper {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextattachment/1508398-filewrapper?language=objc
 func (t_ TextAttachment) SetFileWrapper(value foundation.IFileWrapper) {
-	objc.Call[objc.Void](t_, objc.Sel("setFileWrapper:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setFileWrapper:"), value)
 }
 
 // A Boolean value that indicates whether the text attachment uses text attachment views. [Full Topic]

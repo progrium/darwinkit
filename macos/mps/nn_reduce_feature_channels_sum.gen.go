@@ -19,8 +19,8 @@ type _NNReduceFeatureChannelsSumClass struct {
 // An interface definition for the [NNReduceFeatureChannelsSum] class.
 type INNReduceFeatureChannelsSum interface {
 	INNReduceUnary
-	Weight() float64
-	SetWeight(value float64)
+	Weight() float32
+	SetWeight(value float32)
 }
 
 // A reduction filter that returns the sum of all values for each feature channel in an image. [Full Topic]
@@ -89,14 +89,14 @@ func NNReduceFeatureChannelsSum_CopyWithZoneDevice(zone unsafe.Pointer, device m
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreducefeaturechannelssum/2942545-weight?language=objc
-func (n_ NNReduceFeatureChannelsSum) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNReduceFeatureChannelsSum) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreducefeaturechannelssum/2942545-weight?language=objc
-func (n_ NNReduceFeatureChannelsSum) SetWeight(value float64) {
+func (n_ NNReduceFeatureChannelsSum) SetWeight(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setWeight:"), value)
 }

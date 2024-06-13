@@ -95,7 +95,7 @@ func (b_ BlitPassSampleBufferAttachmentDescriptor) SetSampleBuffer(value PCounte
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlblitpasssamplebufferattachmentdescriptor/3564425-samplebuffer?language=objc
 func (b_ BlitPassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](b_, objc.Sel("setSampleBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](b_, objc.Sel("setSampleBuffer:"), valueObject)
 }
 
 // An index within a counter sample buffer that tells the GPU where to store counter data from the end of a blit pass. [Full Topic]

@@ -50,7 +50,7 @@ func StateFrom(ptr unsafe.Pointer) State {
 
 func (sc _StateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) State {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[State](sc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[State](sc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -63,7 +63,7 @@ func State_TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PComm
 
 func (s_ State) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) State {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[State](s_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[State](s_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -148,7 +148,7 @@ func State_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommandBuffer) State {
 
 func (sc _StateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) State {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[State](sc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[State](sc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -161,7 +161,7 @@ func State_TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PComman
 
 func (s_ State) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) State {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[State](s_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[State](s_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func (s_ State) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942396-synchronizeoncommandbuffer?language=objc
 func (s_ State) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("synchronizeOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](s_, objc.Sel("synchronizeOnCommandBuffer:"), commandBufferObject)
 }
 
 //	[Full Topic]
@@ -237,7 +237,7 @@ func (s_ State) BufferSizeAtIndex(index uint) uint {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsstate/2942394-destinationimagedescriptorforsou?language=objc
 func (s_ State) DestinationImageDescriptorForSourceImagesSourceStatesForKernelSuggestedDescriptor(sourceImages []IImage, sourceStates []IState, kernel IKernel, inDescriptor IImageDescriptor) ImageDescriptor {
-	rv := objc.Call[ImageDescriptor](s_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:forKernel:suggestedDescriptor:"), sourceImages, sourceStates, objc.Ptr(kernel), objc.Ptr(inDescriptor))
+	rv := objc.Call[ImageDescriptor](s_, objc.Sel("destinationImageDescriptorForSourceImages:sourceStates:forKernel:suggestedDescriptor:"), sourceImages, sourceStates, kernel, inDescriptor)
 	return rv
 }
 

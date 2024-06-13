@@ -47,7 +47,7 @@ func CaptureVideoPreviewLayerFrom(ptr unsafe.Pointer) CaptureVideoPreviewLayer {
 }
 
 func (cc _CaptureVideoPreviewLayerClass) LayerWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSessionWithNoConnection:"), objc.Ptr(session))
+	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSessionWithNoConnection:"), session)
 	return rv
 }
 
@@ -59,7 +59,7 @@ func CaptureVideoPreviewLayer_LayerWithSessionWithNoConnection(session ICaptureS
 }
 
 func (c_ CaptureVideoPreviewLayer) InitWithSessionWithNoConnection(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSessionWithNoConnection:"), objc.Ptr(session))
+	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSessionWithNoConnection:"), session)
 	return rv
 }
 
@@ -73,7 +73,7 @@ func NewCaptureVideoPreviewLayerWithSessionWithNoConnection(session ICaptureSess
 }
 
 func (c_ CaptureVideoPreviewLayer) InitWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSession:"), objc.Ptr(session))
+	rv := objc.Call[CaptureVideoPreviewLayer](c_, objc.Sel("initWithSession:"), session)
 	return rv
 }
 
@@ -87,7 +87,7 @@ func NewCaptureVideoPreviewLayerWithSession(session ICaptureSession) CaptureVide
 }
 
 func (cc _CaptureVideoPreviewLayerClass) LayerWithSession(session ICaptureSession) CaptureVideoPreviewLayer {
-	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSession:"), objc.Ptr(session))
+	rv := objc.Call[CaptureVideoPreviewLayer](cc, objc.Sel("layerWithSession:"), session)
 	return rv
 }
 
@@ -192,7 +192,7 @@ func (c_ CaptureVideoPreviewLayer) PointForCaptureDevicePointOfInterest(captureD
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1390387-setsessionwithnoconnection?language=objc
 func (c_ CaptureVideoPreviewLayer) SetSessionWithNoConnection(session ICaptureSession) {
-	objc.Call[objc.Void](c_, objc.Sel("setSessionWithNoConnection:"), objc.Ptr(session))
+	objc.Call[objc.Void](c_, objc.Sel("setSessionWithNoConnection:"), session)
 }
 
 // Converts a rectangle from metadata output coordinates to the coordinate space of the layer. [Full Topic]
@@ -207,7 +207,7 @@ func (c_ CaptureVideoPreviewLayer) RectForMetadataOutputRectOfInterest(rectInMet
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1623501-transformedmetadataobjectformeta?language=objc
 func (c_ CaptureVideoPreviewLayer) TransformedMetadataObjectForMetadataObject(metadataObject IMetadataObject) MetadataObject {
-	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:"), objc.Ptr(metadataObject))
+	rv := objc.Call[MetadataObject](c_, objc.Sel("transformedMetadataObjectForMetadataObject:"), metadataObject)
 	return rv
 }
 
@@ -254,5 +254,5 @@ func (c_ CaptureVideoPreviewLayer) Session() CaptureSession {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturevideopreviewlayer/1386157-session?language=objc
 func (c_ CaptureVideoPreviewLayer) SetSession(value ICaptureSession) {
-	objc.Call[objc.Void](c_, objc.Sel("setSession:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setSession:"), value)
 }

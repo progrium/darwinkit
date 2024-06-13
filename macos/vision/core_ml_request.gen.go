@@ -37,7 +37,7 @@ func CoreMLRequestFrom(ptr unsafe.Pointer) CoreMLRequest {
 }
 
 func (c_ CoreMLRequest) InitWithModelCompletionHandler(model ICoreMLModel, completionHandler RequestCompletionHandler) CoreMLRequest {
-	rv := objc.Call[CoreMLRequest](c_, objc.Sel("initWithModel:completionHandler:"), objc.Ptr(model), completionHandler)
+	rv := objc.Call[CoreMLRequest](c_, objc.Sel("initWithModel:completionHandler:"), model, completionHandler)
 	return rv
 }
 
@@ -51,7 +51,7 @@ func NewCoreMLRequestWithModelCompletionHandler(model ICoreMLModel, completionHa
 }
 
 func (c_ CoreMLRequest) InitWithModel(model ICoreMLModel) CoreMLRequest {
-	rv := objc.Call[CoreMLRequest](c_, objc.Sel("initWithModel:"), objc.Ptr(model))
+	rv := objc.Call[CoreMLRequest](c_, objc.Sel("initWithModel:"), model)
 	return rv
 }
 

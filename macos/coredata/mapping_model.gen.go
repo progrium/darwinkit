@@ -38,7 +38,7 @@ func MappingModelFrom(ptr unsafe.Pointer) MappingModel {
 }
 
 func (m_ MappingModel) InitWithContentsOfURL(url foundation.IURL) MappingModel {
-	rv := objc.Call[MappingModel](m_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MappingModel](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (m_ MappingModel) Init() MappingModel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506930-mappingmodelfrombundles?language=objc
 func (mc _MappingModelClass) MappingModelFromBundlesForSourceModelDestinationModel(bundles []foundation.IBundle, sourceModel IManagedObjectModel, destinationModel IManagedObjectModel) MappingModel {
-	rv := objc.Call[MappingModel](mc, objc.Sel("mappingModelFromBundles:forSourceModel:destinationModel:"), bundles, objc.Ptr(sourceModel), objc.Ptr(destinationModel))
+	rv := objc.Call[MappingModel](mc, objc.Sel("mappingModelFromBundles:forSourceModel:destinationModel:"), bundles, sourceModel, destinationModel)
 	return rv
 }
 
@@ -89,15 +89,15 @@ func MappingModel_MappingModelFromBundlesForSourceModelDestinationModel(bundles 
 // Returns a newly created mapping model that will migrate data from the source to the destination model. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506468-inferredmappingmodelforsourcemod?language=objc
-func (mc _MappingModelClass) InferredMappingModelForSourceModelDestinationModelError(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel, error foundation.IError) MappingModel {
-	rv := objc.Call[MappingModel](mc, objc.Sel("inferredMappingModelForSourceModel:destinationModel:error:"), objc.Ptr(sourceModel), objc.Ptr(destinationModel), objc.Ptr(error))
+func (mc _MappingModelClass) InferredMappingModelForSourceModelDestinationModelError(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel, error unsafe.Pointer) MappingModel {
+	rv := objc.Call[MappingModel](mc, objc.Sel("inferredMappingModelForSourceModel:destinationModel:error:"), sourceModel, destinationModel, error)
 	return rv
 }
 
 // Returns a newly created mapping model that will migrate data from the source to the destination model. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmappingmodel/1506468-inferredmappingmodelforsourcemod?language=objc
-func MappingModel_InferredMappingModelForSourceModelDestinationModelError(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel, error foundation.IError) MappingModel {
+func MappingModel_InferredMappingModelForSourceModelDestinationModelError(sourceModel IManagedObjectModel, destinationModel IManagedObjectModel, error unsafe.Pointer) MappingModel {
 	return MappingModelClass.InferredMappingModelForSourceModelDestinationModelError(sourceModel, destinationModel, error)
 }
 

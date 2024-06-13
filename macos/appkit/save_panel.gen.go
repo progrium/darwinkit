@@ -94,7 +94,7 @@ func (s_ SavePanel) Init() SavePanel {
 }
 
 func (sc _SavePanelClass) WindowWithContentViewController(contentViewController IViewController) SavePanel {
-	rv := objc.Call[SavePanel](sc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[SavePanel](sc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func SavePanel_WindowWithContentViewController(contentViewController IViewContro
 }
 
 func (s_ SavePanel) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) SavePanel {
-	rv := objc.Call[SavePanel](s_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[SavePanel](s_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (s_ SavePanel) ValidateVisibleColumns() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1535870-beginsheetmodalforwindow?language=objc
 func (s_ SavePanel) BeginSheetModalForWindowCompletionHandler(window IWindow, handler func(result ModalResponse)) {
-	objc.Call[objc.Void](s_, objc.Sel("beginSheetModalForWindow:completionHandler:"), objc.Ptr(window), handler)
+	objc.Call[objc.Void](s_, objc.Sel("beginSheetModalForWindow:completionHandler:"), window, handler)
 }
 
 // Presents the panel as a modeless window. [Full Topic]
@@ -258,7 +258,7 @@ func (s_ SavePanel) DirectoryURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1531279-directoryurl?language=objc
 func (s_ SavePanel) SetDirectoryURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setDirectoryURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDirectoryURL:"), value)
 }
 
 // The message text displayed in the panel. [Full Topic]
@@ -288,7 +288,7 @@ func (s_ SavePanel) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssavepanel/1525544-accessoryview?language=objc
 func (s_ SavePanel) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAccessoryView:"), value)
 }
 
 // The text to display in the default button. [Full Topic]

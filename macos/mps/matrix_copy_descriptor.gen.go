@@ -36,7 +36,7 @@ func MatrixCopyDescriptorFrom(ptr unsafe.Pointer) MatrixCopyDescriptor {
 }
 
 func (mc _MatrixCopyDescriptorClass) DescriptorWithSourceMatrixDestinationMatrixOffsets(sourceMatrix IMatrix, destinationMatrix IMatrix, offsets MatrixCopyOffsets) MatrixCopyDescriptor {
-	rv := objc.Call[MatrixCopyDescriptor](mc, objc.Sel("descriptorWithSourceMatrix:destinationMatrix:offsets:"), objc.Ptr(sourceMatrix), objc.Ptr(destinationMatrix), offsets)
+	rv := objc.Call[MatrixCopyDescriptor](mc, objc.Sel("descriptorWithSourceMatrix:destinationMatrix:offsets:"), sourceMatrix, destinationMatrix, offsets)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func MatrixCopyDescriptor_DescriptorWithSourceMatrixDestinationMatrixOffsets(sou
 }
 
 func (m_ MatrixCopyDescriptor) InitWithSourceMatricesDestinationMatricesOffsetVectorOffset(sourceMatrices []IMatrix, destinationMatrices []IMatrix, offsets IVector, byteOffset uint) MatrixCopyDescriptor {
-	rv := objc.Call[MatrixCopyDescriptor](m_, objc.Sel("initWithSourceMatrices:destinationMatrices:offsetVector:offset:"), sourceMatrices, destinationMatrices, objc.Ptr(offsets), byteOffset)
+	rv := objc.Call[MatrixCopyDescriptor](m_, objc.Sel("initWithSourceMatrices:destinationMatrices:offsetVector:offset:"), sourceMatrices, destinationMatrices, offsets, byteOffset)
 	return rv
 }
 
@@ -100,5 +100,5 @@ func (m_ MatrixCopyDescriptor) Init() MatrixCopyDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopydescriptor/2915331-setcopyoperationatindex?language=objc
 func (m_ MatrixCopyDescriptor) SetCopyOperationAtIndexSourceMatrixDestinationMatrixOffsets(index uint, sourceMatrix IMatrix, destinationMatrix IMatrix, offsets MatrixCopyOffsets) {
-	objc.Call[objc.Void](m_, objc.Sel("setCopyOperationAtIndex:sourceMatrix:destinationMatrix:offsets:"), index, objc.Ptr(sourceMatrix), objc.Ptr(destinationMatrix), offsets)
+	objc.Call[objc.Void](m_, objc.Sel("setCopyOperationAtIndex:sourceMatrix:destinationMatrix:offsets:"), index, sourceMatrix, destinationMatrix, offsets)
 }

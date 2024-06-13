@@ -54,7 +54,7 @@ func (u_ UnitDispersion) Init() UnitDispersion {
 }
 
 func (u_ UnitDispersion) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitDispersion {
-	rv := objc.Call[UnitDispersion](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitDispersion](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

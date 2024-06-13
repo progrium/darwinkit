@@ -35,7 +35,7 @@ func CNNCrossChannelNormalizationGradientNodeFrom(ptr unsafe.Pointer) CNNCrossCh
 }
 
 func (c_ CNNCrossChannelNormalizationGradientNode) InitWithSourceGradientSourceImageGradientStateKernelSize(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelSize uint) CNNCrossChannelNormalizationGradientNode {
-	rv := objc.Call[CNNCrossChannelNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelSize:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelSize)
+	rv := objc.Call[CNNCrossChannelNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:kernelSize:"), sourceGradient, sourceImage, gradientState, kernelSize)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func NewCNNCrossChannelNormalizationGradientNodeWithSourceGradientSourceImageGra
 }
 
 func (cc _CNNCrossChannelNormalizationGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateKernelSize(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode, kernelSize uint) CNNCrossChannelNormalizationGradientNode {
-	rv := objc.Call[CNNCrossChannelNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelSize:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), kernelSize)
+	rv := objc.Call[CNNCrossChannelNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:kernelSize:"), sourceGradient, sourceImage, gradientState, kernelSize)
 	return rv
 }
 

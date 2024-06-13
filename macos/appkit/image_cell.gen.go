@@ -60,7 +60,7 @@ func (i_ ImageCell) Init() ImageCell {
 }
 
 func (i_ ImageCell) InitImageCell(image IImage) ImageCell {
-	rv := objc.Call[ImageCell](i_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[ImageCell](i_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

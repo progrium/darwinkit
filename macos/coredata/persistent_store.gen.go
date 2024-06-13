@@ -20,7 +20,7 @@ type _PersistentStoreClass struct {
 type IPersistentStore interface {
 	objc.IObject
 	DidAddToPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator)
-	LoadMetadata(error foundation.IError) bool
+	LoadMetadata(error unsafe.Pointer) bool
 	WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator)
 	Metadata() map[string]objc.Object
 	SetMetadata(value map[string]objc.IObject)
@@ -51,7 +51,7 @@ func PersistentStoreFrom(ptr unsafe.Pointer) PersistentStore {
 }
 
 func (p_ PersistentStore) InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) PersistentStore {
-	rv := objc.Call[PersistentStore](p_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), objc.Ptr(root), name, objc.Ptr(url), options)
+	rv := objc.Call[PersistentStore](p_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), root, name, url, options)
 	return rv
 }
 
@@ -88,29 +88,29 @@ func (p_ PersistentStore) Init() PersistentStore {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506873-didaddtopersistentstorecoordinat?language=objc
 func (p_ PersistentStore) DidAddToPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
-	objc.Call[objc.Void](p_, objc.Sel("didAddToPersistentStoreCoordinator:"), objc.Ptr(coordinator))
+	objc.Call[objc.Void](p_, objc.Sel("didAddToPersistentStoreCoordinator:"), coordinator)
 }
 
 // Returns the metadata from the persistent store at the given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506741-metadataforpersistentstorewithur?language=objc
-func (pc _PersistentStoreClass) MetadataForPersistentStoreWithURLError(url foundation.IURL, error foundation.IError) map[string]objc.Object {
-	rv := objc.Call[map[string]objc.Object](pc, objc.Sel("metadataForPersistentStoreWithURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (pc _PersistentStoreClass) MetadataForPersistentStoreWithURLError(url foundation.IURL, error unsafe.Pointer) map[string]objc.Object {
+	rv := objc.Call[map[string]objc.Object](pc, objc.Sel("metadataForPersistentStoreWithURL:error:"), url, error)
 	return rv
 }
 
 // Returns the metadata from the persistent store at the given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506741-metadataforpersistentstorewithur?language=objc
-func PersistentStore_MetadataForPersistentStoreWithURLError(url foundation.IURL, error foundation.IError) map[string]objc.Object {
+func PersistentStore_MetadataForPersistentStoreWithURLError(url foundation.IURL, error unsafe.Pointer) map[string]objc.Object {
 	return PersistentStoreClass.MetadataForPersistentStoreWithURLError(url, error)
 }
 
 // Instructs the persistent store to load its metadata. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506273-loadmetadata?language=objc
-func (p_ PersistentStore) LoadMetadata(error foundation.IError) bool {
-	rv := objc.Call[bool](p_, objc.Sel("loadMetadata:"), objc.Ptr(error))
+func (p_ PersistentStore) LoadMetadata(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](p_, objc.Sel("loadMetadata:"), error)
 	return rv
 }
 
@@ -132,15 +132,15 @@ func PersistentStore_MigrationManagerClass() objc.Class {
 // Sets the metadata for the store at a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
-func (pc _PersistentStoreClass) SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error foundation.IError) bool {
-	rv := objc.Call[bool](pc, objc.Sel("setMetadata:forPersistentStoreWithURL:error:"), metadata, objc.Ptr(url), objc.Ptr(error))
+func (pc _PersistentStoreClass) SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](pc, objc.Sel("setMetadata:forPersistentStoreWithURL:error:"), metadata, url, error)
 	return rv
 }
 
 // Sets the metadata for the store at a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506824-setmetadata?language=objc
-func PersistentStore_SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error foundation.IError) bool {
+func PersistentStore_SetMetadataForPersistentStoreWithURLError(metadata map[string]objc.IObject, url foundation.IURL, error unsafe.Pointer) bool {
 	return PersistentStoreClass.SetMetadataForPersistentStoreWithURLError(metadata, url, error)
 }
 
@@ -148,7 +148,7 @@ func PersistentStore_SetMetadataForPersistentStoreWithURLError(metadata map[stri
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506731-willremovefrompersistentstorecoo?language=objc
 func (p_ PersistentStore) WillRemoveFromPersistentStoreCoordinator(coordinator IPersistentStoreCoordinator) {
-	objc.Call[objc.Void](p_, objc.Sel("willRemoveFromPersistentStoreCoordinator:"), objc.Ptr(coordinator))
+	objc.Call[objc.Void](p_, objc.Sel("willRemoveFromPersistentStoreCoordinator:"), coordinator)
 }
 
 // The metadata for the persistent store. [Full Topic]
@@ -186,7 +186,7 @@ func (p_ PersistentStore) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstore/1506700-url?language=objc
 func (p_ PersistentStore) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }
 
 // The spotlight exporter associated with this persistent store. [Full Topic]

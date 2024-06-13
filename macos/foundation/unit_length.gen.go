@@ -54,7 +54,7 @@ func (u_ UnitLength) Init() UnitLength {
 }
 
 func (u_ UnitLength) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitLength {
-	rv := objc.Call[UnitLength](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitLength](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

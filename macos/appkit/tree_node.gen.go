@@ -99,7 +99,7 @@ func (t_ TreeNode) SortWithSortDescriptorsRecursively(sortDescriptors []foundati
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstreenode/1534417-descendantnodeatindexpath?language=objc
 func (t_ TreeNode) DescendantNodeAtIndexPath(indexPath foundation.IIndexPath) TreeNode {
-	rv := objc.Call[TreeNode](t_, objc.Sel("descendantNodeAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[TreeNode](t_, objc.Sel("descendantNodeAtIndexPath:"), indexPath)
 	return rv
 }
 

@@ -51,7 +51,7 @@ func LabeledValue_LabeledValueBySettingLabel(label string) LabeledValue {
 }
 
 func (lc _LabeledValueClass) LabeledValueWithLabelValue(label string, value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](lc, objc.Sel("labeledValueWithLabel:value:"), label, objc.Ptr(value))
+	rv := objc.Call[LabeledValue](lc, objc.Sel("labeledValueWithLabel:value:"), label, value)
 	return rv
 }
 
@@ -63,7 +63,7 @@ func LabeledValue_LabeledValueWithLabelValue(label string, value objc.IObject) L
 }
 
 func (l_ LabeledValue) LabeledValueBySettingValue(value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingValue:"), objc.Ptr(value))
+	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingValue:"), value)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func LabeledValue_LabeledValueBySettingValue(value objc.IObject) LabeledValue {
 }
 
 func (l_ LabeledValue) LabeledValueBySettingLabelValue(label string, value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingLabel:value:"), label, objc.Ptr(value))
+	rv := objc.Call[LabeledValue](l_, objc.Sel("labeledValueBySettingLabel:value:"), label, value)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func LabeledValue_LabeledValueBySettingLabelValue(label string, value objc.IObje
 }
 
 func (l_ LabeledValue) InitWithLabelValue(label string, value objc.IObject) LabeledValue {
-	rv := objc.Call[LabeledValue](l_, objc.Sel("initWithLabel:value:"), label, objc.Ptr(value))
+	rv := objc.Call[LabeledValue](l_, objc.Sel("initWithLabel:value:"), label, value)
 	return rv
 }
 

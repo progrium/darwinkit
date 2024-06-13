@@ -34,7 +34,7 @@ func NNConcatenationGradientNodeFrom(ptr unsafe.Pointer) NNConcatenationGradient
 }
 
 func (n_ NNConcatenationGradientNode) InitWithSourceGradientSourceImageGradientState(gradientSourceNode INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNConcatenationGradientNode {
-	rv := objc.Call[NNConcatenationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(gradientSourceNode), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNConcatenationGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), gradientSourceNode, sourceImage, gradientState)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewNNConcatenationGradientNodeWithSourceGradientSourceImageGradientState(gr
 }
 
 func (nc _NNConcatenationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(gradientSourceNode INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) NNConcatenationGradientNode {
-	rv := objc.Call[NNConcatenationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(gradientSourceNode), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[NNConcatenationGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), gradientSourceNode, sourceImage, gradientState)
 	return rv
 }
 

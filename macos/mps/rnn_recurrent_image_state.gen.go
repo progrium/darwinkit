@@ -58,7 +58,7 @@ func (r_ RNNRecurrentImageState) Init() RNNRecurrentImageState {
 
 func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) RNNRecurrentImageState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func RNNRecurrentImageState_TemporaryStateWithCommandBufferResourceList(commandB
 
 func (r_ RNNRecurrentImageState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -156,7 +156,7 @@ func RNNRecurrentImageState_TemporaryStateWithCommandBuffer(cmdBuf metal.PComman
 
 func (rc _RNNRecurrentImageStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) RNNRecurrentImageState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[RNNRecurrentImageState](rc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -169,7 +169,7 @@ func RNNRecurrentImageState_TemporaryStateWithCommandBufferTextureDescriptor(cmd
 
 func (r_ RNNRecurrentImageState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) RNNRecurrentImageState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[RNNRecurrentImageState](r_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

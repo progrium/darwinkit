@@ -126,7 +126,7 @@ func NewResponder() Responder {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527420-mousedragged?language=objc
 func (r_ Responder) MouseDragged(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseDragged:"), event)
 }
 
 // Handles a series of key events. [Full Topic]
@@ -140,42 +140,42 @@ func (r_ Responder) InterpretKeyEvents(eventArray []IEvent) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1529135-rightmousedragged?language=objc
 func (r_ Responder) RightMouseDragged(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("rightMouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("rightMouseDragged:"), event)
 }
 
 // Informs the receiver that the user has ended a touch gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1531251-endgesturewithevent?language=objc
 func (r_ Responder) EndGestureWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("endGestureWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("endGestureWithEvent:"), event)
 }
 
 // Informs the receiver that the cursor has entered a tracking rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1529306-mouseentered?language=objc
 func (r_ Responder) MouseEntered(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseEntered:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseEntered:"), event)
 }
 
 // Informs the receiver that the cursor has exited a tracking rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527561-mouseexited?language=objc
 func (r_ Responder) MouseExited(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseExited:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseExited:"), event)
 }
 
 // Informs the receiver that the user has released the left mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1535349-mouseup?language=objc
 func (r_ Responder) MouseUp(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseUp:"), event)
 }
 
 // Handle a key equivalent. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1524690-performkeyequivalent?language=objc
 func (r_ Responder) PerformKeyEquivalent(event IEvent) bool {
-	rv := objc.Call[bool](r_, objc.Sel("performKeyEquivalent:"), objc.Ptr(event))
+	rv := objc.Call[bool](r_, objc.Sel("performKeyEquivalent:"), event)
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (r_ Responder) PerformKeyEquivalent(event IEvent) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1531294-presenterror?language=objc
 func (r_ Responder) PresentError(error foundation.IError) bool {
-	rv := objc.Call[bool](r_, objc.Sel("presentError:"), objc.Ptr(error))
+	rv := objc.Call[bool](r_, objc.Sel("presentError:"), error)
 	return rv
 }
 
@@ -206,28 +206,28 @@ func (r_ Responder) WantsForwardedScrollEventsForAxis(axis EventGestureAxis) boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1531343-othermouseup?language=objc
 func (r_ Responder) OtherMouseUp(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("otherMouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("otherMouseUp:"), event)
 }
 
 // Saves the interface-related state of the responder. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1526236-encoderestorablestatewithcoder?language=objc
 func (r_ Responder) EncodeRestorableStateWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeRestorableStateWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](r_, objc.Sel("encodeRestorableStateWithCoder:"), coder)
 }
 
 // Indicates a pressure change as the result of a user input event on a system that supports pressure sensitivity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534071-pressurechangewithevent?language=objc
 func (r_ Responder) PressureChangeWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("pressureChangeWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("pressureChangeWithEvent:"), event)
 }
 
 // Saves the interface-related state of the responder to a keyed archiver either synchronously or asynchronously on the given operation queue. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/2876293-encoderestorablestatewithcoder?language=objc
 func (r_ Responder) EncodeRestorableStateWithCoderBackgroundQueue(coder foundation.ICoder, queue foundation.IOperationQueue) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeRestorableStateWithCoder:backgroundQueue:"), objc.Ptr(coder), objc.Ptr(queue))
+	objc.Call[objc.Void](r_, objc.Sel("encodeRestorableStateWithCoder:backgroundQueue:"), coder, queue)
 }
 
 // Implement this method to track gesture scroll events such as a swipe. [Full Topic]
@@ -249,14 +249,14 @@ func (r_ Responder) FlushBufferedKeyEvents() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525114-mousemoved?language=objc
 func (r_ Responder) MouseMoved(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseMoved:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseMoved:"), event)
 }
 
 // Informs the receiver that the user has pressed the right mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1524727-rightmousedown?language=objc
 func (r_ Responder) RightMouseDown(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("rightMouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("rightMouseDown:"), event)
 }
 
 // Performs all find oriented actions. [Full Topic]
@@ -270,7 +270,7 @@ func (r_ Responder) PerformTextFinderAction(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534884-updateuseractivitystate?language=objc
 func (r_ Responder) UpdateUserActivityState(userActivity foundation.IUserActivity) {
-	objc.Call[objc.Void](r_, objc.Sel("updateUserActivityState:"), objc.Ptr(userActivity))
+	objc.Call[objc.Void](r_, objc.Sel("updateUserActivityState:"), userActivity)
 }
 
 // Handles the case where an event or action message falls off the end of the responder chain. [Full Topic]
@@ -292,14 +292,14 @@ func (r_ Responder) NewWindowForTab(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1524501-touchesmovedwithevent?language=objc
 func (r_ Responder) TouchesMovedWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("touchesMovedWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("touchesMovedWithEvent:"), event)
 }
 
 // Informs the receiver that tracking of touches has been cancelled for any reason. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1530614-touchescancelledwithevent?language=objc
 func (r_ Responder) TouchesCancelledWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("touchesCancelledWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("touchesCancelledWithEvent:"), event)
 }
 
 // Notifies the receiver that it’s been asked to relinquish its status as first responder in its window. [Full Topic]
@@ -314,7 +314,7 @@ func (r_ Responder) ResignFirstResponder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525779-touchesendedwithevent?language=objc
 func (r_ Responder) TouchesEndedWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("touchesEndedWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("touchesEndedWithEvent:"), event)
 }
 
 // Overridden by subclasses to determine what services are available. [Full Topic]
@@ -337,7 +337,7 @@ func (r_ Responder) BecomeFirstResponder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1526309-rightmouseup?language=objc
 func (r_ Responder) RightMouseUp(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("rightMouseUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("rightMouseUp:"), event)
 }
 
 // Finds a target for an action method. [Full Topic]
@@ -352,70 +352,70 @@ func (r_ Responder) SupplementalTargetForActionSender(action objc.Selector, send
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1531151-touchesbeganwithevent?language=objc
 func (r_ Responder) TouchesBeganWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("touchesBeganWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("touchesBeganWithEvent:"), event)
 }
 
 // Informs the receiver that the user performed a smart zoom gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1532984-smartmagnifywithevent?language=objc
 func (r_ Responder) SmartMagnifyWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("smartMagnifyWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("smartMagnifyWithEvent:"), event)
 }
 
 // Informs the receiver that the mouse’s scroll wheel has moved. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534192-scrollwheel?language=objc
 func (r_ Responder) ScrollWheel(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("scrollWheel:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("scrollWheel:"), event)
 }
 
 // Informs the receiver that the user has moved the mouse with a button other than the left or right button pressed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1529804-othermousedragged?language=objc
 func (r_ Responder) OtherMouseDragged(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("otherMouseDragged:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("otherMouseDragged:"), event)
 }
 
 // Presents an error alert to the user as a document-modal sheet attached to document window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534705-presenterror?language=objc
 func (r_ Responder) PresentErrorModalForWindowDelegateDidPresentSelectorContextInfo(error foundation.IError, window IWindow, delegate objc.IObject, didPresentSelector objc.Selector, contextInfo unsafe.Pointer) {
-	objc.Call[objc.Void](r_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), objc.Ptr(error), objc.Ptr(window), delegate, didPresentSelector, contextInfo)
+	objc.Call[objc.Void](r_, objc.Sel("presentError:modalForWindow:delegate:didPresentSelector:contextInfo:"), error, window, delegate, didPresentSelector, contextInfo)
 }
 
 // Informs the receiver that a tablet-proximity event has occurred. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527018-tabletproximity?language=objc
 func (r_ Responder) TabletProximity(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("tabletProximity:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("tabletProximity:"), event)
 }
 
 // Informs the receiver that the user has released a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527436-keyup?language=objc
 func (r_ Responder) KeyUp(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("keyUp:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("keyUp:"), event)
 }
 
 // Performs a Quick Look on the content at the location specified by the supplied event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1535080-quicklookwithevent?language=objc
 func (r_ Responder) QuickLookWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("quickLookWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("quickLookWithEvent:"), event)
 }
 
 // Informs the receiver that the user has pressed or released a modifier key (Shift, Control, and so on). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527647-flagschanged?language=objc
 func (r_ Responder) FlagsChanged(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("flagsChanged:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("flagsChanged:"), event)
 }
 
 // Allows controls to determine when they should become first responder. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1527066-validateproposedfirstresponder?language=objc
 func (r_ Responder) ValidateProposedFirstResponderForEvent(responder IResponder, event IEvent) bool {
-	rv := objc.Call[bool](r_, objc.Sel("validateProposedFirstResponder:forEvent:"), objc.Ptr(responder), objc.Ptr(event))
+	rv := objc.Call[bool](r_, objc.Sel("validateProposedFirstResponder:forEvent:"), responder, event)
 	return rv
 }
 
@@ -423,7 +423,7 @@ func (r_ Responder) ValidateProposedFirstResponderForEvent(responder IResponder,
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525572-rotatewithevent?language=objc
 func (r_ Responder) RotateWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("rotateWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("rotateWithEvent:"), event)
 }
 
 // Returns the classes that support secure coding. [Full Topic]
@@ -453,7 +453,7 @@ func (r_ Responder) TryToPerformWith(action objc.Selector, object objc.IObject) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525188-willpresenterror?language=objc
 func (r_ Responder) WillPresentError(error foundation.IError) foundation.Error {
-	rv := objc.Call[foundation.Error](r_, objc.Sel("willPresentError:"), objc.Ptr(error))
+	rv := objc.Call[foundation.Error](r_, objc.Sel("willPresentError:"), error)
 	return rv
 }
 
@@ -461,35 +461,35 @@ func (r_ Responder) WillPresentError(error foundation.IError) foundation.Error {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/3237219-changemodewithevent?language=objc
 func (r_ Responder) ChangeModeWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("changeModeWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("changeModeWithEvent:"), event)
 }
 
 // Displays context-sensitive help for the receiver if help has been registered. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525123-helprequested?language=objc
 func (r_ Responder) HelpRequested(eventPtr IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("helpRequested:"), objc.Ptr(eventPtr))
+	objc.Call[objc.Void](r_, objc.Sel("helpRequested:"), eventPtr)
 }
 
 // Informs the receiver that the user has begun a pinch gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525862-magnifywithevent?language=objc
 func (r_ Responder) MagnifyWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("magnifyWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("magnifyWithEvent:"), event)
 }
 
 // Informs the receiver that the user has pressed the left mouse button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1524634-mousedown?language=objc
 func (r_ Responder) MouseDown(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("mouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("mouseDown:"), event)
 }
 
 // Informs the receiver that the user has begun a swipe gesture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1524275-swipewithevent?language=objc
 func (r_ Responder) SwipeWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("swipeWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("swipeWithEvent:"), event)
 }
 
 // Your custom subclass of the NSResponder class should override this method to create and configure your subclass’s default NSTouchBar object. [Full Topic]
@@ -511,28 +511,28 @@ func (r_ Responder) ShowContextHelp(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525719-othermousedown?language=objc
 func (r_ Responder) OtherMouseDown(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("otherMouseDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("otherMouseDown:"), event)
 }
 
 // Informs the receiver that the user has pressed a key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525805-keydown?language=objc
 func (r_ Responder) KeyDown(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("keyDown:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("keyDown:"), event)
 }
 
 // Informs the receiver that a tablet-point event has occurred. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1530905-tabletpoint?language=objc
 func (r_ Responder) TabletPoint(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("tabletPoint:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("tabletPoint:"), event)
 }
 
 // Indicates whether a pen-down event should be treated as an ink event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534105-shouldbetreatedasinkevent?language=objc
 func (r_ Responder) ShouldBeTreatedAsInkEvent(event IEvent) bool {
-	rv := objc.Call[bool](r_, objc.Sel("shouldBeTreatedAsInkEvent:"), objc.Ptr(event))
+	rv := objc.Call[bool](r_, objc.Sel("shouldBeTreatedAsInkEvent:"), event)
 	return rv
 }
 
@@ -540,21 +540,21 @@ func (r_ Responder) ShouldBeTreatedAsInkEvent(event IEvent) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1526368-begingesturewithevent?language=objc
 func (r_ Responder) BeginGestureWithEvent(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("beginGestureWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("beginGestureWithEvent:"), event)
 }
 
 // Restores the interface-related state of the responder. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1526253-restorestatewithcoder?language=objc
 func (r_ Responder) RestoreStateWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](r_, objc.Sel("restoreStateWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](r_, objc.Sel("restoreStateWithCoder:"), coder)
 }
 
 // Informs the receiver that the mouse cursor has moved into a cursor rectangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1525066-cursorupdate?language=objc
 func (r_ Responder) CursorUpdate(event IEvent) {
-	objc.Call[objc.Void](r_, objc.Sel("cursorUpdate:"), objc.Ptr(event))
+	objc.Call[objc.Void](r_, objc.Sel("cursorUpdate:"), event)
 }
 
 // Returns an array of key paths representing the restorable attributes of the responder. [Full Topic]
@@ -600,7 +600,7 @@ func (r_ Responder) UserActivity() foundation.UserActivity {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1534108-useractivity?language=objc
 func (r_ Responder) SetUserActivity(value foundation.IUserActivity) {
-	objc.Call[objc.Void](r_, objc.Sel("setUserActivity:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setUserActivity:"), value)
 }
 
 // The NSTouchBar object associated with the responder. [Full Topic]
@@ -615,7 +615,7 @@ func (r_ Responder) TouchBar() TouchBar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/2544731-touchbar?language=objc
 func (r_ Responder) SetTouchBar(value ITouchBar) {
-	objc.Call[objc.Void](r_, objc.Sel("setTouchBar:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setTouchBar:"), value)
 }
 
 // Returns the responder’s menu. [Full Topic]
@@ -630,7 +630,7 @@ func (r_ Responder) Menu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1533094-menu?language=objc
 func (r_ Responder) SetMenu(value IMenu) {
-	objc.Call[objc.Void](r_, objc.Sel("setMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setMenu:"), value)
 }
 
 // The next responder after this one, or nil if it has none. [Full Topic]
@@ -645,5 +645,5 @@ func (r_ Responder) NextResponder() Responder {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsresponder/1528245-nextresponder?language=objc
 func (r_ Responder) SetNextResponder(value IResponder) {
-	objc.Call[objc.Void](r_, objc.Sel("setNextResponder:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setNextResponder:"), value)
 }

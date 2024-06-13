@@ -58,7 +58,7 @@ func (p_ PlugIn) Init() PlugIn {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciplugin/3180431-loadnonexecutableplugin?language=objc
 func (pc _PlugInClass) LoadNonExecutablePlugIn(url foundation.IURL) {
-	objc.Call[objc.Void](pc, objc.Sel("loadNonExecutablePlugIn:"), objc.Ptr(url))
+	objc.Call[objc.Void](pc, objc.Sel("loadNonExecutablePlugIn:"), url)
 }
 
 //	[Full Topic]

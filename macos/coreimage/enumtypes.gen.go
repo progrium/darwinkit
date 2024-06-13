@@ -144,10 +144,10 @@ const (
 type RAWDecoderVersion string
 
 const (
-	RAWDecoderVersion6    RAWDecoderVersion = "8"
-	RAWDecoderVersion6DNG RAWDecoderVersion = "8.dng"
-	RAWDecoderVersion7    RAWDecoderVersion = "8"
-	RAWDecoderVersion7DNG RAWDecoderVersion = "8.dng"
+	RAWDecoderVersion6    RAWDecoderVersion = "6"
+	RAWDecoderVersion6DNG RAWDecoderVersion = "6.dng"
+	RAWDecoderVersion7    RAWDecoderVersion = "7"
+	RAWDecoderVersion7DNG RAWDecoderVersion = "7.dng"
 	RAWDecoderVersion8    RAWDecoderVersion = "8"
 	RAWDecoderVersion8DNG RAWDecoderVersion = "8.dng"
 	RAWDecoderVersionNone RAWDecoderVersion = "None"

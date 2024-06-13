@@ -74,7 +74,7 @@ func (l_ LayoutDimension) ConstraintEqualToConstant(c float64) LayoutConstraint 
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500957-constraintlessthanorequaltoancho?language=objc
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:constant:"), objc.Ptr(anchor), m, c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToConstant(c float64) Layo
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500951-constraintequaltoanchor?language=objc
 func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:multiplier:"), objc.Ptr(anchor), m)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:multiplier:"), anchor, m)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplier(anchor ILayoutDimens
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500934-constraintequaltoanchor?language=objc
 func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:multiplier:constant:"), objc.Ptr(anchor), m, c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:multiplier:constant:"), anchor, m, c)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (l_ LayoutDimension) ConstraintEqualToAnchorMultiplierConstant(anchor ILayo
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500961-constraintgreaterthanorequaltoan?language=objc
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:"), objc.Ptr(anchor), m)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:"), anchor, m)
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplier(anchor 
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500965-constraintgreaterthanorequaltoan?language=objc
 func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplierConstant(anchor ILayoutDimension, m float64, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:constant:"), objc.Ptr(anchor), m, c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:multiplier:constant:"), anchor, m, c)
 	return rv
 }
 
@@ -122,7 +122,7 @@ func (l_ LayoutDimension) ConstraintGreaterThanOrEqualToAnchorMultiplierConstant
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutdimension/1500943-constraintlessthanorequaltoancho?language=objc
 func (l_ LayoutDimension) ConstraintLessThanOrEqualToAnchorMultiplier(anchor ILayoutDimension, m float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:"), objc.Ptr(anchor), m)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:multiplier:"), anchor, m)
 	return rv
 }
 

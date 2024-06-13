@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate?language=objc
 type PPerspectiveRotate interface {
 	// optional
-	SetRoll(value float64)
+	SetRoll(value float32)
 	HasSetRoll() bool
 
 	// optional
-	Roll() float64
+	Roll() float32
 	HasRoll() bool
 
 	// optional
@@ -27,27 +27,27 @@ type PPerspectiveRotate interface {
 	HasInputImage() bool
 
 	// optional
-	SetFocalLength(value float64)
+	SetFocalLength(value float32)
 	HasSetFocalLength() bool
 
 	// optional
-	FocalLength() float64
+	FocalLength() float32
 	HasFocalLength() bool
 
 	// optional
-	SetYaw(value float64)
+	SetYaw(value float32)
 	HasSetYaw() bool
 
 	// optional
-	Yaw() float64
+	Yaw() float32
 	HasYaw() bool
 
 	// optional
-	SetPitch(value float64)
+	SetPitch(value float32)
 	HasSetPitch() bool
 
 	// optional
-	Pitch() float64
+	Pitch() float32
 	HasPitch() bool
 }
 
@@ -66,7 +66,7 @@ func (p_ PerspectiveRotateObject) HasSetRoll() bool {
 // The roll angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
-func (p_ PerspectiveRotateObject) SetRoll(value float64) {
+func (p_ PerspectiveRotateObject) SetRoll(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRoll:"), value)
 }
 
@@ -77,8 +77,8 @@ func (p_ PerspectiveRotateObject) HasRoll() bool {
 // The roll angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325540-roll?language=objc
-func (p_ PerspectiveRotateObject) Roll() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("roll"))
+func (p_ PerspectiveRotateObject) Roll() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("roll"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (p_ PerspectiveRotateObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325538-inputimage?language=objc
 func (p_ PerspectiveRotateObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PerspectiveRotateObject) HasInputImage() bool {
@@ -112,7 +112,7 @@ func (p_ PerspectiveRotateObject) HasSetFocalLength() bool {
 // The 35mm equivalent focal length of the input image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
-func (p_ PerspectiveRotateObject) SetFocalLength(value float64) {
+func (p_ PerspectiveRotateObject) SetFocalLength(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setFocalLength:"), value)
 }
 
@@ -123,8 +123,8 @@ func (p_ PerspectiveRotateObject) HasFocalLength() bool {
 // The 35mm equivalent focal length of the input image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325537-focallength?language=objc
-func (p_ PerspectiveRotateObject) FocalLength() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("focalLength"))
+func (p_ PerspectiveRotateObject) FocalLength() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("focalLength"))
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (p_ PerspectiveRotateObject) HasSetYaw() bool {
 // The yaw angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325541-yaw?language=objc
-func (p_ PerspectiveRotateObject) SetYaw(value float64) {
+func (p_ PerspectiveRotateObject) SetYaw(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setYaw:"), value)
 }
 
@@ -146,8 +146,8 @@ func (p_ PerspectiveRotateObject) HasYaw() bool {
 // The yaw angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325541-yaw?language=objc
-func (p_ PerspectiveRotateObject) Yaw() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("yaw"))
+func (p_ PerspectiveRotateObject) Yaw() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("yaw"))
 	return rv
 }
 
@@ -158,7 +158,7 @@ func (p_ PerspectiveRotateObject) HasSetPitch() bool {
 // The pitch angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325539-pitch?language=objc
-func (p_ PerspectiveRotateObject) SetPitch(value float64) {
+func (p_ PerspectiveRotateObject) SetPitch(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setPitch:"), value)
 }
 
@@ -169,7 +169,7 @@ func (p_ PerspectiveRotateObject) HasPitch() bool {
 // The pitch angle, in radians. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectiverotate/3325539-pitch?language=objc
-func (p_ PerspectiveRotateObject) Pitch() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("pitch"))
+func (p_ PerspectiveRotateObject) Pitch() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("pitch"))
 	return rv
 }

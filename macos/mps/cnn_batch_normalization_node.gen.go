@@ -39,7 +39,7 @@ func CNNBatchNormalizationNodeFrom(ptr unsafe.Pointer) CNNBatchNormalizationNode
 
 func (c_ CNNBatchNormalizationNode) InitWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNBatchNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), objc.Ptr(source), po1)
+	rv := objc.Call[CNNBatchNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), source, po1)
 	return rv
 }
 
@@ -54,7 +54,7 @@ func NewCNNBatchNormalizationNodeWithSourceDataSource(source INNImageNode, dataS
 
 func (cc _CNNBatchNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNBatchNormalizationDataSource) CNNBatchNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNBatchNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNBatchNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), objc.Ptr(source), po1)
+	rv := objc.Call[CNNBatchNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
 	return rv
 }
 

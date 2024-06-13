@@ -126,5 +126,5 @@ func (f_ FilePromiseProvider) SetDelegate(value PFilePromiseProviderDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseprovider/1644726-delegate?language=objc
 func (f_ FilePromiseProvider) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), valueObject)
 }

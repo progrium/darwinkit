@@ -168,5 +168,5 @@ func (g_ GridCell) ContentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgridcell/1639721-contentview?language=objc
 func (g_ GridCell) SetContentView(value IView) {
-	objc.Call[objc.Void](g_, objc.Sel("setContentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setContentView:"), value)
 }

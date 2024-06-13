@@ -87,7 +87,7 @@ func (l_ LevelIndicatorCell) Init() LevelIndicatorCell {
 }
 
 func (l_ LevelIndicatorCell) InitImageCell(image IImage) LevelIndicatorCell {
-	rv := objc.Call[LevelIndicatorCell](l_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[LevelIndicatorCell](l_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

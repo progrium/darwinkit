@@ -54,7 +54,7 @@ func RenderDestinationFrom(ptr unsafe.Pointer) RenderDestination {
 }
 
 func (r_ RenderDestination) InitWithIOSurface(surface iosurface.IIOSurface) RenderDestination {
-	rv := objc.Call[RenderDestination](r_, objc.Sel("initWithIOSurface:"), objc.Ptr(surface))
+	rv := objc.Call[RenderDestination](r_, objc.Sel("initWithIOSurface:"), surface)
 	return rv
 }
 
@@ -195,7 +195,7 @@ func (r_ RenderDestination) BlendKernel() BlendKernel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirenderdestination/2875452-blendkernel?language=objc
 func (r_ RenderDestination) SetBlendKernel(value IBlendKernel) {
-	objc.Call[objc.Void](r_, objc.Sel("setBlendKernel:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setBlendKernel:"), value)
 }
 
 // The render destination's representation of alpha (transparency) values. [Full Topic]

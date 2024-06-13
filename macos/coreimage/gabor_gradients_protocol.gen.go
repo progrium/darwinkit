@@ -35,7 +35,7 @@ func (g_ GaborGradientsObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaborgradients/3325514-inputimage?language=objc
 func (g_ GaborGradientsObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GaborGradientsObject) HasInputImage() bool {

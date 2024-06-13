@@ -341,7 +341,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidExitRegion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423630-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidExitRegion(manager LocationManager, region Region) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didExitRegion:"), objc.Ptr(manager), objc.Ptr(region))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didExitRegion:"), manager, region)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidFailWithError() bool {
@@ -352,7 +352,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidFailWithError() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423786-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidFailWithError(manager LocationManager, error foundation.Error) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didFailWithError:"), objc.Ptr(manager), objc.Ptr(error))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didFailWithError:"), manager, error)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidUpdateLocations() bool {
@@ -363,7 +363,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidUpdateLocations() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423615-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidUpdateLocations(manager LocationManager, locations []Location) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didUpdateLocations:"), objc.Ptr(manager), locations)
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didUpdateLocations:"), manager, locations)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerShouldDisplayHeadingCalibration() bool {
@@ -374,7 +374,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerShouldDisplayHeadingCa
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1621457-locationmanagershoulddisplayhead?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerShouldDisplayHeadingCalibration(manager LocationManager) bool {
-	rv := objc.Call[bool](l_, objc.Sel("locationManagerShouldDisplayHeadingCalibration:"), objc.Ptr(manager))
+	rv := objc.Call[bool](l_, objc.Sel("locationManagerShouldDisplayHeadingCalibration:"), manager)
 	return rv
 }
 
@@ -386,7 +386,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidChangeAuthorization
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/3563956-locationmanagerdidchangeauthoriz?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidChangeAuthorization(manager LocationManager) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidChangeAuthorization:"), objc.Ptr(manager))
+	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidChangeAuthorization:"), manager)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidDetermineStateForRegion() bool {
@@ -397,7 +397,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidDetermineStateForRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423570-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidDetermineStateForRegion(manager LocationManager, state RegionState, region Region) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didDetermineState:forRegion:"), objc.Ptr(manager), state, objc.Ptr(region))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didDetermineState:forRegion:"), manager, state, region)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidStartMonitoringForRegion() bool {
@@ -408,7 +408,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidStartMonitoringForR
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423842-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidStartMonitoringForRegion(manager LocationManager, region Region) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didStartMonitoringForRegion:"), objc.Ptr(manager), objc.Ptr(region))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didStartMonitoringForRegion:"), manager, region)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidFinishDeferredUpdatesWithError() bool {
@@ -419,7 +419,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidFinishDeferredUpdat
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423537-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidFinishDeferredUpdatesWithError(manager LocationManager, error foundation.Error) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didFinishDeferredUpdatesWithError:"), objc.Ptr(manager), objc.Ptr(error))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didFinishDeferredUpdatesWithError:"), manager, error)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidPauseLocationUpdates() bool {
@@ -430,7 +430,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidPauseLocationUpdate
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1621553-locationmanagerdidpauselocationu?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidPauseLocationUpdates(manager LocationManager) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidPauseLocationUpdates:"), objc.Ptr(manager))
+	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidPauseLocationUpdates:"), manager)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidVisit() bool {
@@ -441,7 +441,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidVisit() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1621529-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidVisit(manager LocationManager, visit Visit) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didVisit:"), objc.Ptr(manager), objc.Ptr(visit))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didVisit:"), manager, visit)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidUpdateHeading() bool {
@@ -452,7 +452,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidUpdateHeading() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1621555-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidUpdateHeading(manager LocationManager, newHeading Heading) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didUpdateHeading:"), objc.Ptr(manager), objc.Ptr(newHeading))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didUpdateHeading:"), manager, newHeading)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerMonitoringDidFailForRegionWithError() bool {
@@ -463,7 +463,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerMonitoringDidFailForRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423720-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerMonitoringDidFailForRegionWithError(manager LocationManager, region Region, error foundation.Error) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:monitoringDidFailForRegion:withError:"), objc.Ptr(manager), objc.Ptr(region), objc.Ptr(error))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:monitoringDidFailForRegion:withError:"), manager, region, error)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidResumeLocationUpdates() bool {
@@ -474,7 +474,7 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidResumeLocationUpdat
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1621512-locationmanagerdidresumelocation?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidResumeLocationUpdates(manager LocationManager) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidResumeLocationUpdates:"), objc.Ptr(manager))
+	objc.Call[objc.Void](l_, objc.Sel("locationManagerDidResumeLocationUpdates:"), manager)
 }
 
 func (l_ LocationManagerDelegateObject) HasLocationManagerDidEnterRegion() bool {
@@ -485,5 +485,5 @@ func (l_ LocationManagerDelegateObject) HasLocationManagerDidEnterRegion() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanagerdelegate/1423560-locationmanager?language=objc
 func (l_ LocationManagerDelegateObject) LocationManagerDidEnterRegion(manager LocationManager, region Region) {
-	objc.Call[objc.Void](l_, objc.Sel("locationManager:didEnterRegion:"), objc.Ptr(manager), objc.Ptr(region))
+	objc.Call[objc.Void](l_, objc.Sel("locationManager:didEnterRegion:"), manager, region)
 }

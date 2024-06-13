@@ -35,7 +35,7 @@ func FragmentedAssetFrom(ptr unsafe.Pointer) FragmentedAsset {
 }
 
 func (fc _FragmentedAssetClass) FragmentedAssetWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedAsset {
-	rv := objc.Call[FragmentedAsset](fc, objc.Sel("fragmentedAssetWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[FragmentedAsset](fc, objc.Sel("fragmentedAssetWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -67,7 +67,7 @@ func (f_ FragmentedAsset) Init() FragmentedAsset {
 }
 
 func (fc _FragmentedAssetClass) URLAssetWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedAsset {
-	rv := objc.Call[FragmentedAsset](fc, objc.Sel("URLAssetWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[FragmentedAsset](fc, objc.Sel("URLAssetWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -79,7 +79,7 @@ func FragmentedAsset_URLAssetWithURLOptions(URL foundation.IURL, options map[str
 }
 
 func (f_ FragmentedAsset) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) FragmentedAsset {
-	rv := objc.Call[FragmentedAsset](f_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[FragmentedAsset](f_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func NewFragmentedAssetWithURLOptions(URL foundation.IURL, options map[string]ob
 }
 
 func (fc _FragmentedAssetClass) AssetWithURL(URL foundation.IURL) FragmentedAsset {
-	rv := objc.Call[FragmentedAsset](fc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[FragmentedAsset](fc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 

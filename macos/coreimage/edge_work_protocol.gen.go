@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework?language=objc
 type PEdgeWork interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (e_ EdgeWorkObject) HasSetRadius() bool {
 // The thickness of the edges. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
-func (e_ EdgeWorkObject) SetRadius(value float64) {
+func (e_ EdgeWorkObject) SetRadius(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setRadius:"), value)
 }
 
@@ -53,8 +53,8 @@ func (e_ EdgeWorkObject) HasRadius() bool {
 // The thickness of the edges. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228243-radius?language=objc
-func (e_ EdgeWorkObject) Radius() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("radius"))
+func (e_ EdgeWorkObject) Radius() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("radius"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (e_ EdgeWorkObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedgework/3228242-inputimage?language=objc
 func (e_ EdgeWorkObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), value)
 }
 
 func (e_ EdgeWorkObject) HasInputImage() bool {

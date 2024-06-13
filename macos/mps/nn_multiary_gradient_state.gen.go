@@ -56,7 +56,7 @@ func (n_ NNMultiaryGradientState) Init() NNMultiaryGradientState {
 
 func (nc _NNMultiaryGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNMultiaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NNMultiaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNMultiaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NNMultiaryGradientState_TemporaryStateWithCommandBufferResourceList(command
 
 func (n_ NNMultiaryGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NNMultiaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNMultiaryGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNMultiaryGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NNMultiaryGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PComma
 
 func (nc _NNMultiaryGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NNMultiaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNMultiaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNMultiaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func NNMultiaryGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cm
 
 func (n_ NNMultiaryGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NNMultiaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNMultiaryGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNMultiaryGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

@@ -35,7 +35,7 @@ func AssetReaderSampleReferenceOutputFrom(ptr unsafe.Pointer) AssetReaderSampleR
 }
 
 func (a_ AssetReaderSampleReferenceOutput) InitWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
-	rv := objc.Call[AssetReaderSampleReferenceOutput](a_, objc.Sel("initWithTrack:"), objc.Ptr(track))
+	rv := objc.Call[AssetReaderSampleReferenceOutput](a_, objc.Sel("initWithTrack:"), track)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func NewAssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReader
 }
 
 func (ac _AssetReaderSampleReferenceOutputClass) AssetReaderSampleReferenceOutputWithTrack(track IAssetTrack) AssetReaderSampleReferenceOutput {
-	rv := objc.Call[AssetReaderSampleReferenceOutput](ac, objc.Sel("assetReaderSampleReferenceOutputWithTrack:"), objc.Ptr(track))
+	rv := objc.Call[AssetReaderSampleReferenceOutput](ac, objc.Sel("assetReaderSampleReferenceOutputWithTrack:"), track)
 	return rv
 }
 

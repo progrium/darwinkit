@@ -36,7 +36,7 @@ func CollectionViewCompositionalLayoutFrom(ptr unsafe.Pointer) CollectionViewCom
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSection(section ICollectionLayoutSection) CollectionViewCompositionalLayout {
-	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSection:"), objc.Ptr(section))
+	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSection:"), section)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewCollectionViewCompositionalLayoutWithSection(section ICollectionLayoutSe
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionProviderConfiguration(sectionProvider CollectionViewCompositionalLayoutSectionProvider, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSectionProvider:configuration:"), sectionProvider, objc.Ptr(configuration))
+	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSectionProvider:configuration:"), sectionProvider, configuration)
 	return rv
 }
 
@@ -64,7 +64,7 @@ func NewCollectionViewCompositionalLayoutWithSectionProviderConfiguration(sectio
 }
 
 func (c_ CollectionViewCompositionalLayout) InitWithSectionConfiguration(section ICollectionLayoutSection, configuration ICollectionViewCompositionalLayoutConfiguration) CollectionViewCompositionalLayout {
-	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSection:configuration:"), objc.Ptr(section), objc.Ptr(configuration))
+	rv := objc.Call[CollectionViewCompositionalLayout](c_, objc.Sel("initWithSection:configuration:"), section, configuration)
 	return rv
 }
 
@@ -123,5 +123,5 @@ func (c_ CollectionViewCompositionalLayout) Configuration() CollectionViewCompos
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewcompositionallayout/3281805-configuration?language=objc
 func (c_ CollectionViewCompositionalLayout) SetConfiguration(value ICollectionViewCompositionalLayoutConfiguration) {
-	objc.Call[objc.Void](c_, objc.Sel("setConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setConfiguration:"), value)
 }

@@ -88,7 +88,7 @@ func (m_ MutableComposition) Init() MutableComposition {
 }
 
 func (mc _MutableCompositionClass) AssetWithURL(URL foundation.IURL) MutableComposition {
-	rv := objc.Call[MutableComposition](mc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[MutableComposition](mc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func (m_ MutableComposition) ScaleTimeRangeToDuration(timeRange coremedia.TimeRa
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1386662-mutabletrackcompatiblewithtrack?language=objc
 func (m_ MutableComposition) MutableTrackCompatibleWithTrack(track IAssetTrack) MutableCompositionTrack {
-	rv := objc.Call[MutableCompositionTrack](m_, objc.Sel("mutableTrackCompatibleWithTrack:"), objc.Ptr(track))
+	rv := objc.Call[MutableCompositionTrack](m_, objc.Sel("mutableTrackCompatibleWithTrack:"), track)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (m_ MutableComposition) MutableTrackCompatibleWithTrack(track IAssetTrack) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1387601-addmutabletrackwithmediatype?language=objc
 func (m_ MutableComposition) AddMutableTrackWithMediaTypePreferredTrackID(mediaType MediaType, preferredTrackID objc.IObject) MutableCompositionTrack {
-	rv := objc.Call[MutableCompositionTrack](m_, objc.Sel("addMutableTrackWithMediaType:preferredTrackID:"), mediaType, objc.Ptr(preferredTrackID))
+	rv := objc.Call[MutableCompositionTrack](m_, objc.Sel("addMutableTrackWithMediaType:preferredTrackID:"), mediaType, preferredTrackID)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (m_ MutableComposition) AddMutableTrackWithMediaTypePreferredTrackID(mediaT
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablecomposition/1386818-removetrack?language=objc
 func (m_ MutableComposition) RemoveTrack(track ICompositionTrack) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), objc.Ptr(track))
+	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), track)
 }
 
 // Adds or extends an empty time range within all tracks of the composition. [Full Topic]

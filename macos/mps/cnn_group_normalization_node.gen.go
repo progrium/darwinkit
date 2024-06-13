@@ -37,7 +37,7 @@ func CNNGroupNormalizationNodeFrom(ptr unsafe.Pointer) CNNGroupNormalizationNode
 
 func (c_ CNNGroupNormalizationNode) InitWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNGroupNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNGroupNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), objc.Ptr(source), po1)
+	rv := objc.Call[CNNGroupNormalizationNode](c_, objc.Sel("initWithSource:dataSource:"), source, po1)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewCNNGroupNormalizationNodeWithSourceDataSource(source INNImageNode, dataS
 
 func (cc _CNNGroupNormalizationNodeClass) NodeWithSourceDataSource(source INNImageNode, dataSource PCNNGroupNormalizationDataSource) CNNGroupNormalizationNode {
 	po1 := objc.WrapAsProtocol("MPSCNNGroupNormalizationDataSource", dataSource)
-	rv := objc.Call[CNNGroupNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), objc.Ptr(source), po1)
+	rv := objc.Call[CNNGroupNormalizationNode](cc, objc.Sel("nodeWithSource:dataSource:"), source, po1)
 	return rv
 }
 

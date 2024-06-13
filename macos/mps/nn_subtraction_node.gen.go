@@ -66,7 +66,7 @@ func NNSubtractionNode_NodeWithSources(sourceNodes []INNImageNode) NNSubtraction
 }
 
 func (n_ NNSubtractionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
-	rv := objc.Call[NNSubtractionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNSubtractionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func NewNNSubtractionNodeWithLeftSourceRightSource(left INNImageNode, right INNI
 }
 
 func (nc _NNSubtractionNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNSubtractionNode {
-	rv := objc.Call[NNSubtractionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNSubtractionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 

@@ -67,5 +67,5 @@ func (r_ RasterizationRateLayerArray) ObjectAtIndexedSubscript(layerIndex uint) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratelayerarray/3131700-setobject?language=objc
 func (r_ RasterizationRateLayerArray) SetObjectAtIndexedSubscript(layer IRasterizationRateLayerDescriptor, layerIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(layer), layerIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), layer, layerIndex)
 }

@@ -114,7 +114,7 @@ func (a_ AccessibilityCustomRotor) SetItemSearchDelegate(value PAccessibilityCus
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2876307-itemsearchdelegate?language=objc
 func (a_ AccessibilityCustomRotor) SetItemSearchDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setItemSearchDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setItemSearchDelegate:"), valueObject)
 }
 
 // The localized label that assistive apps use to describe the custom rotor. [Full Topic]
@@ -153,7 +153,7 @@ func (a_ AccessibilityCustomRotor) SetItemLoadingDelegate(value PAccessibilityEl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilitycustomrotor/2890783-itemloadingdelegate?language=objc
 func (a_ AccessibilityCustomRotor) SetItemLoadingDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setItemLoadingDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setItemLoadingDelegate:"), valueObject)
 }
 
 // The type of content that the rotor represents. [Full Topic]

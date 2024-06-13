@@ -106,7 +106,7 @@ func (a_ AccessibilityElement) AccessibilityAddChildElement(childElement PAccess
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsaccessibilityelement/1533717-accessibilityaddchildelement?language=objc
 func (a_ AccessibilityElement) AccessibilityAddChildElementObject(childElementObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("accessibilityAddChildElement:"), objc.Ptr(childElementObject))
+	objc.Call[objc.Void](a_, objc.Sel("accessibilityAddChildElement:"), childElementObject)
 }
 
 // Instantiates and configures a new accessibility element. [Full Topic]

@@ -5,7 +5,6 @@ package contacts
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -57,30 +56,30 @@ func (c_ ContactVCardSerialization) Init() ContactVCardSerialization {
 // Returns the vCard representation of the specified contacts. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403357-datawithcontacts?language=objc
-func (cc _ContactVCardSerializationClass) DataWithContactsError(contacts []IContact, error foundation.IError) []byte {
-	rv := objc.Call[[]byte](cc, objc.Sel("dataWithContacts:error:"), contacts, objc.Ptr(error))
+func (cc _ContactVCardSerializationClass) DataWithContactsError(contacts []IContact, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](cc, objc.Sel("dataWithContacts:error:"), contacts, error)
 	return rv
 }
 
 // Returns the vCard representation of the specified contacts. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403357-datawithcontacts?language=objc
-func ContactVCardSerialization_DataWithContactsError(contacts []IContact, error foundation.IError) []byte {
+func ContactVCardSerialization_DataWithContactsError(contacts []IContact, error unsafe.Pointer) []byte {
 	return ContactVCardSerializationClass.DataWithContactsError(contacts, error)
 }
 
 // Returns the contacts from the vCard data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403090-contactswithdata?language=objc
-func (cc _ContactVCardSerializationClass) ContactsWithDataError(data []byte, error foundation.IError) []Contact {
-	rv := objc.Call[[]Contact](cc, objc.Sel("contactsWithData:error:"), data, objc.Ptr(error))
+func (cc _ContactVCardSerializationClass) ContactsWithDataError(data []byte, error unsafe.Pointer) []Contact {
+	rv := objc.Call[[]Contact](cc, objc.Sel("contactsWithData:error:"), data, error)
 	return rv
 }
 
 // Returns the contacts from the vCard data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactvcardserialization/1403090-contactswithdata?language=objc
-func ContactVCardSerialization_ContactsWithDataError(data []byte, error foundation.IError) []Contact {
+func ContactVCardSerialization_ContactsWithDataError(data []byte, error unsafe.Pointer) []Contact {
 	return ContactVCardSerializationClass.ContactsWithDataError(data, error)
 }
 

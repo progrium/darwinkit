@@ -23,7 +23,7 @@ type ISVGFDenoiser interface {
 	EncodeToCommandBufferObjectSourceTextureObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject) metal.TextureObject
 	ClearTemporalHistory()
 	ReleaseTemporaryTextures()
-	EncodeToCommandBufferSourceTextureDestinationTextureSourceTexture2DestinationTexture2MotionVectorTextureDepthNormalTexturePreviousDepthNormalTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture metal.PTexture, sourceTexture2 metal.PTexture, destinationTexture2 metal.PTexture, motionVectorTexture metal.PTexture, depthNormalTexture metal.PTexture, previousDepthNormalTexture metal.PTexture)
+	EncodeToCommandBufferSourceTextureDestinationTextureSourceTexture2DestinationTexture2MotionVectorTextureDepthNormalTexturePreviousDepthNormalTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture unsafe.Pointer, sourceTexture2 metal.PTexture, destinationTexture2 unsafe.Pointer, motionVectorTexture metal.PTexture, depthNormalTexture metal.PTexture, previousDepthNormalTexture metal.PTexture)
 	EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectSourceTexture2ObjectDestinationTexture2ObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject, sourceTexture2Object objc.IObject, destinationTexture2Object objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject)
 	Svgf() SVGF
 	BilateralFilterIterations() uint
@@ -46,7 +46,7 @@ func SVGFDenoiserFrom(ptr unsafe.Pointer) SVGFDenoiser {
 
 func (s_ SVGFDenoiser) InitWithSVGFTextureAllocator(svgf ISVGF, textureAllocator PSVGFTextureAllocator) SVGFDenoiser {
 	po1 := objc.WrapAsProtocol("MPSSVGFTextureAllocator", textureAllocator)
-	rv := objc.Call[SVGFDenoiser](s_, objc.Sel("initWithSVGF:textureAllocator:"), objc.Ptr(svgf), po1)
+	rv := objc.Call[SVGFDenoiser](s_, objc.Sel("initWithSVGF:textureAllocator:"), svgf, po1)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (s_ SVGFDenoiser) EncodeToCommandBufferSourceTextureMotionVectorTextureDept
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdenoiser/3353093-encodetocommandbuffer?language=objc
 func (s_ SVGFDenoiser) EncodeToCommandBufferObjectSourceTextureObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject) metal.TextureObject {
-	rv := objc.Call[metal.TextureObject](s_, objc.Sel("encodeToCommandBuffer:sourceTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(motionVectorTextureObject), objc.Ptr(depthNormalTextureObject), objc.Ptr(previousDepthNormalTextureObject))
+	rv := objc.Call[metal.TextureObject](s_, objc.Sel("encodeToCommandBuffer:sourceTexture:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), commandBufferObject, sourceTextureObject, motionVectorTextureObject, depthNormalTextureObject, previousDepthNormalTextureObject)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (s_ SVGFDenoiser) ReleaseTemporaryTextures() {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdenoiser/3353092-encodetocommandbuffer?language=objc
-func (s_ SVGFDenoiser) EncodeToCommandBufferSourceTextureDestinationTextureSourceTexture2DestinationTexture2MotionVectorTextureDepthNormalTexturePreviousDepthNormalTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture metal.PTexture, sourceTexture2 metal.PTexture, destinationTexture2 metal.PTexture, motionVectorTexture metal.PTexture, depthNormalTexture metal.PTexture, previousDepthNormalTexture metal.PTexture) {
+func (s_ SVGFDenoiser) EncodeToCommandBufferSourceTextureDestinationTextureSourceTexture2DestinationTexture2MotionVectorTextureDepthNormalTexturePreviousDepthNormalTexture(commandBuffer metal.PCommandBuffer, sourceTexture metal.PTexture, destinationTexture unsafe.Pointer, sourceTexture2 metal.PTexture, destinationTexture2 unsafe.Pointer, motionVectorTexture metal.PTexture, depthNormalTexture metal.PTexture, previousDepthNormalTexture metal.PTexture) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po1 := objc.WrapAsProtocol("MTLTexture", sourceTexture)
 	po2 := objc.WrapAsProtocol("MTLTexture", destinationTexture)
@@ -148,7 +148,7 @@ func (s_ SVGFDenoiser) EncodeToCommandBufferSourceTextureDestinationTextureSourc
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpssvgfdenoiser/3353092-encodetocommandbuffer?language=objc
 func (s_ SVGFDenoiser) EncodeToCommandBufferObjectSourceTextureObjectDestinationTextureObjectSourceTexture2ObjectDestinationTexture2ObjectMotionVectorTextureObjectDepthNormalTextureObjectPreviousDepthNormalTextureObject(commandBufferObject objc.IObject, sourceTextureObject objc.IObject, destinationTextureObject objc.IObject, sourceTexture2Object objc.IObject, destinationTexture2Object objc.IObject, motionVectorTextureObject objc.IObject, depthNormalTextureObject objc.IObject, previousDepthNormalTextureObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:sourceTexture2:destinationTexture2:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceTextureObject), objc.Ptr(destinationTextureObject), objc.Ptr(sourceTexture2Object), objc.Ptr(destinationTexture2Object), objc.Ptr(motionVectorTextureObject), objc.Ptr(depthNormalTextureObject), objc.Ptr(previousDepthNormalTextureObject))
+	objc.Call[objc.Void](s_, objc.Sel("encodeToCommandBuffer:sourceTexture:destinationTexture:sourceTexture2:destinationTexture2:motionVectorTexture:depthNormalTexture:previousDepthNormalTexture:"), commandBufferObject, sourceTextureObject, destinationTextureObject, sourceTexture2Object, destinationTexture2Object, motionVectorTextureObject, depthNormalTextureObject, previousDepthNormalTextureObject)
 }
 
 //	[Full Topic]

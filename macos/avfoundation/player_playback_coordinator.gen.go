@@ -86,5 +86,5 @@ func (p_ PlayerPlaybackCoordinator) SetDelegate(value PPlayerPlaybackCoordinator
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayerplaybackcoordinator/3750301-delegate?language=objc
 func (p_ PlayerPlaybackCoordinator) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }

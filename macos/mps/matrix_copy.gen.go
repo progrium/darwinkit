@@ -112,14 +112,14 @@ func NewMatrixCopyWithDevice(device metal.PDevice) MatrixCopy {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915341-encodetocommandbuffer?language=objc
 func (m_ MatrixCopy) EncodeToCommandBufferCopyDescriptor(commandBuffer metal.PCommandBuffer, copyDescriptor IMatrixCopyDescriptor) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:"), po0, objc.Ptr(copyDescriptor))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:"), po0, copyDescriptor)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2915341-encodetocommandbuffer?language=objc
 func (m_ MatrixCopy) EncodeToCommandBufferObjectCopyDescriptor(commandBufferObject objc.IObject, copyDescriptor IMatrixCopyDescriptor) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:"), objc.Ptr(commandBufferObject), objc.Ptr(copyDescriptor))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:"), commandBufferObject, copyDescriptor)
 }
 
 //	[Full Topic]
@@ -127,14 +127,14 @@ func (m_ MatrixCopy) EncodeToCommandBufferObjectCopyDescriptor(commandBufferObje
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2935558-encodetocommandbuffer?language=objc
 func (m_ MatrixCopy) EncodeToCommandBufferCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBuffer metal.PCommandBuffer, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), po0, objc.Ptr(copyDescriptor), objc.Ptr(rowPermuteIndices), rowPermuteOffset, objc.Ptr(columnPermuteIndices), columnPermuteOffset)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), po0, copyDescriptor, rowPermuteIndices, rowPermuteOffset, columnPermuteIndices, columnPermuteOffset)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopy/2935558-encodetocommandbuffer?language=objc
 func (m_ MatrixCopy) EncodeToCommandBufferObjectCopyDescriptorRowPermuteIndicesRowPermuteOffsetColumnPermuteIndicesColumnPermuteOffset(commandBufferObject objc.IObject, copyDescriptor IMatrixCopyDescriptor, rowPermuteIndices IVector, rowPermuteOffset uint, columnPermuteIndices IVector, columnPermuteOffset uint) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(copyDescriptor), objc.Ptr(rowPermuteIndices), rowPermuteOffset, objc.Ptr(columnPermuteIndices), columnPermuteOffset)
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:copyDescriptor:rowPermuteIndices:rowPermuteOffset:columnPermuteIndices:columnPermuteOffset:"), commandBufferObject, copyDescriptor, rowPermuteIndices, rowPermuteOffset, columnPermuteIndices, columnPermuteOffset)
 }
 
 //	[Full Topic]

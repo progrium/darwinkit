@@ -20,12 +20,12 @@ type IXMLNode interface {
 	objc.IObject
 	SetStringValueResolvingEntities(string_ string, resolve bool)
 	ChildAtIndex(index uint) XMLNode
-	NodesForXPathError(xpath string, error IError) []XMLNode
+	NodesForXPathError(xpath string, error unsafe.Pointer) []XMLNode
 	CanonicalXMLStringPreservingComments(comments bool) string
 	XMLStringWithOptions(options XMLNodeOptions) string
-	ObjectsForXQueryError(xquery string, error IError) []objc.Object
+	ObjectsForXQueryError(xquery string, error unsafe.Pointer) []objc.Object
 	Detach()
-	ObjectsForXQueryConstantsError(xquery string, constants map[string]objc.IObject, error IError) []objc.Object
+	ObjectsForXQueryConstantsError(xquery string, constants map[string]objc.IObject, error unsafe.Pointer) []objc.Object
 	LocalName() string
 	PreviousSibling() XMLNode
 	XPath() string
@@ -259,7 +259,7 @@ func XMLNode_Document() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409802-documentwithrootelement?language=objc
 func (xc _XMLNodeClass) DocumentWithRootElement(element IXMLElement) objc.Object {
-	rv := objc.Call[objc.Object](xc, objc.Sel("documentWithRootElement:"), objc.Ptr(element))
+	rv := objc.Call[objc.Object](xc, objc.Sel("documentWithRootElement:"), element)
 	return rv
 }
 
@@ -296,8 +296,8 @@ func (x_ XMLNode) ChildAtIndex(index uint) XMLNode {
 // Returns the nodes resulting from executing an XPath query upon the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409813-nodesforxpath?language=objc
-func (x_ XMLNode) NodesForXPathError(xpath string, error IError) []XMLNode {
-	rv := objc.Call[[]XMLNode](x_, objc.Sel("nodesForXPath:error:"), xpath, objc.Ptr(error))
+func (x_ XMLNode) NodesForXPathError(xpath string, error unsafe.Pointer) []XMLNode {
+	rv := objc.Call[[]XMLNode](x_, objc.Sel("nodesForXPath:error:"), xpath, error)
 	return rv
 }
 
@@ -350,8 +350,8 @@ func (x_ XMLNode) XMLStringWithOptions(options XMLNodeOptions) string {
 // Returns the objects resulting from executing an XQuery query upon the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409768-objectsforxquery?language=objc
-func (x_ XMLNode) ObjectsForXQueryError(xquery string, error IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](x_, objc.Sel("objectsForXQuery:error:"), xquery, objc.Ptr(error))
+func (x_ XMLNode) ObjectsForXQueryError(xquery string, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](x_, objc.Sel("objectsForXQuery:error:"), xquery, error)
 	return rv
 }
 
@@ -410,8 +410,8 @@ func XMLNode_AttributeWithNameURIStringValue(name string, URI string, stringValu
 // Returns the objects resulting from executing an XQuery query upon the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlnode/1409792-objectsforxquery?language=objc
-func (x_ XMLNode) ObjectsForXQueryConstantsError(xquery string, constants map[string]objc.IObject, error IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](x_, objc.Sel("objectsForXQuery:constants:error:"), xquery, constants, objc.Ptr(error))
+func (x_ XMLNode) ObjectsForXQueryConstantsError(xquery string, constants map[string]objc.IObject, error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](x_, objc.Sel("objectsForXQuery:constants:error:"), xquery, constants, error)
 	return rv
 }
 

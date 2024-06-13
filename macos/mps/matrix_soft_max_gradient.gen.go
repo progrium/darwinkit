@@ -95,14 +95,14 @@ func (m_ MatrixSoftMaxGradient) Init() MatrixSoftMaxGradient {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966652-encodetocommandbuffer?language=objc
 func (m_ MatrixSoftMaxGradient) EncodeToCommandBufferGradientMatrixForwardOutputMatrixResultMatrix(commandBuffer metal.PCommandBuffer, gradientMatrix IMatrix, forwardOutputMatrix IMatrix, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:forwardOutputMatrix:resultMatrix:"), po0, objc.Ptr(gradientMatrix), objc.Ptr(forwardOutputMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:forwardOutputMatrix:resultMatrix:"), po0, gradientMatrix, forwardOutputMatrix, resultMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixsoftmaxgradient/2966652-encodetocommandbuffer?language=objc
 func (m_ MatrixSoftMaxGradient) EncodeToCommandBufferObjectGradientMatrixForwardOutputMatrixResultMatrix(commandBufferObject objc.IObject, gradientMatrix IMatrix, forwardOutputMatrix IMatrix, resultMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:forwardOutputMatrix:resultMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(gradientMatrix), objc.Ptr(forwardOutputMatrix), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:gradientMatrix:forwardOutputMatrix:resultMatrix:"), commandBufferObject, gradientMatrix, forwardOutputMatrix, resultMatrix)
 }
 
 //	[Full Topic]

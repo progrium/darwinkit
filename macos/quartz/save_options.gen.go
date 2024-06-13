@@ -82,14 +82,14 @@ func (s_ SaveOptions) Init() SaveOptions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1504945-addsaveoptionstoview?language=objc
 func (s_ SaveOptions) AddSaveOptionsToView(view appkit.IView) {
-	objc.Call[objc.Void](s_, objc.Sel("addSaveOptionsToView:"), objc.Ptr(view))
+	objc.Call[objc.Void](s_, objc.Sel("addSaveOptionsToView:"), view)
 }
 
 // Adds IKSaveOptions accessory view to a NSSavePanel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/iksaveoptions/1503458-addsaveoptionsaccessoryviewtosav?language=objc
 func (s_ SaveOptions) AddSaveOptionsAccessoryViewToSavePanel(savePanel appkit.ISavePanel) {
-	objc.Call[objc.Void](s_, objc.Sel("addSaveOptionsAccessoryViewToSavePanel:"), objc.Ptr(savePanel))
+	objc.Call[objc.Void](s_, objc.Sel("addSaveOptionsAccessoryViewToSavePanel:"), savePanel)
 }
 
 // Returns a dictionary that contains the save options selected by the user. [Full Topic]

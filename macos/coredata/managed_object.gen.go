@@ -26,8 +26,8 @@ type IManagedObject interface {
 	ChangedValues() map[string]objc.Object
 	PrepareForDeletion()
 	InitWithEntityInsertIntoManagedObjectContext(entity IEntityDescription, context IManagedObjectContext) ManagedObject
-	ValidateForDelete(error foundation.IError) bool
-	ValidateValueForKeyError(value objc.IObject, key string, error foundation.IError) bool
+	ValidateForDelete(error unsafe.Pointer) bool
+	ValidateValueForKeyError(value unsafe.Pointer, key string, error unsafe.Pointer) bool
 	DidAccessValueForKey(key string)
 	HasFaultForRelationshipNamed(key string) bool
 	WillSave()
@@ -40,7 +40,7 @@ type IManagedObject interface {
 	WillAccessValueForKey(key string)
 	SetPrimitiveValueForKey(value objc.IObject, key string)
 	WillChangeValueForKeyWithSetMutationUsingObjects(inKey string, inMutationKind foundation.KeyValueSetMutationKind, inObjects foundation.ISet)
-	ValidateForInsert(error foundation.IError) bool
+	ValidateForInsert(error unsafe.Pointer) bool
 	PrimitiveValueForKey(key string) objc.Object
 	AwakeFromSnapshotEvents(flags SnapshotEventType)
 	CommittedValuesForKeys(keys []string) map[string]objc.Object
@@ -48,7 +48,7 @@ type IManagedObject interface {
 	ChangedValuesForCurrentEvent() map[string]objc.Object
 	SetValueForKey(value objc.IObject, key string)
 	DidSave()
-	ValidateForUpdate(error foundation.IError) bool
+	ValidateForUpdate(error unsafe.Pointer) bool
 	HasPersistentChangedValues() bool
 	FaultingState() uint
 	HasChanges() bool
@@ -74,7 +74,7 @@ func ManagedObjectFrom(ptr unsafe.Pointer) ManagedObject {
 }
 
 func (m_ ManagedObject) InitWithContext(moc IManagedObjectContext) ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("initWithContext:"), objc.Ptr(moc))
+	rv := objc.Call[ManagedObject](m_, objc.Sel("initWithContext:"), moc)
 	return rv
 }
 
@@ -155,23 +155,23 @@ func (m_ ManagedObject) PrepareForDeletion() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506357-initwithentity?language=objc
 func (m_ ManagedObject) InitWithEntityInsertIntoManagedObjectContext(entity IEntityDescription, context IManagedObjectContext) ManagedObject {
-	rv := objc.Call[ManagedObject](m_, objc.Sel("initWithEntity:insertIntoManagedObjectContext:"), objc.Ptr(entity), objc.Ptr(context))
+	rv := objc.Call[ManagedObject](m_, objc.Sel("initWithEntity:insertIntoManagedObjectContext:"), entity, context)
 	return rv
 }
 
 // Determines whether the managed object can be deleted in its current state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506195-validatefordelete?language=objc
-func (m_ ManagedObject) ValidateForDelete(error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("validateForDelete:"), objc.Ptr(error))
+func (m_ ManagedObject) ValidateForDelete(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("validateForDelete:"), error)
 	return rv
 }
 
 // Validates a property value for a given key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506776-validatevalue?language=objc
-func (m_ ManagedObject) ValidateValueForKeyError(value objc.IObject, key string, error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("validateValue:forKey:error:"), value, key, objc.Ptr(error))
+func (m_ ManagedObject) ValidateValueForKeyError(value unsafe.Pointer, key string, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("validateValue:forKey:error:"), value, key, error)
 	return rv
 }
 
@@ -222,7 +222,7 @@ func (m_ ManagedObject) AwakeFromInsert() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506936-didchangevalueforkey?language=objc
 func (m_ ManagedObject) DidChangeValueForKeyWithSetMutationUsingObjects(inKey string, inMutationKind foundation.KeyValueSetMutationKind, inObjects foundation.ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("didChangeValueForKey:withSetMutation:usingObjects:"), inKey, inMutationKind, objc.Ptr(inObjects))
+	objc.Call[objc.Void](m_, objc.Sel("didChangeValueForKey:withSetMutation:usingObjects:"), inKey, inMutationKind, inObjects)
 }
 
 // Returns the observation info of the managed object. [Full Topic]
@@ -259,14 +259,14 @@ func (m_ ManagedObject) SetPrimitiveValueForKey(value objc.IObject, key string) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506801-willchangevalueforkey?language=objc
 func (m_ ManagedObject) WillChangeValueForKeyWithSetMutationUsingObjects(inKey string, inMutationKind foundation.KeyValueSetMutationKind, inObjects foundation.ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("willChangeValueForKey:withSetMutation:usingObjects:"), inKey, inMutationKind, objc.Ptr(inObjects))
+	objc.Call[objc.Void](m_, objc.Sel("willChangeValueForKey:withSetMutation:usingObjects:"), inKey, inMutationKind, inObjects)
 }
 
 // Determines whether the managed object can be inserted in its current state. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506683-validateforinsert?language=objc
-func (m_ ManagedObject) ValidateForInsert(error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("validateForInsert:"), objc.Ptr(error))
+func (m_ ManagedObject) ValidateForInsert(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("validateForInsert:"), error)
 	return rv
 }
 
@@ -355,8 +355,8 @@ func (m_ ManagedObject) DidSave() {
 // Determines whether the managed object's current state is valid. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobject/1506998-validateforupdate?language=objc
-func (m_ ManagedObject) ValidateForUpdate(error foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("validateForUpdate:"), objc.Ptr(error))
+func (m_ ManagedObject) ValidateForUpdate(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("validateForUpdate:"), error)
 	return rv
 }
 

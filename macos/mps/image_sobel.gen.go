@@ -19,7 +19,7 @@ type _ImageSobelClass struct {
 // An interface definition for the [ImageSobel] class.
 type IImageSobel interface {
 	IUnaryImageKernel
-	ColorTransform() *float64
+	ColorTransform() *float32
 }
 
 // A filter that convolves an image with the Sobel operator. [Full Topic]
@@ -35,7 +35,7 @@ func ImageSobelFrom(ptr unsafe.Pointer) ImageSobel {
 	}
 }
 
-func (i_ ImageSobel) InitWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float64) ImageSobel {
+func (i_ ImageSobel) InitWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float32) ImageSobel {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageSobel](i_, objc.Sel("initWithDevice:linearGrayColorTransform:"), po0, transform)
 	return rv
@@ -44,7 +44,7 @@ func (i_ ImageSobel) InitWithDeviceLinearGrayColorTransform(device metal.PDevice
 // Initializes a Sobel filter on a given device using a specific color transform. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagesobel/1618899-initwithdevice?language=objc
-func NewImageSobelWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float64) ImageSobel {
+func NewImageSobelWithDeviceLinearGrayColorTransform(device metal.PDevice, transform *float32) ImageSobel {
 	instance := ImageSobelClass.Alloc().InitWithDeviceLinearGrayColorTransform(device, transform)
 	instance.Autorelease()
 	return instance
@@ -103,7 +103,7 @@ func ImageSobel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDevice) Im
 // The color transform used to initialize the Sobel filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagesobel/1618777-colortransform?language=objc
-func (i_ ImageSobel) ColorTransform() *float64 {
-	rv := objc.Call[*float64](i_, objc.Sel("colorTransform"))
+func (i_ ImageSobel) ColorTransform() *float32 {
+	rv := objc.Call[*float32](i_, objc.Sel("colorTransform"))
 	return rv
 }

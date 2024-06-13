@@ -60,7 +60,7 @@ func (r_ RasterizationRateSampleArray) Init() RasterizationRateSampleArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratesamplearray/3088876-setobject?language=objc
 func (r_ RasterizationRateSampleArray) SetObjectAtIndexedSubscript(value foundation.INumber, index uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(value), index)
+	objc.Call[objc.Void](r_, objc.Sel("setObject:atIndexedSubscript:"), value, index)
 }
 
 // Retrieves the sample value at the specified index. [Full Topic]

@@ -31,6 +31,6 @@ func (t_ ToolbarItemValidationObject) HasValidateToolbarItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritemvalidation/3005292-validatetoolbaritem?language=objc
 func (t_ ToolbarItemValidationObject) ValidateToolbarItem(item ToolbarItem) bool {
-	rv := objc.Call[bool](t_, objc.Sel("validateToolbarItem:"), objc.Ptr(item))
+	rv := objc.Call[bool](t_, objc.Sel("validateToolbarItem:"), item)
 	return rv
 }

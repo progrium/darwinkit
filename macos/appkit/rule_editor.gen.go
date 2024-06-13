@@ -122,7 +122,7 @@ func (r_ RuleEditor) RemoveRowAtIndex(rowIndex int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditor/1534559-selectrowindexes?language=objc
 func (r_ RuleEditor) SelectRowIndexesByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.Call[objc.Void](r_, objc.Sel("selectRowIndexes:byExtendingSelection:"), objc.Ptr(indexes), extend)
+	objc.Call[objc.Void](r_, objc.Sel("selectRowIndexes:byExtendingSelection:"), indexes, extend)
 }
 
 // Adds a row to the receiver. [Full Topic]
@@ -189,7 +189,7 @@ func (r_ RuleEditor) ReloadCriteria() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditor/1525947-removerowsatindexes?language=objc
 func (r_ RuleEditor) RemoveRowsAtIndexesIncludeSubrows(rowIndexes foundation.IIndexSet, includeSubrows bool) {
-	objc.Call[objc.Void](r_, objc.Sel("removeRowsAtIndexes:includeSubrows:"), objc.Ptr(rowIndexes), includeSubrows)
+	objc.Call[objc.Void](r_, objc.Sel("removeRowsAtIndexes:includeSubrows:"), rowIndexes, includeSubrows)
 }
 
 // Returns the immediate subrows of a given row. [Full Topic]
@@ -394,7 +394,7 @@ func (r_ RuleEditor) RowClass() objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditor/1535414-rowclass?language=objc
 func (r_ RuleEditor) SetRowClass(value objc.IClass) {
-	objc.Call[objc.Void](r_, objc.Sel("setRowClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setRowClass:"), value)
 }
 
 // The formatting dictionary for the rule editor. [Full Topic]
@@ -433,5 +433,5 @@ func (r_ RuleEditor) SetDelegate(value PRuleEditorDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsruleeditor/1528017-delegate?language=objc
 func (r_ RuleEditor) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setDelegate:"), valueObject)
 }

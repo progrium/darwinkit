@@ -18,23 +18,23 @@ type _FileHandleClass struct {
 // An interface definition for the [FileHandle] class.
 type IFileHandle interface {
 	objc.IObject
-	ReadDataToEndOfFileAndReturnError(error IError) []byte
-	SeekToEndReturningOffsetError(offsetInFile *int64, error IError) bool
+	ReadDataToEndOfFileAndReturnError(error unsafe.Pointer) []byte
+	SeekToEndReturningOffsetError(offsetInFile *int64, error unsafe.Pointer) bool
 	ReadInBackgroundAndNotifyForModes(modes []RunLoopMode)
-	CloseAndReturnError(error IError) bool
-	WriteDataError(data []byte, error IError) bool
-	TruncateAtOffsetError(offset int64, error IError) bool
-	GetOffsetError(offsetInFile *int64, error IError) bool
+	CloseAndReturnError(error unsafe.Pointer) bool
+	WriteDataError(data []byte, error unsafe.Pointer) bool
+	TruncateAtOffsetError(offset int64, error unsafe.Pointer) bool
+	GetOffsetError(offsetInFile *int64, error unsafe.Pointer) bool
 	WaitForDataInBackgroundAndNotify()
 	ReadToEndOfFileInBackgroundAndNotify()
 	WaitForDataInBackgroundAndNotifyForModes(modes []RunLoopMode)
 	ReadInBackgroundAndNotify()
 	ReadToEndOfFileInBackgroundAndNotifyForModes(modes []RunLoopMode)
-	ReadDataUpToLengthError(length uint, error IError) []byte
+	ReadDataUpToLengthError(length uint, error unsafe.Pointer) []byte
 	AcceptConnectionInBackgroundAndNotify()
 	AcceptConnectionInBackgroundAndNotifyForModes(modes []RunLoopMode)
-	SynchronizeAndReturnError(error IError) bool
-	SeekToOffsetError(offset int64, error IError) bool
+	SynchronizeAndReturnError(error unsafe.Pointer) bool
+	SeekToOffsetError(offset int64, error unsafe.Pointer) bool
 	FileDescriptor() int
 	AvailableData() []byte
 	ReadabilityHandler() func(arg0 FileHandle)
@@ -84,15 +84,15 @@ func NewFileHandleWithFileDescriptor(fd int) FileHandle {
 	return instance
 }
 
-func (fc _FileHandleClass) FileHandleForUpdatingURLError(url IURL, error IError) FileHandle {
-	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForUpdatingURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (fc _FileHandleClass) FileHandleForUpdatingURLError(url IURL, error unsafe.Pointer) FileHandle {
+	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForUpdatingURL:error:"), url, error)
 	return rv
 }
 
 // Returns a file handle initialized for reading and writing to the file, device, or named socket at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/1417026-filehandleforupdatingurl?language=objc
-func FileHandle_FileHandleForUpdatingURLError(url IURL, error IError) FileHandle {
+func FileHandle_FileHandleForUpdatingURLError(url IURL, error unsafe.Pointer) FileHandle {
 	return FileHandleClass.FileHandleForUpdatingURLError(url, error)
 }
 
@@ -132,27 +132,27 @@ func FileHandle_FileHandleForUpdatingAtPath(path string) FileHandle {
 	return FileHandleClass.FileHandleForUpdatingAtPath(path)
 }
 
-func (fc _FileHandleClass) FileHandleForReadingFromURLError(url IURL, error IError) FileHandle {
-	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForReadingFromURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (fc _FileHandleClass) FileHandleForReadingFromURLError(url IURL, error unsafe.Pointer) FileHandle {
+	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForReadingFromURL:error:"), url, error)
 	return rv
 }
 
 // Returns a file handle initialized for reading the file, device, or named socket at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/1408422-filehandleforreadingfromurl?language=objc
-func FileHandle_FileHandleForReadingFromURLError(url IURL, error IError) FileHandle {
+func FileHandle_FileHandleForReadingFromURLError(url IURL, error unsafe.Pointer) FileHandle {
 	return FileHandleClass.FileHandleForReadingFromURLError(url, error)
 }
 
-func (fc _FileHandleClass) FileHandleForWritingToURLError(url IURL, error IError) FileHandle {
-	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForWritingToURL:error:"), objc.Ptr(url), objc.Ptr(error))
+func (fc _FileHandleClass) FileHandleForWritingToURLError(url IURL, error unsafe.Pointer) FileHandle {
+	rv := objc.Call[FileHandle](fc, objc.Sel("fileHandleForWritingToURL:error:"), url, error)
 	return rv
 }
 
 // Returns a file handle initialized for writing to the file, device, or named socket at the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/1416892-filehandleforwritingtourl?language=objc
-func FileHandle_FileHandleForWritingToURLError(url IURL, error IError) FileHandle {
+func FileHandle_FileHandleForWritingToURLError(url IURL, error unsafe.Pointer) FileHandle {
 	return FileHandleClass.FileHandleForWritingToURLError(url, error)
 }
 
@@ -179,16 +179,16 @@ func (f_ FileHandle) Init() FileHandle {
 // Reads the available data synchronously up to the end of file or maximum number of bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172527-readdatatoendoffileandreturnerro?language=objc
-func (f_ FileHandle) ReadDataToEndOfFileAndReturnError(error IError) []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("readDataToEndOfFileAndReturnError:"), objc.Ptr(error))
+func (f_ FileHandle) ReadDataToEndOfFileAndReturnError(error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("readDataToEndOfFileAndReturnError:"), error)
 	return rv
 }
 
 // Places the file pointer at the end of the file referenced by the file handle and returns the new file offset. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172529-seektoendreturningoffset?language=objc
-func (f_ FileHandle) SeekToEndReturningOffsetError(offsetInFile *int64, error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("seekToEndReturningOffset:error:"), offsetInFile, objc.Ptr(error))
+func (f_ FileHandle) SeekToEndReturningOffsetError(offsetInFile *int64, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("seekToEndReturningOffset:error:"), offsetInFile, error)
 	return rv
 }
 
@@ -202,32 +202,32 @@ func (f_ FileHandle) ReadInBackgroundAndNotifyForModes(modes []RunLoopMode) {
 // Disallows further access to the represented file or communications channel and signals end of file on communications channels that permit writing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172525-closeandreturnerror?language=objc
-func (f_ FileHandle) CloseAndReturnError(error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("closeAndReturnError:"), objc.Ptr(error))
+func (f_ FileHandle) CloseAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("closeAndReturnError:"), error)
 	return rv
 }
 
 // Writes the specified data synchronously to the file handle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172533-writedata?language=objc
-func (f_ FileHandle) WriteDataError(data []byte, error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("writeData:error:"), data, objc.Ptr(error))
+func (f_ FileHandle) WriteDataError(data []byte, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("writeData:error:"), data, error)
 	return rv
 }
 
 // Truncates or extends the file represented by the file handle to a specified offset within the file and puts the file pointer at that position. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172532-truncateatoffset?language=objc
-func (f_ FileHandle) TruncateAtOffsetError(offset int64, error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("truncateAtOffset:error:"), offset, objc.Ptr(error))
+func (f_ FileHandle) TruncateAtOffsetError(offset int64, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("truncateAtOffset:error:"), offset, error)
 	return rv
 }
 
 // Get the current position of the file pointer within the file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172526-getoffset?language=objc
-func (f_ FileHandle) GetOffsetError(offsetInFile *int64, error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("getOffset:error:"), offsetInFile, objc.Ptr(error))
+func (f_ FileHandle) GetOffsetError(offsetInFile *int64, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("getOffset:error:"), offsetInFile, error)
 	return rv
 }
 
@@ -269,8 +269,8 @@ func (f_ FileHandle) ReadToEndOfFileInBackgroundAndNotifyForModes(modes []RunLoo
 // Reads data synchronously up to the specified number of bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172528-readdatauptolength?language=objc
-func (f_ FileHandle) ReadDataUpToLengthError(length uint, error IError) []byte {
-	rv := objc.Call[[]byte](f_, objc.Sel("readDataUpToLength:error:"), length, objc.Ptr(error))
+func (f_ FileHandle) ReadDataUpToLengthError(length uint, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](f_, objc.Sel("readDataUpToLength:error:"), length, error)
 	return rv
 }
 
@@ -291,16 +291,16 @@ func (f_ FileHandle) AcceptConnectionInBackgroundAndNotifyForModes(modes []RunLo
 // Causes all in-memory data and attributes of the file represented by the file handle to write to permanent storage. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172531-synchronizeandreturnerror?language=objc
-func (f_ FileHandle) SynchronizeAndReturnError(error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("synchronizeAndReturnError:"), objc.Ptr(error))
+func (f_ FileHandle) SynchronizeAndReturnError(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("synchronizeAndReturnError:"), error)
 	return rv
 }
 
 // Moves the file pointer to the specified offset within the file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilehandle/3172530-seektooffset?language=objc
-func (f_ FileHandle) SeekToOffsetError(offset int64, error IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("seekToOffset:error:"), offset, objc.Ptr(error))
+func (f_ FileHandle) SeekToOffsetError(offset int64, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("seekToOffset:error:"), offset, error)
 	return rv
 }
 

@@ -37,7 +37,7 @@ func PersistentCloudKitContainerEventRequestFrom(ptr unsafe.Pointer) PersistentC
 }
 
 func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterEvent(event IPersistentCloudKitContainerEvent) PersistentCloudKitContainerEventRequest {
-	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterEvent:"), objc.Ptr(event))
+	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterEvent:"), event)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func PersistentCloudKitContainerEventRequest_FetchEventsAfterEvent(event IPersis
 }
 
 func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsMatchingFetchRequest(fetchRequest IFetchRequest) PersistentCloudKitContainerEventRequest {
-	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsMatchingFetchRequest:"), objc.Ptr(fetchRequest))
+	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsMatchingFetchRequest:"), fetchRequest)
 	return rv
 }
 
@@ -61,7 +61,7 @@ func PersistentCloudKitContainerEventRequest_FetchEventsMatchingFetchRequest(fet
 }
 
 func (pc _PersistentCloudKitContainerEventRequestClass) FetchEventsAfterDate(date foundation.IDate) PersistentCloudKitContainerEventRequest {
-	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterDate:"), objc.Ptr(date))
+	rv := objc.Call[PersistentCloudKitContainerEventRequest](pc, objc.Sel("fetchEventsAfterDate:"), date)
 	return rv
 }
 

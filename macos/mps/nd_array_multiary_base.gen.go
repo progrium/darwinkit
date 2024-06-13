@@ -110,14 +110,14 @@ func NewNDArrayMultiaryBaseWithDevice(device metal.PDevice) NDArrayMultiaryBase 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarybase/3131739-encodewithcoder?language=objc
 func (n_ NDArrayMultiaryBase) EncodeWithCoder(coder foundation.ICoder) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](n_, objc.Sel("encodeWithCoder:"), coder)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarybase/3143521-resultstateforsourcearrays?language=objc
 func (n_ NDArrayMultiaryBase) ResultStateForSourceArraysSourceStatesDestinationArray(sourceArrays []INDArray, sourceStates []IState, destinationArray INDArray) State {
-	rv := objc.Call[State](n_, objc.Sel("resultStateForSourceArrays:sourceStates:destinationArray:"), sourceArrays, sourceStates, objc.Ptr(destinationArray))
+	rv := objc.Call[State](n_, objc.Sel("resultStateForSourceArrays:sourceStates:destinationArray:"), sourceArrays, sourceStates, destinationArray)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (n_ NDArrayMultiaryBase) ResultStateForSourceArraysSourceStatesDestinationA
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarybase/3131736-destinationarraydescriptorforsou?language=objc
 func (n_ NDArrayMultiaryBase) DestinationArrayDescriptorForSourceArraysSourceState(sources []INDArray, state IState) NDArrayDescriptor {
-	rv := objc.Call[NDArrayDescriptor](n_, objc.Sel("destinationArrayDescriptorForSourceArrays:sourceState:"), sources, objc.Ptr(state))
+	rv := objc.Call[NDArrayDescriptor](n_, objc.Sel("destinationArrayDescriptorForSourceArrays:sourceState:"), sources, state)
 	return rv
 }
 
@@ -149,5 +149,5 @@ func (n_ NDArrayMultiaryBase) SetDestinationArrayAllocator(value PNDArrayAllocat
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarraymultiarybase/3131735-destinationarrayallocator?language=objc
 func (n_ NDArrayMultiaryBase) SetDestinationArrayAllocatorObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setDestinationArrayAllocator:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setDestinationArrayAllocator:"), valueObject)
 }

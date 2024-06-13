@@ -78,7 +78,7 @@ func CharacterSet_CharacterSetWithCharactersInString(aString string) CharacterSe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscharacterset/1409757-longcharacterismember?language=objc
 func (c_ CharacterSet) LongCharacterIsMember(theLongChar objc.IObject) bool {
-	rv := objc.Call[bool](c_, objc.Sel("longCharacterIsMember:"), objc.Ptr(theLongChar))
+	rv := objc.Call[bool](c_, objc.Sel("longCharacterIsMember:"), theLongChar)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (c_ CharacterSet) CharacterIsMember(aCharacter Unichar) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscharacterset/1415606-issupersetofset?language=objc
 func (c_ CharacterSet) IsSupersetOfSet(theOtherSet ICharacterSet) bool {
-	rv := objc.Call[bool](c_, objc.Sel("isSupersetOfSet:"), objc.Ptr(theOtherSet))
+	rv := objc.Call[bool](c_, objc.Sel("isSupersetOfSet:"), theOtherSet)
 	return rv
 }
 

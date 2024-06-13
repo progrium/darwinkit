@@ -20,35 +20,35 @@ type PStarShineGenerator interface {
 	HasColor() bool
 
 	// optional
-	SetCrossScale(value float64)
+	SetCrossScale(value float32)
 	HasSetCrossScale() bool
 
 	// optional
-	CrossScale() float64
+	CrossScale() float32
 	HasCrossScale() bool
 
 	// optional
-	SetCrossAngle(value float64)
+	SetCrossAngle(value float32)
 	HasSetCrossAngle() bool
 
 	// optional
-	CrossAngle() float64
+	CrossAngle() float32
 	HasCrossAngle() bool
 
 	// optional
-	SetCrossWidth(value float64)
+	SetCrossWidth(value float32)
 	HasSetCrossWidth() bool
 
 	// optional
-	CrossWidth() float64
+	CrossWidth() float32
 	HasCrossWidth() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -60,19 +60,19 @@ type PStarShineGenerator interface {
 	HasCenter() bool
 
 	// optional
-	SetEpsilon(value float64)
+	SetEpsilon(value float32)
 	HasSetEpsilon() bool
 
 	// optional
-	Epsilon() float64
+	Epsilon() float32
 	HasEpsilon() bool
 
 	// optional
-	SetCrossOpacity(value float64)
+	SetCrossOpacity(value float32)
 	HasSetCrossOpacity() bool
 
 	// optional
-	CrossOpacity() float64
+	CrossOpacity() float32
 	HasCrossOpacity() bool
 }
 
@@ -92,7 +92,7 @@ func (s_ StarShineGeneratorObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228750-color?language=objc
 func (s_ StarShineGeneratorObject) SetColor(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor:"), value)
 }
 
 func (s_ StarShineGeneratorObject) HasColor() bool {
@@ -114,7 +114,7 @@ func (s_ StarShineGeneratorObject) HasSetCrossScale() bool {
 // The size of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228753-crossscale?language=objc
-func (s_ StarShineGeneratorObject) SetCrossScale(value float64) {
+func (s_ StarShineGeneratorObject) SetCrossScale(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCrossScale:"), value)
 }
 
@@ -125,8 +125,8 @@ func (s_ StarShineGeneratorObject) HasCrossScale() bool {
 // The size of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228753-crossscale?language=objc
-func (s_ StarShineGeneratorObject) CrossScale() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("crossScale"))
+func (s_ StarShineGeneratorObject) CrossScale() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("crossScale"))
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (s_ StarShineGeneratorObject) HasSetCrossAngle() bool {
 // The angle of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228751-crossangle?language=objc
-func (s_ StarShineGeneratorObject) SetCrossAngle(value float64) {
+func (s_ StarShineGeneratorObject) SetCrossAngle(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCrossAngle:"), value)
 }
 
@@ -148,8 +148,8 @@ func (s_ StarShineGeneratorObject) HasCrossAngle() bool {
 // The angle of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228751-crossangle?language=objc
-func (s_ StarShineGeneratorObject) CrossAngle() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("crossAngle"))
+func (s_ StarShineGeneratorObject) CrossAngle() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("crossAngle"))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (s_ StarShineGeneratorObject) HasSetCrossWidth() bool {
 // The width of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228754-crosswidth?language=objc
-func (s_ StarShineGeneratorObject) SetCrossWidth(value float64) {
+func (s_ StarShineGeneratorObject) SetCrossWidth(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCrossWidth:"), value)
 }
 
@@ -171,8 +171,8 @@ func (s_ StarShineGeneratorObject) HasCrossWidth() bool {
 // The width of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228754-crosswidth?language=objc
-func (s_ StarShineGeneratorObject) CrossWidth() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("crossWidth"))
+func (s_ StarShineGeneratorObject) CrossWidth() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("crossWidth"))
 	return rv
 }
 
@@ -183,7 +183,7 @@ func (s_ StarShineGeneratorObject) HasSetRadius() bool {
 // The radius of the star. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228756-radius?language=objc
-func (s_ StarShineGeneratorObject) SetRadius(value float64) {
+func (s_ StarShineGeneratorObject) SetRadius(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setRadius:"), value)
 }
 
@@ -194,8 +194,8 @@ func (s_ StarShineGeneratorObject) HasRadius() bool {
 // The radius of the star. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228756-radius?language=objc
-func (s_ StarShineGeneratorObject) Radius() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("radius"))
+func (s_ StarShineGeneratorObject) Radius() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("radius"))
 	return rv
 }
 
@@ -229,7 +229,7 @@ func (s_ StarShineGeneratorObject) HasSetEpsilon() bool {
 // The length of the cross spikes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228755-epsilon?language=objc
-func (s_ StarShineGeneratorObject) SetEpsilon(value float64) {
+func (s_ StarShineGeneratorObject) SetEpsilon(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setEpsilon:"), value)
 }
 
@@ -240,8 +240,8 @@ func (s_ StarShineGeneratorObject) HasEpsilon() bool {
 // The length of the cross spikes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228755-epsilon?language=objc
-func (s_ StarShineGeneratorObject) Epsilon() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("epsilon"))
+func (s_ StarShineGeneratorObject) Epsilon() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -252,7 +252,7 @@ func (s_ StarShineGeneratorObject) HasSetCrossOpacity() bool {
 // The opacity of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228752-crossopacity?language=objc
-func (s_ StarShineGeneratorObject) SetCrossOpacity(value float64) {
+func (s_ StarShineGeneratorObject) SetCrossOpacity(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setCrossOpacity:"), value)
 }
 
@@ -263,7 +263,7 @@ func (s_ StarShineGeneratorObject) HasCrossOpacity() bool {
 // The opacity of the cross pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cistarshinegenerator/3228752-crossopacity?language=objc
-func (s_ StarShineGeneratorObject) CrossOpacity() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("crossOpacity"))
+func (s_ StarShineGeneratorObject) CrossOpacity() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("crossOpacity"))
 	return rv
 }

@@ -36,7 +36,7 @@ func IndexSpecifierFrom(ptr unsafe.Pointer) IndexSpecifier {
 }
 
 func (i_ IndexSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyIndex(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, index int) IndexSpecifier {
-	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:index:"), objc.Ptr(classDesc), objc.Ptr(container), property, index)
+	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:index:"), classDesc, container, property, index)
 	return rv
 }
 
@@ -70,7 +70,7 @@ func (i_ IndexSpecifier) Init() IndexSpecifier {
 }
 
 func (i_ IndexSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) IndexSpecifier {
-	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func NewIndexSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDe
 }
 
 func (i_ IndexSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) IndexSpecifier {
-	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[IndexSpecifier](i_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

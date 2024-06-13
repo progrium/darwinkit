@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter?language=objc
 type PTransitionFilter interface {
 	// optional
-	SetTime(value float64)
+	SetTime(value float32)
 	HasSetTime() bool
 
 	// optional
-	Time() float64
+	Time() float32
 	HasTime() bool
 
 	// optional
@@ -50,7 +50,7 @@ func (t_ TransitionFilterObject) HasSetTime() bool {
 // The parametric time of the transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
-func (t_ TransitionFilterObject) SetTime(value float64) {
+func (t_ TransitionFilterObject) SetTime(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setTime:"), value)
 }
 
@@ -61,8 +61,8 @@ func (t_ TransitionFilterObject) HasTime() bool {
 // The parametric time of the transition. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228801-time?language=objc
-func (t_ TransitionFilterObject) Time() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("time"))
+func (t_ TransitionFilterObject) Time() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("time"))
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (t_ TransitionFilterObject) HasSetTargetImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228800-targetimage?language=objc
 func (t_ TransitionFilterObject) SetTargetImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setTargetImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTargetImage:"), value)
 }
 
 func (t_ TransitionFilterObject) HasTargetImage() bool {
@@ -97,7 +97,7 @@ func (t_ TransitionFilterObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citransitionfilter/3228799-inputimage?language=objc
 func (t_ TransitionFilterObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TransitionFilterObject) HasInputImage() bool {

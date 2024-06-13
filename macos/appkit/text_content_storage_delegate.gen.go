@@ -55,6 +55,6 @@ func (t_ TextContentStorageDelegateObject) HasTextContentStorageTextParagraphWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstoragedelegate/3809940-textcontentstorage?language=objc
 func (t_ TextContentStorageDelegateObject) TextContentStorageTextParagraphWithRange(textContentStorage TextContentStorage, range_ foundation.Range) TextParagraph {
-	rv := objc.Call[TextParagraph](t_, objc.Sel("textContentStorage:textParagraphWithRange:"), objc.Ptr(textContentStorage), range_)
+	rv := objc.Call[TextParagraph](t_, objc.Sel("textContentStorage:textParagraphWithRange:"), textContentStorage, range_)
 	return rv
 }

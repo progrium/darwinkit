@@ -19,19 +19,19 @@ type PMotionBlur interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -51,7 +51,7 @@ func (m_ MotionBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimotionblur/3228592-inputimage?language=objc
 func (m_ MotionBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MotionBlurObject) HasInputImage() bool {
@@ -73,7 +73,7 @@ func (m_ MotionBlurObject) HasSetRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimotionblur/3228593-radius?language=objc
-func (m_ MotionBlurObject) SetRadius(value float64) {
+func (m_ MotionBlurObject) SetRadius(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRadius:"), value)
 }
 
@@ -84,8 +84,8 @@ func (m_ MotionBlurObject) HasRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimotionblur/3228593-radius?language=objc
-func (m_ MotionBlurObject) Radius() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("radius"))
+func (m_ MotionBlurObject) Radius() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("radius"))
 	return rv
 }
 
@@ -96,7 +96,7 @@ func (m_ MotionBlurObject) HasSetAngle() bool {
 // The angle of the motion, in radians, that determines which direction the blur smears. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimotionblur/3228591-angle?language=objc
-func (m_ MotionBlurObject) SetAngle(value float64) {
+func (m_ MotionBlurObject) SetAngle(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setAngle:"), value)
 }
 
@@ -107,7 +107,7 @@ func (m_ MotionBlurObject) HasAngle() bool {
 // The angle of the motion, in radians, that determines which direction the blur smears. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimotionblur/3228591-angle?language=objc
-func (m_ MotionBlurObject) Angle() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("angle"))
+func (m_ MotionBlurObject) Angle() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("angle"))
 	return rv
 }

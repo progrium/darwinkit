@@ -51,7 +51,7 @@ func NewRecordZoneWithZoneName(zoneName string) RecordZone {
 }
 
 func (r_ RecordZone) InitWithZoneID(zoneID IRecordZoneID) RecordZone {
-	rv := objc.Call[RecordZone](r_, objc.Sel("initWithZoneID:"), objc.Ptr(zoneID))
+	rv := objc.Call[RecordZone](r_, objc.Sel("initWithZoneID:"), zoneID)
 	return rv
 }
 

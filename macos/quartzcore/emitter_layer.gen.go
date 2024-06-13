@@ -21,20 +21,20 @@ type IEmitterLayer interface {
 	ILayer
 	EmitterSize() coregraphics.Size
 	SetEmitterSize(value coregraphics.Size)
-	Lifetime() float64
-	SetLifetime(value float64)
+	Lifetime() float32
+	SetLifetime(value float32)
 	RenderMode() EmitterLayerRenderMode
 	SetRenderMode(value EmitterLayerRenderMode)
 	EmitterDepth() float64
 	SetEmitterDepth(value float64)
 	EmitterPosition() coregraphics.Point
 	SetEmitterPosition(value coregraphics.Point)
-	Scale() float64
-	SetScale(value float64)
+	Scale() float32
+	SetScale(value float32)
 	EmitterShape() EmitterLayerEmitterShape
 	SetEmitterShape(value EmitterLayerEmitterShape)
-	Spin() float64
-	SetSpin(value float64)
+	Spin() float32
+	SetSpin(value float32)
 	Seed() int
 	SetSeed(value int)
 	EmitterMode() EmitterLayerEmitterMode
@@ -43,12 +43,12 @@ type IEmitterLayer interface {
 	SetEmitterZPosition(value float64)
 	PreservesDepth() bool
 	SetPreservesDepth(value bool)
-	Velocity() float64
-	SetVelocity(value float64)
+	Velocity() float32
+	SetVelocity(value float32)
 	EmitterCells() []EmitterCell
 	SetEmitterCells(value []IEmitterCell)
-	BirthRate() float64
-	SetBirthRate(value float64)
+	BirthRate() float32
+	SetBirthRate(value float32)
 }
 
 // A layer that emits, animates, and renders a particle system. [Full Topic]
@@ -156,15 +156,15 @@ func (e_ EmitterLayer) SetEmitterSize(value coregraphics.Size) {
 // Defines a multiplier applied to the cell-defined lifetime range when particles are created. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1522144-lifetime?language=objc
-func (e_ EmitterLayer) Lifetime() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("lifetime"))
+func (e_ EmitterLayer) Lifetime() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("lifetime"))
 	return rv
 }
 
 // Defines a multiplier applied to the cell-defined lifetime range when particles are created. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1522144-lifetime?language=objc
-func (e_ EmitterLayer) SetLifetime(value float64) {
+func (e_ EmitterLayer) SetLifetime(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setLifetime:"), value)
 }
 
@@ -216,15 +216,15 @@ func (e_ EmitterLayer) SetEmitterPosition(value coregraphics.Point) {
 // Defines a multiplier applied to the cell-defined particle scale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521841-scale?language=objc
-func (e_ EmitterLayer) Scale() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("scale"))
+func (e_ EmitterLayer) Scale() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("scale"))
 	return rv
 }
 
 // Defines a multiplier applied to the cell-defined particle scale. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521841-scale?language=objc
-func (e_ EmitterLayer) SetScale(value float64) {
+func (e_ EmitterLayer) SetScale(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setScale:"), value)
 }
 
@@ -246,15 +246,15 @@ func (e_ EmitterLayer) SetEmitterShape(value EmitterLayerEmitterShape) {
 // Defines a multiplier applied to the cell-defined particle spin. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521861-spin?language=objc
-func (e_ EmitterLayer) Spin() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("spin"))
+func (e_ EmitterLayer) Spin() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("spin"))
 	return rv
 }
 
 // Defines a multiplier applied to the cell-defined particle spin. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521861-spin?language=objc
-func (e_ EmitterLayer) SetSpin(value float64) {
+func (e_ EmitterLayer) SetSpin(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setSpin:"), value)
 }
 
@@ -321,15 +321,15 @@ func (e_ EmitterLayer) SetPreservesDepth(value bool) {
 // Defines a multiplier applied to the cell-defined particle velocity. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1522015-velocity?language=objc
-func (e_ EmitterLayer) Velocity() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("velocity"))
+func (e_ EmitterLayer) Velocity() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("velocity"))
 	return rv
 }
 
 // Defines a multiplier applied to the cell-defined particle velocity. Animatable. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1522015-velocity?language=objc
-func (e_ EmitterLayer) SetVelocity(value float64) {
+func (e_ EmitterLayer) SetVelocity(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setVelocity:"), value)
 }
 
@@ -351,14 +351,14 @@ func (e_ EmitterLayer) SetEmitterCells(value []IEmitterCell) {
 // Defines a multiplier that is applied to the cell-defined birth rate. Animatable [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521976-birthrate?language=objc
-func (e_ EmitterLayer) BirthRate() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("birthRate"))
+func (e_ EmitterLayer) BirthRate() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("birthRate"))
 	return rv
 }
 
 // Defines a multiplier that is applied to the cell-defined birth rate. Animatable [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caemitterlayer/1521976-birthrate?language=objc
-func (e_ EmitterLayer) SetBirthRate(value float64) {
+func (e_ EmitterLayer) SetBirthRate(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setBirthRate:"), value)
 }

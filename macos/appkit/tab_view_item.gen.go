@@ -55,7 +55,7 @@ func TabViewItemFrom(ptr unsafe.Pointer) TabViewItem {
 }
 
 func (tc _TabViewItemClass) TabViewItemWithViewController(viewController IViewController) TabViewItem {
-	rv := objc.Call[TabViewItem](tc, objc.Sel("tabViewItemWithViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[TabViewItem](tc, objc.Sel("tabViewItemWithViewController:"), viewController)
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (t_ TabViewItem) ViewController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477521-viewcontroller?language=objc
 func (t_ TabViewItem) SetViewController(value IViewController) {
-	objc.Call[objc.Void](t_, objc.Sel("setViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setViewController:"), value)
 }
 
 // Sets the background color for content in the view. [Full Topic]
@@ -142,7 +142,7 @@ func (t_ TabViewItem) Color() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477525-color?language=objc
 func (t_ TabViewItem) SetColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setColor:"), value)
 }
 
 // Sets the tooltip displayed for the tab view item. [Full Topic]
@@ -172,7 +172,7 @@ func (t_ TabViewItem) InitialFirstResponder() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477541-initialfirstresponder?language=objc
 func (t_ TabViewItem) SetInitialFirstResponder(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setInitialFirstResponder:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInitialFirstResponder:"), value)
 }
 
 // Sets the receiver’s optional identifier object to identifier. [Full Topic]
@@ -202,7 +202,7 @@ func (t_ TabViewItem) View() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477537-view?language=objc
 func (t_ TabViewItem) SetView(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
 }
 
 // Returns the parent tab view for the receiver. [Full Topic]
@@ -225,7 +225,7 @@ func (t_ TabViewItem) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewitem/1477527-image?language=objc
 func (t_ TabViewItem) SetImage(value IImage) {
-	objc.Call[objc.Void](t_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }
 
 // Returns the current display state of the tab associated with the receiver. [Full Topic]

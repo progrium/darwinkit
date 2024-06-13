@@ -37,7 +37,7 @@ func NotificationQueueFrom(ptr unsafe.Pointer) NotificationQueue {
 }
 
 func (n_ NotificationQueue) InitWithNotificationCenter(notificationCenter INotificationCenter) NotificationQueue {
-	rv := objc.Call[NotificationQueue](n_, objc.Sel("initWithNotificationCenter:"), objc.Ptr(notificationCenter))
+	rv := objc.Call[NotificationQueue](n_, objc.Sel("initWithNotificationCenter:"), notificationCenter)
 	return rv
 }
 
@@ -74,21 +74,21 @@ func (n_ NotificationQueue) Init() NotificationQueue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1413873-enqueuenotification?language=objc
 func (n_ NotificationQueue) EnqueueNotificationPostingStyleCoalesceMaskForModes(notification INotification, postingStyle PostingStyle, coalesceMask NotificationCoalescing, modes []RunLoopMode) {
-	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:coalesceMask:forModes:"), objc.Ptr(notification), postingStyle, coalesceMask, modes)
+	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:coalesceMask:forModes:"), notification, postingStyle, coalesceMask, modes)
 }
 
 // Adds a notification to the notification queue with a specified posting style. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1416340-enqueuenotification?language=objc
 func (n_ NotificationQueue) EnqueueNotificationPostingStyle(notification INotification, postingStyle PostingStyle) {
-	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:"), objc.Ptr(notification), postingStyle)
+	objc.Call[objc.Void](n_, objc.Sel("enqueueNotification:postingStyle:"), notification, postingStyle)
 }
 
 // Removes all notifications from the queue that match a provided notification using provided matching criteria. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnotificationqueue/1416688-dequeuenotificationsmatching?language=objc
 func (n_ NotificationQueue) DequeueNotificationsMatchingCoalesceMask(notification INotification, coalesceMask uint) {
-	objc.Call[objc.Void](n_, objc.Sel("dequeueNotificationsMatching:coalesceMask:"), objc.Ptr(notification), coalesceMask)
+	objc.Call[objc.Void](n_, objc.Sel("dequeueNotificationsMatching:coalesceMask:"), notification, coalesceMask)
 }
 
 // Returns the default notification queue for the current thread. [Full Topic]

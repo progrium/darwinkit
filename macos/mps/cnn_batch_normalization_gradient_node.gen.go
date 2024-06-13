@@ -34,7 +34,7 @@ func CNNBatchNormalizationGradientNodeFrom(ptr unsafe.Pointer) CNNBatchNormaliza
 }
 
 func (c_ CNNBatchNormalizationGradientNode) InitWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNBatchNormalizationGradientNode {
-	rv := objc.Call[CNNBatchNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNBatchNormalizationGradientNode](c_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func NewCNNBatchNormalizationGradientNodeWithSourceGradientSourceImageGradientSt
 }
 
 func (cc _CNNBatchNormalizationGradientNodeClass) NodeWithSourceGradientSourceImageGradientState(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNGradientStateNode) CNNBatchNormalizationGradientNode {
-	rv := objc.Call[CNNBatchNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState))
+	rv := objc.Call[CNNBatchNormalizationGradientNode](cc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:"), sourceGradient, sourceImage, gradientState)
 	return rv
 }
 

@@ -94,7 +94,7 @@ func (t_ TouchBar) TemplateItems() foundation.Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbar/2646922-templateitems?language=objc
 func (t_ TouchBar) SetTemplateItems(value foundation.ISet) {
-	objc.Call[objc.Void](t_, objc.Sel("setTemplateItems:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTemplateItems:"), value)
 }
 
 // An optional list of identifiers for items you want to always appear in the Touch Bar and which the user can’t remove during customization. [Full Topic]
@@ -224,7 +224,7 @@ func (t_ TouchBar) SetDelegate(value PTouchBarDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbar/2544666-delegate?language=objc
 func (t_ TouchBar) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value indicating whether the main menu contains an item for customizing the contents of the Touch Bar. [Full Topic]

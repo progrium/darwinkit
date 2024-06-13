@@ -144,7 +144,7 @@ func (v_ VisualEffectView) MaskImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsvisualeffectview/1535318-maskimage?language=objc
 func (v_ VisualEffectView) SetMaskImage(value IImage) {
-	objc.Call[objc.Void](v_, objc.Sel("setMaskImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setMaskImage:"), value)
 }
 
 // A value that indicates whether a view has a visual effect applied. [Full Topic]

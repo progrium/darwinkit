@@ -107,7 +107,7 @@ func (p_ PDFInfo) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspdfinfo/1528885-url?language=objc
 func (p_ PDFInfo) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }
 
 // The paper size to use when exporting content as a PDF file. [Full Topic]

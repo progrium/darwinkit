@@ -19,7 +19,7 @@ type _FetchRequestClass struct {
 // An interface definition for the [FetchRequest] class.
 type IFetchRequest interface {
 	IPersistentStoreRequest
-	Execute(error foundation.IError) []objc.Object
+	Execute(error unsafe.Pointer) []objc.Object
 	Entity() EntityDescription
 	SetEntity(value IEntityDescription)
 	IncludesPropertyValues() bool
@@ -119,8 +119,8 @@ func NewFetchRequest() FetchRequest {
 // Executes the fetch request against the managed object context that is associated with the current queue. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequest/1640594-execute?language=objc
-func (f_ FetchRequest) Execute(error foundation.IError) []objc.Object {
-	rv := objc.Call[[]objc.Object](f_, objc.Sel("execute:"), objc.Ptr(error))
+func (f_ FetchRequest) Execute(error unsafe.Pointer) []objc.Object {
+	rv := objc.Call[[]objc.Object](f_, objc.Sel("execute:"), error)
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (f_ FetchRequest) Entity() EntityDescription {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506979-entity?language=objc
 func (f_ FetchRequest) SetEntity(value IEntityDescription) {
-	objc.Call[objc.Void](f_, objc.Sel("setEntity:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setEntity:"), value)
 }
 
 // A Boolean value that indicates whether, when the fetch is executed, property data is obtained from the persistent store. [Full Topic]
@@ -301,7 +301,7 @@ func (f_ FetchRequest) HavingPredicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506429-havingpredicate?language=objc
 func (f_ FetchRequest) SetHavingPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](f_, objc.Sel("setHavingPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setHavingPredicate:"), value)
 }
 
 // The relationship key paths to prefetch along with the entity for the request. [Full Topic]
@@ -331,7 +331,7 @@ func (f_ FetchRequest) Predicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequest/1506638-predicate?language=objc
 func (f_ FetchRequest) SetPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](f_, objc.Sel("setPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setPredicate:"), value)
 }
 
 // A Boolean value that indicates whether the fetch request returns only distinct values for the fields specified by [coredata/nsfetchrequest/propertiestofetch]. [Full Topic]

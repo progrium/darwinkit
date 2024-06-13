@@ -20,16 +20,16 @@ type INNOptimizerDescriptor interface {
 	objc.IObject
 	ApplyGradientClipping() bool
 	SetApplyGradientClipping(value bool)
-	RegularizationScale() float64
-	SetRegularizationScale(value float64)
-	GradientClipMax() float64
-	SetGradientClipMax(value float64)
-	GradientRescale() float64
-	SetGradientRescale(value float64)
-	GradientClipMin() float64
-	SetGradientClipMin(value float64)
-	LearningRate() float64
-	SetLearningRate(value float64)
+	RegularizationScale() float32
+	SetRegularizationScale(value float32)
+	GradientClipMax() float32
+	SetGradientClipMax(value float32)
+	GradientRescale() float32
+	SetGradientRescale(value float32)
+	GradientClipMin() float32
+	SetGradientClipMin(value float32)
+	LearningRate() float32
+	SetLearningRate(value float32)
 	RegularizationType() NNRegularizationType
 	SetRegularizationType(value NNRegularizationType)
 }
@@ -47,7 +47,7 @@ func NNOptimizerDescriptorFrom(ptr unsafe.Pointer) NNOptimizerDescriptor {
 	}
 }
 
-func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, applyGradientClipping bool, gradientClipMax float64, gradientClipMin float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, applyGradientClipping bool, gradientClipMax float32, gradientClipMin float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	rv := objc.Call[NNOptimizerDescriptor](n_, objc.Sel("initWithLearningRate:gradientRescale:applyGradientClipping:gradientClipMax:gradientClipMin:regularizationType:regularizationScale:"), learningRate, gradientRescale, applyGradientClipping, gradientClipMax, gradientClipMin, regularizationType, regularizationScale)
 	return rv
 }
@@ -55,13 +55,13 @@ func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleApplyGradient
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966726-initwithlearningrate?language=objc
-func NewNNOptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, applyGradientClipping bool, gradientClipMax float64, gradientClipMin float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func NewNNOptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, applyGradientClipping bool, gradientClipMax float32, gradientClipMin float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	instance := NNOptimizerDescriptorClass.Alloc().InitWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate, gradientRescale, applyGradientClipping, gradientClipMax, gradientClipMin, regularizationType, regularizationScale)
 	instance.Autorelease()
 	return instance
 }
 
-func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, applyGradientClipping bool, gradientClipMax float64, gradientClipMin float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, applyGradientClipping bool, gradientClipMax float32, gradientClipMin float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	rv := objc.Call[NNOptimizerDescriptor](nc, objc.Sel("optimizerDescriptorWithLearningRate:gradientRescale:applyGradientClipping:gradientClipMax:gradientClipMin:regularizationType:regularizationScale:"), learningRate, gradientRescale, applyGradientClipping, gradientClipMax, gradientClipMin, regularizationType, regularizationScale)
 	return rv
 }
@@ -69,11 +69,11 @@ func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradien
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966729-optimizerdescriptorwithlearningr?language=objc
-func NNOptimizerDescriptor_OptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, applyGradientClipping bool, gradientClipMax float64, gradientClipMin float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func NNOptimizerDescriptor_OptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, applyGradientClipping bool, gradientClipMax float32, gradientClipMin float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	return NNOptimizerDescriptorClass.OptimizerDescriptorWithLearningRateGradientRescaleApplyGradientClippingGradientClipMaxGradientClipMinRegularizationTypeRegularizationScale(learningRate, gradientRescale, applyGradientClipping, gradientClipMax, gradientClipMin, regularizationType, regularizationScale)
 }
 
-func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	rv := objc.Call[NNOptimizerDescriptor](n_, objc.Sel("initWithLearningRate:gradientRescale:regularizationType:regularizationScale:"), learningRate, gradientRescale, regularizationType, regularizationScale)
 	return rv
 }
@@ -81,13 +81,13 @@ func (n_ NNOptimizerDescriptor) InitWithLearningRateGradientRescaleRegularizatio
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966727-initwithlearningrate?language=objc
-func NewNNOptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func NewNNOptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	instance := NNOptimizerDescriptorClass.Alloc().InitWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate, gradientRescale, regularizationType, regularizationScale)
 	instance.Autorelease()
 	return instance
 }
 
-func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	rv := objc.Call[NNOptimizerDescriptor](nc, objc.Sel("optimizerDescriptorWithLearningRate:gradientRescale:regularizationType:regularizationScale:"), learningRate, gradientRescale, regularizationType, regularizationScale)
 	return rv
 }
@@ -95,7 +95,7 @@ func (nc _NNOptimizerDescriptorClass) OptimizerDescriptorWithLearningRateGradien
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966730-optimizerdescriptorwithlearningr?language=objc
-func NNOptimizerDescriptor_OptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float64, gradientRescale float64, regularizationType NNRegularizationType, regularizationScale float64) NNOptimizerDescriptor {
+func NNOptimizerDescriptor_OptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate float32, gradientRescale float32, regularizationType NNRegularizationType, regularizationScale float32) NNOptimizerDescriptor {
 	return NNOptimizerDescriptorClass.OptimizerDescriptorWithLearningRateGradientRescaleRegularizationTypeRegularizationScale(learningRate, gradientRescale, regularizationType, regularizationScale)
 }
 
@@ -137,75 +137,75 @@ func (n_ NNOptimizerDescriptor) SetApplyGradientClipping(value bool) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966731-regularizationscale?language=objc
-func (n_ NNOptimizerDescriptor) RegularizationScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("regularizationScale"))
+func (n_ NNOptimizerDescriptor) RegularizationScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("regularizationScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966731-regularizationscale?language=objc
-func (n_ NNOptimizerDescriptor) SetRegularizationScale(value float64) {
+func (n_ NNOptimizerDescriptor) SetRegularizationScale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setRegularizationScale:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966723-gradientclipmax?language=objc
-func (n_ NNOptimizerDescriptor) GradientClipMax() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("gradientClipMax"))
+func (n_ NNOptimizerDescriptor) GradientClipMax() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("gradientClipMax"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966723-gradientclipmax?language=objc
-func (n_ NNOptimizerDescriptor) SetGradientClipMax(value float64) {
+func (n_ NNOptimizerDescriptor) SetGradientClipMax(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setGradientClipMax:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966725-gradientrescale?language=objc
-func (n_ NNOptimizerDescriptor) GradientRescale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("gradientRescale"))
+func (n_ NNOptimizerDescriptor) GradientRescale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("gradientRescale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966725-gradientrescale?language=objc
-func (n_ NNOptimizerDescriptor) SetGradientRescale(value float64) {
+func (n_ NNOptimizerDescriptor) SetGradientRescale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setGradientRescale:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966724-gradientclipmin?language=objc
-func (n_ NNOptimizerDescriptor) GradientClipMin() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("gradientClipMin"))
+func (n_ NNOptimizerDescriptor) GradientClipMin() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("gradientClipMin"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966724-gradientclipmin?language=objc
-func (n_ NNOptimizerDescriptor) SetGradientClipMin(value float64) {
+func (n_ NNOptimizerDescriptor) SetGradientClipMin(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setGradientClipMin:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966728-learningrate?language=objc
-func (n_ NNOptimizerDescriptor) LearningRate() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("learningRate"))
+func (n_ NNOptimizerDescriptor) LearningRate() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("learningRate"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerdescriptor/2966728-learningrate?language=objc
-func (n_ NNOptimizerDescriptor) SetLearningRate(value float64) {
+func (n_ NNOptimizerDescriptor) SetLearningRate(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setLearningRate:"), value)
 }
 

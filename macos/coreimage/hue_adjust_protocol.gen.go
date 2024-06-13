@@ -19,11 +19,11 @@ type PHueAdjust interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -43,7 +43,7 @@ func (h_ HueAdjustObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihueadjust/3228500-inputimage?language=objc
 func (h_ HueAdjustObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](h_, objc.Sel("setInputImage:"), value)
 }
 
 func (h_ HueAdjustObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (h_ HueAdjustObject) HasSetAngle() bool {
 // An angle, in radians, to use to correct the hue of an image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihueadjust/3228499-angle?language=objc
-func (h_ HueAdjustObject) SetAngle(value float64) {
+func (h_ HueAdjustObject) SetAngle(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setAngle:"), value)
 }
 
@@ -76,7 +76,7 @@ func (h_ HueAdjustObject) HasAngle() bool {
 // An angle, in radians, to use to correct the hue of an image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihueadjust/3228499-angle?language=objc
-func (h_ HueAdjustObject) Angle() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("angle"))
+func (h_ HueAdjustObject) Angle() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("angle"))
 	return rv
 }

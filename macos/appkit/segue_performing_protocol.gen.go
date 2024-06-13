@@ -50,7 +50,7 @@ func (s_ SeguePerformingObject) HasPrepareForSegueSender() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegueperforming/1409580-prepareforsegue?language=objc
 func (s_ SeguePerformingObject) PrepareForSegueSender(segue StoryboardSegue, sender objc.Object) {
-	objc.Call[objc.Void](s_, objc.Sel("prepareForSegue:sender:"), objc.Ptr(segue), sender)
+	objc.Call[objc.Void](s_, objc.Sel("prepareForSegue:sender:"), segue, sender)
 }
 
 func (s_ SeguePerformingObject) HasShouldPerformSegueWithIdentifierSender() bool {

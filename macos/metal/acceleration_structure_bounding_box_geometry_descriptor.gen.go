@@ -139,5 +139,5 @@ func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxBuffe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructureboundingboxgeometrydescriptor/3553860-boundingboxbuffer?language=objc
 func (a_ AccelerationStructureBoundingBoxGeometryDescriptor) SetBoundingBoxBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setBoundingBoxBuffer:"), valueObject)
 }

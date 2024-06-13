@@ -51,7 +51,7 @@ func (f_ FalseColorObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228257-color1?language=objc
 func (f_ FalseColorObject) SetColor1(value Color) {
-	objc.Call[objc.Void](f_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setColor1:"), value)
 }
 
 func (f_ FalseColorObject) HasColor1() bool {
@@ -74,7 +74,7 @@ func (f_ FalseColorObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228258-inputimage?language=objc
 func (f_ FalseColorObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), value)
 }
 
 func (f_ FalseColorObject) HasInputImage() bool {
@@ -97,7 +97,7 @@ func (f_ FalseColorObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifalsecolor/3228256-color0?language=objc
 func (f_ FalseColorObject) SetColor0(value Color) {
-	objc.Call[objc.Void](f_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setColor0:"), value)
 }
 
 func (f_ FalseColorObject) HasColor0() bool {

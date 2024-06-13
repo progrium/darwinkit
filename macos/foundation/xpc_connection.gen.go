@@ -53,7 +53,7 @@ func XPCConnectionFrom(ptr unsafe.Pointer) XPCConnection {
 }
 
 func (x_ XPCConnection) InitWithListenerEndpoint(endpoint IXPCListenerEndpoint) XPCConnection {
-	rv := objc.Call[XPCConnection](x_, objc.Sel("initWithListenerEndpoint:"), objc.Ptr(endpoint))
+	rv := objc.Call[XPCConnection](x_, objc.Sel("initWithListenerEndpoint:"), endpoint)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func (x_ XPCConnection) RemoteObjectInterface() XPCInterface {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411472-remoteobjectinterface?language=objc
 func (x_ XPCConnection) SetRemoteObjectInterface(value IXPCInterface) {
-	objc.Call[objc.Void](x_, objc.Sel("setRemoteObjectInterface:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setRemoteObjectInterface:"), value)
 }
 
 // The NSXPCInterface object that describes the protocol for the exported object on this connection. [Full Topic]
@@ -215,7 +215,7 @@ func (x_ XPCConnection) ExportedInterface() XPCInterface {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408106-exportedinterface?language=objc
 func (x_ XPCConnection) SetExportedInterface(value IXPCInterface) {
-	objc.Call[objc.Void](x_, objc.Sel("setExportedInterface:"), objc.Ptr(value))
+	objc.Call[objc.Void](x_, objc.Sel("setExportedInterface:"), value)
 }
 
 // If the connection was created with an NSXPCListenerEndpoint object, returns the endpoint object used. [Full Topic]

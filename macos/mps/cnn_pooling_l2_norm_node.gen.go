@@ -54,7 +54,7 @@ func (c_ CNNPoolingL2NormNode) Init() CNNPoolingL2NormNode {
 }
 
 func (c_ CNNPoolingL2NormNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewCNNPoolingL2NormNodeWithSourceFilterSize(sourceNode INNImageNode, size u
 }
 
 func (cc _CNNPoolingL2NormNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), objc.Ptr(sourceNode), size, stride)
+	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func CNNPoolingL2NormNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNode
 }
 
 func (cc _CNNPoolingL2NormNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNPoolingL2NormNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func CNNPoolingL2NormNode_NodeWithSourceFilterSize(sourceNode INNImageNode, size
 }
 
 func (c_ CNNPoolingL2NormNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), objc.Ptr(sourceNode), kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func NewCNNPoolingL2NormNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStri
 }
 
 func (c_ CNNPoolingL2NormNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingL2NormNode {
-	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:stride:"), objc.Ptr(sourceNode), size, stride)
+	rv := objc.Call[CNNPoolingL2NormNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
 	return rv
 }
 

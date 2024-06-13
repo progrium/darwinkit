@@ -239,7 +239,7 @@ func (l_ LocationManager) StartUpdatingLocation() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanager/1423654-ismonitoringavailableforclass?language=objc
 func (lc _LocationManagerClass) IsMonitoringAvailableForClass(regionClass objc.IClass) bool {
-	rv := objc.Call[bool](lc, objc.Sel("isMonitoringAvailableForClass:"), objc.Ptr(regionClass))
+	rv := objc.Call[bool](lc, objc.Sel("isMonitoringAvailableForClass:"), regionClass)
 	return rv
 }
 
@@ -409,7 +409,7 @@ func (l_ LocationManager) SetDelegate(value PLocationManagerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corelocation/cllocationmanager/1423792-delegate?language=objc
 func (l_ LocationManager) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](l_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether the location-manager object may pause location updates. [Full Topic]

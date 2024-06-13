@@ -28,27 +28,27 @@ type PTriangleKaleidoscope interface {
 	HasInputImage() bool
 
 	// optional
-	SetSize(value float64)
+	SetSize(value float32)
 	HasSetSize() bool
 
 	// optional
-	Size() float64
+	Size() float32
 	HasSize() bool
 
 	// optional
-	SetDecay(value float64)
+	SetDecay(value float32)
 	HasSetDecay() bool
 
 	// optional
-	Decay() float64
+	Decay() float32
 	HasDecay() bool
 
 	// optional
-	SetRotation(value float64)
+	SetRotation(value float32)
 	HasSetRotation() bool
 
 	// optional
-	Rotation() float64
+	Rotation() float32
 	HasRotation() bool
 }
 
@@ -91,7 +91,7 @@ func (t_ TriangleKaleidoscopeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228804-inputimage?language=objc
 func (t_ TriangleKaleidoscopeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TriangleKaleidoscopeObject) HasInputImage() bool {
@@ -113,7 +113,7 @@ func (t_ TriangleKaleidoscopeObject) HasSetSize() bool {
 // The size, in pixels, of the triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
-func (t_ TriangleKaleidoscopeObject) SetSize(value float64) {
+func (t_ TriangleKaleidoscopeObject) SetSize(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setSize:"), value)
 }
 
@@ -124,8 +124,8 @@ func (t_ TriangleKaleidoscopeObject) HasSize() bool {
 // The size, in pixels, of the triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228807-size?language=objc
-func (t_ TriangleKaleidoscopeObject) Size() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("size"))
+func (t_ TriangleKaleidoscopeObject) Size() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("size"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (t_ TriangleKaleidoscopeObject) HasSetDecay() bool {
 // A value that determines how fast the color fades from the center triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228803-decay?language=objc
-func (t_ TriangleKaleidoscopeObject) SetDecay(value float64) {
+func (t_ TriangleKaleidoscopeObject) SetDecay(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setDecay:"), value)
 }
 
@@ -147,8 +147,8 @@ func (t_ TriangleKaleidoscopeObject) HasDecay() bool {
 // A value that determines how fast the color fades from the center triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228803-decay?language=objc
-func (t_ TriangleKaleidoscopeObject) Decay() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("decay"))
+func (t_ TriangleKaleidoscopeObject) Decay() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("decay"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (t_ TriangleKaleidoscopeObject) HasSetRotation() bool {
 // The rotation angle of the triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228806-rotation?language=objc
-func (t_ TriangleKaleidoscopeObject) SetRotation(value float64) {
+func (t_ TriangleKaleidoscopeObject) SetRotation(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setRotation:"), value)
 }
 
@@ -170,7 +170,7 @@ func (t_ TriangleKaleidoscopeObject) HasRotation() bool {
 // The rotation angle of the triangle. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citrianglekaleidoscope/3228806-rotation?language=objc
-func (t_ TriangleKaleidoscopeObject) Rotation() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("rotation"))
+func (t_ TriangleKaleidoscopeObject) Rotation() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("rotation"))
 	return rv
 }

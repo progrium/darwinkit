@@ -18,7 +18,7 @@ type _NumberFormatterClass struct {
 // An interface definition for the [NumberFormatter] class.
 type INumberFormatter interface {
 	IFormatter
-	GetObjectValueForStringRangeError(obj objc.IObject, string_ string, rangep *Range, error IError) bool
+	GetObjectValueForStringRangeError(obj unsafe.Pointer, string_ string, rangep *Range, error unsafe.Pointer) bool
 	StringFromNumber(number INumber) string
 	NumberFromString(string_ string) Number
 	Minimum() Number
@@ -189,8 +189,8 @@ func (n_ NumberFormatter) Init() NumberFormatter {
 // Returns by reference a cell-content object after creating it from a range of characters in a given string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1412588-getobjectvalue?language=objc
-func (n_ NumberFormatter) GetObjectValueForStringRangeError(obj objc.IObject, string_ string, rangep *Range, error IError) bool {
-	rv := objc.Call[bool](n_, objc.Sel("getObjectValue:forString:range:error:"), obj, string_, rangep, objc.Ptr(error))
+func (n_ NumberFormatter) GetObjectValueForStringRangeError(obj unsafe.Pointer, string_ string, rangep *Range, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](n_, objc.Sel("getObjectValue:forString:range:error:"), obj, string_, rangep, error)
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (n_ NumberFormatter) GetObjectValueForStringRangeError(obj objc.IObject, st
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1418046-stringfromnumber?language=objc
 func (n_ NumberFormatter) StringFromNumber(number INumber) string {
-	rv := objc.Call[string](n_, objc.Sel("stringFromNumber:"), objc.Ptr(number))
+	rv := objc.Call[string](n_, objc.Sel("stringFromNumber:"), number)
 	return rv
 }
 
@@ -243,7 +243,7 @@ func NumberFormatter_DefaultFormatterBehavior() NumberFormatterBehavior {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1416418-localizedstringfromnumber?language=objc
 func (nc _NumberFormatterClass) LocalizedStringFromNumberNumberStyle(num INumber, nstyle NumberFormatterStyle) string {
-	rv := objc.Call[string](nc, objc.Sel("localizedStringFromNumber:numberStyle:"), objc.Ptr(num), nstyle)
+	rv := objc.Call[string](nc, objc.Sel("localizedStringFromNumber:numberStyle:"), num, nstyle)
 	return rv
 }
 
@@ -266,7 +266,7 @@ func (n_ NumberFormatter) Minimum() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1417228-minimum?language=objc
 func (n_ NumberFormatter) SetMinimum(value INumber) {
-	objc.Call[objc.Void](n_, objc.Sel("setMinimum:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setMinimum:"), value)
 }
 
 // The string used by the receiver for a grouping separator. [Full Topic]
@@ -416,7 +416,7 @@ func (n_ NumberFormatter) AttributedStringForNotANumber() AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1416819-attributedstringfornotanumber?language=objc
 func (n_ NumberFormatter) SetAttributedStringForNotANumber(value IAttributedString) {
-	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForNotANumber:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForNotANumber:"), value)
 }
 
 // The format the receiver uses to display negative values. [Full Topic]
@@ -566,7 +566,7 @@ func (n_ NumberFormatter) RoundingBehavior() DecimalNumberHandler {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1415880-roundingbehavior?language=objc
 func (n_ NumberFormatter) SetRoundingBehavior(value IDecimalNumberHandler) {
-	objc.Call[objc.Void](n_, objc.Sel("setRoundingBehavior:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setRoundingBehavior:"), value)
 }
 
 // The grouping size of the receiver. [Full Topic]
@@ -626,7 +626,7 @@ func (n_ NumberFormatter) AttributedStringForNil() AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1416184-attributedstringfornil?language=objc
 func (n_ NumberFormatter) SetAttributedStringForNil(value IAttributedString) {
-	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForNil:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForNil:"), value)
 }
 
 // The receiver’s format. [Full Topic]
@@ -761,7 +761,7 @@ func (n_ NumberFormatter) Multiplier() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1408601-multiplier?language=objc
 func (n_ NumberFormatter) SetMultiplier(value INumber) {
-	objc.Call[objc.Void](n_, objc.Sel("setMultiplier:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setMultiplier:"), value)
 }
 
 // The string used to represent a minus sign. [Full Topic]
@@ -806,7 +806,7 @@ func (n_ NumberFormatter) RoundingIncrement() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1412561-roundingincrement?language=objc
 func (n_ NumberFormatter) SetRoundingIncrement(value INumber) {
-	objc.Call[objc.Void](n_, objc.Sel("setRoundingIncrement:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setRoundingIncrement:"), value)
 }
 
 // The maximum number of digits before the decimal separator. [Full Topic]
@@ -971,7 +971,7 @@ func (n_ NumberFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1416967-locale?language=objc
 func (n_ NumberFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](n_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setLocale:"), value)
 }
 
 // The minimum number of significant digits for the number formatter. [Full Topic]
@@ -1166,7 +1166,7 @@ func (n_ NumberFormatter) Maximum() Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1417787-maximum?language=objc
 func (n_ NumberFormatter) SetMaximum(value INumber) {
-	objc.Call[objc.Void](n_, objc.Sel("setMaximum:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setMaximum:"), value)
 }
 
 // Determines whether the dollar sign character ($), decimal separator character (.), and thousand separator character (,) are converted to appropriately localized characters as specified by the user’s localization preference. [Full Topic]
@@ -1196,7 +1196,7 @@ func (n_ NumberFormatter) AttributedStringForZero() AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumberformatter/1415516-attributedstringforzero?language=objc
 func (n_ NumberFormatter) SetAttributedStringForZero(value IAttributedString) {
-	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForZero:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setAttributedStringForZero:"), value)
 }
 
 // Determines whether partial string validation is enabled for the receiver. [Full Topic]

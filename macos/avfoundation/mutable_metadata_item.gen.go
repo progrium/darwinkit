@@ -99,7 +99,7 @@ func (m_ MutableMetadataItem) SetKeySpace(value MetadataKeySpace) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389292-locale?language=objc
 func (m_ MutableMetadataItem) SetLocale(value foundation.ILocale) {
-	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), value)
 }
 
 // The IETF BCP 47 (RFC 4646) language identifier of the metadata item. [Full Topic]
@@ -113,7 +113,7 @@ func (m_ MutableMetadataItem) SetExtendedLanguageTag(value string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemetadataitem/1389966-startdate?language=objc
 func (m_ MutableMetadataItem) SetStartDate(value foundation.IDate) {
-	objc.Call[objc.Void](m_, objc.Sel("setStartDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setStartDate:"), value)
 }
 
 // A dictionary of additional attributes for a metadata item. [Full Topic]

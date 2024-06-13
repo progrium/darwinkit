@@ -22,11 +22,11 @@ type IBinaryImageKernel interface {
 	EncodeToCommandBufferPrimaryImageSecondaryImageDestinationImage(commandBuffer metal.PCommandBuffer, primaryImage IImage, secondaryImage IImage, destinationImage IImage)
 	EncodeToCommandBufferObjectPrimaryImageSecondaryImageDestinationImage(commandBufferObject objc.IObject, primaryImage IImage, secondaryImage IImage, destinationImage IImage)
 	SecondarySourceRegionForDestinationSize(destinationSize metal.Size) Region
-	EncodeToCommandBufferPrimaryTextureInPlaceSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, primaryTexture metal.PTexture, inPlaceSecondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool
+	EncodeToCommandBufferPrimaryTextureInPlaceSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, primaryTexture metal.PTexture, inPlaceSecondaryTexture unsafe.Pointer, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferObjectPrimaryTextureObjectInPlaceSecondaryTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, primaryTextureObject objc.IObject, inPlaceSecondaryTextureObject objc.IObject, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferPrimaryTextureSecondaryTextureDestinationTexture(commandBuffer metal.PCommandBuffer, primaryTexture metal.PTexture, secondaryTexture metal.PTexture, destinationTexture metal.PTexture)
 	EncodeToCommandBufferObjectPrimaryTextureObjectSecondaryTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, primaryTextureObject objc.IObject, secondaryTextureObject objc.IObject, destinationTextureObject objc.IObject)
-	EncodeToCommandBufferInPlacePrimaryTextureSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, inPlacePrimaryTexture metal.PTexture, secondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool
+	EncodeToCommandBufferInPlacePrimaryTextureSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, inPlacePrimaryTexture unsafe.Pointer, secondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool
 	EncodeToCommandBufferObjectInPlacePrimaryTextureObjectSecondaryTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, inPlacePrimaryTextureObject objc.IObject, secondaryTextureObject objc.IObject, copyAllocator CopyAllocator) bool
 	PrimarySourceRegionForDestinationSize(destinationSize metal.Size) Region
 	PrimaryEdgeMode() ImageEdgeMode
@@ -109,14 +109,14 @@ func BinaryImageKernel_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDev
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/2866330-encodetocommandbuffer?language=objc
 func (b_ BinaryImageKernel) EncodeToCommandBufferPrimaryImageSecondaryImageDestinationImage(commandBuffer metal.PCommandBuffer, primaryImage IImage, secondaryImage IImage, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryImage:secondaryImage:destinationImage:"), po0, objc.Ptr(primaryImage), objc.Ptr(secondaryImage), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryImage:secondaryImage:destinationImage:"), po0, primaryImage, secondaryImage, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/2866330-encodetocommandbuffer?language=objc
 func (b_ BinaryImageKernel) EncodeToCommandBufferObjectPrimaryImageSecondaryImageDestinationImage(commandBufferObject objc.IObject, primaryImage IImage, secondaryImage IImage, destinationImage IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryImage:secondaryImage:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(primaryImage), objc.Ptr(secondaryImage), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryImage:secondaryImage:destinationImage:"), commandBufferObject, primaryImage, secondaryImage, destinationImage)
 }
 
 // Determines the region of the secondary source texture that will be read for an encode operation. [Full Topic]
@@ -130,7 +130,7 @@ func (b_ BinaryImageKernel) SecondarySourceRegionForDestinationSize(destinationS
 // This method attempts to apply a kernel in place on a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/1618890-encodetocommandbuffer?language=objc
-func (b_ BinaryImageKernel) EncodeToCommandBufferPrimaryTextureInPlaceSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, primaryTexture metal.PTexture, inPlaceSecondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool {
+func (b_ BinaryImageKernel) EncodeToCommandBufferPrimaryTextureInPlaceSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, primaryTexture metal.PTexture, inPlaceSecondaryTexture unsafe.Pointer, copyAllocator CopyAllocator) bool {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po1 := objc.WrapAsProtocol("MTLTexture", primaryTexture)
 	po2 := objc.WrapAsProtocol("MTLTexture", inPlaceSecondaryTexture)
@@ -142,7 +142,7 @@ func (b_ BinaryImageKernel) EncodeToCommandBufferPrimaryTextureInPlaceSecondaryT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/1618890-encodetocommandbuffer?language=objc
 func (b_ BinaryImageKernel) EncodeToCommandBufferObjectPrimaryTextureObjectInPlaceSecondaryTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, primaryTextureObject objc.IObject, inPlaceSecondaryTextureObject objc.IObject, copyAllocator CopyAllocator) bool {
-	rv := objc.Call[bool](b_, objc.Sel("encodeToCommandBuffer:primaryTexture:inPlaceSecondaryTexture:fallbackCopyAllocator:"), objc.Ptr(commandBufferObject), objc.Ptr(primaryTextureObject), objc.Ptr(inPlaceSecondaryTextureObject), copyAllocator)
+	rv := objc.Call[bool](b_, objc.Sel("encodeToCommandBuffer:primaryTexture:inPlaceSecondaryTexture:fallbackCopyAllocator:"), commandBufferObject, primaryTextureObject, inPlaceSecondaryTextureObject, copyAllocator)
 	return rv
 }
 
@@ -161,13 +161,13 @@ func (b_ BinaryImageKernel) EncodeToCommandBufferPrimaryTextureSecondaryTextureD
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/1618871-encodetocommandbuffer?language=objc
 func (b_ BinaryImageKernel) EncodeToCommandBufferObjectPrimaryTextureObjectSecondaryTextureObjectDestinationTextureObject(commandBufferObject objc.IObject, primaryTextureObject objc.IObject, secondaryTextureObject objc.IObject, destinationTextureObject objc.IObject) {
-	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryTexture:secondaryTexture:destinationTexture:"), objc.Ptr(commandBufferObject), objc.Ptr(primaryTextureObject), objc.Ptr(secondaryTextureObject), objc.Ptr(destinationTextureObject))
+	objc.Call[objc.Void](b_, objc.Sel("encodeToCommandBuffer:primaryTexture:secondaryTexture:destinationTexture:"), commandBufferObject, primaryTextureObject, secondaryTextureObject, destinationTextureObject)
 }
 
 // This method attempts to apply a kernel in place on a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/1618771-encodetocommandbuffer?language=objc
-func (b_ BinaryImageKernel) EncodeToCommandBufferInPlacePrimaryTextureSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, inPlacePrimaryTexture metal.PTexture, secondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool {
+func (b_ BinaryImageKernel) EncodeToCommandBufferInPlacePrimaryTextureSecondaryTextureFallbackCopyAllocator(commandBuffer metal.PCommandBuffer, inPlacePrimaryTexture unsafe.Pointer, secondaryTexture metal.PTexture, copyAllocator CopyAllocator) bool {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
 	po1 := objc.WrapAsProtocol("MTLTexture", inPlacePrimaryTexture)
 	po2 := objc.WrapAsProtocol("MTLTexture", secondaryTexture)
@@ -179,7 +179,7 @@ func (b_ BinaryImageKernel) EncodeToCommandBufferInPlacePrimaryTextureSecondaryT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsbinaryimagekernel/1618771-encodetocommandbuffer?language=objc
 func (b_ BinaryImageKernel) EncodeToCommandBufferObjectInPlacePrimaryTextureObjectSecondaryTextureObjectFallbackCopyAllocator(commandBufferObject objc.IObject, inPlacePrimaryTextureObject objc.IObject, secondaryTextureObject objc.IObject, copyAllocator CopyAllocator) bool {
-	rv := objc.Call[bool](b_, objc.Sel("encodeToCommandBuffer:inPlacePrimaryTexture:secondaryTexture:fallbackCopyAllocator:"), objc.Ptr(commandBufferObject), objc.Ptr(inPlacePrimaryTextureObject), objc.Ptr(secondaryTextureObject), copyAllocator)
+	rv := objc.Call[bool](b_, objc.Sel("encodeToCommandBuffer:inPlacePrimaryTexture:secondaryTexture:fallbackCopyAllocator:"), commandBufferObject, inPlacePrimaryTextureObject, secondaryTextureObject, copyAllocator)
 	return rv
 }
 

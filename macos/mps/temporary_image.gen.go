@@ -39,7 +39,7 @@ func TemporaryImageFrom(ptr unsafe.Pointer) TemporaryImage {
 
 func (tc _TemporaryImageClass) TemporaryImageWithCommandBufferTextureDescriptorFeatureChannels(commandBuffer metal.PCommandBuffer, textureDescriptor metal.ITextureDescriptor, featureChannels uint) TemporaryImage {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:textureDescriptor:featureChannels:"), po0, objc.Ptr(textureDescriptor), featureChannels)
+	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:textureDescriptor:featureChannels:"), po0, textureDescriptor, featureChannels)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func TemporaryImage_TemporaryImageWithCommandBufferTextureDescriptorFeatureChann
 
 func (tc _TemporaryImageClass) TemporaryImageWithCommandBufferImageDescriptor(commandBuffer metal.PCommandBuffer, imageDescriptor IImageDescriptor) TemporaryImage {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:imageDescriptor:"), po0, objc.Ptr(imageDescriptor))
+	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:imageDescriptor:"), po0, imageDescriptor)
 	return rv
 }
 
@@ -65,7 +65,7 @@ func TemporaryImage_TemporaryImageWithCommandBufferImageDescriptor(commandBuffer
 
 func (tc _TemporaryImageClass) TemporaryImageWithCommandBufferTextureDescriptor(commandBuffer metal.PCommandBuffer, textureDescriptor metal.ITextureDescriptor) TemporaryImage {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(textureDescriptor))
+	rv := objc.Call[TemporaryImage](tc, objc.Sel("temporaryImageWithCommandBuffer:textureDescriptor:"), po0, textureDescriptor)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func NewTemporaryImageWithTextureFeatureChannels(texture metal.PTexture, feature
 
 func (t_ TemporaryImage) InitWithDeviceImageDescriptor(device metal.PDevice, imageDescriptor IImageDescriptor) TemporaryImage {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithDevice:imageDescriptor:"), po0, objc.Ptr(imageDescriptor))
+	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithDevice:imageDescriptor:"), po0, imageDescriptor)
 	return rv
 }
 
@@ -127,7 +127,7 @@ func NewTemporaryImageWithDeviceImageDescriptor(device metal.PDevice, imageDescr
 }
 
 func (t_ TemporaryImage) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) TemporaryImage {
-	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), objc.Ptr(parent), sliceRange, featureChannels)
+	rv := objc.Call[TemporaryImage](t_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
 	return rv
 }
 

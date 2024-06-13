@@ -18,7 +18,7 @@ type _RatingCommandEventClass struct {
 // An interface definition for the [RatingCommandEvent] class.
 type IRatingCommandEvent interface {
 	IRemoteCommandEvent
-	Rating() float64
+	Rating() float32
 }
 
 // An event requesting a change in the rating. [Full Topic]
@@ -57,7 +57,7 @@ func (r_ RatingCommandEvent) Init() RatingCommandEvent {
 // The rating for the command event. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpratingcommandevent/1616764-rating?language=objc
-func (r_ RatingCommandEvent) Rating() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("rating"))
+func (r_ RatingCommandEvent) Rating() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("rating"))
 	return rv
 }

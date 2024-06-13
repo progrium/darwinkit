@@ -39,7 +39,7 @@ func CNNBatchNormalizationStatisticsGradientFrom(ptr unsafe.Pointer) CNNBatchNor
 
 func (c_ CNNBatchNormalizationStatisticsGradient) InitWithDeviceFusedNeuronDescriptor(device metal.PDevice, fusedNeuronDescriptor INNNeuronDescriptor) CNNBatchNormalizationStatisticsGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNBatchNormalizationStatisticsGradient](c_, objc.Sel("initWithDevice:fusedNeuronDescriptor:"), po0, objc.Ptr(fusedNeuronDescriptor))
+	rv := objc.Call[CNNBatchNormalizationStatisticsGradient](c_, objc.Sel("initWithDevice:fusedNeuronDescriptor:"), po0, fusedNeuronDescriptor)
 	return rv
 }
 
@@ -107,12 +107,12 @@ func CNNBatchNormalizationStatisticsGradient_CopyWithZoneDevice(zone unsafe.Poin
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationstatisticsgradient/2953964-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalizationStatisticsGradient) EncodeBatchToCommandBufferSourceGradientsSourceImagesBatchNormalizationState(commandBuffer metal.PCommandBuffer, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:"), po0, sourceGradients, sourceImages, objc.Ptr(batchNormalizationState))
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:"), po0, sourceGradients, sourceImages, batchNormalizationState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationstatisticsgradient/2953964-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalizationStatisticsGradient) EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesBatchNormalizationState(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:"), objc.Ptr(commandBufferObject), sourceGradients, sourceImages, objc.Ptr(batchNormalizationState))
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:batchNormalizationState:"), commandBufferObject, sourceGradients, sourceImages, batchNormalizationState)
 }

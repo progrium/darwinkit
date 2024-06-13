@@ -143,7 +143,7 @@ func (h_ HeapObject) HasNewTextureWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/1649574-newtexturewithdescriptor?language=objc
 func (h_ HeapObject) NewTextureWithDescriptor(descriptor TextureDescriptor) TextureObject {
-	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (h_ HeapObject) HasNewTextureWithDescriptorOffset() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlheap/3152523-newtexturewithdescriptor?language=objc
 func (h_ HeapObject) NewTextureWithDescriptorOffset(descriptor TextureDescriptor, offset uint) TextureObject {
-	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:offset:"), objc.Ptr(descriptor), offset)
+	rv := objc.Call[TextureObject](h_, objc.Sel("newTextureWithDescriptor:offset:"), descriptor, offset)
 	return rv
 }
 

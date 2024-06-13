@@ -19,24 +19,24 @@ type _NNBinaryArithmeticNodeClass struct {
 type INNBinaryArithmeticNode interface {
 	INNFilterNode
 	GradientClass() objc.Class
-	PrimaryScale() float64
-	SetPrimaryScale(value float64)
+	PrimaryScale() float32
+	SetPrimaryScale(value float32)
 	SecondaryStrideInPixelsY() uint
 	SetSecondaryStrideInPixelsY(value uint)
-	MaximumValue() float64
-	SetMaximumValue(value float64)
-	SecondaryScale() float64
-	SetSecondaryScale(value float64)
+	MaximumValue() float32
+	SetMaximumValue(value float32)
+	SecondaryScale() float32
+	SetSecondaryScale(value float32)
 	SecondaryStrideInPixelsX() uint
 	SetSecondaryStrideInPixelsX(value uint)
 	SecondaryStrideInFeatureChannels() uint
 	SetSecondaryStrideInFeatureChannels(value uint)
 	PrimaryStrideInFeatureChannels() uint
 	SetPrimaryStrideInFeatureChannels(value uint)
-	MinimumValue() float64
-	SetMinimumValue(value float64)
-	Bias() float64
-	SetBias(value float64)
+	MinimumValue() float32
+	SetMinimumValue(value float32)
+	Bias() float32
+	SetBias(value float32)
 	PrimaryStrideInPixelsX() uint
 	SetPrimaryStrideInPixelsX(value uint)
 	PrimaryStrideInPixelsY() uint
@@ -69,7 +69,7 @@ func NNBinaryArithmeticNode_NodeWithSources(sourceNodes []INNImageNode) NNBinary
 }
 
 func (n_ NNBinaryArithmeticNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNBinaryArithmeticNode {
-	rv := objc.Call[NNBinaryArithmeticNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNBinaryArithmeticNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func NewNNBinaryArithmeticNodeWithLeftSourceRightSource(left INNImageNode, right
 }
 
 func (nc _NNBinaryArithmeticNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNBinaryArithmeticNode {
-	rv := objc.Call[NNBinaryArithmeticNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNBinaryArithmeticNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -139,15 +139,15 @@ func (n_ NNBinaryArithmeticNode) GradientClass() objc.Class {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952966-primaryscale?language=objc
-func (n_ NNBinaryArithmeticNode) PrimaryScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("primaryScale"))
+func (n_ NNBinaryArithmeticNode) PrimaryScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("primaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952966-primaryscale?language=objc
-func (n_ NNBinaryArithmeticNode) SetPrimaryScale(value float64) {
+func (n_ NNBinaryArithmeticNode) SetPrimaryScale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setPrimaryScale:"), value)
 }
 
@@ -169,30 +169,30 @@ func (n_ NNBinaryArithmeticNode) SetSecondaryStrideInPixelsY(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952979-maximumvalue?language=objc
-func (n_ NNBinaryArithmeticNode) MaximumValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("maximumValue"))
+func (n_ NNBinaryArithmeticNode) MaximumValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("maximumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952979-maximumvalue?language=objc
-func (n_ NNBinaryArithmeticNode) SetMaximumValue(value float64) {
+func (n_ NNBinaryArithmeticNode) SetMaximumValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setMaximumValue:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952976-secondaryscale?language=objc
-func (n_ NNBinaryArithmeticNode) SecondaryScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("secondaryScale"))
+func (n_ NNBinaryArithmeticNode) SecondaryScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("secondaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952976-secondaryscale?language=objc
-func (n_ NNBinaryArithmeticNode) SetSecondaryScale(value float64) {
+func (n_ NNBinaryArithmeticNode) SetSecondaryScale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setSecondaryScale:"), value)
 }
 
@@ -244,30 +244,30 @@ func (n_ NNBinaryArithmeticNode) SetPrimaryStrideInFeatureChannels(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952970-minimumvalue?language=objc
-func (n_ NNBinaryArithmeticNode) MinimumValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("minimumValue"))
+func (n_ NNBinaryArithmeticNode) MinimumValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("minimumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952970-minimumvalue?language=objc
-func (n_ NNBinaryArithmeticNode) SetMinimumValue(value float64) {
+func (n_ NNBinaryArithmeticNode) SetMinimumValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setMinimumValue:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952964-bias?language=objc
-func (n_ NNBinaryArithmeticNode) Bias() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("bias"))
+func (n_ NNBinaryArithmeticNode) Bias() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("bias"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnbinaryarithmeticnode/2952964-bias?language=objc
-func (n_ NNBinaryArithmeticNode) SetBias(value float64) {
+func (n_ NNBinaryArithmeticNode) SetBias(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setBias:"), value)
 }
 

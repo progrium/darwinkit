@@ -98,7 +98,7 @@ func (u_ URLSessionDelegateObject) HasURLSessionDidBecomeInvalidWithError() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondelegate/1407776-urlsession?language=objc
 func (u_ URLSessionDelegateObject) URLSessionDidBecomeInvalidWithError(session URLSession, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:didBecomeInvalidWithError:"), objc.Ptr(session), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:didBecomeInvalidWithError:"), session, error)
 }
 
 func (u_ URLSessionDelegateObject) HasURLSessionDidReceiveChallengeCompletionHandler() bool {
@@ -109,7 +109,7 @@ func (u_ URLSessionDelegateObject) HasURLSessionDidReceiveChallengeCompletionHan
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondelegate/1409308-urlsession?language=objc
 func (u_ URLSessionDelegateObject) URLSessionDidReceiveChallengeCompletionHandler(session URLSession, challenge URLAuthenticationChallenge, completionHandler func(disposition URLSessionAuthChallengeDisposition, credential URLCredential)) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:didReceiveChallenge:completionHandler:"), objc.Ptr(session), objc.Ptr(challenge), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:didReceiveChallenge:completionHandler:"), session, challenge, completionHandler)
 }
 
 func (u_ URLSessionDelegateObject) HasURLSessionDidFinishEventsForBackgroundURLSession() bool {
@@ -120,5 +120,5 @@ func (u_ URLSessionDelegateObject) HasURLSessionDidFinishEventsForBackgroundURLS
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondelegate/1617185-urlsessiondidfinisheventsforback?language=objc
 func (u_ URLSessionDelegateObject) URLSessionDidFinishEventsForBackgroundURLSession(session URLSession) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSessionDidFinishEventsForBackgroundURLSession:"), objc.Ptr(session))
+	objc.Call[objc.Void](u_, objc.Sel("URLSessionDidFinishEventsForBackgroundURLSession:"), session)
 }

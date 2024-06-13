@@ -87,7 +87,7 @@ func (t_ TextSelectionNavigation) Init() TextSelectionNavigation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801852-destinationselectionfortextselec?language=objc
 func (t_ TextSelectionNavigation) DestinationSelectionForTextSelectionDirectionDestinationExtendingConfined(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, extending bool, confined bool) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("destinationSelectionForTextSelection:direction:destination:extending:confined:"), objc.Ptr(textSelection), direction, destination, extending, confined)
+	rv := objc.Call[TextSelection](t_, objc.Sel("destinationSelectionForTextSelection:direction:destination:extending:confined:"), textSelection, direction, destination, extending, confined)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func (t_ TextSelectionNavigation) TextSelectionsInteractingAtPointInContainerAtL
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801869-textselectionsinteractingatpoint?language=objc
 func (t_ TextSelectionNavigation) TextSelectionsInteractingAtPointInContainerAtLocationObjectAnchorsModifiersSelectingBounds(point coregraphics.Point, containerLocationObject objc.IObject, anchors []ITextSelection, modifiers TextSelectionNavigationModifier, selecting bool, bounds coregraphics.Rect) []TextSelection {
-	rv := objc.Call[[]TextSelection](t_, objc.Sel("textSelectionsInteractingAtPoint:inContainerAtLocation:anchors:modifiers:selecting:bounds:"), point, objc.Ptr(containerLocationObject), anchors, modifiers, selecting, bounds)
+	rv := objc.Call[[]TextSelection](t_, objc.Sel("textSelectionsInteractingAtPoint:inContainerAtLocation:anchors:modifiers:selecting:bounds:"), point, containerLocationObject, anchors, modifiers, selecting, bounds)
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingP
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801858-textselectionforselectiongranula?language=objc
 func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingPointInContainerAtLocationObject(selectionGranularity TextSelectionGranularity, point coregraphics.Point, locationObject objc.IObject) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingPoint:inContainerAtLocation:"), selectionGranularity, point, objc.Ptr(locationObject))
+	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingPoint:inContainerAtLocation:"), selectionGranularity, point, locationObject)
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingP
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801868-textselectionforselectiongranula?language=objc
 func (t_ TextSelectionNavigation) TextSelectionForSelectionGranularityEnclosingTextSelection(selectionGranularity TextSelectionGranularity, textSelection ITextSelection) TextSelection {
-	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingTextSelection:"), selectionGranularity, objc.Ptr(textSelection))
+	rv := objc.Call[TextSelection](t_, objc.Sel("textSelectionForSelectionGranularity:enclosingTextSelection:"), selectionGranularity, textSelection)
 	return rv
 }
 
@@ -144,7 +144,7 @@ func (t_ TextSelectionNavigation) FlushLayoutCache() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3801851-deletionrangesfortextselection?language=objc
 func (t_ TextSelectionNavigation) DeletionRangesForTextSelectionDirectionDestinationAllowsDecomposition(textSelection ITextSelection, direction TextSelectionNavigationDirection, destination TextSelectionNavigationDestination, allowsDecomposition bool) []TextRange {
-	rv := objc.Call[[]TextRange](t_, objc.Sel("deletionRangesForTextSelection:direction:destination:allowsDecomposition:"), objc.Ptr(textSelection), direction, destination, allowsDecomposition)
+	rv := objc.Call[[]TextRange](t_, objc.Sel("deletionRangesForTextSelection:direction:destination:allowsDecomposition:"), textSelection, direction, destination, allowsDecomposition)
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (t_ TextSelectionNavigation) DeletionRangesForTextSelectionDirectionDestina
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextselectionnavigation/3852581-resolvedinsertionlocationfortext?language=objc
 func (t_ TextSelectionNavigation) ResolvedInsertionLocationForTextSelectionWritingDirection(textSelection ITextSelection, writingDirection TextSelectionNavigationWritingDirection) TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("resolvedInsertionLocationForTextSelection:writingDirection:"), objc.Ptr(textSelection), writingDirection)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("resolvedInsertionLocationForTextSelection:writingDirection:"), textSelection, writingDirection)
 	return rv
 }
 

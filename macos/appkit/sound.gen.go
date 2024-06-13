@@ -25,8 +25,8 @@ type ISound interface {
 	WriteToPasteboard(pasteboard IPasteboard)
 	SetName(string_ SoundName) bool
 	Play() bool
-	Volume() float64
-	SetVolume(value float64)
+	Volume() float32
+	SetVolume(value float32)
 	Duration() foundation.TimeInterval
 	IsPlaying() bool
 	Delegate() SoundDelegateObject
@@ -83,7 +83,7 @@ func NewSoundWithContentsOfFileByReference(path string, byRef bool) Sound {
 }
 
 func (s_ Sound) InitWithPasteboard(pasteboard IPasteboard) Sound {
-	rv := objc.Call[Sound](s_, objc.Sel("initWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[Sound](s_, objc.Sel("initWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func NewSoundWithPasteboard(pasteboard IPasteboard) Sound {
 }
 
 func (s_ Sound) InitWithContentsOfURLByReference(url foundation.IURL, byRef bool) Sound {
-	rv := objc.Call[Sound](s_, objc.Sel("initWithContentsOfURL:byReference:"), objc.Ptr(url), byRef)
+	rv := objc.Call[Sound](s_, objc.Sel("initWithContentsOfURL:byReference:"), url, byRef)
 	return rv
 }
 
@@ -134,7 +134,7 @@ func (s_ Sound) Init() Sound {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477276-caninitwithpasteboard?language=objc
 func (sc _SoundClass) CanInitWithPasteboard(pasteboard IPasteboard) bool {
-	rv := objc.Call[bool](sc, objc.Sel("canInitWithPasteboard:"), objc.Ptr(pasteboard))
+	rv := objc.Call[bool](sc, objc.Sel("canInitWithPasteboard:"), pasteboard)
 	return rv
 }
 
@@ -173,7 +173,7 @@ func (s_ Sound) Resume() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477338-writetopasteboard?language=objc
 func (s_ Sound) WriteToPasteboard(pasteboard IPasteboard) {
-	objc.Call[objc.Void](s_, objc.Sel("writeToPasteboard:"), objc.Ptr(pasteboard))
+	objc.Call[objc.Void](s_, objc.Sel("writeToPasteboard:"), pasteboard)
 }
 
 //	[Full Topic]
@@ -210,15 +210,15 @@ func (s_ Sound) Play() bool {
 // The volume of the sound. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477315-volume?language=objc
-func (s_ Sound) Volume() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("volume"))
+func (s_ Sound) Volume() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("volume"))
 	return rv
 }
 
 // The volume of the sound. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477315-volume?language=objc
-func (s_ Sound) SetVolume(value float64) {
+func (s_ Sound) SetVolume(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setVolume:"), value)
 }
 
@@ -259,7 +259,7 @@ func (s_ Sound) SetDelegate(value PSoundDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssound/1477300-delegate?language=objc
 func (s_ Sound) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The name assigned to the sound. [Full Topic]

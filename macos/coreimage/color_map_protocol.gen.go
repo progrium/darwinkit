@@ -43,7 +43,7 @@ func (c_ ColorMapObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormap/3228158-inputimage?language=objc
 func (c_ ColorMapObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorMapObject) HasInputImage() bool {
@@ -66,7 +66,7 @@ func (c_ ColorMapObject) HasSetGradientImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormap/3228157-gradientimage?language=objc
 func (c_ ColorMapObject) SetGradientImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setGradientImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setGradientImage:"), value)
 }
 
 func (c_ ColorMapObject) HasGradientImage() bool {

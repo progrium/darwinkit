@@ -110,7 +110,7 @@ func (q_ QuartzFilter) Url() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/quartzfilter/1433671-quartzfilterwithurl?language=objc
 func (qc _QuartzFilterClass) QuartzFilterWithURL(aURL foundation.IURL) QuartzFilter {
-	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithURL:"), objc.Ptr(aURL))
+	rv := objc.Call[QuartzFilter](qc, objc.Sel("quartzFilterWithURL:"), aURL)
 	return rv
 }
 

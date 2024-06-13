@@ -20,11 +20,11 @@ type PPixellate interface {
 	HasInputImage() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -52,7 +52,7 @@ func (p_ PixellateObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228675-inputimage?language=objc
 func (p_ PixellateObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PixellateObject) HasInputImage() bool {
@@ -74,7 +74,7 @@ func (p_ PixellateObject) HasSetScale() bool {
 // A value that determines the size of the squares. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228676-scale?language=objc
-func (p_ PixellateObject) SetScale(value float64) {
+func (p_ PixellateObject) SetScale(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setScale:"), value)
 }
 
@@ -85,8 +85,8 @@ func (p_ PixellateObject) HasScale() bool {
 // A value that determines the size of the squares. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipixellate/3228676-scale?language=objc
-func (p_ PixellateObject) Scale() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("scale"))
+func (p_ PixellateObject) Scale() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("scale"))
 	return rv
 }
 

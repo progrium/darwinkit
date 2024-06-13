@@ -68,7 +68,7 @@ func NewVectorWithXComponentYComponent(x float64, y float64) Vector {
 }
 
 func (v_ Vector) InitWithVectorHeadTail(head IPoint, tail IPoint) Vector {
-	rv := objc.Call[Vector](v_, objc.Sel("initWithVectorHead:tail:"), objc.Ptr(head), objc.Ptr(tail))
+	rv := objc.Call[Vector](v_, objc.Sel("initWithVectorHead:tail:"), head, tail)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (v_ Vector) Init() Vector {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548347-vectorbyaddingvector?language=objc
 func (vc _VectorClass) VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorByAddingVector:toVector:"), objc.Ptr(v1), objc.Ptr(v2))
+	rv := objc.Call[Vector](vc, objc.Sel("vectorByAddingVector:toVector:"), v1, v2)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func Vector_VectorByAddingVectorToVector(v1 IVector, v2 IVector) Vector {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548349-vectorbysubtractingvector?language=objc
 func (vc _VectorClass) VectorBySubtractingVectorFromVector(v1 IVector, v2 IVector) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorBySubtractingVector:fromVector:"), objc.Ptr(v1), objc.Ptr(v2))
+	rv := objc.Call[Vector](vc, objc.Sel("vectorBySubtractingVector:fromVector:"), v1, v2)
 	return rv
 }
 
@@ -135,7 +135,7 @@ func Vector_VectorBySubtractingVectorFromVector(v1 IVector, v2 IVector) Vector {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548348-vectorbymultiplyingvector?language=objc
 func (vc _VectorClass) VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("vectorByMultiplyingVector:byScalar:"), objc.Ptr(vector), scalar)
+	rv := objc.Call[Vector](vc, objc.Sel("vectorByMultiplyingVector:byScalar:"), vector, scalar)
 	return rv
 }
 
@@ -150,7 +150,7 @@ func Vector_VectorByMultiplyingVectorByScalar(vector IVector, scalar float64) Ve
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548338-dotproductofvector?language=objc
 func (vc _VectorClass) DotProductOfVectorVector(v1 IVector, v2 IVector) float64 {
-	rv := objc.Call[float64](vc, objc.Sel("dotProductOfVector:vector:"), objc.Ptr(v1), objc.Ptr(v2))
+	rv := objc.Call[float64](vc, objc.Sel("dotProductOfVector:vector:"), v1, v2)
 	return rv
 }
 
@@ -165,7 +165,7 @@ func Vector_DotProductOfVectorVector(v1 IVector, v2 IVector) float64 {
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvector/3548346-unitvectorforvector?language=objc
 func (vc _VectorClass) UnitVectorForVector(vector IVector) Vector {
-	rv := objc.Call[Vector](vc, objc.Sel("unitVectorForVector:"), objc.Ptr(vector))
+	rv := objc.Call[Vector](vc, objc.Sel("unitVectorForVector:"), vector)
 	return rv
 }
 

@@ -67,7 +67,7 @@ func (l_ LayoutAnchor) Init() LayoutAnchor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500953-constraintlessthanorequaltoancho?language=objc
 func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:"), objc.Ptr(anchor))
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:"), anchor)
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchor(anchor ILayoutAnchor) L
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500937-constraintequaltoanchor?language=objc
 func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:constant:"), objc.Ptr(anchor), c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:constant:"), anchor, c)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (l_ LayoutAnchor) ConstraintEqualToAnchorConstant(anchor ILayoutAnchor, c f
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500936-constraintgreaterthanorequaltoan?language=objc
 func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:"), objc.Ptr(anchor))
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:"), anchor)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchor(anchor ILayoutAnchor
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500946-constraintequaltoanchor?language=objc
 func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:"), objc.Ptr(anchor))
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToAnchor:"), anchor)
 	return rv
 }
 
@@ -99,7 +99,7 @@ func (l_ LayoutAnchor) ConstraintEqualToAnchor(anchor ILayoutAnchor) LayoutConst
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500959-constraintlessthanorequaltoancho?language=objc
 func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:constant:"), objc.Ptr(anchor), c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToAnchor:constant:"), anchor, c)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (l_ LayoutAnchor) ConstraintLessThanOrEqualToAnchorConstant(anchor ILayoutA
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutanchor/1500948-constraintgreaterthanorequaltoan?language=objc
 func (l_ LayoutAnchor) ConstraintGreaterThanOrEqualToAnchorConstant(anchor ILayoutAnchor, c float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:constant:"), objc.Ptr(anchor), c)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToAnchor:constant:"), anchor, c)
 	return rv
 }
 

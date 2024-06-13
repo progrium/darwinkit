@@ -20,19 +20,19 @@ type PRadialGradient interface {
 	HasColor1() bool
 
 	// optional
-	SetRadius1(value float64)
+	SetRadius1(value float32)
 	HasSetRadius1() bool
 
 	// optional
-	Radius1() float64
+	Radius1() float32
 	HasRadius1() bool
 
 	// optional
-	SetRadius0(value float64)
+	SetRadius0(value float32)
 	HasSetRadius0() bool
 
 	// optional
-	Radius0() float64
+	Radius0() float32
 	HasRadius0() bool
 
 	// optional
@@ -68,7 +68,7 @@ func (r_ RadialGradientObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228687-color1?language=objc
 func (r_ RadialGradientObject) SetColor1(value Color) {
-	objc.Call[objc.Void](r_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setColor1:"), value)
 }
 
 func (r_ RadialGradientObject) HasColor1() bool {
@@ -90,7 +90,7 @@ func (r_ RadialGradientObject) HasSetRadius1() bool {
 // The radius of the ending circle to use in the gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228689-radius1?language=objc
-func (r_ RadialGradientObject) SetRadius1(value float64) {
+func (r_ RadialGradientObject) SetRadius1(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setRadius1:"), value)
 }
 
@@ -101,8 +101,8 @@ func (r_ RadialGradientObject) HasRadius1() bool {
 // The radius of the ending circle to use in the gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228689-radius1?language=objc
-func (r_ RadialGradientObject) Radius1() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("radius1"))
+func (r_ RadialGradientObject) Radius1() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("radius1"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (r_ RadialGradientObject) HasSetRadius0() bool {
 // The radius of the starting circle to use in the gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228688-radius0?language=objc
-func (r_ RadialGradientObject) SetRadius0(value float64) {
+func (r_ RadialGradientObject) SetRadius0(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setRadius0:"), value)
 }
 
@@ -124,8 +124,8 @@ func (r_ RadialGradientObject) HasRadius0() bool {
 // The radius of the starting circle to use in the gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228688-radius0?language=objc
-func (r_ RadialGradientObject) Radius0() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("radius0"))
+func (r_ RadialGradientObject) Radius0() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("radius0"))
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (r_ RadialGradientObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciradialgradient/3228686-color0?language=objc
 func (r_ RadialGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](r_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setColor0:"), value)
 }
 
 func (r_ RadialGradientObject) HasColor0() bool {

@@ -265,7 +265,7 @@ func (c_ CommandBufferObject) HasComputeCommandEncoderWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564432-computecommandencoderwithdescrip?language=objc
 func (c_ CommandBufferObject) ComputeCommandEncoderWithDescriptor(computePassDescriptor ComputePassDescriptor) ComputeCommandEncoderObject {
-	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDescriptor:"), objc.Ptr(computePassDescriptor))
+	rv := objc.Call[ComputeCommandEncoderObject](c_, objc.Sel("computeCommandEncoderWithDescriptor:"), computePassDescriptor)
 	return rv
 }
 
@@ -277,7 +277,7 @@ func (c_ CommandBufferObject) HasParallelRenderCommandEncoderWithDescriptor() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1443009-parallelrendercommandencoderwith?language=objc
 func (c_ CommandBufferObject) ParallelRenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) ParallelRenderCommandEncoderObject {
-	rv := objc.Call[ParallelRenderCommandEncoderObject](c_, objc.Sel("parallelRenderCommandEncoderWithDescriptor:"), objc.Ptr(renderPassDescriptor))
+	rv := objc.Call[ParallelRenderCommandEncoderObject](c_, objc.Sel("parallelRenderCommandEncoderWithDescriptor:"), renderPassDescriptor)
 	return rv
 }
 
@@ -325,7 +325,7 @@ func (c_ CommandBufferObject) HasRenderCommandEncoderWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/1442999-rendercommandencoderwithdescript?language=objc
 func (c_ CommandBufferObject) RenderCommandEncoderWithDescriptor(renderPassDescriptor RenderPassDescriptor) RenderCommandEncoderObject {
-	rv := objc.Call[RenderCommandEncoderObject](c_, objc.Sel("renderCommandEncoderWithDescriptor:"), objc.Ptr(renderPassDescriptor))
+	rv := objc.Call[RenderCommandEncoderObject](c_, objc.Sel("renderCommandEncoderWithDescriptor:"), renderPassDescriptor)
 	return rv
 }
 
@@ -372,7 +372,7 @@ func (c_ CommandBufferObject) HasResourceStateCommandEncoderWithDescriptor() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3566536-resourcestatecommandencoderwithd?language=objc
 func (c_ CommandBufferObject) ResourceStateCommandEncoderWithDescriptor(resourceStatePassDescriptor ResourceStatePassDescriptor) ResourceStateCommandEncoderObject {
-	rv := objc.Call[ResourceStateCommandEncoderObject](c_, objc.Sel("resourceStateCommandEncoderWithDescriptor:"), objc.Ptr(resourceStatePassDescriptor))
+	rv := objc.Call[ResourceStateCommandEncoderObject](c_, objc.Sel("resourceStateCommandEncoderWithDescriptor:"), resourceStatePassDescriptor)
 	return rv
 }
 
@@ -429,7 +429,7 @@ func (c_ CommandBufferObject) HasBlitCommandEncoderWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandbuffer/3564431-blitcommandencoderwithdescriptor?language=objc
 func (c_ CommandBufferObject) BlitCommandEncoderWithDescriptor(blitPassDescriptor BlitPassDescriptor) BlitCommandEncoderObject {
-	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoderWithDescriptor:"), objc.Ptr(blitPassDescriptor))
+	rv := objc.Call[BlitCommandEncoderObject](c_, objc.Sel("blitCommandEncoderWithDescriptor:"), blitPassDescriptor)
 	return rv
 }
 

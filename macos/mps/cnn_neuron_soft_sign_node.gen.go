@@ -34,7 +34,7 @@ func CNNNeuronSoftSignNodeFrom(ptr unsafe.Pointer) CNNNeuronSoftSignNode {
 }
 
 func (cc _CNNNeuronSoftSignNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronSoftSignNode {
-	rv := objc.Call[CNNNeuronSoftSignNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronSoftSignNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -46,7 +46,7 @@ func CNNNeuronSoftSignNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronSoft
 }
 
 func (c_ CNNNeuronSoftSignNode) InitWithSource(sourceNode INNImageNode) CNNNeuronSoftSignNode {
-	rv := objc.Call[CNNNeuronSoftSignNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronSoftSignNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func (c_ CNNNeuronSoftSignNode) Init() CNNNeuronSoftSignNode {
 }
 
 func (cc _CNNNeuronSoftSignNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronSoftSignNode {
-	rv := objc.Call[CNNNeuronSoftSignNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronSoftSignNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

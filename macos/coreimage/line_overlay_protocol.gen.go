@@ -19,43 +19,43 @@ type PLineOverlay interface {
 	HasInputImage() bool
 
 	// optional
-	SetContrast(value float64)
+	SetContrast(value float32)
 	HasSetContrast() bool
 
 	// optional
-	Contrast() float64
+	Contrast() float32
 	HasContrast() bool
 
 	// optional
-	SetThreshold(value float64)
+	SetThreshold(value float32)
 	HasSetThreshold() bool
 
 	// optional
-	Threshold() float64
+	Threshold() float32
 	HasThreshold() bool
 
 	// optional
-	SetNRSharpness(value float64)
+	SetNRSharpness(value float32)
 	HasSetNRSharpness() bool
 
 	// optional
-	NRSharpness() float64
+	NRSharpness() float32
 	HasNRSharpness() bool
 
 	// optional
-	SetNRNoiseLevel(value float64)
+	SetNRNoiseLevel(value float32)
 	HasSetNRNoiseLevel() bool
 
 	// optional
-	NRNoiseLevel() float64
+	NRNoiseLevel() float32
 	HasNRNoiseLevel() bool
 
 	// optional
-	SetEdgeIntensity(value float64)
+	SetEdgeIntensity(value float32)
 	HasSetEdgeIntensity() bool
 
 	// optional
-	EdgeIntensity() float64
+	EdgeIntensity() float32
 	HasEdgeIntensity() bool
 }
 
@@ -75,7 +75,7 @@ func (l_ LineOverlayObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228533-inputimage?language=objc
 func (l_ LineOverlayObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
 }
 
 func (l_ LineOverlayObject) HasInputImage() bool {
@@ -97,7 +97,7 @@ func (l_ LineOverlayObject) HasSetContrast() bool {
 // The amount of antialiasing to use on the edges produced by this filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228531-contrast?language=objc
-func (l_ LineOverlayObject) SetContrast(value float64) {
+func (l_ LineOverlayObject) SetContrast(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setContrast:"), value)
 }
 
@@ -108,8 +108,8 @@ func (l_ LineOverlayObject) HasContrast() bool {
 // The amount of antialiasing to use on the edges produced by this filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228531-contrast?language=objc
-func (l_ LineOverlayObject) Contrast() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("contrast"))
+func (l_ LineOverlayObject) Contrast() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("contrast"))
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (l_ LineOverlayObject) HasSetThreshold() bool {
 // A value that determines edge visibility. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228534-threshold?language=objc
-func (l_ LineOverlayObject) SetThreshold(value float64) {
+func (l_ LineOverlayObject) SetThreshold(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setThreshold:"), value)
 }
 
@@ -131,8 +131,8 @@ func (l_ LineOverlayObject) HasThreshold() bool {
 // A value that determines edge visibility. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228534-threshold?language=objc
-func (l_ LineOverlayObject) Threshold() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("threshold"))
+func (l_ LineOverlayObject) Threshold() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("threshold"))
 	return rv
 }
 
@@ -143,7 +143,7 @@ func (l_ LineOverlayObject) HasSetNRSharpness() bool {
 // The amount of sharpening done when removing noise in the image before tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228530-nrsharpness?language=objc
-func (l_ LineOverlayObject) SetNRSharpness(value float64) {
+func (l_ LineOverlayObject) SetNRSharpness(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setNRSharpness:"), value)
 }
 
@@ -154,8 +154,8 @@ func (l_ LineOverlayObject) HasNRSharpness() bool {
 // The amount of sharpening done when removing noise in the image before tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228530-nrsharpness?language=objc
-func (l_ LineOverlayObject) NRSharpness() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("NRSharpness"))
+func (l_ LineOverlayObject) NRSharpness() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("NRSharpness"))
 	return rv
 }
 
@@ -166,7 +166,7 @@ func (l_ LineOverlayObject) HasSetNRNoiseLevel() bool {
 // The noise level of the image, used with camera data, that's removed before tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228529-nrnoiselevel?language=objc
-func (l_ LineOverlayObject) SetNRNoiseLevel(value float64) {
+func (l_ LineOverlayObject) SetNRNoiseLevel(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setNRNoiseLevel:"), value)
 }
 
@@ -177,8 +177,8 @@ func (l_ LineOverlayObject) HasNRNoiseLevel() bool {
 // The noise level of the image, used with camera data, that's removed before tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228529-nrnoiselevel?language=objc
-func (l_ LineOverlayObject) NRNoiseLevel() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("NRNoiseLevel"))
+func (l_ LineOverlayObject) NRNoiseLevel() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("NRNoiseLevel"))
 	return rv
 }
 
@@ -189,7 +189,7 @@ func (l_ LineOverlayObject) HasSetEdgeIntensity() bool {
 // The accentuation factor of the Sobel gradient information when tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228532-edgeintensity?language=objc
-func (l_ LineOverlayObject) SetEdgeIntensity(value float64) {
+func (l_ LineOverlayObject) SetEdgeIntensity(value float32) {
 	objc.Call[objc.Void](l_, objc.Sel("setEdgeIntensity:"), value)
 }
 
@@ -200,7 +200,7 @@ func (l_ LineOverlayObject) HasEdgeIntensity() bool {
 // The accentuation factor of the Sobel gradient information when tracing the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineoverlay/3228532-edgeintensity?language=objc
-func (l_ LineOverlayObject) EdgeIntensity() float64 {
-	rv := objc.Call[float64](l_, objc.Sel("edgeIntensity"))
+func (l_ LineOverlayObject) EdgeIntensity() float32 {
+	rv := objc.Call[float32](l_, objc.Sel("edgeIntensity"))
 	return rv
 }

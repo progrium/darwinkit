@@ -100,7 +100,7 @@ func (t_ TextContainer) LineFragmentRectForProposedRectAtIndexWritingDirectionRe
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444545-replacelayoutmanager?language=objc
 func (t_ TextContainer) ReplaceLayoutManager(newLayoutManager ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceLayoutManager:"), objc.Ptr(newLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("replaceLayoutManager:"), newLayoutManager)
 }
 
 // The text container’s text view. [Full Topic]
@@ -115,7 +115,7 @@ func (t_ TextContainer) TextView() TextView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextcontainer/1444537-textview?language=objc
 func (t_ TextContainer) SetTextView(value ITextView) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextView:"), value)
 }
 
 //	[Full Topic]
@@ -153,7 +153,7 @@ func (t_ TextContainer) LayoutManager() LayoutManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontainer/1444517-layoutmanager?language=objc
 func (t_ TextContainer) SetLayoutManager(value ILayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("setLayoutManager:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setLayoutManager:"), value)
 }
 
 // A Boolean that indicates whether the text container’s region is a rectangle with no holes or gaps, and whose edges are parallel to the text view's coordinate system axes. [Full Topic]

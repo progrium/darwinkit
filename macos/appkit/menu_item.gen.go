@@ -179,7 +179,7 @@ func (m_ MenuItem) Submenu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514845-submenu?language=objc
 func (m_ MenuItem) SetSubmenu(value IMenu) {
-	objc.Call[objc.Void](m_, objc.Sel("setSubmenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setSubmenu:"), value)
 }
 
 // A Boolean value that indicates whether the menu item or any of its superitems is hidden. [Full Topic]
@@ -210,7 +210,7 @@ func (m_ MenuItem) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514819-image?language=objc
 func (m_ MenuItem) SetImage(value IImage) {
-	objc.Call[objc.Void](m_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setImage:"), value)
 }
 
 // The menu item's action-method selector. [Full Topic]
@@ -270,7 +270,7 @@ func (m_ MenuItem) View() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514835-view?language=objc
 func (m_ MenuItem) SetView(value IView) {
-	objc.Call[objc.Void](m_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setView:"), value)
 }
 
 // The state of the menu item. [Full Topic]
@@ -300,7 +300,7 @@ func (m_ MenuItem) MixedStateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514827-mixedstateimage?language=objc
 func (m_ MenuItem) SetMixedStateImage(value IImage) {
-	objc.Call[objc.Void](m_, objc.Sel("setMixedStateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMixedStateImage:"), value)
 }
 
 // A Boolean value indicating whether the menu item is a separator item. [Full Topic]
@@ -353,7 +353,7 @@ func (m_ MenuItem) Menu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514830-menu?language=objc
 func (m_ MenuItem) SetMenu(value IMenu) {
-	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), value)
 }
 
 // A custom string for a menu item. [Full Topic]
@@ -368,7 +368,7 @@ func (m_ MenuItem) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514860-attributedtitle?language=objc
 func (m_ MenuItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](m_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // A Boolean value that indicates whether the menu item has a submenu. [Full Topic]
@@ -436,7 +436,7 @@ func (m_ MenuItem) OffStateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514821-offstateimage?language=objc
 func (m_ MenuItem) SetOffStateImage(value IImage) {
-	objc.Call[objc.Void](m_, objc.Sel("setOffStateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setOffStateImage:"), value)
 }
 
 // The menu item’s unmodified key equivalent. [Full Topic]
@@ -571,5 +571,5 @@ func (m_ MenuItem) OnStateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenuitem/1514861-onstateimage?language=objc
 func (m_ MenuItem) SetOnStateImage(value IImage) {
-	objc.Call[objc.Void](m_, objc.Sel("setOnStateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setOnStateImage:"), value)
 }

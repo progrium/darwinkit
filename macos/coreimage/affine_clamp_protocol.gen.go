@@ -67,7 +67,7 @@ func (a_ AffineClampObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciaffineclamp/3228054-inputimage?language=objc
 func (a_ AffineClampObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setInputImage:"), value)
 }
 
 func (a_ AffineClampObject) HasInputImage() bool {

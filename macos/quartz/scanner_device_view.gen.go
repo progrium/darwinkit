@@ -144,7 +144,7 @@ func (s_ ScannerDeviceView) SetDelegate(value PScannerDeviceViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1504170-delegate?language=objc
 func (s_ ScannerDeviceView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Returns the document name. [Full Topic]
@@ -174,7 +174,7 @@ func (s_ ScannerDeviceView) PostProcessApplication() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1505215-postprocessapplication?language=objc
 func (s_ ScannerDeviceView) SetPostProcessApplication(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setPostProcessApplication:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPostProcessApplication:"), value)
 }
 
 // Allows customization of the “Scan” label. [Full Topic]
@@ -249,7 +249,7 @@ func (s_ ScannerDeviceView) DownloadsDirectory() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceview/1503585-downloadsdirectory?language=objc
 func (s_ ScannerDeviceView) SetDownloadsDirectory(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setDownloadsDirectory:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDownloadsDirectory:"), value)
 }
 
 // Specifies whether the post processing application control is displayed. [Full Topic]

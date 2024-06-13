@@ -67,5 +67,5 @@ func (d_ DatabaseOperation) Database() Database {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckdatabaseoperation/1515274-database?language=objc
 func (d_ DatabaseOperation) SetDatabase(value IDatabase) {
-	objc.Call[objc.Void](d_, objc.Sel("setDatabase:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setDatabase:"), value)
 }

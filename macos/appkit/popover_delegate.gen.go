@@ -209,7 +209,7 @@ func (p_ PopoverDelegateObject) HasPopoverDidDetach() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1524674-popoverdiddetach?language=objc
 func (p_ PopoverDelegateObject) PopoverDidDetach(popover Popover) {
-	objc.Call[objc.Void](p_, objc.Sel("popoverDidDetach:"), objc.Ptr(popover))
+	objc.Call[objc.Void](p_, objc.Sel("popoverDidDetach:"), popover)
 }
 
 func (p_ PopoverDelegateObject) HasPopoverShouldClose() bool {
@@ -220,7 +220,7 @@ func (p_ PopoverDelegateObject) HasPopoverShouldClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1532593-popovershouldclose?language=objc
 func (p_ PopoverDelegateObject) PopoverShouldClose(popover Popover) bool {
-	rv := objc.Call[bool](p_, objc.Sel("popoverShouldClose:"), objc.Ptr(popover))
+	rv := objc.Call[bool](p_, objc.Sel("popoverShouldClose:"), popover)
 	return rv
 }
 
@@ -232,7 +232,7 @@ func (p_ PopoverDelegateObject) HasPopoverWillShow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1532556-popoverwillshow?language=objc
 func (p_ PopoverDelegateObject) PopoverWillShow(notification foundation.Notification) {
-	objc.Call[objc.Void](p_, objc.Sel("popoverWillShow:"), objc.Ptr(notification))
+	objc.Call[objc.Void](p_, objc.Sel("popoverWillShow:"), notification)
 }
 
 func (p_ PopoverDelegateObject) HasPopoverDidShow() bool {
@@ -243,7 +243,7 @@ func (p_ PopoverDelegateObject) HasPopoverDidShow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1533573-popoverdidshow?language=objc
 func (p_ PopoverDelegateObject) PopoverDidShow(notification foundation.Notification) {
-	objc.Call[objc.Void](p_, objc.Sel("popoverDidShow:"), objc.Ptr(notification))
+	objc.Call[objc.Void](p_, objc.Sel("popoverDidShow:"), notification)
 }
 
 func (p_ PopoverDelegateObject) HasPopoverShouldDetach() bool {
@@ -254,7 +254,7 @@ func (p_ PopoverDelegateObject) HasPopoverShouldDetach() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1529911-popovershoulddetach?language=objc
 func (p_ PopoverDelegateObject) PopoverShouldDetach(popover Popover) bool {
-	rv := objc.Call[bool](p_, objc.Sel("popoverShouldDetach:"), objc.Ptr(popover))
+	rv := objc.Call[bool](p_, objc.Sel("popoverShouldDetach:"), popover)
 	return rv
 }
 
@@ -266,7 +266,7 @@ func (p_ PopoverDelegateObject) HasPopoverDidClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1526581-popoverdidclose?language=objc
 func (p_ PopoverDelegateObject) PopoverDidClose(notification foundation.Notification) {
-	objc.Call[objc.Void](p_, objc.Sel("popoverDidClose:"), objc.Ptr(notification))
+	objc.Call[objc.Void](p_, objc.Sel("popoverDidClose:"), notification)
 }
 
 func (p_ PopoverDelegateObject) HasDetachableWindowForPopover() bool {
@@ -277,7 +277,7 @@ func (p_ PopoverDelegateObject) HasDetachableWindowForPopover() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1534822-detachablewindowforpopover?language=objc
 func (p_ PopoverDelegateObject) DetachableWindowForPopover(popover Popover) Window {
-	rv := objc.Call[Window](p_, objc.Sel("detachableWindowForPopover:"), objc.Ptr(popover))
+	rv := objc.Call[Window](p_, objc.Sel("detachableWindowForPopover:"), popover)
 	return rv
 }
 
@@ -289,5 +289,5 @@ func (p_ PopoverDelegateObject) HasPopoverWillClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopoverdelegate/1535119-popoverwillclose?language=objc
 func (p_ PopoverDelegateObject) PopoverWillClose(notification foundation.Notification) {
-	objc.Call[objc.Void](p_, objc.Sel("popoverWillClose:"), objc.Ptr(notification))
+	objc.Call[objc.Void](p_, objc.Sel("popoverWillClose:"), notification)
 }

@@ -5,7 +5,6 @@ package coreimage
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _RenderTaskClass struct {
 // An interface definition for the [RenderTask] class.
 type IRenderTask interface {
 	objc.IObject
-	WaitUntilCompletedAndReturnError(error foundation.IError) RenderInfo
+	WaitUntilCompletedAndReturnError(error unsafe.Pointer) RenderInfo
 }
 
 // A single render task issued in conjunction with CIRenderDestination. [Full Topic]
@@ -58,7 +57,7 @@ func (r_ RenderTask) Init() RenderTask {
 // Waits until the CIRenderTask finishes and returns. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirendertask/2881294-waituntilcompletedandreturnerror?language=objc
-func (r_ RenderTask) WaitUntilCompletedAndReturnError(error foundation.IError) RenderInfo {
-	rv := objc.Call[RenderInfo](r_, objc.Sel("waitUntilCompletedAndReturnError:"), objc.Ptr(error))
+func (r_ RenderTask) WaitUntilCompletedAndReturnError(error unsafe.Pointer) RenderInfo {
+	rv := objc.Call[RenderInfo](r_, objc.Sel("waitUntilCompletedAndReturnError:"), error)
 	return rv
 }

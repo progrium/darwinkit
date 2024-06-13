@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance?language=objc
 type PSharpenLuminance interface {
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 
 	// optional
@@ -27,11 +27,11 @@ type PSharpenLuminance interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -50,7 +50,7 @@ func (s_ SharpenLuminanceObject) HasSetSharpness() bool {
 // The amount of sharpening to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
-func (s_ SharpenLuminanceObject) SetSharpness(value float64) {
+func (s_ SharpenLuminanceObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setSharpness:"), value)
 }
 
@@ -61,8 +61,8 @@ func (s_ SharpenLuminanceObject) HasSharpness() bool {
 // The amount of sharpening to apply. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228711-sharpness?language=objc
-func (s_ SharpenLuminanceObject) Sharpness() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("sharpness"))
+func (s_ SharpenLuminanceObject) Sharpness() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("sharpness"))
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (s_ SharpenLuminanceObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228709-inputimage?language=objc
 func (s_ SharpenLuminanceObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SharpenLuminanceObject) HasInputImage() bool {
@@ -96,7 +96,7 @@ func (s_ SharpenLuminanceObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228710-radius?language=objc
-func (s_ SharpenLuminanceObject) SetRadius(value float64) {
+func (s_ SharpenLuminanceObject) SetRadius(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setRadius:"), value)
 }
 
@@ -107,7 +107,7 @@ func (s_ SharpenLuminanceObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cisharpenluminance/3228710-radius?language=objc
-func (s_ SharpenLuminanceObject) Radius() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("radius"))
+func (s_ SharpenLuminanceObject) Radius() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("radius"))
 	return rv
 }

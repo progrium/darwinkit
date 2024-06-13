@@ -76,7 +76,7 @@ func NewOutputStreamToMemory() OutputStream {
 }
 
 func (oc _OutputStreamClass) OutputStreamWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamWithURL:append:"), objc.Ptr(url), shouldAppend)
+	rv := objc.Call[OutputStream](oc, objc.Sel("outputStreamWithURL:append:"), url, shouldAppend)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func NewOutputStreamToBufferCapacity(buffer *uint8, capacity uint) OutputStream 
 }
 
 func (o_ OutputStream) InitWithURLAppend(url IURL, shouldAppend bool) OutputStream {
-	rv := objc.Call[OutputStream](o_, objc.Sel("initWithURL:append:"), objc.Ptr(url), shouldAppend)
+	rv := objc.Call[OutputStream](o_, objc.Sel("initWithURL:append:"), url, shouldAppend)
 	return rv
 }
 

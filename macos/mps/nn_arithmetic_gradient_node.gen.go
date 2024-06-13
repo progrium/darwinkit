@@ -18,23 +18,23 @@ type _NNArithmeticGradientNodeClass struct {
 // An interface definition for the [NNArithmeticGradientNode] class.
 type INNArithmeticGradientNode interface {
 	INNGradientFilterNode
-	MaximumValue() float64
-	SetMaximumValue(value float64)
+	MaximumValue() float32
+	SetMaximumValue(value float32)
 	SecondaryStrideInPixelsY() uint
 	SetSecondaryStrideInPixelsY(value uint)
 	SecondaryStrideInPixelsX() uint
 	SetSecondaryStrideInPixelsX(value uint)
-	SecondaryScale() float64
-	SetSecondaryScale(value float64)
-	Bias() float64
-	SetBias(value float64)
-	MinimumValue() float64
-	SetMinimumValue(value float64)
+	SecondaryScale() float32
+	SetSecondaryScale(value float32)
+	Bias() float32
+	SetBias(value float32)
+	MinimumValue() float32
+	SetMinimumValue(value float32)
 	IsSecondarySourceFilter() bool
 	SecondaryStrideInFeatureChannels() uint
 	SetSecondaryStrideInFeatureChannels(value uint)
-	PrimaryScale() float64
-	SetPrimaryScale(value float64)
+	PrimaryScale() float32
+	SetPrimaryScale(value float32)
 }
 
 // A representation of the base class for gradient arithmetic operators. [Full Topic]
@@ -51,7 +51,7 @@ func NNArithmeticGradientNodeFrom(ptr unsafe.Pointer) NNArithmeticGradientNode {
 }
 
 func (n_ NNArithmeticGradientNode) InitWithGradientImagesForwardFilterIsSecondarySourceFilter(gradientImages []INNImageNode, filter INNFilterNode, isSecondarySourceFilter bool) NNArithmeticGradientNode {
-	rv := objc.Call[NNArithmeticGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, objc.Ptr(filter), isSecondarySourceFilter)
+	rv := objc.Call[NNArithmeticGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, filter, isSecondarySourceFilter)
 	return rv
 }
 
@@ -65,7 +65,7 @@ func NewNNArithmeticGradientNodeWithGradientImagesForwardFilterIsSecondarySource
 }
 
 func (n_ NNArithmeticGradientNode) InitWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNArithmeticGradientNode {
-	rv := objc.Call[NNArithmeticGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNArithmeticGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 
@@ -79,7 +79,7 @@ func NewNNArithmeticGradientNodeWithSourceGradientSourceImageGradientStateIsSeco
 }
 
 func (nc _NNArithmeticGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNArithmeticGradientNode {
-	rv := objc.Call[NNArithmeticGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNArithmeticGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 
@@ -113,15 +113,15 @@ func (n_ NNArithmeticGradientNode) Init() NNArithmeticGradientNode {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952986-maximumvalue?language=objc
-func (n_ NNArithmeticGradientNode) MaximumValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("maximumValue"))
+func (n_ NNArithmeticGradientNode) MaximumValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("maximumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952986-maximumvalue?language=objc
-func (n_ NNArithmeticGradientNode) SetMaximumValue(value float64) {
+func (n_ NNArithmeticGradientNode) SetMaximumValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setMaximumValue:"), value)
 }
 
@@ -158,45 +158,45 @@ func (n_ NNArithmeticGradientNode) SetSecondaryStrideInPixelsX(value uint) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952981-secondaryscale?language=objc
-func (n_ NNArithmeticGradientNode) SecondaryScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("secondaryScale"))
+func (n_ NNArithmeticGradientNode) SecondaryScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("secondaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952981-secondaryscale?language=objc
-func (n_ NNArithmeticGradientNode) SetSecondaryScale(value float64) {
+func (n_ NNArithmeticGradientNode) SetSecondaryScale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setSecondaryScale:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952988-bias?language=objc
-func (n_ NNArithmeticGradientNode) Bias() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("bias"))
+func (n_ NNArithmeticGradientNode) Bias() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("bias"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952988-bias?language=objc
-func (n_ NNArithmeticGradientNode) SetBias(value float64) {
+func (n_ NNArithmeticGradientNode) SetBias(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setBias:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952989-minimumvalue?language=objc
-func (n_ NNArithmeticGradientNode) MinimumValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("minimumValue"))
+func (n_ NNArithmeticGradientNode) MinimumValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("minimumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952989-minimumvalue?language=objc
-func (n_ NNArithmeticGradientNode) SetMinimumValue(value float64) {
+func (n_ NNArithmeticGradientNode) SetMinimumValue(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setMinimumValue:"), value)
 }
 
@@ -226,14 +226,14 @@ func (n_ NNArithmeticGradientNode) SetSecondaryStrideInFeatureChannels(value uin
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952993-primaryscale?language=objc
-func (n_ NNArithmeticGradientNode) PrimaryScale() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("primaryScale"))
+func (n_ NNArithmeticGradientNode) PrimaryScale() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("primaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnarithmeticgradientnode/2952993-primaryscale?language=objc
-func (n_ NNArithmeticGradientNode) SetPrimaryScale(value float64) {
+func (n_ NNArithmeticGradientNode) SetPrimaryScale(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setPrimaryScale:"), value)
 }

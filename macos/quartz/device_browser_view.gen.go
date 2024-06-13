@@ -102,7 +102,7 @@ func (d_ DeviceBrowserView) SetDelegate(value PDeviceBrowserViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikdevicebrowserview/1443054-delegate?language=objc
 func (d_ DeviceBrowserView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](d_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Specifies whether local cameras are displayed by the browser. [Full Topic]

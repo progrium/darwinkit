@@ -79,7 +79,7 @@ func (m_ MediaSelectionOption) MetadataForFormat(format string) []MetadataItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388021-displaynamewithlocale?language=objc
 func (m_ MediaSelectionOption) DisplayNameWithLocale(locale foundation.ILocale) string {
-	rv := objc.Call[string](m_, objc.Sel("displayNameWithLocale:"), objc.Ptr(locale))
+	rv := objc.Call[string](m_, objc.Sel("displayNameWithLocale:"), locale)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (m_ MediaSelectionOption) PropertyList() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmediaselectionoption/1388232-associatedmediaselectionoptionin?language=objc
 func (m_ MediaSelectionOption) AssociatedMediaSelectionOptionInMediaSelectionGroup(mediaSelectionGroup IMediaSelectionGroup) MediaSelectionOption {
-	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("associatedMediaSelectionOptionInMediaSelectionGroup:"), objc.Ptr(mediaSelectionGroup))
+	rv := objc.Call[MediaSelectionOption](m_, objc.Sel("associatedMediaSelectionOptionInMediaSelectionGroup:"), mediaSelectionGroup)
 	return rv
 }
 

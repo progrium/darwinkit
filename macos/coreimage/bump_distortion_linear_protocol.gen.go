@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear?language=objc
 type PBumpDistortionLinear interface {
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PBumpDistortionLinear interface {
 	HasCenter() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -67,7 +67,7 @@ func (b_ BumpDistortionLinearObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600116-scale?language=objc
-func (b_ BumpDistortionLinearObject) SetScale(value float64) {
+func (b_ BumpDistortionLinearObject) SetScale(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setScale:"), value)
 }
 
@@ -78,8 +78,8 @@ func (b_ BumpDistortionLinearObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600116-scale?language=objc
-func (b_ BumpDistortionLinearObject) Scale() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("scale"))
+func (b_ BumpDistortionLinearObject) Scale() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("scale"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (b_ BumpDistortionLinearObject) HasSetAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
-func (b_ BumpDistortionLinearObject) SetAngle(value float64) {
+func (b_ BumpDistortionLinearObject) SetAngle(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setAngle:"), value)
 }
 
@@ -101,8 +101,8 @@ func (b_ BumpDistortionLinearObject) HasAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600112-angle?language=objc
-func (b_ BumpDistortionLinearObject) Angle() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("angle"))
+func (b_ BumpDistortionLinearObject) Angle() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("angle"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (b_ BumpDistortionLinearObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600114-inputimage?language=objc
 func (b_ BumpDistortionLinearObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BumpDistortionLinearObject) HasInputImage() bool {
@@ -159,7 +159,7 @@ func (b_ BumpDistortionLinearObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600115-radius?language=objc
-func (b_ BumpDistortionLinearObject) SetRadius(value float64) {
+func (b_ BumpDistortionLinearObject) SetRadius(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
 }
 
@@ -170,7 +170,7 @@ func (b_ BumpDistortionLinearObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibumpdistortionlinear/3600115-radius?language=objc
-func (b_ BumpDistortionLinearObject) Radius() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("radius"))
+func (b_ BumpDistortionLinearObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }

@@ -20,11 +20,11 @@ type PDroste interface {
 	HasInsetPoint1() bool
 
 	// optional
-	SetPeriodicity(value float64)
+	SetPeriodicity(value float32)
 	HasSetPeriodicity() bool
 
 	// optional
-	Periodicity() float64
+	Periodicity() float32
 	HasPeriodicity() bool
 
 	// optional
@@ -36,27 +36,27 @@ type PDroste interface {
 	HasInsetPoint0() bool
 
 	// optional
-	SetRotation(value float64)
+	SetRotation(value float32)
 	HasSetRotation() bool
 
 	// optional
-	Rotation() float64
+	Rotation() float32
 	HasRotation() bool
 
 	// optional
-	SetStrands(value float64)
+	SetStrands(value float32)
 	HasSetStrands() bool
 
 	// optional
-	Strands() float64
+	Strands() float32
 	HasStrands() bool
 
 	// optional
-	SetZoom(value float64)
+	SetZoom(value float32)
 	HasSetZoom() bool
 
 	// optional
-	Zoom() float64
+	Zoom() float32
 	HasZoom() bool
 
 	// optional
@@ -106,7 +106,7 @@ func (d_ DrosteObject) HasSetPeriodicity() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600134-periodicity?language=objc
-func (d_ DrosteObject) SetPeriodicity(value float64) {
+func (d_ DrosteObject) SetPeriodicity(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setPeriodicity:"), value)
 }
 
@@ -117,8 +117,8 @@ func (d_ DrosteObject) HasPeriodicity() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600134-periodicity?language=objc
-func (d_ DrosteObject) Periodicity() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("periodicity"))
+func (d_ DrosteObject) Periodicity() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("periodicity"))
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (d_ DrosteObject) HasSetRotation() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600135-rotation?language=objc
-func (d_ DrosteObject) SetRotation(value float64) {
+func (d_ DrosteObject) SetRotation(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setRotation:"), value)
 }
 
@@ -163,8 +163,8 @@ func (d_ DrosteObject) HasRotation() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600135-rotation?language=objc
-func (d_ DrosteObject) Rotation() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("rotation"))
+func (d_ DrosteObject) Rotation() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("rotation"))
 	return rv
 }
 
@@ -175,7 +175,7 @@ func (d_ DrosteObject) HasSetStrands() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600136-strands?language=objc
-func (d_ DrosteObject) SetStrands(value float64) {
+func (d_ DrosteObject) SetStrands(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setStrands:"), value)
 }
 
@@ -186,8 +186,8 @@ func (d_ DrosteObject) HasStrands() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600136-strands?language=objc
-func (d_ DrosteObject) Strands() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("strands"))
+func (d_ DrosteObject) Strands() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("strands"))
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (d_ DrosteObject) HasSetZoom() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600137-zoom?language=objc
-func (d_ DrosteObject) SetZoom(value float64) {
+func (d_ DrosteObject) SetZoom(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setZoom:"), value)
 }
 
@@ -209,8 +209,8 @@ func (d_ DrosteObject) HasZoom() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600137-zoom?language=objc
-func (d_ DrosteObject) Zoom() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("zoom"))
+func (d_ DrosteObject) Zoom() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("zoom"))
 	return rv
 }
 
@@ -222,7 +222,7 @@ func (d_ DrosteObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidroste/3600131-inputimage?language=objc
 func (d_ DrosteObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DrosteObject) HasInputImage() bool {

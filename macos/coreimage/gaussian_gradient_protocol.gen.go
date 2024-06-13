@@ -28,11 +28,11 @@ type PGaussianGradient interface {
 	HasColor0() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -83,7 +83,7 @@ func (g_ GaussianGradientObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussiangradient/3228468-color0?language=objc
 func (g_ GaussianGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](g_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setColor0:"), value)
 }
 
 func (g_ GaussianGradientObject) HasColor0() bool {
@@ -105,7 +105,7 @@ func (g_ GaussianGradientObject) HasSetRadius() bool {
 // The radius of the Gaussian distribution. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussiangradient/3228470-radius?language=objc
-func (g_ GaussianGradientObject) SetRadius(value float64) {
+func (g_ GaussianGradientObject) SetRadius(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
 }
 
@@ -116,8 +116,8 @@ func (g_ GaussianGradientObject) HasRadius() bool {
 // The radius of the Gaussian distribution. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussiangradient/3228470-radius?language=objc
-func (g_ GaussianGradientObject) Radius() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("radius"))
+func (g_ GaussianGradientObject) Radius() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("radius"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (g_ GaussianGradientObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussiangradient/3228469-color1?language=objc
 func (g_ GaussianGradientObject) SetColor1(value Color) {
-	objc.Call[objc.Void](g_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setColor1:"), value)
 }
 
 func (g_ GaussianGradientObject) HasColor1() bool {

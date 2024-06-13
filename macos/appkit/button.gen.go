@@ -20,11 +20,11 @@ type _ButtonClass struct {
 type IButton interface {
 	IControl
 	MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions) foundation.Size
-	GetPeriodicDelayInterval(delay *float64, interval *float64)
+	GetPeriodicDelayInterval(delay *float32, interval *float32)
 	SetButtonType(type_ ButtonType)
 	CompressWithPrioritizedCompressionOptions(prioritizedOptions []IUserInterfaceCompressionOptions)
 	SetNextState()
-	SetPeriodicDelayInterval(delay float64, interval float64)
+	SetPeriodicDelayInterval(delay float32, interval float32)
 	Highlight(flag bool)
 	IsBordered() bool
 	SetBordered(value bool)
@@ -91,7 +91,7 @@ func ButtonFrom(ptr unsafe.Pointer) Button {
 }
 
 func (bc _ButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.Call[Button](bc, objc.Sel("buttonWithTitle:image:target:action:"), title, objc.Ptr(image), target, action)
+	rv := objc.Call[Button](bc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
 	return rv
 }
 
@@ -127,7 +127,7 @@ func Button_CheckboxWithTitleTargetAction(title string, target objc.IObject, act
 }
 
 func (bc _ButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) Button {
-	rv := objc.Call[Button](bc, objc.Sel("buttonWithImage:target:action:"), objc.Ptr(image), target, action)
+	rv := objc.Call[Button](bc, objc.Sel("buttonWithImage:target:action:"), image, target, action)
 	return rv
 }
 
@@ -195,7 +195,7 @@ func (b_ Button) MinimumSizeWithPrioritizedCompressionOptions(prioritizedOptions
 // Returns by reference the delay and interval periods for a continuous button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524817-getperiodicdelay?language=objc
-func (b_ Button) GetPeriodicDelayInterval(delay *float64, interval *float64) {
+func (b_ Button) GetPeriodicDelayInterval(delay *float32, interval *float32) {
 	objc.Call[objc.Void](b_, objc.Sel("getPeriodicDelay:interval:"), delay, interval)
 }
 
@@ -223,7 +223,7 @@ func (b_ Button) SetNextState() {
 // Sets the message delay and interval periods for a continuous button. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526612-setperiodicdelay?language=objc
-func (b_ Button) SetPeriodicDelayInterval(delay float64, interval float64) {
+func (b_ Button) SetPeriodicDelayInterval(delay float32, interval float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setPeriodicDelay:interval:"), delay, interval)
 }
 
@@ -276,7 +276,7 @@ func (b_ Button) SymbolConfiguration() ImageSymbolConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3667453-symbolconfiguration?language=objc
 func (b_ Button) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.Call[objc.Void](b_, objc.Sel("setSymbolConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setSymbolConfiguration:"), value)
 }
 
 // A Boolean value that indicates whether spring loading is enabled for the button. [Full Topic]
@@ -351,7 +351,7 @@ func (b_ Button) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1534221-image?language=objc
 func (b_ Button) SetImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
 }
 
 // A Boolean value that determines how the button’s image and title are positioned together within the button bezel. [Full Topic]
@@ -381,7 +381,7 @@ func (b_ Button) AlternateImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1533935-alternateimage?language=objc
 func (b_ Button) SetAlternateImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAlternateImage:"), value)
 }
 
 // The button’s state. [Full Topic]
@@ -411,7 +411,7 @@ func (b_ Button) BezelColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/2561000-bezelcolor?language=objc
 func (b_ Button) SetBezelColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), value)
 }
 
 // The scaling mode applied to make the cell’s image fit the frame of the image view. [Full Topic]
@@ -441,7 +441,7 @@ func (b_ Button) ContentTintColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/3000781-contenttintcolor?language=objc
 func (b_ Button) SetContentTintColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setContentTintColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setContentTintColor:"), value)
 }
 
 // The appearance of the button’s border. [Full Topic]
@@ -479,7 +479,7 @@ func (b_ Button) Sound() Sound {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1530910-sound?language=objc
 func (b_ Button) SetSound(value ISound) {
-	objc.Call[objc.Void](b_, objc.Sel("setSound:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setSound:"), value)
 }
 
 // A Boolean value that defines whether a button’s action has a destructive effect. [Full Topic]
@@ -524,7 +524,7 @@ func (b_ Button) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1524640-attributedtitle?language=objc
 func (b_ Button) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](b_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // The title that the button displays as an attributed string when the button is in an on state. [Full Topic]
@@ -539,7 +539,7 @@ func (b_ Button) AttributedAlternateTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbutton/1526723-attributedalternatetitle?language=objc
 func (b_ Button) SetAttributedAlternateTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setAttributedAlternateTitle:"), value)
 }
 
 // The title that the button displays when the button is in an on state. [Full Topic]

@@ -849,7 +849,7 @@ func (o_ OutlineViewDelegateObject) HasSelectionShouldChangeInOutlineView() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530734-selectionshouldchangeinoutlinevi?language=objc
 func (o_ OutlineViewDelegateObject) SelectionShouldChangeInOutlineView(outlineView OutlineView) bool {
-	rv := objc.Call[bool](o_, objc.Sel("selectionShouldChangeInOutlineView:"), objc.Ptr(outlineView))
+	rv := objc.Call[bool](o_, objc.Sel("selectionShouldChangeInOutlineView:"), outlineView)
 	return rv
 }
 
@@ -861,7 +861,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIndexesForProposedSel
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527575-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewSelectionIndexesForProposedSelection(outlineView OutlineView, proposedSelectionIndexes foundation.IndexSet) foundation.IndexSet {
-	rv := objc.Call[foundation.IndexSet](o_, objc.Sel("outlineView:selectionIndexesForProposedSelection:"), objc.Ptr(outlineView), objc.Ptr(proposedSelectionIndexes))
+	rv := objc.Call[foundation.IndexSet](o_, objc.Sel("outlineView:selectionIndexesForProposedSelection:"), outlineView, proposedSelectionIndexes)
 	return rv
 }
 
@@ -873,7 +873,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewItemWillExpand() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535847-outlineviewitemwillexpand?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewItemWillExpand(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillExpand:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillExpand:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewHeightOfRowByItem() bool {
@@ -884,7 +884,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewHeightOfRowByItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531870-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewHeightOfRowByItem(outlineView OutlineView, item objc.Object) float64 {
-	rv := objc.Call[float64](o_, objc.Sel("outlineView:heightOfRowByItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[float64](o_, objc.Sel("outlineView:heightOfRowByItem:"), outlineView, item)
 	return rv
 }
 
@@ -896,7 +896,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewDidClickTableColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534040-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewDidClickTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didClickTableColumn:"), objc.Ptr(outlineView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:didClickTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidExpand() bool {
@@ -907,7 +907,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidExpand() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530869-outlineviewitemdidexpand?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewItemDidExpand(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidExpand:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidExpand:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewShouldSelectTableColumn() bool {
@@ -918,7 +918,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldSelectTableColumn() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535118-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldSelectTableColumn(outlineView OutlineView, tableColumn TableColumn) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectTableColumn:"), objc.Ptr(outlineView), objc.Ptr(tableColumn))
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectTableColumn:"), outlineView, tableColumn)
 	return rv
 }
 
@@ -930,7 +930,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewNextTypeSelectMatchFromItemToI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533321-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewNextTypeSelectMatchFromItemToItemForString(outlineView OutlineView, startItem objc.Object, endItem objc.Object, searchString string) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"), objc.Ptr(outlineView), startItem, endItem, searchString)
+	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:nextTypeSelectMatchFromItem:toItem:forString:"), outlineView, startItem, endItem, searchString)
 	return rv
 }
 
@@ -942,7 +942,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldSelectItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531075-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldSelectItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldSelectItem:"), outlineView, item)
 	return rv
 }
 
@@ -954,7 +954,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewColumnDidResize() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1533372-outlineviewcolumndidresize?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewColumnDidResize(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidResize:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidResize:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidCollapse() bool {
@@ -965,7 +965,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewItemDidCollapse() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535557-outlineviewitemdidcollapse?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewItemDidCollapse(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidCollapse:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemDidCollapse:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewMouseDownInHeaderOfTableColumn() bool {
@@ -976,7 +976,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewMouseDownInHeaderOfTableColumn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531835-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewMouseDownInHeaderOfTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:mouseDownInHeaderOfTableColumn:"), objc.Ptr(outlineView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:mouseDownInHeaderOfTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewTintConfigurationForItem() bool {
@@ -987,7 +987,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewTintConfigurationForItem() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/3626816-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewTintConfigurationForItem(outlineView OutlineView, item objc.Object) TintConfiguration {
-	rv := objc.Call[TintConfiguration](o_, objc.Sel("outlineView:tintConfigurationForItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[TintConfiguration](o_, objc.Sel("outlineView:tintConfigurationForItem:"), outlineView, item)
 	return rv
 }
 
@@ -999,7 +999,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewColumnDidMove() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525297-outlineviewcolumndidmove?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewColumnDidMove(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidMove:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewColumnDidMove:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewDidAddRowViewForRow() bool {
@@ -1010,7 +1010,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewDidAddRowViewForRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528320-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewDidAddRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didAddRowView:forRow:"), objc.Ptr(outlineView), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:didAddRowView:forRow:"), outlineView, rowView, row)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIsChanging() bool {
@@ -1021,7 +1021,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionIsChanging() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532481-outlineviewselectionischanging?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewSelectionIsChanging(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionIsChanging:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionIsChanging:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTrackCellForTableColumnItem() bool {
@@ -1032,7 +1032,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTrackCellForTableColumnI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534295-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldTrackCellForTableColumnItem(outlineView OutlineView, cell Cell, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTrackCell:forTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(cell), objc.Ptr(tableColumn), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTrackCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 	return rv
 }
 
@@ -1044,7 +1044,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldCollapseItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529825-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldCollapseItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldCollapseItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldCollapseItem:"), outlineView, item)
 	return rv
 }
 
@@ -1056,7 +1056,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewSizeToFitWidthOfColumn() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530479-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewSizeToFitWidthOfColumn(outlineView OutlineView, column int) float64 {
-	rv := objc.Call[float64](o_, objc.Sel("outlineView:sizeToFitWidthOfColumn:"), objc.Ptr(outlineView), column)
+	rv := objc.Call[float64](o_, objc.Sel("outlineView:sizeToFitWidthOfColumn:"), outlineView, column)
 	return rv
 }
 
@@ -1068,7 +1068,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldShowOutlineCellForItem()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534006-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldShowOutlineCellForItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowOutlineCellForItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowOutlineCellForItem:"), outlineView, item)
 	return rv
 }
 
@@ -1080,7 +1080,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewToolTipForCellRectTableColumnI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1527695-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewToolTipForCellRectTableColumnItemMouseLocation(outlineView OutlineView, cell Cell, rect foundation.RectPointer, tableColumn TableColumn, item objc.Object, mouseLocation foundation.Point) string {
-	rv := objc.Call[string](o_, objc.Sel("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"), objc.Ptr(outlineView), objc.Ptr(cell), rect, objc.Ptr(tableColumn), item, mouseLocation)
+	rv := objc.Call[string](o_, objc.Sel("outlineView:toolTipForCell:rect:tableColumn:item:mouseLocation:"), outlineView, cell, rect, tableColumn, item, mouseLocation)
 	return rv
 }
 
@@ -1092,7 +1092,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldEditTableColumnItem() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535450-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldEditTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldEditTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldEditTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -1104,7 +1104,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewItemWillCollapse() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526896-outlineviewitemwillcollapse?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewItemWillCollapse(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillCollapse:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewItemWillCollapse:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewShouldExpandItem() bool {
@@ -1115,7 +1115,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldExpandItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1531199-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldExpandItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldExpandItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldExpandItem:"), outlineView, item)
 	return rv
 }
 
@@ -1127,7 +1127,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewWillDisplayCellForTableColumnI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1529359-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewWillDisplayCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayCell:forTableColumn:item:"), objc.Ptr(outlineView), cell, objc.Ptr(tableColumn), item)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewDataCellForTableColumnItem() bool {
@@ -1138,7 +1138,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewDataCellForTableColumnItem() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1525161-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewDataCellForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) Cell {
-	rv := objc.Call[Cell](o_, objc.Sel("outlineView:dataCellForTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[Cell](o_, objc.Sel("outlineView:dataCellForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -1150,7 +1150,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewSelectionDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526913-outlineviewselectiondidchange?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewSelectionDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](o_, objc.Sel("outlineViewSelectionDidChange:"), notification)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewWillDisplayOutlineCellForTableColumnItem() bool {
@@ -1161,7 +1161,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewWillDisplayOutlineCellForTable
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535808-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewWillDisplayOutlineCellForTableColumnItem(outlineView OutlineView, cell objc.Object, tableColumn TableColumn, item objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayOutlineCell:forTableColumn:item:"), objc.Ptr(outlineView), cell, objc.Ptr(tableColumn), item)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:willDisplayOutlineCell:forTableColumn:item:"), outlineView, cell, tableColumn, item)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewViewForTableColumnItem() bool {
@@ -1172,7 +1172,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewViewForTableColumnItem() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1535566-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewViewForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) View {
-	rv := objc.Call[View](o_, objc.Sel("outlineView:viewForTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[View](o_, objc.Sel("outlineView:viewForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -1184,7 +1184,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewDidRemoveRowViewForRow() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530612-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewDidRemoveRowViewForRow(outlineView OutlineView, rowView TableRowView, row int) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didRemoveRowView:forRow:"), objc.Ptr(outlineView), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:didRemoveRowView:forRow:"), outlineView, rowView, row)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTypeSelectForEventWithCurrentSearchString() bool {
@@ -1195,7 +1195,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldTypeSelectForEventWithCu
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532941-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldTypeSelectForEventWithCurrentSearchString(outlineView OutlineView, event Event, searchString string) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"), objc.Ptr(outlineView), objc.Ptr(event), searchString)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldTypeSelectForEvent:withCurrentSearchString:"), outlineView, event, searchString)
 	return rv
 }
 
@@ -1207,7 +1207,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewRowViewForItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1532140-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewRowViewForItem(outlineView OutlineView, item objc.Object) TableRowView {
-	rv := objc.Call[TableRowView](o_, objc.Sel("outlineView:rowViewForItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[TableRowView](o_, objc.Sel("outlineView:rowViewForItem:"), outlineView, item)
 	return rv
 }
 
@@ -1219,7 +1219,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewIsGroupItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1528482-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewIsGroupItem(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:isGroupItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:isGroupItem:"), outlineView, item)
 	return rv
 }
 
@@ -1231,7 +1231,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldShowCellExpansionForTabl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1534411-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldShowCellExpansionForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowCellExpansionForTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldShowCellExpansionForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -1243,7 +1243,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewDidDragTableColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526632-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewDidDragTableColumn(outlineView OutlineView, tableColumn TableColumn) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:didDragTableColumn:"), objc.Ptr(outlineView), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:didDragTableColumn:"), outlineView, tableColumn)
 }
 
 func (o_ OutlineViewDelegateObject) HasOutlineViewShouldReorderColumnToColumn() bool {
@@ -1254,7 +1254,7 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewShouldReorderColumnToColumn() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1530792-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewShouldReorderColumnToColumn(outlineView OutlineView, columnIndex int, newColumnIndex int) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldReorderColumn:toColumn:"), objc.Ptr(outlineView), columnIndex, newColumnIndex)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:shouldReorderColumn:toColumn:"), outlineView, columnIndex, newColumnIndex)
 	return rv
 }
 
@@ -1266,6 +1266,6 @@ func (o_ OutlineViewDelegateObject) HasOutlineViewTypeSelectStringForTableColumn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdelegate/1526847-outlineview?language=objc
 func (o_ OutlineViewDelegateObject) OutlineViewTypeSelectStringForTableColumnItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) string {
-	rv := objc.Call[string](o_, objc.Sel("outlineView:typeSelectStringForTableColumn:item:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[string](o_, objc.Sel("outlineView:typeSelectStringForTableColumn:item:"), outlineView, tableColumn, item)
 	return rv
 }

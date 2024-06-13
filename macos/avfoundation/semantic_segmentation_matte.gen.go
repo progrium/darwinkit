@@ -22,7 +22,7 @@ type _SemanticSegmentationMatteClass struct {
 // An interface definition for the [SemanticSegmentationMatte] class.
 type ISemanticSegmentationMatte interface {
 	objc.IObject
-	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary
+	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary
 	PixelFormatType() uint
 	MatteType() SemanticSegmentationMatteType
 	MattingImage() corevideo.PixelBufferRef
@@ -41,15 +41,15 @@ func SemanticSegmentationMatteFrom(ptr unsafe.Pointer) SemanticSegmentationMatte
 	}
 }
 
-func (sc _SemanticSegmentationMatteClass) SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError foundation.IError) SemanticSegmentationMatte {
-	rv := objc.Call[SemanticSegmentationMatte](sc, objc.Sel("semanticSegmentationMatteFromImageSourceAuxiliaryDataType:dictionaryRepresentation:error:"), imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, objc.Ptr(outError))
+func (sc _SemanticSegmentationMatteClass) SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
+	rv := objc.Call[SemanticSegmentationMatte](sc, objc.Sel("semanticSegmentationMatteFromImageSourceAuxiliaryDataType:dictionaryRepresentation:error:"), imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
 	return rv
 }
 
 // Returns a new semantic segmentation matte instance from auxiliary image information in an image file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152124-semanticsegmentationmattefromima?language=objc
-func SemanticSegmentationMatte_SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError foundation.IError) SemanticSegmentationMatte {
+func SemanticSegmentationMatte_SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType corefoundation.StringRef, imageSourceAuxiliaryDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) SemanticSegmentationMatte {
 	return SemanticSegmentationMatteClass.SemanticSegmentationMatteFromImageSourceAuxiliaryDataTypeDictionaryRepresentationError(imageSourceAuxiliaryDataType, imageSourceAuxiliaryDataInfoDictionary, outError)
 }
 
@@ -67,15 +67,15 @@ func SemanticSegmentationMatte_SemanticSegmentationMatteByApplyingExifOrientatio
 	return instance
 }
 
-func (s_ SemanticSegmentationMatte) SemanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) SemanticSegmentationMatte {
-	rv := objc.Call[SemanticSegmentationMatte](s_, objc.Sel("semanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBuffer:error:"), pixelBuffer, objc.Ptr(outError))
+func (s_ SemanticSegmentationMatte) SemanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) SemanticSegmentationMatte {
+	rv := objc.Call[SemanticSegmentationMatte](s_, objc.Sel("semanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBuffer:error:"), pixelBuffer, outError)
 	return rv
 }
 
 // Returns a semantic segmentation matte instance that wraps the replacement pixel buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152123-semanticsegmentationmattebyrepla?language=objc
-func SemanticSegmentationMatte_SemanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) SemanticSegmentationMatte {
+func SemanticSegmentationMatte_SemanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) SemanticSegmentationMatte {
 	instance := SemanticSegmentationMatteClass.Alloc().SemanticSegmentationMatteByReplacingSemanticSegmentationMatteWithPixelBufferError(pixelBuffer, outError)
 	instance.Autorelease()
 	return instance
@@ -104,7 +104,7 @@ func (s_ SemanticSegmentationMatte) Init() SemanticSegmentationMatte {
 // Returns a dictionary of primitive map information to use when writing an image file with a semantic segmentation matte. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsemanticsegmentationmatte/3152118-dictionaryrepresentationforauxil?language=objc
-func (s_ SemanticSegmentationMatte) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary {
+func (s_ SemanticSegmentationMatte) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary {
 	rv := objc.Call[foundation.Dictionary](s_, objc.Sel("dictionaryRepresentationForAuxiliaryDataType:"), outAuxDataType)
 	return rv
 }

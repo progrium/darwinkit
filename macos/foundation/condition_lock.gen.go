@@ -80,7 +80,7 @@ func (c_ ConditionLock) Init() ConditionLock {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1408215-lockwhencondition?language=objc
 func (c_ ConditionLock) LockWhenConditionBeforeDate(condition int, limit IDate) bool {
-	rv := objc.Call[bool](c_, objc.Sel("lockWhenCondition:beforeDate:"), condition, objc.Ptr(limit))
+	rv := objc.Call[bool](c_, objc.Sel("lockWhenCondition:beforeDate:"), condition, limit)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (c_ ConditionLock) TryLockWhenCondition(condition int) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsconditionlock/1418253-lockbeforedate?language=objc
 func (c_ ConditionLock) LockBeforeDate(limit IDate) bool {
-	rv := objc.Call[bool](c_, objc.Sel("lockBeforeDate:"), objc.Ptr(limit))
+	rv := objc.Call[bool](c_, objc.Sel("lockBeforeDate:"), limit)
 	return rv
 }
 

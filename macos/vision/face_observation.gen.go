@@ -41,7 +41,7 @@ func FaceObservationFrom(ptr unsafe.Pointer) FaceObservation {
 }
 
 func (fc _FaceObservationClass) FaceObservationWithRequestRevisionBoundingBoxRollYawPitch(requestRevision uint, boundingBox coregraphics.Rect, roll foundation.INumber, yaw foundation.INumber, pitch foundation.INumber) FaceObservation {
-	rv := objc.Call[FaceObservation](fc, objc.Sel("faceObservationWithRequestRevision:boundingBox:roll:yaw:pitch:"), requestRevision, boundingBox, objc.Ptr(roll), objc.Ptr(yaw), objc.Ptr(pitch))
+	rv := objc.Call[FaceObservation](fc, objc.Sel("faceObservationWithRequestRevision:boundingBox:roll:yaw:pitch:"), requestRevision, boundingBox, roll, yaw, pitch)
 	return rv
 }
 

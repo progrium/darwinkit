@@ -121,7 +121,7 @@ func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutContro
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824777-textviewportlayoutcontrollerdidl?language=objc
 func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerDidLayout(textViewportLayoutController TextViewportLayoutController) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerDidLayout:"), objc.Ptr(textViewportLayoutController))
+	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerDidLayout:"), textViewportLayoutController)
 }
 
 func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment() bool {
@@ -132,7 +132,7 @@ func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutContro
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824776-textviewportlayoutcontroller?language=objc
 func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerConfigureRenderingSurfaceForTextLayoutFragment(textViewportLayoutController TextViewportLayoutController, textLayoutFragment TextLayoutFragment) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutController:configureRenderingSurfaceForTextLayoutFragment:"), objc.Ptr(textViewportLayoutController), objc.Ptr(textLayoutFragment))
+	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutController:configureRenderingSurfaceForTextLayoutFragment:"), textViewportLayoutController, textLayoutFragment)
 }
 
 func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutControllerWillLayout() bool {
@@ -143,7 +143,7 @@ func (t_ TextViewportLayoutControllerDelegateObject) HasTextViewportLayoutContro
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824778-textviewportlayoutcontrollerwill?language=objc
 func (t_ TextViewportLayoutControllerDelegateObject) TextViewportLayoutControllerWillLayout(textViewportLayoutController TextViewportLayoutController) {
-	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerWillLayout:"), objc.Ptr(textViewportLayoutController))
+	objc.Call[objc.Void](t_, objc.Sel("textViewportLayoutControllerWillLayout:"), textViewportLayoutController)
 }
 
 func (t_ TextViewportLayoutControllerDelegateObject) HasViewportBoundsForTextViewportLayoutController() bool {
@@ -154,6 +154,6 @@ func (t_ TextViewportLayoutControllerDelegateObject) HasViewportBoundsForTextVie
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontrollerdelegate/3824779-viewportboundsfortextviewportlay?language=objc
 func (t_ TextViewportLayoutControllerDelegateObject) ViewportBoundsForTextViewportLayoutController(textViewportLayoutController TextViewportLayoutController) coregraphics.Rect {
-	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBoundsForTextViewportLayoutController:"), objc.Ptr(textViewportLayoutController))
+	rv := objc.Call[coregraphics.Rect](t_, objc.Sel("viewportBoundsForTextViewportLayoutController:"), textViewportLayoutController)
 	return rv
 }

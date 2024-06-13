@@ -64,7 +64,7 @@ func (c_ CNNBatchNormalizationState) Init() CNNBatchNormalizationState {
 
 func (cc _CNNBatchNormalizationStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) CNNBatchNormalizationState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNBatchNormalizationState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNBatchNormalizationState](cc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func CNNBatchNormalizationState_TemporaryStateWithCommandBufferResourceList(comm
 
 func (c_ CNNBatchNormalizationState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) CNNBatchNormalizationState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNBatchNormalizationState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNBatchNormalizationState](c_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func CNNBatchNormalizationState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCo
 
 func (cc _CNNBatchNormalizationStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) CNNBatchNormalizationState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[CNNBatchNormalizationState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[CNNBatchNormalizationState](cc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -175,7 +175,7 @@ func CNNBatchNormalizationState_TemporaryStateWithCommandBufferTextureDescriptor
 
 func (c_ CNNBatchNormalizationState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) CNNBatchNormalizationState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNBatchNormalizationState](c_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[CNNBatchNormalizationState](c_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

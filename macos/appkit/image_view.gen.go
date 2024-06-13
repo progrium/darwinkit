@@ -53,7 +53,7 @@ func ImageViewFrom(ptr unsafe.Pointer) ImageView {
 }
 
 func (ic _ImageViewClass) ImageViewWithImage(image IImage) ImageView {
-	rv := objc.Call[ImageView](ic, objc.Sel("imageViewWithImage:"), objc.Ptr(image))
+	rv := objc.Call[ImageView](ic, objc.Sel("imageViewWithImage:"), image)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (i_ ImageView) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/1404952-image?language=objc
 func (i_ ImageView) SetImage(value IImage) {
-	objc.Call[objc.Void](i_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setImage:"), value)
 }
 
 //	[Full Topic]
@@ -140,7 +140,7 @@ func (i_ ImageView) SymbolConfiguration() ImageSymbolConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3667456-symbolconfiguration?language=objc
 func (i_ ImageView) SetSymbolConfiguration(value IImageSymbolConfiguration) {
-	objc.Call[objc.Void](i_, objc.Sel("setSymbolConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setSymbolConfiguration:"), value)
 }
 
 // A Boolean value indicating whether the image view automatically plays animated images. [Full Topic]
@@ -200,7 +200,7 @@ func (i_ ImageView) ContentTintColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimageview/3000783-contenttintcolor?language=objc
 func (i_ ImageView) SetContentTintColor(value IColor) {
-	objc.Call[objc.Void](i_, objc.Sel("setContentTintColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setContentTintColor:"), value)
 }
 
 // The style of frame that appears around the image. [Full Topic]

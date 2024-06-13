@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -56,27 +55,27 @@ func (w_ WarpKernel) Init() WarpKernel {
 	return rv
 }
 
-func (wc _WarpKernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) WarpKernel {
-	rv := objc.Call[WarpKernel](wc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, objc.Ptr(error))
+func (wc _WarpKernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) WarpKernel {
+	rv := objc.Call[WarpKernel](wc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language (MSL) kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880194-kernelwithfunctionname?language=objc
-func WarpKernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) WarpKernel {
+func WarpKernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) WarpKernel {
 	return WarpKernelClass.KernelWithFunctionNameFromMetalLibraryDataError(name, data, error)
 }
 
-func (wc _WarpKernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) WarpKernel {
-	rv := objc.Call[WarpKernel](wc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, objc.Ptr(error))
+func (wc _WarpKernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) WarpKernel {
+	rv := objc.Call[WarpKernel](wc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language kernel function with optional pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880195-kernelwithfunctionname?language=objc
-func WarpKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) WarpKernel {
+func WarpKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) WarpKernel {
 	return WarpKernelClass.KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name, data, format, error)
 }
 
@@ -84,6 +83,6 @@ func WarpKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciwarpkernel/1437798-applywithextent?language=objc
 func (w_ WarpKernel) ApplyWithExtentRoiCallbackInputImageArguments(extent coregraphics.Rect, callback KernelROICallback, image IImage, args []objc.IObject) Image {
-	rv := objc.Call[Image](w_, objc.Sel("applyWithExtent:roiCallback:inputImage:arguments:"), extent, callback, objc.Ptr(image), args)
+	rv := objc.Call[Image](w_, objc.Sel("applyWithExtent:roiCallback:inputImage:arguments:"), extent, callback, image, args)
 	return rv
 }

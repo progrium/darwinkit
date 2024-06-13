@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight?language=objc
 type PSpotLight interface {
 	// optional
-	SetBrightness(value float64)
+	SetBrightness(value float32)
 	HasSetBrightness() bool
 
 	// optional
-	Brightness() float64
+	Brightness() float32
 	HasBrightness() bool
 
 	// optional
@@ -35,11 +35,11 @@ type PSpotLight interface {
 	HasLightPosition() bool
 
 	// optional
-	SetConcentration(value float64)
+	SetConcentration(value float32)
 	HasSetConcentration() bool
 
 	// optional
-	Concentration() float64
+	Concentration() float32
 	HasConcentration() bool
 
 	// optional
@@ -74,7 +74,7 @@ func (s_ SpotLightObject) HasSetBrightness() bool {
 // The brightness of the spotlight. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228742-brightness?language=objc
-func (s_ SpotLightObject) SetBrightness(value float64) {
+func (s_ SpotLightObject) SetBrightness(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setBrightness:"), value)
 }
 
@@ -85,8 +85,8 @@ func (s_ SpotLightObject) HasBrightness() bool {
 // The brightness of the spotlight. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228742-brightness?language=objc
-func (s_ SpotLightObject) Brightness() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("brightness"))
+func (s_ SpotLightObject) Brightness() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("brightness"))
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (s_ SpotLightObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228743-color?language=objc
 func (s_ SpotLightObject) SetColor(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor:"), value)
 }
 
 func (s_ SpotLightObject) HasColor() bool {
@@ -121,7 +121,7 @@ func (s_ SpotLightObject) HasSetLightPosition() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228747-lightposition?language=objc
 func (s_ SpotLightObject) SetLightPosition(value Vector) {
-	objc.Call[objc.Void](s_, objc.Sel("setLightPosition:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLightPosition:"), value)
 }
 
 func (s_ SpotLightObject) HasLightPosition() bool {
@@ -143,7 +143,7 @@ func (s_ SpotLightObject) HasSetConcentration() bool {
 // The size of the spotlight. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228744-concentration?language=objc
-func (s_ SpotLightObject) SetConcentration(value float64) {
+func (s_ SpotLightObject) SetConcentration(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setConcentration:"), value)
 }
 
@@ -154,8 +154,8 @@ func (s_ SpotLightObject) HasConcentration() bool {
 // The size of the spotlight. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228744-concentration?language=objc
-func (s_ SpotLightObject) Concentration() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("concentration"))
+func (s_ SpotLightObject) Concentration() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("concentration"))
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (s_ SpotLightObject) HasSetLightPointsAt() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228746-lightpointsat?language=objc
 func (s_ SpotLightObject) SetLightPointsAt(value Vector) {
-	objc.Call[objc.Void](s_, objc.Sel("setLightPointsAt:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLightPointsAt:"), value)
 }
 
 func (s_ SpotLightObject) HasLightPointsAt() bool {
@@ -190,7 +190,7 @@ func (s_ SpotLightObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cispotlight/3228745-inputimage?language=objc
 func (s_ SpotLightObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setInputImage:"), value)
 }
 
 func (s_ SpotLightObject) HasInputImage() bool {

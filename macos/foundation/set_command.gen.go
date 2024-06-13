@@ -55,7 +55,7 @@ func (s_ SetCommand) Init() SetCommand {
 }
 
 func (s_ SetCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) SetCommand {
-	rv := objc.Call[SetCommand](s_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[SetCommand](s_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

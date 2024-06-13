@@ -44,7 +44,7 @@ func (c_ CollectionViewDataSourceObject) HasCollectionViewNumberOfItemsInSection
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1525594-collectionview?language=objc
 func (c_ CollectionViewDataSourceObject) CollectionViewNumberOfItemsInSection(collectionView CollectionView, section int) int {
-	rv := objc.Call[int](c_, objc.Sel("collectionView:numberOfItemsInSection:"), objc.Ptr(collectionView), section)
+	rv := objc.Call[int](c_, objc.Sel("collectionView:numberOfItemsInSection:"), collectionView, section)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func (c_ CollectionViewDataSourceObject) HasNumberOfSectionsInCollectionView() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1525901-numberofsectionsincollectionview?language=objc
 func (c_ CollectionViewDataSourceObject) NumberOfSectionsInCollectionView(collectionView CollectionView) int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfSectionsInCollectionView:"), objc.Ptr(collectionView))
+	rv := objc.Call[int](c_, objc.Sel("numberOfSectionsInCollectionView:"), collectionView)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func (c_ CollectionViewDataSourceObject) HasCollectionViewViewForSupplementaryEl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1528286-collectionview?language=objc
 func (c_ CollectionViewDataSourceObject) CollectionViewViewForSupplementaryElementOfKindAtIndexPath(collectionView CollectionView, kind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) View {
-	rv := objc.Call[View](c_, objc.Sel("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"), objc.Ptr(collectionView), kind, objc.Ptr(indexPath))
+	rv := objc.Call[View](c_, objc.Sel("collectionView:viewForSupplementaryElementOfKind:atIndexPath:"), collectionView, kind, indexPath)
 	return rv
 }
 
@@ -80,6 +80,6 @@ func (c_ CollectionViewDataSourceObject) HasCollectionViewItemForRepresentedObje
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdatasource/1524271-collectionview?language=objc
 func (c_ CollectionViewDataSourceObject) CollectionViewItemForRepresentedObjectAtIndexPath(collectionView CollectionView, indexPath foundation.IndexPath) CollectionViewItem {
-	rv := objc.Call[CollectionViewItem](c_, objc.Sel("collectionView:itemForRepresentedObjectAtIndexPath:"), objc.Ptr(collectionView), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewItem](c_, objc.Sel("collectionView:itemForRepresentedObjectAtIndexPath:"), collectionView, indexPath)
 	return rv
 }

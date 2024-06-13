@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -57,27 +56,27 @@ func (b_ BlendKernel) Init() BlendKernel {
 	return rv
 }
 
-func (bc _BlendKernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) BlendKernel {
-	rv := objc.Call[BlendKernel](bc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, objc.Ptr(error))
+func (bc _BlendKernelClass) KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) BlendKernel {
+	rv := objc.Call[BlendKernel](bc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:error:"), name, data, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language (MSL) kernel function. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880194-kernelwithfunctionname?language=objc
-func BlendKernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error foundation.IError) BlendKernel {
+func BlendKernel_KernelWithFunctionNameFromMetalLibraryDataError(name string, data []byte, error unsafe.Pointer) BlendKernel {
 	return BlendKernelClass.KernelWithFunctionNameFromMetalLibraryDataError(name, data, error)
 }
 
-func (bc _BlendKernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) BlendKernel {
-	rv := objc.Call[BlendKernel](bc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, objc.Ptr(error))
+func (bc _BlendKernelClass) KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) BlendKernel {
+	rv := objc.Call[BlendKernel](bc, objc.Sel("kernelWithFunctionName:fromMetalLibraryData:outputPixelFormat:error:"), name, data, format, error)
 	return rv
 }
 
 // Creates a single kernel object using a Metal Shading Language kernel function with optional pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cikernel/2880195-kernelwithfunctionname?language=objc
-func BlendKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error foundation.IError) BlendKernel {
+func BlendKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name string, data []byte, format Format, error unsafe.Pointer) BlendKernel {
 	return BlendKernelClass.KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatError(name, data, format, error)
 }
 
@@ -85,7 +84,7 @@ func BlendKernel_KernelWithFunctionNameFromMetalLibraryDataOutputPixelFormatErro
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendkernel/3152403-applywithforeground?language=objc
 func (b_ BlendKernel) ApplyWithForegroundBackgroundColorSpace(foreground IImage, background IImage, colorSpace coregraphics.ColorSpaceRef) Image {
-	rv := objc.Call[Image](b_, objc.Sel("applyWithForeground:background:colorSpace:"), objc.Ptr(foreground), objc.Ptr(background), colorSpace)
+	rv := objc.Call[Image](b_, objc.Sel("applyWithForeground:background:colorSpace:"), foreground, background, colorSpace)
 	return rv
 }
 
@@ -93,7 +92,7 @@ func (b_ BlendKernel) ApplyWithForegroundBackgroundColorSpace(foreground IImage,
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciblendkernel/2919728-applywithforeground?language=objc
 func (b_ BlendKernel) ApplyWithForegroundBackground(foreground IImage, background IImage) Image {
-	rv := objc.Call[Image](b_, objc.Sel("applyWithForeground:background:"), objc.Ptr(foreground), objc.Ptr(background))
+	rv := objc.Call[Image](b_, objc.Sel("applyWithForeground:background:"), foreground, background)
 	return rv
 }
 

@@ -11,19 +11,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator?language=objc
 type PCode128BarcodeGenerator interface {
 	// optional
-	SetBarcodeHeight(value float64)
+	SetBarcodeHeight(value float32)
 	HasSetBarcodeHeight() bool
 
 	// optional
-	BarcodeHeight() float64
+	BarcodeHeight() float32
 	HasBarcodeHeight() bool
 
 	// optional
-	SetQuietSpace(value float64)
+	SetQuietSpace(value float32)
 	HasSetQuietSpace() bool
 
 	// optional
-	QuietSpace() float64
+	QuietSpace() float32
 	HasQuietSpace() bool
 
 	// optional
@@ -50,7 +50,7 @@ func (c_ Code128BarcodeGeneratorObject) HasSetBarcodeHeight() bool {
 // The height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
-func (c_ Code128BarcodeGeneratorObject) SetBarcodeHeight(value float64) {
+func (c_ Code128BarcodeGeneratorObject) SetBarcodeHeight(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBarcodeHeight:"), value)
 }
 
@@ -61,8 +61,8 @@ func (c_ Code128BarcodeGeneratorObject) HasBarcodeHeight() bool {
 // The height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228116-barcodeheight?language=objc
-func (c_ Code128BarcodeGeneratorObject) BarcodeHeight() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("barcodeHeight"))
+func (c_ Code128BarcodeGeneratorObject) BarcodeHeight() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("barcodeHeight"))
 	return rv
 }
 
@@ -73,7 +73,7 @@ func (c_ Code128BarcodeGeneratorObject) HasSetQuietSpace() bool {
 // The number of empty white pixels that should surround the barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228118-quietspace?language=objc
-func (c_ Code128BarcodeGeneratorObject) SetQuietSpace(value float64) {
+func (c_ Code128BarcodeGeneratorObject) SetQuietSpace(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setQuietSpace:"), value)
 }
 
@@ -84,8 +84,8 @@ func (c_ Code128BarcodeGeneratorObject) HasQuietSpace() bool {
 // The number of empty white pixels that should surround the barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicode128barcodegenerator/3228118-quietspace?language=objc
-func (c_ Code128BarcodeGeneratorObject) QuietSpace() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("quietSpace"))
+func (c_ Code128BarcodeGeneratorObject) QuietSpace() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("quietSpace"))
 	return rv
 }
 

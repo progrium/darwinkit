@@ -68,7 +68,7 @@ func (d_ DraggingSession) Init() DraggingSession {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsession/1532445-enumeratedraggingitemswithoption?language=objc
 func (d_ DraggingSession) EnumerateDraggingItemsWithOptionsForViewClassesSearchOptionsUsingBlock(enumOpts DraggingItemEnumerationOptions, view IView, classArray []objc.IClass, searchOptions map[PasteboardReadingOptionKey]objc.IObject, block func(draggingItem DraggingItem, idx int, stop *bool)) {
-	objc.Call[objc.Void](d_, objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, objc.Ptr(view), classArray, searchOptions, block)
+	objc.Call[objc.Void](d_, objc.Sel("enumerateDraggingItemsWithOptions:forView:classes:searchOptions:usingBlock:"), enumOpts, view, classArray, searchOptions, block)
 }
 
 // Returns the pasteboard object that contains the data being dragged. [Full Topic]

@@ -83,7 +83,7 @@ func (s_ SmoothLinearGradientObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228723-color0?language=objc
 func (s_ SmoothLinearGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor0:"), value)
 }
 
 func (s_ SmoothLinearGradientObject) HasColor0() bool {
@@ -129,7 +129,7 @@ func (s_ SmoothLinearGradientObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cismoothlineargradient/3228724-color1?language=objc
 func (s_ SmoothLinearGradientObject) SetColor1(value Color) {
-	objc.Call[objc.Void](s_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setColor1:"), value)
 }
 
 func (s_ SmoothLinearGradientObject) HasColor1() bool {

@@ -92,7 +92,7 @@ func TextField_LabelWithString(stringValue string) TextField {
 }
 
 func (tc _TextFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) TextField {
-	rv := objc.Call[TextField](tc, objc.Sel("labelWithAttributedString:"), objc.Ptr(attributedStringValue))
+	rv := objc.Call[TextField](tc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
@@ -165,7 +165,7 @@ func NewTextFieldWithFrame(frameRect foundation.Rect) TextField {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399397-textdidchange?language=objc
 func (t_ TextField) TextDidChange(notification foundation.INotification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), notification)
 }
 
 // Ends editing in the text field and, if it’s selectable, selects the entire text content. [Full Topic]
@@ -179,14 +179,14 @@ func (t_ TextField) SelectText(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399426-textdidbeginediting?language=objc
 func (t_ TextField) TextDidBeginEditing(notification foundation.INotification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
 }
 
 // Requests permission to begin editing a text object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399399-textshouldbeginediting?language=objc
 func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), textObject)
 	return rv
 }
 
@@ -194,7 +194,7 @@ func (t_ TextField) TextShouldBeginEditing(textObject IText) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399434-textshouldendediting?language=objc
 func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), textObject)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func (t_ TextField) TextShouldEndEditing(textObject IText) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399420-textdidendediting?language=objc
 func (t_ TextField) TextDidEndEditing(notification foundation.INotification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), notification)
 }
 
 // A Boolean value that controls whether the user can drag image files into the text field. [Full Topic]
@@ -232,7 +232,7 @@ func (t_ TextField) PlaceholderAttributedString() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399387-placeholderattributedstring?language=objc
 func (t_ TextField) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 // The text field’s bezel style, square or rounded. [Full Topic]
@@ -352,7 +352,7 @@ func (t_ TextField) TextColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399409-textcolor?language=objc
 func (t_ TextField) SetTextColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextColor:"), value)
 }
 
 // A Boolean value that controls whether the Touch Bar displays the character picker item for rich text fields. [Full Topic]
@@ -382,7 +382,7 @@ func (t_ TextField) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399389-backgroundcolor?language=objc
 func (t_ TextField) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // A Boolean value that controls whether the text field draws a solid black border around its contents. [Full Topic]
@@ -421,7 +421,7 @@ func (t_ TextField) SetDelegate(value PTextFieldDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfield/1399437-delegate?language=objc
 func (t_ TextField) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that controls whether the user can edit the value in the text field. [Full Topic]

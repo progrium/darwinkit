@@ -37,7 +37,7 @@ func DateRangeMetadataGroupFrom(ptr unsafe.Pointer) DateRangeMetadataGroup {
 }
 
 func (d_ DateRangeMetadataGroup) InitWithItemsStartDateEndDate(items []IMetadataItem, startDate foundation.IDate, endDate foundation.IDate) DateRangeMetadataGroup {
-	rv := objc.Call[DateRangeMetadataGroup](d_, objc.Sel("initWithItems:startDate:endDate:"), items, objc.Ptr(startDate), objc.Ptr(endDate))
+	rv := objc.Call[DateRangeMetadataGroup](d_, objc.Sel("initWithItems:startDate:endDate:"), items, startDate, endDate)
 	return rv
 }
 

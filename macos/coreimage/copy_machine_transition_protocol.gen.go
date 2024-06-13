@@ -28,27 +28,27 @@ type PCopyMachineTransition interface {
 	HasExtent() bool
 
 	// optional
-	SetOpacity(value float64)
+	SetOpacity(value float32)
 	HasSetOpacity() bool
 
 	// optional
-	Opacity() float64
+	Opacity() float32
 	HasOpacity() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -68,7 +68,7 @@ func (c_ CopyMachineTransitionObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228190-color?language=objc
 func (c_ CopyMachineTransitionObject) SetColor(value Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
 }
 
 func (c_ CopyMachineTransitionObject) HasColor() bool {
@@ -113,7 +113,7 @@ func (c_ CopyMachineTransitionObject) HasSetOpacity() bool {
 // The opacity of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228192-opacity?language=objc
-func (c_ CopyMachineTransitionObject) SetOpacity(value float64) {
+func (c_ CopyMachineTransitionObject) SetOpacity(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setOpacity:"), value)
 }
 
@@ -124,8 +124,8 @@ func (c_ CopyMachineTransitionObject) HasOpacity() bool {
 // The opacity of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228192-opacity?language=objc
-func (c_ CopyMachineTransitionObject) Opacity() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("opacity"))
+func (c_ CopyMachineTransitionObject) Opacity() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("opacity"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (c_ CopyMachineTransitionObject) HasSetWidth() bool {
 // The width of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
-func (c_ CopyMachineTransitionObject) SetWidth(value float64) {
+func (c_ CopyMachineTransitionObject) SetWidth(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setWidth:"), value)
 }
 
@@ -147,8 +147,8 @@ func (c_ CopyMachineTransitionObject) HasWidth() bool {
 // The width of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228193-width?language=objc
-func (c_ CopyMachineTransitionObject) Width() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("width"))
+func (c_ CopyMachineTransitionObject) Width() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("width"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (c_ CopyMachineTransitionObject) HasSetAngle() bool {
 // The angle of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228189-angle?language=objc
-func (c_ CopyMachineTransitionObject) SetAngle(value float64) {
+func (c_ CopyMachineTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAngle:"), value)
 }
 
@@ -170,7 +170,7 @@ func (c_ CopyMachineTransitionObject) HasAngle() bool {
 // The angle of the copier light. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicopymachinetransition/3228189-angle?language=objc
-func (c_ CopyMachineTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("angle"))
+func (c_ CopyMachineTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("angle"))
 	return rv
 }

@@ -3,7 +3,8 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -12,7 +13,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerating?language=objc
 type PFileProviderEnumerating interface {
 	// optional
-	EnumeratorForContainerItemIdentifierRequestError(containerItemIdentifier FileProviderItemIdentifier, request FileProviderRequest, error foundation.Error) FileProviderEnumeratorObject
+	EnumeratorForContainerItemIdentifierRequestError(containerItemIdentifier FileProviderItemIdentifier, request FileProviderRequest, error unsafe.Pointer) FileProviderEnumeratorObject
 	HasEnumeratorForContainerItemIdentifierRequestError() bool
 }
 
@@ -31,7 +32,7 @@ func (f_ FileProviderEnumeratingObject) HasEnumeratorForContainerItemIdentifierR
 // Tells the file provider to return an enumerator for the provided directory. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderenumerating/3553295-enumeratorforcontaineritemidenti?language=objc
-func (f_ FileProviderEnumeratingObject) EnumeratorForContainerItemIdentifierRequestError(containerItemIdentifier FileProviderItemIdentifier, request FileProviderRequest, error foundation.Error) FileProviderEnumeratorObject {
-	rv := objc.Call[FileProviderEnumeratorObject](f_, objc.Sel("enumeratorForContainerItemIdentifier:request:error:"), containerItemIdentifier, objc.Ptr(request), objc.Ptr(error))
+func (f_ FileProviderEnumeratingObject) EnumeratorForContainerItemIdentifierRequestError(containerItemIdentifier FileProviderItemIdentifier, request FileProviderRequest, error unsafe.Pointer) FileProviderEnumeratorObject {
+	rv := objc.Call[FileProviderEnumeratorObject](f_, objc.Sel("enumeratorForContainerItemIdentifier:request:error:"), containerItemIdentifier, request, error)
 	return rv
 }

@@ -102,5 +102,5 @@ func (s_ SpellServer) SetDelegate(value PSpellServerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsspellserver/1414240-delegate?language=objc
 func (s_ SpellServer) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }

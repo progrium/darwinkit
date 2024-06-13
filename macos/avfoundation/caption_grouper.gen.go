@@ -68,5 +68,5 @@ func (c_ CaptionGrouper) FlushAddedCaptionsIntoGroupsUpToTime(upToTime coremedia
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptiongrouper/3752965-addcaption?language=objc
 func (c_ CaptionGrouper) AddCaption(input ICaption) {
-	objc.Call[objc.Void](c_, objc.Sel("addCaption:"), objc.Ptr(input))
+	objc.Call[objc.Void](c_, objc.Sel("addCaption:"), input)
 }

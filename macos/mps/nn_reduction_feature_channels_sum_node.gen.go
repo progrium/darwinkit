@@ -18,8 +18,8 @@ type _NNReductionFeatureChannelsSumNodeClass struct {
 // An interface definition for the [NNReductionFeatureChannelsSumNode] class.
 type INNReductionFeatureChannelsSumNode interface {
 	INNUnaryReductionNode
-	Weight() float64
-	SetWeight(value float64)
+	Weight() float32
+	SetWeight(value float32)
 }
 
 //	[Full Topic]
@@ -56,7 +56,7 @@ func (n_ NNReductionFeatureChannelsSumNode) Init() NNReductionFeatureChannelsSum
 }
 
 func (nc _NNReductionFeatureChannelsSumNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsSumNode {
-	rv := objc.Call[NNReductionFeatureChannelsSumNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsSumNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NNReductionFeatureChannelsSumNode_NodeWithSource(sourceNode INNImageNode) N
 }
 
 func (n_ NNReductionFeatureChannelsSumNode) InitWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsSumNode {
-	rv := objc.Call[NNReductionFeatureChannelsSumNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsSumNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -84,14 +84,14 @@ func NewNNReductionFeatureChannelsSumNodeWithSource(sourceNode INNImageNode) NNR
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreductionfeaturechannelssumnode/3037407-weight?language=objc
-func (n_ NNReductionFeatureChannelsSumNode) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNReductionFeatureChannelsSumNode) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnreductionfeaturechannelssumnode/3037407-weight?language=objc
-func (n_ NNReductionFeatureChannelsSumNode) SetWeight(value float64) {
+func (n_ NNReductionFeatureChannelsSumNode) SetWeight(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setWeight:"), value)
 }

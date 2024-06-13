@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciexposureadjust?language=objc
 type PExposureAdjust interface {
 	// optional
-	SetEV(value float64)
+	SetEV(value float32)
 	HasSetEV() bool
 
 	// optional
-	EV() float64
+	EV() float32
 	HasEV() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (e_ ExposureAdjustObject) HasSetEV() bool {
 // The amount to adjust the exposure of the image by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciexposureadjust/3228253-ev?language=objc
-func (e_ ExposureAdjustObject) SetEV(value float64) {
+func (e_ ExposureAdjustObject) SetEV(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setEV:"), value)
 }
 
@@ -53,8 +53,8 @@ func (e_ ExposureAdjustObject) HasEV() bool {
 // The amount to adjust the exposure of the image by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciexposureadjust/3228253-ev?language=objc
-func (e_ ExposureAdjustObject) EV() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("EV"))
+func (e_ ExposureAdjustObject) EV() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("EV"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (e_ ExposureAdjustObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciexposureadjust/3228254-inputimage?language=objc
 func (e_ ExposureAdjustObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), value)
 }
 
 func (e_ ExposureAdjustObject) HasInputImage() bool {

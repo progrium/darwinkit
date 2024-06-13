@@ -34,7 +34,7 @@ func CNNNeuronAbsoluteNodeFrom(ptr unsafe.Pointer) CNNNeuronAbsoluteNode {
 }
 
 func (cc _CNNNeuronAbsoluteNodeClass) NodeWithSource(sourceNode INNImageNode) CNNNeuronAbsoluteNode {
-	rv := objc.Call[CNNNeuronAbsoluteNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronAbsoluteNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -46,7 +46,7 @@ func CNNNeuronAbsoluteNode_NodeWithSource(sourceNode INNImageNode) CNNNeuronAbso
 }
 
 func (c_ CNNNeuronAbsoluteNode) InitWithSource(sourceNode INNImageNode) CNNNeuronAbsoluteNode {
-	rv := objc.Call[CNNNeuronAbsoluteNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNNeuronAbsoluteNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func (c_ CNNNeuronAbsoluteNode) Init() CNNNeuronAbsoluteNode {
 }
 
 func (cc _CNNNeuronAbsoluteNodeClass) NodeWithSourceDescriptor(sourceNode INNImageNode, descriptor INNNeuronDescriptor) CNNNeuronAbsoluteNode {
-	rv := objc.Call[CNNNeuronAbsoluteNode](cc, objc.Sel("nodeWithSource:descriptor:"), objc.Ptr(sourceNode), objc.Ptr(descriptor))
+	rv := objc.Call[CNNNeuronAbsoluteNode](cc, objc.Sel("nodeWithSource:descriptor:"), sourceNode, descriptor)
 	return rv
 }
 

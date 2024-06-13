@@ -69,7 +69,7 @@ func (r_ RecursiveLock) TryLock() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrecursivelock/1417151-lockbeforedate?language=objc
 func (r_ RecursiveLock) LockBeforeDate(limit IDate) bool {
-	rv := objc.Call[bool](r_, objc.Sel("lockBeforeDate:"), objc.Ptr(limit))
+	rv := objc.Call[bool](r_, objc.Sel("lockBeforeDate:"), limit)
 	return rv
 }
 

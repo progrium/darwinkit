@@ -63,7 +63,7 @@ func NewISO8601DateFormatter() ISO8601DateFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1642834-stringfromdate?language=objc
 func (ic _ISO8601DateFormatterClass) StringFromDateTimeZoneFormatOptions(date IDate, timeZone ITimeZone, formatOptions ISO8601DateFormatOptions) string {
-	rv := objc.Call[string](ic, objc.Sel("stringFromDate:timeZone:formatOptions:"), objc.Ptr(date), objc.Ptr(timeZone), formatOptions)
+	rv := objc.Call[string](ic, objc.Sel("stringFromDate:timeZone:formatOptions:"), date, timeZone, formatOptions)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (i_ ISO8601DateFormatter) DateFromString(string_ string) Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1643076-stringfromdate?language=objc
 func (i_ ISO8601DateFormatter) StringFromDate(date IDate) string {
-	rv := objc.Call[string](i_, objc.Sel("stringFromDate:"), objc.Ptr(date))
+	rv := objc.Call[string](i_, objc.Sel("stringFromDate:"), date)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func (i_ ISO8601DateFormatter) TimeZone() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsiso8601dateformatter/1643185-timezone?language=objc
 func (i_ ISO8601DateFormatter) SetTimeZone(value ITimeZone) {
-	objc.Call[objc.Void](i_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](i_, objc.Sel("setTimeZone:"), value)
 }
 
 // Options for generating and parsing ISO 8601 date representations. See NSISO8601DateFormatOptions for possible values. [Full Topic]

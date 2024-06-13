@@ -113,7 +113,7 @@ func (a_ AssetResourceLoadingContentInformationRequest) RenewalDate() foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingcontentinformationrequest/1390683-renewaldate?language=objc
 func (a_ AssetResourceLoadingContentInformationRequest) SetRenewalDate(value foundation.IDate) {
-	objc.Call[objc.Void](a_, objc.Sel("setRenewalDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setRenewalDate:"), value)
 }
 
 // The UTI that specifies the type of data contained by the requested resource. [Full Topic]

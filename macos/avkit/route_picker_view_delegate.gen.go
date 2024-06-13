@@ -76,7 +76,7 @@ func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewDidEndPresentingRoutes
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915796-routepickerviewdidendpresentingr?language=objc
 func (r_ RoutePickerViewDelegateObject) RoutePickerViewDidEndPresentingRoutes(routePickerView RoutePickerView) {
-	objc.Call[objc.Void](r_, objc.Sel("routePickerViewDidEndPresentingRoutes:"), objc.Ptr(routePickerView))
+	objc.Call[objc.Void](r_, objc.Sel("routePickerViewDidEndPresentingRoutes:"), routePickerView)
 }
 
 func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewWillBeginPresentingRoutes() bool {
@@ -87,5 +87,5 @@ func (r_ RoutePickerViewDelegateObject) HasRoutePickerViewWillBeginPresentingRou
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avroutepickerviewdelegate/2915788-routepickerviewwillbeginpresenti?language=objc
 func (r_ RoutePickerViewDelegateObject) RoutePickerViewWillBeginPresentingRoutes(routePickerView RoutePickerView) {
-	objc.Call[objc.Void](r_, objc.Sel("routePickerViewWillBeginPresentingRoutes:"), objc.Ptr(routePickerView))
+	objc.Call[objc.Void](r_, objc.Sel("routePickerViewWillBeginPresentingRoutes:"), routePickerView)
 }

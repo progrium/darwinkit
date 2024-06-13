@@ -70,7 +70,7 @@ func GroupTouchBarItem_AlertStyleGroupItemWithIdentifier(identifier TouchBarItem
 }
 
 func (gc _GroupTouchBarItemClass) GroupItemWithIdentifierItemsAllowedCompressionOptions(identifier TouchBarItemIdentifier, items []ITouchBarItem, allowedCompressionOptions IUserInterfaceCompressionOptions) GroupTouchBarItem {
-	rv := objc.Call[GroupTouchBarItem](gc, objc.Sel("groupItemWithIdentifier:items:allowedCompressionOptions:"), identifier, items, objc.Ptr(allowedCompressionOptions))
+	rv := objc.Call[GroupTouchBarItem](gc, objc.Sel("groupItemWithIdentifier:items:allowedCompressionOptions:"), identifier, items, allowedCompressionOptions)
 	return rv
 }
 
@@ -172,7 +172,7 @@ func (g_ GroupTouchBarItem) GroupTouchBar() TouchBar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsgrouptouchbaritem/2544717-grouptouchbar?language=objc
 func (g_ GroupTouchBarItem) SetGroupTouchBar(value ITouchBar) {
-	objc.Call[objc.Void](g_, objc.Sel("setGroupTouchBar:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setGroupTouchBar:"), value)
 }
 
 // The user interface direction that controls the layout order of the items. [Full Topic]

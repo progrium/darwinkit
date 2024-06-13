@@ -113,7 +113,7 @@ func (p_ PredicateEditorRowTemplate) Init() PredicateEditorRowTemplate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401183-displayablesubpredicatesofpredic?language=objc
 func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predicate foundation.IPredicate) []foundation.Predicate {
-	rv := objc.Call[[]foundation.Predicate](p_, objc.Sel("displayableSubpredicatesOfPredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[[]foundation.Predicate](p_, objc.Sel("displayableSubpredicatesOfPredicate:"), predicate)
 	return rv
 }
 
@@ -121,14 +121,14 @@ func (p_ PredicateEditorRowTemplate) DisplayableSubpredicatesOfPredicate(predica
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401189-setpredicate?language=objc
 func (p_ PredicateEditorRowTemplate) SetPredicate(predicate foundation.IPredicate) {
-	objc.Call[objc.Void](p_, objc.Sel("setPredicate:"), objc.Ptr(predicate))
+	objc.Call[objc.Void](p_, objc.Sel("setPredicate:"), predicate)
 }
 
 // Returns a positive number if the receiver can represent a given predicate, and 0 if it cannot. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401185-matchforpredicate?language=objc
 func (p_ PredicateEditorRowTemplate) MatchForPredicate(predicate foundation.IPredicate) float64 {
-	rv := objc.Call[float64](p_, objc.Sel("matchForPredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[float64](p_, objc.Sel("matchForPredicate:"), predicate)
 	return rv
 }
 
@@ -144,7 +144,7 @@ func (p_ PredicateEditorRowTemplate) PredicateWithSubpredicates(subpredicates []
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspredicateeditorrowtemplate/1401187-templateswithattributekeypaths?language=objc
 func (pc _PredicateEditorRowTemplateClass) TemplatesWithAttributeKeyPathsInEntityDescription(keyPaths []string, entityDescription coredata.IEntityDescription) []PredicateEditorRowTemplate {
-	rv := objc.Call[[]PredicateEditorRowTemplate](pc, objc.Sel("templatesWithAttributeKeyPaths:inEntityDescription:"), keyPaths, objc.Ptr(entityDescription))
+	rv := objc.Call[[]PredicateEditorRowTemplate](pc, objc.Sel("templatesWithAttributeKeyPaths:inEntityDescription:"), keyPaths, entityDescription)
 	return rv
 }
 

@@ -37,7 +37,7 @@ func CNNUpsamplingBilinearNodeFrom(ptr unsafe.Pointer) CNNUpsamplingBilinearNode
 }
 
 func (cc _CNNUpsamplingBilinearNodeClass) NodeWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY, alignCorners)
+	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func CNNUpsamplingBilinearNode_NodeWithSourceIntegerScaleFactorXIntegerScaleFact
 }
 
 func (cc _CNNUpsamplingBilinearNodeClass) NodeWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY)
+	rv := objc.Call[CNNUpsamplingBilinearNode](cc, objc.Sel("nodeWithSource:integerScaleFactorX:integerScaleFactorY:"), sourceNode, integerScaleFactorX, integerScaleFactorY)
 	return rv
 }
 
@@ -61,7 +61,7 @@ func CNNUpsamplingBilinearNode_NodeWithSourceIntegerScaleFactorXIntegerScaleFact
 }
 
 func (c_ CNNUpsamplingBilinearNode) InitWithSourceIntegerScaleFactorXIntegerScaleFactorYAlignCorners(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint, alignCorners bool) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY, alignCorners)
+	rv := objc.Call[CNNUpsamplingBilinearNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:alignCorners:"), sourceNode, integerScaleFactorX, integerScaleFactorY, alignCorners)
 	return rv
 }
 
@@ -75,7 +75,7 @@ func NewCNNUpsamplingBilinearNodeWithSourceIntegerScaleFactorXIntegerScaleFactor
 }
 
 func (c_ CNNUpsamplingBilinearNode) InitWithSourceIntegerScaleFactorXIntegerScaleFactorY(sourceNode INNImageNode, integerScaleFactorX uint, integerScaleFactorY uint) CNNUpsamplingBilinearNode {
-	rv := objc.Call[CNNUpsamplingBilinearNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:"), objc.Ptr(sourceNode), integerScaleFactorX, integerScaleFactorY)
+	rv := objc.Call[CNNUpsamplingBilinearNode](c_, objc.Sel("initWithSource:integerScaleFactorX:integerScaleFactorY:"), sourceNode, integerScaleFactorX, integerScaleFactorY)
 	return rv
 }
 

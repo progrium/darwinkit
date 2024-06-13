@@ -65,7 +65,7 @@ func (c_ CollectionViewItem) Init() CollectionViewItem {
 }
 
 func (c_ CollectionViewItem) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) CollectionViewItem {
-	rv := objc.Call[CollectionViewItem](c_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[CollectionViewItem](c_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (c_ CollectionViewItem) TextField() TextField {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1527126-textfield?language=objc
 func (c_ CollectionViewItem) SetTextField(value ITextField) {
-	objc.Call[objc.Void](c_, objc.Sel("setTextField:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setTextField:"), value)
 }
 
 // A Boolean indicating whether the item is currently selected. [Full Topic]
@@ -120,7 +120,7 @@ func (c_ CollectionViewItem) ImageView() ImageView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewitem/1525366-imageview?language=objc
 func (c_ CollectionViewItem) SetImageView(value IImageView) {
-	objc.Call[objc.Void](c_, objc.Sel("setImageView:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setImageView:"), value)
 }
 
 // The highlight state currently applied to the item. [Full Topic]

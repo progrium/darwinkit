@@ -77,7 +77,7 @@ func NewFilterUIViewWithFrame(frameRect foundation.Rect) FilterUIView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504872-viewwithframe?language=objc
 func (fc _FilterUIViewClass) ViewWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object {
-	rv := objc.Call[objc.Object](fc, objc.Sel("viewWithFrame:filter:"), frameRect, objc.Ptr(inFilter))
+	rv := objc.Call[objc.Object](fc, objc.Sel("viewWithFrame:filter:"), frameRect, inFilter)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func FilterUIView_ViewWithFrameFilter(frameRect foundation.Rect, inFilter coreim
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikfilteruiview/1504139-initwithframe?language=objc
 func (f_ FilterUIView) InitWithFrameFilter(frameRect foundation.Rect, inFilter coreimage.IFilter) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("initWithFrame:filter:"), frameRect, objc.Ptr(inFilter))
+	rv := objc.Call[objc.Object](f_, objc.Sel("initWithFrame:filter:"), frameRect, inFilter)
 	return rv
 }
 

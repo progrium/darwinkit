@@ -124,7 +124,7 @@ func NewPopUpButtonCellTextCell(string_ string) PopUpButtonCell {
 }
 
 func (p_ PopUpButtonCell) InitImageCell(image IImage) PopUpButtonCell {
-	rv := objc.Call[PopUpButtonCell](p_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[PopUpButtonCell](p_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (p_ PopUpButtonCell) RemoveItemWithTitle(title string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbuttoncell/1532397-indexofitem?language=objc
 func (p_ PopUpButtonCell) IndexOfItem(item IMenuItem) int {
-	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), objc.Ptr(item))
+	rv := objc.Call[int](p_, objc.Sel("indexOfItem:"), item)
 	return rv
 }
 
@@ -185,7 +185,7 @@ func (p_ PopUpButtonCell) IndexOfItem(item IMenuItem) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbuttoncell/1531648-attachpopupwithframe?language=objc
 func (p_ PopUpButtonCell) AttachPopUpWithFrameInView(cellFrame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](p_, objc.Sel("attachPopUpWithFrame:inView:"), cellFrame, objc.Ptr(controlView))
+	objc.Call[objc.Void](p_, objc.Sel("attachPopUpWithFrame:inView:"), cellFrame, controlView)
 }
 
 // Removes all items in the receiver’s item menu. [Full Topic]
@@ -237,14 +237,14 @@ func (p_ PopUpButtonCell) AddItemsWithTitles(itemTitles []string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbuttoncell/1525225-selectitem?language=objc
 func (p_ PopUpButtonCell) SelectItem(item IMenuItem) {
-	objc.Call[objc.Void](p_, objc.Sel("selectItem:"), objc.Ptr(item))
+	objc.Call[objc.Void](p_, objc.Sel("selectItem:"), item)
 }
 
 // Displays the receiver’s menu and track mouse events in it. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspopupbuttoncell/1530205-performclickwithframe?language=objc
 func (p_ PopUpButtonCell) PerformClickWithFrameInView(frame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](p_, objc.Sel("performClickWithFrame:inView:"), frame, objc.Ptr(controlView))
+	objc.Call[objc.Void](p_, objc.Sel("performClickWithFrame:inView:"), frame, controlView)
 }
 
 // Removes the item at the specified index. [Full Topic]

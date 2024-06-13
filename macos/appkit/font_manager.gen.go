@@ -104,7 +104,7 @@ func (f_ FontManager) FontWithFamilyTraitsWeightSize(family string, traits FontT
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462309-convertfont?language=objc
 func (f_ FontManager) ConvertFontToFace(fontObj IFont, typeface string) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFace:"), objc.Ptr(fontObj), typeface)
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFace:"), fontObj, typeface)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (f_ FontManager) ConvertFontToFace(fontObj IFont, typeface string) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462378-convertfont?language=objc
 func (f_ FontManager) ConvertFontToSize(fontObj IFont, size float64) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toSize:"), objc.Ptr(fontObj), size)
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toSize:"), fontObj, size)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (f_ FontManager) ConvertFontToSize(fontObj IFont, size float64) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462398-setselectedfont?language=objc
 func (f_ FontManager) SetSelectedFontIsMultiple(fontObj IFont, flag bool) {
-	objc.Call[objc.Void](f_, objc.Sel("setSelectedFont:isMultiple:"), objc.Ptr(fontObj), flag)
+	objc.Call[objc.Void](f_, objc.Sel("setSelectedFont:isMultiple:"), fontObj, flag)
 }
 
 // Opens the Font Styles panel. [Full Topic]
@@ -134,7 +134,7 @@ func (f_ FontManager) OrderFrontStylesPanel(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462293-convertfont?language=objc
 func (f_ FontManager) ConvertFont(fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:"), objc.Ptr(fontObj))
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:"), fontObj)
 	return rv
 }
 
@@ -173,7 +173,7 @@ func (f_ FontManager) OrderFrontFontPanel(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462351-weightoffont?language=objc
 func (f_ FontManager) WeightOfFont(fontObj IFont) int {
-	rv := objc.Call[int](f_, objc.Sel("weightOfFont:"), objc.Ptr(fontObj))
+	rv := objc.Call[int](f_, objc.Sel("weightOfFont:"), fontObj)
 	return rv
 }
 
@@ -181,7 +181,7 @@ func (f_ FontManager) WeightOfFont(fontObj IFont) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462318-convertfont?language=objc
 func (f_ FontManager) ConvertFontToFamily(fontObj IFont, family string) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFamily:"), objc.Ptr(fontObj), family)
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toFamily:"), fontObj, family)
 	return rv
 }
 
@@ -196,7 +196,7 @@ func (f_ FontManager) SetSelectedAttributesIsMultiple(attributes map[string]objc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462321-convertweight?language=objc
 func (f_ FontManager) ConvertWeightOfFont(upFlag bool, fontObj IFont) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertWeight:ofFont:"), upFlag, objc.Ptr(fontObj))
+	rv := objc.Call[Font](f_, objc.Sel("convertWeight:ofFont:"), upFlag, fontObj)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func (f_ FontManager) ConvertWeightOfFont(upFlag bool, fontObj IFont) Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462388-setfontpanelfactory?language=objc
 func (fc _FontManagerClass) SetFontPanelFactory(factoryId objc.IClass) {
-	objc.Call[objc.Void](fc, objc.Sel("setFontPanelFactory:"), objc.Ptr(factoryId))
+	objc.Call[objc.Void](fc, objc.Sel("setFontPanelFactory:"), factoryId)
 }
 
 // Sets the class that creates the shared Font panel object. [Full Topic]
@@ -233,7 +233,7 @@ func (f_ FontManager) AddFontTrait(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462374-traitsoffont?language=objc
 func (f_ FontManager) TraitsOfFont(fontObj IFont) FontTraitMask {
-	rv := objc.Call[FontTraitMask](f_, objc.Sel("traitsOfFont:"), objc.Ptr(fontObj))
+	rv := objc.Call[FontTraitMask](f_, objc.Sel("traitsOfFont:"), fontObj)
 	return rv
 }
 
@@ -248,7 +248,7 @@ func (f_ FontManager) RemoveFontTrait(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462381-setfontmenu?language=objc
 func (f_ FontManager) SetFontMenu(newMenu IMenu) {
-	objc.Call[objc.Void](f_, objc.Sel("setFontMenu:"), objc.Ptr(newMenu))
+	objc.Call[objc.Void](f_, objc.Sel("setFontMenu:"), newMenu)
 }
 
 // Returns the menu that’s connected to the font conversion system, creating it if necessary. [Full Topic]
@@ -271,7 +271,7 @@ func (f_ FontManager) FontPanel(create bool) FontPanel {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462345-convertfont?language=objc
 func (f_ FontManager) ConvertFontToHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toHaveTrait:"), objc.Ptr(fontObj), trait)
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toHaveTrait:"), fontObj, trait)
 	return rv
 }
 
@@ -287,7 +287,7 @@ func (f_ FontManager) AvailableFontNamesWithTraits(someTraits FontTraitMask) []s
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462402-setfontmanagerfactory?language=objc
 func (fc _FontManagerClass) SetFontManagerFactory(factoryId objc.IClass) {
-	objc.Call[objc.Void](fc, objc.Sel("setFontManagerFactory:"), objc.Ptr(factoryId))
+	objc.Call[objc.Void](fc, objc.Sel("setFontManagerFactory:"), factoryId)
 }
 
 // Sets the class that creates the shared font manager object. [Full Topic]
@@ -308,7 +308,7 @@ func (f_ FontManager) ModifyFontViaPanel(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfontmanager/1462364-convertfont?language=objc
 func (f_ FontManager) ConvertFontToNotHaveTrait(fontObj IFont, trait FontTraitMask) Font {
-	rv := objc.Call[Font](f_, objc.Sel("convertFont:toNotHaveTrait:"), objc.Ptr(fontObj), trait)
+	rv := objc.Call[Font](f_, objc.Sel("convertFont:toNotHaveTrait:"), fontObj, trait)
 	return rv
 }
 

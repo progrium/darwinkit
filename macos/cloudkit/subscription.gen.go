@@ -69,7 +69,7 @@ func (s_ Subscription) NotificationInfo() NotificationInfo {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/cksubscription/1514948-notificationinfo?language=objc
 func (s_ Subscription) SetNotificationInfo(value INotificationInfo) {
-	objc.Call[objc.Void](s_, objc.Sel("setNotificationInfo:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setNotificationInfo:"), value)
 }
 
 // The behavior that a subscription provides. [Full Topic]

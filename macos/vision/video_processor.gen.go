@@ -20,9 +20,9 @@ type _VideoProcessorClass struct {
 // An interface definition for the [VideoProcessor] class.
 type IVideoProcessor interface {
 	objc.IObject
-	RemoveRequestError(request IRequest, error foundation.IError) bool
-	AddRequestProcessingOptionsError(request IRequest, processingOptions IVideoProcessorRequestProcessingOptions, error foundation.IError) bool
-	AnalyzeTimeRangeError(timeRange coremedia.TimeRange, error foundation.IError) bool
+	RemoveRequestError(request IRequest, error unsafe.Pointer) bool
+	AddRequestProcessingOptionsError(request IRequest, processingOptions IVideoProcessorRequestProcessingOptions, error unsafe.Pointer) bool
+	AnalyzeTimeRangeError(timeRange coremedia.TimeRange, error unsafe.Pointer) bool
 	Cancel()
 }
 
@@ -40,7 +40,7 @@ func VideoProcessorFrom(ptr unsafe.Pointer) VideoProcessor {
 }
 
 func (v_ VideoProcessor) InitWithURL(videoURL foundation.IURL) VideoProcessor {
-	rv := objc.Call[VideoProcessor](v_, objc.Sel("initWithURL:"), objc.Ptr(videoURL))
+	rv := objc.Call[VideoProcessor](v_, objc.Sel("initWithURL:"), videoURL)
 	return rv
 }
 
@@ -76,24 +76,24 @@ func (v_ VideoProcessor) Init() VideoProcessor {
 // Removes a Vision request from the video processor’s request queue. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvideoprocessor/3548387-removerequest?language=objc
-func (v_ VideoProcessor) RemoveRequestError(request IRequest, error foundation.IError) bool {
-	rv := objc.Call[bool](v_, objc.Sel("removeRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (v_ VideoProcessor) RemoveRequestError(request IRequest, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](v_, objc.Sel("removeRequest:error:"), request, error)
 	return rv
 }
 
 // Adds a request with processing options to the video processor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvideoprocessor/3675677-addrequest?language=objc
-func (v_ VideoProcessor) AddRequestProcessingOptionsError(request IRequest, processingOptions IVideoProcessorRequestProcessingOptions, error foundation.IError) bool {
-	rv := objc.Call[bool](v_, objc.Sel("addRequest:processingOptions:error:"), objc.Ptr(request), objc.Ptr(processingOptions), objc.Ptr(error))
+func (v_ VideoProcessor) AddRequestProcessingOptionsError(request IRequest, processingOptions IVideoProcessorRequestProcessingOptions, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](v_, objc.Sel("addRequest:processingOptions:error:"), request, processingOptions, error)
 	return rv
 }
 
 // Analyzes a time range of video content. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnvideoprocessor/3675678-analyzetimerange?language=objc
-func (v_ VideoProcessor) AnalyzeTimeRangeError(timeRange coremedia.TimeRange, error foundation.IError) bool {
-	rv := objc.Call[bool](v_, objc.Sel("analyzeTimeRange:error:"), timeRange, objc.Ptr(error))
+func (v_ VideoProcessor) AnalyzeTimeRangeError(timeRange coremedia.TimeRange, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](v_, objc.Sel("analyzeTimeRange:error:"), timeRange, error)
 	return rv
 }
 

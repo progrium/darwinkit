@@ -6,7 +6,6 @@ import (
 	"unsafe"
 
 	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -21,8 +20,8 @@ type _ExtensionProviderClass struct {
 type IExtensionProvider interface {
 	objc.IObject
 	NotifyPropertiesChanged(propertyStates map[ExtensionProperty]IExtensionPropertyState)
-	AddDeviceError(device IExtensionDevice, outError foundation.IError) bool
-	RemoveDeviceError(device IExtensionDevice, outError foundation.IError) bool
+	AddDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool
+	RemoveDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool
 	Source() ExtensionProviderSourceObject
 	Devices() []ExtensionDevice
 	ClientQueue() dispatch.Queue
@@ -100,8 +99,8 @@ func (e_ ExtensionProvider) NotifyPropertiesChanged(propertyStates map[Extension
 // Adds a device to a provider. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915906-adddevice?language=objc
-func (e_ ExtensionProvider) AddDeviceError(device IExtensionDevice, outError foundation.IError) bool {
-	rv := objc.Call[bool](e_, objc.Sel("addDevice:error:"), objc.Ptr(device), objc.Ptr(outError))
+func (e_ ExtensionProvider) AddDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("addDevice:error:"), device, outError)
 	return rv
 }
 
@@ -109,7 +108,7 @@ func (e_ ExtensionProvider) AddDeviceError(device IExtensionDevice, outError fou
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915915-startservicewithprovider?language=objc
 func (ec _ExtensionProviderClass) StartServiceWithProvider(provider IExtensionProvider) {
-	objc.Call[objc.Void](ec, objc.Sel("startServiceWithProvider:"), objc.Ptr(provider))
+	objc.Call[objc.Void](ec, objc.Sel("startServiceWithProvider:"), provider)
 }
 
 // Starts the system extension. [Full Topic]
@@ -122,8 +121,8 @@ func ExtensionProvider_StartServiceWithProvider(provider IExtensionProvider) {
 // Removes a device from a provider. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionprovider/3915913-removedevice?language=objc
-func (e_ ExtensionProvider) RemoveDeviceError(device IExtensionDevice, outError foundation.IError) bool {
-	rv := objc.Call[bool](e_, objc.Sel("removeDevice:error:"), objc.Ptr(device), objc.Ptr(outError))
+func (e_ ExtensionProvider) RemoveDeviceError(device IExtensionDevice, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("removeDevice:error:"), device, outError)
 	return rv
 }
 

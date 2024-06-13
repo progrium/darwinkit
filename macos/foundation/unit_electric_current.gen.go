@@ -54,7 +54,7 @@ func (u_ UnitElectricCurrent) Init() UnitElectricCurrent {
 }
 
 func (u_ UnitElectricCurrent) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricCurrent {
-	rv := objc.Call[UnitElectricCurrent](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitElectricCurrent](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

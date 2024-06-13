@@ -43,7 +43,7 @@ func (c_ ColorAbsoluteDifferenceObject) HasSetInputImage2() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorabsolutedifference/3547105-inputimage2?language=objc
 func (c_ ColorAbsoluteDifferenceObject) SetInputImage2(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage2:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage2:"), value)
 }
 
 func (c_ ColorAbsoluteDifferenceObject) HasInputImage2() bool {
@@ -66,7 +66,7 @@ func (c_ ColorAbsoluteDifferenceObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorabsolutedifference/3547104-inputimage?language=objc
 func (c_ ColorAbsoluteDifferenceObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorAbsoluteDifferenceObject) HasInputImage() bool {

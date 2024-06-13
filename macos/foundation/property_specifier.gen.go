@@ -54,7 +54,7 @@ func (p_ PropertySpecifier) Init() PropertySpecifier {
 }
 
 func (p_ PropertySpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) PropertySpecifier {
-	rv := objc.Call[PropertySpecifier](p_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[PropertySpecifier](p_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewPropertySpecifierWithContainerClassDescriptionContainerSpecifierKey(clas
 }
 
 func (p_ PropertySpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) PropertySpecifier {
-	rv := objc.Call[PropertySpecifier](p_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[PropertySpecifier](p_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

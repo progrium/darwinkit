@@ -53,7 +53,7 @@ func SharingServiceFrom(ptr unsafe.Pointer) SharingService {
 }
 
 func (s_ SharingService) InitWithTitleImageAlternateImageHandler(title string, image IImage, alternateImage IImage, block func()) SharingService {
-	rv := objc.Call[SharingService](s_, objc.Sel("initWithTitle:image:alternateImage:handler:"), title, objc.Ptr(image), objc.Ptr(alternateImage), block)
+	rv := objc.Call[SharingService](s_, objc.Sel("initWithTitle:image:alternateImage:handler:"), title, image, alternateImage, block)
 	return rv
 }
 
@@ -230,7 +230,7 @@ func (s_ SharingService) SetDelegate(value PSharingServiceDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservice/1402681-delegate?language=objc
 func (s_ SharingService) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The message body as a string. [Full Topic]

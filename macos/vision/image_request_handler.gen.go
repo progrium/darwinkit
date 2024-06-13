@@ -24,7 +24,7 @@ type _ImageRequestHandlerClass struct {
 // An interface definition for the [ImageRequestHandler] class.
 type IImageRequestHandler interface {
 	objc.IObject
-	PerformRequestsError(requests []IRequest, error foundation.IError) bool
+	PerformRequestsError(requests []IRequest, error unsafe.Pointer) bool
 }
 
 // An object that processes one or more image analysis requests pertaining to a single image. [Full Topic]
@@ -83,7 +83,7 @@ func NewImageRequestHandlerWithDataOptions(imageData []byte, options map[ImageOp
 }
 
 func (i_ ImageRequestHandler) InitWithURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithURL:orientation:options:"), objc.Ptr(imageURL), orientation, options)
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithURL:orientation:options:"), imageURL, orientation, options)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func NewImageRequestHandlerWithURLOrientationOptions(imageURL foundation.IURL, o
 }
 
 func (i_ ImageRequestHandler) InitWithCIImageOptions(image coreimage.IImage, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:options:"), objc.Ptr(image), options)
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:options:"), image, options)
 	return rv
 }
 
@@ -139,7 +139,7 @@ func NewImageRequestHandlerWithCVPixelBufferOrientationOptions(pixelBuffer corev
 }
 
 func (i_ ImageRequestHandler) InitWithURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithURL:options:"), objc.Ptr(imageURL), options)
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithURL:options:"), imageURL, options)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func NewImageRequestHandlerWithCMSampleBufferOptions(sampleBuffer coremedia.Samp
 }
 
 func (i_ ImageRequestHandler) InitWithCIImageOrientationOptions(image coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRequestHandler {
-	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:orientation:options:"), objc.Ptr(image), orientation, options)
+	rv := objc.Call[ImageRequestHandler](i_, objc.Sel("initWithCIImage:orientation:options:"), image, orientation, options)
 	return rv
 }
 
@@ -231,7 +231,7 @@ func (i_ ImageRequestHandler) Init() ImageRequestHandler {
 // Schedules Vision requests to perform. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnimagerequesthandler/2880297-performrequests?language=objc
-func (i_ ImageRequestHandler) PerformRequestsError(requests []IRequest, error foundation.IError) bool {
-	rv := objc.Call[bool](i_, objc.Sel("performRequests:error:"), requests, objc.Ptr(error))
+func (i_ ImageRequestHandler) PerformRequestsError(requests []IRequest, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](i_, objc.Sel("performRequests:error:"), requests, error)
 	return rv
 }

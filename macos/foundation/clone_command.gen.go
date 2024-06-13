@@ -55,7 +55,7 @@ func (c_ CloneCommand) Init() CloneCommand {
 }
 
 func (c_ CloneCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloneCommand {
-	rv := objc.Call[CloneCommand](c_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[CloneCommand](c_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

@@ -187,7 +187,7 @@ func (u_ UIDelegateObject) HasWebViewRunJavaScriptAlertPanelWithMessageInitiated
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1537406-webview?language=objc
 func (u_ UIDelegateObject) WebViewRunJavaScriptAlertPanelWithMessageInitiatedByFrameCompletionHandler(webView WebView, message string, frame FrameInfo, completionHandler func()) {
-	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:completionHandler:"), objc.Ptr(webView), message, objc.Ptr(frame), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:completionHandler:"), webView, message, frame, completionHandler)
 }
 
 func (u_ UIDelegateObject) HasWebViewCreateWebViewWithConfigurationForNavigationActionWindowFeatures() bool {
@@ -198,7 +198,7 @@ func (u_ UIDelegateObject) HasWebViewCreateWebViewWithConfigurationForNavigation
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1536907-webview?language=objc
 func (u_ UIDelegateObject) WebViewCreateWebViewWithConfigurationForNavigationActionWindowFeatures(webView WebView, configuration WebViewConfiguration, navigationAction NavigationAction, windowFeatures WindowFeatures) WebView {
-	rv := objc.Call[WebView](u_, objc.Sel("webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:"), objc.Ptr(webView), objc.Ptr(configuration), objc.Ptr(navigationAction), objc.Ptr(windowFeatures))
+	rv := objc.Call[WebView](u_, objc.Sel("webView:createWebViewWithConfiguration:forNavigationAction:windowFeatures:"), webView, configuration, navigationAction, windowFeatures)
 	return rv
 }
 
@@ -210,7 +210,7 @@ func (u_ UIDelegateObject) HasWebViewRunJavaScriptConfirmPanelWithMessageInitiat
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1536489-webview?language=objc
 func (u_ UIDelegateObject) WebViewRunJavaScriptConfirmPanelWithMessageInitiatedByFrameCompletionHandler(webView WebView, message string, frame FrameInfo, completionHandler func(result bool)) {
-	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:"), objc.Ptr(webView), message, objc.Ptr(frame), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptConfirmPanelWithMessage:initiatedByFrame:completionHandler:"), webView, message, frame, completionHandler)
 }
 
 func (u_ UIDelegateObject) HasWebViewRunOpenPanelWithParametersInitiatedByFrameCompletionHandler() bool {
@@ -221,7 +221,7 @@ func (u_ UIDelegateObject) HasWebViewRunOpenPanelWithParametersInitiatedByFrameC
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1641952-webview?language=objc
 func (u_ UIDelegateObject) WebViewRunOpenPanelWithParametersInitiatedByFrameCompletionHandler(webView WebView, parameters OpenPanelParameters, frame FrameInfo, completionHandler func(URLs []foundation.URL)) {
-	objc.Call[objc.Void](u_, objc.Sel("webView:runOpenPanelWithParameters:initiatedByFrame:completionHandler:"), objc.Ptr(webView), objc.Ptr(parameters), objc.Ptr(frame), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("webView:runOpenPanelWithParameters:initiatedByFrame:completionHandler:"), webView, parameters, frame, completionHandler)
 }
 
 func (u_ UIDelegateObject) HasWebViewRequestMediaCapturePermissionForOriginInitiatedByFrameTypeDecisionHandler() bool {
@@ -232,7 +232,7 @@ func (u_ UIDelegateObject) HasWebViewRequestMediaCapturePermissionForOriginIniti
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/3763087-webview?language=objc
 func (u_ UIDelegateObject) WebViewRequestMediaCapturePermissionForOriginInitiatedByFrameTypeDecisionHandler(webView WebView, origin SecurityOrigin, frame FrameInfo, type_ MediaCaptureType, decisionHandler func(decision PermissionDecision)) {
-	objc.Call[objc.Void](u_, objc.Sel("webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:"), objc.Ptr(webView), objc.Ptr(origin), objc.Ptr(frame), type_, decisionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("webView:requestMediaCapturePermissionForOrigin:initiatedByFrame:type:decisionHandler:"), webView, origin, frame, type_, decisionHandler)
 }
 
 func (u_ UIDelegateObject) HasWebViewDidClose() bool {
@@ -243,7 +243,7 @@ func (u_ UIDelegateObject) HasWebViewDidClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1537390-webviewdidclose?language=objc
 func (u_ UIDelegateObject) WebViewDidClose(webView WebView) {
-	objc.Call[objc.Void](u_, objc.Sel("webViewDidClose:"), objc.Ptr(webView))
+	objc.Call[objc.Void](u_, objc.Sel("webViewDidClose:"), webView)
 }
 
 func (u_ UIDelegateObject) HasWebViewRunJavaScriptTextInputPanelWithPromptDefaultTextInitiatedByFrameCompletionHandler() bool {
@@ -254,5 +254,5 @@ func (u_ UIDelegateObject) HasWebViewRunJavaScriptTextInputPanelWithPromptDefaul
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkuidelegate/1538086-webview?language=objc
 func (u_ UIDelegateObject) WebViewRunJavaScriptTextInputPanelWithPromptDefaultTextInitiatedByFrameCompletionHandler(webView WebView, prompt string, defaultText string, frame FrameInfo, completionHandler func(result string)) {
-	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:completionHandler:"), objc.Ptr(webView), prompt, defaultText, objc.Ptr(frame), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:completionHandler:"), webView, prompt, defaultText, frame, completionHandler)
 }

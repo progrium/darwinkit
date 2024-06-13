@@ -19,14 +19,14 @@ type _IncrementalStoreClass struct {
 // An interface definition for the [IncrementalStore] class.
 type IIncrementalStore interface {
 	IPersistentStore
-	ObtainPermanentIDsForObjectsError(array []IManagedObject, error foundation.IError) []ManagedObjectID
+	ObtainPermanentIDsForObjectsError(array []IManagedObject, error unsafe.Pointer) []ManagedObjectID
 	ManagedObjectContextDidRegisterObjectsWithIDs(objectIDs []IManagedObjectID)
 	ReferenceObjectForObjectID(objectID IManagedObjectID) objc.Object
 	ManagedObjectContextDidUnregisterObjectsWithIDs(objectIDs []IManagedObjectID)
 	NewObjectIDForEntityReferenceObject(entity IEntityDescription, data objc.IObject) ManagedObjectID
-	NewValuesForObjectWithIDWithContextError(objectID IManagedObjectID, context IManagedObjectContext, error foundation.IError) IncrementalStoreNode
-	NewValueForRelationshipForObjectWithIDWithContextError(relationship IRelationshipDescription, objectID IManagedObjectID, context IManagedObjectContext, error foundation.IError) objc.Object
-	ExecuteRequestWithContextError(request IPersistentStoreRequest, context IManagedObjectContext, error foundation.IError) objc.Object
+	NewValuesForObjectWithIDWithContextError(objectID IManagedObjectID, context IManagedObjectContext, error unsafe.Pointer) IncrementalStoreNode
+	NewValueForRelationshipForObjectWithIDWithContextError(relationship IRelationshipDescription, objectID IManagedObjectID, context IManagedObjectContext, error unsafe.Pointer) objc.Object
+	ExecuteRequestWithContextError(request IPersistentStoreRequest, context IManagedObjectContext, error unsafe.Pointer) objc.Object
 }
 
 // An abstract superclass defining the API through which Core Data communicates with a store. [Full Topic]
@@ -63,7 +63,7 @@ func (i_ IncrementalStore) Init() IncrementalStore {
 }
 
 func (i_ IncrementalStore) InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(root IPersistentStoreCoordinator, name string, url foundation.IURL, options foundation.Dictionary) IncrementalStore {
-	rv := objc.Call[IncrementalStore](i_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), objc.Ptr(root), name, objc.Ptr(url), options)
+	rv := objc.Call[IncrementalStore](i_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), root, name, url, options)
 	return rv
 }
 
@@ -79,8 +79,8 @@ func NewIncrementalStoreWithPersistentStoreCoordinatorConfigurationNameURLOption
 // Returns an array containing the object IDs for a given array of newly-inserted objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506348-obtainpermanentidsforobjects?language=objc
-func (i_ IncrementalStore) ObtainPermanentIDsForObjectsError(array []IManagedObject, error foundation.IError) []ManagedObjectID {
-	rv := objc.Call[[]ManagedObjectID](i_, objc.Sel("obtainPermanentIDsForObjects:error:"), array, objc.Ptr(error))
+func (i_ IncrementalStore) ObtainPermanentIDsForObjectsError(array []IManagedObject, error unsafe.Pointer) []ManagedObjectID {
+	rv := objc.Call[[]ManagedObjectID](i_, objc.Sel("obtainPermanentIDsForObjects:error:"), array, error)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (i_ IncrementalStore) ManagedObjectContextDidRegisterObjectsWithIDs(objectI
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506828-referenceobjectforobjectid?language=objc
 func (i_ IncrementalStore) ReferenceObjectForObjectID(objectID IManagedObjectID) objc.Object {
-	rv := objc.Call[objc.Object](i_, objc.Sel("referenceObjectForObjectID:"), objc.Ptr(objectID))
+	rv := objc.Call[objc.Object](i_, objc.Sel("referenceObjectForObjectID:"), objectID)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (i_ IncrementalStore) ReferenceObjectForObjectID(objectID IManagedObjectID)
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506781-identifierfornewstoreaturl?language=objc
 func (ic _IncrementalStoreClass) IdentifierForNewStoreAtURL(storeURL foundation.IURL) objc.Object {
-	rv := objc.Call[objc.Object](ic, objc.Sel("identifierForNewStoreAtURL:"), objc.Ptr(storeURL))
+	rv := objc.Call[objc.Object](ic, objc.Sel("identifierForNewStoreAtURL:"), storeURL)
 	return rv
 }
 
@@ -125,30 +125,30 @@ func (i_ IncrementalStore) ManagedObjectContextDidUnregisterObjectsWithIDs(objec
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506666-newobjectidforentity?language=objc
 func (i_ IncrementalStore) NewObjectIDForEntityReferenceObject(entity IEntityDescription, data objc.IObject) ManagedObjectID {
-	rv := objc.Call[ManagedObjectID](i_, objc.Sel("newObjectIDForEntity:referenceObject:"), objc.Ptr(entity), data)
+	rv := objc.Call[ManagedObjectID](i_, objc.Sel("newObjectIDForEntity:referenceObject:"), entity, data)
 	return rv
 }
 
 // Returns an incremental store node encapsulating the persistent external values of the object with a given object ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506729-newvaluesforobjectwithid?language=objc
-func (i_ IncrementalStore) NewValuesForObjectWithIDWithContextError(objectID IManagedObjectID, context IManagedObjectContext, error foundation.IError) IncrementalStoreNode {
-	rv := objc.Call[IncrementalStoreNode](i_, objc.Sel("newValuesForObjectWithID:withContext:error:"), objc.Ptr(objectID), objc.Ptr(context), objc.Ptr(error))
+func (i_ IncrementalStore) NewValuesForObjectWithIDWithContextError(objectID IManagedObjectID, context IManagedObjectContext, error unsafe.Pointer) IncrementalStoreNode {
+	rv := objc.Call[IncrementalStoreNode](i_, objc.Sel("newValuesForObjectWithID:withContext:error:"), objectID, context, error)
 	return rv
 }
 
 // Returns the relationship for the given relationship of the object with a given object ID. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506438-newvalueforrelationship?language=objc
-func (i_ IncrementalStore) NewValueForRelationshipForObjectWithIDWithContextError(relationship IRelationshipDescription, objectID IManagedObjectID, context IManagedObjectContext, error foundation.IError) objc.Object {
-	rv := objc.Call[objc.Object](i_, objc.Sel("newValueForRelationship:forObjectWithID:withContext:error:"), objc.Ptr(relationship), objc.Ptr(objectID), objc.Ptr(context), objc.Ptr(error))
+func (i_ IncrementalStore) NewValueForRelationshipForObjectWithIDWithContextError(relationship IRelationshipDescription, objectID IManagedObjectID, context IManagedObjectContext, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](i_, objc.Sel("newValueForRelationship:forObjectWithID:withContext:error:"), relationship, objectID, context, error)
 	return rv
 }
 
 // Returns a value as appropriate for the given request, or nil if the request cannot be completed. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsincrementalstore/1506653-executerequest?language=objc
-func (i_ IncrementalStore) ExecuteRequestWithContextError(request IPersistentStoreRequest, context IManagedObjectContext, error foundation.IError) objc.Object {
-	rv := objc.Call[objc.Object](i_, objc.Sel("executeRequest:withContext:error:"), objc.Ptr(request), objc.Ptr(context), objc.Ptr(error))
+func (i_ IncrementalStore) ExecuteRequestWithContextError(request IPersistentStoreRequest, context IManagedObjectContext, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](i_, objc.Sel("executeRequest:withContext:error:"), request, context, error)
 	return rv
 }

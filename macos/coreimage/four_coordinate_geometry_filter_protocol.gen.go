@@ -91,7 +91,7 @@ func (f_ FourCoordinateGeometryFilterObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourcoordinategeometryfilter/3338733-inputimage?language=objc
 func (f_ FourCoordinateGeometryFilterObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), value)
 }
 
 func (f_ FourCoordinateGeometryFilterObject) HasInputImage() bool {

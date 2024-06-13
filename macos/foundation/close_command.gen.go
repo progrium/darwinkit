@@ -55,7 +55,7 @@ func (c_ CloseCommand) Init() CloseCommand {
 }
 
 func (c_ CloseCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) CloseCommand {
-	rv := objc.Call[CloseCommand](c_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[CloseCommand](c_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

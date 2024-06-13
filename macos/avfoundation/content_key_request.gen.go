@@ -20,7 +20,7 @@ type _ContentKeyRequestClass struct {
 type IContentKeyRequest interface {
 	objc.IObject
 	ProcessContentKeyResponse(keyResponse IContentKeyResponse)
-	RespondByRequestingPersistableContentKeyRequestAndReturnError(outError foundation.IError) bool
+	RespondByRequestingPersistableContentKeyRequestAndReturnError(outError unsafe.Pointer) bool
 	MakeStreamingContentKeyRequestDataForAppContentIdentifierOptionsCompletionHandler(appIdentifier []byte, contentIdentifier []byte, options map[string]objc.IObject, handler func(contentKeyRequestData []byte, error foundation.Error))
 	ProcessContentKeyResponseError(error foundation.IError)
 	Identifier() objc.Object
@@ -71,14 +71,14 @@ func (c_ ContentKeyRequest) Init() ContentKeyRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799165-processcontentkeyresponse?language=objc
 func (c_ ContentKeyRequest) ProcessContentKeyResponse(keyResponse IContentKeyResponse) {
-	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponse:"), objc.Ptr(keyResponse))
+	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponse:"), keyResponse)
 }
 
 // Tells the receiver that the app requires a persistable content key request object for processing. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2936887-respondbyrequestingpersistableco?language=objc
-func (c_ ContentKeyRequest) RespondByRequestingPersistableContentKeyRequestAndReturnError(outError foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("respondByRequestingPersistableContentKeyRequestAndReturnError:"), objc.Ptr(outError))
+func (c_ ContentKeyRequest) RespondByRequestingPersistableContentKeyRequestAndReturnError(outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("respondByRequestingPersistableContentKeyRequestAndReturnError:"), outError)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (c_ ContentKeyRequest) MakeStreamingContentKeyRequestDataForAppContentIdent
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrequest/2799159-processcontentkeyresponseerror?language=objc
 func (c_ ContentKeyRequest) ProcessContentKeyResponseError(error foundation.IError) {
-	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponseError:"), objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("processContentKeyResponseError:"), error)
 }
 
 // The identifier for the content key. [Full Topic]

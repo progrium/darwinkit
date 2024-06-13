@@ -48,7 +48,7 @@ func (d_ DraggingSourceObject) HasDraggingSessionEndedAtPointOperation() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1416017-draggingsession?language=objc
 func (d_ DraggingSourceObject) DraggingSessionEndedAtPointOperation(session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.Call[objc.Void](d_, objc.Sel("draggingSession:endedAtPoint:operation:"), objc.Ptr(session), screenPoint, operation)
+	objc.Call[objc.Void](d_, objc.Sel("draggingSession:endedAtPoint:operation:"), session, screenPoint, operation)
 }
 
 func (d_ DraggingSourceObject) HasDraggingSessionWillBeginAtPoint() bool {
@@ -59,7 +59,7 @@ func (d_ DraggingSourceObject) HasDraggingSessionWillBeginAtPoint() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1415960-draggingsession?language=objc
 func (d_ DraggingSourceObject) DraggingSessionWillBeginAtPoint(session DraggingSession, screenPoint foundation.Point) {
-	objc.Call[objc.Void](d_, objc.Sel("draggingSession:willBeginAtPoint:"), objc.Ptr(session), screenPoint)
+	objc.Call[objc.Void](d_, objc.Sel("draggingSession:willBeginAtPoint:"), session, screenPoint)
 }
 
 func (d_ DraggingSourceObject) HasDraggingSessionMovedToPoint() bool {
@@ -70,7 +70,7 @@ func (d_ DraggingSourceObject) HasDraggingSessionMovedToPoint() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1416079-draggingsession?language=objc
 func (d_ DraggingSourceObject) DraggingSessionMovedToPoint(session DraggingSession, screenPoint foundation.Point) {
-	objc.Call[objc.Void](d_, objc.Sel("draggingSession:movedToPoint:"), objc.Ptr(session), screenPoint)
+	objc.Call[objc.Void](d_, objc.Sel("draggingSession:movedToPoint:"), session, screenPoint)
 }
 
 func (d_ DraggingSourceObject) HasDraggingSessionSourceOperationMaskForDraggingContext() bool {
@@ -81,7 +81,7 @@ func (d_ DraggingSourceObject) HasDraggingSessionSourceOperationMaskForDraggingC
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1416000-draggingsession?language=objc
 func (d_ DraggingSourceObject) DraggingSessionSourceOperationMaskForDraggingContext(session DraggingSession, context DraggingContext) DragOperation {
-	rv := objc.Call[DragOperation](d_, objc.Sel("draggingSession:sourceOperationMaskForDraggingContext:"), objc.Ptr(session), context)
+	rv := objc.Call[DragOperation](d_, objc.Sel("draggingSession:sourceOperationMaskForDraggingContext:"), session, context)
 	return rv
 }
 
@@ -93,6 +93,6 @@ func (d_ DraggingSourceObject) HasIgnoreModifierKeysForDraggingSession() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdraggingsource/1415974-ignoremodifierkeysfordraggingses?language=objc
 func (d_ DraggingSourceObject) IgnoreModifierKeysForDraggingSession(session DraggingSession) bool {
-	rv := objc.Call[bool](d_, objc.Sel("ignoreModifierKeysForDraggingSession:"), objc.Ptr(session))
+	rv := objc.Call[bool](d_, objc.Sel("ignoreModifierKeysForDraggingSession:"), session)
 	return rv
 }

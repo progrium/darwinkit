@@ -18,8 +18,8 @@ type _ClassificationObservationClass struct {
 // An interface definition for the [ClassificationObservation] class.
 type IClassificationObservation interface {
 	IObservation
-	HasMinimumRecallForPrecision(minimumRecall float64, precision float64) bool
-	HasMinimumPrecisionForRecall(minimumPrecision float64, recall float64) bool
+	HasMinimumRecallForPrecision(minimumRecall float32, precision float32) bool
+	HasMinimumPrecisionForRecall(minimumPrecision float32, recall float32) bool
 	Identifier() string
 	HasPrecisionRecallCurve() bool
 }
@@ -60,7 +60,7 @@ func (c_ ClassificationObservation) Init() ClassificationObservation {
 // Determines whether the observation for a specific precision has a minimum recall value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnclassificationobservation/3152625-hasminimumrecall?language=objc
-func (c_ ClassificationObservation) HasMinimumRecallForPrecision(minimumRecall float64, precision float64) bool {
+func (c_ ClassificationObservation) HasMinimumRecallForPrecision(minimumRecall float32, precision float32) bool {
 	rv := objc.Call[bool](c_, objc.Sel("hasMinimumRecall:forPrecision:"), minimumRecall, precision)
 	return rv
 }
@@ -68,7 +68,7 @@ func (c_ ClassificationObservation) HasMinimumRecallForPrecision(minimumRecall f
 // Determines whether the observation for a specific recall has a minimum precision value. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnclassificationobservation/3152624-hasminimumprecision?language=objc
-func (c_ ClassificationObservation) HasMinimumPrecisionForRecall(minimumPrecision float64, recall float64) bool {
+func (c_ ClassificationObservation) HasMinimumPrecisionForRecall(minimumPrecision float32, recall float32) bool {
 	rv := objc.Call[bool](c_, objc.Sel("hasMinimumPrecision:forRecall:"), minimumPrecision, recall)
 	return rv
 }

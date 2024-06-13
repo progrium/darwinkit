@@ -75,7 +75,7 @@ func (c_ ColorMatrixObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228165-inputimage?language=objc
 func (c_ ColorMatrixObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorMatrixObject) HasInputImage() bool {
@@ -98,7 +98,7 @@ func (c_ ColorMatrixObject) HasSetBiasVector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228164-biasvector?language=objc
 func (c_ ColorMatrixObject) SetBiasVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setBiasVector:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBiasVector:"), value)
 }
 
 func (c_ ColorMatrixObject) HasBiasVector() bool {
@@ -121,7 +121,7 @@ func (c_ ColorMatrixObject) HasSetBVector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228161-bvector?language=objc
 func (c_ ColorMatrixObject) SetBVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setBVector:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setBVector:"), value)
 }
 
 func (c_ ColorMatrixObject) HasBVector() bool {
@@ -144,7 +144,7 @@ func (c_ ColorMatrixObject) HasSetRVector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228163-rvector?language=objc
 func (c_ ColorMatrixObject) SetRVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setRVector:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setRVector:"), value)
 }
 
 func (c_ ColorMatrixObject) HasRVector() bool {
@@ -167,7 +167,7 @@ func (c_ ColorMatrixObject) HasSetGVector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228162-gvector?language=objc
 func (c_ ColorMatrixObject) SetGVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setGVector:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setGVector:"), value)
 }
 
 func (c_ ColorMatrixObject) HasGVector() bool {
@@ -190,7 +190,7 @@ func (c_ ColorMatrixObject) HasSetAVector() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormatrix/3228160-avector?language=objc
 func (c_ ColorMatrixObject) SetAVector(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setAVector:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setAVector:"), value)
 }
 
 func (c_ ColorMatrixObject) HasAVector() bool {

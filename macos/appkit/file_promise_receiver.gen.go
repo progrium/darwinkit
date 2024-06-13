@@ -61,7 +61,7 @@ func (f_ FilePromiseReceiver) Init() FilePromiseReceiver {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromisereceiver/1642138-receivepromisedfilesatdestinatio?language=objc
 func (f_ FilePromiseReceiver) ReceivePromisedFilesAtDestinationOptionsOperationQueueReader(destinationDir foundation.IURL, options foundation.Dictionary, operationQueue foundation.IOperationQueue, reader func(fileURL foundation.URL, errorOrNil foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("receivePromisedFilesAtDestination:options:operationQueue:reader:"), objc.Ptr(destinationDir), options, objc.Ptr(operationQueue), reader)
+	objc.Call[objc.Void](f_, objc.Sel("receivePromisedFilesAtDestination:options:operationQueue:reader:"), destinationDir, options, operationQueue, reader)
 }
 
 // An array containing dragged file types that are readable. [Full Topic]

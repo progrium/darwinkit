@@ -36,7 +36,7 @@ func AssetFrom(ptr unsafe.Pointer) Asset {
 }
 
 func (a_ Asset) InitWithFileURL(fileURL foundation.IURL) Asset {
-	rv := objc.Call[Asset](a_, objc.Sel("initWithFileURL:"), objc.Ptr(fileURL))
+	rv := objc.Call[Asset](a_, objc.Sel("initWithFileURL:"), fileURL)
 	return rv
 }
 

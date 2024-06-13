@@ -70,7 +70,7 @@ func (p_ PageController) Init() PageController {
 }
 
 func (p_ PageController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) PageController {
-	rv := objc.Call[PageController](p_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[PageController](p_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -195,5 +195,5 @@ func (p_ PageController) SetDelegate(value PPageControllerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspagecontroller/1435019-delegate?language=objc
 func (p_ PageController) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:"), valueObject)
 }

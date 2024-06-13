@@ -55,7 +55,7 @@ func (m_ MoveCommand) Init() MoveCommand {
 }
 
 func (m_ MoveCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) MoveCommand {
-	rv := objc.Call[MoveCommand](m_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[MoveCommand](m_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 

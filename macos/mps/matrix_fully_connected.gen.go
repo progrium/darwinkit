@@ -19,10 +19,10 @@ type _MatrixFullyConnectedClass struct {
 // An interface definition for the [MatrixFullyConnected] class.
 type IMatrixFullyConnected interface {
 	IMatrixBinaryKernel
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64)
-	NeuronParameterC() float64
-	NeuronParameterB() float64
-	NeuronParameterA() float64
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterC() float32
+	NeuronParameterB() float32
+	NeuronParameterA() float32
 	NeuronType() CNNNeuronType
 	EncodeToCommandBufferInputMatrixWeightMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixWeightMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
@@ -102,31 +102,31 @@ func (m_ MatrixFullyConnected) Init() MatrixFullyConnected {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935593-setneurontype?language=objc
-func (m_ MatrixFullyConnected) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64) {
+func (m_ MatrixFullyConnected) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935594-neuronparameterc?language=objc
-func (m_ MatrixFullyConnected) NeuronParameterC() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterC"))
+func (m_ MatrixFullyConnected) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935591-neuronparameterb?language=objc
-func (m_ MatrixFullyConnected) NeuronParameterB() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterB"))
+func (m_ MatrixFullyConnected) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935602-neuronparametera?language=objc
-func (m_ MatrixFullyConnected) NeuronParameterA() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterA"))
+func (m_ MatrixFullyConnected) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
 	return rv
 }
 
@@ -143,14 +143,14 @@ func (m_ MatrixFullyConnected) NeuronType() CNNNeuronType {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935596-encodetocommandbuffer?language=objc
 func (m_ MatrixFullyConnected) EncodeToCommandBufferInputMatrixWeightMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:weightMatrix:biasVector:resultMatrix:"), po0, objc.Ptr(inputMatrix), objc.Ptr(weightMatrix), objc.Ptr(biasVector), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:weightMatrix:biasVector:resultMatrix:"), po0, inputMatrix, weightMatrix, biasVector, resultMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfullyconnected/2935596-encodetocommandbuffer?language=objc
 func (m_ MatrixFullyConnected) EncodeToCommandBufferObjectInputMatrixWeightMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, weightMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:weightMatrix:biasVector:resultMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputMatrix), objc.Ptr(weightMatrix), objc.Ptr(biasVector), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:weightMatrix:biasVector:resultMatrix:"), commandBufferObject, inputMatrix, weightMatrix, biasVector, resultMatrix)
 }
 
 //	[Full Topic]

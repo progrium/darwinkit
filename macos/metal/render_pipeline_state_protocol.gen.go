@@ -3,7 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -24,7 +25,7 @@ type PRenderPipelineState interface {
 	HasNewIntersectionFunctionTableWithDescriptorStage() bool
 
 	// optional
-	NewRenderPipelineStateWithAdditionalBinaryFunctionsError(additionalBinaryFunctions RenderPipelineFunctionsDescriptor, error foundation.Error) RenderPipelineStateObject
+	NewRenderPipelineStateWithAdditionalBinaryFunctionsError(additionalBinaryFunctions RenderPipelineFunctionsDescriptor, error unsafe.Pointer) RenderPipelineStateObject
 	HasNewRenderPipelineStateWithAdditionalBinaryFunctionsError() bool
 
 	// optional
@@ -97,7 +98,7 @@ func (r_ RenderPipelineStateObject) HasNewIntersectionFunctionTableWithDescripto
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/3750582-newintersectionfunctiontablewith?language=objc
 func (r_ RenderPipelineStateObject) NewIntersectionFunctionTableWithDescriptorStage(descriptor IntersectionFunctionTableDescriptor, stage RenderStages) IntersectionFunctionTableObject {
-	rv := objc.Call[IntersectionFunctionTableObject](r_, objc.Sel("newIntersectionFunctionTableWithDescriptor:stage:"), objc.Ptr(descriptor), stage)
+	rv := objc.Call[IntersectionFunctionTableObject](r_, objc.Sel("newIntersectionFunctionTableWithDescriptor:stage:"), descriptor, stage)
 	return rv
 }
 
@@ -108,8 +109,8 @@ func (r_ RenderPipelineStateObject) HasNewRenderPipelineStateWithAdditionalBinar
 // Creates a new pipeline state that’s a copy of the current pipeline state with additional shaders. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/3750583-newrenderpipelinestatewithadditi?language=objc
-func (r_ RenderPipelineStateObject) NewRenderPipelineStateWithAdditionalBinaryFunctionsError(additionalBinaryFunctions RenderPipelineFunctionsDescriptor, error foundation.Error) RenderPipelineStateObject {
-	rv := objc.Call[RenderPipelineStateObject](r_, objc.Sel("newRenderPipelineStateWithAdditionalBinaryFunctions:error:"), objc.Ptr(additionalBinaryFunctions), objc.Ptr(error))
+func (r_ RenderPipelineStateObject) NewRenderPipelineStateWithAdditionalBinaryFunctionsError(additionalBinaryFunctions RenderPipelineFunctionsDescriptor, error unsafe.Pointer) RenderPipelineStateObject {
+	rv := objc.Call[RenderPipelineStateObject](r_, objc.Sel("newRenderPipelineStateWithAdditionalBinaryFunctions:error:"), additionalBinaryFunctions, error)
 	return rv
 }
 
@@ -121,7 +122,7 @@ func (r_ RenderPipelineStateObject) HasNewVisibleFunctionTableWithDescriptorStag
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinestate/3750584-newvisiblefunctiontablewithdescr?language=objc
 func (r_ RenderPipelineStateObject) NewVisibleFunctionTableWithDescriptorStage(descriptor VisibleFunctionTableDescriptor, stage RenderStages) VisibleFunctionTableObject {
-	rv := objc.Call[VisibleFunctionTableObject](r_, objc.Sel("newVisibleFunctionTableWithDescriptor:stage:"), objc.Ptr(descriptor), stage)
+	rv := objc.Call[VisibleFunctionTableObject](r_, objc.Sel("newVisibleFunctionTableWithDescriptor:stage:"), descriptor, stage)
 	return rv
 }
 

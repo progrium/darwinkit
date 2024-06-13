@@ -48,7 +48,7 @@ func URLCacheFrom(ptr unsafe.Pointer) URLCache {
 }
 
 func (u_ URLCache) InitWithMemoryCapacityDiskCapacityDirectoryURL(memoryCapacity uint, diskCapacity uint, directoryURL IURL) URLCache {
-	rv := objc.Call[URLCache](u_, objc.Sel("initWithMemoryCapacity:diskCapacity:directoryURL:"), memoryCapacity, diskCapacity, objc.Ptr(directoryURL))
+	rv := objc.Call[URLCache](u_, objc.Sel("initWithMemoryCapacity:diskCapacity:directoryURL:"), memoryCapacity, diskCapacity, directoryURL)
 	return rv
 }
 
@@ -85,35 +85,35 @@ func (u_ URLCache) Init() URLCache {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1415231-removecachedresponsessincedate?language=objc
 func (u_ URLCache) RemoveCachedResponsesSinceDate(date IDate) {
-	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponsesSinceDate:"), objc.Ptr(date))
+	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponsesSinceDate:"), date)
 }
 
 // Stores a cached URL response for a specified data task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1414434-storecachedresponse?language=objc
 func (u_ URLCache) StoreCachedResponseForDataTask(cachedResponse ICachedURLResponse, dataTask IURLSessionDataTask) {
-	objc.Call[objc.Void](u_, objc.Sel("storeCachedResponse:forDataTask:"), objc.Ptr(cachedResponse), objc.Ptr(dataTask))
+	objc.Call[objc.Void](u_, objc.Sel("storeCachedResponse:forDataTask:"), cachedResponse, dataTask)
 }
 
 // Gets the cached URL response for a data task, passing it to the provided completion handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1409184-getcachedresponsefordatatask?language=objc
 func (u_ URLCache) GetCachedResponseForDataTaskCompletionHandler(dataTask IURLSessionDataTask, completionHandler func(cachedResponse CachedURLResponse)) {
-	objc.Call[objc.Void](u_, objc.Sel("getCachedResponseForDataTask:completionHandler:"), objc.Ptr(dataTask), completionHandler)
+	objc.Call[objc.Void](u_, objc.Sel("getCachedResponseForDataTask:completionHandler:"), dataTask, completionHandler)
 }
 
 // Stores a cached URL response for a specified request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1410340-storecachedresponse?language=objc
 func (u_ URLCache) StoreCachedResponseForRequest(cachedResponse ICachedURLResponse, request IURLRequest) {
-	objc.Call[objc.Void](u_, objc.Sel("storeCachedResponse:forRequest:"), objc.Ptr(cachedResponse), objc.Ptr(request))
+	objc.Call[objc.Void](u_, objc.Sel("storeCachedResponse:forRequest:"), cachedResponse, request)
 }
 
 // Returns the cached URL response in the cache for the specified URL request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1411817-cachedresponseforrequest?language=objc
 func (u_ URLCache) CachedResponseForRequest(request IURLRequest) CachedURLResponse {
-	rv := objc.Call[CachedURLResponse](u_, objc.Sel("cachedResponseForRequest:"), objc.Ptr(request))
+	rv := objc.Call[CachedURLResponse](u_, objc.Sel("cachedResponseForRequest:"), request)
 	return rv
 }
 
@@ -128,14 +128,14 @@ func (u_ URLCache) RemoveAllCachedResponses() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1415377-removecachedresponseforrequest?language=objc
 func (u_ URLCache) RemoveCachedResponseForRequest(request IURLRequest) {
-	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponseForRequest:"), objc.Ptr(request))
+	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponseForRequest:"), request)
 }
 
 // Removes the cached URL response for a specified data task. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1412258-removecachedresponsefordatatask?language=objc
 func (u_ URLCache) RemoveCachedResponseForDataTask(dataTask IURLSessionDataTask) {
-	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponseForDataTask:"), objc.Ptr(dataTask))
+	objc.Call[objc.Void](u_, objc.Sel("removeCachedResponseForDataTask:"), dataTask)
 }
 
 // The capacity of the in-memory cache, in bytes. [Full Topic]
@@ -195,7 +195,7 @@ func URLCache_SharedURLCache() URLCache {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlcache/1413377-sharedurlcache?language=objc
 func (uc _URLCacheClass) SetSharedURLCache(value IURLCache) {
-	objc.Call[objc.Void](uc, objc.Sel("setSharedURLCache:"), objc.Ptr(value))
+	objc.Call[objc.Void](uc, objc.Sel("setSharedURLCache:"), value)
 }
 
 // The shared URL cache instance. [Full Topic]

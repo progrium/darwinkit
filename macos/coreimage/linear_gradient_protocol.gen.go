@@ -60,7 +60,7 @@ func (l_ LinearGradientObject) HasSetColor0() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228542-color0?language=objc
 func (l_ LinearGradientObject) SetColor0(value Color) {
-	objc.Call[objc.Void](l_, objc.Sel("setColor0:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setColor0:"), value)
 }
 
 func (l_ LinearGradientObject) HasColor0() bool {
@@ -106,7 +106,7 @@ func (l_ LinearGradientObject) HasSetColor1() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilineargradient/3228543-color1?language=objc
 func (l_ LinearGradientObject) SetColor1(value Color) {
-	objc.Call[objc.Void](l_, objc.Sel("setColor1:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setColor1:"), value)
 }
 
 func (l_ LinearGradientObject) HasColor1() bool {

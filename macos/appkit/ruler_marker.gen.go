@@ -54,7 +54,7 @@ func RulerMarkerFrom(ptr unsafe.Pointer) RulerMarker {
 }
 
 func (r_ RulerMarker) InitWithRulerViewMarkerLocationImageImageOrigin(ruler IRulerView, location float64, image IImage, imageOrigin foundation.Point) RulerMarker {
-	rv := objc.Call[RulerMarker](r_, objc.Sel("initWithRulerView:markerLocation:image:imageOrigin:"), objc.Ptr(ruler), location, objc.Ptr(image), imageOrigin)
+	rv := objc.Call[RulerMarker](r_, objc.Sel("initWithRulerView:markerLocation:image:imageOrigin:"), ruler, location, image, imageOrigin)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func (r_ RulerMarker) Init() RulerMarker {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496248-trackmouse?language=objc
 func (r_ RulerMarker) TrackMouseAdding(mouseDownEvent IEvent, isAdding bool) bool {
-	rv := objc.Call[bool](r_, objc.Sel("trackMouse:adding:"), objc.Ptr(mouseDownEvent), isAdding)
+	rv := objc.Call[bool](r_, objc.Sel("trackMouse:adding:"), mouseDownEvent, isAdding)
 	return rv
 }
 
@@ -146,7 +146,7 @@ func (r_ RulerMarker) SetRepresentedObject(value foundation.PCopying) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496244-representedobject?language=objc
 func (r_ RulerMarker) SetRepresentedObjectObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setRepresentedObject:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setRepresentedObject:"), valueObject)
 }
 
 // The receiver’s image. [Full Topic]
@@ -161,7 +161,7 @@ func (r_ RulerMarker) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrulermarker/1496251-image?language=objc
 func (r_ RulerMarker) SetImage(value IImage) {
-	objc.Call[objc.Void](r_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setImage:"), value)
 }
 
 // A Boolean that indicates whether the receiver is being dragged. [Full Topic]

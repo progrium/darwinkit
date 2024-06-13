@@ -41,7 +41,7 @@ func ConstraintConflictFrom(ptr unsafe.Pointer) ConstraintConflict {
 }
 
 func (c_ ConstraintConflict) InitWithConstraintDatabaseObjectDatabaseSnapshotConflictingObjectsConflictingSnapshots(contraint []string, databaseObject IManagedObject, databaseSnapshot foundation.Dictionary, conflictingObjects []IManagedObject, conflictingSnapshots []objc.IObject) ConstraintConflict {
-	rv := objc.Call[ConstraintConflict](c_, objc.Sel("initWithConstraint:databaseObject:databaseSnapshot:conflictingObjects:conflictingSnapshots:"), contraint, objc.Ptr(databaseObject), databaseSnapshot, conflictingObjects, conflictingSnapshots)
+	rv := objc.Call[ConstraintConflict](c_, objc.Sel("initWithConstraint:databaseObject:databaseSnapshot:conflictingObjects:conflictingSnapshots:"), contraint, databaseObject, databaseSnapshot, conflictingObjects, conflictingSnapshots)
 	return rv
 }
 

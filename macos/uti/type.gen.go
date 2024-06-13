@@ -73,7 +73,7 @@ func Type_TypeWithMIMEType(mimeType string) Type {
 }
 
 func (tc _TypeClass) TypeWithTagTagClassConformingToType(tag string, tagClass string, supertype IType) Type {
-	rv := objc.Call[Type](tc, objc.Sel("typeWithTag:tagClass:conformingToType:"), tag, tagClass, objc.Ptr(supertype))
+	rv := objc.Call[Type](tc, objc.Sel("typeWithTag:tagClass:conformingToType:"), tag, tagClass, supertype)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func Type_TypeWithTagTagClassConformingToType(tag string, tagClass string, super
 }
 
 func (tc _TypeClass) TypeWithMIMETypeConformingToType(mimeType string, supertype IType) Type {
-	rv := objc.Call[Type](tc, objc.Sel("typeWithMIMEType:conformingToType:"), mimeType, objc.Ptr(supertype))
+	rv := objc.Call[Type](tc, objc.Sel("typeWithMIMEType:conformingToType:"), mimeType, supertype)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func Type_TypeWithMIMETypeConformingToType(mimeType string, supertype IType) Typ
 }
 
 func (tc _TypeClass) TypeWithFilenameExtensionConformingToType(filenameExtension string, supertype IType) Type {
-	rv := objc.Call[Type](tc, objc.Sel("typeWithFilenameExtension:conformingToType:"), filenameExtension, objc.Ptr(supertype))
+	rv := objc.Call[Type](tc, objc.Sel("typeWithFilenameExtension:conformingToType:"), filenameExtension, supertype)
 	return rv
 }
 
@@ -159,7 +159,7 @@ func Type_ExportedTypeWithIdentifier(identifier string) Type {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3548203-conformstotype?language=objc
 func (t_ Type) ConformsToType(type_ IType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("conformsToType:"), objc.Ptr(type_))
+	rv := objc.Call[bool](t_, objc.Sel("conformsToType:"), type_)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (t_ Type) ConformsToType(type_ IType) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3600611-importedtypewithidentifier?language=objc
 func (tc _TypeClass) ImportedTypeWithIdentifierConformingToType(identifier string, parentType IType) Type {
-	rv := objc.Call[Type](tc, objc.Sel("importedTypeWithIdentifier:conformingToType:"), identifier, objc.Ptr(parentType))
+	rv := objc.Call[Type](tc, objc.Sel("importedTypeWithIdentifier:conformingToType:"), identifier, parentType)
 	return rv
 }
 
@@ -182,7 +182,7 @@ func Type_ImportedTypeWithIdentifierConformingToType(identifier string, parentTy
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3600609-exportedtypewithidentifier?language=objc
 func (tc _TypeClass) ExportedTypeWithIdentifierConformingToType(identifier string, parentType IType) Type {
-	rv := objc.Call[Type](tc, objc.Sel("exportedTypeWithIdentifier:conformingToType:"), identifier, objc.Ptr(parentType))
+	rv := objc.Call[Type](tc, objc.Sel("exportedTypeWithIdentifier:conformingToType:"), identifier, parentType)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func Type_ImportedTypeWithIdentifier(identifier string) Type {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3548207-issubtypeoftype?language=objc
 func (t_ Type) IsSubtypeOfType(type_ IType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isSubtypeOfType:"), objc.Ptr(type_))
+	rv := objc.Call[bool](t_, objc.Sel("isSubtypeOfType:"), type_)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func (t_ Type) IsSubtypeOfType(type_ IType) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3548208-issupertypeoftype?language=objc
 func (t_ Type) IsSupertypeOfType(type_ IType) bool {
-	rv := objc.Call[bool](t_, objc.Sel("isSupertypeOfType:"), objc.Ptr(type_))
+	rv := objc.Call[bool](t_, objc.Sel("isSupertypeOfType:"), type_)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (t_ Type) IsSupertypeOfType(type_ IType) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uniformtypeidentifiers/uttype/3548222-typeswithtag?language=objc
 func (tc _TypeClass) TypesWithTagTagClassConformingToType(tag string, tagClass string, supertype IType) []Type {
-	rv := objc.Call[[]Type](tc, objc.Sel("typesWithTag:tagClass:conformingToType:"), tag, tagClass, objc.Ptr(supertype))
+	rv := objc.Call[[]Type](tc, objc.Sel("typesWithTag:tagClass:conformingToType:"), tag, tagClass, supertype)
 	return rv
 }
 

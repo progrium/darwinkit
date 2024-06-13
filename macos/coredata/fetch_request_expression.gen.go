@@ -75,7 +75,7 @@ func NewFetchRequestExpressionWithExpressionType(type_ foundation.ExpressionType
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchrequestexpression/1391661-expressionforfetch?language=objc
 func (fc _FetchRequestExpressionClass) ExpressionForFetchContextCountOnly(fetch foundation.IExpression, context foundation.IExpression, countFlag bool) foundation.Expression {
-	rv := objc.Call[foundation.Expression](fc, objc.Sel("expressionForFetch:context:countOnly:"), objc.Ptr(fetch), objc.Ptr(context), countFlag)
+	rv := objc.Call[foundation.Expression](fc, objc.Sel("expressionForFetch:context:countOnly:"), fetch, context, countFlag)
 	return rv
 }
 

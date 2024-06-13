@@ -19,11 +19,11 @@ type PVibrance interface {
 	HasInputImage() bool
 
 	// optional
-	SetAmount(value float64)
+	SetAmount(value float32)
 	HasSetAmount() bool
 
 	// optional
-	Amount() float64
+	Amount() float32
 	HasAmount() bool
 }
 
@@ -43,7 +43,7 @@ func (v_ VibranceObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civibrance/3228824-inputimage?language=objc
 func (v_ VibranceObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
 }
 
 func (v_ VibranceObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (v_ VibranceObject) HasSetAmount() bool {
 // The amount to adjust the saturation by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civibrance/3228823-amount?language=objc
-func (v_ VibranceObject) SetAmount(value float64) {
+func (v_ VibranceObject) SetAmount(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setAmount:"), value)
 }
 
@@ -76,7 +76,7 @@ func (v_ VibranceObject) HasAmount() bool {
 // The amount to adjust the saturation by. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civibrance/3228823-amount?language=objc
-func (v_ VibranceObject) Amount() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("amount"))
+func (v_ VibranceObject) Amount() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("amount"))
 	return rv
 }

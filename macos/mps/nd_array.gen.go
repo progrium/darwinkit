@@ -76,7 +76,7 @@ func NewNDArrayWithDeviceScalar(device metal.PDevice, value float64) NDArray {
 
 func (n_ NDArray) InitWithDeviceDescriptor(device metal.PDevice, descriptor INDArrayDescriptor) NDArray {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NDArray](n_, objc.Sel("initWithDevice:descriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NDArray](n_, objc.Sel("initWithDevice:descriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (n_ NDArray) ImportDataWithCommandBufferFromImagesOffset(cmdBuf metal.PComm
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3152527-importdatawithcommandbuffer?language=objc
 func (n_ NDArray) ImportDataWithCommandBufferObjectFromImagesOffset(cmdBufObject objc.IObject, images *foundation.Array, offset ImageCoordinate) {
-	objc.Call[objc.Void](n_, objc.Sel("importDataWithCommandBuffer:fromImages:offset:"), objc.Ptr(cmdBufObject), images, offset)
+	objc.Call[objc.Void](n_, objc.Sel("importDataWithCommandBuffer:fromImages:offset:"), cmdBufObject, images, offset)
 }
 
 //	[Full Topic]
@@ -176,7 +176,7 @@ func (n_ NDArray) ExportDataWithCommandBufferToBufferDestinationDataTypeOffsetRo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3131729-exportdatawithcommandbuffer?language=objc
 func (n_ NDArray) ExportDataWithCommandBufferObjectToBufferObjectDestinationDataTypeOffsetRowStrides(cmdBufObject objc.IObject, bufferObject objc.IObject, destinationDataType DataType, offset uint, rowStrides *int) {
-	objc.Call[objc.Void](n_, objc.Sel("exportDataWithCommandBuffer:toBuffer:destinationDataType:offset:rowStrides:"), objc.Ptr(cmdBufObject), objc.Ptr(bufferObject), destinationDataType, offset, rowStrides)
+	objc.Call[objc.Void](n_, objc.Sel("exportDataWithCommandBuffer:toBuffer:destinationDataType:offset:rowStrides:"), cmdBufObject, bufferObject, destinationDataType, offset, rowStrides)
 }
 
 //	[Full Topic]
@@ -191,7 +191,7 @@ func (n_ NDArray) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer)
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3114059-synchronizeoncommandbuffer?language=objc
 func (n_ NDArray) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("synchronizeOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](n_, objc.Sel("synchronizeOnCommandBuffer:"), commandBufferObject)
 }
 
 //	[Full Topic]
@@ -213,7 +213,7 @@ func (n_ NDArray) ExportDataWithCommandBufferToImagesOffset(cmdBuf metal.PComman
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3152526-exportdatawithcommandbuffer?language=objc
 func (n_ NDArray) ExportDataWithCommandBufferObjectToImagesOffset(cmdBufObject objc.IObject, images *foundation.Array, offset ImageCoordinate) {
-	objc.Call[objc.Void](n_, objc.Sel("exportDataWithCommandBuffer:toImages:offset:"), objc.Ptr(cmdBufObject), images, offset)
+	objc.Call[objc.Void](n_, objc.Sel("exportDataWithCommandBuffer:toImages:offset:"), cmdBufObject, images, offset)
 }
 
 //	[Full Topic]
@@ -228,7 +228,7 @@ func (n_ NDArray) ReadBytesStrideBytes(buffer unsafe.Pointer, strideBytesPerDime
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3114040-arrayviewwithcommandbuffer?language=objc
 func (n_ NDArray) ArrayViewWithCommandBufferDescriptorAliasing(cmdBuf metal.PCommandBuffer, descriptor INDArrayDescriptor, aliasing AliasingStrategy) NDArray {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArray](n_, objc.Sel("arrayViewWithCommandBuffer:descriptor:aliasing:"), po0, objc.Ptr(descriptor), aliasing)
+	rv := objc.Call[NDArray](n_, objc.Sel("arrayViewWithCommandBuffer:descriptor:aliasing:"), po0, descriptor, aliasing)
 	return rv
 }
 
@@ -236,7 +236,7 @@ func (n_ NDArray) ArrayViewWithCommandBufferDescriptorAliasing(cmdBuf metal.PCom
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3114040-arrayviewwithcommandbuffer?language=objc
 func (n_ NDArray) ArrayViewWithCommandBufferObjectDescriptorAliasing(cmdBufObject objc.IObject, descriptor INDArrayDescriptor, aliasing AliasingStrategy) NDArray {
-	rv := objc.Call[NDArray](n_, objc.Sel("arrayViewWithCommandBuffer:descriptor:aliasing:"), objc.Ptr(cmdBufObject), objc.Ptr(descriptor), aliasing)
+	rv := objc.Call[NDArray](n_, objc.Sel("arrayViewWithCommandBuffer:descriptor:aliasing:"), cmdBufObject, descriptor, aliasing)
 	return rv
 }
 
@@ -253,7 +253,7 @@ func (n_ NDArray) ImportDataWithCommandBufferFromBufferSourceDataTypeOffsetRowSt
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsndarray/3131730-importdatawithcommandbuffer?language=objc
 func (n_ NDArray) ImportDataWithCommandBufferObjectFromBufferObjectSourceDataTypeOffsetRowStrides(cmdBufObject objc.IObject, bufferObject objc.IObject, sourceDataType DataType, offset uint, rowStrides *int) {
-	objc.Call[objc.Void](n_, objc.Sel("importDataWithCommandBuffer:fromBuffer:sourceDataType:offset:rowStrides:"), objc.Ptr(cmdBufObject), objc.Ptr(bufferObject), sourceDataType, offset, rowStrides)
+	objc.Call[objc.Void](n_, objc.Sel("importDataWithCommandBuffer:fromBuffer:sourceDataType:offset:rowStrides:"), cmdBufObject, bufferObject, sourceDataType, offset, rowStrides)
 }
 
 //	[Full Topic]

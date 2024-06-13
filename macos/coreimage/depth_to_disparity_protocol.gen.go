@@ -35,7 +35,7 @@ func (d_ DepthToDisparityObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidepthtodisparity/3228212-inputimage?language=objc
 func (d_ DepthToDisparityObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DepthToDisparityObject) HasInputImage() bool {

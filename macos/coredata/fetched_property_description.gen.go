@@ -67,5 +67,5 @@ func (f_ FetchedPropertyDescription) FetchRequest() FetchRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedpropertydescription/1494679-fetchrequest?language=objc
 func (f_ FetchedPropertyDescription) SetFetchRequest(value IFetchRequest) {
-	objc.Call[objc.Void](f_, objc.Sel("setFetchRequest:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setFetchRequest:"), value)
 }

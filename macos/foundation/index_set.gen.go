@@ -112,7 +112,7 @@ func NewIndexSetWithIndexesInRange(range_ Range) IndexSet {
 }
 
 func (i_ IndexSet) InitWithIndexSet(indexSet IIndexSet) IndexSet {
-	rv := objc.Call[IndexSet](i_, objc.Sel("initWithIndexSet:"), objc.Ptr(indexSet))
+	rv := objc.Call[IndexSet](i_, objc.Sel("initWithIndexSet:"), indexSet)
 	return rv
 }
 
@@ -292,7 +292,7 @@ func (i_ IndexSet) IndexLessThanOrEqualToIndex(value uint) uint {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1414823-containsindexes?language=objc
 func (i_ IndexSet) ContainsIndexes(indexSet IIndexSet) bool {
-	rv := objc.Call[bool](i_, objc.Sel("containsIndexes:"), objc.Ptr(indexSet))
+	rv := objc.Call[bool](i_, objc.Sel("containsIndexes:"), indexSet)
 	return rv
 }
 
@@ -316,7 +316,7 @@ func (i_ IndexSet) IndexInRangeOptionsPassingTest(range_ Range, opts Enumeration
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsindexset/1412212-isequaltoindexset?language=objc
 func (i_ IndexSet) IsEqualToIndexSet(indexSet IIndexSet) bool {
-	rv := objc.Call[bool](i_, objc.Sel("isEqualToIndexSet:"), objc.Ptr(indexSet))
+	rv := objc.Call[bool](i_, objc.Sel("isEqualToIndexSet:"), indexSet)
 	return rv
 }
 

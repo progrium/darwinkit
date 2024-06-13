@@ -84,5 +84,5 @@ func (r_ RemoteLayerClient) Layer() Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/caremotelayerclient/1418373-layer?language=objc
 func (r_ RemoteLayerClient) SetLayer(value ILayer) {
-	objc.Call[objc.Void](r_, objc.Sel("setLayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setLayer:"), value)
 }

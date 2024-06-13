@@ -5,7 +5,6 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _CaptionFormatConformerClass struct {
 // An interface definition for the [CaptionFormatConformer] class.
 type ICaptionFormatConformer interface {
 	objc.IObject
-	ConformedCaptionForCaptionError(caption ICaption, outError foundation.IError) Caption
+	ConformedCaptionForCaptionError(caption ICaption, outError unsafe.Pointer) Caption
 	ConformsCaptionsToTimeRange() bool
 	SetConformsCaptionsToTimeRange(value bool)
 }
@@ -86,8 +85,8 @@ func (c_ CaptionFormatConformer) Init() CaptionFormatConformer {
 // Creates a caption that conforms to a specific format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcaptionformatconformer/3752956-conformedcaptionforcaption?language=objc
-func (c_ CaptionFormatConformer) ConformedCaptionForCaptionError(caption ICaption, outError foundation.IError) Caption {
-	rv := objc.Call[Caption](c_, objc.Sel("conformedCaptionForCaption:error:"), objc.Ptr(caption), objc.Ptr(outError))
+func (c_ CaptionFormatConformer) ConformedCaptionForCaptionError(caption ICaption, outError unsafe.Pointer) Caption {
+	rv := objc.Call[Caption](c_, objc.Sel("conformedCaptionForCaption:error:"), caption, outError)
 	return rv
 }
 

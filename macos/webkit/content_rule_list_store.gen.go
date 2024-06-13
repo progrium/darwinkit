@@ -51,7 +51,7 @@ func ContentRuleListStore_DefaultStore() ContentRuleListStore {
 }
 
 func (cc _ContentRuleListStoreClass) StoreWithURL(url foundation.IURL) ContentRuleListStore {
-	rv := objc.Call[ContentRuleListStore](cc, objc.Sel("storeWithURL:"), objc.Ptr(url))
+	rv := objc.Call[ContentRuleListStore](cc, objc.Sel("storeWithURL:"), url)
 	return rv
 }
 

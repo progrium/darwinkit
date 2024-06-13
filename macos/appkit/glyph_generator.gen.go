@@ -67,7 +67,7 @@ func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorageDesiredNumberOfCharactersG
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsglyphgenerator/1425139-generateglyphsforglyphstorage?language=objc
 func (g_ GlyphGenerator) GenerateGlyphsForGlyphStorageObjectDesiredNumberOfCharactersGlyphIndexCharacterIndex(glyphStorageObject objc.IObject, nChars uint, glyphIndex *uint, charIndex *uint) {
-	objc.Call[objc.Void](g_, objc.Sel("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), objc.Ptr(glyphStorageObject), nChars, glyphIndex, charIndex)
+	objc.Call[objc.Void](g_, objc.Sel("generateGlyphsForGlyphStorage:desiredNumberOfCharacters:glyphIndex:characterIndex:"), glyphStorageObject, nChars, glyphIndex, charIndex)
 }
 
 // Returns a shared instance of NSGlyphGenerator. [Full Topic]

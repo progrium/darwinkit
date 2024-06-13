@@ -35,55 +35,55 @@ func UpdateTaskFrom(ptr unsafe.Pointer) UpdateTask {
 	}
 }
 
-func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, progressHandlers IUpdateProgressHandlers, error foundation.IError) UpdateTask {
+func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, progressHandlers IUpdateProgressHandlers, error unsafe.Pointer) UpdateTask {
 	po1 := objc.WrapAsProtocol("MLBatchProvider", trainingData)
-	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:progressHandlers:error:"), objc.Ptr(modelURL), po1, objc.Ptr(progressHandlers), objc.Ptr(error))
+	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:progressHandlers:error:"), modelURL, po1, progressHandlers, error)
 	return rv
 }
 
 // Creates a task that updates the model at the URL with the training data, and calls the progress handlers during and after the update. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatetask/3547163-updatetaskformodelaturl?language=objc
-func UpdateTask_UpdateTaskForModelAtURLTrainingDataProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, progressHandlers IUpdateProgressHandlers, error foundation.IError) UpdateTask {
+func UpdateTask_UpdateTaskForModelAtURLTrainingDataProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, progressHandlers IUpdateProgressHandlers, error unsafe.Pointer) UpdateTask {
 	return UpdateTaskClass.UpdateTaskForModelAtURLTrainingDataProgressHandlersError(modelURL, trainingData, progressHandlers, error)
 }
 
-func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, completionHandler func(arg0 UpdateContext), error foundation.IError) UpdateTask {
+func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, completionHandler func(arg0 UpdateContext), error unsafe.Pointer) UpdateTask {
 	po1 := objc.WrapAsProtocol("MLBatchProvider", trainingData)
-	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:completionHandler:error:"), objc.Ptr(modelURL), po1, completionHandler, objc.Ptr(error))
+	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:completionHandler:error:"), modelURL, po1, completionHandler, error)
 	return rv
 }
 
 // Creates a task that updates the model at the URL with the training data, and calls the completion handler when the update completes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatetask/3547162-updatetaskformodelaturl?language=objc
-func UpdateTask_UpdateTaskForModelAtURLTrainingDataCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, completionHandler func(arg0 UpdateContext), error foundation.IError) UpdateTask {
+func UpdateTask_UpdateTaskForModelAtURLTrainingDataCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, completionHandler func(arg0 UpdateContext), error unsafe.Pointer) UpdateTask {
 	return UpdateTaskClass.UpdateTaskForModelAtURLTrainingDataCompletionHandlerError(modelURL, trainingData, completionHandler, error)
 }
 
-func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataConfigurationCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, completionHandler func(context UpdateContext), error foundation.IError) UpdateTask {
+func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataConfigurationCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, completionHandler func(context UpdateContext), error unsafe.Pointer) UpdateTask {
 	po1 := objc.WrapAsProtocol("MLBatchProvider", trainingData)
-	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:configuration:completionHandler:error:"), objc.Ptr(modelURL), po1, objc.Ptr(configuration), completionHandler, objc.Ptr(error))
+	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:configuration:completionHandler:error:"), modelURL, po1, configuration, completionHandler, error)
 	return rv
 }
 
 // Creates a task that updates the model at the URL with the training data and configuration, and calls the completion handler when the update completes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatetask/3180111-updatetaskformodelaturl?language=objc
-func UpdateTask_UpdateTaskForModelAtURLTrainingDataConfigurationCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, completionHandler func(context UpdateContext), error foundation.IError) UpdateTask {
+func UpdateTask_UpdateTaskForModelAtURLTrainingDataConfigurationCompletionHandlerError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, completionHandler func(context UpdateContext), error unsafe.Pointer) UpdateTask {
 	return UpdateTaskClass.UpdateTaskForModelAtURLTrainingDataConfigurationCompletionHandlerError(modelURL, trainingData, configuration, completionHandler, error)
 }
 
-func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataConfigurationProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, progressHandlers IUpdateProgressHandlers, error foundation.IError) UpdateTask {
+func (uc _UpdateTaskClass) UpdateTaskForModelAtURLTrainingDataConfigurationProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, progressHandlers IUpdateProgressHandlers, error unsafe.Pointer) UpdateTask {
 	po1 := objc.WrapAsProtocol("MLBatchProvider", trainingData)
-	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:configuration:progressHandlers:error:"), objc.Ptr(modelURL), po1, objc.Ptr(configuration), objc.Ptr(progressHandlers), objc.Ptr(error))
+	rv := objc.Call[UpdateTask](uc, objc.Sel("updateTaskForModelAtURL:trainingData:configuration:progressHandlers:error:"), modelURL, po1, configuration, progressHandlers, error)
 	return rv
 }
 
 // Creates a task that updates the model at the URL with the training data and configuration, and calls the progress handlers during and after the update. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlupdatetask/3180112-updatetaskformodelaturl?language=objc
-func UpdateTask_UpdateTaskForModelAtURLTrainingDataConfigurationProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, progressHandlers IUpdateProgressHandlers, error foundation.IError) UpdateTask {
+func UpdateTask_UpdateTaskForModelAtURLTrainingDataConfigurationProgressHandlersError(modelURL foundation.IURL, trainingData PBatchProvider, configuration IModelConfiguration, progressHandlers IUpdateProgressHandlers, error unsafe.Pointer) UpdateTask {
 	return UpdateTaskClass.UpdateTaskForModelAtURLTrainingDataConfigurationProgressHandlersError(modelURL, trainingData, configuration, progressHandlers, error)
 }
 

@@ -58,5 +58,5 @@ func (m_ MutableMediaSelection) Init() MutableMediaSelection {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemediaselection/1386768-selectmediaoption?language=objc
 func (m_ MutableMediaSelection) SelectMediaOptionInMediaSelectionGroup(mediaSelectionOption IMediaSelectionOption, mediaSelectionGroup IMediaSelectionGroup) {
-	objc.Call[objc.Void](m_, objc.Sel("selectMediaOption:inMediaSelectionGroup:"), objc.Ptr(mediaSelectionOption), objc.Ptr(mediaSelectionGroup))
+	objc.Call[objc.Void](m_, objc.Sel("selectMediaOption:inMediaSelectionGroup:"), mediaSelectionOption, mediaSelectionGroup)
 }

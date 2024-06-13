@@ -52,29 +52,29 @@ func (x_ XMLDTD) Init() XMLDTD {
 	return rv
 }
 
-func (x_ XMLDTD) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDTD {
-	rv := objc.Call[XMLDTD](x_, objc.Sel("initWithData:options:error:"), data, mask, objc.Ptr(error))
+func (x_ XMLDTD) InitWithDataOptionsError(data []byte, mask XMLNodeOptions, error unsafe.Pointer) XMLDTD {
+	rv := objc.Call[XMLDTD](x_, objc.Sel("initWithData:options:error:"), data, mask, error)
 	return rv
 }
 
 // Initializes and returns an NSXMLDTD object created from the DTD declarations encapsulated in an NSData object [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412807-initwithdata?language=objc
-func NewXMLDTDWithDataOptionsError(data []byte, mask XMLNodeOptions, error IError) XMLDTD {
+func NewXMLDTDWithDataOptionsError(data []byte, mask XMLNodeOptions, error unsafe.Pointer) XMLDTD {
 	instance := XMLDTDClass.Alloc().InitWithDataOptionsError(data, mask, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (x_ XMLDTD) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDTD {
-	rv := objc.Call[XMLDTD](x_, objc.Sel("initWithContentsOfURL:options:error:"), objc.Ptr(url), mask, objc.Ptr(error))
+func (x_ XMLDTD) InitWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error unsafe.Pointer) XMLDTD {
+	rv := objc.Call[XMLDTD](x_, objc.Sel("initWithContentsOfURL:options:error:"), url, mask, error)
 	return rv
 }
 
 // Initializes and returns an NSXMLDTD object created from the DTD declarations in a URL-referenced source. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1410482-initwithcontentsofurl?language=objc
-func NewXMLDTDWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error IError) XMLDTD {
+func NewXMLDTDWithContentsOfURLOptionsError(url IURL, mask XMLNodeOptions, error unsafe.Pointer) XMLDTD {
 	instance := XMLDTDClass.Alloc().InitWithContentsOfURLOptionsError(url, mask, error)
 	instance.Autorelease()
 	return instance
@@ -142,7 +142,7 @@ func (x_ XMLDTD) InsertChildrenAtIndex(children []IXMLNode, index uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1411759-insertchild?language=objc
 func (x_ XMLDTD) InsertChildAtIndex(child IXMLNode, index uint) {
-	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), objc.Ptr(child), index)
+	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), child, index)
 }
 
 // Returns the DTD node representing the notation declaration identified by the specified notation name. [Full Topic]
@@ -180,7 +180,7 @@ func XMLDTD_PredefinedEntityDeclarationForName(name string) XMLDTDNode {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1412988-addchild?language=objc
 func (x_ XMLDTD) AddChild(child IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addChild:"), objc.Ptr(child))
+	objc.Call[objc.Void](x_, objc.Sel("addChild:"), child)
 }
 
 // Removes all existing children of the receiver and replaces them with an array of new child nodes. [Full Topic]
@@ -201,7 +201,7 @@ func (x_ XMLDTD) RemoveChildAtIndex(index uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmldtd/1413890-replacechildatindex?language=objc
 func (x_ XMLDTD) ReplaceChildAtIndexWithNode(index uint, node IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, objc.Ptr(node))
+	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, node)
 }
 
 // Returns the DTD node representing an element declaration for a specified element. [Full Topic]

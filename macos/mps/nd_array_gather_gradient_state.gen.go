@@ -56,7 +56,7 @@ func (n_ NDArrayGatherGradientState) Init() NDArrayGatherGradientState {
 
 func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NDArrayGatherGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NDArrayGatherGradientState_TemporaryStateWithCommandBufferResourceList(comm
 
 func (n_ NDArrayGatherGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NDArrayGatherGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCo
 
 func (nc _NDArrayGatherGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NDArrayGatherGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NDArrayGatherGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func NDArrayGatherGradientState_TemporaryStateWithCommandBufferTextureDescriptor
 
 func (n_ NDArrayGatherGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NDArrayGatherGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NDArrayGatherGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

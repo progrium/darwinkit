@@ -57,7 +57,7 @@ func PersistentStoreDescriptionFrom(ptr unsafe.Pointer) PersistentStoreDescripti
 }
 
 func (p_ PersistentStoreDescription) InitWithURL(url foundation.IURL) PersistentStoreDescription {
-	rv := objc.Call[PersistentStoreDescription](p_, objc.Sel("initWithURL:"), objc.Ptr(url))
+	rv := objc.Call[PersistentStoreDescription](p_, objc.Sel("initWithURL:"), url)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func NewPersistentStoreDescriptionWithURL(url foundation.IURL) PersistentStoreDe
 }
 
 func (pc _PersistentStoreDescriptionClass) PersistentStoreDescriptionWithURL(URL foundation.IURL) PersistentStoreDescription {
-	rv := objc.Call[PersistentStoreDescription](pc, objc.Sel("persistentStoreDescriptionWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[PersistentStoreDescription](pc, objc.Sel("persistentStoreDescriptionWithURL:"), URL)
 	return rv
 }
 
@@ -106,14 +106,14 @@ func (p_ PersistentStoreDescription) Init() PersistentStoreDescription {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640574-setoption?language=objc
 func (p_ PersistentStoreDescription) SetOptionForKey(option objc.IObject, key string) {
-	objc.Call[objc.Void](p_, objc.Sel("setOption:forKey:"), objc.Ptr(option), key)
+	objc.Call[objc.Void](p_, objc.Sel("setOption:forKey:"), option, key)
 }
 
 // Allows you to set pragmas for the SQLite store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640598-setvalue?language=objc
 func (p_ PersistentStoreDescription) SetValueForPragmaNamed(value objc.IObject, name string) {
-	objc.Call[objc.Void](p_, objc.Sel("setValue:forPragmaNamed:"), objc.Ptr(value), name)
+	objc.Call[objc.Void](p_, objc.Sel("setValue:forPragmaNamed:"), value, name)
 }
 
 // The URL that the store will use for its location. [Full Topic]
@@ -128,7 +128,7 @@ func (p_ PersistentStoreDescription) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/1640616-url?language=objc
 func (p_ PersistentStoreDescription) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](p_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setURL:"), value)
 }
 
 // A flag indicating whether a mapping model should be created automatically. [Full Topic]
@@ -196,7 +196,7 @@ func (p_ PersistentStoreDescription) CloudKitContainerOptions() PersistentCloudK
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nspersistentstoredescription/3141672-cloudkitcontaineroptions?language=objc
 func (p_ PersistentStoreDescription) SetCloudKitContainerOptions(value IPersistentCloudKitContainerOptions) {
-	objc.Call[objc.Void](p_, objc.Sel("setCloudKitContainerOptions:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setCloudKitContainerOptions:"), value)
 }
 
 // A flag indicating whether the associated persistent store should be migrated automatically. [Full Topic]

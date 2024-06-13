@@ -46,7 +46,7 @@ func ImageSymbolConfiguration_ConfigurationWithScale(scale ImageSymbolScale) Ima
 }
 
 func (ic _ImageSymbolConfigurationClass) ConfigurationWithHierarchicalColor(hierarchicalColor IColor) ImageSymbolConfiguration {
-	rv := objc.Call[ImageSymbolConfiguration](ic, objc.Sel("configurationWithHierarchicalColor:"), objc.Ptr(hierarchicalColor))
+	rv := objc.Call[ImageSymbolConfiguration](ic, objc.Sel("configurationWithHierarchicalColor:"), hierarchicalColor)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func ImageSymbolConfiguration_ConfigurationWithPointSizeWeight(pointSize float64
 }
 
 func (i_ ImageSymbolConfiguration) ConfigurationByApplyingConfiguration(configuration IImageSymbolConfiguration) ImageSymbolConfiguration {
-	rv := objc.Call[ImageSymbolConfiguration](i_, objc.Sel("configurationByApplyingConfiguration:"), objc.Ptr(configuration))
+	rv := objc.Call[ImageSymbolConfiguration](i_, objc.Sel("configurationByApplyingConfiguration:"), configuration)
 	return rv
 }
 

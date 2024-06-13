@@ -62,7 +62,7 @@ func (p_ PostalAddressFormatter) Init() PostalAddressFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403291-stringfrompostaladdress?language=objc
 func (pc _PostalAddressFormatterClass) StringFromPostalAddressStyle(postalAddress IPostalAddress, style PostalAddressFormatterStyle) string {
-	rv := objc.Call[string](pc, objc.Sel("stringFromPostalAddress:style:"), objc.Ptr(postalAddress), style)
+	rv := objc.Call[string](pc, objc.Sel("stringFromPostalAddress:style:"), postalAddress, style)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func PostalAddressFormatter_StringFromPostalAddressStyle(postalAddress IPostalAd
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1402831-attributedstringfrompostaladdres?language=objc
 func (p_ PostalAddressFormatter) AttributedStringFromPostalAddressWithDefaultAttributes(postalAddress IPostalAddress, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedStringFromPostalAddress:withDefaultAttributes:"), objc.Ptr(postalAddress), attributes)
+	rv := objc.Call[foundation.AttributedString](p_, objc.Sel("attributedStringFromPostalAddress:withDefaultAttributes:"), postalAddress, attributes)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (p_ PostalAddressFormatter) AttributedStringFromPostalAddressWithDefaultAtt
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403011-stringfrompostaladdress?language=objc
 func (p_ PostalAddressFormatter) StringFromPostalAddress(postalAddress IPostalAddress) string {
-	rv := objc.Call[string](p_, objc.Sel("stringFromPostalAddress:"), objc.Ptr(postalAddress))
+	rv := objc.Call[string](p_, objc.Sel("stringFromPostalAddress:"), postalAddress)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func (p_ PostalAddressFormatter) StringFromPostalAddress(postalAddress IPostalAd
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cnpostaladdressformatter/1403336-attributedstringfrompostaladdres?language=objc
 func (pc _PostalAddressFormatterClass) AttributedStringFromPostalAddressStyleWithDefaultAttributes(postalAddress IPostalAddress, style PostalAddressFormatterStyle, attributes foundation.Dictionary) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](pc, objc.Sel("attributedStringFromPostalAddress:style:withDefaultAttributes:"), objc.Ptr(postalAddress), style, attributes)
+	rv := objc.Call[foundation.AttributedString](pc, objc.Sel("attributedStringFromPostalAddress:style:withDefaultAttributes:"), postalAddress, style, attributes)
 	return rv
 }
 

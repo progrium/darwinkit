@@ -54,6 +54,6 @@ func (s_ SharingServicePickerToolbarItemDelegateObject) HasItemsForSharingServic
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssharingservicepickertoolbaritemdelegate/3365983-itemsforsharingservicepickertool?language=objc
 func (s_ SharingServicePickerToolbarItemDelegateObject) ItemsForSharingServicePickerToolbarItem(pickerToolbarItem SharingServicePickerToolbarItem) []objc.Object {
-	rv := objc.Call[[]objc.Object](s_, objc.Sel("itemsForSharingServicePickerToolbarItem:"), objc.Ptr(pickerToolbarItem))
+	rv := objc.Call[[]objc.Object](s_, objc.Sel("itemsForSharingServicePickerToolbarItem:"), pickerToolbarItem)
 	return rv
 }

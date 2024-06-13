@@ -242,7 +242,7 @@ func (t_ Toolbar) SetDelegate(value PToolbarDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbar/1516939-delegate?language=objc
 func (t_ Toolbar) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates whether the toolbar autosaves its configuration. [Full Topic]

@@ -65,7 +65,7 @@ func NewUserIdentityLookupInfoWithPhoneNumber(phoneNumber string) UserIdentityLo
 }
 
 func (u_ UserIdentityLookupInfo) InitWithUserRecordID(userRecordID IRecordID) UserIdentityLookupInfo {
-	rv := objc.Call[UserIdentityLookupInfo](u_, objc.Sel("initWithUserRecordID:"), objc.Ptr(userRecordID))
+	rv := objc.Call[UserIdentityLookupInfo](u_, objc.Sel("initWithUserRecordID:"), userRecordID)
 	return rv
 }
 

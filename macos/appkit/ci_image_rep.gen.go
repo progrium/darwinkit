@@ -36,7 +36,7 @@ func CIImageRepFrom(ptr unsafe.Pointer) CIImageRep {
 }
 
 func (cc _CIImageRepClass) ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
-	rv := objc.Call[CIImageRep](cc, objc.Sel("imageRepWithCIImage:"), objc.Ptr(image))
+	rv := objc.Call[CIImageRep](cc, objc.Sel("imageRepWithCIImage:"), image)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func CIImageRep_ImageRepWithCIImage(image coreimage.IImage) CIImageRep {
 }
 
 func (c_ CIImageRep) InitWithCIImage(image coreimage.IImage) CIImageRep {
-	rv := objc.Call[CIImageRep](c_, objc.Sel("initWithCIImage:"), objc.Ptr(image))
+	rv := objc.Call[CIImageRep](c_, objc.Sel("initWithCIImage:"), image)
 	return rv
 }
 

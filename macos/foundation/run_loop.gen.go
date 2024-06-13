@@ -95,14 +95,14 @@ func (r_ RunLoop) Run() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1417637-addport?language=objc
 func (r_ RunLoop) AddPortForMode(aPort IPort, mode RunLoopMode) {
-	objc.Call[objc.Void](r_, objc.Sel("addPort:forMode:"), objc.Ptr(aPort), mode)
+	objc.Call[objc.Void](r_, objc.Sel("addPort:forMode:"), aPort, mode)
 }
 
 // Registers a given timer with a given input mode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1418468-addtimer?language=objc
 func (r_ RunLoop) AddTimerForMode(timer ITimer, mode RunLoopMode) {
-	objc.Call[objc.Void](r_, objc.Sel("addTimer:forMode:"), objc.Ptr(timer), mode)
+	objc.Call[objc.Void](r_, objc.Sel("addTimer:forMode:"), timer, mode)
 }
 
 // Schedules the sending of a message on the receiver. [Full Topic]
@@ -116,7 +116,7 @@ func (r_ RunLoop) PerformSelectorTargetArgumentOrderModes(aSelector objc.Selecto
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1411525-runmode?language=objc
 func (r_ RunLoop) RunModeBeforeDate(mode RunLoopMode, limitDate IDate) bool {
-	rv := objc.Call[bool](r_, objc.Sel("runMode:beforeDate:"), mode, objc.Ptr(limitDate))
+	rv := objc.Call[bool](r_, objc.Sel("runMode:beforeDate:"), mode, limitDate)
 	return rv
 }
 
@@ -138,14 +138,14 @@ func (r_ RunLoop) CancelPerformSelectorsWithTarget(target objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1417143-acceptinputformode?language=objc
 func (r_ RunLoop) AcceptInputForModeBeforeDate(mode RunLoopMode, limitDate IDate) {
-	objc.Call[objc.Void](r_, objc.Sel("acceptInputForMode:beforeDate:"), mode, objc.Ptr(limitDate))
+	objc.Call[objc.Void](r_, objc.Sel("acceptInputForMode:beforeDate:"), mode, limitDate)
 }
 
 // Removes a port from the specified input mode of the run loop. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1414332-removeport?language=objc
 func (r_ RunLoop) RemovePortForMode(aPort IPort, mode RunLoopMode) {
-	objc.Call[objc.Void](r_, objc.Sel("removePort:forMode:"), objc.Ptr(aPort), mode)
+	objc.Call[objc.Void](r_, objc.Sel("removePort:forMode:"), aPort, mode)
 }
 
 // Returns the receiver's underlying [corefoundation/cfrunloop] object. [Full Topic]
@@ -167,7 +167,7 @@ func (r_ RunLoop) PerformBlock(block func()) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsrunloop/1415778-rununtildate?language=objc
 func (r_ RunLoop) RunUntilDate(limitDate IDate) {
-	objc.Call[objc.Void](r_, objc.Sel("runUntilDate:"), objc.Ptr(limitDate))
+	objc.Call[objc.Void](r_, objc.Sel("runUntilDate:"), limitDate)
 }
 
 // Returns the run loop for the current thread. [Full Topic]

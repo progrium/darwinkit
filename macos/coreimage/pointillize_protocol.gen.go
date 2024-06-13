@@ -28,11 +28,11 @@ type PPointillize interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -75,7 +75,7 @@ func (p_ PointillizeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228679-inputimage?language=objc
 func (p_ PointillizeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PointillizeObject) HasInputImage() bool {
@@ -97,7 +97,7 @@ func (p_ PointillizeObject) HasSetRadius() bool {
 // The radius of the circles in the resulting pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228680-radius?language=objc
-func (p_ PointillizeObject) SetRadius(value float64) {
+func (p_ PointillizeObject) SetRadius(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
 }
 
@@ -108,7 +108,7 @@ func (p_ PointillizeObject) HasRadius() bool {
 // The radius of the circles in the resulting pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipointillize/3228680-radius?language=objc
-func (p_ PointillizeObject) Radius() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("radius"))
+func (p_ PointillizeObject) Radius() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("radius"))
 	return rv
 }

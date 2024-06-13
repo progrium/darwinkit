@@ -62,27 +62,27 @@ func (m_ MutableString) Init() MutableString {
 	return rv
 }
 
-func (mc _MutableStringClass) StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (mc _MutableStringClass) StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497408-stringwithcontentsofurl?language=objc
-func MutableString_StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) MutableString {
+func MutableString_StringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
 	return MutableStringClass.StringWithContentsOfURLUsedEncodingError(url, enc, error)
 }
 
-func (m_ MutableString) InitWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (m_ MutableString) InitWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:usedEncoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL and returns by reference the encoding used to interpret the data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414472-initwithcontentsofurl?language=objc
-func NewMutableStringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error IError) MutableString {
+func NewMutableStringWithContentsOfURLUsedEncodingError(url IURL, enc *StringEncoding, error unsafe.Pointer) MutableString {
 	instance := MutableStringClass.Alloc().InitWithContentsOfURLUsedEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
@@ -154,41 +154,41 @@ func MutableString_StringWithFormat(format string, args ...any) MutableString {
 	return MutableStringClass.StringWithFormat(format, args...)
 }
 
-func (mc _MutableStringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (mc _MutableStringClass) StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497327-stringwithcontentsoffile?language=objc
-func MutableString_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) MutableString {
+func MutableString_StringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
 	return MutableStringClass.StringWithContentsOfFileEncodingError(path, enc, error)
 }
 
-func (m_ MutableString) InitWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (m_ MutableString) InitWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1414463-initwithcontentsofurl?language=objc
-func NewMutableStringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) MutableString {
+func NewMutableStringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
 	instance := MutableStringClass.Alloc().InitWithContentsOfURLEncodingError(url, enc, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (mc _MutableStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (mc _MutableStringClass) StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from the file at a given path and returns by reference the encoding used to interpret the file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497254-stringwithcontentsoffile?language=objc
-func MutableString_StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) MutableString {
+func MutableString_StringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
 	return MutableStringClass.StringWithContentsOfFileUsedEncodingError(path, enc, error)
 }
 
@@ -206,15 +206,15 @@ func NewMutableStringWithFormatLocale(format string, locale objc.IObject, args .
 	return instance
 }
 
-func (mc _MutableStringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:encoding:error:"), objc.Ptr(url), enc, objc.Ptr(error))
+func (mc _MutableStringClass) StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](mc, objc.Sel("stringWithContentsOfURL:encoding:error:"), url, enc, error)
 	return rv
 }
 
 // Returns a string created by reading data from a given URL interpreted using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1497360-stringwithcontentsofurl?language=objc
-func MutableString_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error IError) MutableString {
+func MutableString_StringWithContentsOfURLEncodingError(url IURL, enc StringEncoding, error unsafe.Pointer) MutableString {
 	return MutableStringClass.StringWithContentsOfURLEncodingError(url, enc, error)
 }
 
@@ -286,15 +286,15 @@ func MutableString_StringWithCStringEncoding(cString *uint8, enc StringEncoding)
 	return MutableStringClass.StringWithCStringEncoding(cString, enc)
 }
 
-func (m_ MutableString) InitWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, objc.Ptr(error))
+func (m_ MutableString) InitWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:usedEncoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path and returns by reference the encoding used to interpret the characters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1418227-initwithcontentsoffile?language=objc
-func NewMutableStringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error IError) MutableString {
+func NewMutableStringWithContentsOfFileUsedEncodingError(path string, enc *StringEncoding, error unsafe.Pointer) MutableString {
 	instance := MutableStringClass.Alloc().InitWithContentsOfFileUsedEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance
@@ -340,15 +340,15 @@ func NewMutableStringWithBytesNoCopyLengthEncodingDeallocator(bytes unsafe.Point
 	return instance
 }
 
-func (m_ MutableString) InitWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) MutableString {
-	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, objc.Ptr(error))
+func (m_ MutableString) InitWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
+	rv := objc.Call[MutableString](m_, objc.Sel("initWithContentsOfFile:encoding:error:"), path, enc, error)
 	return rv
 }
 
 // Returns an NSString object initialized by reading data from the file at a given path using a given encoding. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsstring/1412610-initwithcontentsoffile?language=objc
-func NewMutableStringWithContentsOfFileEncodingError(path string, enc StringEncoding, error IError) MutableString {
+func NewMutableStringWithContentsOfFileEncodingError(path string, enc StringEncoding, error unsafe.Pointer) MutableString {
 	instance := MutableStringClass.Alloc().InitWithContentsOfFileEncodingError(path, enc, error)
 	instance.Autorelease()
 	return instance

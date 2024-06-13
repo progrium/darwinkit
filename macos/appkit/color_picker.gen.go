@@ -44,7 +44,7 @@ func ColorPickerFrom(ptr unsafe.Pointer) ColorPicker {
 }
 
 func (c_ ColorPicker) InitWithPickerMaskColorPanel(mask uint, owningColorPanel IColorPanel) ColorPicker {
-	rv := objc.Call[ColorPicker](c_, objc.Sel("initWithPickerMask:colorPanel:"), mask, objc.Ptr(owningColorPanel))
+	rv := objc.Call[ColorPicker](c_, objc.Sel("initWithPickerMask:colorPanel:"), mask, owningColorPanel)
 	return rv
 }
 
@@ -81,7 +81,7 @@ func (c_ ColorPicker) Init() ColorPicker {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492388-detachcolorlist?language=objc
 func (c_ ColorPicker) DetachColorList(colorList IColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), objc.Ptr(colorList))
+	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), colorList)
 }
 
 // Overriden to respond to a size change. [Full Topic]
@@ -102,14 +102,14 @@ func (c_ ColorPicker) SetMode(mode ColorPanelMode) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492402-insertnewbuttonimage?language=objc
 func (c_ ColorPicker) InsertNewButtonImageIn(newButtonImage IImage, buttonCell IButtonCell) {
-	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), objc.Ptr(newButtonImage), objc.Ptr(buttonCell))
+	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
 }
 
 // Overriden to attach a color list to a color picker. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpicker/1492395-attachcolorlist?language=objc
 func (c_ ColorPicker) AttachColorList(colorList IColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), objc.Ptr(colorList))
+	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
 }
 
 // The button image used by the color picker. [Full Topic]

@@ -160,7 +160,7 @@ type IView interface {
 	IsDescendantOf(view IView) bool
 	ConvertRectFromBacking(rect foundation.Rect) foundation.Rect
 	ConvertPointToLayer(point foundation.Point) foundation.Point
-	GetRectsBeingDrawnCount(rects *foundation.Rect, count *int)
+	GetRectsBeingDrawnCount(rects unsafe.Pointer, count *int)
 	AddLayoutGuide(guide ILayoutGuide)
 	PrepareForReuse()
 	RulerViewShouldMoveMarker(ruler IRulerView, marker IRulerMarker) bool
@@ -369,7 +369,7 @@ func (v_ View) Init() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483785-convertrect?language=objc
 func (v_ View) ConvertRectFromView(rect foundation.Rect, view IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](v_, objc.Sel("convertRect:fromView:"), rect, objc.Ptr(view))
+	rv := objc.Call[foundation.Rect](v_, objc.Sel("convertRect:fromView:"), rect, view)
 	return rv
 }
 
@@ -405,7 +405,7 @@ func (v_ View) ViewDidUnhide() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483676-removecursorrect?language=objc
 func (v_ View) RemoveCursorRectCursor(rect foundation.Rect, object ICursor) {
-	objc.Call[objc.Void](v_, objc.Sel("removeCursorRect:cursor:"), rect, objc.Ptr(object))
+	objc.Call[objc.Void](v_, objc.Sel("removeCursorRect:cursor:"), rect, object)
 }
 
 // Converts the corners of a specified rectangle to lie on the center of device pixels, which is useful in compensating for rendering overscanning when the coordinate system has been scaled. [Full Topic]
@@ -420,7 +420,7 @@ func (v_ View) CenterScanRect(rect foundation.Rect) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483744-convertsize?language=objc
 func (v_ View) ConvertSizeToView(size foundation.Size, view IView) foundation.Size {
-	rv := objc.Call[foundation.Size](v_, objc.Sel("convertSize:toView:"), size, objc.Ptr(view))
+	rv := objc.Call[foundation.Size](v_, objc.Sel("convertSize:toView:"), size, view)
 	return rv
 }
 
@@ -428,7 +428,7 @@ func (v_ View) ConvertSizeToView(size foundation.Size, view IView) foundation.Si
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483624-willremovesubview?language=objc
 func (v_ View) WillRemoveSubview(subview IView) {
-	objc.Call[objc.Void](v_, objc.Sel("willRemoveSubview:"), objc.Ptr(subview))
+	objc.Call[objc.Void](v_, objc.Sel("willRemoveSubview:"), subview)
 }
 
 // Sets the size of the view’s bounds rectangle to specified dimensions, inversely scaling its coordinate system relative to its frame rectangle. [Full Topic]
@@ -480,21 +480,21 @@ func (v_ View) MouseInRect(point foundation.Point, rect foundation.Rect) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1531337-scrollclipview?language=objc
 func (v_ View) ScrollClipViewToPoint(clipView IClipView, point foundation.Point) {
-	objc.Call[objc.Void](v_, objc.Sel("scrollClipView:toPoint:"), objc.Ptr(clipView), point)
+	objc.Call[objc.Void](v_, objc.Sel("scrollClipView:toPoint:"), clipView, point)
 }
 
 // Adds a given tracking area to the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483489-addtrackingarea?language=objc
 func (v_ View) AddTrackingArea(trackingArea ITrackingArea) {
-	objc.Call[objc.Void](v_, objc.Sel("addTrackingArea:"), objc.Ptr(trackingArea))
+	objc.Call[objc.Void](v_, objc.Sel("addTrackingArea:"), trackingArea)
 }
 
 // Converts a rectangle from the view’s coordinate system to that of another view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483217-convertrect?language=objc
 func (v_ View) ConvertRectToView(rect foundation.Rect, view IView) foundation.Rect {
-	rv := objc.Call[foundation.Rect](v_, objc.Sel("convertRect:toView:"), rect, objc.Ptr(view))
+	rv := objc.Call[foundation.Rect](v_, objc.Sel("convertRect:toView:"), rect, view)
 	return rv
 }
 
@@ -502,7 +502,7 @@ func (v_ View) ConvertRectToView(rect foundation.Rect, view IView) foundation.Re
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483749-addgesturerecognizer?language=objc
 func (v_ View) AddGestureRecognizer(gestureRecognizer IGestureRecognizer) {
-	objc.Call[objc.Void](v_, objc.Sel("addGestureRecognizer:"), objc.Ptr(gestureRecognizer))
+	objc.Call[objc.Void](v_, objc.Sel("addGestureRecognizer:"), gestureRecognizer)
 }
 
 // Displays the view and all its subviews if possible, invoking each of the NSView methods [appkit/nsview/lockfocus], [appkit/nsview/drawrect], and [appkit/nsview/unlockfocus] as necessary. [Full Topic]
@@ -516,7 +516,7 @@ func (v_ View) Display() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483632-replacesubview?language=objc
 func (v_ View) ReplaceSubviewWith(oldView IView, newView IView) {
-	objc.Call[objc.Void](v_, objc.Sel("replaceSubview:with:"), objc.Ptr(oldView), objc.Ptr(newView))
+	objc.Call[objc.Void](v_, objc.Sel("replaceSubview:with:"), oldView, newView)
 }
 
 // Invoked automatically when the view’s geometry changes such that its tracking areas need to be recalculated. [Full Topic]
@@ -530,7 +530,7 @@ func (v_ View) UpdateTrackingAreas() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1533016-rulerview?language=objc
 func (v_ View) RulerViewWillAddMarkerAtLocation(ruler IRulerView, marker IRulerMarker, location float64) float64 {
-	rv := objc.Call[float64](v_, objc.Sel("rulerView:willAddMarker:atLocation:"), objc.Ptr(ruler), objc.Ptr(marker), location)
+	rv := objc.Call[float64](v_, objc.Sel("rulerView:willAddMarker:atLocation:"), ruler, marker, location)
 	return rv
 }
 
@@ -538,7 +538,7 @@ func (v_ View) RulerViewWillAddMarkerAtLocation(ruler IRulerView, marker IRulerM
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1529850-rulerview?language=objc
 func (v_ View) RulerViewWillSetClientView(ruler IRulerView, newClient IView) {
-	objc.Call[objc.Void](v_, objc.Sel("rulerView:willSetClientView:"), objc.Ptr(ruler), objc.Ptr(newClient))
+	objc.Call[objc.Void](v_, objc.Sel("rulerView:willSetClientView:"), ruler, newClient)
 }
 
 // Acts as [appkit/nsview/display], but confining drawing to a rectangular region of the view. [Full Topic]
@@ -588,7 +588,7 @@ func (v_ View) UpdateConstraints() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483269-convertpoint?language=objc
 func (v_ View) ConvertPointFromView(point foundation.Point, view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](v_, objc.Sel("convertPoint:fromView:"), point, objc.Ptr(view))
+	rv := objc.Call[foundation.Point](v_, objc.Sel("convertPoint:fromView:"), point, view)
 	return rv
 }
 
@@ -612,7 +612,7 @@ func (v_ View) BackingAlignedRectOptions(rect foundation.Rect, options foundatio
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1530840-rulerview?language=objc
 func (v_ View) RulerViewWillMoveMarkerToLocation(ruler IRulerView, marker IRulerMarker, location float64) float64 {
-	rv := objc.Call[float64](v_, objc.Sel("rulerView:willMoveMarker:toLocation:"), objc.Ptr(ruler), objc.Ptr(marker), location)
+	rv := objc.Call[float64](v_, objc.Sel("rulerView:willMoveMarker:toLocation:"), ruler, marker, location)
 	return rv
 }
 
@@ -643,14 +643,14 @@ func (v_ View) LocationOfPrintRect(rect foundation.Rect) foundation.Point {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483429-willopenmenu?language=objc
 func (v_ View) WillOpenMenuWithEvent(menu IMenu, event IEvent) {
-	objc.Call[objc.Void](v_, objc.Sel("willOpenMenu:withEvent:"), objc.Ptr(menu), objc.Ptr(event))
+	objc.Call[objc.Void](v_, objc.Sel("willOpenMenu:withEvent:"), menu, event)
 }
 
 // Detaches a gesture recognizer from the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483789-removegesturerecognizer?language=objc
 func (v_ View) RemoveGestureRecognizer(gestureRecognizer IGestureRecognizer) {
-	objc.Call[objc.Void](v_, objc.Sel("removeGestureRecognizer:"), objc.Ptr(gestureRecognizer))
+	objc.Call[objc.Void](v_, objc.Sel("removeGestureRecognizer:"), gestureRecognizer)
 }
 
 // Allows applications that use the AppKit pagination facility to draw additional marks on each logical page. [Full Topic]
@@ -671,14 +671,14 @@ func (v_ View) GetRectsExposedDuringLiveResizeCount(exposedRects *foundation.Rec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483499-writepdfinsiderect?language=objc
 func (v_ View) WritePDFInsideRectToPasteboard(rect foundation.Rect, pasteboard IPasteboard) {
-	objc.Call[objc.Void](v_, objc.Sel("writePDFInsideRect:toPasteboard:"), rect, objc.Ptr(pasteboard))
+	objc.Call[objc.Void](v_, objc.Sel("writePDFInsideRect:toPasteboard:"), rect, pasteboard)
 }
 
 // Converts a size from another view’s coordinate system to that of the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483307-convertsize?language=objc
 func (v_ View) ConvertSizeFromView(size foundation.Size, view IView) foundation.Size {
-	rv := objc.Call[foundation.Size](v_, objc.Sel("convertSize:fromView:"), size, objc.Ptr(view))
+	rv := objc.Call[foundation.Size](v_, objc.Sel("convertSize:fromView:"), size, view)
 	return rv
 }
 
@@ -743,7 +743,7 @@ func (v_ View) AdjustPageWidthNewLeftRightLimit(newRight *float64, oldLeft float
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483471-autoscroll?language=objc
 func (v_ View) Autoscroll(event IEvent) bool {
-	rv := objc.Call[bool](v_, objc.Sel("autoscroll:"), objc.Ptr(event))
+	rv := objc.Call[bool](v_, objc.Sel("autoscroll:"), event)
 	return rv
 }
 
@@ -751,7 +751,7 @@ func (v_ View) Autoscroll(event IEvent) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1524292-rulerview?language=objc
 func (v_ View) RulerViewPointForLocation(ruler IRulerView, point float64) foundation.Point {
-	rv := objc.Call[foundation.Point](v_, objc.Sel("rulerView:pointForLocation:"), objc.Ptr(ruler), point)
+	rv := objc.Call[foundation.Point](v_, objc.Sel("rulerView:pointForLocation:"), ruler, point)
 	return rv
 }
 
@@ -773,7 +773,7 @@ func (v_ View) EndDocument() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483231-menuforevent?language=objc
 func (v_ View) MenuForEvent(event IEvent) Menu {
-	rv := objc.Call[Menu](v_, objc.Sel("menuForEvent:"), objc.Ptr(event))
+	rv := objc.Call[Menu](v_, objc.Sel("menuForEvent:"), event)
 	return rv
 }
 
@@ -811,7 +811,7 @@ func (v_ View) DataWithPDFInsideRect(rect foundation.Rect) []byte {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1524873-rulerview?language=objc
 func (v_ View) RulerViewHandleMouseDown(ruler IRulerView, event IEvent) {
-	objc.Call[objc.Void](v_, objc.Sel("rulerView:handleMouseDown:"), objc.Ptr(ruler), objc.Ptr(event))
+	objc.Call[objc.Void](v_, objc.Sel("rulerView:handleMouseDown:"), ruler, event)
 }
 
 // Removes the tooltip identified by specified tag. [Full Topic]
@@ -840,7 +840,7 @@ func (v_ View) RectForSmartMagnificationAtPointInRect(location foundation.Point,
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483415-viewwillmovetowindow?language=objc
 func (v_ View) ViewWillMoveToWindow(newWindow IWindow) {
-	objc.Call[objc.Void](v_, objc.Sel("viewWillMoveToWindow:"), objc.Ptr(newWindow))
+	objc.Call[objc.Void](v_, objc.Sel("viewWillMoveToWindow:"), newWindow)
 }
 
 // Instructs the view to exit full screen mode. [Full Topic]
@@ -862,7 +862,7 @@ func (v_ View) DataWithEPSInsideRect(rect foundation.Rect) []byte {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483406-convertpoint?language=objc
 func (v_ View) ConvertPointToView(point foundation.Point, view IView) foundation.Point {
-	rv := objc.Call[foundation.Point](v_, objc.Sel("convertPoint:toView:"), point, objc.Ptr(view))
+	rv := objc.Call[foundation.Point](v_, objc.Sel("convertPoint:toView:"), point, view)
 	return rv
 }
 
@@ -877,14 +877,14 @@ func (v_ View) LayoutSubtreeIfNeeded() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483545-viewwillmovetosuperview?language=objc
 func (v_ View) ViewWillMoveToSuperview(newSuperview IView) {
-	objc.Call[objc.Void](v_, objc.Sel("viewWillMoveToSuperview:"), objc.Ptr(newSuperview))
+	objc.Call[objc.Void](v_, objc.Sel("viewWillMoveToSuperview:"), newSuperview)
 }
 
 // Removes a given tracking area from the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483634-removetrackingarea?language=objc
 func (v_ View) RemoveTrackingArea(trackingArea ITrackingArea) {
-	objc.Call[objc.Void](v_, objc.Sel("removeTrackingArea:"), objc.Ptr(trackingArea))
+	objc.Call[objc.Void](v_, objc.Sel("removeTrackingArea:"), trackingArea)
 }
 
 // Unlinks the view from its superview and its window and removes it from the responder chain, but does not invalidate its cursor rectangles to cause redrawing. [Full Topic]
@@ -934,7 +934,7 @@ func (v_ View) SetContentCompressionResistancePriorityForOrientation(priority La
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1526729-rulerview?language=objc
 func (v_ View) RulerViewShouldAddMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldAddMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldAddMarker:"), ruler, marker)
 	return rv
 }
 
@@ -942,7 +942,7 @@ func (v_ View) RulerViewShouldAddMarker(ruler IRulerView, marker IRulerMarker) b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483454-didaddsubview?language=objc
 func (v_ View) DidAddSubview(subview IView) {
-	objc.Call[objc.Void](v_, objc.Sel("didAddSubview:"), objc.Ptr(subview))
+	objc.Call[objc.Void](v_, objc.Sel("didAddSubview:"), subview)
 }
 
 // Updates the constraints for the receiving view and its subviews. [Full Topic]
@@ -971,7 +971,7 @@ func (v_ View) AddToolTipRectOwnerUserData(rect foundation.Rect, owner objc.IObj
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1527001-rulerview?language=objc
 func (v_ View) RulerViewShouldRemoveMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldRemoveMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldRemoveMarker:"), ruler, marker)
 	return rv
 }
 
@@ -979,7 +979,7 @@ func (v_ View) RulerViewShouldRemoveMarker(ruler IRulerView, marker IRulerMarker
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483770-didclosemenu?language=objc
 func (v_ View) DidCloseMenuWithEvent(menu IMenu, event IEvent) {
-	objc.Call[objc.Void](v_, objc.Sel("didCloseMenu:withEvent:"), objc.Ptr(menu), objc.Ptr(event))
+	objc.Call[objc.Void](v_, objc.Sel("didCloseMenu:withEvent:"), menu, event)
 }
 
 // Converts a point from its pixel aligned backing store coordinate system to the view’s interior coordinate system. [Full Topic]
@@ -1009,14 +1009,14 @@ func (v_ View) ConvertSizeToBacking(size foundation.Size) foundation.Size {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483783-addsubview?language=objc
 func (v_ View) AddSubview(view IView) {
-	objc.Call[objc.Void](v_, objc.Sel("addSubview:"), objc.Ptr(view))
+	objc.Call[objc.Void](v_, objc.Sel("addSubview:"), view)
 }
 
 // Shows a window displaying the definition of the specified range of the attributed string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483587-showdefinitionforattributedstrin?language=objc
 func (v_ View) ShowDefinitionForAttributedStringRangeOptionsBaselineOriginProvider(attrString foundation.IAttributedString, targetRange foundation.Range, options map[DefinitionOptionKey]objc.IObject, originProvider func(adjustedRange foundation.Range) foundation.Point) {
-	objc.Call[objc.Void](v_, objc.Sel("showDefinitionForAttributedString:range:options:baselineOriginProvider:"), objc.Ptr(attrString), targetRange, options, originProvider)
+	objc.Call[objc.Void](v_, objc.Sel("showDefinitionForAttributedString:range:options:baselineOriginProvider:"), attrString, targetRange, options, originProvider)
 }
 
 // Informs the view that it has been added to a new view hierarchy. [Full Topic]
@@ -1030,14 +1030,14 @@ func (v_ View) ViewDidMoveToWindow() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483436-displayrectignoringopacity?language=objc
 func (v_ View) DisplayRectIgnoringOpacityInContext(rect foundation.Rect, context IGraphicsContext) {
-	objc.Call[objc.Void](v_, objc.Sel("displayRectIgnoringOpacity:inContext:"), rect, objc.Ptr(context))
+	objc.Call[objc.Void](v_, objc.Sel("displayRectIgnoringOpacity:inContext:"), rect, context)
 }
 
 // Adds a constraint on the layout of the receiving view or its subviews. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1526969-addconstraint?language=objc
 func (v_ View) AddConstraint(constraint ILayoutConstraint) {
-	objc.Call[objc.Void](v_, objc.Sel("addConstraint:"), objc.Ptr(constraint))
+	objc.Call[objc.Void](v_, objc.Sel("addConstraint:"), constraint)
 }
 
 // Initiates a dragging session with a group of dragging items. [Full Topic]
@@ -1045,7 +1045,7 @@ func (v_ View) AddConstraint(constraint ILayoutConstraint) {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483791-begindraggingsessionwithitems?language=objc
 func (v_ View) BeginDraggingSessionWithItemsEventSource(items []IDraggingItem, event IEvent, source PDraggingSource) DraggingSession {
 	po2 := objc.WrapAsProtocol("NSDraggingSource", source)
-	rv := objc.Call[DraggingSession](v_, objc.Sel("beginDraggingSessionWithItems:event:source:"), items, objc.Ptr(event), po2)
+	rv := objc.Call[DraggingSession](v_, objc.Sel("beginDraggingSessionWithItems:event:source:"), items, event, po2)
 	return rv
 }
 
@@ -1053,7 +1053,7 @@ func (v_ View) BeginDraggingSessionWithItemsEventSource(items []IDraggingItem, e
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483791-begindraggingsessionwithitems?language=objc
 func (v_ View) BeginDraggingSessionWithItemsEventSourceObject(items []IDraggingItem, event IEvent, sourceObject objc.IObject) DraggingSession {
-	rv := objc.Call[DraggingSession](v_, objc.Sel("beginDraggingSessionWithItems:event:source:"), items, objc.Ptr(event), objc.Ptr(sourceObject))
+	rv := objc.Call[DraggingSession](v_, objc.Sel("beginDraggingSessionWithItems:event:source:"), items, event, sourceObject)
 	return rv
 }
 
@@ -1124,7 +1124,7 @@ func (v_ View) Print(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1524467-rulerview?language=objc
 func (v_ View) RulerViewDidRemoveMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.Call[objc.Void](v_, objc.Sel("rulerView:didRemoveMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	objc.Call[objc.Void](v_, objc.Sel("rulerView:didRemoveMarker:"), ruler, marker)
 }
 
 // Returns the view’s frame for a given alignment rectangle. [Full Topic]
@@ -1162,14 +1162,14 @@ func (v_ View) ConstraintsAffectingLayoutForOrientation(orientation LayoutConstr
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1532033-rulerview?language=objc
 func (v_ View) RulerViewDidAddMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.Call[objc.Void](v_, objc.Sel("rulerView:didAddMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	objc.Call[objc.Void](v_, objc.Sel("rulerView:didAddMarker:"), ruler, marker)
 }
 
 // Removes the specified constraint from the view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1524333-removeconstraint?language=objc
 func (v_ View) RemoveConstraint(constraint ILayoutConstraint) {
-	objc.Call[objc.Void](v_, objc.Sel("removeConstraint:"), objc.Ptr(constraint))
+	objc.Call[objc.Void](v_, objc.Sel("removeConstraint:"), constraint)
 }
 
 // Returns the view’s nearest descendant (including itself) with a specific tag, or nil if no subview has that tag. [Full Topic]
@@ -1184,7 +1184,7 @@ func (v_ View) ViewWithTag(tag int) View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483244-shoulddelaywindoworderingforeven?language=objc
 func (v_ View) ShouldDelayWindowOrderingForEvent(event IEvent) bool {
-	rv := objc.Call[bool](v_, objc.Sel("shouldDelayWindowOrderingForEvent:"), objc.Ptr(event))
+	rv := objc.Call[bool](v_, objc.Sel("shouldDelayWindowOrderingForEvent:"), event)
 	return rv
 }
 
@@ -1206,14 +1206,14 @@ func (v_ View) DrawRect(dirtyRect foundation.Rect) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1527086-removelayoutguide?language=objc
 func (v_ View) RemoveLayoutGuide(guide ILayoutGuide) {
-	objc.Call[objc.Void](v_, objc.Sel("removeLayoutGuide:"), objc.Ptr(guide))
+	objc.Call[objc.Void](v_, objc.Sel("removeLayoutGuide:"), guide)
 }
 
 // Draws the specified area of the view, and its descendants, into a provided bitmap-representation object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483552-cachedisplayinrect?language=objc
 func (v_ View) CacheDisplayInRectToBitmapImageRep(rect foundation.Rect, bitmapImageRep IBitmapImageRep) {
-	objc.Call[objc.Void](v_, objc.Sel("cacheDisplayInRect:toBitmapImageRep:"), rect, objc.Ptr(bitmapImageRep))
+	objc.Call[objc.Void](v_, objc.Sel("cacheDisplayInRect:toBitmapImageRep:"), rect, bitmapImageRep)
 }
 
 // Returns YES if the view handles page boundaries, NO otherwise. [Full Topic]
@@ -1250,7 +1250,7 @@ func (v_ View) ConvertRectFromLayer(rect foundation.Rect) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483410-acceptsfirstmouse?language=objc
 func (v_ View) AcceptsFirstMouse(event IEvent) bool {
-	rv := objc.Call[bool](v_, objc.Sel("acceptsFirstMouse:"), objc.Ptr(event))
+	rv := objc.Call[bool](v_, objc.Sel("acceptsFirstMouse:"), event)
 	return rv
 }
 
@@ -1272,7 +1272,7 @@ func (v_ View) RemoveFromSuperview() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483235-writeepsinsiderect?language=objc
 func (v_ View) WriteEPSInsideRectToPasteboard(rect foundation.Rect, pasteboard IPasteboard) {
-	objc.Call[objc.Void](v_, objc.Sel("writeEPSInsideRect:toPasteboard:"), rect, objc.Ptr(pasteboard))
+	objc.Call[objc.Void](v_, objc.Sel("writeEPSInsideRect:toPasteboard:"), rect, pasteboard)
 }
 
 // Returns a bitmap-representation object suitable for caching the specified portion of the view. [Full Topic]
@@ -1287,7 +1287,7 @@ func (v_ View) BitmapImageRepForCachingDisplayInRect(rect foundation.Rect) Bitma
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483640-addsubview?language=objc
 func (v_ View) AddSubviewPositionedRelativeTo(view IView, place WindowOrderingMode, otherView IView) {
-	objc.Call[objc.Void](v_, objc.Sel("addSubview:positioned:relativeTo:"), objc.Ptr(view), place, objc.Ptr(otherView))
+	objc.Call[objc.Void](v_, objc.Sel("addSubview:positioned:relativeTo:"), view, place, otherView)
 }
 
 // Acts as [appkit/nsview/displayifneeded], except that this method doesn’t back up to the first opaque ancestor—it simply causes the view and its descendants to execute their drawing code. [Full Topic]
@@ -1309,7 +1309,7 @@ func (v_ View) HitTest(point foundation.Point) View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483780-enterfullscreenmode?language=objc
 func (v_ View) EnterFullScreenModeWithOptions(screen IScreen, options map[ViewFullScreenModeOptionKey]objc.IObject) bool {
-	rv := objc.Call[bool](v_, objc.Sel("enterFullScreenMode:withOptions:"), objc.Ptr(screen), options)
+	rv := objc.Call[bool](v_, objc.Sel("enterFullScreenMode:withOptions:"), screen, options)
 	return rv
 }
 
@@ -1340,7 +1340,7 @@ func (v_ View) DisplayIfNeeded() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483540-addcursorrect?language=objc
 func (v_ View) AddCursorRectCursor(rect foundation.Rect, object ICursor) {
-	objc.Call[objc.Void](v_, objc.Sel("addCursorRect:cursor:"), rect, objc.Ptr(object))
+	objc.Call[objc.Void](v_, objc.Sel("addCursorRect:cursor:"), rect, object)
 }
 
 // Unregisters the view as a possible destination in a dragging session. [Full Topic]
@@ -1354,7 +1354,7 @@ func (v_ View) UnregisterDraggedTypes() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1534537-rulerview?language=objc
 func (v_ View) RulerViewDidMoveMarker(ruler IRulerView, marker IRulerMarker) {
-	objc.Call[objc.Void](v_, objc.Sel("rulerView:didMoveMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	objc.Call[objc.Void](v_, objc.Sel("rulerView:didMoveMarker:"), ruler, marker)
 }
 
 // Implemented by subclasses to determine the portion of the view to be printed for the specified page number. [Full Topic]
@@ -1369,7 +1369,7 @@ func (v_ View) RectForPage(page int) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483219-isdescendantof?language=objc
 func (v_ View) IsDescendantOf(view IView) bool {
-	rv := objc.Call[bool](v_, objc.Sel("isDescendantOf:"), objc.Ptr(view))
+	rv := objc.Call[bool](v_, objc.Sel("isDescendantOf:"), view)
 	return rv
 }
 
@@ -1392,7 +1392,7 @@ func (v_ View) ConvertPointToLayer(point foundation.Point) foundation.Point {
 // Returns by indirection a list of nonoverlapping rectangles that define the area the view is being asked to draw in [appkit/nsview/drawrect]. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483772-getrectsbeingdrawn?language=objc
-func (v_ View) GetRectsBeingDrawnCount(rects *foundation.Rect, count *int) {
+func (v_ View) GetRectsBeingDrawnCount(rects unsafe.Pointer, count *int) {
 	objc.Call[objc.Void](v_, objc.Sel("getRectsBeingDrawn:count:"), rects, count)
 }
 
@@ -1400,7 +1400,7 @@ func (v_ View) GetRectsBeingDrawnCount(rects *foundation.Rect, count *int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1530406-addlayoutguide?language=objc
 func (v_ View) AddLayoutGuide(guide ILayoutGuide) {
-	objc.Call[objc.Void](v_, objc.Sel("addLayoutGuide:"), objc.Ptr(guide))
+	objc.Call[objc.Void](v_, objc.Sel("addLayoutGuide:"), guide)
 }
 
 // Restores the view to an initial state so that it can be reused. [Full Topic]
@@ -1414,7 +1414,7 @@ func (v_ View) PrepareForReuse() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1532310-rulerview?language=objc
 func (v_ View) RulerViewShouldMoveMarker(ruler IRulerView, marker IRulerMarker) bool {
-	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldMoveMarker:"), objc.Ptr(ruler), objc.Ptr(marker))
+	rv := objc.Call[bool](v_, objc.Sel("rulerView:shouldMoveMarker:"), ruler, marker)
 	return rv
 }
 
@@ -1445,7 +1445,7 @@ func (v_ View) ContentCompressionResistancePriorityForOrientation(orientation La
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483353-ancestorsharedwithview?language=objc
 func (v_ View) AncestorSharedWithView(view IView) View {
-	rv := objc.Call[View](v_, objc.Sel("ancestorSharedWithView:"), objc.Ptr(view))
+	rv := objc.Call[View](v_, objc.Sel("ancestorSharedWithView:"), view)
 	return rv
 }
 
@@ -1453,14 +1453,14 @@ func (v_ View) AncestorSharedWithView(view IView) View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1534216-reflectscrolledclipview?language=objc
 func (v_ View) ReflectScrolledClipView(clipView IClipView) {
-	objc.Call[objc.Void](v_, objc.Sel("reflectScrolledClipView:"), objc.Ptr(clipView))
+	objc.Call[objc.Void](v_, objc.Sel("reflectScrolledClipView:"), clipView)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1535261-rulerview?language=objc
 func (v_ View) RulerViewLocationForPoint(ruler IRulerView, point foundation.Point) float64 {
-	rv := objc.Call[float64](v_, objc.Sel("rulerView:locationForPoint:"), objc.Ptr(ruler), point)
+	rv := objc.Call[float64](v_, objc.Sel("rulerView:locationForPoint:"), ruler, point)
 	return rv
 }
 
@@ -1468,7 +1468,7 @@ func (v_ View) RulerViewLocationForPoint(ruler IRulerView, point foundation.Poin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483747-showdefinitionforattributedstrin?language=objc
 func (v_ View) ShowDefinitionForAttributedStringAtPoint(attrString foundation.IAttributedString, textBaselineOrigin foundation.Point) {
-	objc.Call[objc.Void](v_, objc.Sel("showDefinitionForAttributedString:atPoint:"), objc.Ptr(attrString), textBaselineOrigin)
+	objc.Call[objc.Void](v_, objc.Sel("showDefinitionForAttributedString:atPoint:"), attrString, textBaselineOrigin)
 }
 
 // Converts a rectangle from the view’s interior coordinate system to its pixel aligned backing store coordinate system. [Full Topic]
@@ -1742,7 +1742,7 @@ func (v_ View) Shadow() Shadow {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483263-shadow?language=objc
 func (v_ View) SetShadow(value IShadow) {
-	objc.Call[objc.Void](v_, objc.Sel("setShadow:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setShadow:"), value)
 }
 
 // Custom insets that you specify to modify your view’s safe area [Full Topic]
@@ -1874,7 +1874,7 @@ func (v_ View) CompositingFilter() coreimage.Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483516-compositingfilter?language=objc
 func (v_ View) SetCompositingFilter(value coreimage.IFilter) {
-	objc.Call[objc.Void](v_, objc.Sel("setCompositingFilter:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setCompositingFilter:"), value)
 }
 
 // Returns a Boolean value indicating whether the view depends on the constraint-based layout system. [Full Topic]
@@ -2429,7 +2429,7 @@ func (v_ View) Layer() quartzcore.Layer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483298-layer?language=objc
 func (v_ View) SetLayer(value quartzcore.ILayer) {
-	objc.Call[objc.Void](v_, objc.Sel("setLayer:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setLayer:"), value)
 }
 
 // A Boolean value indicating whether the view ensures it is vibrant on top of other content. [Full Topic]
@@ -2506,7 +2506,7 @@ func (v_ View) PressureConfiguration() PressureConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1426890-pressureconfiguration?language=objc
 func (v_ View) SetPressureConfiguration(value IPressureConfiguration) {
-	objc.Call[objc.Void](v_, objc.Sel("setPressureConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setPressureConfiguration:"), value)
 }
 
 // The distance (in points) between the bottom of the view’s alignment rectangle and its bottommost baseline. [Full Topic]
@@ -2645,7 +2645,7 @@ func (v_ View) NextKeyView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsview/1483465-nextkeyview?language=objc
 func (v_ View) SetNextKeyView(value IView) {
-	objc.Call[objc.Void](v_, objc.Sel("setNextKeyView:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setNextKeyView:"), value)
 }
 
 // The view’s frame rectangle, which defines its position and size in its superview’s coordinate system. [Full Topic]

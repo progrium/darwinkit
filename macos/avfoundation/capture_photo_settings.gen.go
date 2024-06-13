@@ -61,7 +61,7 @@ func CapturePhotoSettings_PhotoSettingsWithFormat(format map[string]objc.IObject
 }
 
 func (cc _CapturePhotoSettingsClass) PhotoSettingsFromPhotoSettings(photoSettings ICapturePhotoSettings) CapturePhotoSettings {
-	rv := objc.Call[CapturePhotoSettings](cc, objc.Sel("photoSettingsFromPhotoSettings:"), objc.Ptr(photoSettings))
+	rv := objc.Call[CapturePhotoSettings](cc, objc.Sel("photoSettingsFromPhotoSettings:"), photoSettings)
 	return rv
 }
 

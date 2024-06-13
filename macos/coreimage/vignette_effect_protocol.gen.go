@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect?language=objc
 type PVignetteEffect interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PVignetteEffect interface {
 	HasInputImage() bool
 
 	// optional
-	SetFalloff(value float64)
+	SetFalloff(value float32)
 	HasSetFalloff() bool
 
 	// optional
-	Falloff() float64
+	Falloff() float32
 	HasFalloff() bool
 
 	// optional
@@ -67,7 +67,7 @@ func (v_ VignetteEffectObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228834-radius?language=objc
-func (v_ VignetteEffectObject) SetRadius(value float64) {
+func (v_ VignetteEffectObject) SetRadius(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setRadius:"), value)
 }
 
@@ -78,8 +78,8 @@ func (v_ VignetteEffectObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228834-radius?language=objc
-func (v_ VignetteEffectObject) Radius() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("radius"))
+func (v_ VignetteEffectObject) Radius() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("radius"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (v_ VignetteEffectObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228833-intensity?language=objc
-func (v_ VignetteEffectObject) SetIntensity(value float64) {
+func (v_ VignetteEffectObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setIntensity:"), value)
 }
 
@@ -101,8 +101,8 @@ func (v_ VignetteEffectObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228833-intensity?language=objc
-func (v_ VignetteEffectObject) Intensity() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("intensity"))
+func (v_ VignetteEffectObject) Intensity() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (v_ VignetteEffectObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228832-inputimage?language=objc
 func (v_ VignetteEffectObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
 }
 
 func (v_ VignetteEffectObject) HasInputImage() bool {
@@ -136,7 +136,7 @@ func (v_ VignetteEffectObject) HasSetFalloff() bool {
 // The falloff of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228831-falloff?language=objc
-func (v_ VignetteEffectObject) SetFalloff(value float64) {
+func (v_ VignetteEffectObject) SetFalloff(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setFalloff:"), value)
 }
 
@@ -147,8 +147,8 @@ func (v_ VignetteEffectObject) HasFalloff() bool {
 // The falloff of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civignetteeffect/3228831-falloff?language=objc
-func (v_ VignetteEffectObject) Falloff() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("falloff"))
+func (v_ VignetteEffectObject) Falloff() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("falloff"))
 	return rv
 }
 

@@ -19,19 +19,19 @@ type _CNNArithmeticGradientClass struct {
 // An interface definition for the [CNNArithmeticGradient] class.
 type ICNNArithmeticGradient interface {
 	ICNNGradientKernel
-	Bias() float64
-	SetBias(value float64)
+	Bias() float32
+	SetBias(value float32)
 	SecondaryStrideInFeatureChannels() uint
 	SetSecondaryStrideInFeatureChannels(value uint)
-	MinimumValue() float64
-	SetMinimumValue(value float64)
+	MinimumValue() float32
+	SetMinimumValue(value float32)
 	IsSecondarySourceFilter() bool
-	SecondaryScale() float64
-	SetSecondaryScale(value float64)
-	MaximumValue() float64
-	SetMaximumValue(value float64)
-	PrimaryScale() float64
-	SetPrimaryScale(value float64)
+	SecondaryScale() float32
+	SetSecondaryScale(value float32)
+	MaximumValue() float32
+	SetMaximumValue(value float32)
+	PrimaryScale() float32
+	SetPrimaryScale(value float32)
 }
 
 // The base class for gradient arithmetic operators. [Full Topic]
@@ -100,15 +100,15 @@ func CNNArithmeticGradient_CopyWithZoneDevice(zone unsafe.Pointer, device metal.
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951855-bias?language=objc
-func (c_ CNNArithmeticGradient) Bias() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("bias"))
+func (c_ CNNArithmeticGradient) Bias() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("bias"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951855-bias?language=objc
-func (c_ CNNArithmeticGradient) SetBias(value float64) {
+func (c_ CNNArithmeticGradient) SetBias(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBias:"), value)
 }
 
@@ -130,15 +130,15 @@ func (c_ CNNArithmeticGradient) SetSecondaryStrideInFeatureChannels(value uint) 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951858-minimumvalue?language=objc
-func (c_ CNNArithmeticGradient) MinimumValue() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("minimumValue"))
+func (c_ CNNArithmeticGradient) MinimumValue() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("minimumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951858-minimumvalue?language=objc
-func (c_ CNNArithmeticGradient) SetMinimumValue(value float64) {
+func (c_ CNNArithmeticGradient) SetMinimumValue(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setMinimumValue:"), value)
 }
 
@@ -153,44 +153,44 @@ func (c_ CNNArithmeticGradient) IsSecondarySourceFilter() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951856-secondaryscale?language=objc
-func (c_ CNNArithmeticGradient) SecondaryScale() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("secondaryScale"))
+func (c_ CNNArithmeticGradient) SecondaryScale() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("secondaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951856-secondaryscale?language=objc
-func (c_ CNNArithmeticGradient) SetSecondaryScale(value float64) {
+func (c_ CNNArithmeticGradient) SetSecondaryScale(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setSecondaryScale:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951854-maximumvalue?language=objc
-func (c_ CNNArithmeticGradient) MaximumValue() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("maximumValue"))
+func (c_ CNNArithmeticGradient) MaximumValue() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("maximumValue"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951854-maximumvalue?language=objc
-func (c_ CNNArithmeticGradient) SetMaximumValue(value float64) {
+func (c_ CNNArithmeticGradient) SetMaximumValue(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setMaximumValue:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951861-primaryscale?language=objc
-func (c_ CNNArithmeticGradient) PrimaryScale() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("primaryScale"))
+func (c_ CNNArithmeticGradient) PrimaryScale() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("primaryScale"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnarithmeticgradient/2951861-primaryscale?language=objc
-func (c_ CNNArithmeticGradient) SetPrimaryScale(value float64) {
+func (c_ CNNArithmeticGradient) SetPrimaryScale(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setPrimaryScale:"), value)
 }

@@ -120,7 +120,7 @@ func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemCh
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritemdelegate/2544677-candidatelisttouchbaritem?language=objc
 func (c_ CandidateListTouchBarItemDelegateObject) CandidateListTouchBarItemChangeSelectionFromCandidateAtIndexToIndex(anItem CandidateListTouchBarItem, previousIndex int, index int) {
-	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), objc.Ptr(anItem), previousIndex, index)
+	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:changeSelectionFromCandidateAtIndex:toIndex:"), anItem, previousIndex, index)
 }
 
 func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemChangedCandidateListVisibility() bool {
@@ -131,7 +131,7 @@ func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemCh
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritemdelegate/2544878-candidatelisttouchbaritem?language=objc
 func (c_ CandidateListTouchBarItemDelegateObject) CandidateListTouchBarItemChangedCandidateListVisibility(anItem CandidateListTouchBarItem, isVisible bool) {
-	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:changedCandidateListVisibility:"), objc.Ptr(anItem), isVisible)
+	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:changedCandidateListVisibility:"), anItem, isVisible)
 }
 
 func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemEndSelectingCandidateAtIndex() bool {
@@ -142,7 +142,7 @@ func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemEn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritemdelegate/2544704-candidatelisttouchbaritem?language=objc
 func (c_ CandidateListTouchBarItemDelegateObject) CandidateListTouchBarItemEndSelectingCandidateAtIndex(anItem CandidateListTouchBarItem, index int) {
-	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), objc.Ptr(anItem), index)
+	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:endSelectingCandidateAtIndex:"), anItem, index)
 }
 
 func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemBeginSelectingCandidateAtIndex() bool {
@@ -153,5 +153,5 @@ func (c_ CandidateListTouchBarItemDelegateObject) HasCandidateListTouchBarItemBe
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscandidatelisttouchbaritemdelegate/2544747-candidatelisttouchbaritem?language=objc
 func (c_ CandidateListTouchBarItemDelegateObject) CandidateListTouchBarItemBeginSelectingCandidateAtIndex(anItem CandidateListTouchBarItem, index int) {
-	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), objc.Ptr(anItem), index)
+	objc.Call[objc.Void](c_, objc.Sel("candidateListTouchBarItem:beginSelectingCandidateAtIndex:"), anItem, index)
 }

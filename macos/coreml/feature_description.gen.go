@@ -65,7 +65,7 @@ func (f_ FeatureDescription) Init() FeatureDescription {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturedescription/2879363-isallowedvalue?language=objc
 func (f_ FeatureDescription) IsAllowedValue(value IFeatureValue) bool {
-	rv := objc.Call[bool](f_, objc.Sel("isAllowedValue:"), objc.Ptr(value))
+	rv := objc.Call[bool](f_, objc.Sel("isAllowedValue:"), value)
 	return rv
 }
 

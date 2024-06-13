@@ -19,7 +19,7 @@ type _FetchedResultsControllerClass struct {
 // An interface definition for the [FetchedResultsController] class.
 type IFetchedResultsController interface {
 	objc.IObject
-	PerformFetch(error foundation.IError) bool
+	PerformFetch(error unsafe.Pointer) bool
 	ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object
 	IndexPathForObject(object objc.IObject) foundation.IndexPath
 	SectionForSectionIndexTitleAtIndex(title string, sectionIndex int) int
@@ -50,7 +50,7 @@ func FetchedResultsControllerFrom(ptr unsafe.Pointer) FetchedResultsController {
 }
 
 func (f_ FetchedResultsController) InitWithFetchRequestManagedObjectContextSectionNameKeyPathCacheName(fetchRequest IFetchRequest, context IManagedObjectContext, sectionNameKeyPath string, name string) FetchedResultsController {
-	rv := objc.Call[FetchedResultsController](f_, objc.Sel("initWithFetchRequest:managedObjectContext:sectionNameKeyPath:cacheName:"), objc.Ptr(fetchRequest), objc.Ptr(context), sectionNameKeyPath, name)
+	rv := objc.Call[FetchedResultsController](f_, objc.Sel("initWithFetchRequest:managedObjectContext:sectionNameKeyPath:cacheName:"), fetchRequest, context, sectionNameKeyPath, name)
 	return rv
 }
 
@@ -86,8 +86,8 @@ func (f_ FetchedResultsController) Init() FetchedResultsController {
 // Executes the controller’s fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622305-performfetch?language=objc
-func (f_ FetchedResultsController) PerformFetch(error foundation.IError) bool {
-	rv := objc.Call[bool](f_, objc.Sel("performFetch:"), objc.Ptr(error))
+func (f_ FetchedResultsController) PerformFetch(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](f_, objc.Sel("performFetch:"), error)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (f_ FetchedResultsController) PerformFetch(error foundation.IError) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622281-objectatindexpath?language=objc
 func (f_ FetchedResultsController) ObjectAtIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("objectAtIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[objc.Object](f_, objc.Sel("objectAtIndexPath:"), indexPath)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (f_ FetchedResultsController) ObjectAtIndexPath(indexPath foundation.IIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622306-indexpathforobject?language=objc
 func (f_ FetchedResultsController) IndexPathForObject(object objc.IObject) foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](f_, objc.Sel("indexPathForObject:"), objc.Ptr(object))
+	rv := objc.Call[foundation.IndexPath](f_, objc.Sel("indexPathForObject:"), object)
 	return rv
 }
 
@@ -189,7 +189,7 @@ func (f_ FetchedResultsController) SetDelegate(value PFetchedResultsControllerDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsfetchedresultscontroller/1622291-delegate?language=objc
 func (f_ FetchedResultsController) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](f_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The name of the file used to cache section information. [Full Topic]

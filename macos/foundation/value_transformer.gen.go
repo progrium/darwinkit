@@ -135,7 +135,7 @@ func (v_ ValueTransformer) ReverseTransformedValue(value objc.IObject) objc.Obje
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsvaluetransformer/1402018-setvaluetransformer?language=objc
 func (vc _ValueTransformerClass) SetValueTransformerForName(transformer IValueTransformer, name ValueTransformerName) {
-	objc.Call[objc.Void](vc, objc.Sel("setValueTransformer:forName:"), objc.Ptr(transformer), name)
+	objc.Call[objc.Void](vc, objc.Sel("setValueTransformer:forName:"), transformer, name)
 }
 
 // Registers the provided value transformer with a given identifier. [Full Topic]

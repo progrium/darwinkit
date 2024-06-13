@@ -74,7 +74,7 @@ func (w_ WindowTab) AccessoryView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869745-accessoryview?language=objc
 func (w_ WindowTab) SetAccessoryView(value IView) {
-	objc.Call[objc.Void](w_, objc.Sel("setAccessoryView:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setAccessoryView:"), value)
 }
 
 // The title for the window tab, specified as an attributed string. [Full Topic]
@@ -89,7 +89,7 @@ func (w_ WindowTab) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindowtab/2869743-attributedtitle?language=objc
 func (w_ WindowTab) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](w_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // The tooltip for this window tab. [Full Topic]

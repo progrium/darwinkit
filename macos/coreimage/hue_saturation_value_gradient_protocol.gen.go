@@ -12,27 +12,27 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient?language=objc
 type PHueSaturationValueGradient interface {
 	// optional
-	SetValue(value float64)
+	SetValue(value float32)
 	HasSetValue() bool
 
 	// optional
-	Value() float64
+	Value() float32
 	HasValue() bool
 
 	// optional
-	SetDither(value float64)
+	SetDither(value float32)
 	HasSetDither() bool
 
 	// optional
-	Dither() float64
+	Dither() float32
 	HasDither() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PHueSaturationValueGradient interface {
 	HasColorSpace() bool
 
 	// optional
-	SetSoftness(value float64)
+	SetSoftness(value float32)
 	HasSetSoftness() bool
 
 	// optional
-	Softness() float64
+	Softness() float32
 	HasSoftness() bool
 }
 
@@ -67,7 +67,7 @@ func (h_ HueSaturationValueGradientObject) HasSetValue() bool {
 // The lightness of the hue-saturation gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228506-value?language=objc
-func (h_ HueSaturationValueGradientObject) SetValue(value float64) {
+func (h_ HueSaturationValueGradientObject) SetValue(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setValue:"), value)
 }
 
@@ -78,8 +78,8 @@ func (h_ HueSaturationValueGradientObject) HasValue() bool {
 // The lightness of the hue-saturation gradient. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228506-value?language=objc
-func (h_ HueSaturationValueGradientObject) Value() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("value"))
+func (h_ HueSaturationValueGradientObject) Value() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("value"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (h_ HueSaturationValueGradientObject) HasSetDither() bool {
 // A Boolean value specifying whether the dither the generated output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228503-dither?language=objc
-func (h_ HueSaturationValueGradientObject) SetDither(value float64) {
+func (h_ HueSaturationValueGradientObject) SetDither(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setDither:"), value)
 }
 
@@ -101,8 +101,8 @@ func (h_ HueSaturationValueGradientObject) HasDither() bool {
 // A Boolean value specifying whether the dither the generated output. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228503-dither?language=objc
-func (h_ HueSaturationValueGradientObject) Dither() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("dither"))
+func (h_ HueSaturationValueGradientObject) Dither() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("dither"))
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (h_ HueSaturationValueGradientObject) HasSetRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
-func (h_ HueSaturationValueGradientObject) SetRadius(value float64) {
+func (h_ HueSaturationValueGradientObject) SetRadius(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setRadius:"), value)
 }
 
@@ -124,8 +124,8 @@ func (h_ HueSaturationValueGradientObject) HasRadius() bool {
 // The distance from the center of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228504-radius?language=objc
-func (h_ HueSaturationValueGradientObject) Radius() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("radius"))
+func (h_ HueSaturationValueGradientObject) Radius() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("radius"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (h_ HueSaturationValueGradientObject) HasSetSoftness() bool {
 // The softness of the generated color wheel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228505-softness?language=objc
-func (h_ HueSaturationValueGradientObject) SetSoftness(value float64) {
+func (h_ HueSaturationValueGradientObject) SetSoftness(value float32) {
 	objc.Call[objc.Void](h_, objc.Sel("setSoftness:"), value)
 }
 
@@ -170,7 +170,7 @@ func (h_ HueSaturationValueGradientObject) HasSoftness() bool {
 // The softness of the generated color wheel. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cihuesaturationvaluegradient/3228505-softness?language=objc
-func (h_ HueSaturationValueGradientObject) Softness() float64 {
-	rv := objc.Call[float64](h_, objc.Sel("softness"))
+func (h_ HueSaturationValueGradientObject) Softness() float32 {
+	rv := objc.Call[float32](h_, objc.Sel("softness"))
 	return rv
 }

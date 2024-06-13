@@ -408,7 +408,7 @@ func SearchableItemAttributeSetFrom(ptr unsafe.Pointer) SearchableItemAttributeS
 }
 
 func (s_ SearchableItemAttributeSet) InitWithContentType(contentType uti.IType) SearchableItemAttributeSet {
-	rv := objc.Call[SearchableItemAttributeSet](s_, objc.Sel("initWithContentType:"), objc.Ptr(contentType))
+	rv := objc.Call[SearchableItemAttributeSet](s_, objc.Sel("initWithContentType:"), contentType)
 	return rv
 }
 
@@ -445,14 +445,14 @@ func (s_ SearchableItemAttributeSet) Init() SearchableItemAttributeSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616395-setvalue?language=objc
 func (s_ SearchableItemAttributeSet) SetValueForCustomKey(value objc.IObject, key ICustomAttributeKey) {
-	objc.Call[objc.Void](s_, objc.Sel("setValue:forCustomKey:"), value, objc.Ptr(key))
+	objc.Call[objc.Void](s_, objc.Sel("setValue:forCustomKey:"), value, key)
 }
 
 // Returns the value associated with the specified custom attribute key. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616407-valueforcustomkey?language=objc
 func (s_ SearchableItemAttributeSet) ValueForCustomKey(key ICustomAttributeKey) objc.Object {
-	rv := objc.Call[objc.Object](s_, objc.Sel("valueForCustomKey:"), objc.Ptr(key))
+	rv := objc.Call[objc.Object](s_, objc.Sel("valueForCustomKey:"), key)
 	return rv
 }
 
@@ -468,7 +468,7 @@ func (s_ SearchableItemAttributeSet) AddedDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616029-addeddate?language=objc
 func (s_ SearchableItemAttributeSet) SetAddedDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setAddedDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAddedDate:"), value)
 }
 
 // A value that indicates if the message is likely to be considered junk. [Full Topic]
@@ -483,7 +483,7 @@ func (s_ SearchableItemAttributeSet) IsLikelyJunk() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621646-likelyjunk?language=objc
 func (s_ SearchableItemAttributeSet) SetLikelyJunk(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setLikelyJunk:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLikelyJunk:"), value)
 }
 
 // A version string associated with the file. [Full Topic]
@@ -543,7 +543,7 @@ func (s_ SearchableItemAttributeSet) TotalBitRate() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616058-totalbitrate?language=objc
 func (s_ SearchableItemAttributeSet) SetTotalBitRate(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setTotalBitRate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setTotalBitRate:"), value)
 }
 
 // Information about the GPS area. [Full Topic]
@@ -573,7 +573,7 @@ func (s_ SearchableItemAttributeSet) DownloadedDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616035-downloadeddate?language=objc
 func (s_ SearchableItemAttributeSet) SetDownloadedDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setDownloadedDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDownloadedDate:"), value)
 }
 
 // A class of entity for which the item is intended or useful. [Full Topic]
@@ -633,7 +633,7 @@ func (s_ SearchableItemAttributeSet) PlayCount() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616041-playcount?language=objc
 func (s_ SearchableItemAttributeSet) SetPlayCount(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPlayCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPlayCount:"), value)
 }
 
 // The user-supplied rating of the media. [Full Topic]
@@ -648,7 +648,7 @@ func (s_ SearchableItemAttributeSet) Rating() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616011-rating?language=objc
 func (s_ SearchableItemAttributeSet) SetRating(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setRating:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setRating:"), value)
 }
 
 // An array of names representing the recipients of this message. [Full Topic]
@@ -693,7 +693,7 @@ func (s_ SearchableItemAttributeSet) PixelWidth() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621527-pixelwidth?language=objc
 func (s_ SearchableItemAttributeSet) SetPixelWidth(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPixelWidth:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPixelWidth:"), value)
 }
 
 // The geodetic data that the GPS receiver uses. [Full Topic]
@@ -723,7 +723,7 @@ func (s_ SearchableItemAttributeSet) AllDay() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616636-allday?language=objc
 func (s_ SearchableItemAttributeSet) SetAllDay(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAllDay:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAllDay:"), value)
 }
 
 // The category of the instrument associated with the audio file. [Full Topic]
@@ -768,7 +768,7 @@ func (s_ SearchableItemAttributeSet) SupportsPhoneCall() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621653-supportsphonecall?language=objc
 func (s_ SearchableItemAttributeSet) SetSupportsPhoneCall(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setSupportsPhoneCall:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSupportsPhoneCall:"), value)
 }
 
 // The owner of the camera that captured the image. [Full Topic]
@@ -903,7 +903,7 @@ func (s_ SearchableItemAttributeSet) PixelHeight() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621535-pixelheight?language=objc
 func (s_ SearchableItemAttributeSet) SetPixelHeight(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPixelHeight:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPixelHeight:"), value)
 }
 
 // The full, publishable name of the country or region in which the intellectual property of the item was created, according to guidelines the provider establishes. [Full Topic]
@@ -978,7 +978,7 @@ func (s_ SearchableItemAttributeSet) DarkThumbnailURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/3752013-darkthumbnailurl?language=objc
 func (s_ SearchableItemAttributeSet) SetDarkThumbnailURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setDarkThumbnailURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDarkThumbnailURL:"), value)
 }
 
 // The thoroughfare, such as a street name, associated with the location for the item according to guidelines the provider establishes. [Full Topic]
@@ -1023,7 +1023,7 @@ func (s_ SearchableItemAttributeSet) Aperture() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621528-aperture?language=objc
 func (s_ SearchableItemAttributeSet) SetAperture(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAperture:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAperture:"), value)
 }
 
 // The resolution width of the image, in DPI. [Full Topic]
@@ -1038,7 +1038,7 @@ func (s_ SearchableItemAttributeSet) ResolutionWidthDPI() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621544-resolutionwidthdpi?language=objc
 func (s_ SearchableItemAttributeSet) SetResolutionWidthDPI(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setResolutionWidthDPI:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setResolutionWidthDPI:"), value)
 }
 
 // The date on which the item is due. [Full Topic]
@@ -1053,7 +1053,7 @@ func (s_ SearchableItemAttributeSet) DueDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616641-duedate?language=objc
 func (s_ SearchableItemAttributeSet) SetDueDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setDueDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDueDate:"), value)
 }
 
 // An array of email addresses associated with the recipient. [Full Topic]
@@ -1128,7 +1128,7 @@ func (s_ SearchableItemAttributeSet) ExposureTime() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621532-exposuretime?language=objc
 func (s_ SearchableItemAttributeSet) SetExposureTime(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setExposureTime:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setExposureTime:"), value)
 }
 
 // The distance to the destination point. [Full Topic]
@@ -1143,7 +1143,7 @@ func (s_ SearchableItemAttributeSet) GPSDestDistance() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620582-gpsdestdistance?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDestDistance(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDestDistance:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDestDistance:"), value)
 }
 
 // The audio bit rate of the media. [Full Topic]
@@ -1158,7 +1158,7 @@ func (s_ SearchableItemAttributeSet) AudioBitRate() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616103-audiobitrate?language=objc
 func (s_ SearchableItemAttributeSet) SetAudioBitRate(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAudioBitRate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAudioBitRate:"), value)
 }
 
 // The width of the document page, in points (72 points per inch). [Full Topic]
@@ -1173,7 +1173,7 @@ func (s_ SearchableItemAttributeSet) PageWidth() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621670-pagewidth?language=objc
 func (s_ SearchableItemAttributeSet) SetPageWidth(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPageWidth:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPageWidth:"), value)
 }
 
 // The number of channels in the audio data that the file contains. [Full Topic]
@@ -1188,7 +1188,7 @@ func (s_ SearchableItemAttributeSet) AudioChannelCount() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616072-audiochannelcount?language=objc
 func (s_ SearchableItemAttributeSet) SetAudioChannelCount(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAudioChannelCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAudioChannelCount:"), value)
 }
 
 // A value that indicates if the camera used red-eye reduction when capturing the image. [Full Topic]
@@ -1203,7 +1203,7 @@ func (s_ SearchableItemAttributeSet) IsRedEyeOn() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621520-redeyeon?language=objc
 func (s_ SearchableItemAttributeSet) SetRedEyeOn(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setRedEyeOn:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setRedEyeOn:"), value)
 }
 
 // The composer of the song or audio composition that the audio file contains. [Full Topic]
@@ -1233,7 +1233,7 @@ func (s_ SearchableItemAttributeSet) ImageDirection() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620576-imagedirection?language=objc
 func (s_ SearchableItemAttributeSet) SetImageDirection(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setImageDirection:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setImageDirection:"), value)
 }
 
 // The direction of travel of the item in degrees from true north. [Full Topic]
@@ -1248,7 +1248,7 @@ func (s_ SearchableItemAttributeSet) GPSTrack() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620588-gpstrack?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSTrack(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSTrack:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSTrack:"), value)
 }
 
 // Instructions that concern the use of the item, such as an embargo or warning. [Full Topic]
@@ -1308,7 +1308,7 @@ func (s_ SearchableItemAttributeSet) ISOSpeed() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621548-isospeed?language=objc
 func (s_ SearchableItemAttributeSet) SetISOSpeed(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setISOSpeed:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setISOSpeed:"), value)
 }
 
 // The city of the item’s origin according to guidelines that the provider establishes. [Full Topic]
@@ -1338,7 +1338,7 @@ func (s_ SearchableItemAttributeSet) WhiteBalance() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621539-whitebalance?language=objc
 func (s_ SearchableItemAttributeSet) SetWhiteBalance(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setWhiteBalance:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setWhiteBalance:"), value)
 }
 
 // The unique identifier for the account with which the message is associated, if any. [Full Topic]
@@ -1368,7 +1368,7 @@ func (s_ SearchableItemAttributeSet) PageCount() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621627-pagecount?language=objc
 func (s_ SearchableItemAttributeSet) SetPageCount(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPageCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPageCount:"), value)
 }
 
 // The total number of pixels in the image. [Full Topic]
@@ -1383,7 +1383,7 @@ func (s_ SearchableItemAttributeSet) PixelCount() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621517-pixelcount?language=objc
 func (s_ SearchableItemAttributeSet) SetPixelCount(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPixelCount:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPixelCount:"), value)
 }
 
 // The latitude of the item, in degrees north of the equator, expressed using the WGS84 datum. [Full Topic]
@@ -1398,7 +1398,7 @@ func (s_ SearchableItemAttributeSet) Latitude() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620586-latitude?language=objc
 func (s_ SearchableItemAttributeSet) SetLatitude(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setLatitude:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLatitude:"), value)
 }
 
 // An array of addresses associated with the recipients of the message. [Full Topic]
@@ -1428,7 +1428,7 @@ func (s_ SearchableItemAttributeSet) AudioSampleRate() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616008-audiosamplerate?language=objc
 func (s_ SearchableItemAttributeSet) SetAudioSampleRate(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAudioSampleRate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAudioSampleRate:"), value)
 }
 
 // The status of the GPS receiver. [Full Topic]
@@ -1458,7 +1458,7 @@ func (s_ SearchableItemAttributeSet) GPSDOP() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620593-gpsdop?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDOP(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDOP:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDOP:"), value)
 }
 
 // The altitude of the item in meters above sea level, expressed using the WGS84 datum. [Full Topic]
@@ -1473,7 +1473,7 @@ func (s_ SearchableItemAttributeSet) Altitude() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620579-altitude?language=objc
 func (s_ SearchableItemAttributeSet) SetAltitude(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAltitude:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAltitude:"), value)
 }
 
 // A list of contacts who are associated with the content in some way, not including the author. [Full Topic]
@@ -1548,7 +1548,7 @@ func (s_ SearchableItemAttributeSet) GPSDestBearing() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620577-gpsdestbearing?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDestBearing(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDestBearing:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDestBearing:"), value)
 }
 
 // A description of the item’s content. [Full Topic]
@@ -1668,7 +1668,7 @@ func (s_ SearchableItemAttributeSet) GPSDifferental() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620592-gpsdifferental?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDifferental(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDifferental:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDifferental:"), value)
 }
 
 // The track number of a song or audio composition when part of an album. [Full Topic]
@@ -1683,7 +1683,7 @@ func (s_ SearchableItemAttributeSet) AudioTrackNumber() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616095-audiotracknumber?language=objc
 func (s_ SearchableItemAttributeSet) SetAudioTrackNumber(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setAudioTrackNumber:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setAudioTrackNumber:"), value)
 }
 
 // A list of editors who have worked on the file. [Full Topic]
@@ -1713,7 +1713,7 @@ func (s_ SearchableItemAttributeSet) ContainerOrder() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621586-containerorder?language=objc
 func (s_ SearchableItemAttributeSet) SetContainerOrder(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setContainerOrder:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContainerOrder:"), value)
 }
 
 // The artist associated with the media. [Full Topic]
@@ -1773,7 +1773,7 @@ func (s_ SearchableItemAttributeSet) GPSDestLatitude() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620572-gpsdestlatitude?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDestLatitude(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDestLatitude:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDestLatitude:"), value)
 }
 
 // The actual focal length of the lens, in millimeters. [Full Topic]
@@ -1788,7 +1788,7 @@ func (s_ SearchableItemAttributeSet) FocalLength() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621533-focallength?language=objc
 func (s_ SearchableItemAttributeSet) SetFocalLength(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setFocalLength:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setFocalLength:"), value)
 }
 
 // An array that contains the names of the various layers in the file. [Full Topic]
@@ -1923,7 +1923,7 @@ func (s_ SearchableItemAttributeSet) RecordingDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616051-recordingdate?language=objc
 func (s_ SearchableItemAttributeSet) SetRecordingDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setRecordingDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setRecordingDate:"), value)
 }
 
 // An array of identifiers that corresponds to data representations the delegate provides. [Full Topic]
@@ -1968,7 +1968,7 @@ func (s_ SearchableItemAttributeSet) Longitude() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620571-longitude?language=objc
 func (s_ SearchableItemAttributeSet) SetLongitude(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setLongitude:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLongitude:"), value)
 }
 
 // The height of the document page, in points (72 points per inch). [Full Topic]
@@ -1983,7 +1983,7 @@ func (s_ SearchableItemAttributeSet) PageHeight() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621673-pageheight?language=objc
 func (s_ SearchableItemAttributeSet) SetPageHeight(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setPageHeight:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setPageHeight:"), value)
 }
 
 // The identifier of the container to which the item belongs. [Full Topic]
@@ -2028,7 +2028,7 @@ func (s_ SearchableItemAttributeSet) ContentRating() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616027-contentrating?language=objc
 func (s_ SearchableItemAttributeSet) SetContentRating(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setContentRating:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContentRating:"), value)
 }
 
 // A value that indicates if the content is prepared for streaming. [Full Topic]
@@ -2043,7 +2043,7 @@ func (s_ SearchableItemAttributeSet) IsStreamable() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616054-streamable?language=objc
 func (s_ SearchableItemAttributeSet) SetStreamable(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setStreamable:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setStreamable:"), value)
 }
 
 // The date on which the last metadata attribute was changed. [Full Topic]
@@ -2058,7 +2058,7 @@ func (s_ SearchableItemAttributeSet) MetadataModificationDate() foundation.Date 
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621657-metadatamodificationdate?language=objc
 func (s_ SearchableItemAttributeSet) SetMetadataModificationDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setMetadataModificationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setMetadataModificationDate:"), value)
 }
 
 // The lyricist or text writer for the song or audio composition that the file contains. [Full Topic]
@@ -2118,7 +2118,7 @@ func (s_ SearchableItemAttributeSet) Orientation() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621524-orientation?language=objc
 func (s_ SearchableItemAttributeSet) SetOrientation(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setOrientation:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setOrientation:"), value)
 }
 
 // A list of people who are visible in an image or movie or written about in a document. [Full Topic]
@@ -2193,7 +2193,7 @@ func (s_ SearchableItemAttributeSet) VideoBitRate() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616090-videobitrate?language=objc
 func (s_ SearchableItemAttributeSet) SetVideoBitRate(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setVideoBitRate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setVideoBitRate:"), value)
 }
 
 // The delivery type of the file. [Full Topic]
@@ -2208,7 +2208,7 @@ func (s_ SearchableItemAttributeSet) DeliveryType() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616062-deliverytype?language=objc
 func (s_ SearchableItemAttributeSet) SetDeliveryType(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setDeliveryType:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDeliveryType:"), value)
 }
 
 // The genre of the media. [Full Topic]
@@ -2268,7 +2268,7 @@ func (s_ SearchableItemAttributeSet) ContentModificationDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616085-contentmodificationdate?language=objc
 func (s_ SearchableItemAttributeSet) SetContentModificationDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setContentModificationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContentModificationDate:"), value)
 }
 
 // A formal identifier that references the document the item represents. [Full Topic]
@@ -2313,7 +2313,7 @@ func (s_ SearchableItemAttributeSet) IsUserOwned() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/2887564-userowned?language=objc
 func (s_ SearchableItemAttributeSet) SetUserOwned(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setUserOwned:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setUserOwned:"), value)
 }
 
 // A value that indicates if the camera used a flash to capture the image. [Full Topic]
@@ -2328,7 +2328,7 @@ func (s_ SearchableItemAttributeSet) IsFlashOn() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621525-flashon?language=objc
 func (s_ SearchableItemAttributeSet) SetFlashOn(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setFlashOn:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setFlashOn:"), value)
 }
 
 // A value that indicates whether the MIDI sequence the file contains is set up for use with a general MIDI device. [Full Topic]
@@ -2343,7 +2343,7 @@ func (s_ SearchableItemAttributeSet) IsGeneralMIDISequence() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616081-generalmidisequence?language=objc
 func (s_ SearchableItemAttributeSet) SetGeneralMIDISequence(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGeneralMIDISequence:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGeneralMIDISequence:"), value)
 }
 
 // The speed of the item, in kilometers per hour. [Full Topic]
@@ -2358,7 +2358,7 @@ func (s_ SearchableItemAttributeSet) Speed() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620591-speed?language=objc
 func (s_ SearchableItemAttributeSet) SetSpeed(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setSpeed:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSpeed:"), value)
 }
 
 // The timestamp on the item. [Full Topic]
@@ -2373,7 +2373,7 @@ func (s_ SearchableItemAttributeSet) Timestamp() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620574-timestamp?language=objc
 func (s_ SearchableItemAttributeSet) SetTimestamp(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setTimestamp:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setTimestamp:"), value)
 }
 
 // A comment related to the media file. [Full Topic]
@@ -2463,7 +2463,7 @@ func (s_ SearchableItemAttributeSet) ThumbnailURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621560-thumbnailurl?language=objc
 func (s_ SearchableItemAttributeSet) SetThumbnailURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setThumbnailURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setThumbnailURL:"), value)
 }
 
 // The name of the location or point of interest associated with the item. [Full Topic]
@@ -2493,7 +2493,7 @@ func (s_ SearchableItemAttributeSet) GPSDestLongitude() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620580-gpsdestlongitude?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDestLongitude(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDestLongitude:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDestLongitude:"), value)
 }
 
 // The postal code for the item according to guidelines the provider establishes. [Full Topic]
@@ -2523,7 +2523,7 @@ func (s_ SearchableItemAttributeSet) FileSize() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621565-filesize?language=objc
 func (s_ SearchableItemAttributeSet) SetFileSize(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setFileSize:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setFileSize:"), value)
 }
 
 // An array of mailbox identifiers associated with the message. [Full Topic]
@@ -2553,7 +2553,7 @@ func (s_ SearchableItemAttributeSet) StartDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616640-startdate?language=objc
 func (s_ SearchableItemAttributeSet) SetStartDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setStartDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setStartDate:"), value)
 }
 
 // The number of bits per sample. [Full Topic]
@@ -2568,7 +2568,7 @@ func (s_ SearchableItemAttributeSet) BitsPerSample() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621530-bitspersample?language=objc
 func (s_ SearchableItemAttributeSet) SetBitsPerSample(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setBitsPerSample:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setBitsPerSample:"), value)
 }
 
 // A value that indicates the user selected the item. [Full Topic]
@@ -2583,7 +2583,7 @@ func (s_ SearchableItemAttributeSet) IsUserCurated() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/2887562-usercurated?language=objc
 func (s_ SearchableItemAttributeSet) SetUserCurated(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setUserCurated:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setUserCurated:"), value)
 }
 
 // The URL associated with the media. [Full Topic]
@@ -2598,7 +2598,7 @@ func (s_ SearchableItemAttributeSet) URL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616087-url?language=objc
 func (s_ SearchableItemAttributeSet) SetURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setURL:"), value)
 }
 
 // An array of email addresses associated with the author of the message. [Full Topic]
@@ -2628,7 +2628,7 @@ func (s_ SearchableItemAttributeSet) ExposureMode() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621540-exposuremode?language=objc
 func (s_ SearchableItemAttributeSet) SetExposureMode(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setExposureMode:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setExposureMode:"), value)
 }
 
 // The model of the device that captured the image. [Full Topic]
@@ -2673,7 +2673,7 @@ func (s_ SearchableItemAttributeSet) Tempo() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616005-tempo?language=objc
 func (s_ SearchableItemAttributeSet) SetTempo(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setTempo:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setTempo:"), value)
 }
 
 // The date on which the item was completed. [Full Topic]
@@ -2688,7 +2688,7 @@ func (s_ SearchableItemAttributeSet) CompletionDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616637-completiondate?language=objc
 func (s_ SearchableItemAttributeSet) SetCompletionDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setCompletionDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setCompletionDate:"), value)
 }
 
 // An identifier that represents the domain or owner of the item. [Full Topic]
@@ -2733,7 +2733,7 @@ func (s_ SearchableItemAttributeSet) EndDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616638-enddate?language=objc
 func (s_ SearchableItemAttributeSet) SetEndDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setEndDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setEndDate:"), value)
 }
 
 // A localized string that specifies the name of a container to which the item belongs, suitable to display in the user interface. [Full Topic]
@@ -2763,7 +2763,7 @@ func (s_ SearchableItemAttributeSet) FNumber() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621549-fnumber?language=objc
 func (s_ SearchableItemAttributeSet) SetFNumber(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setFNumber:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setFNumber:"), value)
 }
 
 // An array of CSPerson objects representing the content of the Bcc: field in an email message. [Full Topic]
@@ -2823,7 +2823,7 @@ func (s_ SearchableItemAttributeSet) Duration() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616056-duration?language=objc
 func (s_ SearchableItemAttributeSet) SetDuration(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setDuration:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setDuration:"), value)
 }
 
 // An array of email addresses associated with the message. [Full Topic]
@@ -2883,7 +2883,7 @@ func (s_ SearchableItemAttributeSet) ContentCreationDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616001-contentcreationdate?language=objc
 func (s_ SearchableItemAttributeSet) SetContentCreationDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setContentCreationDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContentCreationDate:"), value)
 }
 
 // The theme of the document. [Full Topic]
@@ -2943,7 +2943,7 @@ func (s_ SearchableItemAttributeSet) IsUserCreated() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/2887561-usercreated?language=objc
 func (s_ SearchableItemAttributeSet) SetUserCreated(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setUserCreated:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setUserCreated:"), value)
 }
 
 // The unique identifier for the item to which the activity is related. [Full Topic]
@@ -2973,7 +2973,7 @@ func (s_ SearchableItemAttributeSet) GPSDateStamp() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1620587-gpsdatestamp?language=objc
 func (s_ SearchableItemAttributeSet) SetGPSDateStamp(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setGPSDateStamp:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setGPSDateStamp:"), value)
 }
 
 // An attribute type that identifies a custom hierarchy of types to describe the attributes of your item. [Full Topic]
@@ -3003,7 +3003,7 @@ func (s_ SearchableItemAttributeSet) ContentURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621651-contenturl?language=objc
 func (s_ SearchableItemAttributeSet) SetContentURL(value foundation.IURL) {
-	objc.Call[objc.Void](s_, objc.Sel("setContentURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContentURL:"), value)
 }
 
 // The resolution height of the image, in DPI. [Full Topic]
@@ -3018,7 +3018,7 @@ func (s_ SearchableItemAttributeSet) ResolutionHeightDPI() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621526-resolutionheightdpi?language=objc
 func (s_ SearchableItemAttributeSet) SetResolutionHeightDPI(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setResolutionHeightDPI:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setResolutionHeightDPI:"), value)
 }
 
 // The title of the container to which the item belongs. [Full Topic]
@@ -3048,7 +3048,7 @@ func (s_ SearchableItemAttributeSet) HasAlphaChannel() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621518-hasalphachannel?language=objc
 func (s_ SearchableItemAttributeSet) SetHasAlphaChannel(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setHasAlphaChannel:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setHasAlphaChannel:"), value)
 }
 
 // A description of the rating. [Full Topic]
@@ -3078,7 +3078,7 @@ func (s_ SearchableItemAttributeSet) MaxAperture() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621545-maxaperture?language=objc
 func (s_ SearchableItemAttributeSet) SetMaxAperture(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setMaxAperture:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setMaxAperture:"), value)
 }
 
 // The metering mode. [Full Topic]
@@ -3108,7 +3108,7 @@ func (s_ SearchableItemAttributeSet) LastUsedDate() foundation.Date {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616018-lastuseddate?language=objc
 func (s_ SearchableItemAttributeSet) SetLastUsedDate(value foundation.IDate) {
-	objc.Call[objc.Void](s_, objc.Sel("setLastUsedDate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLastUsedDate:"), value)
 }
 
 // A value that indicates whether the item contains information sufficient to provide navigation to the location it represents. [Full Topic]
@@ -3123,7 +3123,7 @@ func (s_ SearchableItemAttributeSet) SupportsNavigation() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621564-supportsnavigation?language=objc
 func (s_ SearchableItemAttributeSet) SetSupportsNavigation(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setSupportsNavigation:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSupportsNavigation:"), value)
 }
 
 // A number that indicates the relative importance of the item among other items from the app. [Full Topic]
@@ -3138,7 +3138,7 @@ func (s_ SearchableItemAttributeSet) RankingHint() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/2887563-rankinghint?language=objc
 func (s_ SearchableItemAttributeSet) SetRankingHint(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setRankingHint:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setRankingHint:"), value)
 }
 
 // The name of the apps that converted the original content into a PDF stream. [Full Topic]
@@ -3168,7 +3168,7 @@ func (s_ SearchableItemAttributeSet) IsLocal() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1616049-local?language=objc
 func (s_ SearchableItemAttributeSet) SetLocal(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setLocal:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setLocal:"), value)
 }
 
 // The unique identifier for the item to which the activity is related, but not linked. [Full Topic]
@@ -3198,7 +3198,7 @@ func (s_ SearchableItemAttributeSet) IsFocalLength35mm() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableitemattributeset/1621546-focallength35mm?language=objc
 func (s_ SearchableItemAttributeSet) SetFocalLength35mm(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setFocalLength35mm:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setFocalLength35mm:"), value)
 }
 
 // The copyright date of the content. [Full Topic]

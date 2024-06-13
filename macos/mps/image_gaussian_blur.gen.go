@@ -19,7 +19,7 @@ type _ImageGaussianBlurClass struct {
 // An interface definition for the [ImageGaussianBlur] class.
 type IImageGaussianBlur interface {
 	IUnaryImageKernel
-	Sigma() float64
+	Sigma() float32
 }
 
 // A filter that convolves an image with a Gaussian blur of a given sigma in both the x and y directions. [Full Topic]
@@ -35,7 +35,7 @@ func ImageGaussianBlurFrom(ptr unsafe.Pointer) ImageGaussianBlur {
 	}
 }
 
-func (i_ ImageGaussianBlur) InitWithDeviceSigma(device metal.PDevice, sigma float64) ImageGaussianBlur {
+func (i_ ImageGaussianBlur) InitWithDeviceSigma(device metal.PDevice, sigma float32) ImageGaussianBlur {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageGaussianBlur](i_, objc.Sel("initWithDevice:sigma:"), po0, sigma)
 	return rv
@@ -44,7 +44,7 @@ func (i_ ImageGaussianBlur) InitWithDeviceSigma(device metal.PDevice, sigma floa
 // Initializes a Gaussian blur filter. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagegaussianblur/1618813-initwithdevice?language=objc
-func NewImageGaussianBlurWithDeviceSigma(device metal.PDevice, sigma float64) ImageGaussianBlur {
+func NewImageGaussianBlurWithDeviceSigma(device metal.PDevice, sigma float32) ImageGaussianBlur {
 	instance := ImageGaussianBlurClass.Alloc().InitWithDeviceSigma(device, sigma)
 	instance.Autorelease()
 	return instance
@@ -103,7 +103,7 @@ func ImageGaussianBlur_CopyWithZoneDevice(zone unsafe.Pointer, device metal.PDev
 // The sigma value with which the filter was created. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagegaussianblur/1618850-sigma?language=objc
-func (i_ ImageGaussianBlur) Sigma() float64 {
-	rv := objc.Call[float64](i_, objc.Sel("sigma"))
+func (i_ ImageGaussianBlur) Sigma() float32 {
+	rv := objc.Call[float32](i_, objc.Sel("sigma"))
 	return rv
 }

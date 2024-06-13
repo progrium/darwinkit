@@ -19,91 +19,91 @@ type PPDF417BarcodeGenerator interface {
 	HasMessage() bool
 
 	// optional
-	SetAlwaysSpecifyCompaction(value float64)
+	SetAlwaysSpecifyCompaction(value float32)
 	HasSetAlwaysSpecifyCompaction() bool
 
 	// optional
-	AlwaysSpecifyCompaction() float64
+	AlwaysSpecifyCompaction() float32
 	HasAlwaysSpecifyCompaction() bool
 
 	// optional
-	SetRows(value float64)
+	SetRows(value float32)
 	HasSetRows() bool
 
 	// optional
-	Rows() float64
+	Rows() float32
 	HasRows() bool
 
 	// optional
-	SetMinWidth(value float64)
+	SetMinWidth(value float32)
 	HasSetMinWidth() bool
 
 	// optional
-	MinWidth() float64
+	MinWidth() float32
 	HasMinWidth() bool
 
 	// optional
-	SetMaxWidth(value float64)
+	SetMaxWidth(value float32)
 	HasSetMaxWidth() bool
 
 	// optional
-	MaxWidth() float64
+	MaxWidth() float32
 	HasMaxWidth() bool
 
 	// optional
-	SetCorrectionLevel(value float64)
+	SetCorrectionLevel(value float32)
 	HasSetCorrectionLevel() bool
 
 	// optional
-	CorrectionLevel() float64
+	CorrectionLevel() float32
 	HasCorrectionLevel() bool
 
 	// optional
-	SetCompactStyle(value float64)
+	SetCompactStyle(value float32)
 	HasSetCompactStyle() bool
 
 	// optional
-	CompactStyle() float64
+	CompactStyle() float32
 	HasCompactStyle() bool
 
 	// optional
-	SetMaxHeight(value float64)
+	SetMaxHeight(value float32)
 	HasSetMaxHeight() bool
 
 	// optional
-	MaxHeight() float64
+	MaxHeight() float32
 	HasMaxHeight() bool
 
 	// optional
-	SetPreferredAspectRatio(value float64)
+	SetPreferredAspectRatio(value float32)
 	HasSetPreferredAspectRatio() bool
 
 	// optional
-	PreferredAspectRatio() float64
+	PreferredAspectRatio() float32
 	HasPreferredAspectRatio() bool
 
 	// optional
-	SetMinHeight(value float64)
+	SetMinHeight(value float32)
 	HasSetMinHeight() bool
 
 	// optional
-	MinHeight() float64
+	MinHeight() float32
 	HasMinHeight() bool
 
 	// optional
-	SetDataColumns(value float64)
+	SetDataColumns(value float32)
 	HasSetDataColumns() bool
 
 	// optional
-	DataColumns() float64
+	DataColumns() float32
 	HasDataColumns() bool
 
 	// optional
-	SetCompactionMode(value float64)
+	SetCompactionMode(value float32)
 	HasSetCompactionMode() bool
 
 	// optional
-	CompactionMode() float64
+	CompactionMode() float32
 	HasCompactionMode() bool
 }
 
@@ -145,7 +145,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetAlwaysSpecifyCompaction() bool {
 // A Boolean value specifying whether to force compaction style. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228605-alwaysspecifycompaction?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetAlwaysSpecifyCompaction(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetAlwaysSpecifyCompaction(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setAlwaysSpecifyCompaction:"), value)
 }
 
@@ -156,8 +156,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasAlwaysSpecifyCompaction() bool {
 // A Boolean value specifying whether to force compaction style. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228605-alwaysspecifycompaction?language=objc
-func (p_ PDF417BarcodeGeneratorObject) AlwaysSpecifyCompaction() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("alwaysSpecifyCompaction"))
+func (p_ PDF417BarcodeGeneratorObject) AlwaysSpecifyCompaction() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("alwaysSpecifyCompaction"))
 	return rv
 }
 
@@ -168,7 +168,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetRows() bool {
 // The number of rows in the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228616-rows?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetRows(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetRows(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRows:"), value)
 }
 
@@ -179,8 +179,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasRows() bool {
 // The number of rows in the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228616-rows?language=objc
-func (p_ PDF417BarcodeGeneratorObject) Rows() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("rows"))
+func (p_ PDF417BarcodeGeneratorObject) Rows() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("rows"))
 	return rv
 }
 
@@ -191,7 +191,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetMinWidth() bool {
 // The minimum width, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228614-minwidth?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetMinWidth(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetMinWidth(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setMinWidth:"), value)
 }
 
@@ -202,8 +202,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasMinWidth() bool {
 // The minimum width, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228614-minwidth?language=objc
-func (p_ PDF417BarcodeGeneratorObject) MinWidth() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("minWidth"))
+func (p_ PDF417BarcodeGeneratorObject) MinWidth() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("minWidth"))
 	return rv
 }
 
@@ -214,7 +214,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetMaxWidth() bool {
 // The maximum width, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228611-maxwidth?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetMaxWidth(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetMaxWidth(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setMaxWidth:"), value)
 }
 
@@ -225,8 +225,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasMaxWidth() bool {
 // The maximum width, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228611-maxwidth?language=objc
-func (p_ PDF417BarcodeGeneratorObject) MaxWidth() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("maxWidth"))
+func (p_ PDF417BarcodeGeneratorObject) MaxWidth() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("maxWidth"))
 	return rv
 }
 
@@ -237,7 +237,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetCorrectionLevel() bool {
 // The correction level ratio of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228608-correctionlevel?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetCorrectionLevel(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetCorrectionLevel(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setCorrectionLevel:"), value)
 }
 
@@ -248,8 +248,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasCorrectionLevel() bool {
 // The correction level ratio of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228608-correctionlevel?language=objc
-func (p_ PDF417BarcodeGeneratorObject) CorrectionLevel() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("correctionLevel"))
+func (p_ PDF417BarcodeGeneratorObject) CorrectionLevel() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("correctionLevel"))
 	return rv
 }
 
@@ -260,7 +260,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetCompactStyle() bool {
 // A Boolean value specifying whether to force compact style Aztec code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228606-compactstyle?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetCompactStyle(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetCompactStyle(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setCompactStyle:"), value)
 }
 
@@ -271,8 +271,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasCompactStyle() bool {
 // A Boolean value specifying whether to force compact style Aztec code. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228606-compactstyle?language=objc
-func (p_ PDF417BarcodeGeneratorObject) CompactStyle() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("compactStyle"))
+func (p_ PDF417BarcodeGeneratorObject) CompactStyle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("compactStyle"))
 	return rv
 }
 
@@ -283,7 +283,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetMaxHeight() bool {
 // The maximum height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228610-maxheight?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetMaxHeight(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetMaxHeight(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setMaxHeight:"), value)
 }
 
@@ -294,8 +294,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasMaxHeight() bool {
 // The maximum height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228610-maxheight?language=objc
-func (p_ PDF417BarcodeGeneratorObject) MaxHeight() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("maxHeight"))
+func (p_ PDF417BarcodeGeneratorObject) MaxHeight() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("maxHeight"))
 	return rv
 }
 
@@ -306,7 +306,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetPreferredAspectRatio() bool {
 // The preferred aspect ratio of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228615-preferredaspectratio?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetPreferredAspectRatio(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetPreferredAspectRatio(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setPreferredAspectRatio:"), value)
 }
 
@@ -317,8 +317,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasPreferredAspectRatio() bool {
 // The preferred aspect ratio of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228615-preferredaspectratio?language=objc
-func (p_ PDF417BarcodeGeneratorObject) PreferredAspectRatio() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("preferredAspectRatio"))
+func (p_ PDF417BarcodeGeneratorObject) PreferredAspectRatio() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("preferredAspectRatio"))
 	return rv
 }
 
@@ -329,7 +329,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetMinHeight() bool {
 // The minimum height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228613-minheight?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetMinHeight(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetMinHeight(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setMinHeight:"), value)
 }
 
@@ -340,8 +340,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasMinHeight() bool {
 // The minimum height, in pixels, of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228613-minheight?language=objc
-func (p_ PDF417BarcodeGeneratorObject) MinHeight() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("minHeight"))
+func (p_ PDF417BarcodeGeneratorObject) MinHeight() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("minHeight"))
 	return rv
 }
 
@@ -352,7 +352,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetDataColumns() bool {
 // The number of data columns in the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228609-datacolumns?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetDataColumns(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetDataColumns(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setDataColumns:"), value)
 }
 
@@ -363,8 +363,8 @@ func (p_ PDF417BarcodeGeneratorObject) HasDataColumns() bool {
 // The number of data columns in the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228609-datacolumns?language=objc
-func (p_ PDF417BarcodeGeneratorObject) DataColumns() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("dataColumns"))
+func (p_ PDF417BarcodeGeneratorObject) DataColumns() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("dataColumns"))
 	return rv
 }
 
@@ -375,7 +375,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasSetCompactionMode() bool {
 // The compaction mode of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228607-compactionmode?language=objc
-func (p_ PDF417BarcodeGeneratorObject) SetCompactionMode(value float64) {
+func (p_ PDF417BarcodeGeneratorObject) SetCompactionMode(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setCompactionMode:"), value)
 }
 
@@ -386,7 +386,7 @@ func (p_ PDF417BarcodeGeneratorObject) HasCompactionMode() bool {
 // The compaction mode of the generated barcode. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipdf417barcodegenerator/3228607-compactionmode?language=objc
-func (p_ PDF417BarcodeGeneratorObject) CompactionMode() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("compactionMode"))
+func (p_ PDF417BarcodeGeneratorObject) CompactionMode() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("compactionMode"))
 	return rv
 }

@@ -98,7 +98,7 @@ func (u_ UserActivityDelegateObject) HasUserActivityWasContinued() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1413276-useractivitywascontinued?language=objc
 func (u_ UserActivityDelegateObject) UserActivityWasContinued(userActivity UserActivity) {
-	objc.Call[objc.Void](u_, objc.Sel("userActivityWasContinued:"), objc.Ptr(userActivity))
+	objc.Call[objc.Void](u_, objc.Sel("userActivityWasContinued:"), userActivity)
 }
 
 func (u_ UserActivityDelegateObject) HasUserActivityDidReceiveInputStreamOutputStream() bool {
@@ -109,7 +109,7 @@ func (u_ UserActivityDelegateObject) HasUserActivityDidReceiveInputStreamOutputS
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1407386-useractivity?language=objc
 func (u_ UserActivityDelegateObject) UserActivityDidReceiveInputStreamOutputStream(userActivity UserActivity, inputStream InputStream, outputStream OutputStream) {
-	objc.Call[objc.Void](u_, objc.Sel("userActivity:didReceiveInputStream:outputStream:"), objc.Ptr(userActivity), objc.Ptr(inputStream), objc.Ptr(outputStream))
+	objc.Call[objc.Void](u_, objc.Sel("userActivity:didReceiveInputStream:outputStream:"), userActivity, inputStream, outputStream)
 }
 
 func (u_ UserActivityDelegateObject) HasUserActivityWillSave() bool {
@@ -120,5 +120,5 @@ func (u_ UserActivityDelegateObject) HasUserActivityWillSave() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuseractivitydelegate/1414848-useractivitywillsave?language=objc
 func (u_ UserActivityDelegateObject) UserActivityWillSave(userActivity UserActivity) {
-	objc.Call[objc.Void](u_, objc.Sel("userActivityWillSave:"), objc.Ptr(userActivity))
+	objc.Call[objc.Void](u_, objc.Sel("userActivityWillSave:"), userActivity)
 }

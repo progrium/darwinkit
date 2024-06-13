@@ -68,6 +68,6 @@ func (d_ DOMHTMLDocument) CreateDocumentFragmentWithText(text string) DOMDocumen
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/domhtmldocument/1538060-createdocumentfragmentwithmarkup?language=objc
 func (d_ DOMHTMLDocument) CreateDocumentFragmentWithMarkupStringBaseURL(markupString string, baseURL foundation.IURL) DOMDocumentFragment {
-	rv := objc.Call[DOMDocumentFragment](d_, objc.Sel("createDocumentFragmentWithMarkupString:baseURL:"), markupString, objc.Ptr(baseURL))
+	rv := objc.Call[DOMDocumentFragment](d_, objc.Sel("createDocumentFragmentWithMarkupString:baseURL:"), markupString, baseURL)
 	return rv
 }

@@ -83,7 +83,7 @@ func (m_ MenuToolbarItem) Menu() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmenutoolbaritem/3237191-menu?language=objc
 func (m_ MenuToolbarItem) SetMenu(value IMenu) {
-	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setMenu:"), value)
 }
 
 // A Boolean value that determines whether the toolbar item displays an indicator of additional functionality. [Full Topic]

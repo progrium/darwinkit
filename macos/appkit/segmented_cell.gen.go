@@ -86,7 +86,7 @@ func (s_ SegmentedCell) Init() SegmentedCell {
 }
 
 func (s_ SegmentedCell) InitImageCell(image IImage) SegmentedCell {
-	rv := objc.Call[SegmentedCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[SegmentedCell](s_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -139,7 +139,7 @@ func (s_ SegmentedCell) ImageForSegment(segment int) Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500174-setimage?language=objc
 func (s_ SegmentedCell) SetImageForSegment(image IImage, segment int) {
-	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), objc.Ptr(image), segment)
+	objc.Call[objc.Void](s_, objc.Sel("setImage:forSegment:"), image, segment)
 }
 
 // Sets the image scaling mode for the specified segment. [Full Topic]
@@ -268,14 +268,14 @@ func (s_ SegmentedCell) TagForSegment(segment int) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500191-drawsegment?language=objc
 func (s_ SegmentedCell) DrawSegmentInFrameWithView(segment int, frame foundation.Rect, controlView IView) {
-	objc.Call[objc.Void](s_, objc.Sel("drawSegment:inFrame:withView:"), segment, frame, objc.Ptr(controlView))
+	objc.Call[objc.Void](s_, objc.Sel("drawSegment:inFrame:withView:"), segment, frame, controlView)
 }
 
 // Sets the menu for the specified segment. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssegmentedcell/1500194-setmenu?language=objc
 func (s_ SegmentedCell) SetMenuForSegment(menu IMenu, segment int) {
-	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), objc.Ptr(menu), segment)
+	objc.Call[objc.Void](s_, objc.Sel("setMenu:forSegment:"), menu, segment)
 }
 
 // Selects the previous segment. [Full Topic]

@@ -56,15 +56,15 @@ func (j_ JSONSerialization) Init() JSONSerialization {
 // Returns a Foundation object from given JSON data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1415493-jsonobjectwithdata?language=objc
-func (jc _JSONSerializationClass) JSONObjectWithDataOptionsError(data []byte, opt JSONReadingOptions, error IError) objc.Object {
-	rv := objc.Call[objc.Object](jc, objc.Sel("JSONObjectWithData:options:error:"), data, opt, objc.Ptr(error))
+func (jc _JSONSerializationClass) JSONObjectWithDataOptionsError(data []byte, opt JSONReadingOptions, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](jc, objc.Sel("JSONObjectWithData:options:error:"), data, opt, error)
 	return rv
 }
 
 // Returns a Foundation object from given JSON data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1415493-jsonobjectwithdata?language=objc
-func JSONSerialization_JSONObjectWithDataOptionsError(data []byte, opt JSONReadingOptions, error IError) objc.Object {
+func JSONSerialization_JSONObjectWithDataOptionsError(data []byte, opt JSONReadingOptions, error unsafe.Pointer) objc.Object {
 	return JSONSerializationClass.JSONObjectWithDataOptionsError(data, opt, error)
 }
 
@@ -86,44 +86,44 @@ func JSONSerialization_IsValidJSONObject(obj objc.IObject) bool {
 // Writes a given JSON object to a stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1417433-writejsonobject?language=objc
-func (jc _JSONSerializationClass) WriteJSONObjectToStreamOptionsError(obj objc.IObject, stream IOutputStream, opt JSONWritingOptions, error IError) int {
-	rv := objc.Call[int](jc, objc.Sel("writeJSONObject:toStream:options:error:"), obj, objc.Ptr(stream), opt, objc.Ptr(error))
+func (jc _JSONSerializationClass) WriteJSONObjectToStreamOptionsError(obj objc.IObject, stream IOutputStream, opt JSONWritingOptions, error unsafe.Pointer) int {
+	rv := objc.Call[int](jc, objc.Sel("writeJSONObject:toStream:options:error:"), obj, stream, opt, error)
 	return rv
 }
 
 // Writes a given JSON object to a stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1417433-writejsonobject?language=objc
-func JSONSerialization_WriteJSONObjectToStreamOptionsError(obj objc.IObject, stream IOutputStream, opt JSONWritingOptions, error IError) int {
+func JSONSerialization_WriteJSONObjectToStreamOptionsError(obj objc.IObject, stream IOutputStream, opt JSONWritingOptions, error unsafe.Pointer) int {
 	return JSONSerializationClass.WriteJSONObjectToStreamOptionsError(obj, stream, opt, error)
 }
 
 // Returns JSON data from a Foundation object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1413636-datawithjsonobject?language=objc
-func (jc _JSONSerializationClass) DataWithJSONObjectOptionsError(obj objc.IObject, opt JSONWritingOptions, error IError) []byte {
-	rv := objc.Call[[]byte](jc, objc.Sel("dataWithJSONObject:options:error:"), obj, opt, objc.Ptr(error))
+func (jc _JSONSerializationClass) DataWithJSONObjectOptionsError(obj objc.IObject, opt JSONWritingOptions, error unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](jc, objc.Sel("dataWithJSONObject:options:error:"), obj, opt, error)
 	return rv
 }
 
 // Returns JSON data from a Foundation object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1413636-datawithjsonobject?language=objc
-func JSONSerialization_DataWithJSONObjectOptionsError(obj objc.IObject, opt JSONWritingOptions, error IError) []byte {
+func JSONSerialization_DataWithJSONObjectOptionsError(obj objc.IObject, opt JSONWritingOptions, error unsafe.Pointer) []byte {
 	return JSONSerializationClass.DataWithJSONObjectOptionsError(obj, opt, error)
 }
 
 // Returns a Foundation object from JSON data in a given stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1418059-jsonobjectwithstream?language=objc
-func (jc _JSONSerializationClass) JSONObjectWithStreamOptionsError(stream IInputStream, opt JSONReadingOptions, error IError) objc.Object {
-	rv := objc.Call[objc.Object](jc, objc.Sel("JSONObjectWithStream:options:error:"), objc.Ptr(stream), opt, objc.Ptr(error))
+func (jc _JSONSerializationClass) JSONObjectWithStreamOptionsError(stream IInputStream, opt JSONReadingOptions, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](jc, objc.Sel("JSONObjectWithStream:options:error:"), stream, opt, error)
 	return rv
 }
 
 // Returns a Foundation object from JSON data in a given stream. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsjsonserialization/1418059-jsonobjectwithstream?language=objc
-func JSONSerialization_JSONObjectWithStreamOptionsError(stream IInputStream, opt JSONReadingOptions, error IError) objc.Object {
+func JSONSerialization_JSONObjectWithStreamOptionsError(stream IInputStream, opt JSONReadingOptions, error unsafe.Pointer) objc.Object {
 	return JSONSerializationClass.JSONObjectWithStreamOptionsError(stream, opt, error)
 }

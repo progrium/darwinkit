@@ -64,7 +64,7 @@ func (s_ StepperCell) Init() StepperCell {
 }
 
 func (s_ StepperCell) InitImageCell(image IImage) StepperCell {
-	rv := objc.Call[StepperCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[StepperCell](s_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

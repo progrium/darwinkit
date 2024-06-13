@@ -83,7 +83,7 @@ func (s_ SliderCell) Init() SliderCell {
 }
 
 func (s_ SliderCell) InitImageCell(image IImage) SliderCell {
-	rv := objc.Call[SliderCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[SliderCell](s_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

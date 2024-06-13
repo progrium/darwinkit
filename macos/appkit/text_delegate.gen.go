@@ -143,7 +143,7 @@ func (t_ TextDelegateObject) HasTextDidBeginEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1535575-textdidbeginediting?language=objc
 func (t_ TextDelegateObject) TextDidBeginEditing(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidBeginEditing:"), notification)
 }
 
 func (t_ TextDelegateObject) HasTextDidChange() bool {
@@ -154,7 +154,7 @@ func (t_ TextDelegateObject) HasTextDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1526982-textdidchange?language=objc
 func (t_ TextDelegateObject) TextDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidChange:"), notification)
 }
 
 func (t_ TextDelegateObject) HasTextDidEndEditing() bool {
@@ -165,7 +165,7 @@ func (t_ TextDelegateObject) HasTextDidEndEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1529016-textdidendediting?language=objc
 func (t_ TextDelegateObject) TextDidEndEditing(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("textDidEndEditing:"), notification)
 }
 
 func (t_ TextDelegateObject) HasTextShouldEndEditing() bool {
@@ -176,7 +176,7 @@ func (t_ TextDelegateObject) HasTextShouldEndEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1525992-textshouldendediting?language=objc
 func (t_ TextDelegateObject) TextShouldEndEditing(textObject Text) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](t_, objc.Sel("textShouldEndEditing:"), textObject)
 	return rv
 }
 
@@ -188,6 +188,6 @@ func (t_ TextDelegateObject) HasTextShouldBeginEditing() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextdelegate/1533298-textshouldbeginediting?language=objc
 func (t_ TextDelegateObject) TextShouldBeginEditing(textObject Text) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), objc.Ptr(textObject))
+	rv := objc.Call[bool](t_, objc.Sel("textShouldBeginEditing:"), textObject)
 	return rv
 }

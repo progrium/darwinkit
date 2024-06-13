@@ -328,7 +328,7 @@ func WindowFrom(ptr unsafe.Pointer) Window {
 }
 
 func (wc _WindowClass) WindowWithContentViewController(contentViewController IViewController) Window {
-	rv := objc.Call[Window](wc, objc.Sel("windowWithContentViewController:"), objc.Ptr(contentViewController))
+	rv := objc.Call[Window](wc, objc.Sel("windowWithContentViewController:"), contentViewController)
 	return rv
 }
 
@@ -340,7 +340,7 @@ func Window_WindowWithContentViewController(contentViewController IViewControlle
 }
 
 func (w_ Window) InitWithContentRectStyleMaskBackingDeferScreen(contentRect foundation.Rect, style WindowStyleMask, backingStoreType BackingStoreType, flag bool, screen IScreen) Window {
-	rv := objc.Call[Window](w_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, objc.Ptr(screen))
+	rv := objc.Call[Window](w_, objc.Sel("initWithContentRect:styleMask:backing:defer:screen:"), contentRect, style, backingStoreType, flag, screen)
 	return rv
 }
 
@@ -413,7 +413,7 @@ func (w_ Window) AnchorAttributeForOrientation(orientation LayoutConstraintOrien
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419601-invalidatecursorrectsforview?language=objc
 func (w_ Window) InvalidateCursorRectsForView(view IView) {
-	objc.Call[objc.Void](w_, objc.Sel("invalidateCursorRectsForView:"), objc.Ptr(view))
+	objc.Call[objc.Void](w_, objc.Sel("invalidateCursorRectsForView:"), view)
 }
 
 // Sets the window’s visible state to the value you specify. [Full Topic]
@@ -508,14 +508,14 @@ func (w_ Window) MergeAllWindows(sender objc.IObject) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419063-removechildwindow?language=objc
 func (w_ Window) RemoveChildWindow(childWin IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("removeChildWindow:"), objc.Ptr(childWin))
+	objc.Call[objc.Void](w_, objc.Sel("removeChildWindow:"), childWin)
 }
 
 // Ends a document-modal session and dismisses the specified sheet. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419497-endsheet?language=objc
 func (w_ Window) EndSheetReturnCode(sheetWindow IWindow, returnCode ModalResponse) {
-	objc.Call[objc.Void](w_, objc.Sel("endSheet:returnCode:"), objc.Ptr(sheetWindow), returnCode)
+	objc.Call[objc.Void](w_, objc.Sel("endSheet:returnCode:"), sheetWindow, returnCode)
 }
 
 // Toggles the visibility of the window’s toolbar. [Full Topic]
@@ -544,7 +544,7 @@ func (w_ Window) BackingAlignedRectOptions(rect foundation.Rect, options foundat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1855947-addtabbedwindow?language=objc
 func (w_ Window) AddTabbedWindowOrdered(window IWindow, ordered WindowOrderingMode) {
-	objc.Call[objc.Void](w_, objc.Sel("addTabbedWindow:ordered:"), objc.Ptr(window), ordered)
+	objc.Call[objc.Void](w_, objc.Sel("addTabbedWindow:ordered:"), window, ordered)
 }
 
 // Returns PDF data that draws the region of the window within a given rectangle. [Full Topic]
@@ -817,7 +817,7 @@ func (w_ Window) SetIsMiniaturized(flag bool) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419721-nexteventmatchingmask?language=objc
 func (w_ Window) NextEventMatchingMaskUntilDateInModeDequeue(mask EventMask, expiration foundation.IDate, mode foundation.RunLoopMode, deqFlag bool) Event {
-	rv := objc.Call[Event](w_, objc.Sel("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, objc.Ptr(expiration), mode, deqFlag)
+	rv := objc.Call[Event](w_, objc.Sel("nextEventMatchingMask:untilDate:inMode:dequeue:"), mask, expiration, mode, deqFlag)
 	return rv
 }
 
@@ -832,7 +832,7 @@ func (w_ Window) OrderFrontRegardless() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1449581-handleclosescriptcommand?language=objc
 func (w_ Window) HandleCloseScriptCommand(command foundation.ICloseCommand) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("handleCloseScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](w_, objc.Sel("handleCloseScriptCommand:"), command)
 	return rv
 }
 
@@ -877,7 +877,7 @@ func Window_ContentRectForFrameRectStyleMask(fRect foundation.Rect, style Window
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419779-constrainframerect?language=objc
 func (w_ Window) ConstrainFrameRectToScreen(frameRect foundation.Rect, screen IScreen) foundation.Rect {
-	rv := objc.Call[foundation.Rect](w_, objc.Sel("constrainFrameRect:toScreen:"), frameRect, objc.Ptr(screen))
+	rv := objc.Call[foundation.Rect](w_, objc.Sel("constrainFrameRect:toScreen:"), frameRect, screen)
 	return rv
 }
 
@@ -892,14 +892,14 @@ func (w_ Window) SetDynamicDepthLimit(flag bool) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419676-discardeventsmatchingmask?language=objc
 func (w_ Window) DiscardEventsMatchingMaskBeforeEvent(mask EventMask, lastEvent IEvent) {
-	objc.Call[objc.Void](w_, objc.Sel("discardEventsMatchingMask:beforeEvent:"), mask, objc.Ptr(lastEvent))
+	objc.Call[objc.Void](w_, objc.Sel("discardEventsMatchingMask:beforeEvent:"), mask, lastEvent)
 }
 
 // Begins a dragging session. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419224-dragimage?language=objc
 func (w_ Window) DragImageAtOffsetEventPasteboardSourceSlideBack(image IImage, baseLocation foundation.Point, initialOffset foundation.Size, event IEvent, pboard IPasteboard, sourceObj objc.IObject, slideFlag bool) {
-	objc.Call[objc.Void](w_, objc.Sel("dragImage:at:offset:event:pasteboard:source:slideBack:"), objc.Ptr(image), baseLocation, initialOffset, objc.Ptr(event), objc.Ptr(pboard), sourceObj, slideFlag)
+	objc.Call[objc.Void](w_, objc.Sel("dragImage:at:offset:event:pasteboard:source:slideBack:"), image, baseLocation, initialOffset, event, pboard, sourceObj, slideFlag)
 }
 
 // Passes a display message down the window’s view hierarchy, thus redrawing all views within the window. [Full Topic]
@@ -934,7 +934,7 @@ func (w_ Window) DiscardCursorRects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1449585-handleprintscriptcommand?language=objc
 func (w_ Window) HandlePrintScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("handlePrintScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](w_, objc.Sel("handlePrintScriptCommand:"), command)
 	return rv
 }
 
@@ -942,7 +942,7 @@ func (w_ Window) HandlePrintScriptCommand(command foundation.IScriptCommand) obj
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419318-endsheet?language=objc
 func (w_ Window) EndSheet(sheetWindow IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("endSheet:"), objc.Ptr(sheetWindow))
+	objc.Call[objc.Void](w_, objc.Sel("endSheet:"), sheetWindow)
 }
 
 // This action method simulates the user clicking the zoom box by momentarily highlighting the button and then zooming the window. [Full Topic]
@@ -1008,7 +1008,7 @@ func (w_ Window) ResetCursorRects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419152-addchildwindow?language=objc
 func (w_ Window) AddChildWindowOrdered(childWin IWindow, place WindowOrderingMode) {
-	objc.Call[objc.Void](w_, objc.Sel("addChildWindow:ordered:"), objc.Ptr(childWin), place)
+	objc.Call[objc.Void](w_, objc.Sel("addChildWindow:ordered:"), childWin, place)
 }
 
 // Invalidates the window shadow so that it is recomputed based on the current window shape. [Full Topic]
@@ -1081,7 +1081,7 @@ func (w_ Window) LayoutIfNeeded() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419633-selectkeyviewfollowingview?language=objc
 func (w_ Window) SelectKeyViewFollowingView(view IView) {
-	objc.Call[objc.Void](w_, objc.Sel("selectKeyViewFollowingView:"), objc.Ptr(view))
+	objc.Call[objc.Void](w_, objc.Sel("selectKeyViewFollowingView:"), view)
 }
 
 // Specifies the thickness of a given border of the window. [Full Topic]
@@ -1110,14 +1110,14 @@ func (w_ Window) SetFrameDisplayAnimate(frameRect foundation.Rect, displayFlag b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419653-beginsheet?language=objc
 func (w_ Window) BeginSheetCompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.Call[objc.Void](w_, objc.Sel("beginSheet:completionHandler:"), objc.Ptr(sheetWindow), handler)
+	objc.Call[objc.Void](w_, objc.Sel("beginSheet:completionHandler:"), sheetWindow, handler)
 }
 
 // Gives key view status to the view that precedes the given view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419757-selectkeyviewprecedingview?language=objc
 func (w_ Window) SelectKeyViewPrecedingView(view IView) {
-	objc.Call[objc.Void](w_, objc.Sel("selectKeyViewPrecedingView:"), objc.Ptr(view))
+	objc.Call[objc.Void](w_, objc.Sel("selectKeyViewPrecedingView:"), view)
 }
 
 // Moves the window to the front of its level in the screen list, without changing either the key window or the main window. [Full Topic]
@@ -1139,7 +1139,7 @@ func (w_ Window) InitWithWindowRef(windowRef unsafe.Pointer) Window {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1449591-handlesavescriptcommand?language=objc
 func (w_ Window) HandleSaveScriptCommand(command foundation.IScriptCommand) objc.Object {
-	rv := objc.Call[objc.Object](w_, objc.Sel("handleSaveScriptCommand:"), objc.Ptr(command))
+	rv := objc.Call[objc.Object](w_, objc.Sel("handleSaveScriptCommand:"), command)
 	return rv
 }
 
@@ -1147,7 +1147,7 @@ func (w_ Window) HandleSaveScriptCommand(command foundation.IScriptCommand) objc
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419198-begincriticalsheet?language=objc
 func (w_ Window) BeginCriticalSheetCompletionHandler(sheetWindow IWindow, handler func(returnCode ModalResponse)) {
-	objc.Call[objc.Void](w_, objc.Sel("beginCriticalSheet:completionHandler:"), objc.Ptr(sheetWindow), handler)
+	objc.Call[objc.Void](w_, objc.Sel("beginCriticalSheet:completionHandler:"), sheetWindow, handler)
 }
 
 // Saves the window’s frame rectangle in the user defaults system under a given name. [Full Topic]
@@ -1176,7 +1176,7 @@ func (w_ Window) EndEditingFor(object objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419376-postevent?language=objc
 func (w_ Window) PostEventAtStart(event IEvent, flag bool) {
-	objc.Call[objc.Void](w_, objc.Sel("postEvent:atStart:"), objc.Ptr(event), flag)
+	objc.Call[objc.Void](w_, objc.Sel("postEvent:atStart:"), event, flag)
 }
 
 // Returns the window’s content rectangle with a given frame rectangle. [Full Topic]
@@ -1220,7 +1220,7 @@ func Window_WindowNumberAtPointBelowWindowWithWindowNumber(point foundation.Poin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419386-performwindowdragwithevent?language=objc
 func (w_ Window) PerformWindowDragWithEvent(event IEvent) {
-	objc.Call[objc.Void](w_, objc.Sel("performWindowDragWithEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](w_, objc.Sel("performWindowDragWithEvent:"), event)
 }
 
 // Positions the top-left corner of the window’s frame rectangle at a given point in screen coordinates. [Full Topic]
@@ -1293,7 +1293,7 @@ func (w_ Window) DisableSnapshotRestoration() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419382-addtitlebaraccessoryviewcontroll?language=objc
 func (w_ Window) AddTitlebarAccessoryViewController(childViewController ITitlebarAccessoryViewController) {
-	objc.Call[objc.Void](w_, objc.Sel("addTitlebarAccessoryViewController:"), objc.Ptr(childViewController))
+	objc.Call[objc.Void](w_, objc.Sel("addTitlebarAccessoryViewController:"), childViewController)
 }
 
 // Simulates the user clicking the close button by momentarily highlighting the button and then closing the window. [Full Topic]
@@ -1330,21 +1330,21 @@ func (w_ Window) Print(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419275-inserttitlebaraccessoryviewcontr?language=objc
 func (w_ Window) InsertTitlebarAccessoryViewControllerAtIndex(childViewController ITitlebarAccessoryViewController, index int) {
-	objc.Call[objc.Void](w_, objc.Sel("insertTitlebarAccessoryViewController:atIndex:"), objc.Ptr(childViewController), index)
+	objc.Call[objc.Void](w_, objc.Sel("insertTitlebarAccessoryViewController:atIndex:"), childViewController, index)
 }
 
 // This action method dispatches mouse and keyboard events the global application object sends to the window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419228-sendevent?language=objc
 func (w_ Window) SendEvent(event IEvent) {
-	objc.Call[objc.Void](w_, objc.Sel("sendEvent:"), objc.Ptr(event))
+	objc.Call[objc.Void](w_, objc.Sel("sendEvent:"), event)
 }
 
 // Attempts to make a given responder the first responder for the window. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419366-makefirstresponder?language=objc
 func (w_ Window) MakeFirstResponder(responder IResponder) bool {
-	rv := objc.Call[bool](w_, objc.Sel("makeFirstResponder:"), objc.Ptr(responder))
+	rv := objc.Call[bool](w_, objc.Sel("makeFirstResponder:"), responder)
 	return rv
 }
 
@@ -1406,7 +1406,7 @@ func (w_ Window) WindowController() WindowController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419092-windowcontroller?language=objc
 func (w_ Window) SetWindowController(value IWindowController) {
-	objc.Call[objc.Void](w_, objc.Sel("setWindowController:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setWindowController:"), value)
 }
 
 // The window’s content aspect ratio. [Full Topic]
@@ -1499,7 +1499,7 @@ func (w_ Window) SetDelegate(value PWindowDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419060-delegate?language=objc
 func (w_ Window) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](w_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](w_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that indicates if the user can resize the window. [Full Topic]
@@ -1522,7 +1522,7 @@ func (w_ Window) MiniwindowImage() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419185-miniwindowimage?language=objc
 func (w_ Window) SetMiniwindowImage(value IImage) {
-	objc.Call[objc.Void](w_, objc.Sel("setMiniwindowImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setMiniwindowImage:"), value)
 }
 
 // The type of separator that the app displays between the title bar and content of a window. [Full Topic]
@@ -1568,7 +1568,7 @@ func (w_ Window) ParentWindow() Window {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419695-parentwindow?language=objc
 func (w_ Window) SetParentWindow(value IWindow) {
-	objc.Call[objc.Void](w_, objc.Sel("setParentWindow:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setParentWindow:"), value)
 }
 
 // A Boolean value that indicates whether the window accepts mouse-moved events. [Full Topic]
@@ -1705,7 +1705,7 @@ func (w_ Window) AppearanceSource() objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/2998855-appearancesource?language=objc
 func (w_ Window) SetAppearanceSource(value objc.IObject) {
-	objc.Call[objc.Void](w_, objc.Sel("setAppearanceSource:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setAppearanceSource:"), value)
 }
 
 // The Carbon window reference associated with the window, creating one if necessary. [Full Topic]
@@ -1775,7 +1775,7 @@ func (w_ Window) ContentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419160-contentview?language=objc
 func (w_ Window) SetContentView(value IView) {
-	objc.Call[objc.Void](w_, objc.Sel("setContentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setContentView:"), value)
 }
 
 // The name used to automatically save the window’s frame rectangle data in the defaults system. [Full Topic]
@@ -1988,7 +1988,7 @@ func (w_ Window) DefaultButtonCell() ButtonCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419328-defaultbuttoncell?language=objc
 func (w_ Window) SetDefaultButtonCell(value IButtonCell) {
-	objc.Call[objc.Void](w_, objc.Sel("setDefaultButtonCell:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setDefaultButtonCell:"), value)
 }
 
 // A Boolean value that indicates whether the window can become the application’s main window. [Full Topic]
@@ -2041,7 +2041,7 @@ func (w_ Window) InitialFirstResponder() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419479-initialfirstresponder?language=objc
 func (w_ Window) SetInitialFirstResponder(value IView) {
-	objc.Call[objc.Void](w_, objc.Sel("setInitialFirstResponder:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setInitialFirstResponder:"), value)
 }
 
 // The deepest screen the window is on (it may be split over several screens). [Full Topic]
@@ -2194,7 +2194,7 @@ func (w_ Window) RepresentedURL() foundation.URL {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419066-representedurl?language=objc
 func (w_ Window) SetRepresentedURL(value foundation.IURL) {
-	objc.Call[objc.Void](w_, objc.Sel("setRepresentedURL:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setRepresentedURL:"), value)
 }
 
 // A value that allows a group of related windows. [Full Topic]
@@ -2294,7 +2294,7 @@ func (w_ Window) ContentViewController() ViewController {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419615-contentviewcontroller?language=objc
 func (w_ Window) SetContentViewController(value IViewController) {
-	objc.Call[objc.Void](w_, objc.Sel("setContentViewController:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setContentViewController:"), value)
 }
 
 // The screen the window is on. [Full Topic]
@@ -2340,7 +2340,7 @@ func (w_ Window) Toolbar() Toolbar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419731-toolbar?language=objc
 func (w_ Window) SetToolbar(value IToolbar) {
-	objc.Call[objc.Void](w_, objc.Sel("setToolbar:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setToolbar:"), value)
 }
 
 // The depth limit of the window. [Full Topic]
@@ -2535,7 +2535,7 @@ func (w_ Window) ColorSpace() ColorSpace {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419569-colorspace?language=objc
 func (w_ Window) SetColorSpace(value IColorSpace) {
-	objc.Call[objc.Void](w_, objc.Sel("setColorSpace:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setColorSpace:"), value)
 }
 
 // A Boolean value that indicates whether the window context should be updated when the screen profile changes or when the window moves to a different screen. [Full Topic]
@@ -2664,7 +2664,7 @@ func (w_ Window) RestorationClass() objc.Class {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1526241-restorationclass?language=objc
 func (w_ Window) SetRestorationClass(value objc.IClass) {
-	objc.Call[objc.Void](w_, objc.Sel("setRestorationClass:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setRestorationClass:"), value)
 }
 
 // The color of the window’s background. [Full Topic]
@@ -2679,7 +2679,7 @@ func (w_ Window) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nswindow/1419751-backgroundcolor?language=objc
 func (w_ Window) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](w_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // A Boolean value that indicates whether the window is released when it receives the close message. [Full Topic]

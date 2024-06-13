@@ -85,7 +85,7 @@ func (f_ FormCell) Init() FormCell {
 }
 
 func (f_ FormCell) InitImageCell(image IImage) FormCell {
-	rv := objc.Call[FormCell](f_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[FormCell](f_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -133,7 +133,7 @@ func (f_ FormCell) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1527410-attributedtitle?language=objc
 func (f_ FormCell) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](f_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setAttributedTitle:"), value)
 }
 
 // The default writing direction used to render the form cell’s title. [Full Topic]
@@ -163,7 +163,7 @@ func (f_ FormCell) TitleFont() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1525255-titlefont?language=objc
 func (f_ FormCell) SetTitleFont(value IFont) {
-	objc.Call[objc.Void](f_, objc.Sel("setTitleFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setTitleFont:"), value)
 }
 
 // The cell’s plain text placeholder string. [Full Topic]
@@ -193,7 +193,7 @@ func (f_ FormCell) PlaceholderAttributedString() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsformcell/1535914-placeholderattributedstring?language=objc
 func (f_ FormCell) SetPlaceholderAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](f_, objc.Sel("setPlaceholderAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setPlaceholderAttributedString:"), value)
 }
 
 // The preferred text field width. [Full Topic]

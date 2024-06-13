@@ -37,7 +37,7 @@ func BatchDeleteRequestFrom(ptr unsafe.Pointer) BatchDeleteRequest {
 }
 
 func (b_ BatchDeleteRequest) InitWithFetchRequest(fetch IFetchRequest) BatchDeleteRequest {
-	rv := objc.Call[BatchDeleteRequest](b_, objc.Sel("initWithFetchRequest:"), objc.Ptr(fetch))
+	rv := objc.Call[BatchDeleteRequest](b_, objc.Sel("initWithFetchRequest:"), fetch)
 	return rv
 }
 

@@ -124,14 +124,14 @@ func (i_ ImageAccumulator) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427702-setimage?language=objc
 func (i_ ImageAccumulator) SetImage(image IImage) {
-	objc.Call[objc.Void](i_, objc.Sel("setImage:"), objc.Ptr(image))
+	objc.Call[objc.Void](i_, objc.Sel("setImage:"), image)
 }
 
 // Updates an image accumulator with a subregion of an image object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciimageaccumulator/1427706-setimage?language=objc
 func (i_ ImageAccumulator) SetImageDirtyRect(image IImage, dirtyRect coregraphics.Rect) {
-	objc.Call[objc.Void](i_, objc.Sel("setImage:dirtyRect:"), objc.Ptr(image), dirtyRect)
+	objc.Call[objc.Void](i_, objc.Sel("setImage:dirtyRect:"), image, dirtyRect)
 }
 
 // Resets the accumulator, discarding any pending updates and the current content. [Full Topic]

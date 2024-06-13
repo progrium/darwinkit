@@ -20,8 +20,8 @@ type ISamplerDescriptor interface {
 	objc.IObject
 	Label() string
 	SetLabel(value string)
-	LodMaxClamp() float64
-	SetLodMaxClamp(value float64)
+	LodMaxClamp() float32
+	SetLodMaxClamp(value float32)
 	BorderColor() SamplerBorderColor
 	SetBorderColor(value SamplerBorderColor)
 	CompareFunction() CompareFunction
@@ -32,8 +32,8 @@ type ISamplerDescriptor interface {
 	SetLodAverage(value bool)
 	SAddressMode() SamplerAddressMode
 	SetSAddressMode(value SamplerAddressMode)
-	LodMinClamp() float64
-	SetLodMinClamp(value float64)
+	LodMinClamp() float32
+	SetLodMinClamp(value float32)
 	RAddressMode() SamplerAddressMode
 	SetRAddressMode(value SamplerAddressMode)
 	NormalizedCoordinates() bool
@@ -101,15 +101,15 @@ func (s_ SamplerDescriptor) SetLabel(value string) {
 // The maximum level of detail (LOD) to use when sampling from a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsamplerdescriptor/1516234-lodmaxclamp?language=objc
-func (s_ SamplerDescriptor) LodMaxClamp() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("lodMaxClamp"))
+func (s_ SamplerDescriptor) LodMaxClamp() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("lodMaxClamp"))
 	return rv
 }
 
 // The maximum level of detail (LOD) to use when sampling from a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsamplerdescriptor/1516234-lodmaxclamp?language=objc
-func (s_ SamplerDescriptor) SetLodMaxClamp(value float64) {
+func (s_ SamplerDescriptor) SetLodMaxClamp(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setLodMaxClamp:"), value)
 }
 
@@ -191,15 +191,15 @@ func (s_ SamplerDescriptor) SetSAddressMode(value SamplerAddressMode) {
 // The minimum level of detail (LOD) to use when sampling from a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsamplerdescriptor/1515629-lodminclamp?language=objc
-func (s_ SamplerDescriptor) LodMinClamp() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("lodMinClamp"))
+func (s_ SamplerDescriptor) LodMinClamp() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("lodMinClamp"))
 	return rv
 }
 
 // The minimum level of detail (LOD) to use when sampling from a texture. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlsamplerdescriptor/1515629-lodminclamp?language=objc
-func (s_ SamplerDescriptor) SetLodMinClamp(value float64) {
+func (s_ SamplerDescriptor) SetLodMinClamp(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setLodMinClamp:"), value)
 }
 

@@ -182,7 +182,7 @@ func Value_ValueWithRange(range_ Range) Value {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsvalue/1409038-isequaltovalue?language=objc
 func (v_ Value) IsEqualToValue(value IValue) bool {
-	rv := objc.Call[bool](v_, objc.Sel("isEqualToValue:"), objc.Ptr(value))
+	rv := objc.Call[bool](v_, objc.Sel("isEqualToValue:"), value)
 	return rv
 }
 

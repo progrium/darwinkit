@@ -18,7 +18,7 @@ type _InputStreamClass struct {
 // An interface definition for the [InputStream] class.
 type IInputStream interface {
 	IStream
-	GetBufferLength(buffer *uint8, len *uint) bool
+	GetBufferLength(buffer unsafe.Pointer, len *uint) bool
 	ReadMaxLength(buffer *uint8, len uint) int
 	HasBytesAvailable() bool
 }
@@ -51,7 +51,7 @@ func NewInputStreamWithData(data []byte) InputStream {
 }
 
 func (i_ InputStream) InitWithURL(url IURL) InputStream {
-	rv := objc.Call[InputStream](i_, objc.Sel("initWithURL:"), objc.Ptr(url))
+	rv := objc.Call[InputStream](i_, objc.Sel("initWithURL:"), url)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func NewInputStreamWithFileAtPath(path string) InputStream {
 }
 
 func (ic _InputStreamClass) InputStreamWithURL(url IURL) InputStream {
-	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithURL:"), objc.Ptr(url))
+	rv := objc.Call[InputStream](ic, objc.Sel("inputStreamWithURL:"), url)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (i_ InputStream) Init() InputStream {
 // Returns by reference a pointer to a read buffer and, by reference, the number of bytes available, and returns a Boolean value that indicates whether the buffer is available. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinputstream/1416811-getbuffer?language=objc
-func (i_ InputStream) GetBufferLength(buffer *uint8, len *uint) bool {
+func (i_ InputStream) GetBufferLength(buffer unsafe.Pointer, len *uint) bool {
 	rv := objc.Call[bool](i_, objc.Sel("getBuffer:length:"), buffer, len)
 	return rv
 }

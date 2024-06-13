@@ -120,7 +120,7 @@ func (t_ ToolbarItem) MenuFormRepresentation() MenuItem {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1532562-menuformrepresentation?language=objc
 func (t_ ToolbarItem) SetMenuFormRepresentation(value IMenuItem) {
-	objc.Call[objc.Void](t_, objc.Sel("setMenuFormRepresentation:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setMenuFormRepresentation:"), value)
 }
 
 // A Boolean value that indicates whether the item behaves as a navigation item in the toolbar. [Full Topic]
@@ -196,7 +196,7 @@ func (t_ ToolbarItem) View() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1534039-view?language=objc
 func (t_ ToolbarItem) SetView(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setView:"), value)
 }
 
 // An integer tag you can use to identify the toolbar item. [Full Topic]
@@ -354,5 +354,5 @@ func (t_ ToolbarItem) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbaritem/1527749-image?language=objc
 func (t_ ToolbarItem) SetImage(value IImage) {
-	objc.Call[objc.Void](t_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setImage:"), value)
 }

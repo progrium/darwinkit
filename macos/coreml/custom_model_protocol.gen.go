@@ -3,7 +3,8 @@
 package coreml
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"unsafe"
+
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -12,15 +13,15 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel?language=objc
 type PCustomModel interface {
 	// optional
-	PredictionsFromBatchOptionsError(inputBatch BatchProviderObject, options PredictionOptions, error foundation.Error) BatchProviderObject
+	PredictionsFromBatchOptionsError(inputBatch BatchProviderObject, options PredictionOptions, error unsafe.Pointer) BatchProviderObject
 	HasPredictionsFromBatchOptionsError() bool
 
 	// optional
-	PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error foundation.Error) FeatureProviderObject
+	PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error unsafe.Pointer) FeatureProviderObject
 	HasPredictionFromFeaturesOptionsError() bool
 
 	// optional
-	InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error foundation.Error) objc.Object
+	InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object
 	HasInitWithModelDescriptionParameterDictionaryError() bool
 }
 
@@ -39,9 +40,9 @@ func (c_ CustomModelObject) HasPredictionsFromBatchOptionsError() bool {
 // Predicts output values from the given batch of input features. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel/2994298-predictionsfrombatch?language=objc
-func (c_ CustomModelObject) PredictionsFromBatchOptionsError(inputBatch BatchProviderObject, options PredictionOptions, error foundation.Error) BatchProviderObject {
+func (c_ CustomModelObject) PredictionsFromBatchOptionsError(inputBatch BatchProviderObject, options PredictionOptions, error unsafe.Pointer) BatchProviderObject {
 	po0 := objc.WrapAsProtocol("MLBatchProvider", inputBatch)
-	rv := objc.Call[BatchProviderObject](c_, objc.Sel("predictionsFromBatch:options:error:"), po0, objc.Ptr(options), objc.Ptr(error))
+	rv := objc.Call[BatchProviderObject](c_, objc.Sel("predictionsFromBatch:options:error:"), po0, options, error)
 	return rv
 }
 
@@ -52,9 +53,9 @@ func (c_ CustomModelObject) HasPredictionFromFeaturesOptionsError() bool {
 // Predicts output values from the given input features. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel/2994297-predictionfromfeatures?language=objc
-func (c_ CustomModelObject) PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error foundation.Error) FeatureProviderObject {
+func (c_ CustomModelObject) PredictionFromFeaturesOptionsError(input FeatureProviderObject, options PredictionOptions, error unsafe.Pointer) FeatureProviderObject {
 	po0 := objc.WrapAsProtocol("MLFeatureProvider", input)
-	rv := objc.Call[FeatureProviderObject](c_, objc.Sel("predictionFromFeatures:options:error:"), po0, objc.Ptr(options), objc.Ptr(error))
+	rv := objc.Call[FeatureProviderObject](c_, objc.Sel("predictionFromFeatures:options:error:"), po0, options, error)
 	return rv
 }
 
@@ -65,7 +66,7 @@ func (c_ CustomModelObject) HasInitWithModelDescriptionParameterDictionaryError(
 // Creates a custom model with the given description and parameters. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlcustommodel/2994296-initwithmodeldescription?language=objc
-func (c_ CustomModelObject) InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error foundation.Error) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithModelDescription:parameterDictionary:error:"), objc.Ptr(modelDescription), parameters, objc.Ptr(error))
+func (c_ CustomModelObject) InitWithModelDescriptionParameterDictionaryError(modelDescription ModelDescription, parameters map[string]objc.Object, error unsafe.Pointer) objc.Object {
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithModelDescription:parameterDictionary:error:"), modelDescription, parameters, error)
 	return rv
 }

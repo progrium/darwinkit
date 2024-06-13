@@ -252,7 +252,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellMenuForRepresentedObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523796-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) Menu {
-	rv := objc.Call[Menu](t_, objc.Sel("tokenFieldCell:menuForRepresentedObject:"), objc.Ptr(tokenFieldCell), representedObject)
+	rv := objc.Call[Menu](t_, objc.Sel("tokenFieldCell:menuForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }
 
@@ -264,7 +264,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellDisplayStringForRepresen
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523804-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellDisplayStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
-	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:displayStringForRepresentedObject:"), objc.Ptr(tokenFieldCell), representedObject)
+	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:displayStringForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }
 
@@ -276,7 +276,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellReadFromPasteboard() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523807-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellReadFromPasteboard(tokenFieldCell TokenFieldCell, pboard Pasteboard) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:readFromPasteboard:"), objc.Ptr(tokenFieldCell), objc.Ptr(pboard))
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:readFromPasteboard:"), tokenFieldCell, pboard)
 	return rv
 }
 
@@ -288,7 +288,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellRepresentedObjectForEdit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523795-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellRepresentedObjectForEditingString(tokenFieldCell TokenFieldCell, editingString string) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("tokenFieldCell:representedObjectForEditingString:"), objc.Ptr(tokenFieldCell), editingString)
+	rv := objc.Call[objc.Object](t_, objc.Sel("tokenFieldCell:representedObjectForEditingString:"), tokenFieldCell, editingString)
 	return rv
 }
 
@@ -300,7 +300,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellCompletionsForSubstringI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523818-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellCompletionsForSubstringIndexOfTokenIndexOfSelectedItem(tokenFieldCell TokenFieldCell, substring string, tokenIndex int, selectedIndex *int) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), objc.Ptr(tokenFieldCell), substring, tokenIndex, selectedIndex)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:completionsForSubstring:indexOfToken:indexOfSelectedItem:"), tokenFieldCell, substring, tokenIndex, selectedIndex)
 	return rv
 }
 
@@ -312,7 +312,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellWriteRepresentedObjectsT
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523803-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellWriteRepresentedObjectsToPasteboard(tokenFieldCell TokenFieldCell, objects []objc.Object, pboard Pasteboard) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), objc.Ptr(tokenFieldCell), objects, objc.Ptr(pboard))
+	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:writeRepresentedObjects:toPasteboard:"), tokenFieldCell, objects, pboard)
 	return rv
 }
 
@@ -324,7 +324,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellShouldAddObjectsAtIndex(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523823-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellShouldAddObjectsAtIndex(tokenFieldCell TokenFieldCell, tokens []objc.Object, index uint) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:shouldAddObjects:atIndex:"), objc.Ptr(tokenFieldCell), tokens, index)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("tokenFieldCell:shouldAddObjects:atIndex:"), tokenFieldCell, tokens, index)
 	return rv
 }
 
@@ -336,7 +336,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellEditingStringForRepresen
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523824-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellEditingStringForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) string {
-	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:editingStringForRepresentedObject:"), objc.Ptr(tokenFieldCell), representedObject)
+	rv := objc.Call[string](t_, objc.Sel("tokenFieldCell:editingStringForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }
 
@@ -348,7 +348,7 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellHasMenuForRepresentedObj
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523826-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellHasMenuForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:hasMenuForRepresentedObject:"), objc.Ptr(tokenFieldCell), representedObject)
+	rv := objc.Call[bool](t_, objc.Sel("tokenFieldCell:hasMenuForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }
 
@@ -360,6 +360,6 @@ func (t_ TokenFieldCellDelegateObject) HasTokenFieldCellStyleForRepresentedObjec
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstokenfieldcelldelegate/1523829-tokenfieldcell?language=objc
 func (t_ TokenFieldCellDelegateObject) TokenFieldCellStyleForRepresentedObject(tokenFieldCell TokenFieldCell, representedObject objc.Object) TokenStyle {
-	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenFieldCell:styleForRepresentedObject:"), objc.Ptr(tokenFieldCell), representedObject)
+	rv := objc.Call[TokenStyle](t_, objc.Sel("tokenFieldCell:styleForRepresentedObject:"), tokenFieldCell, representedObject)
 	return rv
 }

@@ -19,7 +19,7 @@ type PCNNBatchNormalizationDataSource interface {
 	HasEncodeWithCoder() bool
 
 	// optional
-	Gamma() *float64
+	Gamma() *float32
 	HasGamma() bool
 
 	// optional
@@ -51,7 +51,7 @@ type PCNNBatchNormalizationDataSource interface {
 	HasUpdateMeanAndVarianceWithBatchNormalizationState() bool
 
 	// optional
-	Variance() *float64
+	Variance() *float32
 	HasVariance() bool
 
 	// optional
@@ -63,11 +63,11 @@ type PCNNBatchNormalizationDataSource interface {
 	HasLoad() bool
 
 	// optional
-	Epsilon() float64
+	Epsilon() float32
 	HasEpsilon() bool
 
 	// optional
-	Mean() *float64
+	Mean() *float32
 	HasMean() bool
 
 	// optional
@@ -75,7 +75,7 @@ type PCNNBatchNormalizationDataSource interface {
 	HasInitWithCoder() bool
 
 	// optional
-	Beta() *float64
+	Beta() *float32
 	HasBeta() bool
 }
 
@@ -95,7 +95,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasEncodeWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2951882-encodewithcoder?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) EncodeWithCoder(aCoder foundation.Coder) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), objc.Ptr(aCoder))
+	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), aCoder)
 }
 
 func (c_ CNNBatchNormalizationDataSourceObject) HasGamma() bool {
@@ -105,8 +105,8 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasGamma() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2942605-gamma?language=objc
-func (c_ CNNBatchNormalizationDataSourceObject) Gamma() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("gamma"))
+func (c_ CNNBatchNormalizationDataSourceObject) Gamma() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("gamma"))
 	return rv
 }
 
@@ -142,7 +142,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasUpdateGammaAndBetaWithBatchNo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2953129-updategammaandbetawithbatchnorma?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) UpdateGammaAndBetaWithBatchNormalizationState(batchNormalizationState CNNBatchNormalizationState) bool {
-	rv := objc.Call[bool](c_, objc.Sel("updateGammaAndBetaWithBatchNormalizationState:"), objc.Ptr(batchNormalizationState))
+	rv := objc.Call[bool](c_, objc.Sel("updateGammaAndBetaWithBatchNormalizationState:"), batchNormalizationState)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasUpdateMeanAndVarianceWithComm
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/3002361-updatemeanandvariancewithcommand?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) UpdateMeanAndVarianceWithCommandBufferBatchNormalizationState(commandBuffer metal.CommandBufferObject, batchNormalizationState CNNBatchNormalizationState) CNNNormalizationMeanAndVarianceState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("updateMeanAndVarianceWithCommandBuffer:batchNormalizationState:"), po0, objc.Ptr(batchNormalizationState))
+	rv := objc.Call[CNNNormalizationMeanAndVarianceState](c_, objc.Sel("updateMeanAndVarianceWithCommandBuffer:batchNormalizationState:"), po0, batchNormalizationState)
 	return rv
 }
 
@@ -191,7 +191,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasUpdateMeanAndVarianceWithBatc
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/3002360-updatemeanandvariancewithbatchno?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) UpdateMeanAndVarianceWithBatchNormalizationState(batchNormalizationState CNNBatchNormalizationState) bool {
-	rv := objc.Call[bool](c_, objc.Sel("updateMeanAndVarianceWithBatchNormalizationState:"), objc.Ptr(batchNormalizationState))
+	rv := objc.Call[bool](c_, objc.Sel("updateMeanAndVarianceWithBatchNormalizationState:"), batchNormalizationState)
 	return rv
 }
 
@@ -202,8 +202,8 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasVariance() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2942592-variance?language=objc
-func (c_ CNNBatchNormalizationDataSourceObject) Variance() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("variance"))
+func (c_ CNNBatchNormalizationDataSourceObject) Variance() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("variance"))
 	return rv
 }
 
@@ -216,7 +216,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasUpdateGammaAndBetaWithCommand
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2951891-updategammaandbetawithcommandbuf?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) UpdateGammaAndBetaWithCommandBufferBatchNormalizationState(commandBuffer metal.CommandBufferObject, batchNormalizationState CNNBatchNormalizationState) CNNNormalizationGammaAndBetaState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("updateGammaAndBetaWithCommandBuffer:batchNormalizationState:"), po0, objc.Ptr(batchNormalizationState))
+	rv := objc.Call[CNNNormalizationGammaAndBetaState](c_, objc.Sel("updateGammaAndBetaWithCommandBuffer:batchNormalizationState:"), po0, batchNormalizationState)
 	return rv
 }
 
@@ -239,8 +239,8 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasEpsilon() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2947917-epsilon?language=objc
-func (c_ CNNBatchNormalizationDataSourceObject) Epsilon() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("epsilon"))
+func (c_ CNNBatchNormalizationDataSourceObject) Epsilon() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("epsilon"))
 	return rv
 }
 
@@ -251,8 +251,8 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasMean() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2942589-mean?language=objc
-func (c_ CNNBatchNormalizationDataSourceObject) Mean() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("mean"))
+func (c_ CNNBatchNormalizationDataSourceObject) Mean() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("mean"))
 	return rv
 }
 
@@ -264,7 +264,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasInitWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2951886-initwithcoder?language=objc
 func (c_ CNNBatchNormalizationDataSourceObject) InitWithCoder(aDecoder foundation.Coder) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), objc.Ptr(aDecoder))
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), aDecoder)
 	return rv
 }
 
@@ -275,7 +275,7 @@ func (c_ CNNBatchNormalizationDataSourceObject) HasBeta() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationdatasource/2942586-beta?language=objc
-func (c_ CNNBatchNormalizationDataSourceObject) Beta() *float64 {
-	rv := objc.Call[*float64](c_, objc.Sel("beta"))
+func (c_ CNNBatchNormalizationDataSourceObject) Beta() *float32 {
+	rv := objc.Call[*float32](c_, objc.Sel("beta"))
 	return rv
 }

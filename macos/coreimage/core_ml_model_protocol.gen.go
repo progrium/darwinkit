@@ -20,11 +20,11 @@ type PCoreMLModel interface {
 	HasSoftmaxNormalization() bool
 
 	// optional
-	SetHeadIndex(value float64)
+	SetHeadIndex(value float32)
 	HasSetHeadIndex() bool
 
 	// optional
-	HeadIndex() float64
+	HeadIndex() float32
 	HasHeadIndex() bool
 
 	// optional
@@ -82,7 +82,7 @@ func (c_ CoreMLModelObject) HasSetHeadIndex() bool {
 // A number that specifies which output of a multihead Core ML model applies the effect on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicoremlmodel/3228195-headindex?language=objc
-func (c_ CoreMLModelObject) SetHeadIndex(value float64) {
+func (c_ CoreMLModelObject) SetHeadIndex(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setHeadIndex:"), value)
 }
 
@@ -93,8 +93,8 @@ func (c_ CoreMLModelObject) HasHeadIndex() bool {
 // A number that specifies which output of a multihead Core ML model applies the effect on the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicoremlmodel/3228195-headindex?language=objc
-func (c_ CoreMLModelObject) HeadIndex() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("headIndex"))
+func (c_ CoreMLModelObject) HeadIndex() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("headIndex"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (c_ CoreMLModelObject) HasSetModel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicoremlmodel/3228197-model?language=objc
 func (c_ CoreMLModelObject) SetModel(value coreml.Model) {
-	objc.Call[objc.Void](c_, objc.Sel("setModel:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setModel:"), value)
 }
 
 func (c_ CoreMLModelObject) HasModel() bool {
@@ -129,7 +129,7 @@ func (c_ CoreMLModelObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicoremlmodel/3228196-inputimage?language=objc
 func (c_ CoreMLModelObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ CoreMLModelObject) HasInputImage() bool {

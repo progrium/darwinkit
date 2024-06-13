@@ -20,12 +20,12 @@ type IParagraphStyle interface {
 	objc.IObject
 	TextBlocks() []TextBlock
 	HeaderLevel() int
-	TighteningFactorForTruncation() float64
+	TighteningFactorForTruncation() float32
 	TextLists() []TextList
 	TailIndent() float64
 	MinimumLineHeight() float64
 	ParagraphSpacingBefore() float64
-	HyphenationFactor() float64
+	HyphenationFactor() float32
 	MaximumLineHeight() float64
 	ParagraphSpacing() float64
 	UsesDefaultHyphenation() bool
@@ -108,8 +108,8 @@ func (p_ ParagraphStyle) HeaderLevel() int {
 // The threshold for using tightening as an alternative to truncation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsparagraphstyle/1529278-tighteningfactorfortruncation?language=objc
-func (p_ ParagraphStyle) TighteningFactorForTruncation() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("tighteningFactorForTruncation"))
+func (p_ ParagraphStyle) TighteningFactorForTruncation() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("tighteningFactorForTruncation"))
 	return rv
 }
 
@@ -148,8 +148,8 @@ func (p_ ParagraphStyle) ParagraphSpacingBefore() float64 {
 // The paragraph’s threshold for hyphenation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsparagraphstyle/1529275-hyphenationfactor?language=objc
-func (p_ ParagraphStyle) HyphenationFactor() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("hyphenationFactor"))
+func (p_ ParagraphStyle) HyphenationFactor() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("hyphenationFactor"))
 	return rv
 }
 

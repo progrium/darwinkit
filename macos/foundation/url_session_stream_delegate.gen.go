@@ -120,7 +120,7 @@ func (u_ URLSessionStreamDelegateObject) HasURLSessionBetterRouteDiscoveredForSt
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1407527-urlsession?language=objc
 func (u_ URLSessionStreamDelegateObject) URLSessionBetterRouteDiscoveredForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:betterRouteDiscoveredForStreamTask:"), objc.Ptr(session), objc.Ptr(streamTask))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:betterRouteDiscoveredForStreamTask:"), session, streamTask)
 }
 
 func (u_ URLSessionStreamDelegateObject) HasURLSessionReadClosedForStreamTask() bool {
@@ -131,7 +131,7 @@ func (u_ URLSessionStreamDelegateObject) HasURLSessionReadClosedForStreamTask() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411501-urlsession?language=objc
 func (u_ URLSessionStreamDelegateObject) URLSessionReadClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:readClosedForStreamTask:"), objc.Ptr(session), objc.Ptr(streamTask))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:readClosedForStreamTask:"), session, streamTask)
 }
 
 func (u_ URLSessionStreamDelegateObject) HasURLSessionStreamTaskDidBecomeInputStreamOutputStream() bool {
@@ -142,7 +142,7 @@ func (u_ URLSessionStreamDelegateObject) HasURLSessionStreamTaskDidBecomeInputSt
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411625-urlsession?language=objc
 func (u_ URLSessionStreamDelegateObject) URLSessionStreamTaskDidBecomeInputStreamOutputStream(session URLSession, streamTask URLSessionStreamTask, inputStream InputStream, outputStream OutputStream) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:streamTask:didBecomeInputStream:outputStream:"), objc.Ptr(session), objc.Ptr(streamTask), objc.Ptr(inputStream), objc.Ptr(outputStream))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:streamTask:didBecomeInputStream:outputStream:"), session, streamTask, inputStream, outputStream)
 }
 
 func (u_ URLSessionStreamDelegateObject) HasURLSessionWriteClosedForStreamTask() bool {
@@ -153,5 +153,5 @@ func (u_ URLSessionStreamDelegateObject) HasURLSessionWriteClosedForStreamTask()
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessionstreamdelegate/1411507-urlsession?language=objc
 func (u_ URLSessionStreamDelegateObject) URLSessionWriteClosedForStreamTask(session URLSession, streamTask URLSessionStreamTask) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:writeClosedForStreamTask:"), objc.Ptr(session), objc.Ptr(streamTask))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:writeClosedForStreamTask:"), session, streamTask)
 }

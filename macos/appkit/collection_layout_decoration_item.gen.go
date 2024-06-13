@@ -69,7 +69,7 @@ func (c_ CollectionLayoutDecorationItem) Init() CollectionLayoutDecorationItem {
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSize(layoutSize ICollectionLayoutSize) CollectionLayoutDecorationItem {
-	rv := objc.Call[CollectionLayoutDecorationItem](cc, objc.Sel("itemWithLayoutSize:"), objc.Ptr(layoutSize))
+	rv := objc.Call[CollectionLayoutDecorationItem](cc, objc.Sel("itemWithLayoutSize:"), layoutSize)
 	return rv
 }
 
@@ -81,7 +81,7 @@ func CollectionLayoutDecorationItem_ItemWithLayoutSize(layoutSize ICollectionLay
 }
 
 func (cc _CollectionLayoutDecorationItemClass) ItemWithLayoutSizeSupplementaryItems(layoutSize ICollectionLayoutSize, supplementaryItems []ICollectionLayoutSupplementaryItem) CollectionLayoutDecorationItem {
-	rv := objc.Call[CollectionLayoutDecorationItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), objc.Ptr(layoutSize), supplementaryItems)
+	rv := objc.Call[CollectionLayoutDecorationItem](cc, objc.Sel("itemWithLayoutSize:supplementaryItems:"), layoutSize, supplementaryItems)
 	return rv
 }
 

@@ -56,7 +56,7 @@ func (c_ CNNNeuronHardSigmoid) Init() CNNNeuronHardSigmoid {
 
 func (c_ CNNNeuronHardSigmoid) InitWithDeviceNeuronDescriptor(device metal.PDevice, neuronDescriptor INNNeuronDescriptor) CNNNeuronHardSigmoid {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[CNNNeuronHardSigmoid](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, objc.Ptr(neuronDescriptor))
+	rv := objc.Call[CNNNeuronHardSigmoid](c_, objc.Sel("initWithDevice:neuronDescriptor:"), po0, neuronDescriptor)
 	return rv
 }
 

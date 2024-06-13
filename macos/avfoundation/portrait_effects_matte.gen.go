@@ -21,7 +21,7 @@ type _PortraitEffectsMatteClass struct {
 // An interface definition for the [PortraitEffectsMatte] class.
 type IPortraitEffectsMatte interface {
 	objc.IObject
-	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary
+	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary
 	PixelFormatType() uint
 	MattingImage() corevideo.PixelBufferRef
 }
@@ -39,27 +39,27 @@ func PortraitEffectsMatteFrom(ptr unsafe.Pointer) PortraitEffectsMatte {
 	}
 }
 
-func (pc _PortraitEffectsMatteClass) PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError foundation.IError) PortraitEffectsMatte {
-	rv := objc.Call[PortraitEffectsMatte](pc, objc.Sel("portraitEffectsMatteFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, objc.Ptr(outError))
+func (pc _PortraitEffectsMatteClass) PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
+	rv := objc.Call[PortraitEffectsMatte](pc, objc.Sel("portraitEffectsMatteFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, outError)
 	return rv
 }
 
 // Initializes a portrait effects matte instance from auxiliary image information in an image file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avportraiteffectsmatte/2976125-portraiteffectsmattefromdictiona?language=objc
-func PortraitEffectsMatte_PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError foundation.IError) PortraitEffectsMatte {
+func PortraitEffectsMatte_PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) PortraitEffectsMatte {
 	return PortraitEffectsMatteClass.PortraitEffectsMatteFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary, outError)
 }
 
-func (p_ PortraitEffectsMatte) PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) PortraitEffectsMatte {
-	rv := objc.Call[PortraitEffectsMatte](p_, objc.Sel("portraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBuffer:error:"), pixelBuffer, objc.Ptr(outError))
+func (p_ PortraitEffectsMatte) PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) PortraitEffectsMatte {
+	rv := objc.Call[PortraitEffectsMatte](p_, objc.Sel("portraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBuffer:error:"), pixelBuffer, outError)
 	return rv
 }
 
 // Returns a portrait effects matte by wrapping the replacement pixel buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avportraiteffectsmatte/2976124-portraiteffectsmattebyreplacingp?language=objc
-func PortraitEffectsMatte_PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) PortraitEffectsMatte {
+func PortraitEffectsMatte_PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) PortraitEffectsMatte {
 	instance := PortraitEffectsMatteClass.Alloc().PortraitEffectsMatteByReplacingPortraitEffectsMatteWithPixelBufferError(pixelBuffer, outError)
 	instance.Autorelease()
 	return instance
@@ -102,7 +102,7 @@ func (p_ PortraitEffectsMatte) Init() PortraitEffectsMatte {
 // A dictionary of primitive map information used for writing an image file with a portrait effects matte. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avportraiteffectsmatte/2976120-dictionaryrepresentationforauxil?language=objc
-func (p_ PortraitEffectsMatte) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary {
+func (p_ PortraitEffectsMatte) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary {
 	rv := objc.Call[foundation.Dictionary](p_, objc.Sel("dictionaryRepresentationForAuxiliaryDataType:"), outAuxDataType)
 	return rv
 }

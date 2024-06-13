@@ -116,7 +116,7 @@ func (i_ ImageHistogramEqualization) EncodeTransformToCommandBufferSourceTexture
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogramequalization/1618746-encodetransformtocommandbuffer?language=objc
 func (i_ ImageHistogramEqualization) EncodeTransformToCommandBufferObjectSourceTextureObjectHistogramObjectHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, histogramObject objc.IObject, histogramOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeTransformToCommandBuffer:sourceTexture:histogram:histogramOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), objc.Ptr(histogramObject), histogramOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeTransformToCommandBuffer:sourceTexture:histogram:histogramOffset:"), commandBufferObject, sourceObject, histogramObject, histogramOffset)
 }
 
 // A structure describing the histogram content. [Full Topic]

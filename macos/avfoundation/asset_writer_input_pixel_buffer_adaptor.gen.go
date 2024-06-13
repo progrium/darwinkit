@@ -40,7 +40,7 @@ func AssetWriterInputPixelBufferAdaptorFrom(ptr unsafe.Pointer) AssetWriterInput
 }
 
 func (ac _AssetWriterInputPixelBufferAdaptorClass) AssetWriterInputPixelBufferAdaptorWithAssetWriterInputSourcePixelBufferAttributes(input IAssetWriterInput, sourcePixelBufferAttributes map[string]objc.IObject) AssetWriterInputPixelBufferAdaptor {
-	rv := objc.Call[AssetWriterInputPixelBufferAdaptor](ac, objc.Sel("assetWriterInputPixelBufferAdaptorWithAssetWriterInput:sourcePixelBufferAttributes:"), objc.Ptr(input), sourcePixelBufferAttributes)
+	rv := objc.Call[AssetWriterInputPixelBufferAdaptor](ac, objc.Sel("assetWriterInputPixelBufferAdaptorWithAssetWriterInput:sourcePixelBufferAttributes:"), input, sourcePixelBufferAttributes)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func AssetWriterInputPixelBufferAdaptor_AssetWriterInputPixelBufferAdaptorWithAs
 }
 
 func (a_ AssetWriterInputPixelBufferAdaptor) InitWithAssetWriterInputSourcePixelBufferAttributes(input IAssetWriterInput, sourcePixelBufferAttributes map[string]objc.IObject) AssetWriterInputPixelBufferAdaptor {
-	rv := objc.Call[AssetWriterInputPixelBufferAdaptor](a_, objc.Sel("initWithAssetWriterInput:sourcePixelBufferAttributes:"), objc.Ptr(input), sourcePixelBufferAttributes)
+	rv := objc.Call[AssetWriterInputPixelBufferAdaptor](a_, objc.Sel("initWithAssetWriterInput:sourcePixelBufferAttributes:"), input, sourcePixelBufferAttributes)
 	return rv
 }
 

@@ -106,7 +106,7 @@ func (n_ NinePartStretchedObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cininepartstretched/3600179-inputimage?language=objc
 func (n_ NinePartStretchedObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](n_, objc.Sel("setInputImage:"), value)
 }
 
 func (n_ NinePartStretchedObject) HasInputImage() bool {

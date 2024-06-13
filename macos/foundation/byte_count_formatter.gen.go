@@ -77,7 +77,7 @@ func (b_ ByteCountFormatter) Init() ByteCountFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbytecountformatter/3172523-stringfrommeasurement?language=objc
 func (b_ ByteCountFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.Call[string](b_, objc.Sel("stringFromMeasurement:"), objc.Ptr(measurement))
+	rv := objc.Call[string](b_, objc.Sel("stringFromMeasurement:"), measurement)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func (b_ ByteCountFormatter) StringFromMeasurement(measurement IMeasurement) str
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsbytecountformatter/3172524-stringfrommeasurement?language=objc
 func (bc _ByteCountFormatterClass) StringFromMeasurementCountStyle(measurement IMeasurement, countStyle ByteCountFormatterCountStyle) string {
-	rv := objc.Call[string](bc, objc.Sel("stringFromMeasurement:countStyle:"), objc.Ptr(measurement), countStyle)
+	rv := objc.Call[string](bc, objc.Sel("stringFromMeasurement:countStyle:"), measurement, countStyle)
 	return rv
 }
 

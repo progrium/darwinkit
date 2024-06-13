@@ -82,7 +82,7 @@ func (t_ TextContentManager) PerformEditingTransactionUsingBlock(transaction fun
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809928-textelementsforrange?language=objc
 func (t_ TextContentManager) TextElementsForRange(range_ ITextRange) []TextElement {
-	rv := objc.Call[[]TextElement](t_, objc.Sel("textElementsForRange:"), objc.Ptr(range_))
+	rv := objc.Call[[]TextElement](t_, objc.Sel("textElementsForRange:"), range_)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (t_ TextContentManager) TextElementsForRange(range_ ITextRange) []TextEleme
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809916-addtextlayoutmanager?language=objc
 func (t_ TextContentManager) AddTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("addTextLayoutManager:"), objc.Ptr(textLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("addTextLayoutManager:"), textLayoutManager)
 }
 
 // Synchronizes changes to all nonprimary text layout managers. [Full Topic]
@@ -104,14 +104,14 @@ func (t_ TextContentManager) SynchronizeTextLayoutManagers(completionHandler fun
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809923-recordeditactioninrange?language=objc
 func (t_ TextContentManager) RecordEditActionInRangeNewTextRange(originalTextRange ITextRange, newTextRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("recordEditActionInRange:newTextRange:"), objc.Ptr(originalTextRange), objc.Ptr(newTextRange))
+	objc.Call[objc.Void](t_, objc.Sel("recordEditActionInRange:newTextRange:"), originalTextRange, newTextRange)
 }
 
 // Removes the layout manager you specifiy from the list of layout managers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809924-removetextlayoutmanager?language=objc
 func (t_ TextContentManager) RemoveTextLayoutManager(textLayoutManager ITextLayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTextLayoutManager:"), objc.Ptr(textLayoutManager))
+	objc.Call[objc.Void](t_, objc.Sel("removeTextLayoutManager:"), textLayoutManager)
 }
 
 // Indicates there’s an active editing transaction from the primary text layout manager. [Full Topic]
@@ -173,7 +173,7 @@ func (t_ TextContentManager) SetDelegate(value PTextContentManagerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809917-delegate?language=objc
 func (t_ TextContentManager) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // The array of text layout managers associated with this text content manager. [Full Topic]
@@ -196,5 +196,5 @@ func (t_ TextContentManager) PrimaryTextLayoutManager() TextLayoutManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanager/3809922-primarytextlayoutmanager?language=objc
 func (t_ TextContentManager) SetPrimaryTextLayoutManager(value ITextLayoutManager) {
-	objc.Call[objc.Void](t_, objc.Sel("setPrimaryTextLayoutManager:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setPrimaryTextLayoutManager:"), value)
 }

@@ -22,16 +22,16 @@ type IFileProviderManager interface {
 	WaitForStabilizationWithCompletionHandler(completionHandler func(error foundation.Error))
 	GlobalProgressForKind(kind foundation.ProgressFileOperationKind) foundation.Progress
 	GetUserVisibleURLForItemIdentifierCompletionHandler(itemIdentifier FileProviderItemIdentifier, completionHandler func(userVisibleFile foundation.URL, error foundation.Error))
-	ListAvailableTestingOperationsWithError(error foundation.IError) []FileProviderTestingOperationObject
+	ListAvailableTestingOperationsWithError(error unsafe.Pointer) []FileProviderTestingOperationObject
 	EnumeratorForMaterializedItems() FileProviderEnumeratorObject
 	WaitForChangesOnItemsBelowItemWithIdentifierCompletionHandler(itemIdentifier FileProviderItemIdentifier, completionHandler func(error foundation.Error))
 	SignalEnumeratorForContainerItemIdentifierCompletionHandler(containerItemIdentifier FileProviderItemIdentifier, completion func(error foundation.Error))
 	SignalErrorResolvedCompletionHandler(error foundation.IError, completionHandler func(error foundation.Error))
-	RunTestingOperationsError(operations []PFileProviderTestingOperation, error foundation.IError) foundation.Dictionary
+	RunTestingOperationsError(operations []PFileProviderTestingOperation, error unsafe.Pointer) foundation.Dictionary
 	ReconnectWithCompletionHandler(completionHandler func(error foundation.Error))
 	EvictItemWithIdentifierCompletionHandler(itemIdentifier FileProviderItemIdentifier, completionHandler func(error foundation.Error))
 	DisconnectWithReasonOptionsCompletionHandler(localizedReason string, options FileProviderManagerDisconnectionOptions, completionHandler func(error foundation.Error))
-	TemporaryDirectoryURLWithError(error foundation.IError) foundation.URL
+	TemporaryDirectoryURLWithError(error unsafe.Pointer) foundation.URL
 	EnumeratorForPendingItems() FileProviderPendingSetEnumeratorObject
 	ReimportItemsBelowItemWithIdentifierCompletionHandler(itemIdentifier FileProviderItemIdentifier, completionHandler func(error foundation.Error))
 	RegisterURLSessionTaskForItemWithIdentifierCompletionHandler(task foundation.IURLSessionTask, identifier FileProviderItemIdentifier, completion func(error foundation.Error))
@@ -51,7 +51,7 @@ func FileProviderManagerFrom(ptr unsafe.Pointer) FileProviderManager {
 }
 
 func (fc _FileProviderManagerClass) ManagerForDomain(domain IFileProviderDomain) FileProviderManager {
-	rv := objc.Call[FileProviderManager](fc, objc.Sel("managerForDomain:"), objc.Ptr(domain))
+	rv := objc.Call[FileProviderManager](fc, objc.Sel("managerForDomain:"), domain)
 	return rv
 }
 
@@ -107,8 +107,8 @@ func (f_ FileProviderManager) GetUserVisibleURLForItemIdentifierCompletionHandle
 // Lists all the operations that are ready for scheduling. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3727823-listavailabletestingoperationswi?language=objc
-func (f_ FileProviderManager) ListAvailableTestingOperationsWithError(error foundation.IError) []FileProviderTestingOperationObject {
-	rv := objc.Call[[]FileProviderTestingOperationObject](f_, objc.Sel("listAvailableTestingOperationsWithError:"), objc.Ptr(error))
+func (f_ FileProviderManager) ListAvailableTestingOperationsWithError(error unsafe.Pointer) []FileProviderTestingOperationObject {
+	rv := objc.Call[[]FileProviderTestingOperationObject](f_, objc.Sel("listAvailableTestingOperationsWithError:"), error)
 	return rv
 }
 
@@ -116,7 +116,7 @@ func (f_ FileProviderManager) ListAvailableTestingOperationsWithError(error foun
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/2890934-adddomain?language=objc
 func (fc _FileProviderManagerClass) AddDomainCompletionHandler(domain IFileProviderDomain, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("addDomain:completionHandler:"), objc.Ptr(domain), completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("addDomain:completionHandler:"), domain, completionHandler)
 }
 
 // Adds a domain to the File Provider extension. [Full Topic]
@@ -152,14 +152,14 @@ func (f_ FileProviderManager) SignalEnumeratorForContainerItemIdentifierCompleti
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3656534-signalerrorresolved?language=objc
 func (f_ FileProviderManager) SignalErrorResolvedCompletionHandler(error foundation.IError, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("signalErrorResolved:completionHandler:"), objc.Ptr(error), completionHandler)
+	objc.Call[objc.Void](f_, objc.Sel("signalErrorResolved:completionHandler:"), error, completionHandler)
 }
 
 // Asks the system to schedule and execute the specified operations. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3727824-runtestingoperations?language=objc
-func (f_ FileProviderManager) RunTestingOperationsError(operations []PFileProviderTestingOperation, error foundation.IError) foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](f_, objc.Sel("runTestingOperations:error:"), operations, objc.Ptr(error))
+func (f_ FileProviderManager) RunTestingOperationsError(operations []PFileProviderTestingOperation, error unsafe.Pointer) foundation.Dictionary {
+	rv := objc.Call[foundation.Dictionary](f_, objc.Sel("runTestingOperations:error:"), operations, error)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func (f_ FileProviderManager) RunTestingOperationsError(operations []PFileProvid
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3074519-getidentifierforuservisiblefilea?language=objc
 func (fc _FileProviderManagerClass) GetIdentifierForUserVisibleFileAtURLCompletionHandler(url foundation.IURL, completionHandler func(itemIdentifier FileProviderItemIdentifier, domainIdentifier FileProviderDomainIdentifier, error foundation.Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("getIdentifierForUserVisibleFileAtURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("getIdentifierForUserVisibleFileAtURL:completionHandler:"), url, completionHandler)
 }
 
 // Returns the identifier and domain for a user-visible URL. [Full Topic]
@@ -188,7 +188,7 @@ func (f_ FileProviderManager) ReconnectWithCompletionHandler(completionHandler f
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/2890933-removedomain?language=objc
 func (fc _FileProviderManagerClass) RemoveDomainCompletionHandler(domain IFileProviderDomain, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("removeDomain:completionHandler:"), objc.Ptr(domain), completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("removeDomain:completionHandler:"), domain, completionHandler)
 }
 
 // Removes a domain from the File Provider extension. [Full Topic]
@@ -229,8 +229,8 @@ func FileProviderManager_GetDomainsWithCompletionHandler(completionHandler func(
 // Returns the URL of a directory that the File Provider extension can use to temporarily store files before passing them to the system. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3656535-temporarydirectoryurlwitherror?language=objc
-func (f_ FileProviderManager) TemporaryDirectoryURLWithError(error foundation.IError) foundation.URL {
-	rv := objc.Call[foundation.URL](f_, objc.Sel("temporaryDirectoryURLWithError:"), objc.Ptr(error))
+func (f_ FileProviderManager) TemporaryDirectoryURLWithError(error unsafe.Pointer) foundation.URL {
+	rv := objc.Call[foundation.URL](f_, objc.Sel("temporaryDirectoryURLWithError:"), error)
 	return rv
 }
 
@@ -238,7 +238,7 @@ func (f_ FileProviderManager) TemporaryDirectoryURLWithError(error foundation.IE
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3181164-importdomain?language=objc
 func (fc _FileProviderManagerClass) ImportDomainFromDirectoryAtURLCompletionHandler(domain IFileProviderDomain, url foundation.IURL, completionHandler func(error foundation.Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("importDomain:fromDirectoryAtURL:completionHandler:"), objc.Ptr(domain), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("importDomain:fromDirectoryAtURL:completionHandler:"), domain, url, completionHandler)
 }
 
 // Creates a new domain that takes ownership of on-disk data that your app previously managed without a file provider. [Full Topic]
@@ -252,7 +252,7 @@ func FileProviderManager_ImportDomainFromDirectoryAtURLCompletionHandler(domain 
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/3793733-removedomain?language=objc
 func (fc _FileProviderManagerClass) RemoveDomainModeCompletionHandler(domain IFileProviderDomain, mode FileProviderDomainRemovalMode, completionHandler func(preservedLocation foundation.URL, error foundation.Error)) {
-	objc.Call[objc.Void](fc, objc.Sel("removeDomain:mode:completionHandler:"), objc.Ptr(domain), mode, completionHandler)
+	objc.Call[objc.Void](fc, objc.Sel("removeDomain:mode:completionHandler:"), domain, mode, completionHandler)
 }
 
 // Removes a domain from the File Provider extension using the specified options. [Full Topic]
@@ -295,5 +295,5 @@ func (f_ FileProviderManager) ReimportItemsBelowItemWithIdentifierCompletionHand
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileprovidermanager/2890932-registerurlsessiontask?language=objc
 func (f_ FileProviderManager) RegisterURLSessionTaskForItemWithIdentifierCompletionHandler(task foundation.IURLSessionTask, identifier FileProviderItemIdentifier, completion func(error foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("registerURLSessionTask:forItemWithIdentifier:completionHandler:"), objc.Ptr(task), identifier, completion)
+	objc.Call[objc.Void](f_, objc.Sel("registerURLSessionTask:forItemWithIdentifier:completionHandler:"), task, identifier, completion)
 }

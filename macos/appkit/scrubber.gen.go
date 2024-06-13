@@ -123,14 +123,14 @@ func (s_ Scrubber) ItemViewForItemAtIndex(index int) ScrubberItemView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544679-removeitemsatindexes?language=objc
 func (s_ Scrubber) RemoveItemsAtIndexes(indexes foundation.IIndexSet) {
-	objc.Call[objc.Void](s_, objc.Sel("removeItemsAtIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](s_, objc.Sel("removeItemsAtIndexes:"), indexes)
 }
 
 // Reloads the items at the specified indexes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544874-reloaditemsatindexes?language=objc
 func (s_ Scrubber) ReloadItemsAtIndexes(indexes foundation.IIndexSet) {
-	objc.Call[objc.Void](s_, objc.Sel("reloadItemsAtIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](s_, objc.Sel("reloadItemsAtIndexes:"), indexes)
 }
 
 // Scrolls an item to a specified alignment within the scrubber. [Full Topic]
@@ -151,7 +151,7 @@ func (s_ Scrubber) PerformSequentialBatchUpdates(updateBlock func()) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544867-insertitemsatindexes?language=objc
 func (s_ Scrubber) InsertItemsAtIndexes(indexes foundation.IIndexSet) {
-	objc.Call[objc.Void](s_, objc.Sel("insertItemsAtIndexes:"), objc.Ptr(indexes))
+	objc.Call[objc.Void](s_, objc.Sel("insertItemsAtIndexes:"), indexes)
 }
 
 // Moves an item from one index to another in the scrubber. [Full Topic]
@@ -172,14 +172,14 @@ func (s_ Scrubber) ReloadData() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544773-registerclass?language=objc
 func (s_ Scrubber) RegisterClassForItemIdentifier(itemViewClass objc.IClass, itemIdentifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](s_, objc.Sel("registerClass:forItemIdentifier:"), objc.Ptr(itemViewClass), itemIdentifier)
+	objc.Call[objc.Void](s_, objc.Sel("registerClass:forItemIdentifier:"), itemViewClass, itemIdentifier)
 }
 
 // Registers a nib file for the scrubber to use when it creates new items in the scrubber. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2646903-registernib?language=objc
 func (s_ Scrubber) RegisterNibForItemIdentifier(nib INib, itemIdentifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](s_, objc.Sel("registerNib:forItemIdentifier:"), objc.Ptr(nib), itemIdentifier)
+	objc.Call[objc.Void](s_, objc.Sel("registerNib:forItemIdentifier:"), nib, itemIdentifier)
 }
 
 // Creates or returns a reusable item object with the specified identifier. [Full Topic]
@@ -202,7 +202,7 @@ func (s_ Scrubber) SelectionBackgroundStyle() ScrubberSelectionStyle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2588270-selectionbackgroundstyle?language=objc
 func (s_ Scrubber) SetSelectionBackgroundStyle(value IScrubberSelectionStyle) {
-	objc.Call[objc.Void](s_, objc.Sel("setSelectionBackgroundStyle:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSelectionBackgroundStyle:"), value)
 }
 
 // A Boolean value that determines the behavior of the item selection decorations as the scrubber's selection changes. [Full Topic]
@@ -232,7 +232,7 @@ func (s_ Scrubber) ScrubberLayout() ScrubberLayout {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544850-scrubberlayout?language=objc
 func (s_ Scrubber) SetScrubberLayout(value IScrubberLayout) {
-	objc.Call[objc.Void](s_, objc.Sel("setScrubberLayout:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setScrubberLayout:"), value)
 }
 
 // A Boolean value that specifies whether arrow buttons should be displayed at the leading and trailing edges of the scrubber. [Full Topic]
@@ -277,7 +277,7 @@ func (s_ Scrubber) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544869-backgroundcolor?language=objc
 func (s_ Scrubber) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](s_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // The index of the highlighted item in the scrubber. [Full Topic]
@@ -323,7 +323,7 @@ func (s_ Scrubber) SelectionOverlayStyle() ScrubberSelectionStyle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2588265-selectionoverlaystyle?language=objc
 func (s_ Scrubber) SetSelectionOverlayStyle(value IScrubberSelectionStyle) {
-	objc.Call[objc.Void](s_, objc.Sel("setSelectionOverlayStyle:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSelectionOverlayStyle:"), value)
 }
 
 // The object that acts as the delegate of the scrubber. [Full Topic]
@@ -347,7 +347,7 @@ func (s_ Scrubber) SetDelegate(value PScrubberDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544738-delegate?language=objc
 func (s_ Scrubber) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // A Boolean value that, together with the [appkit/nsscrubber/mode] property, determines scrubber interaction style. [Full Topic]
@@ -377,7 +377,7 @@ func (s_ Scrubber) BackgroundView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544847-backgroundview?language=objc
 func (s_ Scrubber) SetBackgroundView(value IView) {
-	objc.Call[objc.Void](s_, objc.Sel("setBackgroundView:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setBackgroundView:"), value)
 }
 
 // A Boolean value that specifies whether the scrubber should display the existence of additional items beyond the leading and trailing edges. [Full Topic]
@@ -431,5 +431,5 @@ func (s_ Scrubber) SetDataSource(value PScrubberDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubber/2544804-datasource?language=objc
 func (s_ Scrubber) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setDataSource:"), valueObject)
 }

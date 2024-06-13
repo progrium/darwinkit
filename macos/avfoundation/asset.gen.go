@@ -41,14 +41,14 @@ type IAsset interface {
 	PreferredTransform() coregraphics.AffineTransform
 	OverallDurationHint() coremedia.Time
 	AvailableMediaCharacteristicsWithMediaSelectionOptions() []MediaCharacteristic
-	PreferredRate() float64
+	PreferredRate() float32
 	Duration() coremedia.Time
 	TrackGroups() []AssetTrackGroup
 	IsPlayable() bool
 	ProvidesPreciseDurationAndTiming() bool
 	AvailableChapterLocales() []foundation.Locale
 	ReferenceRestrictions() AssetReferenceRestrictions
-	PreferredVolume() float64
+	PreferredVolume() float32
 	Lyrics() string
 	ContainsFragments() bool
 	IsExportable() bool
@@ -73,7 +73,7 @@ func AssetFrom(ptr unsafe.Pointer) Asset {
 }
 
 func (ac _AssetClass) AssetWithURL(URL foundation.IURL) Asset {
-	rv := objc.Call[Asset](ac, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[Asset](ac, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (a_ Asset) LoadChapterMetadataGroupsBestMatchingPreferredLanguagesCompletio
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasset/3746529-loadtrackwithtrackid?language=objc
 func (a_ Asset) LoadTrackWithTrackIDCompletionHandler(trackID objc.IObject, completionHandler func(arg0 AssetTrack, arg1 foundation.Error)) {
-	objc.Call[objc.Void](a_, objc.Sel("loadTrackWithTrackID:completionHandler:"), objc.Ptr(trackID), completionHandler)
+	objc.Call[objc.Void](a_, objc.Sel("loadTrackWithTrackID:completionHandler:"), trackID, completionHandler)
 }
 
 // Loads tracks that contain media of a specified characteristic. [Full Topic]
@@ -164,7 +164,7 @@ func (a_ Asset) LoadMetadataForFormatCompletionHandler(format MetadataFormat, co
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasset/3746526-loadchaptermetadatagroupswithtit?language=objc
 func (a_ Asset) LoadChapterMetadataGroupsWithTitleLocaleContainingItemsWithCommonKeysCompletionHandler(locale foundation.ILocale, commonKeys []MetadataKey, completionHandler func(arg0 []TimedMetadataGroup, arg1 foundation.Error)) {
-	objc.Call[objc.Void](a_, objc.Sel("loadChapterMetadataGroupsWithTitleLocale:containingItemsWithCommonKeys:completionHandler:"), objc.Ptr(locale), commonKeys, completionHandler)
+	objc.Call[objc.Void](a_, objc.Sel("loadChapterMetadataGroupsWithTitleLocale:containingItemsWithCommonKeys:completionHandler:"), locale, commonKeys, completionHandler)
 }
 
 // The metadata formats this asset contains. [Full Topic]
@@ -258,8 +258,8 @@ func (a_ Asset) AvailableMediaCharacteristicsWithMediaSelectionOptions() []Media
 // The asset’s rate preference for playing its media. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasset/1389912-preferredrate?language=objc
-func (a_ Asset) PreferredRate() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("preferredRate"))
+func (a_ Asset) PreferredRate() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("preferredRate"))
 	return rv
 }
 
@@ -314,8 +314,8 @@ func (a_ Asset) ReferenceRestrictions() AssetReferenceRestrictions {
 // The asset’s volume preference for playing its audible media. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avasset/1390457-preferredvolume?language=objc
-func (a_ Asset) PreferredVolume() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("preferredVolume"))
+func (a_ Asset) PreferredVolume() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("preferredVolume"))
 	return rv
 }
 

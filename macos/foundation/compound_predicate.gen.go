@@ -117,7 +117,7 @@ func CompoundPredicate_OrPredicateWithSubpredicates(subpredicates []IPredicate) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscompoundpredicate/1409462-notpredicatewithsubpredicate?language=objc
 func (cc _CompoundPredicateClass) NotPredicateWithSubpredicate(predicate IPredicate) CompoundPredicate {
-	rv := objc.Call[CompoundPredicate](cc, objc.Sel("notPredicateWithSubpredicate:"), objc.Ptr(predicate))
+	rv := objc.Call[CompoundPredicate](cc, objc.Sel("notPredicateWithSubpredicate:"), predicate)
 	return rv
 }
 

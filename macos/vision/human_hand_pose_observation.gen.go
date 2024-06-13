@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,8 +18,8 @@ type _HumanHandPoseObservationClass struct {
 // An interface definition for the [HumanHandPoseObservation] class.
 type IHumanHandPoseObservation interface {
 	IRecognizedPointsObservation
-	RecognizedPointsForJointsGroupNameError(jointsGroupName HumanHandPoseObservationJointsGroupName, error foundation.IError) map[HumanHandPoseObservationJointName]RecognizedPoint
-	RecognizedPointForJointNameError(jointName HumanHandPoseObservationJointName, error foundation.IError) RecognizedPoint
+	RecognizedPointsForJointsGroupNameError(jointsGroupName HumanHandPoseObservationJointsGroupName, error unsafe.Pointer) map[HumanHandPoseObservationJointName]RecognizedPoint
+	RecognizedPointForJointNameError(jointName HumanHandPoseObservationJointName, error unsafe.Pointer) RecognizedPoint
 	AvailableJointNames() []HumanHandPoseObservationJointName
 	AvailableJointsGroupNames() []HumanHandPoseObservationJointsGroupName
 	Chirality() Chirality
@@ -62,16 +61,16 @@ func (h_ HumanHandPoseObservation) Init() HumanHandPoseObservation {
 // Retrieves the recognized points associated with the joint group name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3675640-recognizedpointsforjointsgroupna?language=objc
-func (h_ HumanHandPoseObservation) RecognizedPointsForJointsGroupNameError(jointsGroupName HumanHandPoseObservationJointsGroupName, error foundation.IError) map[HumanHandPoseObservationJointName]RecognizedPoint {
-	rv := objc.Call[map[HumanHandPoseObservationJointName]RecognizedPoint](h_, objc.Sel("recognizedPointsForJointsGroupName:error:"), jointsGroupName, objc.Ptr(error))
+func (h_ HumanHandPoseObservation) RecognizedPointsForJointsGroupNameError(jointsGroupName HumanHandPoseObservationJointsGroupName, error unsafe.Pointer) map[HumanHandPoseObservationJointName]RecognizedPoint {
+	rv := objc.Call[map[HumanHandPoseObservationJointName]RecognizedPoint](h_, objc.Sel("recognizedPointsForJointsGroupName:error:"), jointsGroupName, error)
 	return rv
 }
 
 // Retrieves the recognized point for a joint name. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnhumanhandposeobservation/3675639-recognizedpointforjointname?language=objc
-func (h_ HumanHandPoseObservation) RecognizedPointForJointNameError(jointName HumanHandPoseObservationJointName, error foundation.IError) RecognizedPoint {
-	rv := objc.Call[RecognizedPoint](h_, objc.Sel("recognizedPointForJointName:error:"), jointName, objc.Ptr(error))
+func (h_ HumanHandPoseObservation) RecognizedPointForJointNameError(jointName HumanHandPoseObservationJointName, error unsafe.Pointer) RecognizedPoint {
+	rv := objc.Call[RecognizedPoint](h_, objc.Sel("recognizedPointForJointName:error:"), jointName, error)
 	return rv
 }
 

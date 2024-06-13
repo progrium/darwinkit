@@ -21,7 +21,7 @@ type _DepthDataClass struct {
 // An interface definition for the [DepthData] class.
 type IDepthData interface {
 	objc.IObject
-	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary
+	DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary
 	DepthDataQuality() DepthDataQuality
 	AvailableDepthDataTypes() []foundation.Number
 	CameraCalibrationData() CameraCalibrationData
@@ -44,15 +44,15 @@ func DepthDataFrom(ptr unsafe.Pointer) DepthData {
 	}
 }
 
-func (d_ DepthData) DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) DepthData {
-	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByReplacingDepthDataMapWithPixelBuffer:error:"), pixelBuffer, objc.Ptr(outError))
+func (d_ DepthData) DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
+	rv := objc.Call[DepthData](d_, objc.Sel("depthDataByReplacingDepthDataMapWithPixelBuffer:error:"), pixelBuffer, outError)
 	return rv
 }
 
 // Returns a derivative depth data object by replacing the depth data map. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881231-depthdatabyreplacingdepthdatamap?language=objc
-func DepthData_DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError foundation.IError) DepthData {
+func DepthData_DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer corevideo.PixelBufferRef, outError unsafe.Pointer) DepthData {
 	instance := DepthDataClass.Alloc().DepthDataByReplacingDepthDataMapWithPixelBufferError(pixelBuffer, outError)
 	instance.Autorelease()
 	return instance
@@ -86,15 +86,15 @@ func DepthData_DepthDataByApplyingExifOrientation(exifOrientation imageio.ImageP
 	return instance
 }
 
-func (dc _DepthDataClass) DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError foundation.IError) DepthData {
-	rv := objc.Call[DepthData](dc, objc.Sel("depthDataFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, objc.Ptr(outError))
+func (dc _DepthDataClass) DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) DepthData {
+	rv := objc.Call[DepthData](dc, objc.Sel("depthDataFromDictionaryRepresentation:error:"), imageSourceAuxDataInfoDictionary, outError)
 	return rv
 }
 
 // Creates a depth data object from depth information such as that found in an image file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2881221-depthdatafromdictionaryrepresent?language=objc
-func DepthData_DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError foundation.IError) DepthData {
+func DepthData_DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary foundation.Dictionary, outError unsafe.Pointer) DepthData {
 	return DepthDataClass.DepthDataFromDictionaryRepresentationError(imageSourceAuxDataInfoDictionary, outError)
 }
 
@@ -121,7 +121,7 @@ func (d_ DepthData) Init() DepthData {
 // Returns a dictionary representation of the depth data suitable for writing into an image file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdepthdata/2873883-dictionaryrepresentationforauxil?language=objc
-func (d_ DepthData) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType string) foundation.Dictionary {
+func (d_ DepthData) DictionaryRepresentationForAuxiliaryDataType(outAuxDataType unsafe.Pointer) foundation.Dictionary {
 	rv := objc.Call[foundation.Dictionary](d_, objc.Sel("dictionaryRepresentationForAuxiliaryDataType:"), outAuxDataType)
 	return rv
 }

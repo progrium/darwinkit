@@ -40,7 +40,7 @@ func (l_ LayoutManagerObject) HasLayoutSublayersOfLayer() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097260-layoutsublayersoflayer?language=objc
 func (l_ LayoutManagerObject) LayoutSublayersOfLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("layoutSublayersOfLayer:"), layer)
 }
 
 func (l_ LayoutManagerObject) HasPreferredSizeOfLayer() bool {
@@ -51,7 +51,7 @@ func (l_ LayoutManagerObject) HasPreferredSizeOfLayer() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097256-preferredsizeoflayer?language=objc
 func (l_ LayoutManagerObject) PreferredSizeOfLayer(layer Layer) coregraphics.Size {
-	rv := objc.Call[coregraphics.Size](l_, objc.Sel("preferredSizeOfLayer:"), objc.Ptr(layer))
+	rv := objc.Call[coregraphics.Size](l_, objc.Sel("preferredSizeOfLayer:"), layer)
 	return rv
 }
 
@@ -63,5 +63,5 @@ func (l_ LayoutManagerObject) HasInvalidateLayoutOfLayer() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/calayoutmanager/2097258-invalidatelayoutoflayer?language=objc
 func (l_ LayoutManagerObject) InvalidateLayoutOfLayer(layer Layer) {
-	objc.Call[objc.Void](l_, objc.Sel("invalidateLayoutOfLayer:"), objc.Ptr(layer))
+	objc.Call[objc.Void](l_, objc.Sel("invalidateLayoutOfLayer:"), layer)
 }

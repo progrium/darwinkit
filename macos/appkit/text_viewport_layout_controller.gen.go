@@ -45,7 +45,7 @@ func TextViewportLayoutControllerFrom(ptr unsafe.Pointer) TextViewportLayoutCont
 }
 
 func (t_ TextViewportLayoutController) InitWithTextLayoutManager(textLayoutManager ITextLayoutManager) TextViewportLayoutController {
-	rv := objc.Call[TextViewportLayoutController](t_, objc.Sel("initWithTextLayoutManager:"), objc.Ptr(textLayoutManager))
+	rv := objc.Call[TextViewportLayoutController](t_, objc.Sel("initWithTextLayoutManager:"), textLayoutManager)
 	return rv
 }
 
@@ -98,7 +98,7 @@ func (t_ TextViewportLayoutController) RelocateViewportToTextLocation(textLocati
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3852590-relocateviewporttotextlocation?language=objc
 func (t_ TextViewportLayoutController) RelocateViewportToTextLocationObject(textLocationObject objc.IObject) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("relocateViewportToTextLocation:"), objc.Ptr(textLocationObject))
+	rv := objc.Call[float64](t_, objc.Sel("relocateViewportToTextLocation:"), textLocationObject)
 	return rv
 }
 
@@ -138,7 +138,7 @@ func (t_ TextViewportLayoutController) SetDelegate(value PTextViewportLayoutCont
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextviewportlayoutcontroller/3824768-delegate?language=objc
 func (t_ TextViewportLayoutController) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Returns the text range of the current viewport layout. [Full Topic]

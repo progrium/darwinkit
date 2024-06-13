@@ -56,7 +56,7 @@ func CaptureConnectionFrom(ptr unsafe.Pointer) CaptureConnection {
 }
 
 func (cc _CaptureConnectionClass) ConnectionWithInputPortVideoPreviewLayer(port ICaptureInputPort, layer ICaptureVideoPreviewLayer) CaptureConnection {
-	rv := objc.Call[CaptureConnection](cc, objc.Sel("connectionWithInputPort:videoPreviewLayer:"), objc.Ptr(port), objc.Ptr(layer))
+	rv := objc.Call[CaptureConnection](cc, objc.Sel("connectionWithInputPort:videoPreviewLayer:"), port, layer)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func CaptureConnection_ConnectionWithInputPortVideoPreviewLayer(port ICaptureInp
 }
 
 func (cc _CaptureConnectionClass) ConnectionWithInputPortsOutput(ports []ICaptureInputPort, output ICaptureOutput) CaptureConnection {
-	rv := objc.Call[CaptureConnection](cc, objc.Sel("connectionWithInputPorts:output:"), ports, objc.Ptr(output))
+	rv := objc.Call[CaptureConnection](cc, objc.Sel("connectionWithInputPorts:output:"), ports, output)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func CaptureConnection_ConnectionWithInputPortsOutput(ports []ICaptureInputPort,
 }
 
 func (c_ CaptureConnection) InitWithInputPortVideoPreviewLayer(port ICaptureInputPort, layer ICaptureVideoPreviewLayer) CaptureConnection {
-	rv := objc.Call[CaptureConnection](c_, objc.Sel("initWithInputPort:videoPreviewLayer:"), objc.Ptr(port), objc.Ptr(layer))
+	rv := objc.Call[CaptureConnection](c_, objc.Sel("initWithInputPort:videoPreviewLayer:"), port, layer)
 	return rv
 }
 
@@ -94,7 +94,7 @@ func NewCaptureConnectionWithInputPortVideoPreviewLayer(port ICaptureInputPort, 
 }
 
 func (c_ CaptureConnection) InitWithInputPortsOutput(ports []ICaptureInputPort, output ICaptureOutput) CaptureConnection {
-	rv := objc.Call[CaptureConnection](c_, objc.Sel("initWithInputPorts:output:"), ports, objc.Ptr(output))
+	rv := objc.Call[CaptureConnection](c_, objc.Sel("initWithInputPorts:output:"), ports, output)
 	return rv
 }
 

@@ -124,7 +124,7 @@ func (i_ ImageHistogram) EncodeToCommandBufferSourceTextureHistogramHistogramOff
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagehistogram/1618853-encodetocommandbuffer?language=objc
 func (i_ ImageHistogram) EncodeToCommandBufferObjectSourceTextureObjectHistogramObjectHistogramOffset(commandBufferObject objc.IObject, sourceObject objc.IObject, histogramObject objc.IObject, histogramOffset uint) {
-	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:histogram:histogramOffset:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceObject), objc.Ptr(histogramObject), histogramOffset)
+	objc.Call[objc.Void](i_, objc.Sel("encodeToCommandBuffer:sourceTexture:histogram:histogramOffset:"), commandBufferObject, sourceObject, histogramObject, histogramOffset)
 }
 
 // The amount of space the histogram will take up in the output buffer. [Full Topic]

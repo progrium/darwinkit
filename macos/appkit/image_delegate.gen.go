@@ -55,6 +55,6 @@ func (i_ ImageDelegateObject) HasImageDidNotDrawInRect() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsimagedelegate/1519927-imagedidnotdraw?language=objc
 func (i_ ImageDelegateObject) ImageDidNotDrawInRect(sender Image, rect foundation.Rect) Image {
-	rv := objc.Call[Image](i_, objc.Sel("imageDidNotDraw:inRect:"), objc.Ptr(sender), rect)
+	rv := objc.Call[Image](i_, objc.Sel("imageDidNotDraw:inRect:"), sender, rect)
 	return rv
 }

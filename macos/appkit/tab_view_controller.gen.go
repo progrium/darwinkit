@@ -78,7 +78,7 @@ func (t_ TabViewController) Init() TabViewController {
 }
 
 func (t_ TabViewController) InitWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil foundation.IBundle) TabViewController {
-	rv := objc.Call[TabViewController](t_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, objc.Ptr(nibBundleOrNil))
+	rv := objc.Call[TabViewController](t_, objc.Sel("initWithNibName:bundle:"), nibNameOrNil, nibBundleOrNil)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func NewTabViewControllerWithNibNameBundle(nibNameOrNil NibName, nibBundleOrNil 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428237-tabview?language=objc
 func (t_ TabViewController) TabViewShouldSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) bool {
-	rv := objc.Call[bool](t_, objc.Sel("tabView:shouldSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	rv := objc.Call[bool](t_, objc.Sel("tabView:shouldSelectTabViewItem:"), tabView, tabViewItem)
 	return rv
 }
 
@@ -103,7 +103,7 @@ func (t_ TabViewController) TabViewShouldSelectTabViewItem(tabView ITabView, tab
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428218-toolbar?language=objc
 func (t_ TabViewController) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar IToolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
-	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), objc.Ptr(toolbar), itemIdentifier, flag)
+	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), toolbar, itemIdentifier, flag)
 	return rv
 }
 
@@ -111,21 +111,21 @@ func (t_ TabViewController) ToolbarItemForItemIdentifierWillBeInsertedIntoToolba
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428231-tabview?language=objc
 func (t_ TabViewController) TabViewWillSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:willSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("tabView:willSelectTabViewItem:"), tabView, tabViewItem)
 }
 
 // Adds the specified tab to the end of the tab view controller’s list of tabs. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428214-addtabviewitem?language=objc
 func (t_ TabViewController) AddTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("addTabViewItem:"), tabViewItem)
 }
 
 // Returns the array of identifier strings for the selectable toolbar items [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428261-toolbarselectableitemidentifiers?language=objc
 func (t_ TabViewController) ToolbarSelectableItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarSelectableItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarSelectableItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -133,21 +133,21 @@ func (t_ TabViewController) ToolbarSelectableItemIdentifiers(toolbar IToolbar) [
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428255-inserttabviewitem?language=objc
 func (t_ TabViewController) InsertTabViewItemAtIndex(tabViewItem ITabViewItem, index int) {
-	objc.Call[objc.Void](t_, objc.Sel("insertTabViewItem:atIndex:"), objc.Ptr(tabViewItem), index)
+	objc.Call[objc.Void](t_, objc.Sel("insertTabViewItem:atIndex:"), tabViewItem, index)
 }
 
 // Removes the specified tab view item from the tab view controller. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428235-removetabviewitem?language=objc
 func (t_ TabViewController) RemoveTabViewItem(tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("removeTabViewItem:"), tabViewItem)
 }
 
 // Returns the array of identifier strings for the default toolbar items. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428251-toolbardefaultitemidentifiers?language=objc
 func (t_ TabViewController) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (t_ TabViewController) ToolbarDefaultItemIdentifiers(toolbar IToolbar) []To
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428229-toolbaralloweditemidentifiers?language=objc
 func (t_ TabViewController) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -163,14 +163,14 @@ func (t_ TabViewController) ToolbarAllowedItemIdentifiers(toolbar IToolbar) []To
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428243-tabview?language=objc
 func (t_ TabViewController) TabViewDidSelectTabViewItem(tabView ITabView, tabViewItem ITabViewItem) {
-	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), objc.Ptr(tabView), objc.Ptr(tabViewItem))
+	objc.Call[objc.Void](t_, objc.Sel("tabView:didSelectTabViewItem:"), tabView, tabViewItem)
 }
 
 // Returns the tab view item for the specified child view controller. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428233-tabviewitemforviewcontroller?language=objc
 func (t_ TabViewController) TabViewItemForViewController(viewController IViewController) TabViewItem {
-	rv := objc.Call[TabViewItem](t_, objc.Sel("tabViewItemForViewController:"), objc.Ptr(viewController))
+	rv := objc.Call[TabViewItem](t_, objc.Sel("tabViewItemForViewController:"), viewController)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (t_ TabViewController) TabView() TabView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstabviewcontroller/1428241-tabview?language=objc
 func (t_ TabViewController) SetTabView(value ITabView) {
-	objc.Call[objc.Void](t_, objc.Sel("setTabView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTabView:"), value)
 }
 
 // The index of the selected tab. [Full Topic]

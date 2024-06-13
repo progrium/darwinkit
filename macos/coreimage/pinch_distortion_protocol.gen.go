@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion?language=objc
 type PPinchDistortion interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (p_ PinchDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
-func (p_ PinchDistortionObject) SetRadius(value float64) {
+func (p_ PinchDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
 }
 
@@ -70,8 +70,8 @@ func (p_ PinchDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600189-radius?language=objc
-func (p_ PinchDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("radius"))
+func (p_ PinchDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("radius"))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (p_ PinchDistortionObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600190-scale?language=objc
-func (p_ PinchDistortionObject) SetScale(value float64) {
+func (p_ PinchDistortionObject) SetScale(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setScale:"), value)
 }
 
@@ -93,8 +93,8 @@ func (p_ PinchDistortionObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600190-scale?language=objc
-func (p_ PinchDistortionObject) Scale() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("scale"))
+func (p_ PinchDistortionObject) Scale() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("scale"))
 	return rv
 }
 
@@ -129,7 +129,7 @@ func (p_ PinchDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipinchdistortion/3600188-inputimage?language=objc
 func (p_ PinchDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PinchDistortionObject) HasInputImage() bool {

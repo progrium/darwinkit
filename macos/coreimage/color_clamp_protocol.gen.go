@@ -51,7 +51,7 @@ func (c_ ColorClampObject) HasSetMinComponents() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228122-mincomponents?language=objc
 func (c_ ColorClampObject) SetMinComponents(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setMinComponents:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setMinComponents:"), value)
 }
 
 func (c_ ColorClampObject) HasMinComponents() bool {
@@ -74,7 +74,7 @@ func (c_ ColorClampObject) HasSetMaxComponents() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228121-maxcomponents?language=objc
 func (c_ ColorClampObject) SetMaxComponents(value Vector) {
-	objc.Call[objc.Void](c_, objc.Sel("setMaxComponents:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setMaxComponents:"), value)
 }
 
 func (c_ ColorClampObject) HasMaxComponents() bool {
@@ -97,7 +97,7 @@ func (c_ ColorClampObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorclamp/3228120-inputimage?language=objc
 func (c_ ColorClampObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorClampObject) HasInputImage() bool {

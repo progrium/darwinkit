@@ -153,7 +153,7 @@ func (s_ ScriptClassDescription) MatchesAppleEventCode(appleEventCode uint) bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptclassdescription/1409327-selectorforcommand?language=objc
 func (s_ ScriptClassDescription) SelectorForCommand(commandDescription IScriptCommandDescription) objc.Selector {
-	rv := objc.Call[objc.Selector](s_, objc.Sel("selectorForCommand:"), objc.Ptr(commandDescription))
+	rv := objc.Call[objc.Selector](s_, objc.Sel("selectorForCommand:"), commandDescription)
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (s_ ScriptClassDescription) AppleEventCodeForKey(key string) uint {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptclassdescription/1411902-supportscommand?language=objc
 func (s_ ScriptClassDescription) SupportsCommand(commandDescription IScriptCommandDescription) bool {
-	rv := objc.Call[bool](s_, objc.Sel("supportsCommand:"), objc.Ptr(commandDescription))
+	rv := objc.Call[bool](s_, objc.Sel("supportsCommand:"), commandDescription)
 	return rv
 }
 

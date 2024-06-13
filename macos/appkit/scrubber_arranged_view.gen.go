@@ -77,7 +77,7 @@ func NewScrubberArrangedViewWithFrame(frameRect foundation.Rect) ScrubberArrange
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberarrangedview/2588268-applylayoutattributes?language=objc
 func (s_ ScrubberArrangedView) ApplyLayoutAttributes(layoutAttributes IScrubberLayoutAttributes) {
-	objc.Call[objc.Void](s_, objc.Sel("applyLayoutAttributes:"), objc.Ptr(layoutAttributes))
+	objc.Call[objc.Void](s_, objc.Sel("applyLayoutAttributes:"), layoutAttributes)
 }
 
 // A Boolean value that specifies whether the current view is selected. [Full Topic]

@@ -21,8 +21,8 @@ type _SampleBufferAudioRendererClass struct {
 type ISampleBufferAudioRenderer interface {
 	objc.IObject
 	FlushFromSourceTimeCompletionHandler(time coremedia.Time, completionHandler func(flushSucceeded bool))
-	Volume() float64
-	SetVolume(value float64)
+	Volume() float32
+	SetVolume(value float32)
 	Status() QueuedSampleBufferRenderingStatus
 	IsMuted() bool
 	SetMuted(value bool)
@@ -78,15 +78,15 @@ func (s_ SampleBufferAudioRenderer) FlushFromSourceTimeCompletionHandler(time co
 // The current audio volume for the audio renderer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866179-volume?language=objc
-func (s_ SampleBufferAudioRenderer) Volume() float64 {
-	rv := objc.Call[float64](s_, objc.Sel("volume"))
+func (s_ SampleBufferAudioRenderer) Volume() float32 {
+	rv := objc.Call[float32](s_, objc.Sel("volume"))
 	return rv
 }
 
 // The current audio volume for the audio renderer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avsamplebufferaudiorenderer/2866179-volume?language=objc
-func (s_ SampleBufferAudioRenderer) SetVolume(value float64) {
+func (s_ SampleBufferAudioRenderer) SetVolume(value float32) {
 	objc.Call[objc.Void](s_, objc.Sel("setVolume:"), value)
 }
 

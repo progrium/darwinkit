@@ -30,7 +30,7 @@ type INNOptimizerRMSProp interface {
 	EncodeToCommandBufferInputGradientMatrixInputValuesMatrixInputSumOfSquaresMatrixResultValuesMatrix(commandBuffer metal.PCommandBuffer, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputSumOfSquaresMatrix IMatrix, resultValuesMatrix IMatrix)
 	EncodeToCommandBufferObjectInputGradientMatrixInputValuesMatrixInputSumOfSquaresMatrixResultValuesMatrix(commandBufferObject objc.IObject, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputSumOfSquaresMatrix IMatrix, resultValuesMatrix IMatrix)
 	Decay() float64
-	Epsilon() float64
+	Epsilon() float32
 }
 
 // An optimization layer that performs a root mean square propagation update. [Full Topic]
@@ -46,22 +46,22 @@ func NNOptimizerRMSPropFrom(ptr unsafe.Pointer) NNOptimizerRMSProp {
 	}
 }
 
-func (n_ NNOptimizerRMSProp) InitWithDeviceDecayEpsilonOptimizerDescriptor(device metal.PDevice, decay float64, epsilon float64, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerRMSProp {
+func (n_ NNOptimizerRMSProp) InitWithDeviceDecayEpsilonOptimizerDescriptor(device metal.PDevice, decay float64, epsilon float32, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerRMSProp {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNOptimizerRMSProp](n_, objc.Sel("initWithDevice:decay:epsilon:optimizerDescriptor:"), po0, decay, epsilon, objc.Ptr(optimizerDescriptor))
+	rv := objc.Call[NNOptimizerRMSProp](n_, objc.Sel("initWithDevice:decay:epsilon:optimizerDescriptor:"), po0, decay, epsilon, optimizerDescriptor)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/2966737-initwithdevice?language=objc
-func NewNNOptimizerRMSPropWithDeviceDecayEpsilonOptimizerDescriptor(device metal.PDevice, decay float64, epsilon float64, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerRMSProp {
+func NewNNOptimizerRMSPropWithDeviceDecayEpsilonOptimizerDescriptor(device metal.PDevice, decay float64, epsilon float32, optimizerDescriptor INNOptimizerDescriptor) NNOptimizerRMSProp {
 	instance := NNOptimizerRMSPropClass.Alloc().InitWithDeviceDecayEpsilonOptimizerDescriptor(device, decay, epsilon, optimizerDescriptor)
 	instance.Autorelease()
 	return instance
 }
 
-func (n_ NNOptimizerRMSProp) InitWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerRMSProp {
+func (n_ NNOptimizerRMSProp) InitWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerRMSProp {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[NNOptimizerRMSProp](n_, objc.Sel("initWithDevice:learningRate:"), po0, learningRate)
 	return rv
@@ -70,7 +70,7 @@ func (n_ NNOptimizerRMSProp) InitWithDeviceLearningRate(device metal.PDevice, le
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/2966738-initwithdevice?language=objc
-func NewNNOptimizerRMSPropWithDeviceLearningRate(device metal.PDevice, learningRate float64) NNOptimizerRMSProp {
+func NewNNOptimizerRMSPropWithDeviceLearningRate(device metal.PDevice, learningRate float32) NNOptimizerRMSProp {
 	instance := NNOptimizerRMSPropClass.Alloc().InitWithDeviceLearningRate(device, learningRate)
 	instance.Autorelease()
 	return instance
@@ -131,14 +131,14 @@ func NewNNOptimizerRMSPropWithDevice(device metal.PDevice) NNOptimizerRMSProp {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3019335-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferBatchNormalizationStateInputSumOfSquaresVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationState ICNNBatchNormalizationState, inputSumOfSquaresVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputSumOfSquaresVectors:resultState:"), po0, objc.Ptr(batchNormalizationState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputSumOfSquaresVectors:resultState:"), po0, batchNormalizationState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3019335-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectBatchNormalizationStateInputSumOfSquaresVectorsResultState(commandBufferObject objc.IObject, batchNormalizationState ICNNBatchNormalizationState, inputSumOfSquaresVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputSumOfSquaresVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationState:inputSumOfSquaresVectors:resultState:"), commandBufferObject, batchNormalizationState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
@@ -146,14 +146,14 @@ func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectBatchNormalizationStateI
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3013783-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferBatchNormalizationGradientStateBatchNormalizationSourceStateInputSumOfSquaresVectorsResultState(commandBuffer metal.PCommandBuffer, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputSumOfSquaresVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputSumOfSquaresVectors:resultState:"), po0, objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputSumOfSquaresVectors:resultState:"), po0, batchNormalizationGradientState, batchNormalizationSourceState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3013783-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectBatchNormalizationGradientStateBatchNormalizationSourceStateInputSumOfSquaresVectorsResultState(commandBufferObject objc.IObject, batchNormalizationGradientState ICNNBatchNormalizationState, batchNormalizationSourceState ICNNBatchNormalizationState, inputSumOfSquaresVectors []IVector, resultState ICNNNormalizationGammaAndBetaState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputSumOfSquaresVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(batchNormalizationGradientState), objc.Ptr(batchNormalizationSourceState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:batchNormalizationGradientState:batchNormalizationSourceState:inputSumOfSquaresVectors:resultState:"), commandBufferObject, batchNormalizationGradientState, batchNormalizationSourceState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
@@ -161,14 +161,14 @@ func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectBatchNormalizationGradie
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3013784-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferConvolutionGradientStateConvolutionSourceStateInputSumOfSquaresVectorsResultState(commandBuffer metal.PCommandBuffer, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputSumOfSquaresVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputSumOfSquaresVectors:resultState:"), po0, objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputSumOfSquaresVectors:resultState:"), po0, convolutionGradientState, convolutionSourceState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3013784-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectConvolutionGradientStateConvolutionSourceStateInputSumOfSquaresVectorsResultState(commandBufferObject objc.IObject, convolutionGradientState ICNNConvolutionGradientState, convolutionSourceState ICNNConvolutionWeightsAndBiasesState, inputSumOfSquaresVectors []IVector, resultState ICNNConvolutionWeightsAndBiasesState) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputSumOfSquaresVectors:resultState:"), objc.Ptr(commandBufferObject), objc.Ptr(convolutionGradientState), objc.Ptr(convolutionSourceState), inputSumOfSquaresVectors, objc.Ptr(resultState))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:convolutionGradientState:convolutionSourceState:inputSumOfSquaresVectors:resultState:"), commandBufferObject, convolutionGradientState, convolutionSourceState, inputSumOfSquaresVectors, resultState)
 }
 
 //	[Full Topic]
@@ -176,14 +176,14 @@ func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectConvolutionGradientState
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/2966735-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferInputGradientVectorInputValuesVectorInputSumOfSquaresVectorResultValuesVector(commandBuffer metal.PCommandBuffer, inputGradientVector IVector, inputValuesVector IVector, inputSumOfSquaresVector IVector, resultValuesVector IVector) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputSumOfSquaresVector:resultValuesVector:"), po0, objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputSumOfSquaresVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputSumOfSquaresVector:resultValuesVector:"), po0, inputGradientVector, inputValuesVector, inputSumOfSquaresVector, resultValuesVector)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/2966735-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectInputGradientVectorInputValuesVectorInputSumOfSquaresVectorResultValuesVector(commandBufferObject objc.IObject, inputGradientVector IVector, inputValuesVector IVector, inputSumOfSquaresVector IVector, resultValuesVector IVector) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputSumOfSquaresVector:resultValuesVector:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientVector), objc.Ptr(inputValuesVector), objc.Ptr(inputSumOfSquaresVector), objc.Ptr(resultValuesVector))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientVector:inputValuesVector:inputSumOfSquaresVector:resultValuesVector:"), commandBufferObject, inputGradientVector, inputValuesVector, inputSumOfSquaresVector, resultValuesVector)
 }
 
 //	[Full Topic]
@@ -191,14 +191,14 @@ func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectInputGradientVectorInput
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3197827-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferInputGradientMatrixInputValuesMatrixInputSumOfSquaresMatrixResultValuesMatrix(commandBuffer metal.PCommandBuffer, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputSumOfSquaresMatrix IMatrix, resultValuesMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputSumOfSquaresMatrix:resultValuesMatrix:"), po0, objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputSumOfSquaresMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputSumOfSquaresMatrix:resultValuesMatrix:"), po0, inputGradientMatrix, inputValuesMatrix, inputSumOfSquaresMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/3197827-encodetocommandbuffer?language=objc
 func (n_ NNOptimizerRMSProp) EncodeToCommandBufferObjectInputGradientMatrixInputValuesMatrixInputSumOfSquaresMatrixResultValuesMatrix(commandBufferObject objc.IObject, inputGradientMatrix IMatrix, inputValuesMatrix IMatrix, inputSumOfSquaresMatrix IMatrix, resultValuesMatrix IMatrix) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputSumOfSquaresMatrix:resultValuesMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputGradientMatrix), objc.Ptr(inputValuesMatrix), objc.Ptr(inputSumOfSquaresMatrix), objc.Ptr(resultValuesMatrix))
+	objc.Call[objc.Void](n_, objc.Sel("encodeToCommandBuffer:inputGradientMatrix:inputValuesMatrix:inputSumOfSquaresMatrix:resultValuesMatrix:"), commandBufferObject, inputGradientMatrix, inputValuesMatrix, inputSumOfSquaresMatrix, resultValuesMatrix)
 }
 
 //	[Full Topic]
@@ -212,7 +212,7 @@ func (n_ NNOptimizerRMSProp) Decay() float64 {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnoptimizerrmsprop/2966736-epsilon?language=objc
-func (n_ NNOptimizerRMSProp) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNOptimizerRMSProp) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }

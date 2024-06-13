@@ -188,16 +188,16 @@ func MutableDictionary_DictionaryWithObjectsForKeys(objects []objc.IObject, keys
 	return MutableDictionaryClass.DictionaryWithObjectsForKeys(objects, keys)
 }
 
-func (mc _MutableDictionaryClass) DictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) MutableDictionary {
+func (mc _MutableDictionaryClass) DictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) MutableDictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", keys)
-	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObjects:forKeys:count:"), objc.Ptr(objects), po1, cnt)
+	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObjects:forKeys:count:"), objects, po1, cnt)
 	return rv
 }
 
 // Creates a dictionary containing a specified number of objects from a C array. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1574184-dictionarywithobjects?language=objc
-func MutableDictionary_DictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) MutableDictionary {
+func MutableDictionary_DictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) MutableDictionary {
 	return MutableDictionaryClass.DictionaryWithObjectsForKeysCount(objects, keys, cnt)
 }
 
@@ -241,16 +241,16 @@ func NewMutableDictionaryWithDictionaryCopyItems(otherDictionary Dictionary, fla
 	return instance
 }
 
-func (m_ MutableDictionary) InitWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) MutableDictionary {
+func (m_ MutableDictionary) InitWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) MutableDictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", keys)
-	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithObjects:forKeys:count:"), objc.Ptr(objects), po1, cnt)
+	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithObjects:forKeys:count:"), objects, po1, cnt)
 	return rv
 }
 
 // Initializes a newly allocated dictionary with the specified number of key-value pairs constructed from the provided C arrays of keys and objects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdictionary/1412631-initwithobjects?language=objc
-func NewMutableDictionaryWithObjectsForKeysCount(objects objc.IObject, keys PCopying, cnt uint) MutableDictionary {
+func NewMutableDictionaryWithObjectsForKeysCount(objects unsafe.Pointer, keys unsafe.Pointer, cnt uint) MutableDictionary {
 	instance := MutableDictionaryClass.Alloc().InitWithObjectsForKeysCount(objects, keys, cnt)
 	instance.Autorelease()
 	return instance
@@ -270,7 +270,7 @@ func MutableDictionary_DictionaryWithDictionary(dict Dictionary) MutableDictiona
 
 func (mc _MutableDictionaryClass) DictionaryWithObjectForKey(object objc.IObject, key PCopying) MutableDictionary {
 	po1 := objc.WrapAsProtocol("NSCopying", key)
-	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObject:forKey:"), objc.Ptr(object), po1)
+	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithObject:forKey:"), object, po1)
 	return rv
 }
 
@@ -334,14 +334,14 @@ func (m_ MutableDictionary) AddCountHeader(inCount uint32) objc.Object {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc
 func (m_ MutableDictionary) SetObjectForKeyedSubscript(obj objc.IObject, key PCopying) {
 	po1 := objc.WrapAsProtocol("NSCopying", key)
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), objc.Ptr(obj), po1)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), obj, po1)
 }
 
 // Adds a given key-value pair to the dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574187-setobject?language=objc
 func (m_ MutableDictionary) SetObjectForKeyedSubscriptObject(obj objc.IObject, keyObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), objc.Ptr(obj), objc.Ptr(keyObject))
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), obj, keyObject)
 }
 
 //	[Full Topic]
@@ -403,7 +403,7 @@ func (m_ MutableDictionary) AddTime4ByteHeader(time4Byte uint32) objc.Object {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1410409-initwithcontentsofurl?language=objc
 func (m_ MutableDictionary) InitWithContentsOfURL(url IURL) MutableDictionary {
-	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableDictionary](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -450,7 +450,7 @@ func (m_ MutableDictionary) AddUserDefinedHeaderLength(inHeaderData unsafe.Point
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416335-setvalue?language=objc
 func (m_ MutableDictionary) SetValueForKey(value objc.IObject, key string) {
-	objc.Call[objc.Void](m_, objc.Sel("setValue:forKey:"), objc.Ptr(value), key)
+	objc.Call[objc.Void](m_, objc.Sel("setValue:forKey:"), value, key)
 }
 
 //	[Full Topic]
@@ -503,7 +503,7 @@ func (m_ MutableDictionary) RemoveObjectsForKeys(keyArray []objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1416518-removeobjectforkey?language=objc
 func (m_ MutableDictionary) RemoveObjectForKey(aKey objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("removeObjectForKey:"), objc.Ptr(aKey))
+	objc.Call[objc.Void](m_, objc.Sel("removeObjectForKey:"), aKey)
 }
 
 // Adds a given key-value pair to the dictionary. [Full Topic]
@@ -511,14 +511,14 @@ func (m_ MutableDictionary) RemoveObjectForKey(aKey objc.IObject) {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc
 func (m_ MutableDictionary) SetObjectForKey(anObject objc.IObject, aKey PCopying) {
 	po1 := objc.WrapAsProtocol("NSCopying", aKey)
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), objc.Ptr(anObject), po1)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), anObject, po1)
 }
 
 // Adds a given key-value pair to the dictionary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1411616-setobject?language=objc
 func (m_ MutableDictionary) SetObjectForKeyObject(anObject objc.IObject, aKeyObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), objc.Ptr(anObject), objc.Ptr(aKeyObject))
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKey:"), anObject, aKeyObject)
 }
 
 //	[Full Topic]
@@ -548,7 +548,7 @@ func (m_ MutableDictionary) AddTimeISOHeaderLength(inHeaderData unsafe.Pointer, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledictionary/1574182-dictionarywithcontentsofurl?language=objc
 func (mc _MutableDictionaryClass) DictionaryWithContentsOfURL(url IURL) MutableDictionary {
-	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableDictionary](mc, objc.Sel("dictionaryWithContentsOfURL:"), url)
 	return rv
 }
 

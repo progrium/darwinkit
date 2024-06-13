@@ -73,7 +73,7 @@ func (h_ HTTPCookieStore) RemoveObserver(observer PHTTPCookieStoreObserver) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882004-removeobserver?language=objc
 func (h_ HTTPCookieStore) RemoveObserverObject(observerObject objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("removeObserver:"), objc.Ptr(observerObject))
+	objc.Call[objc.Void](h_, objc.Sel("removeObserver:"), observerObject)
 }
 
 // Fetches all stored cookies asynchronously and delivers them to the specified completion handler. [Full Topic]
@@ -87,7 +87,7 @@ func (h_ HTTPCookieStore) GetAllCookies(completionHandler func(arg0 []foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882009-deletecookie?language=objc
 func (h_ HTTPCookieStore) DeleteCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:completionHandler:"), objc.Ptr(cookie), completionHandler)
+	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:completionHandler:"), cookie, completionHandler)
 }
 
 // Adds an observer to the cookie store. [Full Topic]
@@ -102,12 +102,12 @@ func (h_ HTTPCookieStore) AddObserver(observer PHTTPCookieStoreObserver) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882010-addobserver?language=objc
 func (h_ HTTPCookieStore) AddObserverObject(observerObject objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("addObserver:"), objc.Ptr(observerObject))
+	objc.Call[objc.Void](h_, objc.Sel("addObserver:"), observerObject)
 }
 
 // Adds a cookie to the cookie store. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkhttpcookiestore/2882007-setcookie?language=objc
 func (h_ HTTPCookieStore) SetCookieCompletionHandler(cookie foundation.IHTTPCookie, completionHandler func()) {
-	objc.Call[objc.Void](h_, objc.Sel("setCookie:completionHandler:"), objc.Ptr(cookie), completionHandler)
+	objc.Call[objc.Void](h_, objc.Sel("setCookie:completionHandler:"), cookie, completionHandler)
 }

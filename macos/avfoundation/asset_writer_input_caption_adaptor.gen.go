@@ -37,7 +37,7 @@ func AssetWriterInputCaptionAdaptorFrom(ptr unsafe.Pointer) AssetWriterInputCapt
 }
 
 func (ac _AssetWriterInputCaptionAdaptorClass) AssetWriterInputCaptionAdaptorWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
-	rv := objc.Call[AssetWriterInputCaptionAdaptor](ac, objc.Sel("assetWriterInputCaptionAdaptorWithAssetWriterInput:"), objc.Ptr(input))
+	rv := objc.Call[AssetWriterInputCaptionAdaptor](ac, objc.Sel("assetWriterInputCaptionAdaptorWithAssetWriterInput:"), input)
 	return rv
 }
 
@@ -49,7 +49,7 @@ func AssetWriterInputCaptionAdaptor_AssetWriterInputCaptionAdaptorWithAssetWrite
 }
 
 func (a_ AssetWriterInputCaptionAdaptor) InitWithAssetWriterInput(input IAssetWriterInput) AssetWriterInputCaptionAdaptor {
-	rv := objc.Call[AssetWriterInputCaptionAdaptor](a_, objc.Sel("initWithAssetWriterInput:"), objc.Ptr(input))
+	rv := objc.Call[AssetWriterInputCaptionAdaptor](a_, objc.Sel("initWithAssetWriterInput:"), input)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (a_ AssetWriterInputCaptionAdaptor) Init() AssetWriterInputCaptionAdaptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputcaptionadaptor/3752802-appendcaptiongroup?language=objc
 func (a_ AssetWriterInputCaptionAdaptor) AppendCaptionGroup(captionGroup ICaptionGroup) bool {
-	rv := objc.Call[bool](a_, objc.Sel("appendCaptionGroup:"), objc.Ptr(captionGroup))
+	rv := objc.Call[bool](a_, objc.Sel("appendCaptionGroup:"), captionGroup)
 	return rv
 }
 
@@ -94,7 +94,7 @@ func (a_ AssetWriterInputCaptionAdaptor) AppendCaptionGroup(captionGroup ICaptio
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetwriterinputcaptionadaptor/3752801-appendcaption?language=objc
 func (a_ AssetWriterInputCaptionAdaptor) AppendCaption(caption ICaption) bool {
-	rv := objc.Call[bool](a_, objc.Sel("appendCaption:"), objc.Ptr(caption))
+	rv := objc.Call[bool](a_, objc.Sel("appendCaption:"), caption)
 	return rv
 }
 

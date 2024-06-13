@@ -76,7 +76,7 @@ func (p_ PathCellDelegateObject) HasPathCellWillDisplayOpenPanel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcelldelegate/1526099-pathcell?language=objc
 func (p_ PathCellDelegateObject) PathCellWillDisplayOpenPanel(pathCell PathCell, openPanel OpenPanel) {
-	objc.Call[objc.Void](p_, objc.Sel("pathCell:willDisplayOpenPanel:"), objc.Ptr(pathCell), objc.Ptr(openPanel))
+	objc.Call[objc.Void](p_, objc.Sel("pathCell:willDisplayOpenPanel:"), pathCell, openPanel)
 }
 
 func (p_ PathCellDelegateObject) HasPathCellWillPopUpMenu() bool {
@@ -87,5 +87,5 @@ func (p_ PathCellDelegateObject) HasPathCellWillPopUpMenu() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcelldelegate/1525005-pathcell?language=objc
 func (p_ PathCellDelegateObject) PathCellWillPopUpMenu(pathCell PathCell, menu Menu) {
-	objc.Call[objc.Void](p_, objc.Sel("pathCell:willPopUpMenu:"), objc.Ptr(pathCell), objc.Ptr(menu))
+	objc.Call[objc.Void](p_, objc.Sel("pathCell:willPopUpMenu:"), pathCell, menu)
 }

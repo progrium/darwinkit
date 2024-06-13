@@ -49,7 +49,7 @@ func CollectionViewLayoutAttributesFrom(ptr unsafe.Pointer) CollectionViewLayout
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForDecorationViewOfKindWithIndexPath(decorationViewKind CollectionViewDecorationElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForDecorationViewOfKind:withIndexPath:"), decorationViewKind, indexPath)
 	return rv
 }
 
@@ -61,7 +61,7 @@ func CollectionViewLayoutAttributes_LayoutAttributesForDecorationViewOfKindWithI
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForItemWithIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForItemWithIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForItemWithIndexPath:"), indexPath)
 	return rv
 }
 
@@ -73,7 +73,7 @@ func CollectionViewLayoutAttributes_LayoutAttributesForItemWithIndexPath(indexPa
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForInterItemGapBeforeIndexPath(indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForInterItemGapBeforeIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForInterItemGapBeforeIndexPath:"), indexPath)
 	return rv
 }
 
@@ -85,7 +85,7 @@ func CollectionViewLayoutAttributes_LayoutAttributesForInterItemGapBeforeIndexPa
 }
 
 func (cc _CollectionViewLayoutAttributesClass) LayoutAttributesForSupplementaryViewOfKindWithIndexPath(elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IIndexPath) CollectionViewLayoutAttributes {
-	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, objc.Ptr(indexPath))
+	rv := objc.Call[CollectionViewLayoutAttributes](cc, objc.Sel("layoutAttributesForSupplementaryViewOfKind:withIndexPath:"), elementKind, indexPath)
 	return rv
 }
 
@@ -219,5 +219,5 @@ func (c_ CollectionViewLayoutAttributes) IndexPath() foundation.IndexPath {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewlayoutattributes/1531306-indexpath?language=objc
 func (c_ CollectionViewLayoutAttributes) SetIndexPath(value foundation.IIndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("setIndexPath:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setIndexPath:"), value)
 }

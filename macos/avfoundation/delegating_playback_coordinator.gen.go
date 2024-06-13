@@ -22,7 +22,7 @@ type IDelegatingPlaybackCoordinator interface {
 	ReapplyCurrentItemStateToPlaybackControlDelegate()
 	TransitionToItemWithIdentifierProposingInitialTimingBasedOnTimebase(itemIdentifier string, snapshotTimebase coremedia.TimebaseRef)
 	CoordinateSeekToTimeOptions(time coremedia.Time, options DelegatingPlaybackCoordinatorSeekOptions)
-	CoordinateRateChangeToRateOptions(rate float64, options DelegatingPlaybackCoordinatorRateChangeOptions)
+	CoordinateRateChangeToRateOptions(rate float32, options DelegatingPlaybackCoordinatorRateChangeOptions)
 	PlaybackControlDelegate() PlaybackCoordinatorPlaybackControlDelegateObject
 	CurrentItemIdentifier() string
 }
@@ -99,7 +99,7 @@ func (d_ DelegatingPlaybackCoordinator) CoordinateSeekToTimeOptions(time coremed
 // Coordinates a rate change across all participants, waiting for others to become ready, if necessary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avdelegatingplaybackcoordinator/3750250-coordinateratechangetorate?language=objc
-func (d_ DelegatingPlaybackCoordinator) CoordinateRateChangeToRateOptions(rate float64, options DelegatingPlaybackCoordinatorRateChangeOptions) {
+func (d_ DelegatingPlaybackCoordinator) CoordinateRateChangeToRateOptions(rate float32, options DelegatingPlaybackCoordinatorRateChangeOptions) {
 	objc.Call[objc.Void](d_, objc.Sel("coordinateRateChangeToRate:options:"), rate, options)
 }
 

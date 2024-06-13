@@ -68,6 +68,6 @@ func (f_ FileProviderDomainVersion) Next() FileProviderDomainVersion {
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderdomainversion/3727803-compare?language=objc
 func (f_ FileProviderDomainVersion) Compare(otherVersion IFileProviderDomainVersion) foundation.ComparisonResult {
-	rv := objc.Call[foundation.ComparisonResult](f_, objc.Sel("compare:"), objc.Ptr(otherVersion))
+	rv := objc.Call[foundation.ComparisonResult](f_, objc.Sel("compare:"), otherVersion)
 	return rv
 }

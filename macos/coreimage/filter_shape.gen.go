@@ -99,7 +99,7 @@ func (f_ FilterShape) TransformByInterior(m coregraphics.AffineTransform, flag b
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltershape/1438227-unionwith?language=objc
 func (f_ FilterShape) UnionWith(s2 IFilterShape) FilterShape {
-	rv := objc.Call[FilterShape](f_, objc.Sel("unionWith:"), objc.Ptr(s2))
+	rv := objc.Call[FilterShape](f_, objc.Sel("unionWith:"), s2)
 	return rv
 }
 
@@ -123,7 +123,7 @@ func (f_ FilterShape) IntersectWithRect(r coregraphics.Rect) FilterShape {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltershape/1437881-intersectwith?language=objc
 func (f_ FilterShape) IntersectWith(s2 IFilterShape) FilterShape {
-	rv := objc.Call[FilterShape](f_, objc.Sel("intersectWith:"), objc.Ptr(s2))
+	rv := objc.Call[FilterShape](f_, objc.Sel("intersectWith:"), s2)
 	return rv
 }
 

@@ -42,7 +42,7 @@ func PositionalSpecifierFrom(ptr unsafe.Pointer) PositionalSpecifier {
 }
 
 func (p_ PositionalSpecifier) InitWithPositionObjectSpecifier(position InsertionPosition, specifier IScriptObjectSpecifier) PositionalSpecifier {
-	rv := objc.Call[PositionalSpecifier](p_, objc.Sel("initWithPosition:objectSpecifier:"), position, objc.Ptr(specifier))
+	rv := objc.Call[PositionalSpecifier](p_, objc.Sel("initWithPosition:objectSpecifier:"), position, specifier)
 	return rv
 }
 
@@ -86,7 +86,7 @@ func (p_ PositionalSpecifier) Evaluate() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nspositionalspecifier/1414707-setinsertionclassdescription?language=objc
 func (p_ PositionalSpecifier) SetInsertionClassDescription(classDescription IScriptClassDescription) {
-	objc.Call[objc.Void](p_, objc.Sel("setInsertionClassDescription:"), objc.Ptr(classDescription))
+	objc.Call[objc.Void](p_, objc.Sel("setInsertionClassDescription:"), classDescription)
 }
 
 // Returns the object specifier specified at initialization time. [Full Topic]

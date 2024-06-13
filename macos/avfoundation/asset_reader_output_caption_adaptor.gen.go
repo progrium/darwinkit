@@ -40,7 +40,7 @@ func AssetReaderOutputCaptionAdaptorFrom(ptr unsafe.Pointer) AssetReaderOutputCa
 }
 
 func (ac _AssetReaderOutputCaptionAdaptorClass) AssetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
-	rv := objc.Call[AssetReaderOutputCaptionAdaptor](ac, objc.Sel("assetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput:"), objc.Ptr(trackOutput))
+	rv := objc.Call[AssetReaderOutputCaptionAdaptor](ac, objc.Sel("assetReaderOutputCaptionAdaptorWithAssetReaderTrackOutput:"), trackOutput)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func AssetReaderOutputCaptionAdaptor_AssetReaderOutputCaptionAdaptorWithAssetRea
 }
 
 func (a_ AssetReaderOutputCaptionAdaptor) InitWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputCaptionAdaptor {
-	rv := objc.Call[AssetReaderOutputCaptionAdaptor](a_, objc.Sel("initWithAssetReaderTrackOutput:"), objc.Ptr(trackOutput))
+	rv := objc.Call[AssetReaderOutputCaptionAdaptor](a_, objc.Sel("initWithAssetReaderTrackOutput:"), trackOutput)
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (a_ AssetReaderOutputCaptionAdaptor) NextCaptionGroup() CaptionGroup {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752796-captionsnotpresentinpreviousgrou?language=objc
 func (a_ AssetReaderOutputCaptionAdaptor) CaptionsNotPresentInPreviousGroupsInCaptionGroup(captionGroup ICaptionGroup) []Caption {
-	rv := objc.Call[[]Caption](a_, objc.Sel("captionsNotPresentInPreviousGroupsInCaptionGroup:"), objc.Ptr(captionGroup))
+	rv := objc.Call[[]Caption](a_, objc.Sel("captionsNotPresentInPreviousGroupsInCaptionGroup:"), captionGroup)
 	return rv
 }
 
@@ -130,5 +130,5 @@ func (a_ AssetReaderOutputCaptionAdaptor) SetValidationDelegate(value PAssetRead
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderoutputcaptionadaptor/3752799-validationdelegate?language=objc
 func (a_ AssetReaderOutputCaptionAdaptor) SetValidationDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setValidationDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setValidationDelegate:"), valueObject)
 }

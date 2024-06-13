@@ -38,7 +38,7 @@ func FragmentedMovieMinderFrom(ptr unsafe.Pointer) FragmentedMovieMinder {
 }
 
 func (f_ FragmentedMovieMinder) InitWithMovieMindingInterval(movie IFragmentedMovie, mindingInterval foundation.TimeInterval) FragmentedMovieMinder {
-	rv := objc.Call[FragmentedMovieMinder](f_, objc.Sel("initWithMovie:mindingInterval:"), objc.Ptr(movie), mindingInterval)
+	rv := objc.Call[FragmentedMovieMinder](f_, objc.Sel("initWithMovie:mindingInterval:"), movie, mindingInterval)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewFragmentedMovieMinderWithMovieMindingInterval(movie IFragmentedMovie, mi
 }
 
 func (fc _FragmentedMovieMinderClass) FragmentedMovieMinderWithMovieMindingInterval(movie IFragmentedMovie, mindingInterval foundation.TimeInterval) FragmentedMovieMinder {
-	rv := objc.Call[FragmentedMovieMinder](fc, objc.Sel("fragmentedMovieMinderWithMovie:mindingInterval:"), objc.Ptr(movie), mindingInterval)
+	rv := objc.Call[FragmentedMovieMinder](fc, objc.Sel("fragmentedMovieMinderWithMovie:mindingInterval:"), movie, mindingInterval)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func (f_ FragmentedMovieMinder) Init() FragmentedMovieMinder {
 }
 
 func (fc _FragmentedMovieMinderClass) FragmentedAssetMinderWithAssetMindingInterval(asset IAsset, mindingInterval foundation.TimeInterval) FragmentedMovieMinder {
-	rv := objc.Call[FragmentedMovieMinder](fc, objc.Sel("fragmentedAssetMinderWithAsset:mindingInterval:"), objc.Ptr(asset), mindingInterval)
+	rv := objc.Call[FragmentedMovieMinder](fc, objc.Sel("fragmentedAssetMinderWithAsset:mindingInterval:"), asset, mindingInterval)
 	return rv
 }
 
@@ -96,7 +96,7 @@ func FragmentedMovieMinder_FragmentedAssetMinderWithAssetMindingInterval(asset I
 }
 
 func (f_ FragmentedMovieMinder) InitWithAssetMindingInterval(asset IAsset, mindingInterval foundation.TimeInterval) FragmentedMovieMinder {
-	rv := objc.Call[FragmentedMovieMinder](f_, objc.Sel("initWithAsset:mindingInterval:"), objc.Ptr(asset), mindingInterval)
+	rv := objc.Call[FragmentedMovieMinder](f_, objc.Sel("initWithAsset:mindingInterval:"), asset, mindingInterval)
 	return rv
 }
 
@@ -113,14 +113,14 @@ func NewFragmentedMovieMinderWithAssetMindingInterval(asset IAsset, mindingInter
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedmovieminder/1386171-addfragmentedmovie?language=objc
 func (f_ FragmentedMovieMinder) AddFragmentedMovie(movie IFragmentedMovie) {
-	objc.Call[objc.Void](f_, objc.Sel("addFragmentedMovie:"), objc.Ptr(movie))
+	objc.Call[objc.Void](f_, objc.Sel("addFragmentedMovie:"), movie)
 }
 
 // Removes a fragmented movie from the array of movies being minded. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedmovieminder/1389794-removefragmentedmovie?language=objc
 func (f_ FragmentedMovieMinder) RemoveFragmentedMovie(movie IFragmentedMovie) {
-	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedMovie:"), objc.Ptr(movie))
+	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedMovie:"), movie)
 }
 
 // An array containing the fragmented movie objects being minded. [Full Topic]

@@ -89,7 +89,7 @@ func (d_ DiffableDataSourceSnapshot) DeleteSectionsWithIdentifiers(sectionIdenti
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182909-moveitemwithidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) MoveItemWithIdentifierAfterItemWithIdentifier(fromIdentifier objc.IObject, toIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("moveItemWithIdentifier:afterItemWithIdentifier:"), objc.Ptr(fromIdentifier), objc.Ptr(toIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("moveItemWithIdentifier:afterItemWithIdentifier:"), fromIdentifier, toIdentifier)
 }
 
 // Reloads the data within the specified sections of the snapshot. [Full Topic]
@@ -103,7 +103,7 @@ func (d_ DiffableDataSourceSnapshot) ReloadSectionsWithIdentifiers(sectionIdenti
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182910-moveitemwithidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) MoveItemWithIdentifierBeforeItemWithIdentifier(fromIdentifier objc.IObject, toIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("moveItemWithIdentifier:beforeItemWithIdentifier:"), objc.Ptr(fromIdentifier), objc.Ptr(toIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("moveItemWithIdentifier:beforeItemWithIdentifier:"), fromIdentifier, toIdentifier)
 }
 
 // Deletes the items with the specified identifiers from the snapshot. [Full Topic]
@@ -117,7 +117,7 @@ func (d_ DiffableDataSourceSnapshot) DeleteItemsWithIdentifiers(identifiers []ob
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182904-insertitemswithidentifiers?language=objc
 func (d_ DiffableDataSourceSnapshot) InsertItemsWithIdentifiersBeforeItemWithIdentifier(identifiers []objc.IObject, itemIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("insertItemsWithIdentifiers:beforeItemWithIdentifier:"), identifiers, objc.Ptr(itemIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("insertItemsWithIdentifiers:beforeItemWithIdentifier:"), identifiers, itemIdentifier)
 }
 
 // Adds the items with the specified identifiers to the last section of the snapshot. [Full Topic]
@@ -131,7 +131,7 @@ func (d_ DiffableDataSourceSnapshot) AppendItemsWithIdentifiers(identifiers []ob
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182901-indexofitemidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) IndexOfItemIdentifier(itemIdentifier objc.IObject) int {
-	rv := objc.Call[int](d_, objc.Sel("indexOfItemIdentifier:"), objc.Ptr(itemIdentifier))
+	rv := objc.Call[int](d_, objc.Sel("indexOfItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
@@ -139,28 +139,28 @@ func (d_ DiffableDataSourceSnapshot) IndexOfItemIdentifier(itemIdentifier objc.I
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182896-appenditemswithidentifiers?language=objc
 func (d_ DiffableDataSourceSnapshot) AppendItemsWithIdentifiersIntoSectionWithIdentifier(identifiers []objc.IObject, sectionIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("appendItemsWithIdentifiers:intoSectionWithIdentifier:"), identifiers, objc.Ptr(sectionIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("appendItemsWithIdentifiers:intoSectionWithIdentifier:"), identifiers, sectionIdentifier)
 }
 
 // Moves the section from its current position in the snapshot to the position immediately after the specified section. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182911-movesectionwithidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) MoveSectionWithIdentifierAfterSectionWithIdentifier(fromSectionIdentifier objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("moveSectionWithIdentifier:afterSectionWithIdentifier:"), objc.Ptr(fromSectionIdentifier), objc.Ptr(toSectionIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("moveSectionWithIdentifier:afterSectionWithIdentifier:"), fromSectionIdentifier, toSectionIdentifier)
 }
 
 // Inserts the provided sections immediately after the section with the specified identifier in the snapshot. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182905-insertsectionswithidentifiers?language=objc
 func (d_ DiffableDataSourceSnapshot) InsertSectionsWithIdentifiersAfterSectionWithIdentifier(sectionIdentifiers []objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("insertSectionsWithIdentifiers:afterSectionWithIdentifier:"), sectionIdentifiers, objc.Ptr(toSectionIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("insertSectionsWithIdentifiers:afterSectionWithIdentifier:"), sectionIdentifiers, toSectionIdentifier)
 }
 
 // Moves the section from its current position in the snapshot to the position immediately before the specified section. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182912-movesectionwithidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) MoveSectionWithIdentifierBeforeSectionWithIdentifier(fromSectionIdentifier objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("moveSectionWithIdentifier:beforeSectionWithIdentifier:"), objc.Ptr(fromSectionIdentifier), objc.Ptr(toSectionIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("moveSectionWithIdentifier:beforeSectionWithIdentifier:"), fromSectionIdentifier, toSectionIdentifier)
 }
 
 // Reloads the data within the specified items in the snapshot. [Full Topic]
@@ -174,7 +174,7 @@ func (d_ DiffableDataSourceSnapshot) ReloadItemsWithIdentifiers(identifiers []ob
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182903-insertitemswithidentifiers?language=objc
 func (d_ DiffableDataSourceSnapshot) InsertItemsWithIdentifiersAfterItemWithIdentifier(identifiers []objc.IObject, itemIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("insertItemsWithIdentifiers:afterItemWithIdentifier:"), identifiers, objc.Ptr(itemIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("insertItemsWithIdentifiers:afterItemWithIdentifier:"), identifiers, itemIdentifier)
 }
 
 // Deletes all of the items from the snapshot. [Full Topic]
@@ -188,14 +188,14 @@ func (d_ DiffableDataSourceSnapshot) DeleteAllItems() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182906-insertsectionswithidentifiers?language=objc
 func (d_ DiffableDataSourceSnapshot) InsertSectionsWithIdentifiersBeforeSectionWithIdentifier(sectionIdentifiers []objc.IObject, toSectionIdentifier objc.IObject) {
-	objc.Call[objc.Void](d_, objc.Sel("insertSectionsWithIdentifiers:beforeSectionWithIdentifier:"), sectionIdentifiers, objc.Ptr(toSectionIdentifier))
+	objc.Call[objc.Void](d_, objc.Sel("insertSectionsWithIdentifiers:beforeSectionWithIdentifier:"), sectionIdentifiers, toSectionIdentifier)
 }
 
 // Returns the identifier of the section containing the specified item in the snapshot. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182918-sectionidentifierforsectionconta?language=objc
 func (d_ DiffableDataSourceSnapshot) SectionIdentifierForSectionContainingItemIdentifier(itemIdentifier objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](d_, objc.Sel("sectionIdentifierForSectionContainingItemIdentifier:"), objc.Ptr(itemIdentifier))
+	rv := objc.Call[objc.Object](d_, objc.Sel("sectionIdentifierForSectionContainingItemIdentifier:"), itemIdentifier)
 	return rv
 }
 
@@ -210,7 +210,7 @@ func (d_ DiffableDataSourceSnapshot) AppendSectionsWithIdentifiers(sectionIdenti
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182908-itemidentifiersinsectionwithiden?language=objc
 func (d_ DiffableDataSourceSnapshot) ItemIdentifiersInSectionWithIdentifier(sectionIdentifier objc.IObject) []objc.Object {
-	rv := objc.Call[[]objc.Object](d_, objc.Sel("itemIdentifiersInSectionWithIdentifier:"), objc.Ptr(sectionIdentifier))
+	rv := objc.Call[[]objc.Object](d_, objc.Sel("itemIdentifiersInSectionWithIdentifier:"), sectionIdentifier)
 	return rv
 }
 
@@ -218,7 +218,7 @@ func (d_ DiffableDataSourceSnapshot) ItemIdentifiersInSectionWithIdentifier(sect
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182914-numberofitemsinsection?language=objc
 func (d_ DiffableDataSourceSnapshot) NumberOfItemsInSection(sectionIdentifier objc.IObject) int {
-	rv := objc.Call[int](d_, objc.Sel("numberOfItemsInSection:"), objc.Ptr(sectionIdentifier))
+	rv := objc.Call[int](d_, objc.Sel("numberOfItemsInSection:"), sectionIdentifier)
 	return rv
 }
 
@@ -226,7 +226,7 @@ func (d_ DiffableDataSourceSnapshot) NumberOfItemsInSection(sectionIdentifier ob
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsdiffabledatasourcesnapshot/3182902-indexofsectionidentifier?language=objc
 func (d_ DiffableDataSourceSnapshot) IndexOfSectionIdentifier(sectionIdentifier objc.IObject) int {
-	rv := objc.Call[int](d_, objc.Sel("indexOfSectionIdentifier:"), objc.Ptr(sectionIdentifier))
+	rv := objc.Call[int](d_, objc.Sel("indexOfSectionIdentifier:"), sectionIdentifier)
 	return rv
 }
 

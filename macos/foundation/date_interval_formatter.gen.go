@@ -71,7 +71,7 @@ func (d_ DateIntervalFormatter) Init() DateIntervalFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1418368-stringfromdate?language=objc
 func (d_ DateIntervalFormatter) StringFromDateToDate(fromDate IDate, toDate IDate) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDate:toDate:"), objc.Ptr(fromDate), objc.Ptr(toDate))
+	rv := objc.Call[string](d_, objc.Sel("stringFromDate:toDate:"), fromDate, toDate)
 	return rv
 }
 
@@ -79,7 +79,7 @@ func (d_ DateIntervalFormatter) StringFromDateToDate(fromDate IDate, toDate IDat
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1642848-stringfromdateinterval?language=objc
 func (d_ DateIntervalFormatter) StringFromDateInterval(dateInterval IDateInterval) string {
-	rv := objc.Call[string](d_, objc.Sel("stringFromDateInterval:"), objc.Ptr(dateInterval))
+	rv := objc.Call[string](d_, objc.Sel("stringFromDateInterval:"), dateInterval)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (d_ DateIntervalFormatter) TimeZone() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1410228-timezone?language=objc
 func (d_ DateIntervalFormatter) SetTimeZone(value ITimeZone) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
 // The template for formatting one date and time value. [Full Topic]
@@ -125,7 +125,7 @@ func (d_ DateIntervalFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1409992-locale?language=objc
 func (d_ DateIntervalFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setLocale:"), value)
 }
 
 // The style to use when formatting day, month, and year information. [Full Topic]
@@ -155,7 +155,7 @@ func (d_ DateIntervalFormatter) Calendar() Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateintervalformatter/1417984-calendar?language=objc
 func (d_ DateIntervalFormatter) SetCalendar(value ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // The style to use when formatting hour, minute, and second information. [Full Topic]

@@ -76,7 +76,7 @@ func (t_ TextContentManagerDelegateObject) HasTextContentManagerShouldEnumerateT
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate/3852566-textcontentmanager?language=objc
 func (t_ TextContentManagerDelegateObject) TextContentManagerShouldEnumerateTextElementOptions(textContentManager TextContentManager, textElement TextElement, options TextContentManagerEnumerationOptions) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textContentManager:shouldEnumerateTextElement:options:"), objc.Ptr(textContentManager), objc.Ptr(textElement), options)
+	rv := objc.Call[bool](t_, objc.Sel("textContentManager:shouldEnumerateTextElement:options:"), textContentManager, textElement, options)
 	return rv
 }
 
@@ -89,6 +89,6 @@ func (t_ TextContentManagerDelegateObject) HasTextContentManagerTextElementAtLoc
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentmanagerdelegate/3809932-textcontentmanager?language=objc
 func (t_ TextContentManagerDelegateObject) TextContentManagerTextElementAtLocation(textContentManager TextContentManager, location TextLocationObject) TextElement {
 	po1 := objc.WrapAsProtocol("NSTextLocation", location)
-	rv := objc.Call[TextElement](t_, objc.Sel("textContentManager:textElementAtLocation:"), objc.Ptr(textContentManager), po1)
+	rv := objc.Call[TextElement](t_, objc.Sel("textContentManager:textElementAtLocation:"), textContentManager, po1)
 	return rv
 }

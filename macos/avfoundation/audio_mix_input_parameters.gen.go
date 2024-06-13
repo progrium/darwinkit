@@ -19,7 +19,7 @@ type _AudioMixInputParametersClass struct {
 // An interface definition for the [AudioMixInputParameters] class.
 type IAudioMixInputParameters interface {
 	objc.IObject
-	GetVolumeRampForTimeStartVolumeEndVolumeTimeRange(time coremedia.Time, startVolume *float64, endVolume *float64, timeRange *coremedia.TimeRange) bool
+	GetVolumeRampForTimeStartVolumeEndVolumeTimeRange(time coremedia.Time, startVolume *float32, endVolume *float32, timeRange *coremedia.TimeRange) bool
 	AudioTapProcessor() objc.Object
 	TrackID() objc.Object
 	AudioTimePitchAlgorithm() AudioTimePitchAlgorithm
@@ -61,7 +61,7 @@ func (a_ AudioMixInputParameters) Init() AudioMixInputParameters {
 // Retrieves the volume ramp that includes the specified time. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avaudiomixinputparameters/1389578-getvolumerampfortime?language=objc
-func (a_ AudioMixInputParameters) GetVolumeRampForTimeStartVolumeEndVolumeTimeRange(time coremedia.Time, startVolume *float64, endVolume *float64, timeRange *coremedia.TimeRange) bool {
+func (a_ AudioMixInputParameters) GetVolumeRampForTimeStartVolumeEndVolumeTimeRange(time coremedia.Time, startVolume *float32, endVolume *float32, timeRange *coremedia.TimeRange) bool {
 	rv := objc.Call[bool](a_, objc.Sel("getVolumeRampForTime:startVolume:endVolume:timeRange:"), time, startVolume, endVolume, timeRange)
 	return rv
 }

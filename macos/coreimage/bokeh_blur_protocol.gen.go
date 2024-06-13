@@ -11,35 +11,35 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur?language=objc
 type PBokehBlur interface {
 	// optional
-	SetSoftness(value float64)
+	SetSoftness(value float32)
 	HasSetSoftness() bool
 
 	// optional
-	Softness() float64
+	Softness() float32
 	HasSoftness() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetRingAmount(value float64)
+	SetRingAmount(value float32)
 	HasSetRingAmount() bool
 
 	// optional
-	RingAmount() float64
+	RingAmount() float32
 	HasRingAmount() bool
 
 	// optional
-	SetRingSize(value float64)
+	SetRingSize(value float32)
 	HasSetRingSize() bool
 
 	// optional
-	RingSize() float64
+	RingSize() float32
 	HasRingSize() bool
 
 	// optional
@@ -66,7 +66,7 @@ func (b_ BokehBlurObject) HasSetSoftness() bool {
 // The softness of the bokeh effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228092-softness?language=objc
-func (b_ BokehBlurObject) SetSoftness(value float64) {
+func (b_ BokehBlurObject) SetSoftness(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setSoftness:"), value)
 }
 
@@ -77,8 +77,8 @@ func (b_ BokehBlurObject) HasSoftness() bool {
 // The softness of the bokeh effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228092-softness?language=objc
-func (b_ BokehBlurObject) Softness() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("softness"))
+func (b_ BokehBlurObject) Softness() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("softness"))
 	return rv
 }
 
@@ -89,7 +89,7 @@ func (b_ BokehBlurObject) HasSetRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228089-radius?language=objc
-func (b_ BokehBlurObject) SetRadius(value float64) {
+func (b_ BokehBlurObject) SetRadius(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
 }
 
@@ -100,8 +100,8 @@ func (b_ BokehBlurObject) HasRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228089-radius?language=objc
-func (b_ BokehBlurObject) Radius() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("radius"))
+func (b_ BokehBlurObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (b_ BokehBlurObject) HasSetRingAmount() bool {
 // The amount of extra emphasis at the ring of the bokeh. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228090-ringamount?language=objc
-func (b_ BokehBlurObject) SetRingAmount(value float64) {
+func (b_ BokehBlurObject) SetRingAmount(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRingAmount:"), value)
 }
 
@@ -123,8 +123,8 @@ func (b_ BokehBlurObject) HasRingAmount() bool {
 // The amount of extra emphasis at the ring of the bokeh. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228090-ringamount?language=objc
-func (b_ BokehBlurObject) RingAmount() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("ringAmount"))
+func (b_ BokehBlurObject) RingAmount() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("ringAmount"))
 	return rv
 }
 
@@ -135,7 +135,7 @@ func (b_ BokehBlurObject) HasSetRingSize() bool {
 // The radius of the extra emphasis at the ring of the bokeh. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228091-ringsize?language=objc
-func (b_ BokehBlurObject) SetRingSize(value float64) {
+func (b_ BokehBlurObject) SetRingSize(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRingSize:"), value)
 }
 
@@ -146,8 +146,8 @@ func (b_ BokehBlurObject) HasRingSize() bool {
 // The radius of the extra emphasis at the ring of the bokeh. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228091-ringsize?language=objc
-func (b_ BokehBlurObject) RingSize() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("ringSize"))
+func (b_ BokehBlurObject) RingSize() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("ringSize"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (b_ BokehBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibokehblur/3228088-inputimage?language=objc
 func (b_ BokehBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BokehBlurObject) HasInputImage() bool {

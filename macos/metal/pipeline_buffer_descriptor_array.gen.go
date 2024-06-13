@@ -59,7 +59,7 @@ func (p_ PipelineBufferDescriptorArray) Init() PipelineBufferDescriptorArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlpipelinebufferdescriptorarray/2879310-setobject?language=objc
 func (p_ PipelineBufferDescriptorArray) SetObjectAtIndexedSubscript(buffer IPipelineBufferDescriptor, bufferIndex uint) {
-	objc.Call[objc.Void](p_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(buffer), bufferIndex)
+	objc.Call[objc.Void](p_, objc.Sel("setObject:atIndexedSubscript:"), buffer, bufferIndex)
 }
 
 // Returns the pipeline buffer descriptor at the specified array index. [Full Topic]

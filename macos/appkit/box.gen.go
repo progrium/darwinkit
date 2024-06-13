@@ -160,7 +160,7 @@ func (b_ Box) BorderColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429839-bordercolor?language=objc
 func (b_ Box) SetBorderColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBorderColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBorderColor:"), value)
 }
 
 // A Boolean value that indicates whether the receiver is transparent. [Full Topic]
@@ -250,7 +250,7 @@ func (b_ Box) ContentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429818-contentview?language=objc
 func (b_ Box) SetContentView(value IView) {
-	objc.Call[objc.Void](b_, objc.Sel("setContentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setContentView:"), value)
 }
 
 // The color of the receiver’s background when the receiver is a custom box with a simple line border. [Full Topic]
@@ -265,7 +265,7 @@ func (b_ Box) FillColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429797-fillcolor?language=objc
 func (b_ Box) SetFillColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setFillColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setFillColor:"), value)
 }
 
 // A constant representing the title position. [Full Topic]
@@ -295,5 +295,5 @@ func (b_ Box) TitleFont() Font {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbox/1429791-titlefont?language=objc
 func (b_ Box) SetTitleFont(value IFont) {
-	objc.Call[objc.Void](b_, objc.Sel("setTitleFont:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setTitleFont:"), value)
 }

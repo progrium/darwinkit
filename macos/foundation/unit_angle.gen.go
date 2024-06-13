@@ -54,7 +54,7 @@ func (u_ UnitAngle) Init() UnitAngle {
 }
 
 func (u_ UnitAngle) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitAngle {
-	rv := objc.Call[UnitAngle](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitAngle](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

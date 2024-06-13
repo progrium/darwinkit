@@ -84,7 +84,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewSortDescriptorsDidChange() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1535892-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewSortDescriptorsDidChange(outlineView OutlineView, oldDescriptors []foundation.SortDescriptor) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:sortDescriptorsDidChange:"), objc.Ptr(outlineView), oldDescriptors)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:sortDescriptorsDidChange:"), outlineView, oldDescriptors)
 }
 
 func (o_ OutlineViewDataSourceObject) HasOutlineViewChildOfItem() bool {
@@ -95,7 +95,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewChildOfItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1528977-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewChildOfItem(outlineView OutlineView, index int, item objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:child:ofItem:"), objc.Ptr(outlineView), index, item)
+	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:child:ofItem:"), outlineView, index, item)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewPersistentObjectForItem() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1532545-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewPersistentObjectForItem(outlineView OutlineView, item objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:persistentObjectForItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:persistentObjectForItem:"), outlineView, item)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewValidateDropProposedItemProp
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1533597-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewValidateDropProposedItemProposedChildIndex(outlineView OutlineView, info DraggingInfoObject, item objc.Object, index int) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[DragOperation](o_, objc.Sel("outlineView:validateDrop:proposedItem:proposedChildIndex:"), objc.Ptr(outlineView), po1, item, index)
+	rv := objc.Call[DragOperation](o_, objc.Sel("outlineView:validateDrop:proposedItem:proposedChildIndex:"), outlineView, po1, item, index)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewDraggingSessionWillBeginAtPo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1535142-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewDraggingSessionWillBeginAtPointForItems(outlineView OutlineView, session DraggingSession, screenPoint foundation.Point, draggedItems []objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:draggingSession:willBeginAtPoint:forItems:"), objc.Ptr(outlineView), objc.Ptr(session), screenPoint, draggedItems)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:draggingSession:willBeginAtPoint:forItems:"), outlineView, session, screenPoint, draggedItems)
 }
 
 func (o_ OutlineViewDataSourceObject) HasOutlineViewAcceptDropItemChildIndex() bool {
@@ -144,7 +144,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewAcceptDropItemChildIndex() b
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1529572-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewAcceptDropItemChildIndex(outlineView OutlineView, info DraggingInfoObject, item objc.Object, index int) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:acceptDrop:item:childIndex:"), objc.Ptr(outlineView), po1, item, index)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:acceptDrop:item:childIndex:"), outlineView, po1, item, index)
 	return rv
 }
 
@@ -156,7 +156,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewDraggingSessionEndedAtPointO
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1532073-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewDraggingSessionEndedAtPointOperation(outlineView OutlineView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:draggingSession:endedAtPoint:operation:"), objc.Ptr(outlineView), objc.Ptr(session), screenPoint, operation)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:draggingSession:endedAtPoint:operation:"), outlineView, session, screenPoint, operation)
 }
 
 func (o_ OutlineViewDataSourceObject) HasOutlineViewSetObjectValueForTableColumnByItem() bool {
@@ -167,7 +167,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewSetObjectValueForTableColumn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1534817-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewSetObjectValueForTableColumnByItem(outlineView OutlineView, object objc.Object, tableColumn TableColumn, item objc.Object) {
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:setObjectValue:forTableColumn:byItem:"), objc.Ptr(outlineView), object, objc.Ptr(tableColumn), item)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:setObjectValue:forTableColumn:byItem:"), outlineView, object, tableColumn, item)
 }
 
 func (o_ OutlineViewDataSourceObject) HasOutlineViewPasteboardWriterForItem() bool {
@@ -178,7 +178,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewPasteboardWriterForItem() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1525837-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewPasteboardWriterForItem(outlineView OutlineView, item objc.Object) PasteboardWritingObject {
-	rv := objc.Call[PasteboardWritingObject](o_, objc.Sel("outlineView:pasteboardWriterForItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[PasteboardWritingObject](o_, objc.Sel("outlineView:pasteboardWriterForItem:"), outlineView, item)
 	return rv
 }
 
@@ -190,7 +190,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewNumberOfChildrenOfItem() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1535549-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewNumberOfChildrenOfItem(outlineView OutlineView, item objc.Object) int {
-	rv := objc.Call[int](o_, objc.Sel("outlineView:numberOfChildrenOfItem:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[int](o_, objc.Sel("outlineView:numberOfChildrenOfItem:"), outlineView, item)
 	return rv
 }
 
@@ -202,7 +202,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewObjectValueForTableColumnByI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1531606-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewObjectValueForTableColumnByItem(outlineView OutlineView, tableColumn TableColumn, item objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:objectValueForTableColumn:byItem:"), objc.Ptr(outlineView), objc.Ptr(tableColumn), item)
+	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:objectValueForTableColumn:byItem:"), outlineView, tableColumn, item)
 	return rv
 }
 
@@ -215,7 +215,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewUpdateDraggingItemsForDrag()
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1534424-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewUpdateDraggingItemsForDrag(outlineView OutlineView, draggingInfo DraggingInfoObject) {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](o_, objc.Sel("outlineView:updateDraggingItemsForDrag:"), objc.Ptr(outlineView), po1)
+	objc.Call[objc.Void](o_, objc.Sel("outlineView:updateDraggingItemsForDrag:"), outlineView, po1)
 }
 
 func (o_ OutlineViewDataSourceObject) HasOutlineViewItemForPersistentObject() bool {
@@ -226,7 +226,7 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewItemForPersistentObject() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1533602-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewItemForPersistentObject(outlineView OutlineView, object objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:itemForPersistentObject:"), objc.Ptr(outlineView), object)
+	rv := objc.Call[objc.Object](o_, objc.Sel("outlineView:itemForPersistentObject:"), outlineView, object)
 	return rv
 }
 
@@ -238,6 +238,6 @@ func (o_ OutlineViewDataSourceObject) HasOutlineViewIsItemExpandable() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsoutlineviewdatasource/1535198-outlineview?language=objc
 func (o_ OutlineViewDataSourceObject) OutlineViewIsItemExpandable(outlineView OutlineView, item objc.Object) bool {
-	rv := objc.Call[bool](o_, objc.Sel("outlineView:isItemExpandable:"), objc.Ptr(outlineView), item)
+	rv := objc.Call[bool](o_, objc.Sel("outlineView:isItemExpandable:"), outlineView, item)
 	return rv
 }

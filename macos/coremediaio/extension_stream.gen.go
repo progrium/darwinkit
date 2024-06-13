@@ -48,7 +48,7 @@ func ExtensionStreamFrom(ptr unsafe.Pointer) ExtensionStream {
 
 func (e_ ExtensionStream) InitWithLocalizedNameStreamIDDirectionClockTypeSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, clockType ExtensionStreamClockType, source PExtensionStreamSource) ExtensionStream {
 	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](e_, objc.Sel("initWithLocalizedName:streamID:direction:clockType:source:"), localizedName, objc.Ptr(streamID), direction, clockType, po4)
+	rv := objc.Call[ExtensionStream](e_, objc.Sel("initWithLocalizedName:streamID:direction:clockType:source:"), localizedName, streamID, direction, clockType, po4)
 	return rv
 }
 
@@ -63,7 +63,7 @@ func NewExtensionStreamWithLocalizedNameStreamIDDirectionClockTypeSource(localiz
 
 func (ec _ExtensionStreamClass) StreamWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
 	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](ec, objc.Sel("streamWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, objc.Ptr(streamID), direction, objc.Ptr(customClockConfiguration), po4)
+	rv := objc.Call[ExtensionStream](ec, objc.Sel("streamWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, streamID, direction, customClockConfiguration, po4)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func ExtensionStream_StreamWithLocalizedNameStreamIDDirectionCustomClockConfigur
 
 func (e_ ExtensionStream) InitWithLocalizedNameStreamIDDirectionCustomClockConfigurationSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, customClockConfiguration IExtensionStreamCustomClockConfiguration, source PExtensionStreamSource) ExtensionStream {
 	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](e_, objc.Sel("initWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, objc.Ptr(streamID), direction, objc.Ptr(customClockConfiguration), po4)
+	rv := objc.Call[ExtensionStream](e_, objc.Sel("initWithLocalizedName:streamID:direction:customClockConfiguration:source:"), localizedName, streamID, direction, customClockConfiguration, po4)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func NewExtensionStreamWithLocalizedNameStreamIDDirectionCustomClockConfiguratio
 
 func (ec _ExtensionStreamClass) StreamWithLocalizedNameStreamIDDirectionClockTypeSource(localizedName string, streamID foundation.IUUID, direction ExtensionStreamDirection, clockType ExtensionStreamClockType, source PExtensionStreamSource) ExtensionStream {
 	po4 := objc.WrapAsProtocol("CMIOExtensionStreamSource", source)
-	rv := objc.Call[ExtensionStream](ec, objc.Sel("streamWithLocalizedName:streamID:direction:clockType:source:"), localizedName, objc.Ptr(streamID), direction, clockType, po4)
+	rv := objc.Call[ExtensionStream](ec, objc.Sel("streamWithLocalizedName:streamID:direction:clockType:source:"), localizedName, streamID, direction, clockType, po4)
 	return rv
 }
 
@@ -126,14 +126,14 @@ func (e_ ExtensionStream) Init() ExtensionStream {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915938-notifyscheduledoutputchanged?language=objc
 func (e_ ExtensionStream) NotifyScheduledOutputChanged(scheduledOutput IExtensionScheduledOutput) {
-	objc.Call[objc.Void](e_, objc.Sel("notifyScheduledOutputChanged:"), objc.Ptr(scheduledOutput))
+	objc.Call[objc.Void](e_, objc.Sel("notifyScheduledOutputChanged:"), scheduledOutput)
 }
 
 // Consumes a sample buffer from a client. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionstream/3915931-consumesamplebufferfromclient?language=objc
 func (e_ ExtensionStream) ConsumeSampleBufferFromClientCompletionHandler(client IExtensionClient, completionHandler func(sampleBuffer coremedia.SampleBufferRef, sampleBufferSequenceNumber uint64, discontinuity ExtensionStreamDiscontinuityFlags, hasMoreSampleBuffers bool, error foundation.Error)) {
-	objc.Call[objc.Void](e_, objc.Sel("consumeSampleBufferFromClient:completionHandler:"), objc.Ptr(client), completionHandler)
+	objc.Call[objc.Void](e_, objc.Sel("consumeSampleBufferFromClient:completionHandler:"), client, completionHandler)
 }
 
 // Sends a media sample to stream client. [Full Topic]

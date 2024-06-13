@@ -165,7 +165,7 @@ func (s_ ScrubberDelegateObject) HasScrubberDidHighlightItemAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2544788-scrubber?language=objc
 func (s_ ScrubberDelegateObject) ScrubberDidHighlightItemAtIndex(scrubber Scrubber, highlightedIndex int) {
-	objc.Call[objc.Void](s_, objc.Sel("scrubber:didHighlightItemAtIndex:"), objc.Ptr(scrubber), highlightedIndex)
+	objc.Call[objc.Void](s_, objc.Sel("scrubber:didHighlightItemAtIndex:"), scrubber, highlightedIndex)
 }
 
 func (s_ ScrubberDelegateObject) HasDidBeginInteractingWithScrubber() bool {
@@ -176,7 +176,7 @@ func (s_ ScrubberDelegateObject) HasDidBeginInteractingWithScrubber() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2544657-didbegininteractingwithscrubber?language=objc
 func (s_ ScrubberDelegateObject) DidBeginInteractingWithScrubber(scrubber Scrubber) {
-	objc.Call[objc.Void](s_, objc.Sel("didBeginInteractingWithScrubber:"), objc.Ptr(scrubber))
+	objc.Call[objc.Void](s_, objc.Sel("didBeginInteractingWithScrubber:"), scrubber)
 }
 
 func (s_ ScrubberDelegateObject) HasScrubberDidSelectItemAtIndex() bool {
@@ -187,7 +187,7 @@ func (s_ ScrubberDelegateObject) HasScrubberDidSelectItemAtIndex() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2544714-scrubber?language=objc
 func (s_ ScrubberDelegateObject) ScrubberDidSelectItemAtIndex(scrubber Scrubber, selectedIndex int) {
-	objc.Call[objc.Void](s_, objc.Sel("scrubber:didSelectItemAtIndex:"), objc.Ptr(scrubber), selectedIndex)
+	objc.Call[objc.Void](s_, objc.Sel("scrubber:didSelectItemAtIndex:"), scrubber, selectedIndex)
 }
 
 func (s_ ScrubberDelegateObject) HasDidCancelInteractingWithScrubber() bool {
@@ -198,7 +198,7 @@ func (s_ ScrubberDelegateObject) HasDidCancelInteractingWithScrubber() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2646905-didcancelinteractingwithscrubber?language=objc
 func (s_ ScrubberDelegateObject) DidCancelInteractingWithScrubber(scrubber Scrubber) {
-	objc.Call[objc.Void](s_, objc.Sel("didCancelInteractingWithScrubber:"), objc.Ptr(scrubber))
+	objc.Call[objc.Void](s_, objc.Sel("didCancelInteractingWithScrubber:"), scrubber)
 }
 
 func (s_ ScrubberDelegateObject) HasScrubberDidChangeVisibleRange() bool {
@@ -209,7 +209,7 @@ func (s_ ScrubberDelegateObject) HasScrubberDidChangeVisibleRange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2544817-scrubber?language=objc
 func (s_ ScrubberDelegateObject) ScrubberDidChangeVisibleRange(scrubber Scrubber, visibleRange foundation.Range) {
-	objc.Call[objc.Void](s_, objc.Sel("scrubber:didChangeVisibleRange:"), objc.Ptr(scrubber), visibleRange)
+	objc.Call[objc.Void](s_, objc.Sel("scrubber:didChangeVisibleRange:"), scrubber, visibleRange)
 }
 
 func (s_ ScrubberDelegateObject) HasDidFinishInteractingWithScrubber() bool {
@@ -220,5 +220,5 @@ func (s_ ScrubberDelegateObject) HasDidFinishInteractingWithScrubber() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberdelegate/2544653-didfinishinteractingwithscrubber?language=objc
 func (s_ ScrubberDelegateObject) DidFinishInteractingWithScrubber(scrubber Scrubber) {
-	objc.Call[objc.Void](s_, objc.Sel("didFinishInteractingWithScrubber:"), objc.Ptr(scrubber))
+	objc.Call[objc.Void](s_, objc.Sel("didFinishInteractingWithScrubber:"), scrubber)
 }

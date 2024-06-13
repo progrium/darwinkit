@@ -18,19 +18,19 @@ type _ScannerClass struct {
 // An interface definition for the [Scanner] class.
 type IScanner interface {
 	objc.IObject
-	ScanUpToStringIntoString(string_ string, result string) bool
-	ScanStringIntoString(string_ string, result string) bool
+	ScanUpToStringIntoString(string_ string, result unsafe.Pointer) bool
+	ScanStringIntoString(string_ string, result unsafe.Pointer) bool
 	ScanInt(result *int) bool
-	ScanUpToCharactersFromSetIntoString(set ICharacterSet, result string) bool
+	ScanUpToCharactersFromSetIntoString(set ICharacterSet, result unsafe.Pointer) bool
 	ScanDouble(result *float64) bool
-	ScanFloat(result *float64) bool
+	ScanFloat(result *float32) bool
 	ScanHexLongLong(result *int64) bool
 	ScanLongLong(result *int64) bool
-	ScanCharactersFromSetIntoString(set ICharacterSet, result string) bool
+	ScanCharactersFromSetIntoString(set ICharacterSet, result unsafe.Pointer) bool
 	ScanInteger(result *int) bool
 	ScanHexInt(result *int) bool
 	ScanUnsignedLongLong(result *int64) bool
-	ScanHexFloat(result *float64) bool
+	ScanHexFloat(result *float32) bool
 	ScanDecimal(dcm *Decimal) bool
 	ScanHexDouble(result *float64) bool
 	String() string
@@ -107,7 +107,7 @@ func (s_ Scanner) Init() Scanner {
 // Scans the string until a given string is encountered, accumulating characters into a string that’s returned by reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1411971-scanuptostring?language=objc
-func (s_ Scanner) ScanUpToStringIntoString(string_ string, result string) bool {
+func (s_ Scanner) ScanUpToStringIntoString(string_ string, result unsafe.Pointer) bool {
 	rv := objc.Call[bool](s_, objc.Sel("scanUpToString:intoString:"), string_, result)
 	return rv
 }
@@ -115,7 +115,7 @@ func (s_ Scanner) ScanUpToStringIntoString(string_ string, result string) bool {
 // Scans a given string, returning an equivalent string object by reference if a match is found. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1407591-scanstring?language=objc
-func (s_ Scanner) ScanStringIntoString(string_ string, result string) bool {
+func (s_ Scanner) ScanStringIntoString(string_ string, result unsafe.Pointer) bool {
 	rv := objc.Call[bool](s_, objc.Sel("scanString:intoString:"), string_, result)
 	return rv
 }
@@ -131,8 +131,8 @@ func (s_ Scanner) ScanInt(result *int) bool {
 // Scans the string until a character from a given character set is encountered, accumulating characters into a string that’s returned by reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1413598-scanuptocharactersfromset?language=objc
-func (s_ Scanner) ScanUpToCharactersFromSetIntoString(set ICharacterSet, result string) bool {
-	rv := objc.Call[bool](s_, objc.Sel("scanUpToCharactersFromSet:intoString:"), objc.Ptr(set), result)
+func (s_ Scanner) ScanUpToCharactersFromSetIntoString(set ICharacterSet, result unsafe.Pointer) bool {
+	rv := objc.Call[bool](s_, objc.Sel("scanUpToCharactersFromSet:intoString:"), set, result)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (s_ Scanner) ScanDouble(result *float64) bool {
 // Scans for a float value, returning a found value by reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1411677-scanfloat?language=objc
-func (s_ Scanner) ScanFloat(result *float64) bool {
+func (s_ Scanner) ScanFloat(result *float32) bool {
 	rv := objc.Call[bool](s_, objc.Sel("scanFloat:"), result)
 	return rv
 }
@@ -186,8 +186,8 @@ func (s_ Scanner) ScanLongLong(result *int64) bool {
 // Scans the string as long as characters from a given character set are encountered, accumulating characters into a string that’s returned by reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1417575-scancharactersfromset?language=objc
-func (s_ Scanner) ScanCharactersFromSetIntoString(set ICharacterSet, result string) bool {
-	rv := objc.Call[bool](s_, objc.Sel("scanCharactersFromSet:intoString:"), objc.Ptr(set), result)
+func (s_ Scanner) ScanCharactersFromSetIntoString(set ICharacterSet, result unsafe.Pointer) bool {
+	rv := objc.Call[bool](s_, objc.Sel("scanCharactersFromSet:intoString:"), set, result)
 	return rv
 }
 
@@ -218,7 +218,7 @@ func (s_ Scanner) ScanUnsignedLongLong(result *int64) bool {
 // Scans for a double value from a hexadecimal representation, returning a found value by reference. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1411236-scanhexfloat?language=objc
-func (s_ Scanner) ScanHexFloat(result *float64) bool {
+func (s_ Scanner) ScanHexFloat(result *float32) bool {
 	rv := objc.Call[bool](s_, objc.Sel("scanHexFloat:"), result)
 	return rv
 }
@@ -312,5 +312,5 @@ func (s_ Scanner) CharactersToBeSkipped() CharacterSet {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscanner/1410204-characterstobeskipped?language=objc
 func (s_ Scanner) SetCharactersToBeSkipped(value ICharacterSet) {
-	objc.Call[objc.Void](s_, objc.Sel("setCharactersToBeSkipped:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setCharactersToBeSkipped:"), value)
 }

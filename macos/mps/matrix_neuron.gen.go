@@ -21,10 +21,10 @@ type IMatrixNeuron interface {
 	IMatrixUnaryKernel
 	EncodeToCommandBufferInputMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
 	EncodeToCommandBufferObjectInputMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix)
-	NeuronParameterC() float64
-	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64)
-	NeuronParameterA() float64
-	NeuronParameterB() float64
+	NeuronParameterC() float32
+	SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32)
+	NeuronParameterA() float32
+	NeuronParameterB() float32
 	NeuronType() CNNNeuronType
 	SetNeuronToPReLUWithParametersA(A []byte)
 	SourceNumberOfFeatureVectors() uint
@@ -103,44 +103,44 @@ func (m_ MatrixNeuron) Init() MatrixNeuron {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935606-encodetocommandbuffer?language=objc
 func (m_ MatrixNeuron) EncodeToCommandBufferInputMatrixBiasVectorResultMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:biasVector:resultMatrix:"), po0, objc.Ptr(inputMatrix), objc.Ptr(biasVector), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:biasVector:resultMatrix:"), po0, inputMatrix, biasVector, resultMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935606-encodetocommandbuffer?language=objc
 func (m_ MatrixNeuron) EncodeToCommandBufferObjectInputMatrixBiasVectorResultMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, biasVector IVector, resultMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:biasVector:resultMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputMatrix), objc.Ptr(biasVector), objc.Ptr(resultMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:biasVector:resultMatrix:"), commandBufferObject, inputMatrix, biasVector, resultMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935598-neuronparameterc?language=objc
-func (m_ MatrixNeuron) NeuronParameterC() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterC"))
+func (m_ MatrixNeuron) NeuronParameterC() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterC"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935590-setneurontype?language=objc
-func (m_ MatrixNeuron) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float64, parameterB float64, parameterC float64) {
+func (m_ MatrixNeuron) SetNeuronTypeParameterAParameterBParameterC(neuronType CNNNeuronType, parameterA float32, parameterB float32, parameterC float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setNeuronType:parameterA:parameterB:parameterC:"), neuronType, parameterA, parameterB, parameterC)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935583-neuronparametera?language=objc
-func (m_ MatrixNeuron) NeuronParameterA() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterA"))
+func (m_ MatrixNeuron) NeuronParameterA() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterA"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixneuron/2935585-neuronparameterb?language=objc
-func (m_ MatrixNeuron) NeuronParameterB() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("neuronParameterB"))
+func (m_ MatrixNeuron) NeuronParameterB() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("neuronParameterB"))
 	return rv
 }
 

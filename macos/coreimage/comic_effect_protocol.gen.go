@@ -35,7 +35,7 @@ func (c_ ComicEffectObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicomiceffect/3228180-inputimage?language=objc
 func (c_ ComicEffectObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ComicEffectObject) HasInputImage() bool {

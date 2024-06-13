@@ -38,7 +38,7 @@ func TextElementFrom(ptr unsafe.Pointer) TextElement {
 }
 
 func (t_ TextElement) InitWithTextContentManager(textContentManager ITextContentManager) TextElement {
-	rv := objc.Call[TextElement](t_, objc.Sel("initWithTextContentManager:"), objc.Ptr(textContentManager))
+	rv := objc.Call[TextElement](t_, objc.Sel("initWithTextContentManager:"), textContentManager)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (t_ TextElement) TextContentManager() TextContentManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809956-textcontentmanager?language=objc
 func (t_ TextElement) SetTextContentManager(value ITextContentManager) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextContentManager:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextContentManager:"), value)
 }
 
 // A range value that represents the range of the element inside the document. [Full Topic]
@@ -98,5 +98,5 @@ func (t_ TextElement) ElementRange() TextRange {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextelement/3809954-elementrange?language=objc
 func (t_ TextElement) SetElementRange(value ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("setElementRange:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setElementRange:"), value)
 }

@@ -122,7 +122,7 @@ func (f_ FilePresenterObject) HasPresentedItemDidChangeUbiquityAttributes() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/2909021-presenteditemdidchangeubiquityat?language=objc
 func (f_ FilePresenterObject) PresentedItemDidChangeUbiquityAttributes(attributes Set) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidChangeUbiquityAttributes:"), objc.Ptr(attributes))
+	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidChangeUbiquityAttributes:"), attributes)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidResolveConflictVersion() bool {
@@ -133,7 +133,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidResolveConflictVersion(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1416913-presentedsubitematurl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemAtURLDidResolveConflictVersion(url URL, version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didResolveConflictVersion:"), objc.Ptr(url), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didResolveConflictVersion:"), url, version)
 }
 
 func (f_ FilePresenterObject) HasPresentedItemDidResolveConflictVersion() bool {
@@ -144,7 +144,7 @@ func (f_ FilePresenterObject) HasPresentedItemDidResolveConflictVersion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1418445-presenteditemdidresolveconflictv?language=objc
 func (f_ FilePresenterObject) PresentedItemDidResolveConflictVersion(version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidResolveConflictVersion:"), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidResolveConflictVersion:"), version)
 }
 
 func (f_ FilePresenterObject) HasAccommodatePresentedSubitemDeletionAtURLCompletionHandler() bool {
@@ -155,7 +155,7 @@ func (f_ FilePresenterObject) HasAccommodatePresentedSubitemDeletionAtURLComplet
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1415657-accommodatepresentedsubitemdelet?language=objc
 func (f_ FilePresenterObject) AccommodatePresentedSubitemDeletionAtURLCompletionHandler(url URL, completionHandler func(errorOrNil Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("accommodatePresentedSubitemDeletionAtURL:completionHandler:"), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](f_, objc.Sel("accommodatePresentedSubitemDeletionAtURL:completionHandler:"), url, completionHandler)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemDidChangeAtURL() bool {
@@ -166,7 +166,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemDidChangeAtURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1411135-presentedsubitemdidchangeaturl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemDidChangeAtURL(url URL) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemDidChangeAtURL:"), objc.Ptr(url))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemDidChangeAtURL:"), url)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidGainVersion() bool {
@@ -177,7 +177,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidGainVersion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1415472-presentedsubitematurl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemAtURLDidGainVersion(url URL, version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didGainVersion:"), objc.Ptr(url), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didGainVersion:"), url, version)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidLoseVersion() bool {
@@ -188,7 +188,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidLoseVersion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1413957-presentedsubitematurl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemAtURLDidLoseVersion(url URL, version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didLoseVersion:"), objc.Ptr(url), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didLoseVersion:"), url, version)
 }
 
 func (f_ FilePresenterObject) HasPresentedItemDidGainVersion() bool {
@@ -199,7 +199,7 @@ func (f_ FilePresenterObject) HasPresentedItemDidGainVersion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1415018-presenteditemdidgainversion?language=objc
 func (f_ FilePresenterObject) PresentedItemDidGainVersion(version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidGainVersion:"), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidGainVersion:"), version)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidMoveToURL() bool {
@@ -210,7 +210,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemAtURLDidMoveToURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1409465-presentedsubitematurl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemAtURLDidMoveToURL(oldURL URL, newURL URL) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didMoveToURL:"), objc.Ptr(oldURL), objc.Ptr(newURL))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemAtURL:didMoveToURL:"), oldURL, newURL)
 }
 
 func (f_ FilePresenterObject) HasSavePresentedItemChangesWithCompletionHandler() bool {
@@ -232,7 +232,7 @@ func (f_ FilePresenterObject) HasPresentedItemDidLoseVersion() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1417258-presenteditemdidloseversion?language=objc
 func (f_ FilePresenterObject) PresentedItemDidLoseVersion(version FileVersion) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidLoseVersion:"), objc.Ptr(version))
+	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidLoseVersion:"), version)
 }
 
 func (f_ FilePresenterObject) HasPresentedItemDidMoveToURL() bool {
@@ -243,7 +243,7 @@ func (f_ FilePresenterObject) HasPresentedItemDidMoveToURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1417861-presenteditemdidmovetourl?language=objc
 func (f_ FilePresenterObject) PresentedItemDidMoveToURL(newURL URL) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidMoveToURL:"), objc.Ptr(newURL))
+	objc.Call[objc.Void](f_, objc.Sel("presentedItemDidMoveToURL:"), newURL)
 }
 
 func (f_ FilePresenterObject) HasPresentedSubitemDidAppearAtURL() bool {
@@ -254,7 +254,7 @@ func (f_ FilePresenterObject) HasPresentedSubitemDidAppearAtURL() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsfilepresenter/1408642-presentedsubitemdidappearaturl?language=objc
 func (f_ FilePresenterObject) PresentedSubitemDidAppearAtURL(url URL) {
-	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemDidAppearAtURL:"), objc.Ptr(url))
+	objc.Call[objc.Void](f_, objc.Sel("presentedSubitemDidAppearAtURL:"), url)
 }
 
 func (f_ FilePresenterObject) HasPresentedItemDidChange() bool {

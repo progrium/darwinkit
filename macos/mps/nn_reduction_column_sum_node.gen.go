@@ -54,7 +54,7 @@ func (n_ NNReductionColumnSumNode) Init() NNReductionColumnSumNode {
 }
 
 func (nc _NNReductionColumnSumNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionColumnSumNode {
-	rv := objc.Call[NNReductionColumnSumNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionColumnSumNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionColumnSumNode_NodeWithSource(sourceNode INNImageNode) NNReductio
 }
 
 func (n_ NNReductionColumnSumNode) InitWithSource(sourceNode INNImageNode) NNReductionColumnSumNode {
-	rv := objc.Call[NNReductionColumnSumNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionColumnSumNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

@@ -127,7 +127,7 @@ func (p_ PlayerItemVideoOutput) SetDelegateQueue(delegate PPlayerItemOutputPullD
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemvideooutput/1386824-setdelegate?language=objc
 func (p_ PlayerItemVideoOutput) SetDelegateObjectQueue(delegateObject objc.IObject, delegateQueue dispatch.Queue) {
-	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), objc.Ptr(delegateObject), delegateQueue)
+	objc.Call[objc.Void](p_, objc.Sel("setDelegate:queue:"), delegateObject, delegateQueue)
 }
 
 // The dispatch queue on which to call delegate methods. [Full Topic]

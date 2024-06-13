@@ -11,19 +11,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask?language=objc
 type PUnsharpMask interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -50,7 +50,7 @@ func (u_ UnsharpMaskObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228820-intensity?language=objc
-func (u_ UnsharpMaskObject) SetIntensity(value float64) {
+func (u_ UnsharpMaskObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](u_, objc.Sel("setIntensity:"), value)
 }
 
@@ -61,8 +61,8 @@ func (u_ UnsharpMaskObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228820-intensity?language=objc
-func (u_ UnsharpMaskObject) Intensity() float64 {
-	rv := objc.Call[float64](u_, objc.Sel("intensity"))
+func (u_ UnsharpMaskObject) Intensity() float32 {
+	rv := objc.Call[float32](u_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -73,7 +73,7 @@ func (u_ UnsharpMaskObject) HasSetRadius() bool {
 // The radius of the unsharp mask effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228821-radius?language=objc
-func (u_ UnsharpMaskObject) SetRadius(value float64) {
+func (u_ UnsharpMaskObject) SetRadius(value float32) {
 	objc.Call[objc.Void](u_, objc.Sel("setRadius:"), value)
 }
 
@@ -84,8 +84,8 @@ func (u_ UnsharpMaskObject) HasRadius() bool {
 // The radius of the unsharp mask effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228821-radius?language=objc
-func (u_ UnsharpMaskObject) Radius() float64 {
-	rv := objc.Call[float64](u_, objc.Sel("radius"))
+func (u_ UnsharpMaskObject) Radius() float32 {
+	rv := objc.Call[float32](u_, objc.Sel("radius"))
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (u_ UnsharpMaskObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciunsharpmask/3228819-inputimage?language=objc
 func (u_ UnsharpMaskObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](u_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](u_, objc.Sel("setInputImage:"), value)
 }
 
 func (u_ UnsharpMaskObject) HasInputImage() bool {

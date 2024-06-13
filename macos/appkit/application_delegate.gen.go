@@ -1023,7 +1023,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillResignActive() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428539-applicationwillresignactive?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillResignActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillResignActive:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillResignActive:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationWillHide() bool {
@@ -1034,7 +1034,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillHide() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428478-applicationwillhide?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillHide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillHide:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillHide:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDockMenu() bool {
@@ -1045,7 +1045,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDockMenu() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428564-applicationdockmenu?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDockMenu(sender Application) Menu {
-	rv := objc.Call[Menu](a_, objc.Sel("applicationDockMenu:"), objc.Ptr(sender))
+	rv := objc.Call[Menu](a_, objc.Sel("applicationDockMenu:"), sender)
 	return rv
 }
 
@@ -1057,7 +1057,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidChangeOcclusionState() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428362-applicationdidchangeocclusionsta?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidChangeOcclusionState(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeOcclusionState:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeOcclusionState:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationShouldTerminate() bool {
@@ -1068,7 +1068,7 @@ func (a_ ApplicationDelegateObject) HasApplicationShouldTerminate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428642-applicationshouldterminate?language=objc
 func (a_ ApplicationDelegateObject) ApplicationShouldTerminate(sender Application) ApplicationTerminateReply {
-	rv := objc.Call[ApplicationTerminateReply](a_, objc.Sel("applicationShouldTerminate:"), objc.Ptr(sender))
+	rv := objc.Call[ApplicationTerminateReply](a_, objc.Sel("applicationShouldTerminate:"), sender)
 	return rv
 }
 
@@ -1080,7 +1080,7 @@ func (a_ ApplicationDelegateObject) HasApplicationShouldTerminateAfterLastWindow
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428381-applicationshouldterminateafterl?language=objc
 func (a_ ApplicationDelegateObject) ApplicationShouldTerminateAfterLastWindowClosed(sender Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"), objc.Ptr(sender))
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldTerminateAfterLastWindowClosed:"), sender)
 	return rv
 }
 
@@ -1092,7 +1092,7 @@ func (a_ ApplicationDelegateObject) HasApplicationSupportsSecureRestorableState(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3762521-applicationsupportssecurerestora?language=objc
 func (a_ ApplicationDelegateObject) ApplicationSupportsSecureRestorableState(app Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationSupportsSecureRestorableState:"), objc.Ptr(app))
+	rv := objc.Call[bool](a_, objc.Sel("applicationSupportsSecureRestorableState:"), app)
 	return rv
 }
 
@@ -1104,7 +1104,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidReceiveRemoteNotification()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428430-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidReceiveRemoteNotification(application Application, userInfo map[string]objc.Object) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didReceiveRemoteNotification:"), objc.Ptr(application), userInfo)
+	objc.Call[objc.Void](a_, objc.Sel("application:didReceiveRemoteNotification:"), application, userInfo)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationProtectedDataDidBecomeAvailable() bool {
@@ -1115,7 +1115,7 @@ func (a_ ApplicationDelegateObject) HasApplicationProtectedDataDidBecomeAvailabl
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752993-applicationprotecteddatadidbecom?language=objc
 func (a_ ApplicationDelegateObject) ApplicationProtectedDataDidBecomeAvailable(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataDidBecomeAvailable:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataDidBecomeAvailable:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationShouldHandleReopenHasVisibleWindows() bool {
@@ -1126,7 +1126,7 @@ func (a_ ApplicationDelegateObject) HasApplicationShouldHandleReopenHasVisibleWi
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428638-applicationshouldhandlereopen?language=objc
 func (a_ ApplicationDelegateObject) ApplicationShouldHandleReopenHasVisibleWindows(sender Application, flag bool) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"), objc.Ptr(sender), flag)
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldHandleReopen:hasVisibleWindows:"), sender, flag)
 	return rv
 }
 
@@ -1138,7 +1138,7 @@ func (a_ ApplicationDelegateObject) HasApplicationOpenURLs() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2887193-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationOpenURLs(application Application, urls []foundation.URL) {
-	objc.Call[objc.Void](a_, objc.Sel("application:openURLs:"), objc.Ptr(application), urls)
+	objc.Call[objc.Void](a_, objc.Sel("application:openURLs:"), application, urls)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationOpenFile() bool {
@@ -1149,7 +1149,7 @@ func (a_ ApplicationDelegateObject) HasApplicationOpenFile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428612-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationOpenFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:openFile:"), objc.Ptr(sender), filename)
+	rv := objc.Call[bool](a_, objc.Sel("application:openFile:"), sender, filename)
 	return rv
 }
 
@@ -1161,7 +1161,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillUpdate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428774-applicationwillupdate?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillUpdate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillUpdate:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillUpdate:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationContinueUserActivityRestorationHandler() bool {
@@ -1172,7 +1172,7 @@ func (a_ ApplicationDelegateObject) HasApplicationContinueUserActivityRestoratio
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428471-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationContinueUserActivityRestorationHandler(application Application, userActivity foundation.UserActivity, restorationHandler func(restorableObjects []UserActivityRestoringObject)) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:continueUserActivity:restorationHandler:"), objc.Ptr(application), objc.Ptr(userActivity), restorationHandler)
+	rv := objc.Call[bool](a_, objc.Sel("application:continueUserActivity:restorationHandler:"), application, userActivity, restorationHandler)
 	return rv
 }
 
@@ -1184,7 +1184,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillEncodeRestorableState() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428400-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillEncodeRestorableState(app Application, coder foundation.Coder) {
-	objc.Call[objc.Void](a_, objc.Sel("application:willEncodeRestorableState:"), objc.Ptr(app), objc.Ptr(coder))
+	objc.Call[objc.Void](a_, objc.Sel("application:willEncodeRestorableState:"), app, coder)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDelegateHandlesKey() bool {
@@ -1195,7 +1195,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDelegateHandlesKey() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3005173-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDelegateHandlesKey(sender Application, key string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:delegateHandlesKey:"), objc.Ptr(sender), key)
+	rv := objc.Call[bool](a_, objc.Sel("application:delegateHandlesKey:"), sender, key)
 	return rv
 }
 
@@ -1207,7 +1207,7 @@ func (a_ ApplicationDelegateObject) HasApplicationShouldAutomaticallyLocalizeKey
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3787553-applicationshouldautomaticallylo?language=objc
 func (a_ ApplicationDelegateObject) ApplicationShouldAutomaticallyLocalizeKeyEquivalents(application Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), objc.Ptr(application))
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldAutomaticallyLocalizeKeyEquivalents:"), application)
 	return rv
 }
 
@@ -1219,7 +1219,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillPresentError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428721-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillPresentError(application Application, error foundation.Error) foundation.Error {
-	rv := objc.Call[foundation.Error](a_, objc.Sel("application:willPresentError:"), objc.Ptr(application), objc.Ptr(error))
+	rv := objc.Call[foundation.Error](a_, objc.Sel("application:willPresentError:"), application, error)
 	return rv
 }
 
@@ -1231,7 +1231,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillTerminate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428522-applicationwillterminate?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillTerminate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillTerminate:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillTerminate:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidFailToContinueUserActivityWithTypeError() bool {
@@ -1242,7 +1242,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidFailToContinueUserActivityW
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428613-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidFailToContinueUserActivityWithTypeError(application Application, userActivityType string, error foundation.Error) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didFailToContinueUserActivityWithType:error:"), objc.Ptr(application), userActivityType, objc.Ptr(error))
+	objc.Call[objc.Void](a_, objc.Sel("application:didFailToContinueUserActivityWithType:error:"), application, userActivityType, error)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationWillContinueUserActivityWithType() bool {
@@ -1253,7 +1253,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillContinueUserActivityWithTy
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428364-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillContinueUserActivityWithType(application Application, userActivityType string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:willContinueUserActivityWithType:"), objc.Ptr(application), userActivityType)
+	rv := objc.Call[bool](a_, objc.Sel("application:willContinueUserActivityWithType:"), application, userActivityType)
 	return rv
 }
 
@@ -1265,7 +1265,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillFinishLaunching() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428623-applicationwillfinishlaunching?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillFinishLaunching(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillFinishLaunching:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillFinishLaunching:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidBecomeActive() bool {
@@ -1276,7 +1276,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidBecomeActive() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428577-applicationdidbecomeactive?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidBecomeActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidBecomeActive:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidBecomeActive:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidFailToRegisterForRemoteNotificationsWithError() bool {
@@ -1287,7 +1287,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidFailToRegisterForRemoteNoti
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428554-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidFailToRegisterForRemoteNotificationsWithError(application Application, error foundation.Error) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didFailToRegisterForRemoteNotificationsWithError:"), objc.Ptr(application), objc.Ptr(error))
+	objc.Call[objc.Void](a_, objc.Sel("application:didFailToRegisterForRemoteNotificationsWithError:"), application, error)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidUpdate() bool {
@@ -1298,7 +1298,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidUpdate() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428589-applicationdidupdate?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidUpdate(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidUpdate:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidUpdate:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidChangeScreenParameters() bool {
@@ -1309,7 +1309,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidChangeScreenParameters() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428424-applicationdidchangescreenparame?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidChangeScreenParameters(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeScreenParameters:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidChangeScreenParameters:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationPrintFilesWithSettingsShowPrintPanels() bool {
@@ -1320,7 +1320,7 @@ func (a_ ApplicationDelegateObject) HasApplicationPrintFilesWithSettingsShowPrin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428713-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationPrintFilesWithSettingsShowPrintPanels(application Application, fileNames []string, printSettings map[PrintInfoAttributeKey]objc.Object, showPrintPanels bool) ApplicationPrintReply {
-	rv := objc.Call[ApplicationPrintReply](a_, objc.Sel("application:printFiles:withSettings:showPrintPanels:"), objc.Ptr(application), fileNames, printSettings, showPrintPanels)
+	rv := objc.Call[ApplicationPrintReply](a_, objc.Sel("application:printFiles:withSettings:showPrintPanels:"), application, fileNames, printSettings, showPrintPanels)
 	return rv
 }
 
@@ -1332,7 +1332,7 @@ func (a_ ApplicationDelegateObject) HasApplicationHandlerForIntent() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3786062-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationHandlerForIntent(application Application, intent objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("application:handlerForIntent:"), objc.Ptr(application), objc.Ptr(intent))
+	rv := objc.Call[objc.Object](a_, objc.Sel("application:handlerForIntent:"), application, intent)
 	return rv
 }
 
@@ -1344,7 +1344,7 @@ func (a_ ApplicationDelegateObject) HasApplicationUserDidAcceptCloudKitShareWith
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/2138329-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationUserDidAcceptCloudKitShareWithMetadata(application Application, metadata objc.Object) {
-	objc.Call[objc.Void](a_, objc.Sel("application:userDidAcceptCloudKitShareWithMetadata:"), objc.Ptr(application), objc.Ptr(metadata))
+	objc.Call[objc.Void](a_, objc.Sel("application:userDidAcceptCloudKitShareWithMetadata:"), application, metadata)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidDecodeRestorableState() bool {
@@ -1355,7 +1355,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidDecodeRestorableState() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428693-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidDecodeRestorableState(app Application, coder foundation.Coder) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didDecodeRestorableState:"), objc.Ptr(app), objc.Ptr(coder))
+	objc.Call[objc.Void](a_, objc.Sel("application:didDecodeRestorableState:"), app, coder)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidUpdateUserActivity() bool {
@@ -1366,7 +1366,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidUpdateUserActivity() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428457-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidUpdateUserActivity(application Application, userActivity foundation.UserActivity) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didUpdateUserActivity:"), objc.Ptr(application), objc.Ptr(userActivity))
+	objc.Call[objc.Void](a_, objc.Sel("application:didUpdateUserActivity:"), application, userActivity)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidResignActive() bool {
@@ -1377,7 +1377,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidResignActive() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428636-applicationdidresignactive?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidResignActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidResignActive:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidResignActive:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidRegisterForRemoteNotificationsWithDeviceToken() bool {
@@ -1388,7 +1388,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidRegisterForRemoteNotificati
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428766-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidRegisterForRemoteNotificationsWithDeviceToken(application Application, deviceToken []byte) {
-	objc.Call[objc.Void](a_, objc.Sel("application:didRegisterForRemoteNotificationsWithDeviceToken:"), objc.Ptr(application), deviceToken)
+	objc.Call[objc.Void](a_, objc.Sel("application:didRegisterForRemoteNotificationsWithDeviceToken:"), application, deviceToken)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationOpenFiles() bool {
@@ -1399,7 +1399,7 @@ func (a_ ApplicationDelegateObject) HasApplicationOpenFiles() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428742-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationOpenFiles(sender Application, filenames []string) {
-	objc.Call[objc.Void](a_, objc.Sel("application:openFiles:"), objc.Ptr(sender), filenames)
+	objc.Call[objc.Void](a_, objc.Sel("application:openFiles:"), sender, filenames)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationProtectedDataWillBecomeUnavailable() bool {
@@ -1410,7 +1410,7 @@ func (a_ ApplicationDelegateObject) HasApplicationProtectedDataWillBecomeUnavail
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/3752994-applicationprotecteddatawillbeco?language=objc
 func (a_ ApplicationDelegateObject) ApplicationProtectedDataWillBecomeUnavailable(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataWillBecomeUnavailable:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationProtectedDataWillBecomeUnavailable:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationOpenFileWithoutUI() bool {
@@ -1433,7 +1433,7 @@ func (a_ ApplicationDelegateObject) HasApplicationOpenTempFile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428495-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationOpenTempFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:openTempFile:"), objc.Ptr(sender), filename)
+	rv := objc.Call[bool](a_, objc.Sel("application:openTempFile:"), sender, filename)
 	return rv
 }
 
@@ -1445,7 +1445,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidHide() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428552-applicationdidhide?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidHide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidHide:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidHide:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationShouldOpenUntitledFile() bool {
@@ -1456,7 +1456,7 @@ func (a_ ApplicationDelegateObject) HasApplicationShouldOpenUntitledFile() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428444-applicationshouldopenuntitledfil?language=objc
 func (a_ ApplicationDelegateObject) ApplicationShouldOpenUntitledFile(sender Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationShouldOpenUntitledFile:"), objc.Ptr(sender))
+	rv := objc.Call[bool](a_, objc.Sel("applicationShouldOpenUntitledFile:"), sender)
 	return rv
 }
 
@@ -1468,7 +1468,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillBecomeActive() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428699-applicationwillbecomeactive?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillBecomeActive(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillBecomeActive:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillBecomeActive:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidFinishLaunching() bool {
@@ -1479,7 +1479,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidFinishLaunching() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428385-applicationdidfinishlaunching?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidFinishLaunching(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidFinishLaunching:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidFinishLaunching:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationDidUnhide() bool {
@@ -1490,7 +1490,7 @@ func (a_ ApplicationDelegateObject) HasApplicationDidUnhide() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428755-applicationdidunhide?language=objc
 func (a_ ApplicationDelegateObject) ApplicationDidUnhide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationDidUnhide:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationDidUnhide:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationWillUnhide() bool {
@@ -1501,7 +1501,7 @@ func (a_ ApplicationDelegateObject) HasApplicationWillUnhide() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428585-applicationwillunhide?language=objc
 func (a_ ApplicationDelegateObject) ApplicationWillUnhide(notification foundation.Notification) {
-	objc.Call[objc.Void](a_, objc.Sel("applicationWillUnhide:"), objc.Ptr(notification))
+	objc.Call[objc.Void](a_, objc.Sel("applicationWillUnhide:"), notification)
 }
 
 func (a_ ApplicationDelegateObject) HasApplicationOpenUntitledFile() bool {
@@ -1512,7 +1512,7 @@ func (a_ ApplicationDelegateObject) HasApplicationOpenUntitledFile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428491-applicationopenuntitledfile?language=objc
 func (a_ ApplicationDelegateObject) ApplicationOpenUntitledFile(sender Application) bool {
-	rv := objc.Call[bool](a_, objc.Sel("applicationOpenUntitledFile:"), objc.Ptr(sender))
+	rv := objc.Call[bool](a_, objc.Sel("applicationOpenUntitledFile:"), sender)
 	return rv
 }
 
@@ -1524,6 +1524,6 @@ func (a_ ApplicationDelegateObject) HasApplicationPrintFile() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsapplicationdelegate/1428520-application?language=objc
 func (a_ ApplicationDelegateObject) ApplicationPrintFile(sender Application, filename string) bool {
-	rv := objc.Call[bool](a_, objc.Sel("application:printFile:"), objc.Ptr(sender), filename)
+	rv := objc.Call[bool](a_, objc.Sel("application:printFile:"), sender, filename)
 	return rv
 }

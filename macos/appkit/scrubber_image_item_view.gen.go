@@ -108,5 +108,5 @@ func (s_ ScrubberImageItemView) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberimageitemview/2544761-image?language=objc
 func (s_ ScrubberImageItemView) SetImage(value IImage) {
-	objc.Call[objc.Void](s_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setImage:"), value)
 }

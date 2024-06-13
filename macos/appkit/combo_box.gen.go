@@ -103,7 +103,7 @@ func ComboBox_LabelWithString(stringValue string) ComboBox {
 }
 
 func (cc _ComboBoxClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) ComboBox {
-	rv := objc.Call[ComboBox](cc, objc.Sel("labelWithAttributedString:"), objc.Ptr(attributedStringValue))
+	rv := objc.Call[ComboBox](cc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
@@ -302,7 +302,7 @@ func (c_ ComboBox) SetDataSource(value PComboBoxDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscombobox/1436729-datasource?language=objc
 func (c_ ComboBox) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setDataSource:"), valueObject)
 }
 
 // A Boolean value indicating whether the combo box displays a border. [Full Topic]

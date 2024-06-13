@@ -42,7 +42,7 @@ func DateIntervalFrom(ptr unsafe.Pointer) DateInterval {
 }
 
 func (d_ DateInterval) InitWithStartDateEndDate(startDate IDate, endDate IDate) DateInterval {
-	rv := objc.Call[DateInterval](d_, objc.Sel("initWithStartDate:endDate:"), objc.Ptr(startDate), objc.Ptr(endDate))
+	rv := objc.Call[DateInterval](d_, objc.Sel("initWithStartDate:endDate:"), startDate, endDate)
 	return rv
 }
 
@@ -61,7 +61,7 @@ func (d_ DateInterval) Init() DateInterval {
 }
 
 func (d_ DateInterval) InitWithStartDateDuration(startDate IDate, duration TimeInterval) DateInterval {
-	rv := objc.Call[DateInterval](d_, objc.Sel("initWithStartDate:duration:"), objc.Ptr(startDate), duration)
+	rv := objc.Call[DateInterval](d_, objc.Sel("initWithStartDate:duration:"), startDate, duration)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func NewDateInterval() DateInterval {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641636-compare?language=objc
 func (d_ DateInterval) Compare(dateInterval IDateInterval) ComparisonResult {
-	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), objc.Ptr(dateInterval))
+	rv := objc.Call[ComparisonResult](d_, objc.Sel("compare:"), dateInterval)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func (d_ DateInterval) Compare(dateInterval IDateInterval) ComparisonResult {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641647-containsdate?language=objc
 func (d_ DateInterval) ContainsDate(date IDate) bool {
-	rv := objc.Call[bool](d_, objc.Sel("containsDate:"), objc.Ptr(date))
+	rv := objc.Call[bool](d_, objc.Sel("containsDate:"), date)
 	return rv
 }
 
@@ -109,7 +109,7 @@ func (d_ DateInterval) ContainsDate(date IDate) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641654-intersectsdateinterval?language=objc
 func (d_ DateInterval) IntersectsDateInterval(dateInterval IDateInterval) bool {
-	rv := objc.Call[bool](d_, objc.Sel("intersectsDateInterval:"), objc.Ptr(dateInterval))
+	rv := objc.Call[bool](d_, objc.Sel("intersectsDateInterval:"), dateInterval)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func (d_ DateInterval) IntersectsDateInterval(dateInterval IDateInterval) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641650-isequaltodateinterval?language=objc
 func (d_ DateInterval) IsEqualToDateInterval(dateInterval IDateInterval) bool {
-	rv := objc.Call[bool](d_, objc.Sel("isEqualToDateInterval:"), objc.Ptr(dateInterval))
+	rv := objc.Call[bool](d_, objc.Sel("isEqualToDateInterval:"), dateInterval)
 	return rv
 }
 
@@ -125,7 +125,7 @@ func (d_ DateInterval) IsEqualToDateInterval(dateInterval IDateInterval) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdateinterval/1641645-intersectionwithdateinterval?language=objc
 func (d_ DateInterval) IntersectionWithDateInterval(dateInterval IDateInterval) DateInterval {
-	rv := objc.Call[DateInterval](d_, objc.Sel("intersectionWithDateInterval:"), objc.Ptr(dateInterval))
+	rv := objc.Call[DateInterval](d_, objc.Sel("intersectionWithDateInterval:"), dateInterval)
 	return rv
 }
 

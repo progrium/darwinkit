@@ -54,7 +54,7 @@ func ScriptObjectSpecifierFrom(ptr unsafe.Pointer) ScriptObjectSpecifier {
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	rv := objc.Call[ScriptObjectSpecifier](s_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[ScriptObjectSpecifier](s_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewScriptObjectSpecifierWithContainerClassDescriptionContainerSpecifierKey(
 }
 
 func (s_ ScriptObjectSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) ScriptObjectSpecifier {
-	rv := objc.Call[ScriptObjectSpecifier](s_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[ScriptObjectSpecifier](s_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (s_ ScriptObjectSpecifier) Init() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409779-objectspecifierwithdescriptor?language=objc
 func (sc _ScriptObjectSpecifierClass) ObjectSpecifierWithDescriptor(descriptor IAppleEventDescriptor) ScriptObjectSpecifier {
-	rv := objc.Call[ScriptObjectSpecifier](sc, objc.Sel("objectSpecifierWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[ScriptObjectSpecifier](sc, objc.Sel("objectSpecifierWithDescriptor:"), descriptor)
 	return rv
 }
 
@@ -160,7 +160,7 @@ func (s_ ScriptObjectSpecifier) ChildSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1409882-childspecifier?language=objc
 func (s_ ScriptObjectSpecifier) SetChildSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](s_, objc.Sel("setChildSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setChildSpecifier:"), value)
 }
 
 // Sets whether the receiver’s container is to be the container for a range specifier or a top-level object. [Full Topic]
@@ -190,7 +190,7 @@ func (s_ ScriptObjectSpecifier) ContainerClassDescription() ScriptClassDescripti
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1413179-containerclassdescription?language=objc
 func (s_ ScriptObjectSpecifier) SetContainerClassDescription(value IScriptClassDescription) {
-	objc.Call[objc.Void](s_, objc.Sel("setContainerClassDescription:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContainerClassDescription:"), value)
 }
 
 // Sets the key of the receiver. [Full Topic]
@@ -228,7 +228,7 @@ func (s_ ScriptObjectSpecifier) ContainerSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptobjectspecifier/1414424-containerspecifier?language=objc
 func (s_ ScriptObjectSpecifier) SetContainerSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](s_, objc.Sel("setContainerSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setContainerSpecifier:"), value)
 }
 
 // Sets whether the receiver’s container should be an object involved in a filter reference or the top-level object. [Full Topic]

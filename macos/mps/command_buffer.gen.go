@@ -138,7 +138,7 @@ func (c_ CommandBuffer) Predicate() Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3114032-predicate?language=objc
 func (c_ CommandBuffer) SetPredicate(value IPredicate) {
-	objc.Call[objc.Void](c_, objc.Sel("setPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setPredicate:"), value)
 }
 
 //	[Full Topic]
@@ -161,7 +161,7 @@ func (c_ CommandBuffer) SetHeapProvider(value PHeapProvider) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscommandbuffer/3229857-heapprovider?language=objc
 func (c_ CommandBuffer) SetHeapProviderObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("setHeapProvider:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](c_, objc.Sel("setHeapProvider:"), valueObject)
 }
 
 //	[Full Topic]

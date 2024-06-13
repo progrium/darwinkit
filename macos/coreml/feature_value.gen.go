@@ -71,51 +71,51 @@ func FeatureValue_FeatureValueWithDouble(value float64) FeatureValue {
 	return FeatureValueClass.FeatureValueWithDouble(value)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithImageAtURLOrientationConstraintOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:orientation:constraint:options:error:"), objc.Ptr(url), orientation, objc.Ptr(constraint), options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithImageAtURLOrientationConstraintOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:orientation:constraint:options:error:"), url, orientation, constraint, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by an image URL, an orientation, and a constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3362524-featurevaluewithimageaturl?language=objc
-func FeatureValue_FeatureValueWithImageAtURLOrientationConstraintOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithImageAtURLOrientationConstraintOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithImageAtURLOrientationConstraintOptionsError(url, orientation, constraint, options, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithCGImageConstraintOptionsError(cgImage coregraphics.ImageRef, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:constraint:options:error:"), cgImage, objc.Ptr(constraint), options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithCGImageConstraintOptionsError(cgImage coregraphics.ImageRef, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:constraint:options:error:"), cgImage, constraint, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by a core graphics image and a constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3200160-featurevaluewithcgimage?language=objc
-func FeatureValue_FeatureValueWithCGImageConstraintOptionsError(cgImage coregraphics.ImageRef, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithCGImageConstraintOptionsError(cgImage coregraphics.ImageRef, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithCGImageConstraintOptionsError(cgImage, constraint, options, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithCGImageOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:orientation:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), cgImage, orientation, pixelsWide, pixelsHigh, pixelFormatType, options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithCGImageOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:orientation:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), cgImage, orientation, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by a core graphics image and its orientation, size, and pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3362523-featurevaluewithcgimage?language=objc
-func FeatureValue_FeatureValueWithCGImageOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithCGImageOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithCGImageOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage, orientation, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithImageAtURLConstraintOptionsError(url foundation.IURL, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:constraint:options:error:"), objc.Ptr(url), objc.Ptr(constraint), options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithImageAtURLConstraintOptionsError(url foundation.IURL, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:constraint:options:error:"), url, constraint, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by an image URL and a constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3200162-featurevaluewithimageaturl?language=objc
-func FeatureValue_FeatureValueWithImageAtURLConstraintOptionsError(url foundation.IURL, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithImageAtURLConstraintOptionsError(url foundation.IURL, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithImageAtURLConstraintOptionsError(url, constraint, options, error)
 }
 
@@ -143,39 +143,39 @@ func FeatureValue_FeatureValueWithString(value string) FeatureValue {
 	return FeatureValueClass.FeatureValueWithString(value)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithCGImageOrientationConstraintOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:orientation:constraint:options:error:"), cgImage, orientation, objc.Ptr(constraint), options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithCGImageOrientationConstraintOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:orientation:constraint:options:error:"), cgImage, orientation, constraint, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by a core graphics image, an orientation, and a constraint. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3362522-featurevaluewithcgimage?language=objc
-func FeatureValue_FeatureValueWithCGImageOrientationConstraintOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithCGImageOrientationConstraintOptionsError(cgImage coregraphics.ImageRef, orientation imageio.ImagePropertyOrientation, constraint IImageConstraint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithCGImageOrientationConstraintOptionsError(cgImage, orientation, constraint, options, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithDictionaryError(value foundation.Dictionary, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithDictionary:error:"), value, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithDictionaryError(value foundation.Dictionary, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithDictionary:error:"), value, error)
 	return rv
 }
 
 // Creates a feature value that contains a dictionary of numbers. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879393-featurevaluewithdictionary?language=objc
-func FeatureValue_FeatureValueWithDictionaryError(value foundation.Dictionary, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithDictionaryError(value foundation.Dictionary, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithDictionaryError(value, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithImageAtURLPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), objc.Ptr(url), pixelsWide, pixelsHigh, pixelFormatType, options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithImageAtURLPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), url, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by an image URL and the image’s size and pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3200163-featurevaluewithimageaturl?language=objc
-func FeatureValue_FeatureValueWithImageAtURLPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithImageAtURLPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithImageAtURLPixelsWidePixelsHighPixelFormatTypeOptionsError(url, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 }
 
@@ -192,7 +192,7 @@ func FeatureValue_FeatureValueWithInt64(value int64) FeatureValue {
 }
 
 func (fc _FeatureValueClass) FeatureValueWithSequence(sequence ISequence) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithSequence:"), objc.Ptr(sequence))
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithSequence:"), sequence)
 	return rv
 }
 
@@ -204,7 +204,7 @@ func FeatureValue_FeatureValueWithSequence(sequence ISequence) FeatureValue {
 }
 
 func (fc _FeatureValueClass) FeatureValueWithMultiArray(value IMultiArray) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithMultiArray:"), objc.Ptr(value))
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithMultiArray:"), value)
 	return rv
 }
 
@@ -215,27 +215,27 @@ func FeatureValue_FeatureValueWithMultiArray(value IMultiArray) FeatureValue {
 	return FeatureValueClass.FeatureValueWithMultiArray(value)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithCGImagePixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), cgImage, pixelsWide, pixelsHigh, pixelFormatType, options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithCGImagePixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithCGImage:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), cgImage, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by a core graphics image and its size and pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3200161-featurevaluewithcgimage?language=objc
-func FeatureValue_FeatureValueWithCGImagePixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithCGImagePixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage coregraphics.ImageRef, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithCGImagePixelsWidePixelsHighPixelFormatTypeOptionsError(cgImage, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 }
 
-func (fc _FeatureValueClass) FeatureValueWithImageAtURLOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
-	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:orientation:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), objc.Ptr(url), orientation, pixelsWide, pixelsHigh, pixelFormatType, options, objc.Ptr(error))
+func (fc _FeatureValueClass) FeatureValueWithImageAtURLOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
+	rv := objc.Call[FeatureValue](fc, objc.Sel("featureValueWithImageAtURL:orientation:pixelsWide:pixelsHigh:pixelFormatType:options:error:"), url, orientation, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 	return rv
 }
 
 // Creates a feature value that contains an image defined by an image URL and the image’s orientation, size, and pixel format. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/3362525-featurevaluewithimageaturl?language=objc
-func FeatureValue_FeatureValueWithImageAtURLOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error foundation.IError) FeatureValue {
+func FeatureValue_FeatureValueWithImageAtURLOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(url foundation.IURL, orientation imageio.ImagePropertyOrientation, pixelsWide int, pixelsHigh int, pixelFormatType uint, options map[FeatureValueImageOption]objc.IObject, error unsafe.Pointer) FeatureValue {
 	return FeatureValueClass.FeatureValueWithImageAtURLOrientationPixelsWidePixelsHighPixelFormatTypeOptionsError(url, orientation, pixelsWide, pixelsHigh, pixelFormatType, options, error)
 }
 
@@ -263,7 +263,7 @@ func (f_ FeatureValue) Init() FeatureValue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlfeaturevalue/2879399-isequaltofeaturevalue?language=objc
 func (f_ FeatureValue) IsEqualToFeatureValue(value IFeatureValue) bool {
-	rv := objc.Call[bool](f_, objc.Sel("isEqualToFeatureValue:"), objc.Ptr(value))
+	rv := objc.Call[bool](f_, objc.Sel("isEqualToFeatureValue:"), value)
 	return rv
 }
 

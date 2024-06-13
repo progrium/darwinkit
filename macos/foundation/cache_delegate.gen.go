@@ -54,5 +54,5 @@ func (c_ CacheDelegateObject) HasCacheWillEvictObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscachedelegate/1416107-cache?language=objc
 func (c_ CacheDelegateObject) CacheWillEvictObject(cache Cache, obj objc.Object) {
-	objc.Call[objc.Void](c_, objc.Sel("cache:willEvictObject:"), objc.Ptr(cache), obj)
+	objc.Call[objc.Void](c_, objc.Sel("cache:willEvictObject:"), cache, obj)
 }

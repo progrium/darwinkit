@@ -88,7 +88,7 @@ func RasterizationRateMapDescriptor_RasterizationRateMapDescriptorWithScreenSize
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemapdescriptor/3131709-rasterizationratemapdescriptorwi?language=objc
 func (rc _RasterizationRateMapDescriptorClass) RasterizationRateMapDescriptorWithScreenSizeLayer(screenSize Size, layer IRasterizationRateLayerDescriptor) RasterizationRateMapDescriptor {
-	rv := objc.Call[RasterizationRateMapDescriptor](rc, objc.Sel("rasterizationRateMapDescriptorWithScreenSize:layer:"), screenSize, objc.Ptr(layer))
+	rv := objc.Call[RasterizationRateMapDescriptor](rc, objc.Sel("rasterizationRateMapDescriptorWithScreenSize:layer:"), screenSize, layer)
 	return rv
 }
 
@@ -102,15 +102,15 @@ func RasterizationRateMapDescriptor_RasterizationRateMapDescriptorWithScreenSize
 // Creates a rate map descriptor with a set of layer descriptors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemapdescriptor/3131710-rasterizationratemapdescriptorwi?language=objc
-func (rc _RasterizationRateMapDescriptorClass) RasterizationRateMapDescriptorWithScreenSizeLayerCountLayers(screenSize Size, layerCount uint, layers IRasterizationRateLayerDescriptor) RasterizationRateMapDescriptor {
-	rv := objc.Call[RasterizationRateMapDescriptor](rc, objc.Sel("rasterizationRateMapDescriptorWithScreenSize:layerCount:layers:"), screenSize, layerCount, objc.Ptr(layers))
+func (rc _RasterizationRateMapDescriptorClass) RasterizationRateMapDescriptorWithScreenSizeLayerCountLayers(screenSize Size, layerCount uint, layers unsafe.Pointer) RasterizationRateMapDescriptor {
+	rv := objc.Call[RasterizationRateMapDescriptor](rc, objc.Sel("rasterizationRateMapDescriptorWithScreenSize:layerCount:layers:"), screenSize, layerCount, layers)
 	return rv
 }
 
 // Creates a rate map descriptor with a set of layer descriptors. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemapdescriptor/3131710-rasterizationratemapdescriptorwi?language=objc
-func RasterizationRateMapDescriptor_RasterizationRateMapDescriptorWithScreenSizeLayerCountLayers(screenSize Size, layerCount uint, layers IRasterizationRateLayerDescriptor) RasterizationRateMapDescriptor {
+func RasterizationRateMapDescriptor_RasterizationRateMapDescriptorWithScreenSizeLayerCountLayers(screenSize Size, layerCount uint, layers unsafe.Pointer) RasterizationRateMapDescriptor {
 	return RasterizationRateMapDescriptorClass.RasterizationRateMapDescriptorWithScreenSizeLayerCountLayers(screenSize, layerCount, layers)
 }
 
@@ -118,7 +118,7 @@ func RasterizationRateMapDescriptor_RasterizationRateMapDescriptorWithScreenSize
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrasterizationratemapdescriptor/3131712-setlayer?language=objc
 func (r_ RasterizationRateMapDescriptor) SetLayerAtIndex(layer IRasterizationRateLayerDescriptor, layerIndex uint) {
-	objc.Call[objc.Void](r_, objc.Sel("setLayer:atIndex:"), objc.Ptr(layer), layerIndex)
+	objc.Call[objc.Void](r_, objc.Sel("setLayer:atIndex:"), layer, layerIndex)
 }
 
 // The size of the viewport coordinate system, in logical pixels. [Full Topic]

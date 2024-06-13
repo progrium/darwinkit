@@ -57,7 +57,7 @@ func (s_ StatusBarButton) Init() StatusBarButton {
 }
 
 func (sc _StatusBarButtonClass) ButtonWithTitleImageTargetAction(title string, image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithTitle:image:target:action:"), title, objc.Ptr(image), target, action)
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithTitle:image:target:action:"), title, image, target, action)
 	return rv
 }
 
@@ -93,7 +93,7 @@ func StatusBarButton_CheckboxWithTitleTargetAction(title string, target objc.IOb
 }
 
 func (sc _StatusBarButtonClass) ButtonWithImageTargetAction(image IImage, target objc.IObject, action objc.Selector) StatusBarButton {
-	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithImage:target:action:"), objc.Ptr(image), target, action)
+	rv := objc.Call[StatusBarButton](sc, objc.Sel("buttonWithImage:target:action:"), image, target, action)
 	return rv
 }
 

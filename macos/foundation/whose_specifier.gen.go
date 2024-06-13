@@ -44,7 +44,7 @@ func WhoseSpecifierFrom(ptr unsafe.Pointer) WhoseSpecifier {
 }
 
 func (w_ WhoseSpecifier) InitWithContainerClassDescriptionContainerSpecifierKeyTest(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string, test IScriptWhoseTest) WhoseSpecifier {
-	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:test:"), objc.Ptr(classDesc), objc.Ptr(container), property, objc.Ptr(test))
+	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:test:"), classDesc, container, property, test)
 	return rv
 }
 
@@ -78,7 +78,7 @@ func (w_ WhoseSpecifier) Init() WhoseSpecifier {
 }
 
 func (w_ WhoseSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) WhoseSpecifier {
-	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func NewWhoseSpecifierWithContainerClassDescriptionContainerSpecifierKey(classDe
 }
 
 func (w_ WhoseSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) WhoseSpecifier {
-	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[WhoseSpecifier](w_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 
@@ -177,5 +177,5 @@ func (w_ WhoseSpecifier) Test() ScriptWhoseTest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nswhosespecifier/1412482-test?language=objc
 func (w_ WhoseSpecifier) SetTest(value IScriptWhoseTest) {
-	objc.Call[objc.Void](w_, objc.Sel("setTest:"), objc.Ptr(value))
+	objc.Call[objc.Void](w_, objc.Sel("setTest:"), value)
 }

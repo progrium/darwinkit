@@ -114,14 +114,14 @@ func NewMatrixFindTopKWithDevice(device metal.PDevice) MatrixFindTopK {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935579-encodetocommandbuffer?language=objc
 func (m_ MatrixFindTopK) EncodeToCommandBufferInputMatrixResultIndexMatrixResultValueMatrix(commandBuffer metal.PCommandBuffer, inputMatrix IMatrix, resultIndexMatrix IMatrix, resultValueMatrix IMatrix) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultIndexMatrix:resultValueMatrix:"), po0, objc.Ptr(inputMatrix), objc.Ptr(resultIndexMatrix), objc.Ptr(resultValueMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultIndexMatrix:resultValueMatrix:"), po0, inputMatrix, resultIndexMatrix, resultValueMatrix)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixfindtopk/2935579-encodetocommandbuffer?language=objc
 func (m_ MatrixFindTopK) EncodeToCommandBufferObjectInputMatrixResultIndexMatrixResultValueMatrix(commandBufferObject objc.IObject, inputMatrix IMatrix, resultIndexMatrix IMatrix, resultValueMatrix IMatrix) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultIndexMatrix:resultValueMatrix:"), objc.Ptr(commandBufferObject), objc.Ptr(inputMatrix), objc.Ptr(resultIndexMatrix), objc.Ptr(resultValueMatrix))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:inputMatrix:resultIndexMatrix:resultValueMatrix:"), commandBufferObject, inputMatrix, resultIndexMatrix, resultValueMatrix)
 }
 
 //	[Full Topic]

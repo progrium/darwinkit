@@ -232,7 +232,7 @@ func BezierPath_DrawPackedGlyphsAtPoint(packedGlyphs *uint8, point foundation.Po
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezierpath/1520635-transformusingaffinetransform?language=objc
 func (b_ BezierPath) TransformUsingAffineTransform(transform foundation.IAffineTransform) {
-	objc.Call[objc.Void](b_, objc.Sel("transformUsingAffineTransform:"), objc.Ptr(transform))
+	objc.Call[objc.Void](b_, objc.Sel("transformUsingAffineTransform:"), transform)
 }
 
 // Appends a rounded rectangular path to the path. [Full Topic]
@@ -253,7 +253,7 @@ func (b_ BezierPath) AppendBezierPathWithPointsCount(points foundation.PointArra
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezierpath/2887184-appendbezierpathwithcgglyph?language=objc
 func (b_ BezierPath) AppendBezierPathWithCGGlyphInFont(glyph coregraphics.Glyph, font IFont) {
-	objc.Call[objc.Void](b_, objc.Sel("appendBezierPathWithCGGlyph:inFont:"), glyph, objc.Ptr(font))
+	objc.Call[objc.Void](b_, objc.Sel("appendBezierPathWithCGGlyph:inFont:"), glyph, font)
 }
 
 // Removes all path elements from the path, effectively clearing the path. [Full Topic]
@@ -310,7 +310,7 @@ func (b_ BezierPath) AppendBezierPathWithArcFromPointToPointRadius(point1 founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezierpath/2887165-appendbezierpathwithcgglyphs?language=objc
 func (b_ BezierPath) AppendBezierPathWithCGGlyphsCountInFont(glyphs *coregraphics.Glyph, count int, font IFont) {
-	objc.Call[objc.Void](b_, objc.Sel("appendBezierPathWithCGGlyphs:count:inFont:"), glyphs, count, objc.Ptr(font))
+	objc.Call[objc.Void](b_, objc.Sel("appendBezierPathWithCGGlyphs:count:inFont:"), glyphs, count, font)
 }
 
 // Appends a rectangular path to the path. [Full Topic]
@@ -415,7 +415,7 @@ func (b_ BezierPath) MoveToPoint(point foundation.Point) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbezierpath/1520688-appendbezierpath?language=objc
 func (b_ BezierPath) AppendBezierPath(path IBezierPath) {
-	objc.Call[objc.Void](b_, objc.Sel("appendBezierPath:"), objc.Ptr(path))
+	objc.Call[objc.Void](b_, objc.Sel("appendBezierPath:"), path)
 }
 
 // Intersects the specified rectangle with the clipping path of the current graphics context and makes the resulting shape the current clipping path. [Full Topic]

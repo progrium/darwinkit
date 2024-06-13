@@ -44,7 +44,7 @@ func ErrorFrom(ptr unsafe.Pointer) Error {
 }
 
 func (ec _ErrorClass) FileProviderErrorForRejectedDeletionOfItem(updatedVersion objc.IObject) Error {
-	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForRejectedDeletionOfItem:"), objc.Ptr(updatedVersion))
+	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForRejectedDeletionOfItem:"), updatedVersion)
 	return rv
 }
 
@@ -56,7 +56,7 @@ func Error_FileProviderErrorForRejectedDeletionOfItem(updatedVersion objc.IObjec
 }
 
 func (ec _ErrorClass) FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc.IObject) Error {
-	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForNonExistentItemWithIdentifier:"), objc.Ptr(itemIdentifier))
+	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForNonExistentItemWithIdentifier:"), itemIdentifier)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func Error_FileProviderErrorForNonExistentItemWithIdentifier(itemIdentifier objc
 }
 
 func (ec _ErrorClass) FileProviderErrorForCollisionWithItem(existingItem objc.IObject) Error {
-	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForCollisionWithItem:"), objc.Ptr(existingItem))
+	rv := objc.Call[Error](ec, objc.Sel("fileProviderErrorForCollisionWithItem:"), existingItem)
 	return rv
 }
 

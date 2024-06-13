@@ -35,7 +35,7 @@ type ITypesetter interface {
 	LayoutCharactersInRangeForLayoutManagerMaximumNumberOfLineFragments(characterRange foundation.Range, layoutManager ILayoutManager, maxNumLines uint) foundation.Range
 	TextTabForGlyphLocationWritingDirectionMaxLocation(glyphLocation float64, direction WritingDirection, maxLocation float64) TextTab
 	SetLineFragmentRectForGlyphRangeUsedRectBaselineOffset(fragmentRect foundation.Rect, glyphRange foundation.Range, usedRect foundation.Rect, baselineOffset float64)
-	HyphenationFactorForGlyphAtIndex(glyphIndex uint) float64
+	HyphenationFactorForGlyphAtIndex(glyphIndex uint) float32
 	GlyphRangeForCharacterRangeActualCharacterRange(charRange foundation.Range, actualCharRange foundation.RangePointer) foundation.Range
 	BoundingBoxForControlGlyphAtIndexForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(glyphIndex uint, textContainer ITextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect
 	BeginLineWithGlyphAtIndex(glyphIndex uint)
@@ -50,8 +50,8 @@ type ITypesetter interface {
 	EndLineWithGlyphRange(lineGlyphRange foundation.Range)
 	SubstituteFontForFont(originalFont IFont) Font
 	ParagraphSeparatorCharacterRange() foundation.Range
-	HyphenationFactor() float64
-	SetHyphenationFactor(value float64)
+	HyphenationFactor() float32
+	SetHyphenationFactor(value float32)
 	AttributedString() foundation.AttributedString
 	SetAttributedString(value foundation.IAttributedString)
 	CurrentParagraphStyle() ParagraphStyle
@@ -176,7 +176,7 @@ func (t_ Typesetter) EndParagraph() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1530764-printingadjustmentinlayoutmanage?language=objc
 func (tc _TypesetterClass) PrintingAdjustmentInLayoutManagerForNominallySpacedGlyphRangePackedGlyphsCount(layoutMgr ILayoutManager, nominallySpacedGlyphsRange foundation.Range, packedGlyphs *uint8, packedGlyphsCount uint) foundation.Size {
-	rv := objc.Call[foundation.Size](tc, objc.Sel("printingAdjustmentInLayoutManager:forNominallySpacedGlyphRange:packedGlyphs:count:"), objc.Ptr(layoutMgr), nominallySpacedGlyphsRange, packedGlyphs, packedGlyphsCount)
+	rv := objc.Call[foundation.Size](tc, objc.Sel("printingAdjustmentInLayoutManager:forNominallySpacedGlyphRange:packedGlyphs:count:"), layoutMgr, nominallySpacedGlyphsRange, packedGlyphs, packedGlyphsCount)
 	return rv
 }
 
@@ -220,7 +220,7 @@ func (t_ Typesetter) BeginParagraph() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1535876-layoutcharactersinrange?language=objc
 func (t_ Typesetter) LayoutCharactersInRangeForLayoutManagerMaximumNumberOfLineFragments(characterRange foundation.Range, layoutManager ILayoutManager, maxNumLines uint) foundation.Range {
-	rv := objc.Call[foundation.Range](t_, objc.Sel("layoutCharactersInRange:forLayoutManager:maximumNumberOfLineFragments:"), characterRange, objc.Ptr(layoutManager), maxNumLines)
+	rv := objc.Call[foundation.Range](t_, objc.Sel("layoutCharactersInRange:forLayoutManager:maximumNumberOfLineFragments:"), characterRange, layoutManager, maxNumLines)
 	return rv
 }
 
@@ -242,8 +242,8 @@ func (t_ Typesetter) SetLineFragmentRectForGlyphRangeUsedRectBaselineOffset(frag
 // Returns the hyphenation factor in effect at a specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1533345-hyphenationfactorforglyphatindex?language=objc
-func (t_ Typesetter) HyphenationFactorForGlyphAtIndex(glyphIndex uint) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("hyphenationFactorForGlyphAtIndex:"), glyphIndex)
+func (t_ Typesetter) HyphenationFactorForGlyphAtIndex(glyphIndex uint) float32 {
+	rv := objc.Call[float32](t_, objc.Sel("hyphenationFactorForGlyphAtIndex:"), glyphIndex)
 	return rv
 }
 
@@ -259,7 +259,7 @@ func (t_ Typesetter) GlyphRangeForCharacterRangeActualCharacterRange(charRange f
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1535355-boundingboxforcontrolglyphatinde?language=objc
 func (t_ Typesetter) BoundingBoxForControlGlyphAtIndexForTextContainerProposedLineFragmentGlyphPositionCharacterIndex(glyphIndex uint, textContainer ITextContainer, proposedRect foundation.Rect, glyphPosition foundation.Point, charIndex uint) foundation.Rect {
-	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), glyphIndex, objc.Ptr(textContainer), proposedRect, glyphPosition, charIndex)
+	rv := objc.Call[foundation.Rect](t_, objc.Sel("boundingBoxForControlGlyphAtIndex:forTextContainer:proposedLineFragment:glyphPosition:characterIndex:"), glyphIndex, textContainer, proposedRect, glyphPosition, charIndex)
 	return rv
 }
 
@@ -319,7 +319,7 @@ func (t_ Typesetter) SetAttachmentSizeForGlyphRange(attachmentSize foundation.Si
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1535394-baselineoffsetinlayoutmanager?language=objc
 func (t_ Typesetter) BaselineOffsetInLayoutManagerGlyphIndex(layoutMgr ILayoutManager, glyphIndex uint) float64 {
-	rv := objc.Call[float64](t_, objc.Sel("baselineOffsetInLayoutManager:glyphIndex:"), objc.Ptr(layoutMgr), glyphIndex)
+	rv := objc.Call[float64](t_, objc.Sel("baselineOffsetInLayoutManager:glyphIndex:"), layoutMgr, glyphIndex)
 	return rv
 }
 
@@ -356,7 +356,7 @@ func (t_ Typesetter) EndLineWithGlyphRange(lineGlyphRange foundation.Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1526766-substitutefontforfont?language=objc
 func (t_ Typesetter) SubstituteFontForFont(originalFont IFont) Font {
-	rv := objc.Call[Font](t_, objc.Sel("substituteFontForFont:"), objc.Ptr(originalFont))
+	rv := objc.Call[Font](t_, objc.Sel("substituteFontForFont:"), originalFont)
 	return rv
 }
 
@@ -386,15 +386,15 @@ func Typesetter_SharedSystemTypesetter() Typesetter {
 // Returns the current hyphenation factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1535877-hyphenationfactor?language=objc
-func (t_ Typesetter) HyphenationFactor() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("hyphenationFactor"))
+func (t_ Typesetter) HyphenationFactor() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("hyphenationFactor"))
 	return rv
 }
 
 // Returns the current hyphenation factor. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1535877-hyphenationfactor?language=objc
-func (t_ Typesetter) SetHyphenationFactor(value float64) {
+func (t_ Typesetter) SetHyphenationFactor(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setHyphenationFactor:"), value)
 }
 
@@ -425,7 +425,7 @@ func (t_ Typesetter) AttributedString() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstypesetter/1524704-attributedstring?language=objc
 func (t_ Typesetter) SetAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("setAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setAttributedString:"), value)
 }
 
 // Returns the paragraph style object for the text being typeset. [Full Topic]

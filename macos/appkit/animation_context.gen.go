@@ -146,7 +146,7 @@ func (a_ AnimationContext) TimingFunction() quartzcore.MediaTimingFunction {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationcontext/1524985-timingfunction?language=objc
 func (a_ AnimationContext) SetTimingFunction(value quartzcore.IMediaTimingFunction) {
-	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setTimingFunction:"), value)
 }
 
 // Returns the current animation context. [Full Topic]

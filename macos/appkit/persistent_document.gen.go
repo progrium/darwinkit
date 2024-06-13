@@ -21,7 +21,7 @@ type _PersistentDocumentClass struct {
 type IPersistentDocument interface {
 	IDocument
 	PersistentStoreTypeForFileType(fileType string) string
-	ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error foundation.IError) bool
+	ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error unsafe.Pointer) bool
 	ManagedObjectModel() coredata.ManagedObjectModel
 	ManagedObjectContext() coredata.ManagedObjectContext
 	SetManagedObjectContext(value coredata.IManagedObjectContext)
@@ -60,43 +60,43 @@ func (p_ PersistentDocument) Init() PersistentDocument {
 	return rv
 }
 
-func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
-	rv := objc.Call[PersistentDocument](p_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), objc.Ptr(urlOrNil), objc.Ptr(contentsURL), typeName, objc.Ptr(outError))
+func (p_ PersistentDocument) InitForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
+	rv := objc.Call[PersistentDocument](p_, objc.Sel("initForURL:withContentsOfURL:ofType:error:"), urlOrNil, contentsURL, typeName, outError)
 	return rv
 }
 
 // Initializes a document with the specified contents, and places the resulting document's file at the designated location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515041-initforurl?language=objc
-func NewPersistentDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
+func NewPersistentDocumentForURLWithContentsOfURLOfTypeError(urlOrNil foundation.IURL, contentsURL foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
 	instance := PersistentDocumentClass.Alloc().InitForURLWithContentsOfURLOfTypeError(urlOrNil, contentsURL, typeName, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (p_ PersistentDocument) InitWithTypeError(typeName string, outError foundation.IError) PersistentDocument {
-	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithType:error:"), typeName, objc.Ptr(outError))
+func (p_ PersistentDocument) InitWithTypeError(typeName string, outError unsafe.Pointer) PersistentDocument {
+	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithType:error:"), typeName, outError)
 	return rv
 }
 
 // Initializes a document of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515159-initwithtype?language=objc
-func NewPersistentDocumentWithTypeError(typeName string, outError foundation.IError) PersistentDocument {
+func NewPersistentDocumentWithTypeError(typeName string, outError unsafe.Pointer) PersistentDocument {
 	instance := PersistentDocumentClass.Alloc().InitWithTypeError(typeName, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (p_ PersistentDocument) InitWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
-	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithContentsOfURL:ofType:error:"), objc.Ptr(url), typeName, objc.Ptr(outError))
+func (p_ PersistentDocument) InitWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
+	rv := objc.Call[PersistentDocument](p_, objc.Sel("initWithContentsOfURL:ofType:error:"), url, typeName, outError)
 	return rv
 }
 
 // Initializes a document located by a URL of a specified type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocument/1515097-initwithcontentsofurl?language=objc
-func NewPersistentDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError foundation.IError) PersistentDocument {
+func NewPersistentDocumentWithContentsOfURLOfTypeError(url foundation.IURL, typeName string, outError unsafe.Pointer) PersistentDocument {
 	instance := PersistentDocumentClass.Alloc().InitWithContentsOfURLOfTypeError(url, typeName, outError)
 	instance.Autorelease()
 	return instance
@@ -113,8 +113,8 @@ func (p_ PersistentDocument) PersistentStoreTypeForFileType(fileType string) str
 // Configures the receiver’s persistent store coordinator with the appropriate stores for a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspersistentdocument/1396160-configurepersistentstorecoordina?language=objc
-func (p_ PersistentDocument) ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error foundation.IError) bool {
-	rv := objc.Call[bool](p_, objc.Sel("configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"), objc.Ptr(url), fileType, configuration, storeOptions, objc.Ptr(error))
+func (p_ PersistentDocument) ConfigurePersistentStoreCoordinatorForURLOfTypeModelConfigurationStoreOptionsError(url foundation.IURL, fileType string, configuration string, storeOptions map[string]objc.IObject, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](p_, objc.Sel("configurePersistentStoreCoordinatorForURL:ofType:modelConfiguration:storeOptions:error:"), url, fileType, configuration, storeOptions, error)
 	return rv
 }
 
@@ -138,5 +138,5 @@ func (p_ PersistentDocument) ManagedObjectContext() coredata.ManagedObjectContex
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspersistentdocument/1396162-managedobjectcontext?language=objc
 func (p_ PersistentDocument) SetManagedObjectContext(value coredata.IManagedObjectContext) {
-	objc.Call[objc.Void](p_, objc.Sel("setManagedObjectContext:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setManagedObjectContext:"), value)
 }

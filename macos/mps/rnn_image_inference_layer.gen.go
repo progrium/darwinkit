@@ -80,7 +80,7 @@ func RNNImageInferenceLayer_CopyWithZoneDevice(zone unsafe.Pointer, device metal
 
 func (r_ RNNImageInferenceLayer) InitWithDeviceRnnDescriptor(device metal.PDevice, rnnDescriptor IRNNDescriptor) RNNImageInferenceLayer {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[RNNImageInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, objc.Ptr(rnnDescriptor))
+	rv := objc.Call[RNNImageInferenceLayer](r_, objc.Sel("initWithDevice:rnnDescriptor:"), po0, rnnDescriptor)
 	return rv
 }
 
@@ -140,7 +140,7 @@ func (r_ RNNImageInferenceLayer) EncodeBidirectionalSequenceToCommandBufferSourc
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865693-encodebidirectionalsequencetocom?language=objc
 func (r_ RNNImageInferenceLayer) EncodeBidirectionalSequenceToCommandBufferObjectSourceSequenceDestinationForwardImagesDestinationBackwardImages(commandBufferObject objc.IObject, sourceSequence []IImage, destinationForwardImages []IImage, destinationBackwardImages []IImage) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeBidirectionalSequenceToCommandBuffer:sourceSequence:destinationForwardImages:destinationBackwardImages:"), objc.Ptr(commandBufferObject), sourceSequence, destinationForwardImages, destinationBackwardImages)
+	objc.Call[objc.Void](r_, objc.Sel("encodeBidirectionalSequenceToCommandBuffer:sourceSequence:destinationForwardImages:destinationBackwardImages:"), commandBufferObject, sourceSequence, destinationForwardImages, destinationBackwardImages)
 }
 
 //	[Full Topic]
@@ -148,14 +148,14 @@ func (r_ RNNImageInferenceLayer) EncodeBidirectionalSequenceToCommandBufferObjec
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865717-encodesequencetocommandbuffer?language=objc
 func (r_ RNNImageInferenceLayer) EncodeSequenceToCommandBufferSourceImagesDestinationImagesRecurrentInputStateRecurrentOutputStates(commandBuffer metal.PCommandBuffer, sourceImages []IImage, destinationImages []IImage, recurrentInputState IRNNRecurrentImageState, recurrentOutputStates foundation.IMutableArray) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceImages:destinationImages:recurrentInputState:recurrentOutputStates:"), po0, sourceImages, destinationImages, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceImages:destinationImages:recurrentInputState:recurrentOutputStates:"), po0, sourceImages, destinationImages, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnimageinferencelayer/2865717-encodesequencetocommandbuffer?language=objc
 func (r_ RNNImageInferenceLayer) EncodeSequenceToCommandBufferObjectSourceImagesDestinationImagesRecurrentInputStateRecurrentOutputStates(commandBufferObject objc.IObject, sourceImages []IImage, destinationImages []IImage, recurrentInputState IRNNRecurrentImageState, recurrentOutputStates foundation.IMutableArray) {
-	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceImages:destinationImages:recurrentInputState:recurrentOutputStates:"), objc.Ptr(commandBufferObject), sourceImages, destinationImages, objc.Ptr(recurrentInputState), objc.Ptr(recurrentOutputStates))
+	objc.Call[objc.Void](r_, objc.Sel("encodeSequenceToCommandBuffer:sourceImages:destinationImages:recurrentInputState:recurrentOutputStates:"), commandBufferObject, sourceImages, destinationImages, recurrentInputState, recurrentOutputStates)
 }
 
 //	[Full Topic]

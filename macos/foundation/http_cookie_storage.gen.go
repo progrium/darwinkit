@@ -68,7 +68,7 @@ func (h_ HTTPCookieStorage) Init() HTTPCookieStorage {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1412100-cookiesforurl?language=objc
 func (h_ HTTPCookieStorage) CookiesForURL(URL IURL) []HTTPCookie {
-	rv := objc.Call[[]HTTPCookie](h_, objc.Sel("cookiesForURL:"), objc.Ptr(URL))
+	rv := objc.Call[[]HTTPCookie](h_, objc.Sel("cookiesForURL:"), URL)
 	return rv
 }
 
@@ -76,28 +76,28 @@ func (h_ HTTPCookieStorage) CookiesForURL(URL IURL) []HTTPCookie {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1409218-deletecookie?language=objc
 func (h_ HTTPCookieStorage) DeleteCookie(cookie IHTTPCookie) {
-	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:"), objc.Ptr(cookie))
+	objc.Call[objc.Void](h_, objc.Sel("deleteCookie:"), cookie)
 }
 
 // Stores a specified cookie in the cookie storage if the cookie accept policy permits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1418356-setcookie?language=objc
 func (h_ HTTPCookieStorage) SetCookie(cookie IHTTPCookie) {
-	objc.Call[objc.Void](h_, objc.Sel("setCookie:"), objc.Ptr(cookie))
+	objc.Call[objc.Void](h_, objc.Sel("setCookie:"), cookie)
 }
 
 // Stores an array of cookies in the cookie storage, on behalf of the provided task, if the cookie accept policy permits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1415381-storecookies?language=objc
 func (h_ HTTPCookieStorage) StoreCookiesForTask(cookies []IHTTPCookie, task IURLSessionTask) {
-	objc.Call[objc.Void](h_, objc.Sel("storeCookies:forTask:"), cookies, objc.Ptr(task))
+	objc.Call[objc.Void](h_, objc.Sel("storeCookies:forTask:"), cookies, task)
 }
 
 // Adds an array of cookies to the cookie storage if the storage’s cookie acceptance policy permits. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1412510-setcookies?language=objc
 func (h_ HTTPCookieStorage) SetCookiesForURLMainDocumentURL(cookies []IHTTPCookie, URL IURL, mainDocumentURL IURL) {
-	objc.Call[objc.Void](h_, objc.Sel("setCookies:forURL:mainDocumentURL:"), cookies, objc.Ptr(URL), objc.Ptr(mainDocumentURL))
+	objc.Call[objc.Void](h_, objc.Sel("setCookies:forURL:mainDocumentURL:"), cookies, URL, mainDocumentURL)
 }
 
 // Returns the cookie storage instance for the container associated with the specified app group identifier. [Full Topic]
@@ -127,14 +127,14 @@ func (h_ HTTPCookieStorage) SortedCookiesUsingDescriptors(sortOrder []ISortDescr
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1407256-removecookiessincedate?language=objc
 func (h_ HTTPCookieStorage) RemoveCookiesSinceDate(date IDate) {
-	objc.Call[objc.Void](h_, objc.Sel("removeCookiesSinceDate:"), objc.Ptr(date))
+	objc.Call[objc.Void](h_, objc.Sel("removeCookiesSinceDate:"), date)
 }
 
 // Fetches cookies relevant to the specified task and passes them to the completion handler. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshttpcookiestorage/1408517-getcookiesfortask?language=objc
 func (h_ HTTPCookieStorage) GetCookiesForTaskCompletionHandler(task IURLSessionTask, completionHandler func(cookies []HTTPCookie)) {
-	objc.Call[objc.Void](h_, objc.Sel("getCookiesForTask:completionHandler:"), objc.Ptr(task), completionHandler)
+	objc.Call[objc.Void](h_, objc.Sel("getCookiesForTask:completionHandler:"), task, completionHandler)
 }
 
 // The cookie storage’s cookies. [Full Topic]

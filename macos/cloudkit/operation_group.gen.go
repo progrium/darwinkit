@@ -129,7 +129,7 @@ func (o_ OperationGroup) DefaultConfiguration() OperationConfiguration {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckoperationgroup/2866240-defaultconfiguration?language=objc
 func (o_ OperationGroup) SetDefaultConfiguration(value IOperationConfiguration) {
-	objc.Call[objc.Void](o_, objc.Sel("setDefaultConfiguration:"), objc.Ptr(value))
+	objc.Call[objc.Void](o_, objc.Sel("setDefaultConfiguration:"), value)
 }
 
 // The number of operations in the operation group. [Full Topic]

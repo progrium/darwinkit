@@ -56,7 +56,7 @@ func (n_ NNBinaryGradientState) Init() NNBinaryGradientState {
 
 func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferResourceList(commandBuffer metal.PCommandBuffer, resourceList IStateResourceList) NNBinaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:resourceList:"), po0, resourceList)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func NNBinaryGradientState_TemporaryStateWithCommandBufferResourceList(commandBu
 
 func (n_ NNBinaryGradientState) InitWithDeviceTextureDescriptor(device metal.PDevice, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -154,7 +154,7 @@ func NNBinaryGradientState_TemporaryStateWithCommandBuffer(cmdBuf metal.PCommand
 
 func (nc _NNBinaryGradientStateClass) TemporaryStateWithCommandBufferTextureDescriptor(cmdBuf metal.PCommandBuffer, descriptor metal.ITextureDescriptor) NNBinaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", cmdBuf)
-	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, objc.Ptr(descriptor))
+	rv := objc.Call[NNBinaryGradientState](nc, objc.Sel("temporaryStateWithCommandBuffer:textureDescriptor:"), po0, descriptor)
 	return rv
 }
 
@@ -167,7 +167,7 @@ func NNBinaryGradientState_TemporaryStateWithCommandBufferTextureDescriptor(cmdB
 
 func (n_ NNBinaryGradientState) InitWithDeviceResourceList(device metal.PDevice, resourceList IStateResourceList) NNBinaryGradientState {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, objc.Ptr(resourceList))
+	rv := objc.Call[NNBinaryGradientState](n_, objc.Sel("initWithDevice:resourceList:"), po0, resourceList)
 	return rv
 }
 

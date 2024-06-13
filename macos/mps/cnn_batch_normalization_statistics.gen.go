@@ -92,12 +92,12 @@ func CNNBatchNormalizationStatistics_CopyWithZoneDevice(zone unsafe.Pointer, dev
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationstatistics/2942584-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalizationStatistics) EncodeBatchToCommandBufferSourceImagesBatchNormalizationState(commandBuffer metal.PCommandBuffer, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:"), po0, sourceImages, objc.Ptr(batchNormalizationState))
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:"), po0, sourceImages, batchNormalizationState)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnbatchnormalizationstatistics/2942584-encodebatchtocommandbuffer?language=objc
 func (c_ CNNBatchNormalizationStatistics) EncodeBatchToCommandBufferObjectSourceImagesBatchNormalizationState(commandBufferObject objc.IObject, sourceImages *foundation.Array, batchNormalizationState ICNNBatchNormalizationState) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:"), objc.Ptr(commandBufferObject), sourceImages, objc.Ptr(batchNormalizationState))
+	objc.Call[objc.Void](c_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:batchNormalizationState:"), commandBufferObject, sourceImages, batchNormalizationState)
 }

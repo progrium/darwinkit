@@ -98,7 +98,7 @@ func (i_ Invocation) GetArgumentAtIndex(argumentLocation unsafe.Pointer, idx int
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsinvocation/1437844-invocationwithmethodsignature?language=objc
 func (ic _InvocationClass) InvocationWithMethodSignature(sig IMethodSignature) Invocation {
-	rv := objc.Call[Invocation](ic, objc.Sel("invocationWithMethodSignature:"), objc.Ptr(sig))
+	rv := objc.Call[Invocation](ic, objc.Sel("invocationWithMethodSignature:"), sig)
 	return rv
 }
 

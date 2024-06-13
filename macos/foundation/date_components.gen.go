@@ -104,7 +104,7 @@ func (d_ DateComponents) ValueForComponent(unit CalendarUnit) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponents/1412707-isvaliddateincalendar?language=objc
 func (d_ DateComponents) IsValidDateInCalendar(calendar ICalendar) bool {
-	rv := objc.Call[bool](d_, objc.Sel("isValidDateInCalendar:"), objc.Ptr(calendar))
+	rv := objc.Call[bool](d_, objc.Sel("isValidDateInCalendar:"), calendar)
 	return rv
 }
 
@@ -142,7 +142,7 @@ func (d_ DateComponents) TimeZone() TimeZone {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponents/1408233-timezone?language=objc
 func (d_ DateComponents) SetTimeZone(value ITimeZone) {
-	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setTimeZone:"), value)
 }
 
 // The number of quarters. [Full Topic]
@@ -172,7 +172,7 @@ func (d_ DateComponents) Calendar() Calendar {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdatecomponents/1415799-calendar?language=objc
 func (d_ DateComponents) SetCalendar(value ICalendar) {
-	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setCalendar:"), value)
 }
 
 // The ISO 8601 week-numbering year. [Full Topic]

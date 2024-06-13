@@ -54,7 +54,7 @@ func (u_ UnitElectricPotentialDifference) Init() UnitElectricPotentialDifference
 }
 
 func (u_ UnitElectricPotentialDifference) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitElectricPotentialDifference {
-	rv := objc.Call[UnitElectricPotentialDifference](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitElectricPotentialDifference](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

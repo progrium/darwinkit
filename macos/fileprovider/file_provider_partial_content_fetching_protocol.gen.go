@@ -32,6 +32,6 @@ func (f_ FileProviderPartialContentFetchingObject) HasFetchPartialContentsForIte
 //
 // [Full Topic]: https://developer.apple.com/documentation/fileprovider/nsfileproviderpartialcontentfetching/3923718-fetchpartialcontentsforitemwithi?language=objc
 func (f_ FileProviderPartialContentFetchingObject) FetchPartialContentsForItemWithIdentifierVersionRequestMinimalRangeAligningToOptionsCompletionHandler(itemIdentifier FileProviderItemIdentifier, requestedVersion FileProviderItemVersion, request FileProviderRequest, requestedRange foundation.Range, alignment uint, options FileProviderFetchContentsOptions, completionHandler func(fileContents foundation.URL, item objc.Object, retrievedRange foundation.Range, flags FileProviderMaterializationFlags, error foundation.Error)) foundation.Progress {
-	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchPartialContentsForItemWithIdentifier:version:request:minimalRange:aligningTo:options:completionHandler:"), itemIdentifier, objc.Ptr(requestedVersion), objc.Ptr(request), requestedRange, alignment, options, completionHandler)
+	rv := objc.Call[foundation.Progress](f_, objc.Sel("fetchPartialContentsForItemWithIdentifier:version:request:minimalRange:aligningTo:options:completionHandler:"), itemIdentifier, requestedVersion, request, requestedRange, alignment, options, completionHandler)
 	return rv
 }

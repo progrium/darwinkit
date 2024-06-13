@@ -35,7 +35,7 @@ func DimensionFrom(ptr unsafe.Pointer) Dimension {
 }
 
 func (d_ Dimension) InitWithSymbolConverter(symbol string, converter IUnitConverter) Dimension {
-	rv := objc.Call[Dimension](d_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[Dimension](d_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

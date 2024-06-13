@@ -38,7 +38,7 @@ func OrderedCollectionChangeFrom(ptr unsafe.Pointer) OrderedCollectionChange {
 }
 
 func (o_ OrderedCollectionChange) InitWithObjectTypeIndex(anObject objc.IObject, type_ CollectionChangeType, index uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](o_, objc.Sel("initWithObject:type:index:"), objc.Ptr(anObject), type_, index)
+	rv := objc.Call[OrderedCollectionChange](o_, objc.Sel("initWithObject:type:index:"), anObject, type_, index)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func NewOrderedCollectionChangeWithObjectTypeIndex(anObject objc.IObject, type_ 
 }
 
 func (o_ OrderedCollectionChange) InitWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](o_, objc.Sel("initWithObject:type:index:associatedIndex:"), objc.Ptr(anObject), type_, index, associatedIndex)
+	rv := objc.Call[OrderedCollectionChange](o_, objc.Sel("initWithObject:type:index:associatedIndex:"), anObject, type_, index, associatedIndex)
 	return rv
 }
 
@@ -89,7 +89,7 @@ func (o_ OrderedCollectionChange) Init() OrderedCollectionChange {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152176-changewithobject?language=objc
 func (oc _OrderedCollectionChangeClass) ChangeWithObjectTypeIndex(anObject objc.IObject, type_ CollectionChangeType, index uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](oc, objc.Sel("changeWithObject:type:index:"), objc.Ptr(anObject), type_, index)
+	rv := objc.Call[OrderedCollectionChange](oc, objc.Sel("changeWithObject:type:index:"), anObject, type_, index)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func OrderedCollectionChange_ChangeWithObjectTypeIndex(anObject objc.IObject, ty
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsorderedcollectionchange/3152177-changewithobject?language=objc
 func (oc _OrderedCollectionChangeClass) ChangeWithObjectTypeIndexAssociatedIndex(anObject objc.IObject, type_ CollectionChangeType, index uint, associatedIndex uint) OrderedCollectionChange {
-	rv := objc.Call[OrderedCollectionChange](oc, objc.Sel("changeWithObject:type:index:associatedIndex:"), objc.Ptr(anObject), type_, index, associatedIndex)
+	rv := objc.Call[OrderedCollectionChange](oc, objc.Sel("changeWithObject:type:index:associatedIndex:"), anObject, type_, index, associatedIndex)
 	return rv
 }
 

@@ -51,7 +51,7 @@ func (t_ TemperatureAndTintObject) HasSetNeutral() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228782-neutral?language=objc
 func (t_ TemperatureAndTintObject) SetNeutral(value Vector) {
-	objc.Call[objc.Void](t_, objc.Sel("setNeutral:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setNeutral:"), value)
 }
 
 func (t_ TemperatureAndTintObject) HasNeutral() bool {
@@ -74,7 +74,7 @@ func (t_ TemperatureAndTintObject) HasSetTargetNeutral() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228783-targetneutral?language=objc
 func (t_ TemperatureAndTintObject) SetTargetNeutral(value Vector) {
-	objc.Call[objc.Void](t_, objc.Sel("setTargetNeutral:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTargetNeutral:"), value)
 }
 
 func (t_ TemperatureAndTintObject) HasTargetNeutral() bool {
@@ -97,7 +97,7 @@ func (t_ TemperatureAndTintObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citemperatureandtint/3228781-inputimage?language=objc
 func (t_ TemperatureAndTintObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TemperatureAndTintObject) HasInputImage() bool {

@@ -54,7 +54,7 @@ func (u_ UnitTemperature) Init() UnitTemperature {
 }
 
 func (u_ UnitTemperature) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitTemperature {
-	rv := objc.Call[UnitTemperature](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitTemperature](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

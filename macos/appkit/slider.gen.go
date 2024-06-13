@@ -272,7 +272,7 @@ func (s_ Slider) TrackFillColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsslider/2560999-trackfillcolor?language=objc
 func (s_ Slider) SetTrackFillColor(value IColor) {
-	objc.Call[objc.Void](s_, objc.Sel("setTrackFillColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setTrackFillColor:"), value)
 }
 
 // An integer indicating the orientation (horizontal or vertical) of the slider. [Full Topic]

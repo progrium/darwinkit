@@ -89,7 +89,7 @@ func (e_ EntityDescription) Init() EntityDescription {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425111-entityforname?language=objc
 func (ec _EntityDescriptionClass) EntityForNameInManagedObjectContext(entityName string, context IManagedObjectContext) EntityDescription {
-	rv := objc.Call[EntityDescription](ec, objc.Sel("entityForName:inManagedObjectContext:"), entityName, objc.Ptr(context))
+	rv := objc.Call[EntityDescription](ec, objc.Sel("entityForName:inManagedObjectContext:"), entityName, context)
 	return rv
 }
 
@@ -104,7 +104,7 @@ func EntityDescription_EntityForNameInManagedObjectContext(entityName string, co
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425127-relationshipswithdestinationenti?language=objc
 func (e_ EntityDescription) RelationshipsWithDestinationEntity(entity IEntityDescription) []RelationshipDescription {
-	rv := objc.Call[[]RelationshipDescription](e_, objc.Sel("relationshipsWithDestinationEntity:"), objc.Ptr(entity))
+	rv := objc.Call[[]RelationshipDescription](e_, objc.Sel("relationshipsWithDestinationEntity:"), entity)
 	return rv
 }
 
@@ -112,7 +112,7 @@ func (e_ EntityDescription) RelationshipsWithDestinationEntity(entity IEntityDes
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425113-iskindofentity?language=objc
 func (e_ EntityDescription) IsKindOfEntity(entity IEntityDescription) bool {
-	rv := objc.Call[bool](e_, objc.Sel("isKindOfEntity:"), objc.Ptr(entity))
+	rv := objc.Call[bool](e_, objc.Sel("isKindOfEntity:"), entity)
 	return rv
 }
 
@@ -120,7 +120,7 @@ func (e_ EntityDescription) IsKindOfEntity(entity IEntityDescription) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/1425093-insertnewobjectforentityforname?language=objc
 func (ec _EntityDescriptionClass) InsertNewObjectForEntityForNameInManagedObjectContext(entityName string, context IManagedObjectContext) ManagedObject {
-	rv := objc.Call[ManagedObject](ec, objc.Sel("insertNewObjectForEntityForName:inManagedObjectContext:"), entityName, objc.Ptr(context))
+	rv := objc.Call[ManagedObject](ec, objc.Sel("insertNewObjectForEntityForName:inManagedObjectContext:"), entityName, context)
 	return rv
 }
 
@@ -296,7 +296,7 @@ func (e_ EntityDescription) CoreSpotlightDisplayNameExpression() foundation.Expr
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsentitydescription/2892364-corespotlightdisplaynameexpressi?language=objc
 func (e_ EntityDescription) SetCoreSpotlightDisplayNameExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](e_, objc.Sel("setCoreSpotlightDisplayNameExpression:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setCoreSpotlightDisplayNameExpression:"), value)
 }
 
 // The name of the class that represents the receiver’s entity. [Full Topic]

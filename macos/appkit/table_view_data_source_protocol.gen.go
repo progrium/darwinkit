@@ -68,7 +68,7 @@ func (t_ TableViewDataSourceObject) HasTableViewSetObjectValueForTableColumnRow(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1526317-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewSetObjectValueForTableColumnRow(tableView TableView, object objc.Object, tableColumn TableColumn, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:setObjectValue:forTableColumn:row:"), objc.Ptr(tableView), object, objc.Ptr(tableColumn), row)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:setObjectValue:forTableColumn:row:"), tableView, object, tableColumn, row)
 }
 
 func (t_ TableViewDataSourceObject) HasNumberOfRowsInTableView() bool {
@@ -79,7 +79,7 @@ func (t_ TableViewDataSourceObject) HasNumberOfRowsInTableView() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1524583-numberofrowsintableview?language=objc
 func (t_ TableViewDataSourceObject) NumberOfRowsInTableView(tableView TableView) int {
-	rv := objc.Call[int](t_, objc.Sel("numberOfRowsInTableView:"), objc.Ptr(tableView))
+	rv := objc.Call[int](t_, objc.Sel("numberOfRowsInTableView:"), tableView)
 	return rv
 }
 
@@ -91,7 +91,7 @@ func (t_ TableViewDataSourceObject) HasTableViewSortDescriptorsDidChange() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1532935-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewSortDescriptorsDidChange(tableView TableView, oldDescriptors []foundation.SortDescriptor) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:sortDescriptorsDidChange:"), objc.Ptr(tableView), oldDescriptors)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:sortDescriptorsDidChange:"), tableView, oldDescriptors)
 }
 
 func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionEndedAtPointOperation() bool {
@@ -102,7 +102,7 @@ func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionEndedAtPointOpera
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1534355-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewDraggingSessionEndedAtPointOperation(tableView TableView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:endedAtPoint:operation:"), objc.Ptr(tableView), objc.Ptr(session), screenPoint, operation)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:endedAtPoint:operation:"), tableView, session, screenPoint, operation)
 }
 
 func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionWillBeginAtPointForRowIndexes() bool {
@@ -113,7 +113,7 @@ func (t_ TableViewDataSourceObject) HasTableViewDraggingSessionWillBeginAtPointF
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1528890-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewDraggingSessionWillBeginAtPointForRowIndexes(tableView TableView, session DraggingSession, screenPoint foundation.Point, rowIndexes foundation.IndexSet) {
-	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"), objc.Ptr(tableView), objc.Ptr(session), screenPoint, objc.Ptr(rowIndexes))
+	objc.Call[objc.Void](t_, objc.Sel("tableView:draggingSession:willBeginAtPoint:forRowIndexes:"), tableView, session, screenPoint, rowIndexes)
 }
 
 func (t_ TableViewDataSourceObject) HasTableViewAcceptDropRowDropOperation() bool {
@@ -125,7 +125,7 @@ func (t_ TableViewDataSourceObject) HasTableViewAcceptDropRowDropOperation() boo
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1527733-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewAcceptDropRowDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[bool](t_, objc.Sel("tableView:acceptDrop:row:dropOperation:"), objc.Ptr(tableView), po1, row, dropOperation)
+	rv := objc.Call[bool](t_, objc.Sel("tableView:acceptDrop:row:dropOperation:"), tableView, po1, row, dropOperation)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (t_ TableViewDataSourceObject) HasTableViewObjectValueForTableColumnRow() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1533674-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewObjectValueForTableColumnRow(tableView TableView, tableColumn TableColumn, row int) objc.Object {
-	rv := objc.Call[objc.Object](t_, objc.Sel("tableView:objectValueForTableColumn:row:"), objc.Ptr(tableView), objc.Ptr(tableColumn), row)
+	rv := objc.Call[objc.Object](t_, objc.Sel("tableView:objectValueForTableColumn:row:"), tableView, tableColumn, row)
 	return rv
 }
 
@@ -149,7 +149,7 @@ func (t_ TableViewDataSourceObject) HasTableViewPasteboardWriterForRow() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1535294-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewPasteboardWriterForRow(tableView TableView, row int) PasteboardWritingObject {
-	rv := objc.Call[PasteboardWritingObject](t_, objc.Sel("tableView:pasteboardWriterForRow:"), objc.Ptr(tableView), row)
+	rv := objc.Call[PasteboardWritingObject](t_, objc.Sel("tableView:pasteboardWriterForRow:"), tableView, row)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (t_ TableViewDataSourceObject) HasTableViewUpdateDraggingItemsForDrag() boo
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1535273-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewUpdateDraggingItemsForDrag(tableView TableView, draggingInfo DraggingInfoObject) {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](t_, objc.Sel("tableView:updateDraggingItemsForDrag:"), objc.Ptr(tableView), po1)
+	objc.Call[objc.Void](t_, objc.Sel("tableView:updateDraggingItemsForDrag:"), tableView, po1)
 }
 
 func (t_ TableViewDataSourceObject) HasTableViewValidateDropProposedRowProposedDropOperation() bool {
@@ -174,6 +174,6 @@ func (t_ TableViewDataSourceObject) HasTableViewValidateDropProposedRowProposedD
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableviewdatasource/1532052-tableview?language=objc
 func (t_ TableViewDataSourceObject) TableViewValidateDropProposedRowProposedDropOperation(tableView TableView, info DraggingInfoObject, row int, dropOperation TableViewDropOperation) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[DragOperation](t_, objc.Sel("tableView:validateDrop:proposedRow:proposedDropOperation:"), objc.Ptr(tableView), po1, row, dropOperation)
+	rv := objc.Call[DragOperation](t_, objc.Sel("tableView:validateDrop:proposedRow:proposedDropOperation:"), tableView, po1, row, dropOperation)
 	return rv
 }

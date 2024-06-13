@@ -38,7 +38,7 @@ func PictureInPictureControllerContentSourceFrom(ptr unsafe.Pointer) PictureInPi
 }
 
 func (p_ PictureInPictureControllerContentSource) InitWithPlayerLayer(playerLayer avfoundation.IPlayerLayer) PictureInPictureControllerContentSource {
-	rv := objc.Call[PictureInPictureControllerContentSource](p_, objc.Sel("initWithPlayerLayer:"), objc.Ptr(playerLayer))
+	rv := objc.Call[PictureInPictureControllerContentSource](p_, objc.Sel("initWithPlayerLayer:"), playerLayer)
 	return rv
 }
 
@@ -53,7 +53,7 @@ func NewPictureInPictureControllerContentSourceWithPlayerLayer(playerLayer avfou
 
 func (p_ PictureInPictureControllerContentSource) InitWithSampleBufferDisplayLayerPlaybackDelegate(sampleBufferDisplayLayer avfoundation.ISampleBufferDisplayLayer, playbackDelegate PPictureInPictureSampleBufferPlaybackDelegate) PictureInPictureControllerContentSource {
 	po1 := objc.WrapAsProtocol("AVPictureInPictureSampleBufferPlaybackDelegate", playbackDelegate)
-	rv := objc.Call[PictureInPictureControllerContentSource](p_, objc.Sel("initWithSampleBufferDisplayLayer:playbackDelegate:"), objc.Ptr(sampleBufferDisplayLayer), po1)
+	rv := objc.Call[PictureInPictureControllerContentSource](p_, objc.Sel("initWithSampleBufferDisplayLayer:playbackDelegate:"), sampleBufferDisplayLayer, po1)
 	return rv
 }
 

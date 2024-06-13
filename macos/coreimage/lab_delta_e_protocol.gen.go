@@ -43,7 +43,7 @@ func (l_ LabDeltaEObject) HasSetImage2() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228513-image2?language=objc
 func (l_ LabDeltaEObject) SetImage2(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setImage2:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setImage2:"), value)
 }
 
 func (l_ LabDeltaEObject) HasImage2() bool {
@@ -66,7 +66,7 @@ func (l_ LabDeltaEObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cilabdeltae/3228514-inputimage?language=objc
 func (l_ LabDeltaEObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setInputImage:"), value)
 }
 
 func (l_ LabDeltaEObject) HasInputImage() bool {

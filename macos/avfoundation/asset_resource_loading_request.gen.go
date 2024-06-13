@@ -77,7 +77,7 @@ func (a_ AssetResourceLoadingRequest) FinishLoading() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingrequest/1390491-finishloadingwitherror?language=objc
 func (a_ AssetResourceLoadingRequest) FinishLoadingWithError(error foundation.IError) {
-	objc.Call[objc.Void](a_, objc.Sel("finishLoadingWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](a_, objc.Sel("finishLoadingWithError:"), error)
 }
 
 // A Boolean value that indicates whether loading of the resource has finished. [Full Topic]
@@ -100,7 +100,7 @@ func (a_ AssetResourceLoadingRequest) Redirect() foundation.URLRequest {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingrequest/1390854-redirect?language=objc
 func (a_ AssetResourceLoadingRequest) SetRedirect(value foundation.IURLRequest) {
-	objc.Call[objc.Void](a_, objc.Sel("setRedirect:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setRedirect:"), value)
 }
 
 // A Boolean value that indicates whether the request has been cancelled. [Full Topic]
@@ -155,5 +155,5 @@ func (a_ AssetResourceLoadingRequest) Response() foundation.URLResponse {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetresourceloadingrequest/1389034-response?language=objc
 func (a_ AssetResourceLoadingRequest) SetResponse(value foundation.IURLResponse) {
-	objc.Call[objc.Void](a_, objc.Sel("setResponse:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setResponse:"), value)
 }

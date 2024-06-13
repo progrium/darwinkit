@@ -165,7 +165,7 @@ func (t_ ToolbarDelegateObject) HasToolbarDefaultItemIdentifiers() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516944-toolbardefaultitemidentifiers?language=objc
 func (t_ ToolbarDelegateObject) ToolbarDefaultItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarDefaultItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -177,7 +177,7 @@ func (t_ ToolbarDelegateObject) HasToolbarWillAddItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516964-toolbarwilladditem?language=objc
 func (t_ ToolbarDelegateObject) ToolbarWillAddItem(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("toolbarWillAddItem:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("toolbarWillAddItem:"), notification)
 }
 
 func (t_ ToolbarDelegateObject) HasToolbarAllowedItemIdentifiers() bool {
@@ -188,7 +188,7 @@ func (t_ ToolbarDelegateObject) HasToolbarAllowedItemIdentifiers() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516995-toolbaralloweditemidentifiers?language=objc
 func (t_ ToolbarDelegateObject) ToolbarAllowedItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarAllowedItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func (t_ ToolbarDelegateObject) HasToolbarSelectableItemIdentifiers() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516981-toolbarselectableitemidentifiers?language=objc
 func (t_ ToolbarDelegateObject) ToolbarSelectableItemIdentifiers(toolbar Toolbar) []ToolbarItemIdentifier {
-	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarSelectableItemIdentifiers:"), objc.Ptr(toolbar))
+	rv := objc.Call[[]ToolbarItemIdentifier](t_, objc.Sel("toolbarSelectableItemIdentifiers:"), toolbar)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func (t_ ToolbarDelegateObject) HasToolbarDidRemoveItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516970-toolbardidremoveitem?language=objc
 func (t_ ToolbarDelegateObject) ToolbarDidRemoveItem(notification foundation.Notification) {
-	objc.Call[objc.Void](t_, objc.Sel("toolbarDidRemoveItem:"), objc.Ptr(notification))
+	objc.Call[objc.Void](t_, objc.Sel("toolbarDidRemoveItem:"), notification)
 }
 
 func (t_ ToolbarDelegateObject) HasToolbarItemForItemIdentifierWillBeInsertedIntoToolbar() bool {
@@ -223,6 +223,6 @@ func (t_ ToolbarDelegateObject) HasToolbarItemForItemIdentifierWillBeInsertedInt
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstoolbardelegate/1516985-toolbar?language=objc
 func (t_ ToolbarDelegateObject) ToolbarItemForItemIdentifierWillBeInsertedIntoToolbar(toolbar Toolbar, itemIdentifier ToolbarItemIdentifier, flag bool) ToolbarItem {
-	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), objc.Ptr(toolbar), itemIdentifier, flag)
+	rv := objc.Call[ToolbarItem](t_, objc.Sel("toolbar:itemForItemIdentifier:willBeInsertedIntoToolbar:"), toolbar, itemIdentifier, flag)
 	return rv
 }

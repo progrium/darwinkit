@@ -99,7 +99,7 @@ func (f_ FilePromiseProviderDelegateObject) HasFilePromiseProviderFileNameForTyp
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369278-filepromiseprovider?language=objc
 func (f_ FilePromiseProviderDelegateObject) FilePromiseProviderFileNameForType(filePromiseProvider FilePromiseProvider, fileType string) string {
-	rv := objc.Call[string](f_, objc.Sel("filePromiseProvider:fileNameForType:"), objc.Ptr(filePromiseProvider), fileType)
+	rv := objc.Call[string](f_, objc.Sel("filePromiseProvider:fileNameForType:"), filePromiseProvider, fileType)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func (f_ FilePromiseProviderDelegateObject) HasOperationQueueForFilePromiseProvi
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/2369279-operationqueueforfilepromiseprov?language=objc
 func (f_ FilePromiseProviderDelegateObject) OperationQueueForFilePromiseProvider(filePromiseProvider FilePromiseProvider) foundation.OperationQueue {
-	rv := objc.Call[foundation.OperationQueue](f_, objc.Sel("operationQueueForFilePromiseProvider:"), objc.Ptr(filePromiseProvider))
+	rv := objc.Call[foundation.OperationQueue](f_, objc.Sel("operationQueueForFilePromiseProvider:"), filePromiseProvider)
 	return rv
 }
 
@@ -123,5 +123,5 @@ func (f_ FilePromiseProviderDelegateObject) HasFilePromiseProviderWritePromiseTo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsfilepromiseproviderdelegate/1644244-filepromiseprovider?language=objc
 func (f_ FilePromiseProviderDelegateObject) FilePromiseProviderWritePromiseToURLCompletionHandler(filePromiseProvider FilePromiseProvider, url foundation.URL, completionHandler func(errorOrNil foundation.Error)) {
-	objc.Call[objc.Void](f_, objc.Sel("filePromiseProvider:writePromiseToURL:completionHandler:"), objc.Ptr(filePromiseProvider), objc.Ptr(url), completionHandler)
+	objc.Call[objc.Void](f_, objc.Sel("filePromiseProvider:writePromiseToURL:completionHandler:"), filePromiseProvider, url, completionHandler)
 }

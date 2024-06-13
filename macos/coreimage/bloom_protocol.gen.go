@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom?language=objc
 type PBloom interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -27,11 +27,11 @@ type PBloom interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -50,7 +50,7 @@ func (b_ BloomObject) HasSetIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
-func (b_ BloomObject) SetIntensity(value float64) {
+func (b_ BloomObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setIntensity:"), value)
 }
 
@@ -61,8 +61,8 @@ func (b_ BloomObject) HasIntensity() bool {
 // The intensity of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228085-intensity?language=objc
-func (b_ BloomObject) Intensity() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("intensity"))
+func (b_ BloomObject) Intensity() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -74,7 +74,7 @@ func (b_ BloomObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228084-inputimage?language=objc
 func (b_ BloomObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setInputImage:"), value)
 }
 
 func (b_ BloomObject) HasInputImage() bool {
@@ -96,7 +96,7 @@ func (b_ BloomObject) HasSetRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228086-radius?language=objc
-func (b_ BloomObject) SetRadius(value float64) {
+func (b_ BloomObject) SetRadius(value float32) {
 	objc.Call[objc.Void](b_, objc.Sel("setRadius:"), value)
 }
 
@@ -107,7 +107,7 @@ func (b_ BloomObject) HasRadius() bool {
 // The radius, in pixels, of the effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cibloom/3228086-radius?language=objc
-func (b_ BloomObject) Radius() float64 {
-	rv := objc.Call[float64](b_, objc.Sel("radius"))
+func (b_ BloomObject) Radius() float32 {
+	rv := objc.Call[float32](b_, objc.Sel("radius"))
 	return rv
 }

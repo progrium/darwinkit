@@ -33,13 +33,13 @@ type IMutableAttributedString interface {
 	SetBaseWritingDirectionRange(writingDirection objc.IObject, range_ Range)
 	EndEditing()
 	RemoveAttributeRange(name AttributedStringKey, range_ Range)
-	ReadFromURLOptionsDocumentAttributesError(url IURL, opts Dictionary, dict Dictionary, error IError) bool
+	ReadFromURLOptionsDocumentAttributesError(url IURL, opts Dictionary, dict unsafe.Pointer, error unsafe.Pointer) bool
 	AddAttributesRange(attrs map[AttributedStringKey]objc.IObject, range_ Range)
 	SubscriptRange(range_ Range)
 	FixParagraphStyleAttributeInRange(range_ Range)
 	AppendLocalizedFormat(format IAttributedString, args ...any)
 	DeleteCharactersInRange(range_ Range)
-	ReadFromDataOptionsDocumentAttributesError(data []byte, opts Dictionary, dict Dictionary, error IError) bool
+	ReadFromDataOptionsDocumentAttributesError(data []byte, opts Dictionary, dict unsafe.Pointer, error unsafe.Pointer) bool
 	ApplyFontTraitsRange(traitMask objc.IObject, range_ Range)
 	AppendAttributedString(attrString IAttributedString)
 	FixAttachmentAttributeInRange(range_ Range)
@@ -80,29 +80,29 @@ func (m_ MutableAttributedString) Init() MutableAttributedString {
 	return rv
 }
 
-func (m_ MutableAttributedString) InitWithHTMLBaseURLDocumentAttributes(data []byte, base IURL, dict Dictionary) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithHTML:baseURL:documentAttributes:"), data, objc.Ptr(base), dict)
+func (m_ MutableAttributedString) InitWithHTMLBaseURLDocumentAttributes(data []byte, base IURL, dict unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithHTML:baseURL:documentAttributes:"), data, base, dict)
 	return rv
 }
 
 // Creates an attributed string from the HTML in the specified data object and base URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524624-initwithhtml?language=objc
-func NewMutableAttributedStringWithHTMLBaseURLDocumentAttributes(data []byte, base IURL, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithHTMLBaseURLDocumentAttributes(data []byte, base IURL, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithHTMLBaseURLDocumentAttributes(data, base, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithContentsOfMarkdownFileAtURL:options:baseURL:error:"), objc.Ptr(markdownFile), objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (m_ MutableAttributedString) InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithContentsOfMarkdownFileAtURL:options:baseURL:error:"), markdownFile, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from the contents of a specified URL that contains Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746872-initwithcontentsofmarkdownfileat?language=objc
-func NewMutableAttributedStringWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+func NewMutableAttributedStringWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile IURL, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithContentsOfMarkdownFileAtURLOptionsBaseURLError(markdownFile, options, baseURL, error)
 	instance.Autorelease()
 	return instance
@@ -123,7 +123,7 @@ func NewMutableAttributedStringWithStringAttributes(str string, attrs map[Attrib
 }
 
 func (mc _MutableAttributedStringClass) LocalizedAttributedStringWithFormat(format IAttributedString, args ...any) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{objc.Ptr(format)}, args...)...)
+	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:"), append([]any{format}, args...)...)
 	return rv
 }
 
@@ -135,7 +135,7 @@ func MutableAttributedString_LocalizedAttributedStringWithFormat(format IAttribu
 }
 
 func (m_ MutableAttributedString) InitWithAttributedString(attrStr IAttributedString) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithAttributedString:"), objc.Ptr(attrStr))
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithAttributedString:"), attrStr)
 	return rv
 }
 
@@ -148,21 +148,21 @@ func NewMutableAttributedStringWithAttributedString(attrStr IAttributedString) M
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithData:options:documentAttributes:error:"), data, options, dict, objc.Ptr(error))
+func (m_ MutableAttributedString) InitWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict unsafe.Pointer, error unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithData:options:documentAttributes:error:"), data, options, dict, error)
 	return rv
 }
 
 // Creates an attributed string from the data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1524613-initwithdata?language=objc
-func NewMutableAttributedStringWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
+func NewMutableAttributedStringWithDataOptionsDocumentAttributesError(data []byte, options Dictionary, dict unsafe.Pointer, error unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithDataOptionsDocumentAttributesError(data, options, dict, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithRTFDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func (m_ MutableAttributedString) InitWithRTFDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithRTF:documentAttributes:"), data, dict)
 	return rv
 }
@@ -170,14 +170,14 @@ func (m_ MutableAttributedString) InitWithRTFDocumentAttributes(data []byte, dic
 // Creates an attributed string by decoding the stream of RTF commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1532912-initwithrtf?language=objc
-func NewMutableAttributedStringWithRTFDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithRTFDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithRTFDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
 func (m_ MutableAttributedString) InitWithFormatOptionsLocale(format IAttributedString, options AttributedStringFormattingOptions, locale ILocale, args ...any) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithFormat:options:locale:"), append([]any{objc.Ptr(format), options, objc.Ptr(locale)}, args...)...)
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithFormat:options:locale:"), append([]any{format, options, locale}, args...)...)
 	return rv
 }
 
@@ -190,35 +190,35 @@ func NewMutableAttributedStringWithFormatOptionsLocale(format IAttributedString,
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict Dictionary) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithRTFDFileWrapper:documentAttributes:"), objc.Ptr(wrapper), dict)
+func (m_ MutableAttributedString) InitWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithRTFDFileWrapper:documentAttributes:"), wrapper, dict)
 	return rv
 }
 
 // Creates an attributed string from the specified file wrapper that contains an RTFD document. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1533594-initwithrtfdfilewrapper?language=objc
-func NewMutableAttributedStringWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithRTFDFileWrapperDocumentAttributes(wrapper IFileWrapper, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithRTFDFileWrapperDocumentAttributes(wrapper, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithMarkdown:options:baseURL:error:"), markdown, objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (m_ MutableAttributedString) InitWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithMarkdown:options:baseURL:error:"), markdown, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from Markdown-formatted data using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746875-initwithmarkdown?language=objc
-func NewMutableAttributedStringWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+func NewMutableAttributedStringWithMarkdownOptionsBaseURLError(markdown []byte, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithMarkdownOptionsBaseURLError(markdown, options, baseURL, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict Dictionary) MutableAttributedString {
+func (m_ MutableAttributedString) InitWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict unsafe.Pointer) MutableAttributedString {
 	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithHTML:options:documentAttributes:"), data, options, dict)
 	return rv
 }
@@ -226,14 +226,14 @@ func (m_ MutableAttributedString) InitWithHTMLOptionsDocumentAttributes(data []b
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1535412-initwithhtml?language=objc
-func NewMutableAttributedStringWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithHTMLOptionsDocumentAttributes(data []byte, options Dictionary, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithHTMLOptionsDocumentAttributes(data, options, dict)
 	instance.Autorelease()
 	return instance
 }
 
 func (mc _MutableAttributedStringClass) LocalizedAttributedStringWithFormatOptions(format IAttributedString, options AttributedStringFormattingOptions, args ...any) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:options:"), append([]any{objc.Ptr(format), options}, args...)...)
+	rv := objc.Call[MutableAttributedString](mc, objc.Sel("localizedAttributedStringWithFormat:options:"), append([]any{format, options}, args...)...)
 	return rv
 }
 
@@ -244,7 +244,7 @@ func MutableAttributedString_LocalizedAttributedStringWithFormatOptions(format I
 	return MutableAttributedStringClass.LocalizedAttributedStringWithFormatOptions(format, options, args...)
 }
 
-func (m_ MutableAttributedString) InitWithDocFormatDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func (m_ MutableAttributedString) InitWithDocFormatDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithDocFormat:documentAttributes:"), data, dict)
 	return rv
 }
@@ -252,41 +252,41 @@ func (m_ MutableAttributedString) InitWithDocFormatDocumentAttributes(data []byt
 // Creates an attributed string from Microsoft Word format data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1534329-initwithdocformat?language=objc
-func NewMutableAttributedStringWithDocFormatDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithDocFormatDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithDocFormatDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithMarkdownString:options:baseURL:error:"), markdownString, objc.Ptr(options), objc.Ptr(baseURL), objc.Ptr(error))
+func (m_ MutableAttributedString) InitWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithMarkdownString:options:baseURL:error:"), markdownString, options, baseURL, error)
 	return rv
 }
 
 // Creates an attributed string from a Markdown-formatted string using the provided options. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/3746876-initwithmarkdownstring?language=objc
-func NewMutableAttributedStringWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error IError) MutableAttributedString {
+func NewMutableAttributedStringWithMarkdownStringOptionsBaseURLError(markdownString string, options IAttributedStringMarkdownParsingOptions, baseURL IURL, error unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithMarkdownStringOptionsBaseURLError(markdownString, options, baseURL, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithURLOptionsDocumentAttributesError(url IURL, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
-	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithURL:options:documentAttributes:error:"), objc.Ptr(url), options, dict, objc.Ptr(error))
+func (m_ MutableAttributedString) InitWithURLOptionsDocumentAttributesError(url IURL, options Dictionary, dict unsafe.Pointer, error unsafe.Pointer) MutableAttributedString {
+	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithURL:options:documentAttributes:error:"), url, options, dict, error)
 	return rv
 }
 
 // Creates an attributed string from the contents of the specified URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530490-initwithurl?language=objc
-func NewMutableAttributedStringWithURLOptionsDocumentAttributesError(url IURL, options Dictionary, dict Dictionary, error IError) MutableAttributedString {
+func NewMutableAttributedStringWithURLOptionsDocumentAttributesError(url IURL, options Dictionary, dict unsafe.Pointer, error unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithURLOptionsDocumentAttributesError(url, options, dict, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithHTMLDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func (m_ MutableAttributedString) InitWithHTMLDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithHTML:documentAttributes:"), data, dict)
 	return rv
 }
@@ -294,13 +294,13 @@ func (m_ MutableAttributedString) InitWithHTMLDocumentAttributes(data []byte, di
 // Creates an attributed string from the HTML in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1525953-initwithhtml?language=objc
-func NewMutableAttributedStringWithHTMLDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithHTMLDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithHTMLDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableAttributedString) InitWithRTFDDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func (m_ MutableAttributedString) InitWithRTFDDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	rv := objc.Call[MutableAttributedString](m_, objc.Sel("initWithRTFD:documentAttributes:"), data, dict)
 	return rv
 }
@@ -308,7 +308,7 @@ func (m_ MutableAttributedString) InitWithRTFDDocumentAttributes(data []byte, di
 // Creates an attributed string by decoding the stream of RTFD commands and data in the specified data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsattributedstring/1530987-initwithrtfd?language=objc
-func NewMutableAttributedStringWithRTFDDocumentAttributes(data []byte, dict Dictionary) MutableAttributedString {
+func NewMutableAttributedStringWithRTFDDocumentAttributes(data []byte, dict unsafe.Pointer) MutableAttributedString {
 	instance := MutableAttributedStringClass.Alloc().InitWithRTFDDocumentAttributes(data, dict)
 	instance.Autorelease()
 	return instance
@@ -332,7 +332,7 @@ func NewMutableAttributedStringWithString(str string) MutableAttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1411894-setattributedstring?language=objc
 func (m_ MutableAttributedString) SetAttributedString(attrString IAttributedString) {
-	objc.Call[objc.Void](m_, objc.Sel("setAttributedString:"), objc.Ptr(attrString))
+	objc.Call[objc.Void](m_, objc.Sel("setAttributedString:"), attrString)
 }
 
 // Removes the superscript attribute from the characters in aRange. [Full Topic]
@@ -353,7 +353,7 @@ func (m_ MutableAttributedString) AddAttributeValueRange(name AttributedStringKe
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1414947-insertattributedstring?language=objc
 func (m_ MutableAttributedString) InsertAttributedStringAtIndex(attrString IAttributedString, loc uint) {
-	objc.Call[objc.Void](m_, objc.Sel("insertAttributedString:atIndex:"), objc.Ptr(attrString), loc)
+	objc.Call[objc.Void](m_, objc.Sel("insertAttributedString:atIndex:"), attrString, loc)
 }
 
 // Updates all attachments based on files contained in the RTFD file package at path. [Full Topic]
@@ -395,14 +395,14 @@ func (m_ MutableAttributedString) FixFontAttributeInRange(range_ Range) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1530762-setalignment?language=objc
 func (m_ MutableAttributedString) SetAlignmentRange(alignment objc.IObject, range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("setAlignment:range:"), objc.Ptr(alignment), range_)
+	objc.Call[objc.Void](m_, objc.Sel("setAlignment:range:"), alignment, range_)
 }
 
 // Replaces the characters and attributes in a given range with the characters and attributes of the given attributed string. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1417045-replacecharactersinrange?language=objc
 func (m_ MutableAttributedString) ReplaceCharactersInRangeWithAttributedString(range_ Range, attrString IAttributedString) {
-	objc.Call[objc.Void](m_, objc.Sel("replaceCharactersInRange:withAttributedString:"), range_, objc.Ptr(attrString))
+	objc.Call[objc.Void](m_, objc.Sel("replaceCharactersInRange:withAttributedString:"), range_, attrString)
 }
 
 // Replaces the characters in the given range with the characters of the given string. [Full Topic]
@@ -416,7 +416,7 @@ func (m_ MutableAttributedString) ReplaceCharactersInRangeWithString(range_ Rang
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1532923-setbasewritingdirection?language=objc
 func (m_ MutableAttributedString) SetBaseWritingDirectionRange(writingDirection objc.IObject, range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("setBaseWritingDirection:range:"), objc.Ptr(writingDirection), range_)
+	objc.Call[objc.Void](m_, objc.Sel("setBaseWritingDirection:range:"), writingDirection, range_)
 }
 
 // Overridden by subclasses to consolidate changes made since a previous [foundation/nsmutableattributedstring/beginediting] message and to notify any observers of the changes. [Full Topic]
@@ -436,8 +436,8 @@ func (m_ MutableAttributedString) RemoveAttributeRange(name AttributedStringKey,
 // Sets the contents of attributed string to the contents of the specified file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1524892-readfromurl?language=objc
-func (m_ MutableAttributedString) ReadFromURLOptionsDocumentAttributesError(url IURL, opts Dictionary, dict Dictionary, error IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("readFromURL:options:documentAttributes:error:"), objc.Ptr(url), opts, dict, objc.Ptr(error))
+func (m_ MutableAttributedString) ReadFromURLOptionsDocumentAttributesError(url IURL, opts Dictionary, dict unsafe.Pointer, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("readFromURL:options:documentAttributes:error:"), url, opts, dict, error)
 	return rv
 }
 
@@ -466,7 +466,7 @@ func (m_ MutableAttributedString) FixParagraphStyleAttributeInRange(range_ Range
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/3746902-appendlocalizedformat?language=objc
 func (m_ MutableAttributedString) AppendLocalizedFormat(format IAttributedString, args ...any) {
-	objc.Call[objc.Void](m_, objc.Sel("appendLocalizedFormat:"), append([]any{objc.Ptr(format)}, args...)...)
+	objc.Call[objc.Void](m_, objc.Sel("appendLocalizedFormat:"), append([]any{format}, args...)...)
 }
 
 // Deletes the characters in the given range along with their associated attributes. [Full Topic]
@@ -479,8 +479,8 @@ func (m_ MutableAttributedString) DeleteCharactersInRange(range_ Range) {
 // Sets the contents of the receiver from the stream at data. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1535465-readfromdata?language=objc
-func (m_ MutableAttributedString) ReadFromDataOptionsDocumentAttributesError(data []byte, opts Dictionary, dict Dictionary, error IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("readFromData:options:documentAttributes:error:"), data, opts, dict, objc.Ptr(error))
+func (m_ MutableAttributedString) ReadFromDataOptionsDocumentAttributesError(data []byte, opts Dictionary, dict unsafe.Pointer, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("readFromData:options:documentAttributes:error:"), data, opts, dict, error)
 	return rv
 }
 
@@ -488,14 +488,14 @@ func (m_ MutableAttributedString) ReadFromDataOptionsDocumentAttributesError(dat
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1532734-applyfonttraits?language=objc
 func (m_ MutableAttributedString) ApplyFontTraitsRange(traitMask objc.IObject, range_ Range) {
-	objc.Call[objc.Void](m_, objc.Sel("applyFontTraits:range:"), objc.Ptr(traitMask), range_)
+	objc.Call[objc.Void](m_, objc.Sel("applyFontTraits:range:"), traitMask, range_)
 }
 
 // Adds the characters and attributes of a given attributed string to the end of the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutableattributedstring/1417879-appendattributedstring?language=objc
 func (m_ MutableAttributedString) AppendAttributedString(attrString IAttributedString) {
-	objc.Call[objc.Void](m_, objc.Sel("appendAttributedString:"), objc.Ptr(attrString))
+	objc.Call[objc.Void](m_, objc.Sel("appendAttributedString:"), attrString)
 }
 
 // Cleans up attachment attributes in aRange, removing all attachment attributes assigned to characters other than NSAttachmentCharacter. [Full Topic]

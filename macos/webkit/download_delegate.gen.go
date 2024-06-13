@@ -143,7 +143,7 @@ func (d_ DownloadDelegateObject) HasDownloadDidReceiveAuthenticationChallengeCom
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloaddelegate/3727346-download?language=objc
 func (d_ DownloadDelegateObject) DownloadDidReceiveAuthenticationChallengeCompletionHandler(download Download, challenge foundation.URLAuthenticationChallenge, completionHandler func(arg0 foundation.URLSessionAuthChallengeDisposition, arg1 foundation.URLCredential)) {
-	objc.Call[objc.Void](d_, objc.Sel("download:didReceiveAuthenticationChallenge:completionHandler:"), objc.Ptr(download), objc.Ptr(challenge), completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("download:didReceiveAuthenticationChallenge:completionHandler:"), download, challenge, completionHandler)
 }
 
 func (d_ DownloadDelegateObject) HasDownloadDidFailWithErrorResumeData() bool {
@@ -154,7 +154,7 @@ func (d_ DownloadDelegateObject) HasDownloadDidFailWithErrorResumeData() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloaddelegate/3727345-download?language=objc
 func (d_ DownloadDelegateObject) DownloadDidFailWithErrorResumeData(download Download, error foundation.Error, resumeData []byte) {
-	objc.Call[objc.Void](d_, objc.Sel("download:didFailWithError:resumeData:"), objc.Ptr(download), objc.Ptr(error), resumeData)
+	objc.Call[objc.Void](d_, objc.Sel("download:didFailWithError:resumeData:"), download, error, resumeData)
 }
 
 func (d_ DownloadDelegateObject) HasDownloadDidFinish() bool {
@@ -165,7 +165,7 @@ func (d_ DownloadDelegateObject) HasDownloadDidFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloaddelegate/3727348-downloaddidfinish?language=objc
 func (d_ DownloadDelegateObject) DownloadDidFinish(download Download) {
-	objc.Call[objc.Void](d_, objc.Sel("downloadDidFinish:"), objc.Ptr(download))
+	objc.Call[objc.Void](d_, objc.Sel("downloadDidFinish:"), download)
 }
 
 func (d_ DownloadDelegateObject) HasDownloadDecideDestinationUsingResponseSuggestedFilenameCompletionHandler() bool {
@@ -176,7 +176,7 @@ func (d_ DownloadDelegateObject) HasDownloadDecideDestinationUsingResponseSugges
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloaddelegate/3727344-download?language=objc
 func (d_ DownloadDelegateObject) DownloadDecideDestinationUsingResponseSuggestedFilenameCompletionHandler(download Download, response foundation.URLResponse, suggestedFilename string, completionHandler func(destination foundation.URL)) {
-	objc.Call[objc.Void](d_, objc.Sel("download:decideDestinationUsingResponse:suggestedFilename:completionHandler:"), objc.Ptr(download), objc.Ptr(response), suggestedFilename, completionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("download:decideDestinationUsingResponse:suggestedFilename:completionHandler:"), download, response, suggestedFilename, completionHandler)
 }
 
 func (d_ DownloadDelegateObject) HasDownloadWillPerformHTTPRedirectionNewRequestDecisionHandler() bool {
@@ -187,5 +187,5 @@ func (d_ DownloadDelegateObject) HasDownloadWillPerformHTTPRedirectionNewRequest
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wkdownloaddelegate/3727347-download?language=objc
 func (d_ DownloadDelegateObject) DownloadWillPerformHTTPRedirectionNewRequestDecisionHandler(download Download, response foundation.HTTPURLResponse, request foundation.URLRequest, decisionHandler func(arg0 DownloadRedirectPolicy)) {
-	objc.Call[objc.Void](d_, objc.Sel("download:willPerformHTTPRedirection:newRequest:decisionHandler:"), objc.Ptr(download), objc.Ptr(response), objc.Ptr(request), decisionHandler)
+	objc.Call[objc.Void](d_, objc.Sel("download:willPerformHTTPRedirection:newRequest:decisionHandler:"), download, response, request, decisionHandler)
 }

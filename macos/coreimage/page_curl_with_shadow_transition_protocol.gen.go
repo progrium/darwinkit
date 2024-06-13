@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition?language=objc
 type PPageCurlWithShadowTransition interface {
 	// optional
-	SetShadowSize(value float64)
+	SetShadowSize(value float32)
 	HasSetShadowSize() bool
 
 	// optional
-	ShadowSize() float64
+	ShadowSize() float32
 	HasShadowSize() bool
 
 	// optional
@@ -28,19 +28,19 @@ type PPageCurlWithShadowTransition interface {
 	HasBacksideImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -52,11 +52,11 @@ type PPageCurlWithShadowTransition interface {
 	HasExtent() bool
 
 	// optional
-	SetShadowAmount(value float64)
+	SetShadowAmount(value float32)
 	HasSetShadowAmount() bool
 
 	// optional
-	ShadowAmount() float64
+	ShadowAmount() float32
 	HasShadowAmount() bool
 
 	// optional
@@ -83,7 +83,7 @@ func (p_ PageCurlWithShadowTransitionObject) HasSetShadowSize() bool {
 // The maximum size, in pixels, of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228630-shadowsize?language=objc
-func (p_ PageCurlWithShadowTransitionObject) SetShadowSize(value float64) {
+func (p_ PageCurlWithShadowTransitionObject) SetShadowSize(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setShadowSize:"), value)
 }
 
@@ -94,8 +94,8 @@ func (p_ PageCurlWithShadowTransitionObject) HasShadowSize() bool {
 // The maximum size, in pixels, of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228630-shadowsize?language=objc
-func (p_ PageCurlWithShadowTransitionObject) ShadowSize() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("shadowSize"))
+func (p_ PageCurlWithShadowTransitionObject) ShadowSize() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("shadowSize"))
 	return rv
 }
 
@@ -107,7 +107,7 @@ func (p_ PageCurlWithShadowTransitionObject) HasSetBacksideImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228625-backsideimage?language=objc
 func (p_ PageCurlWithShadowTransitionObject) SetBacksideImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setBacksideImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setBacksideImage:"), value)
 }
 
 func (p_ PageCurlWithShadowTransitionObject) HasBacksideImage() bool {
@@ -129,7 +129,7 @@ func (p_ PageCurlWithShadowTransitionObject) HasSetRadius() bool {
 // The radius of the curl. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228627-radius?language=objc
-func (p_ PageCurlWithShadowTransitionObject) SetRadius(value float64) {
+func (p_ PageCurlWithShadowTransitionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setRadius:"), value)
 }
 
@@ -140,8 +140,8 @@ func (p_ PageCurlWithShadowTransitionObject) HasRadius() bool {
 // The radius of the curl. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228627-radius?language=objc
-func (p_ PageCurlWithShadowTransitionObject) Radius() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("radius"))
+func (p_ PageCurlWithShadowTransitionObject) Radius() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("radius"))
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (p_ PageCurlWithShadowTransitionObject) HasSetAngle() bool {
 // The angle of the curling page. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228624-angle?language=objc
-func (p_ PageCurlWithShadowTransitionObject) SetAngle(value float64) {
+func (p_ PageCurlWithShadowTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setAngle:"), value)
 }
 
@@ -163,8 +163,8 @@ func (p_ PageCurlWithShadowTransitionObject) HasAngle() bool {
 // The angle of the curling page. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228624-angle?language=objc
-func (p_ PageCurlWithShadowTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("angle"))
+func (p_ PageCurlWithShadowTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("angle"))
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (p_ PageCurlWithShadowTransitionObject) HasSetShadowAmount() bool {
 // The strength of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228628-shadowamount?language=objc
-func (p_ PageCurlWithShadowTransitionObject) SetShadowAmount(value float64) {
+func (p_ PageCurlWithShadowTransitionObject) SetShadowAmount(value float32) {
 	objc.Call[objc.Void](p_, objc.Sel("setShadowAmount:"), value)
 }
 
@@ -209,8 +209,8 @@ func (p_ PageCurlWithShadowTransitionObject) HasShadowAmount() bool {
 // The strength of the shadow. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cipagecurlwithshadowtransition/3228628-shadowamount?language=objc
-func (p_ PageCurlWithShadowTransitionObject) ShadowAmount() float64 {
-	rv := objc.Call[float64](p_, objc.Sel("shadowAmount"))
+func (p_ PageCurlWithShadowTransitionObject) ShadowAmount() float32 {
+	rv := objc.Call[float32](p_, objc.Sel("shadowAmount"))
 	return rv
 }
 

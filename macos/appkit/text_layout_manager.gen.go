@@ -101,14 +101,14 @@ func NewTextLayoutManager() TextLayoutManager {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810006-replacecontentsinrange?language=objc
 func (t_ TextLayoutManager) ReplaceContentsInRangeWithAttributedString(range_ ITextRange, attributedString foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withAttributedString:"), objc.Ptr(range_), objc.Ptr(attributedString))
+	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withAttributedString:"), range_, attributedString)
 }
 
 // Sets the rendering attributes for the range you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810009-setrenderingattributes?language=objc
 func (t_ TextLayoutManager) SetRenderingAttributesForTextRange(renderingAttributes map[foundation.AttributedStringKey]objc.IObject, textRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("setRenderingAttributes:forTextRange:"), renderingAttributes, objc.Ptr(textRange))
+	objc.Call[objc.Void](t_, objc.Sel("setRenderingAttributes:forTextRange:"), renderingAttributes, textRange)
 }
 
 // Performs the layout for filling the bounds you specify inside the last text container. [Full Topic]
@@ -122,7 +122,7 @@ func (t_ TextLayoutManager) EnsureLayoutForBounds(bounds coregraphics.Rect) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809998-invalidatelayoutforrange?language=objc
 func (t_ TextLayoutManager) InvalidateLayoutForRange(range_ ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("invalidateLayoutForRange:"), objc.Ptr(range_))
+	objc.Call[objc.Void](t_, objc.Sel("invalidateLayoutForRange:"), range_)
 }
 
 // Returns the text layout fragment at the position you specify in the text container. [Full Topic]
@@ -146,7 +146,7 @@ func (t_ TextLayoutManager) RenderingAttributesForLinkAtLocation(link objc.IObje
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810004-renderingattributesforlink?language=objc
 func (t_ TextLayoutManager) RenderingAttributesForLinkAtLocationObject(link objc.IObject, locationObject objc.IObject) map[foundation.AttributedStringKey]objc.Object {
-	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("renderingAttributesForLink:atLocation:"), link, objc.Ptr(locationObject))
+	rv := objc.Call[map[foundation.AttributedStringKey]objc.Object](t_, objc.Sel("renderingAttributesForLink:atLocation:"), link, locationObject)
 	return rv
 }
 
@@ -163,7 +163,7 @@ func (t_ TextLayoutManager) TextLayoutFragmentForLocation(location PTextLocation
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810012-textlayoutfragmentforlocation?language=objc
 func (t_ TextLayoutManager) TextLayoutFragmentForLocationObject(locationObject objc.IObject) TextLayoutFragment {
-	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("textLayoutFragmentForLocation:"), objc.Ptr(locationObject))
+	rv := objc.Call[TextLayoutFragment](t_, objc.Sel("textLayoutFragmentForLocation:"), locationObject)
 	return rv
 }
 
@@ -171,7 +171,7 @@ func (t_ TextLayoutManager) TextLayoutFragmentForLocationObject(locationObject o
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810007-replacecontentsinrange?language=objc
 func (t_ TextLayoutManager) ReplaceContentsInRangeWithTextElements(range_ ITextRange, textElements []ITextElement) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), objc.Ptr(range_), textElements)
+	objc.Call[objc.Void](t_, objc.Sel("replaceContentsInRange:withTextElements:"), range_, textElements)
 }
 
 // Enumerates the rendering attributes from a location you specify. [Full Topic]
@@ -186,7 +186,7 @@ func (t_ TextLayoutManager) EnumerateRenderingAttributesFromLocationReverseUsing
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809993-enumeraterenderingattributesfrom?language=objc
 func (t_ TextLayoutManager) EnumerateRenderingAttributesFromLocationObjectReverseUsingBlock(locationObject objc.IObject, reverse bool, block func(textLayoutManager TextLayoutManager, attributes map[foundation.AttributedStringKey]objc.Object, textRange TextRange) bool) {
-	objc.Call[objc.Void](t_, objc.Sel("enumerateRenderingAttributesFromLocation:reverse:usingBlock:"), objc.Ptr(locationObject), reverse, block)
+	objc.Call[objc.Void](t_, objc.Sel("enumerateRenderingAttributesFromLocation:reverse:usingBlock:"), locationObject, reverse, block)
 }
 
 // Enumerates the text layout fragments starting at the specified location. [Full Topic]
@@ -202,7 +202,7 @@ func (t_ TextLayoutManager) EnumerateTextLayoutFragmentsFromLocationOptionsUsing
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809994-enumeratetextlayoutfragmentsfrom?language=objc
 func (t_ TextLayoutManager) EnumerateTextLayoutFragmentsFromLocationObjectOptionsUsingBlock(locationObject objc.IObject, options TextLayoutFragmentEnumerationOptions, block func(layoutFragment TextLayoutFragment) bool) TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("enumerateTextLayoutFragmentsFromLocation:options:usingBlock:"), objc.Ptr(locationObject), options, block)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("enumerateTextLayoutFragmentsFromLocation:options:usingBlock:"), locationObject, options, block)
 	return rv
 }
 
@@ -210,42 +210,42 @@ func (t_ TextLayoutManager) EnumerateTextLayoutFragmentsFromLocationObjectOption
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809999-invalidaterenderingattributesfor?language=objc
 func (t_ TextLayoutManager) InvalidateRenderingAttributesForTextRange(textRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("invalidateRenderingAttributesForTextRange:"), objc.Ptr(textRange))
+	objc.Call[objc.Void](t_, objc.Sel("invalidateRenderingAttributesForTextRange:"), textRange)
 }
 
 // Enumerates text segments of a specific type and in the text range you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809995-enumeratetextsegmentsinrange?language=objc
 func (t_ TextLayoutManager) EnumerateTextSegmentsInRangeTypeOptionsUsingBlock(textRange ITextRange, type_ TextLayoutManagerSegmentType, options TextLayoutManagerSegmentOptions, block func(textSegmentRange TextRange, textSegmentFrame coregraphics.Rect, baselinePosition float64, textContainer TextContainer) bool) {
-	objc.Call[objc.Void](t_, objc.Sel("enumerateTextSegmentsInRange:type:options:usingBlock:"), objc.Ptr(textRange), type_, options, block)
+	objc.Call[objc.Void](t_, objc.Sel("enumerateTextSegmentsInRange:type:options:usingBlock:"), textRange, type_, options, block)
 }
 
 // Removes the rendering attribute from the specified text range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810003-removerenderingattribute?language=objc
 func (t_ TextLayoutManager) RemoveRenderingAttributeForTextRange(renderingAttribute foundation.AttributedStringKey, textRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("removeRenderingAttribute:forTextRange:"), renderingAttribute, objc.Ptr(textRange))
+	objc.Call[objc.Void](t_, objc.Sel("removeRenderingAttribute:forTextRange:"), renderingAttribute, textRange)
 }
 
 // Performs the layout for specified text range. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809992-ensurelayoutforrange?language=objc
 func (t_ TextLayoutManager) EnsureLayoutForRange(range_ ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("ensureLayoutForRange:"), objc.Ptr(range_))
+	objc.Call[objc.Void](t_, objc.Sel("ensureLayoutForRange:"), range_)
 }
 
 // Sets the rendering attribute for the value and range you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809989-addrenderingattribute?language=objc
 func (t_ TextLayoutManager) AddRenderingAttributeValueForTextRange(renderingAttribute foundation.AttributedStringKey, value objc.IObject, textRange ITextRange) {
-	objc.Call[objc.Void](t_, objc.Sel("addRenderingAttribute:value:forTextRange:"), renderingAttribute, value, objc.Ptr(textRange))
+	objc.Call[objc.Void](t_, objc.Sel("addRenderingAttribute:value:forTextRange:"), renderingAttribute, value, textRange)
 }
 
 // Replaces the current text content manager with a new one you provide. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810008-replacetextcontentmanager?language=objc
 func (t_ TextLayoutManager) ReplaceTextContentManager(textContentManager ITextContentManager) {
-	objc.Call[objc.Void](t_, objc.Sel("replaceTextContentManager:"), objc.Ptr(textContentManager))
+	objc.Call[objc.Void](t_, objc.Sel("replaceTextContentManager:"), textContentManager)
 }
 
 // A Boolean value that controls whether the framework uses the leading information specified by the font when laying out text. [Full Topic]
@@ -337,7 +337,7 @@ func (t_ TextLayoutManager) SetDelegate(value PTextLayoutManagerDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3809990-delegate?language=objc
 func (t_ TextLayoutManager) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // Returns text viewport layout controller associated with the layout manager’s text container. [Full Topic]
@@ -368,7 +368,7 @@ func (t_ TextLayoutManager) TextSelectionNavigation() TextSelectionNavigation {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810014-textselectionnavigation?language=objc
 func (t_ TextLayoutManager) SetTextSelectionNavigation(value ITextSelectionNavigation) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextSelectionNavigation:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextSelectionNavigation:"), value)
 }
 
 // A Boolean values that controls whether the text layout manager attempts to hyphenate when wrapping lines. [Full Topic]
@@ -413,7 +413,7 @@ func (t_ TextLayoutManager) LayoutQueue() foundation.OperationQueue {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810000-layoutqueue?language=objc
 func (t_ TextLayoutManager) SetLayoutQueue(value foundation.IOperationQueue) {
-	objc.Call[objc.Void](t_, objc.Sel("setLayoutQueue:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setLayoutQueue:"), value)
 }
 
 // The text container object that provides geometric information for the layout destination. [Full Topic]
@@ -428,5 +428,5 @@ func (t_ TextLayoutManager) TextContainer() TextContainer {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextlayoutmanager/3810010-textcontainer?language=objc
 func (t_ TextLayoutManager) SetTextContainer(value ITextContainer) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextContainer:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextContainer:"), value)
 }

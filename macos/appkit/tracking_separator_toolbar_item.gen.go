@@ -38,7 +38,7 @@ func TrackingSeparatorToolbarItemFrom(ptr unsafe.Pointer) TrackingSeparatorToolb
 }
 
 func (tc _TrackingSeparatorToolbarItemClass) TrackingSeparatorToolbarItemWithIdentifierSplitViewDividerIndex(identifier ToolbarItemIdentifier, splitView ISplitView, dividerIndex int) TrackingSeparatorToolbarItem {
-	rv := objc.Call[TrackingSeparatorToolbarItem](tc, objc.Sel("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, objc.Ptr(splitView), dividerIndex)
+	rv := objc.Call[TrackingSeparatorToolbarItem](tc, objc.Sel("trackingSeparatorToolbarItemWithIdentifier:splitView:dividerIndex:"), identifier, splitView, dividerIndex)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func (t_ TrackingSeparatorToolbarItem) SplitView() SplitView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstrackingseparatortoolbaritem/3626827-splitview?language=objc
 func (t_ TrackingSeparatorToolbarItem) SetSplitView(value ISplitView) {
-	objc.Call[objc.Void](t_, objc.Sel("setSplitView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setSplitView:"), value)
 }
 
 // The index of the split view divider to align with the tracking separator. [Full Topic]

@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition?language=objc
 type PDisintegrateWithMaskTransition interface {
 	// optional
-	SetShadowRadius(value float64)
+	SetShadowRadius(value float32)
 	HasSetShadowRadius() bool
 
 	// optional
-	ShadowRadius() float64
+	ShadowRadius() float32
 	HasShadowRadius() bool
 
 	// optional
-	SetShadowDensity(value float64)
+	SetShadowDensity(value float32)
 	HasSetShadowDensity() bool
 
 	// optional
-	ShadowDensity() float64
+	ShadowDensity() float32
 	HasShadowDensity() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowRadius() bool {
 // The radius of the shadow the mask creates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) SetShadowRadius(value float64) {
+func (d_ DisintegrateWithMaskTransitionObject) SetShadowRadius(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setShadowRadius:"), value)
 }
 
@@ -70,8 +70,8 @@ func (d_ DisintegrateWithMaskTransitionObject) HasShadowRadius() bool {
 // The radius of the shadow the mask creates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228220-shadowradius?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) ShadowRadius() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("shadowRadius"))
+func (d_ DisintegrateWithMaskTransitionObject) ShadowRadius() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("shadowRadius"))
 	return rv
 }
 
@@ -82,7 +82,7 @@ func (d_ DisintegrateWithMaskTransitionObject) HasSetShadowDensity() bool {
 // The density of the shadow the mask creates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228218-shadowdensity?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) SetShadowDensity(value float64) {
+func (d_ DisintegrateWithMaskTransitionObject) SetShadowDensity(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setShadowDensity:"), value)
 }
 
@@ -93,8 +93,8 @@ func (d_ DisintegrateWithMaskTransitionObject) HasShadowDensity() bool {
 // The density of the shadow the mask creates. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228218-shadowdensity?language=objc
-func (d_ DisintegrateWithMaskTransitionObject) ShadowDensity() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("shadowDensity"))
+func (d_ DisintegrateWithMaskTransitionObject) ShadowDensity() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("shadowDensity"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (d_ DisintegrateWithMaskTransitionObject) HasSetMaskImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidisintegratewithmasktransition/3228217-maskimage?language=objc
 func (d_ DisintegrateWithMaskTransitionObject) SetMaskImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setMaskImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setMaskImage:"), value)
 }
 
 func (d_ DisintegrateWithMaskTransitionObject) HasMaskImage() bool {

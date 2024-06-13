@@ -35,7 +35,7 @@ func (c_ ContentKeyRecipientObject) HasContentKeySessionDidProvideContentKey() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcontentkeyrecipient/3726101-contentkeysession?language=objc
 func (c_ ContentKeyRecipientObject) ContentKeySessionDidProvideContentKey(contentKeySession ContentKeySession, contentKey ContentKey) {
-	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideContentKey:"), objc.Ptr(contentKeySession), objc.Ptr(contentKey))
+	objc.Call[objc.Void](c_, objc.Sel("contentKeySession:didProvideContentKey:"), contentKeySession, contentKey)
 }
 
 func (c_ ContentKeyRecipientObject) HasMayRequireContentKeysForMediaDataProcessing() bool {

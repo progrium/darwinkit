@@ -222,14 +222,14 @@ func (t_ TableView) Tile() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524297-registernib?language=objc
 func (t_ TableView) RegisterNibForIdentifier(nib INib, identifier UserInterfaceItemIdentifier) {
-	objc.Call[objc.Void](t_, objc.Sel("registerNib:forIdentifier:"), objc.Ptr(nib), identifier)
+	objc.Call[objc.Void](t_, objc.Sel("registerNib:forIdentifier:"), nib, identifier)
 }
 
 // Computes and returns an image to use for dragging. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1526541-dragimageforrowswithindexes?language=objc
 func (t_ TableView) DragImageForRowsWithIndexesTableColumnsEventOffset(dragRows foundation.IIndexSet, tableColumns []ITableColumn, dragEvent IEvent, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](t_, objc.Sel("dragImageForRowsWithIndexes:tableColumns:event:offset:"), objc.Ptr(dragRows), tableColumns, objc.Ptr(dragEvent), dragImageOffset)
+	rv := objc.Call[Image](t_, objc.Sel("dragImageForRowsWithIndexes:tableColumns:event:offset:"), dragRows, tableColumns, dragEvent, dragImageOffset)
 	return rv
 }
 
@@ -251,7 +251,7 @@ func (t_ TableView) MoveColumnToColumn(oldIndex int, newIndex int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524846-indicatorimageintablecolumn?language=objc
 func (t_ TableView) IndicatorImageInTableColumn(tableColumn ITableColumn) Image {
-	rv := objc.Call[Image](t_, objc.Sel("indicatorImageInTableColumn:"), objc.Ptr(tableColumn))
+	rv := objc.Call[Image](t_, objc.Sel("indicatorImageInTableColumn:"), tableColumn)
 	return rv
 }
 
@@ -267,14 +267,14 @@ func (t_ TableView) ColumnIndexesInRect(rect foundation.Rect) foundation.IndexSe
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1532903-didremoverowview?language=objc
 func (t_ TableView) DidRemoveRowViewForRow(rowView ITableRowView, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("didRemoveRowView:forRow:"), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](t_, objc.Sel("didRemoveRowView:forRow:"), rowView, row)
 }
 
 // Invoked when a row view is added to the table. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1534008-didaddrowview?language=objc
 func (t_ TableView) DidAddRowViewForRow(rowView ITableRowView, row int) {
-	objc.Call[objc.Void](t_, objc.Sel("didAddRowView:forRow:"), objc.Ptr(rowView), row)
+	objc.Call[objc.Void](t_, objc.Sel("didAddRowView:forRow:"), rowView, row)
 }
 
 // Deselects all selected rows or columns if empty selection is allowed; otherwise does nothing. [Full Topic]
@@ -296,7 +296,7 @@ func (t_ TableView) RectOfColumn(column int) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1532126-noteheightofrowswithindexeschang?language=objc
 func (t_ TableView) NoteHeightOfRowsWithIndexesChanged(indexSet foundation.IIndexSet) {
-	objc.Call[objc.Void](t_, objc.Sel("noteHeightOfRowsWithIndexesChanged:"), objc.Ptr(indexSet))
+	objc.Call[objc.Void](t_, objc.Sel("noteHeightOfRowsWithIndexesChanged:"), indexSet)
 }
 
 // Ends the group of updates for the table view. [Full Topic]
@@ -340,14 +340,14 @@ func (t_ TableView) RowsInRect(rect foundation.Rect) foundation.Range {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1527621-reloaddataforrowindexes?language=objc
 func (t_ TableView) ReloadDataForRowIndexesColumnIndexes(rowIndexes foundation.IIndexSet, columnIndexes foundation.IIndexSet) {
-	objc.Call[objc.Void](t_, objc.Sel("reloadDataForRowIndexes:columnIndexes:"), objc.Ptr(rowIndexes), objc.Ptr(columnIndexes))
+	objc.Call[objc.Void](t_, objc.Sel("reloadDataForRowIndexes:columnIndexes:"), rowIndexes, columnIndexes)
 }
 
 // Inserts the rows using the specified animation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1532406-insertrowsatindexes?language=objc
 func (t_ TableView) InsertRowsAtIndexesWithAnimation(indexes foundation.IIndexSet, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("insertRowsAtIndexes:withAnimation:"), objc.Ptr(indexes), animationOptions)
+	objc.Call[objc.Void](t_, objc.Sel("insertRowsAtIndexes:withAnimation:"), indexes, animationOptions)
 }
 
 // Highlights the region of the table view in the specified rectangle. [Full Topic]
@@ -376,7 +376,7 @@ func (t_ TableView) RowViewAtRowMakeIfNecessary(row int, makeIfNecessary bool) T
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1529688-selectrowindexes?language=objc
 func (t_ TableView) SelectRowIndexesByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.Call[objc.Void](t_, objc.Sel("selectRowIndexes:byExtendingSelection:"), objc.Ptr(indexes), extend)
+	objc.Call[objc.Void](t_, objc.Sel("selectRowIndexes:byExtendingSelection:"), indexes, extend)
 }
 
 // Returns the NSTableColumn object for the first column whose identifier is equal to the specified object. [Full Topic]
@@ -391,14 +391,14 @@ func (t_ TableView) TableColumnWithIdentifier(identifier UserInterfaceItemIdenti
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524655-removerowsatindexes?language=objc
 func (t_ TableView) RemoveRowsAtIndexesWithAnimation(indexes foundation.IIndexSet, animationOptions TableViewAnimationOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("removeRowsAtIndexes:withAnimation:"), objc.Ptr(indexes), animationOptions)
+	objc.Call[objc.Void](t_, objc.Sel("removeRowsAtIndexes:withAnimation:"), indexes, animationOptions)
 }
 
 // Hides the specified table rows. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1534141-hiderowsatindexes?language=objc
 func (t_ TableView) HideRowsAtIndexesWithAnimation(indexes foundation.IIndexSet, rowAnimation TableViewAnimationOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("hideRowsAtIndexes:withAnimation:"), objc.Ptr(indexes), rowAnimation)
+	objc.Call[objc.Void](t_, objc.Sel("hideRowsAtIndexes:withAnimation:"), indexes, rowAnimation)
 }
 
 // Returns a view at the specified row and column indexes, creating one if necessary. [Full Topic]
@@ -450,14 +450,14 @@ func (t_ TableView) SelectAll(sender objc.IObject) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524416-selectcolumnindexes?language=objc
 func (t_ TableView) SelectColumnIndexesByExtendingSelection(indexes foundation.IIndexSet, extend bool) {
-	objc.Call[objc.Void](t_, objc.Sel("selectColumnIndexes:byExtendingSelection:"), objc.Ptr(indexes), extend)
+	objc.Call[objc.Void](t_, objc.Sel("selectColumnIndexes:byExtendingSelection:"), indexes, extend)
 }
 
 // Returns the index of the row for the specified view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1526732-rowforview?language=objc
 func (t_ TableView) RowForView(view IView) int {
-	rv := objc.Call[int](t_, objc.Sel("rowForView:"), objc.Ptr(view))
+	rv := objc.Call[int](t_, objc.Sel("rowForView:"), view)
 	return rv
 }
 
@@ -465,14 +465,14 @@ func (t_ TableView) RowForView(view IView) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1534381-setindicatorimage?language=objc
 func (t_ TableView) SetIndicatorImageInTableColumn(image IImage, tableColumn ITableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("setIndicatorImage:inTableColumn:"), objc.Ptr(image), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("setIndicatorImage:inTableColumn:"), image, tableColumn)
 }
 
 // Adds the specified column as the last column of the table view. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1534098-addtablecolumn?language=objc
 func (t_ TableView) AddTableColumn(tableColumn ITableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("addTableColumn:"), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("addTableColumn:"), tableColumn)
 }
 
 // Draws the background of the table view in the clip rect specified by the rectangle. [Full Topic]
@@ -494,14 +494,14 @@ func (t_ TableView) RowAtPoint(point foundation.Point) int {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1527447-unhiderowsatindexes?language=objc
 func (t_ TableView) UnhideRowsAtIndexesWithAnimation(indexes foundation.IIndexSet, rowAnimation TableViewAnimationOptions) {
-	objc.Call[objc.Void](t_, objc.Sel("unhideRowsAtIndexes:withAnimation:"), objc.Ptr(indexes), rowAnimation)
+	objc.Call[objc.Void](t_, objc.Sel("unhideRowsAtIndexes:withAnimation:"), indexes, rowAnimation)
 }
 
 // Edits the cell at the specified column and row using the specified event and selection behavior. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1526295-editcolumn?language=objc
 func (t_ TableView) EditColumnRowWithEventSelect(column int, row int, event IEvent, select_ bool) {
-	objc.Call[objc.Void](t_, objc.Sel("editColumn:row:withEvent:select:"), column, row, objc.Ptr(event), select_)
+	objc.Call[objc.Void](t_, objc.Sel("editColumn:row:withEvent:select:"), column, row, event, select_)
 }
 
 // Begins a group of updates for the table view. [Full Topic]
@@ -561,7 +561,7 @@ func (t_ TableView) RectOfRow(row int) foundation.Rect {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1529415-columnforview?language=objc
 func (t_ TableView) ColumnForView(view IView) int {
-	rv := objc.Call[int](t_, objc.Sel("columnForView:"), objc.Ptr(view))
+	rv := objc.Call[int](t_, objc.Sel("columnForView:"), view)
 	return rv
 }
 
@@ -576,7 +576,7 @@ func (t_ TableView) ScrollColumnToVisible(column int) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524273-candragrowswithindexes?language=objc
 func (t_ TableView) CanDragRowsWithIndexesAtPoint(rowIndexes foundation.IIndexSet, mouseDownPoint foundation.Point) bool {
-	rv := objc.Call[bool](t_, objc.Sel("canDragRowsWithIndexes:atPoint:"), objc.Ptr(rowIndexes), mouseDownPoint)
+	rv := objc.Call[bool](t_, objc.Sel("canDragRowsWithIndexes:atPoint:"), rowIndexes, mouseDownPoint)
 	return rv
 }
 
@@ -591,7 +591,7 @@ func (t_ TableView) SetDropRowDropOperation(row int, dropOperation TableViewDrop
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1535381-removetablecolumn?language=objc
 func (t_ TableView) RemoveTableColumn(tableColumn ITableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("removeTableColumn:"), objc.Ptr(tableColumn))
+	objc.Call[objc.Void](t_, objc.Sel("removeTableColumn:"), tableColumn)
 }
 
 // Deselects the column at the specified index if it’s selected. [Full Topic]
@@ -683,7 +683,7 @@ func (t_ TableView) SetDelegate(value PTableViewDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1534325-delegate?language=objc
 func (t_ TableView) SetDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDelegate:"), valueObject)
 }
 
 // An index set containing the indexes of the selected columns. [Full Topic]
@@ -706,7 +706,7 @@ func (t_ TableView) HeaderView() TableHeaderView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1535880-headerview?language=objc
 func (t_ TableView) SetHeaderView(value ITableHeaderView) {
-	objc.Call[objc.Void](t_, objc.Sel("setHeaderView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setHeaderView:"), value)
 }
 
 // A Boolean value indicating whether vertical motion is treated as a drag or selection change. [Full Topic]
@@ -789,7 +789,7 @@ func (t_ TableView) BackgroundColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1527806-backgroundcolor?language=objc
 func (t_ TableView) SetBackgroundColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setBackgroundColor:"), value)
 }
 
 // A Boolean value indicating whether the table view uses alternating row colors for its background. [Full Topic]
@@ -934,7 +934,7 @@ func (t_ TableView) SetDataSource(value PTableViewDataSource) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1531866-datasource?language=objc
 func (t_ TableView) SetDataSourceObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](t_, objc.Sel("setDataSource:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](t_, objc.Sel("setDataSource:"), valueObject)
 }
 
 // A Boolean value indicating whether the table view allows the user to type characters to select rows. [Full Topic]
@@ -964,7 +964,7 @@ func (t_ TableView) HighlightedTableColumn() TableColumn {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524980-highlightedtablecolumn?language=objc
 func (t_ TableView) SetHighlightedTableColumn(value ITableColumn) {
-	objc.Call[objc.Void](t_, objc.Sel("setHighlightedTableColumn:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setHighlightedTableColumn:"), value)
 }
 
 // The index of the row the user clicked. [Full Topic]
@@ -1149,7 +1149,7 @@ func (t_ TableView) GridColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1524620-gridcolor?language=objc
 func (t_ TableView) SetGridColor(value IColor) {
-	objc.Call[objc.Void](t_, objc.Sel("setGridColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setGridColor:"), value)
 }
 
 // A Boolean value indicating whether the table view allows the user to rearrange columns by dragging their headers. [Full Topic]
@@ -1209,7 +1209,7 @@ func (t_ TableView) CornerView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableview/1535831-cornerview?language=objc
 func (t_ TableView) SetCornerView(value IView) {
-	objc.Call[objc.Void](t_, objc.Sel("setCornerView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setCornerView:"), value)
 }
 
 // A Boolean value indicating whether the table view allows the user to select columns by clicking their headers. [Full Topic]

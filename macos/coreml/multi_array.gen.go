@@ -56,15 +56,15 @@ func MultiArray_MultiArrayByConcatenatingMultiArraysAlongAxisDataType(multiArray
 	return MultiArrayClass.MultiArrayByConcatenatingMultiArraysAlongAxisDataType(multiArrays, axis, dataType)
 }
 
-func (m_ MultiArray) InitWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error foundation.IError) MultiArray {
-	rv := objc.Call[MultiArray](m_, objc.Sel("initWithShape:dataType:error:"), shape, dataType, objc.Ptr(error))
+func (m_ MultiArray) InitWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error unsafe.Pointer) MultiArray {
+	rv := objc.Call[MultiArray](m_, objc.Sel("initWithShape:dataType:error:"), shape, dataType, error)
 	return rv
 }
 
 // Creates a multidimensional array with a shape and type. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879232-initwithshape?language=objc
-func NewMultiArrayWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error foundation.IError) MultiArray {
+func NewMultiArrayWithShapeDataTypeError(shape []foundation.INumber, dataType MultiArrayDataType, error unsafe.Pointer) MultiArray {
 	instance := MultiArrayClass.Alloc().InitWithShapeDataTypeError(shape, dataType, error)
 	instance.Autorelease()
 	return instance
@@ -84,15 +84,15 @@ func NewMultiArrayWithPixelBufferShape(pixelBuffer corevideo.PixelBufferRef, sha
 	return instance
 }
 
-func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error foundation.IError) MultiArray {
-	rv := objc.Call[MultiArray](m_, objc.Sel("initWithDataPointer:shape:dataType:strides:deallocator:error:"), dataPointer, shape, dataType, strides, deallocator, objc.Ptr(error))
+func (m_ MultiArray) InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error unsafe.Pointer) MultiArray {
+	rv := objc.Call[MultiArray](m_, objc.Sel("initWithDataPointer:shape:dataType:strides:deallocator:error:"), dataPointer, shape, dataType, strides, deallocator, error)
 	return rv
 }
 
 // Creates a multiarray from a data pointer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2881219-initwithdatapointer?language=objc
-func NewMultiArrayWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error foundation.IError) MultiArray {
+func NewMultiArrayWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer unsafe.Pointer, shape []foundation.INumber, dataType MultiArrayDataType, strides []foundation.INumber, deallocator func(bytes unsafe.Pointer), error unsafe.Pointer) MultiArray {
 	instance := MultiArrayClass.Alloc().InitWithDataPointerShapeDataTypeStridesDeallocatorError(dataPointer, shape, dataType, strides, deallocator, error)
 	instance.Autorelease()
 	return instance
@@ -122,14 +122,14 @@ func (m_ MultiArray) Init() MultiArray {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879225-setobject?language=objc
 func (m_ MultiArray) SetObjectForKeyedSubscript(obj foundation.INumber, key []foundation.INumber) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), objc.Ptr(obj), key)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:forKeyedSubscript:"), obj, key)
 }
 
 // Assigns a number to the multiarray’s element at the location that the linear offset defines. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreml/mlmultiarray/2879226-setobject?language=objc
 func (m_ MultiArray) SetObjectAtIndexedSubscript(obj foundation.INumber, idx int) {
-	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), objc.Ptr(obj), idx)
+	objc.Call[objc.Void](m_, objc.Sel("setObject:atIndexedSubscript:"), obj, idx)
 }
 
 // Accesses the multiarray by using a linear offset. [Full Topic]

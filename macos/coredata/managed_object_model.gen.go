@@ -56,7 +56,7 @@ func (m_ ManagedObjectModel) Init() ManagedObjectModel {
 }
 
 func (m_ ManagedObjectModel) InitWithContentsOfURL(url foundation.IURL) ManagedObjectModel {
-	rv := objc.Call[ManagedObjectModel](m_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[ManagedObjectModel](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -111,7 +111,7 @@ func ManagedObjectModel_MergedModelFromBundles(bundles []foundation.IBundle) Man
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506695-setfetchrequesttemplate?language=objc
 func (m_ ManagedObjectModel) SetFetchRequestTemplateForName(fetchRequestTemplate IFetchRequest, name string) {
-	objc.Call[objc.Void](m_, objc.Sel("setFetchRequestTemplate:forName:"), objc.Ptr(fetchRequestTemplate), name)
+	objc.Call[objc.Void](m_, objc.Sel("setFetchRequestTemplate:forName:"), fetchRequestTemplate, name)
 }
 
 // Associates the specified entities with the model using the given configuration name. [Full Topic]
@@ -225,7 +225,7 @@ func (m_ ManagedObjectModel) VersionIdentifiers() foundation.Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsmanagedobjectmodel/1506268-versionidentifiers?language=objc
 func (m_ ManagedObjectModel) SetVersionIdentifiers(value foundation.ISet) {
-	objc.Call[objc.Void](m_, objc.Sel("setVersionIdentifiers:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setVersionIdentifiers:"), value)
 }
 
 // All the available configuration names of the model. [Full Topic]

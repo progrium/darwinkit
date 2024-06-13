@@ -1670,6 +1670,10 @@ const (
 type RectEdge uint
 
 const (
+	MaxXEdge     RectEdge = 2
+	MaxYEdge     RectEdge = 3
+	MinXEdge     RectEdge = 0
+	MinYEdge     RectEdge = 1
 	RectEdgeMaxX RectEdge = 2
 	RectEdgeMaxY RectEdge = 3
 	RectEdgeMinX RectEdge = 0

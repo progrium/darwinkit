@@ -19,10 +19,10 @@ type _MutableDataClass struct {
 type IMutableData interface {
 	IData
 	SetData(data []byte)
-	CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) bool
+	CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
 	ResetBytesInRange(range_ Range)
 	IncreaseLengthBy(extraLength uint)
-	DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) bool
+	DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool
 	AppendBytesLength(bytes unsafe.Pointer, length uint)
 	ReplaceBytesInRangeWithBytesLength(range_ Range, replacementBytes unsafe.Pointer, replacementLength uint)
 	AppendData(other []byte)
@@ -116,15 +116,15 @@ func (m_ MutableData) Init() MutableData {
 	return rv
 }
 
-func (mc _MutableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (mc _MutableDataClass) DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object by reading every byte from the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547244-datawithcontentsoffile?language=objc
-func MutableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
+func MutableData_DataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
 	return MutableDataClass.DataWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 }
 
@@ -166,15 +166,15 @@ func MutableData_DataWithData(data []byte) MutableData {
 	return MutableDataClass.DataWithData(data)
 }
 
-func (mc _MutableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (mc _MutableDataClass) DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Creates a data object containing the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1547238-datawithcontentsofurl?language=objc
-func MutableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
+func MutableData_DataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
 	return MutableDataClass.DataWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 }
 
@@ -220,29 +220,29 @@ func NewMutableDataWithBytesNoCopyLengthFreeWhenDone(bytes unsafe.Pointer, lengt
 	return instance
 }
 
-func (m_ MutableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:options:error:"), objc.Ptr(url), readOptionsMask, objc.Ptr(errorPtr))
+func (m_ MutableData) InitWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:options:error:"), url, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the data from the location specified by a given URL. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1407864-initwithcontentsofurl?language=objc
-func NewMutableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
+func NewMutableDataWithContentsOfURLOptionsError(url IURL, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
 	instance := MutableDataClass.Alloc().InitWithContentsOfURLOptionsError(url, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, objc.Ptr(errorPtr))
+func (m_ MutableData) InitWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfFile:options:error:"), path, readOptionsMask, errorPtr)
 	return rv
 }
 
 // Initializes a data object with the content of the file at a given path. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/1411145-initwithcontentsoffile?language=objc
-func NewMutableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr IError) MutableData {
+func NewMutableDataWithContentsOfFileOptionsError(path string, readOptionsMask DataReadingOptions, errorPtr unsafe.Pointer) MutableData {
 	instance := MutableDataClass.Alloc().InitWithContentsOfFileOptionsError(path, readOptionsMask, errorPtr)
 	instance.Autorelease()
 	return instance
@@ -261,7 +261,7 @@ func MutableData_DataWithBytesNoCopyLength(bytes unsafe.Pointer, length uint) Mu
 }
 
 func (m_ MutableData) InitWithContentsOfURL(url IURL) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableData](m_, objc.Sel("initWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -367,7 +367,7 @@ func NewMutableDataWithData(data []byte) MutableData {
 }
 
 func (mc _MutableDataClass) DataWithContentsOfURL(url IURL) MutableData {
-	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:"), objc.Ptr(url))
+	rv := objc.Call[MutableData](mc, objc.Sel("dataWithContentsOfURL:"), url)
 	return rv
 }
 
@@ -378,29 +378,29 @@ func MutableData_DataWithContentsOfURL(url IURL) MutableData {
 	return MutableDataClass.DataWithContentsOfURL(url)
 }
 
-func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (m_ MutableData) CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("compressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by compressing the data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174960-compresseddatausingalgorithm?language=objc
-func MutableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
+func MutableData_CompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
 	instance := MutableDataClass.Alloc().CompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
 }
 
-func (m_ MutableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
-	rv := objc.Call[MutableData](m_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (m_ MutableData) DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
+	rv := objc.Call[MutableData](m_, objc.Sel("decompressedDataUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
 // Returns a new data object by decompressing data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsdata/3174961-decompresseddatausingalgorithm?language=objc
-func MutableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) MutableData {
+func MutableData_DecompressedDataUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) MutableData {
 	instance := MutableDataClass.Alloc().DecompressedDataUsingAlgorithmError(algorithm, error)
 	instance.Autorelease()
 	return instance
@@ -416,8 +416,8 @@ func (m_ MutableData) SetData(data []byte) {
 // Compresses the data object’s bytes using an algorithm that you specify. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/3174967-compressusingalgorithm?language=objc
-func (m_ MutableData) CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("compressUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (m_ MutableData) CompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("compressUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 
@@ -438,8 +438,8 @@ func (m_ MutableData) IncreaseLengthBy(extraLength uint) {
 // Decompresses the data object’s bytes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmutabledata/3174968-decompressusingalgorithm?language=objc
-func (m_ MutableData) DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("decompressUsingAlgorithm:error:"), algorithm, objc.Ptr(error))
+func (m_ MutableData) DecompressUsingAlgorithmError(algorithm DataCompressionAlgorithm, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("decompressUsingAlgorithm:error:"), algorithm, error)
 	return rv
 }
 

@@ -42,7 +42,7 @@ func FunctionStitchingGraphFrom(ptr unsafe.Pointer) FunctionStitchingGraph {
 }
 
 func (f_ FunctionStitchingGraph) InitWithFunctionNameNodesOutputNodeAttributes(functionName string, nodes []IFunctionStitchingFunctionNode, outputNode IFunctionStitchingFunctionNode, attributes []PFunctionStitchingAttribute) FunctionStitchingGraph {
-	rv := objc.Call[FunctionStitchingGraph](f_, objc.Sel("initWithFunctionName:nodes:outputNode:attributes:"), functionName, nodes, objc.Ptr(outputNode), attributes)
+	rv := objc.Call[FunctionStitchingGraph](f_, objc.Sel("initWithFunctionName:nodes:outputNode:attributes:"), functionName, nodes, outputNode, attributes)
 	return rv
 }
 
@@ -132,5 +132,5 @@ func (f_ FunctionStitchingGraph) OutputNode() FunctionStitchingFunctionNode {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlfunctionstitchinggraph/3750543-outputnode?language=objc
 func (f_ FunctionStitchingGraph) SetOutputNode(value IFunctionStitchingFunctionNode) {
-	objc.Call[objc.Void](f_, objc.Sel("setOutputNode:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setOutputNode:"), value)
 }

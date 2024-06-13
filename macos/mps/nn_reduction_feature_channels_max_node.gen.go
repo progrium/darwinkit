@@ -54,7 +54,7 @@ func (n_ NNReductionFeatureChannelsMaxNode) Init() NNReductionFeatureChannelsMax
 }
 
 func (nc _NNReductionFeatureChannelsMaxNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsMaxNode {
-	rv := objc.Call[NNReductionFeatureChannelsMaxNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsMaxNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionFeatureChannelsMaxNode_NodeWithSource(sourceNode INNImageNode) N
 }
 
 func (n_ NNReductionFeatureChannelsMaxNode) InitWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsMaxNode {
-	rv := objc.Call[NNReductionFeatureChannelsMaxNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsMaxNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

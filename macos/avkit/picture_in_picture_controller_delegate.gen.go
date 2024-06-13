@@ -165,7 +165,7 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614711-pictureinpicturecontrollerwillst?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerWillStartPictureInPicture(pictureInPictureController PictureInPictureController) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerWillStartPictureInPicture:"), objc.Ptr(pictureInPictureController))
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerWillStartPictureInPicture:"), pictureInPictureController)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerDidStartPictureInPicture() bool {
@@ -176,7 +176,7 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614695-pictureinpicturecontrollerdidsta?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerDidStartPictureInPicture(pictureInPictureController PictureInPictureController) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerDidStartPictureInPicture:"), objc.Ptr(pictureInPictureController))
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerDidStartPictureInPicture:"), pictureInPictureController)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerDidStopPictureInPicture() bool {
@@ -187,7 +187,7 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614717-pictureinpicturecontrollerdidsto?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerDidStopPictureInPicture(pictureInPictureController PictureInPictureController) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerDidStopPictureInPicture:"), objc.Ptr(pictureInPictureController))
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerDidStopPictureInPicture:"), pictureInPictureController)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerWillStopPictureInPicture() bool {
@@ -198,7 +198,7 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614719-pictureinpicturecontrollerwillst?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerWillStopPictureInPicture(pictureInPictureController PictureInPictureController) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerWillStopPictureInPicture:"), objc.Ptr(pictureInPictureController))
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureControllerWillStopPictureInPicture:"), pictureInPictureController)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerFailedToStartPictureInPictureWithError() bool {
@@ -209,7 +209,7 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614697-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerFailedToStartPictureInPictureWithError(pictureInPictureController PictureInPictureController, error foundation.Error) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:failedToStartPictureInPictureWithError:"), objc.Ptr(pictureInPictureController), objc.Ptr(error))
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:failedToStartPictureInPictureWithError:"), pictureInPictureController, error)
 }
 
 func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
@@ -220,5 +220,5 @@ func (p_ PictureInPictureControllerDelegateObject) HasPictureInPictureController
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avpictureinpicturecontrollerdelegate/1614703-pictureinpicturecontroller?language=objc
 func (p_ PictureInPictureControllerDelegateObject) PictureInPictureControllerRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(pictureInPictureController PictureInPictureController, completionHandler func(restored bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), objc.Ptr(pictureInPictureController), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("pictureInPictureController:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), pictureInPictureController, completionHandler)
 }

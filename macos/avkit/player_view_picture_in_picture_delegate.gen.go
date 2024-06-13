@@ -187,7 +187,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewShouldAutomatica
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172695-playerviewshouldautomaticallydis?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewShouldAutomaticallyDismissAtPictureInPictureStart(playerView PlayerView) bool {
-	rv := objc.Call[bool](p_, objc.Sel("playerViewShouldAutomaticallyDismissAtPictureInPictureStart:"), objc.Ptr(playerView))
+	rv := objc.Call[bool](p_, objc.Sel("playerViewShouldAutomaticallyDismissAtPictureInPictureStart:"), playerView)
 	return rv
 }
 
@@ -199,7 +199,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewFailedToStartPic
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172691-playerview?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewFailedToStartPictureInPictureWithError(playerView PlayerView, error foundation.Error) {
-	objc.Call[objc.Void](p_, objc.Sel("playerView:failedToStartPictureInPictureWithError:"), objc.Ptr(playerView), objc.Ptr(error))
+	objc.Call[objc.Void](p_, objc.Sel("playerView:failedToStartPictureInPictureWithError:"), playerView, error)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStopPictureInPicture() bool {
@@ -210,7 +210,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStopPictureI
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172697-playerviewwillstoppictureinpictu?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewWillStopPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStopPictureInPicture:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStopPictureInPicture:"), playerView)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStartPictureInPicture() bool {
@@ -221,7 +221,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStartPictureI
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172693-playerviewdidstartpictureinpictu?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStartPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStartPictureInPicture:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStartPictureInPicture:"), playerView)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStartPictureInPicture() bool {
@@ -232,7 +232,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewWillStartPicture
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172696-playerviewwillstartpictureinpict?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewWillStartPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStartPictureInPicture:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewWillStartPictureInPicture:"), playerView)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler() bool {
@@ -243,7 +243,7 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewRestoreUserInter
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172692-playerview?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewRestoreUserInterfaceForPictureInPictureStopWithCompletionHandler(playerView PlayerView, completionHandler func(restored bool)) {
-	objc.Call[objc.Void](p_, objc.Sel("playerView:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), objc.Ptr(playerView), completionHandler)
+	objc.Call[objc.Void](p_, objc.Sel("playerView:restoreUserInterfaceForPictureInPictureStopWithCompletionHandler:"), playerView, completionHandler)
 }
 
 func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStopPictureInPicture() bool {
@@ -254,5 +254,5 @@ func (p_ PlayerViewPictureInPictureDelegateObject) HasPlayerViewDidStopPictureIn
 //
 // [Full Topic]: https://developer.apple.com/documentation/avkit/avplayerviewpictureinpicturedelegate/3172694-playerviewdidstoppictureinpictur?language=objc
 func (p_ PlayerViewPictureInPictureDelegateObject) PlayerViewDidStopPictureInPicture(playerView PlayerView) {
-	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStopPictureInPicture:"), objc.Ptr(playerView))
+	objc.Call[objc.Void](p_, objc.Sel("playerViewDidStopPictureInPicture:"), playerView)
 }

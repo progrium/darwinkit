@@ -3,6 +3,8 @@
 package corespotlight
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,11 +22,11 @@ type PSearchableIndexDelegate interface {
 	HasSearchableIndexDidFinishThrottle() bool
 
 	// optional
-	FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError foundation.Error) foundation.URL
+	FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError unsafe.Pointer) foundation.URL
 	HasFileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError() bool
 
 	// optional
-	DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError foundation.Error) []byte
+	DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError unsafe.Pointer) []byte
 	HasDataForSearchableIndexItemIdentifierTypeIdentifierError() bool
 
 	// optional
@@ -40,8 +42,8 @@ type PSearchableIndexDelegate interface {
 type SearchableIndexDelegate struct {
 	_SearchableIndexReindexSearchableItemsWithIdentifiersAcknowledgementHandler func(searchableIndex SearchableIndex, identifiers []string, acknowledgementHandler func())
 	_SearchableIndexDidFinishThrottle                                           func(searchableIndex SearchableIndex)
-	_FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError          func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError foundation.Error) foundation.URL
-	_DataForSearchableIndexItemIdentifierTypeIdentifierError                    func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError foundation.Error) []byte
+	_FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError          func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError unsafe.Pointer) foundation.URL
+	_DataForSearchableIndexItemIdentifierTypeIdentifierError                    func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError unsafe.Pointer) []byte
 	_SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler         func(searchableIndex SearchableIndex, acknowledgementHandler func())
 	_SearchableIndexDidThrottle                                                 func(searchableIndex SearchableIndex)
 }
@@ -87,14 +89,14 @@ func (di *SearchableIndexDelegate) HasFileURLForSearchableIndexItemIdentifierTyp
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867898-fileurlforsearchableindex?language=objc
-func (di *SearchableIndexDelegate) SetFileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(f func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError foundation.Error) foundation.URL) {
+func (di *SearchableIndexDelegate) SetFileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(f func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError unsafe.Pointer) foundation.URL) {
 	di._FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError = f
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867898-fileurlforsearchableindex?language=objc
-func (di *SearchableIndexDelegate) FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError foundation.Error) foundation.URL {
+func (di *SearchableIndexDelegate) FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError unsafe.Pointer) foundation.URL {
 	return di._FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex, itemIdentifier, typeIdentifier, inPlace, outError)
 }
 func (di *SearchableIndexDelegate) HasDataForSearchableIndexItemIdentifierTypeIdentifierError() bool {
@@ -104,14 +106,14 @@ func (di *SearchableIndexDelegate) HasDataForSearchableIndexItemIdentifierTypeId
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867899-dataforsearchableindex?language=objc
-func (di *SearchableIndexDelegate) SetDataForSearchableIndexItemIdentifierTypeIdentifierError(f func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError foundation.Error) []byte) {
+func (di *SearchableIndexDelegate) SetDataForSearchableIndexItemIdentifierTypeIdentifierError(f func(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError unsafe.Pointer) []byte) {
 	di._DataForSearchableIndexItemIdentifierTypeIdentifierError = f
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867899-dataforsearchableindex?language=objc
-func (di *SearchableIndexDelegate) DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError foundation.Error) []byte {
+func (di *SearchableIndexDelegate) DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError unsafe.Pointer) []byte {
 	return di._DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex, itemIdentifier, typeIdentifier, outError)
 }
 func (di *SearchableIndexDelegate) HasSearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler() bool {
@@ -165,7 +167,7 @@ func (s_ SearchableIndexDelegateObject) HasSearchableIndexReindexSearchableItems
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/1620338-searchableindex?language=objc
 func (s_ SearchableIndexDelegateObject) SearchableIndexReindexSearchableItemsWithIdentifiersAcknowledgementHandler(searchableIndex SearchableIndex, identifiers []string, acknowledgementHandler func()) {
-	objc.Call[objc.Void](s_, objc.Sel("searchableIndex:reindexSearchableItemsWithIdentifiers:acknowledgementHandler:"), objc.Ptr(searchableIndex), identifiers, acknowledgementHandler)
+	objc.Call[objc.Void](s_, objc.Sel("searchableIndex:reindexSearchableItemsWithIdentifiers:acknowledgementHandler:"), searchableIndex, identifiers, acknowledgementHandler)
 }
 
 func (s_ SearchableIndexDelegateObject) HasSearchableIndexDidFinishThrottle() bool {
@@ -176,7 +178,7 @@ func (s_ SearchableIndexDelegateObject) HasSearchableIndexDidFinishThrottle() bo
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/1620343-searchableindexdidfinishthrottle?language=objc
 func (s_ SearchableIndexDelegateObject) SearchableIndexDidFinishThrottle(searchableIndex SearchableIndex) {
-	objc.Call[objc.Void](s_, objc.Sel("searchableIndexDidFinishThrottle:"), objc.Ptr(searchableIndex))
+	objc.Call[objc.Void](s_, objc.Sel("searchableIndexDidFinishThrottle:"), searchableIndex)
 }
 
 func (s_ SearchableIndexDelegateObject) HasFileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError() bool {
@@ -186,8 +188,8 @@ func (s_ SearchableIndexDelegateObject) HasFileURLForSearchableIndexItemIdentifi
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867898-fileurlforsearchableindex?language=objc
-func (s_ SearchableIndexDelegateObject) FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError foundation.Error) foundation.URL {
-	rv := objc.Call[foundation.URL](s_, objc.Sel("fileURLForSearchableIndex:itemIdentifier:typeIdentifier:inPlace:error:"), objc.Ptr(searchableIndex), itemIdentifier, typeIdentifier, inPlace, objc.Ptr(outError))
+func (s_ SearchableIndexDelegateObject) FileURLForSearchableIndexItemIdentifierTypeIdentifierInPlaceError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, inPlace bool, outError unsafe.Pointer) foundation.URL {
+	rv := objc.Call[foundation.URL](s_, objc.Sel("fileURLForSearchableIndex:itemIdentifier:typeIdentifier:inPlace:error:"), searchableIndex, itemIdentifier, typeIdentifier, inPlace, outError)
 	return rv
 }
 
@@ -198,8 +200,8 @@ func (s_ SearchableIndexDelegateObject) HasDataForSearchableIndexItemIdentifierT
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/2867899-dataforsearchableindex?language=objc
-func (s_ SearchableIndexDelegateObject) DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError foundation.Error) []byte {
-	rv := objc.Call[[]byte](s_, objc.Sel("dataForSearchableIndex:itemIdentifier:typeIdentifier:error:"), objc.Ptr(searchableIndex), itemIdentifier, typeIdentifier, objc.Ptr(outError))
+func (s_ SearchableIndexDelegateObject) DataForSearchableIndexItemIdentifierTypeIdentifierError(searchableIndex SearchableIndex, itemIdentifier string, typeIdentifier string, outError unsafe.Pointer) []byte {
+	rv := objc.Call[[]byte](s_, objc.Sel("dataForSearchableIndex:itemIdentifier:typeIdentifier:error:"), searchableIndex, itemIdentifier, typeIdentifier, outError)
 	return rv
 }
 
@@ -211,7 +213,7 @@ func (s_ SearchableIndexDelegateObject) HasSearchableIndexReindexAllSearchableIt
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/1620348-searchableindex?language=objc
 func (s_ SearchableIndexDelegateObject) SearchableIndexReindexAllSearchableItemsWithAcknowledgementHandler(searchableIndex SearchableIndex, acknowledgementHandler func()) {
-	objc.Call[objc.Void](s_, objc.Sel("searchableIndex:reindexAllSearchableItemsWithAcknowledgementHandler:"), objc.Ptr(searchableIndex), acknowledgementHandler)
+	objc.Call[objc.Void](s_, objc.Sel("searchableIndex:reindexAllSearchableItemsWithAcknowledgementHandler:"), searchableIndex, acknowledgementHandler)
 }
 
 func (s_ SearchableIndexDelegateObject) HasSearchableIndexDidThrottle() bool {
@@ -222,5 +224,5 @@ func (s_ SearchableIndexDelegateObject) HasSearchableIndexDidThrottle() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindexdelegate/1620353-searchableindexdidthrottle?language=objc
 func (s_ SearchableIndexDelegateObject) SearchableIndexDidThrottle(searchableIndex SearchableIndex) {
-	objc.Call[objc.Void](s_, objc.Sel("searchableIndexDidThrottle:"), objc.Ptr(searchableIndex))
+	objc.Call[objc.Void](s_, objc.Sel("searchableIndexDidThrottle:"), searchableIndex)
 }

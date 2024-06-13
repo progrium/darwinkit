@@ -137,7 +137,7 @@ func (p_ PerspectiveTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciperspectivetile/3228655-inputimage?language=objc
 func (p_ PerspectiveTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PerspectiveTileObject) HasInputImage() bool {

@@ -35,7 +35,7 @@ func (m_ MaskToAlphaObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimasktoalpha/3228549-inputimage?language=objc
 func (m_ MaskToAlphaObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MaskToAlphaObject) HasInputImage() bool {

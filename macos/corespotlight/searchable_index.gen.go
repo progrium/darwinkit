@@ -189,5 +189,5 @@ func (s_ SearchableIndex) SetIndexDelegate(value PSearchableIndexDelegate) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/corespotlight/cssearchableindex/1620354-indexdelegate?language=objc
 func (s_ SearchableIndex) SetIndexDelegateObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](s_, objc.Sel("setIndexDelegate:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](s_, objc.Sel("setIndexDelegate:"), valueObject)
 }

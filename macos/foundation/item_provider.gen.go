@@ -58,7 +58,7 @@ func ItemProviderFrom(ptr unsafe.Pointer) ItemProvider {
 }
 
 func (i_ ItemProvider) InitWithContentsOfURL(fileURL IURL) ItemProvider {
-	rv := objc.Call[ItemProvider](i_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(fileURL))
+	rv := objc.Call[ItemProvider](i_, objc.Sel("initWithContentsOfURL:"), fileURL)
 	return rv
 }
 
@@ -147,7 +147,7 @@ func (i_ ItemProvider) RegisterItemForTypeIdentifierLoadHandler(typeIdentifier s
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/2888333-canloadobjectofclass?language=objc
 func (i_ ItemProvider) CanLoadObjectOfClass(aClass objc.IClass) bool {
-	rv := objc.Call[bool](i_, objc.Sel("canLoadObjectOfClass:"), objc.Ptr(aClass))
+	rv := objc.Call[bool](i_, objc.Sel("canLoadObjectOfClass:"), aClass)
 	return rv
 }
 
@@ -201,7 +201,7 @@ func (i_ ItemProvider) RegisterObjectVisibility(object PItemProviderWriting, vis
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/2888321-registerobject?language=objc
 func (i_ ItemProvider) RegisterObjectObjectVisibility(objectObject objc.IObject, visibility ItemProviderRepresentationVisibility) {
-	objc.Call[objc.Void](i_, objc.Sel("registerObject:visibility:"), objc.Ptr(objectObject), visibility)
+	objc.Call[objc.Void](i_, objc.Sel("registerObject:visibility:"), objectObject, visibility)
 }
 
 // Registers a file-backed representation for an item, specifying file options, item visibility, and a load handler. [Full Topic]
@@ -230,7 +230,7 @@ func (i_ ItemProvider) LoadInPlaceFileRepresentationForTypeIdentifierCompletionH
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/2888336-loadobjectofclass?language=objc
 func (i_ ItemProvider) LoadObjectOfClassCompletionHandler(aClass objc.IClass, completionHandler func(object objc.Object, error Error)) Progress {
-	rv := objc.Call[Progress](i_, objc.Sel("loadObjectOfClass:completionHandler:"), objc.Ptr(aClass), completionHandler)
+	rv := objc.Call[Progress](i_, objc.Sel("loadObjectOfClass:completionHandler:"), aClass, completionHandler)
 	return rv
 }
 
@@ -238,7 +238,7 @@ func (i_ ItemProvider) LoadObjectOfClassCompletionHandler(aClass objc.IClass, co
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsitemprovider/2888329-registerobjectofclass?language=objc
 func (i_ ItemProvider) RegisterObjectOfClassVisibilityLoadHandler(aClass objc.IClass, visibility ItemProviderRepresentationVisibility, loadHandler func(arg0 func(object ItemProviderWritingObject, error Error)) Progress) {
-	objc.Call[objc.Void](i_, objc.Sel("registerObjectOfClass:visibility:loadHandler:"), objc.Ptr(aClass), visibility, loadHandler)
+	objc.Call[objc.Void](i_, objc.Sel("registerObjectOfClass:visibility:loadHandler:"), aClass, visibility, loadHandler)
 }
 
 // Returns the array of type identifiers for the item provider, in the same order they were registered. [Full Topic]

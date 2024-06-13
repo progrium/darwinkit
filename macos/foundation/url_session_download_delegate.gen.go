@@ -98,7 +98,7 @@ func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidWriteData
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1409408-urlsession?language=objc
 func (u_ URLSessionDownloadDelegateObject) URLSessionDownloadTaskDidWriteDataTotalBytesWrittenTotalBytesExpectedToWrite(session URLSession, downloadTask URLSessionDownloadTask, bytesWritten int64, totalBytesWritten int64, totalBytesExpectedToWrite int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:"), objc.Ptr(session), objc.Ptr(downloadTask), bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesExpectedToWrite:"), session, downloadTask, bytesWritten, totalBytesWritten, totalBytesExpectedToWrite)
 }
 
 func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes() bool {
@@ -109,7 +109,7 @@ func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidResumeAtO
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1408142-urlsession?language=objc
 func (u_ URLSessionDownloadDelegateObject) URLSessionDownloadTaskDidResumeAtOffsetExpectedTotalBytes(session URLSession, downloadTask URLSessionDownloadTask, fileOffset int64, expectedTotalBytes int64) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didResumeAtOffset:expectedTotalBytes:"), objc.Ptr(session), objc.Ptr(downloadTask), fileOffset, expectedTotalBytes)
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didResumeAtOffset:expectedTotalBytes:"), session, downloadTask, fileOffset, expectedTotalBytes)
 }
 
 func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidFinishDownloadingToURL() bool {
@@ -120,5 +120,5 @@ func (u_ URLSessionDownloadDelegateObject) HasURLSessionDownloadTaskDidFinishDow
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlsessiondownloaddelegate/1411575-urlsession?language=objc
 func (u_ URLSessionDownloadDelegateObject) URLSessionDownloadTaskDidFinishDownloadingToURL(session URLSession, downloadTask URLSessionDownloadTask, location URL) {
-	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didFinishDownloadingToURL:"), objc.Ptr(session), objc.Ptr(downloadTask), objc.Ptr(location))
+	objc.Call[objc.Void](u_, objc.Sel("URLSession:downloadTask:didFinishDownloadingToURL:"), session, downloadTask, location)
 }

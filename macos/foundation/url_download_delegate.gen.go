@@ -340,7 +340,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDecideDestinationWithSuggestedFil
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413588-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDecideDestinationWithSuggestedFilename(download URLDownload, filename string) {
-	objc.Call[objc.Void](u_, objc.Sel("download:decideDestinationWithSuggestedFilename:"), objc.Ptr(download), filename)
+	objc.Call[objc.Void](u_, objc.Sel("download:decideDestinationWithSuggestedFilename:"), download, filename)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveDataOfLength() bool {
@@ -351,7 +351,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveDataOfLength() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1413663-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidReceiveDataOfLength(download URLDownload, length uint) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveDataOfLength:"), objc.Ptr(download), length)
+	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveDataOfLength:"), download, length)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadShouldUseCredentialStorage() bool {
@@ -362,7 +362,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadShouldUseCredentialStorage() bool
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416506-downloadshouldusecredentialstora?language=objc
 func (u_ URLDownloadDelegateObject) DownloadShouldUseCredentialStorage(download URLDownload) bool {
-	rv := objc.Call[bool](u_, objc.Sel("downloadShouldUseCredentialStorage:"), objc.Ptr(download))
+	rv := objc.Call[bool](u_, objc.Sel("downloadShouldUseCredentialStorage:"), download)
 	return rv
 }
 
@@ -374,7 +374,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidBegin() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409618-downloaddidbegin?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidBegin(download URLDownload) {
-	objc.Call[objc.Void](u_, objc.Sel("downloadDidBegin:"), objc.Ptr(download))
+	objc.Call[objc.Void](u_, objc.Sel("downloadDidBegin:"), download)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadShouldDecodeSourceDataOfMIMEType() bool {
@@ -385,7 +385,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadShouldDecodeSourceDataOfMIMEType(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1408526-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadShouldDecodeSourceDataOfMIMEType(download URLDownload, encodingType string) bool {
-	rv := objc.Call[bool](u_, objc.Sel("download:shouldDecodeSourceDataOfMIMEType:"), objc.Ptr(download), encodingType)
+	rv := objc.Call[bool](u_, objc.Sel("download:shouldDecodeSourceDataOfMIMEType:"), download, encodingType)
 	return rv
 }
 
@@ -397,7 +397,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveResponse() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415460-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidReceiveResponse(download URLDownload, response URLResponse) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveResponse:"), objc.Ptr(download), objc.Ptr(response))
+	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveResponse:"), download, response)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadDidCancelAuthenticationChallenge() bool {
@@ -408,7 +408,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidCancelAuthenticationChallenge(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1416233-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidCancelAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didCancelAuthenticationChallenge:"), objc.Ptr(download), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("download:didCancelAuthenticationChallenge:"), download, challenge)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadWillSendRequestRedirectResponse() bool {
@@ -419,7 +419,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadWillSendRequestRedirectResponse()
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1412181-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadWillSendRequestRedirectResponse(download URLDownload, request URLRequest, redirectResponse URLResponse) URLRequest {
-	rv := objc.Call[URLRequest](u_, objc.Sel("download:willSendRequest:redirectResponse:"), objc.Ptr(download), objc.Ptr(request), objc.Ptr(redirectResponse))
+	rv := objc.Call[URLRequest](u_, objc.Sel("download:willSendRequest:redirectResponse:"), download, request, redirectResponse)
 	return rv
 }
 
@@ -431,7 +431,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadCanAuthenticateAgainstProtectionS
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1417213-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadCanAuthenticateAgainstProtectionSpace(connection URLDownload, protectionSpace URLProtectionSpace) bool {
-	rv := objc.Call[bool](u_, objc.Sel("download:canAuthenticateAgainstProtectionSpace:"), objc.Ptr(connection), objc.Ptr(protectionSpace))
+	rv := objc.Call[bool](u_, objc.Sel("download:canAuthenticateAgainstProtectionSpace:"), connection, protectionSpace)
 	return rv
 }
 
@@ -443,7 +443,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidFailWithError() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411640-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidFailWithError(download URLDownload, error Error) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didFailWithError:"), objc.Ptr(download), objc.Ptr(error))
+	objc.Call[objc.Void](u_, objc.Sel("download:didFailWithError:"), download, error)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadDidFinish() bool {
@@ -454,7 +454,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1408884-downloaddidfinish?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidFinish(download URLDownload) {
-	objc.Call[objc.Void](u_, objc.Sel("downloadDidFinish:"), objc.Ptr(download))
+	objc.Call[objc.Void](u_, objc.Sel("downloadDidFinish:"), download)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveAuthenticationChallenge() bool {
@@ -465,7 +465,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidReceiveAuthenticationChallenge
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1411969-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidReceiveAuthenticationChallenge(download URLDownload, challenge URLAuthenticationChallenge) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveAuthenticationChallenge:"), objc.Ptr(download), objc.Ptr(challenge))
+	objc.Call[objc.Void](u_, objc.Sel("download:didReceiveAuthenticationChallenge:"), download, challenge)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadWillResumeWithResponseFromByte() bool {
@@ -476,7 +476,7 @@ func (u_ URLDownloadDelegateObject) HasDownloadWillResumeWithResponseFromByte() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1409514-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadWillResumeWithResponseFromByte(download URLDownload, response URLResponse, startingByte int64) {
-	objc.Call[objc.Void](u_, objc.Sel("download:willResumeWithResponse:fromByte:"), objc.Ptr(download), objc.Ptr(response), startingByte)
+	objc.Call[objc.Void](u_, objc.Sel("download:willResumeWithResponse:fromByte:"), download, response, startingByte)
 }
 
 func (u_ URLDownloadDelegateObject) HasDownloadDidCreateDestination() bool {
@@ -487,5 +487,5 @@ func (u_ URLDownloadDelegateObject) HasDownloadDidCreateDestination() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurldownloaddelegate/1415265-download?language=objc
 func (u_ URLDownloadDelegateObject) DownloadDidCreateDestination(download URLDownload, path string) {
-	objc.Call[objc.Void](u_, objc.Sel("download:didCreateDestination:"), objc.Ptr(download), path)
+	objc.Call[objc.Void](u_, objc.Sel("download:didCreateDestination:"), download, path)
 }

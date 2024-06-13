@@ -88,7 +88,7 @@ func (p_ PathControlItem) AttributedTitle() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388287-attributedtitle?language=objc
 func (p_ PathControlItem) SetAttributedTitle(value foundation.IAttributedString) {
-	objc.Call[objc.Void](p_, objc.Sel("setAttributedTitle:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setAttributedTitle:"), value)
 }
 
 //	[Full Topic]
@@ -103,7 +103,7 @@ func (p_ PathControlItem) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspathcontrolitem/1388295-image?language=objc
 func (p_ PathControlItem) SetImage(value IImage) {
-	objc.Call[objc.Void](p_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setImage:"), value)
 }
 
 //	[Full Topic]

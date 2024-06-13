@@ -34,7 +34,7 @@ func SpecifierTestFrom(ptr unsafe.Pointer) SpecifierTest {
 }
 
 func (s_ SpecifierTest) InitWithObjectSpecifierComparisonOperatorTestObject(obj1 IScriptObjectSpecifier, compOp TestComparisonOperation, obj2 objc.IObject) SpecifierTest {
-	rv := objc.Call[SpecifierTest](s_, objc.Sel("initWithObjectSpecifier:comparisonOperator:testObject:"), objc.Ptr(obj1), compOp, obj2)
+	rv := objc.Call[SpecifierTest](s_, objc.Sel("initWithObjectSpecifier:comparisonOperator:testObject:"), obj1, compOp, obj2)
 	return rv
 }
 

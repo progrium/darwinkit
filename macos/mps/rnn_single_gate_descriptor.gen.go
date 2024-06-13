@@ -91,7 +91,7 @@ func (r_ RNNSingleGateDescriptor) SetRecurrentWeights(value PCNNConvolutionDataS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnsinglegatedescriptor/2865686-recurrentweights?language=objc
 func (r_ RNNSingleGateDescriptor) SetRecurrentWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setRecurrentWeights:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setRecurrentWeights:"), valueObject)
 }
 
 //	[Full Topic]
@@ -114,5 +114,5 @@ func (r_ RNNSingleGateDescriptor) SetInputWeights(value PCNNConvolutionDataSourc
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsrnnsinglegatedescriptor/2865723-inputweights?language=objc
 func (r_ RNNSingleGateDescriptor) SetInputWeightsObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setInputWeights:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setInputWeights:"), valueObject)
 }

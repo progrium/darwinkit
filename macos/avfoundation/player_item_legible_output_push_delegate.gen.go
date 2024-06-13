@@ -56,5 +56,5 @@ func (p_ PlayerItemLegibleOutputPushDelegateObject) HasLegibleOutputDidOutputAtt
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemlegibleoutputpushdelegate/1386790-legibleoutput?language=objc
 func (p_ PlayerItemLegibleOutputPushDelegateObject) LegibleOutputDidOutputAttributedStringsNativeSampleBuffersForItemTime(output PlayerItemLegibleOutput, strings []foundation.AttributedString, nativeSamples []objc.Object, itemTime coremedia.Time) {
-	objc.Call[objc.Void](p_, objc.Sel("legibleOutput:didOutputAttributedStrings:nativeSampleBuffers:forItemTime:"), objc.Ptr(output), strings, nativeSamples, itemTime)
+	objc.Call[objc.Void](p_, objc.Sel("legibleOutput:didOutputAttributedStrings:nativeSampleBuffers:forItemTime:"), output, strings, nativeSamples, itemTime)
 }

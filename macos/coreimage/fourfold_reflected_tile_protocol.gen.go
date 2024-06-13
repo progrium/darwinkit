@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile?language=objc
 type PFourfoldReflectedTile interface {
 	// optional
-	SetAcuteAngle(value float64)
+	SetAcuteAngle(value float32)
 	HasSetAcuteAngle() bool
 
 	// optional
-	AcuteAngle() float64
+	AcuteAngle() float32
 	HasAcuteAngle() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -44,11 +44,11 @@ type PFourfoldReflectedTile interface {
 	HasCenter() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -67,7 +67,7 @@ func (f_ FourfoldReflectedTileObject) HasSetAcuteAngle() bool {
 // The primary angle for the repeating reflected tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
-func (f_ FourfoldReflectedTileObject) SetAcuteAngle(value float64) {
+func (f_ FourfoldReflectedTileObject) SetAcuteAngle(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setAcuteAngle:"), value)
 }
 
@@ -78,8 +78,8 @@ func (f_ FourfoldReflectedTileObject) HasAcuteAngle() bool {
 // The primary angle for the repeating reflected tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228444-acuteangle?language=objc
-func (f_ FourfoldReflectedTileObject) AcuteAngle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("acuteAngle"))
+func (f_ FourfoldReflectedTileObject) AcuteAngle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("acuteAngle"))
 	return rv
 }
 
@@ -90,7 +90,7 @@ func (f_ FourfoldReflectedTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228448-width?language=objc
-func (f_ FourfoldReflectedTileObject) SetWidth(value float64) {
+func (f_ FourfoldReflectedTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setWidth:"), value)
 }
 
@@ -101,8 +101,8 @@ func (f_ FourfoldReflectedTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228448-width?language=objc
-func (f_ FourfoldReflectedTileObject) Width() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("width"))
+func (f_ FourfoldReflectedTileObject) Width() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("width"))
 	return rv
 }
 
@@ -114,7 +114,7 @@ func (f_ FourfoldReflectedTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228447-inputimage?language=objc
 func (f_ FourfoldReflectedTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setInputImage:"), value)
 }
 
 func (f_ FourfoldReflectedTileObject) HasInputImage() bool {
@@ -159,7 +159,7 @@ func (f_ FourfoldReflectedTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228445-angle?language=objc
-func (f_ FourfoldReflectedTileObject) SetAngle(value float64) {
+func (f_ FourfoldReflectedTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setAngle:"), value)
 }
 
@@ -170,7 +170,7 @@ func (f_ FourfoldReflectedTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifourfoldreflectedtile/3228445-angle?language=objc
-func (f_ FourfoldReflectedTileObject) Angle() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("angle"))
+func (f_ FourfoldReflectedTileObject) Angle() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("angle"))
 	return rv
 }

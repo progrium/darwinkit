@@ -38,7 +38,7 @@ func AsynchronousFetchRequestFrom(ptr unsafe.Pointer) AsynchronousFetchRequest {
 }
 
 func (a_ AsynchronousFetchRequest) InitWithFetchRequestCompletionBlock(request IFetchRequest, blk func(arg0 AsynchronousFetchResult)) AsynchronousFetchRequest {
-	rv := objc.Call[AsynchronousFetchRequest](a_, objc.Sel("initWithFetchRequest:completionBlock:"), objc.Ptr(request), blk)
+	rv := objc.Call[AsynchronousFetchRequest](a_, objc.Sel("initWithFetchRequest:completionBlock:"), request, blk)
 	return rv
 }
 

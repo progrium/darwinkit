@@ -103,7 +103,7 @@ func (s_ Slideshow) RunSlideshowWithDataSourceInModeOptions(dataSource PSlidesho
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikslideshow/1504036-runslideshowwithdatasource?language=objc
 func (s_ Slideshow) RunSlideshowWithDataSourceObjectInModeOptions(dataSourceObject objc.IObject, slideshowMode string, slideshowOptions foundation.Dictionary) {
-	objc.Call[objc.Void](s_, objc.Sel("runSlideshowWithDataSource:inMode:options:"), objc.Ptr(dataSourceObject), slideshowMode, slideshowOptions)
+	objc.Call[objc.Void](s_, objc.Sel("runSlideshowWithDataSource:inMode:options:"), dataSourceObject, slideshowMode, slideshowOptions)
 }
 
 // Finds out whether the slideshow can export its contents to an application. [Full Topic]

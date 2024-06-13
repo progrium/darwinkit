@@ -14,19 +14,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder?language=objc
 type PArgumentEncoder interface {
 	// optional
-	SetSamplerStatesWithRange(samplers SamplerStateObject, range_ foundation.Range)
+	SetSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range)
 	HasSetSamplerStatesWithRange() bool
 
 	// optional
-	SetTexturesWithRange(textures TextureObject, range_ foundation.Range)
+	SetTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range)
 	HasSetTexturesWithRange() bool
 
 	// optional
-	SetRenderPipelineStatesWithRange(pipelines RenderPipelineStateObject, range_ foundation.Range)
+	SetRenderPipelineStatesWithRange(pipelines unsafe.Pointer, range_ foundation.Range)
 	HasSetRenderPipelineStatesWithRange() bool
 
 	// optional
-	SetComputePipelineStatesWithRange(pipelines ComputePipelineStateObject, range_ foundation.Range)
+	SetComputePipelineStatesWithRange(pipelines unsafe.Pointer, range_ foundation.Range)
 	HasSetComputePipelineStatesWithRange() bool
 
 	// optional
@@ -46,7 +46,7 @@ type PArgumentEncoder interface {
 	HasConstantDataAtIndex() bool
 
 	// optional
-	SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range)
+	SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range)
 	HasSetBuffersOffsetsWithRange() bool
 
 	// optional
@@ -54,7 +54,7 @@ type PArgumentEncoder interface {
 	HasSetIndirectCommandBufferAtIndex() bool
 
 	// optional
-	SetIndirectCommandBuffersWithRange(buffers IndirectCommandBufferObject, range_ foundation.Range)
+	SetIndirectCommandBuffersWithRange(buffers unsafe.Pointer, range_ foundation.Range)
 	HasSetIndirectCommandBuffersWithRange() bool
 
 	// optional
@@ -62,7 +62,7 @@ type PArgumentEncoder interface {
 	HasSetBufferOffsetAtIndex() bool
 
 	// optional
-	SetIntersectionFunctionTablesWithRange(intersectionFunctionTables IntersectionFunctionTableObject, range_ foundation.Range)
+	SetIntersectionFunctionTablesWithRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range)
 	HasSetIntersectionFunctionTablesWithRange() bool
 
 	// optional
@@ -74,7 +74,7 @@ type PArgumentEncoder interface {
 	HasSetRenderPipelineStateAtIndex() bool
 
 	// optional
-	SetVisibleFunctionTablesWithRange(visibleFunctionTables VisibleFunctionTableObject, range_ foundation.Range)
+	SetVisibleFunctionTablesWithRange(visibleFunctionTables unsafe.Pointer, range_ foundation.Range)
 	HasSetVisibleFunctionTablesWithRange() bool
 
 	// optional
@@ -133,7 +133,7 @@ func (a_ ArgumentEncoderObject) HasSetSamplerStatesWithRange() bool {
 // Encodes an array of samplers into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2915778-setsamplerstates?language=objc
-func (a_ ArgumentEncoderObject) SetSamplerStatesWithRange(samplers SamplerStateObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetSamplerStatesWithRange(samplers unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLSamplerState", samplers)
 	objc.Call[objc.Void](a_, objc.Sel("setSamplerStates:withRange:"), po0, range_)
 }
@@ -145,7 +145,7 @@ func (a_ ArgumentEncoderObject) HasSetTexturesWithRange() bool {
 // Encodes references to an array of textures into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2915786-settextures?language=objc
-func (a_ ArgumentEncoderObject) SetTexturesWithRange(textures TextureObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetTexturesWithRange(textures unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLTexture", textures)
 	objc.Call[objc.Void](a_, objc.Sel("setTextures:withRange:"), po0, range_)
 }
@@ -157,7 +157,7 @@ func (a_ ArgumentEncoderObject) HasSetRenderPipelineStatesWithRange() bool {
 // Encodes references to an array of render pipeline states into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2966536-setrenderpipelinestates?language=objc
-func (a_ ArgumentEncoderObject) SetRenderPipelineStatesWithRange(pipelines RenderPipelineStateObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetRenderPipelineStatesWithRange(pipelines unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLRenderPipelineState", pipelines)
 	objc.Call[objc.Void](a_, objc.Sel("setRenderPipelineStates:withRange:"), po0, range_)
 }
@@ -169,7 +169,7 @@ func (a_ ArgumentEncoderObject) HasSetComputePipelineStatesWithRange() bool {
 // Encodes references to an array of compute pipeline states into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2966534-setcomputepipelinestates?language=objc
-func (a_ ArgumentEncoderObject) SetComputePipelineStatesWithRange(pipelines ComputePipelineStateObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetComputePipelineStatesWithRange(pipelines unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLComputePipelineState", pipelines)
 	objc.Call[objc.Void](a_, objc.Sel("setComputePipelineStates:withRange:"), po0, range_)
 }
@@ -229,7 +229,7 @@ func (a_ ArgumentEncoderObject) HasSetBuffersOffsetsWithRange() bool {
 // Encodes references to an array of buffers into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2915772-setbuffers?language=objc
-func (a_ ArgumentEncoderObject) SetBuffersOffsetsWithRange(buffers BufferObject, offsets *uint, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetBuffersOffsetsWithRange(buffers unsafe.Pointer, offsets *uint, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLBuffer", buffers)
 	objc.Call[objc.Void](a_, objc.Sel("setBuffers:offsets:withRange:"), po0, offsets, range_)
 }
@@ -253,7 +253,7 @@ func (a_ ArgumentEncoderObject) HasSetIndirectCommandBuffersWithRange() bool {
 // Encodes an array of indirect command buffers into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/2967411-setindirectcommandbuffers?language=objc
-func (a_ ArgumentEncoderObject) SetIndirectCommandBuffersWithRange(buffers IndirectCommandBufferObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetIndirectCommandBuffersWithRange(buffers unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLIndirectCommandBuffer", buffers)
 	objc.Call[objc.Void](a_, objc.Sel("setIndirectCommandBuffers:withRange:"), po0, range_)
 }
@@ -277,7 +277,7 @@ func (a_ ArgumentEncoderObject) HasSetIntersectionFunctionTablesWithRange() bool
 // Encodes references to an array of intersection function tables into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/3608167-setintersectionfunctiontables?language=objc
-func (a_ ArgumentEncoderObject) SetIntersectionFunctionTablesWithRange(intersectionFunctionTables IntersectionFunctionTableObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetIntersectionFunctionTablesWithRange(intersectionFunctionTables unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLIntersectionFunctionTable", intersectionFunctionTables)
 	objc.Call[objc.Void](a_, objc.Sel("setIntersectionFunctionTables:withRange:"), po0, range_)
 }
@@ -313,7 +313,7 @@ func (a_ ArgumentEncoderObject) HasSetVisibleFunctionTablesWithRange() bool {
 // Encodes references to an array of visible function tables into the argument buffer. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlargumentencoder/3608169-setvisiblefunctiontables?language=objc
-func (a_ ArgumentEncoderObject) SetVisibleFunctionTablesWithRange(visibleFunctionTables VisibleFunctionTableObject, range_ foundation.Range) {
+func (a_ ArgumentEncoderObject) SetVisibleFunctionTablesWithRange(visibleFunctionTables unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLVisibleFunctionTable", visibleFunctionTables)
 	objc.Call[objc.Void](a_, objc.Sel("setVisibleFunctionTables:withRange:"), po0, range_)
 }

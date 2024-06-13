@@ -80,7 +80,7 @@ func (c_ Controller) ObjectDidBeginEditing(editor PEditor) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1532991-objectdidbeginediting?language=objc
 func (c_ Controller) ObjectDidBeginEditingObject(editorObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("objectDidBeginEditing:"), objc.Ptr(editorObject))
+	objc.Call[objc.Void](c_, objc.Sel("objectDidBeginEditing:"), editorObject)
 }
 
 // Invoked to inform the receiver that editor has committed or discarded its changes. [Full Topic]
@@ -95,7 +95,7 @@ func (c_ Controller) ObjectDidEndEditing(editor PEditor) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscontroller/1524644-objectdidendediting?language=objc
 func (c_ Controller) ObjectDidEndEditingObject(editorObject objc.IObject) {
-	objc.Call[objc.Void](c_, objc.Sel("objectDidEndEditing:"), objc.Ptr(editorObject))
+	objc.Call[objc.Void](c_, objc.Sel("objectDidEndEditing:"), editorObject)
 }
 
 // Attempts to commit any pending changes in known editors of the receiver. [Full Topic]

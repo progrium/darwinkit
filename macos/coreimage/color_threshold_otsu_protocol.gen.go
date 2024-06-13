@@ -35,7 +35,7 @@ func (c_ ColorThresholdOtsuObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolorthresholdotsu/3584769-inputimage?language=objc
 func (c_ ColorThresholdOtsuObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorThresholdOtsuObject) HasInputImage() bool {

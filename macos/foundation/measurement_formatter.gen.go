@@ -67,7 +67,7 @@ func (m_ MeasurementFormatter) Init() MeasurementFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642059-stringfromunit?language=objc
 func (m_ MeasurementFormatter) StringFromUnit(unit IUnit) string {
-	rv := objc.Call[string](m_, objc.Sel("stringFromUnit:"), objc.Ptr(unit))
+	rv := objc.Call[string](m_, objc.Sel("stringFromUnit:"), unit)
 	return rv
 }
 
@@ -75,7 +75,7 @@ func (m_ MeasurementFormatter) StringFromUnit(unit IUnit) string {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642057-stringfrommeasurement?language=objc
 func (m_ MeasurementFormatter) StringFromMeasurement(measurement IMeasurement) string {
-	rv := objc.Call[string](m_, objc.Sel("stringFromMeasurement:"), objc.Ptr(measurement))
+	rv := objc.Call[string](m_, objc.Sel("stringFromMeasurement:"), measurement)
 	return rv
 }
 
@@ -121,7 +121,7 @@ func (m_ MeasurementFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642061-locale?language=objc
 func (m_ MeasurementFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setLocale:"), value)
 }
 
 // The number formatter used to format the quantity of a measurement. [Full Topic]
@@ -136,5 +136,5 @@ func (m_ MeasurementFormatter) NumberFormatter() NumberFormatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsmeasurementformatter/1642056-numberformatter?language=objc
 func (m_ MeasurementFormatter) SetNumberFormatter(value INumberFormatter) {
-	objc.Call[objc.Void](m_, objc.Sel("setNumberFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setNumberFormatter:"), value)
 }

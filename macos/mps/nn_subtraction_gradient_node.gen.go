@@ -54,7 +54,7 @@ func (n_ NNSubtractionGradientNode) Init() NNSubtractionGradientNode {
 }
 
 func (n_ NNSubtractionGradientNode) InitWithGradientImagesForwardFilterIsSecondarySourceFilter(gradientImages []INNImageNode, filter INNFilterNode, isSecondarySourceFilter bool) NNSubtractionGradientNode {
-	rv := objc.Call[NNSubtractionGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, objc.Ptr(filter), isSecondarySourceFilter)
+	rv := objc.Call[NNSubtractionGradientNode](n_, objc.Sel("initWithGradientImages:forwardFilter:isSecondarySourceFilter:"), gradientImages, filter, isSecondarySourceFilter)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewNNSubtractionGradientNodeWithGradientImagesForwardFilterIsSecondarySourc
 }
 
 func (n_ NNSubtractionGradientNode) InitWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNSubtractionGradientNode {
-	rv := objc.Call[NNSubtractionGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNSubtractionGradientNode](n_, objc.Sel("initWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 
@@ -82,7 +82,7 @@ func NewNNSubtractionGradientNodeWithSourceGradientSourceImageGradientStateIsSec
 }
 
 func (nc _NNSubtractionGradientNodeClass) NodeWithSourceGradientSourceImageGradientStateIsSecondarySourceFilter(sourceGradient INNImageNode, sourceImage INNImageNode, gradientState INNBinaryGradientStateNode, isSecondarySourceFilter bool) NNSubtractionGradientNode {
-	rv := objc.Call[NNSubtractionGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), objc.Ptr(sourceGradient), objc.Ptr(sourceImage), objc.Ptr(gradientState), isSecondarySourceFilter)
+	rv := objc.Call[NNSubtractionGradientNode](nc, objc.Sel("nodeWithSourceGradient:sourceImage:gradientState:isSecondarySourceFilter:"), sourceGradient, sourceImage, gradientState, isSecondarySourceFilter)
 	return rv
 }
 

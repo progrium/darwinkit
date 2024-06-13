@@ -99,7 +99,7 @@ func NewBatchInsertRequestWithEntityNameObjects(entityName string, dictionaries 
 }
 
 func (b_ BatchInsertRequest) InitWithEntityDictionaryHandler(entity IEntityDescription, handler func(obj foundation.MutableDictionary) bool) BatchInsertRequest {
-	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:dictionaryHandler:"), objc.Ptr(entity), handler)
+	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:dictionaryHandler:"), entity, handler)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func NewBatchInsertRequestWithEntityDictionaryHandler(entity IEntityDescription,
 }
 
 func (b_ BatchInsertRequest) InitWithEntityManagedObjectHandler(entity IEntityDescription, handler func(obj ManagedObject) bool) BatchInsertRequest {
-	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:managedObjectHandler:"), objc.Ptr(entity), handler)
+	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:managedObjectHandler:"), entity, handler)
 	return rv
 }
 
@@ -127,7 +127,7 @@ func NewBatchInsertRequestWithEntityManagedObjectHandler(entity IEntityDescripti
 }
 
 func (b_ BatchInsertRequest) InitWithEntityObjects(entity IEntityDescription, dictionaries []map[string]objc.IObject) BatchInsertRequest {
-	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:objects:"), objc.Ptr(entity), dictionaries)
+	rv := objc.Call[BatchInsertRequest](b_, objc.Sel("initWithEntity:objects:"), entity, dictionaries)
 	return rv
 }
 

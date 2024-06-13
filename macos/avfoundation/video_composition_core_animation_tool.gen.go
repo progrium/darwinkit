@@ -35,7 +35,7 @@ func VideoCompositionCoreAnimationToolFrom(ptr unsafe.Pointer) VideoCompositionC
 }
 
 func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayersInLayer(videoLayers []quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
-	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayers:inLayer:"), videoLayers, objc.Ptr(animationLayer))
+	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayers:inLayer:"), videoLayers, animationLayer)
 	return rv
 }
 
@@ -47,7 +47,7 @@ func VideoCompositionCoreAnimationTool_VideoCompositionCoreAnimationToolWithPost
 }
 
 func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithPostProcessingAsVideoLayerInLayer(videoLayer quartzcore.ILayer, animationLayer quartzcore.ILayer) VideoCompositionCoreAnimationTool {
-	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:inLayer:"), objc.Ptr(videoLayer), objc.Ptr(animationLayer))
+	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:inLayer:"), videoLayer, animationLayer)
 	return rv
 }
 
@@ -59,7 +59,7 @@ func VideoCompositionCoreAnimationTool_VideoCompositionCoreAnimationToolWithPost
 }
 
 func (vc _VideoCompositionCoreAnimationToolClass) VideoCompositionCoreAnimationToolWithAdditionalLayerAsTrackID(layer quartzcore.ILayer, trackID objc.IObject) VideoCompositionCoreAnimationTool {
-	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithAdditionalLayer:asTrackID:"), objc.Ptr(layer), objc.Ptr(trackID))
+	rv := objc.Call[VideoCompositionCoreAnimationTool](vc, objc.Sel("videoCompositionCoreAnimationToolWithAdditionalLayer:asTrackID:"), layer, trackID)
 	return rv
 }
 

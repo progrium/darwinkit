@@ -114,14 +114,14 @@ func NewMatrixCopyToImageWithDevice(device metal.PDevice) MatrixCopyToImage {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopytoimage/3013770-encodebatchtocommandbuffer?language=objc
 func (m_ MatrixCopyToImage) EncodeBatchToCommandBufferSourceMatrixDestinationImages(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, destinationImages *foundation.Array) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeBatchToCommandBuffer:sourceMatrix:destinationImages:"), po0, objc.Ptr(sourceMatrix), destinationImages)
+	objc.Call[objc.Void](m_, objc.Sel("encodeBatchToCommandBuffer:sourceMatrix:destinationImages:"), po0, sourceMatrix, destinationImages)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopytoimage/3013770-encodebatchtocommandbuffer?language=objc
 func (m_ MatrixCopyToImage) EncodeBatchToCommandBufferObjectSourceMatrixDestinationImages(commandBufferObject objc.IObject, sourceMatrix IMatrix, destinationImages *foundation.Array) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeBatchToCommandBuffer:sourceMatrix:destinationImages:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), destinationImages)
+	objc.Call[objc.Void](m_, objc.Sel("encodeBatchToCommandBuffer:sourceMatrix:destinationImages:"), commandBufferObject, sourceMatrix, destinationImages)
 }
 
 //	[Full Topic]
@@ -129,14 +129,14 @@ func (m_ MatrixCopyToImage) EncodeBatchToCommandBufferObjectSourceMatrixDestinat
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopytoimage/2976458-encodetocommandbuffer?language=objc
 func (m_ MatrixCopyToImage) EncodeToCommandBufferSourceMatrixDestinationImage(commandBuffer metal.PCommandBuffer, sourceMatrix IMatrix, destinationImage IImage) {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:destinationImage:"), po0, objc.Ptr(sourceMatrix), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:destinationImage:"), po0, sourceMatrix, destinationImage)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsmatrixcopytoimage/2976458-encodetocommandbuffer?language=objc
 func (m_ MatrixCopyToImage) EncodeToCommandBufferObjectSourceMatrixDestinationImage(commandBufferObject objc.IObject, sourceMatrix IMatrix, destinationImage IImage) {
-	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:destinationImage:"), objc.Ptr(commandBufferObject), objc.Ptr(sourceMatrix), objc.Ptr(destinationImage))
+	objc.Call[objc.Void](m_, objc.Sel("encodeToCommandBuffer:sourceMatrix:destinationImage:"), commandBufferObject, sourceMatrix, destinationImage)
 }
 
 //	[Full Topic]

@@ -101,7 +101,7 @@ func (t_ TextFieldDelegateObject) HasTextFieldTextViewShouldSelectCandidateAtInd
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfielddelegate/2539557-textfield?language=objc
 func (t_ TextFieldDelegateObject) TextFieldTextViewShouldSelectCandidateAtIndex(textField TextField, textView TextView, index uint) bool {
-	rv := objc.Call[bool](t_, objc.Sel("textField:textView:shouldSelectCandidateAtIndex:"), objc.Ptr(textField), objc.Ptr(textView), index)
+	rv := objc.Call[bool](t_, objc.Sel("textField:textView:shouldSelectCandidateAtIndex:"), textField, textView, index)
 	return rv
 }
 
@@ -113,7 +113,7 @@ func (t_ TextFieldDelegateObject) HasTextFieldTextViewCandidatesForSelectedRange
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfielddelegate/2539556-textfield?language=objc
 func (t_ TextFieldDelegateObject) TextFieldTextViewCandidatesForSelectedRange_(textField TextField, textView TextView, candidates []foundation.TextCheckingResult, selectedRange foundation.Range) []foundation.TextCheckingResult {
-	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textField:textView:candidates:forSelectedRange:"), objc.Ptr(textField), objc.Ptr(textView), candidates, selectedRange)
+	rv := objc.Call[[]foundation.TextCheckingResult](t_, objc.Sel("textField:textView:candidates:forSelectedRange:"), textField, textView, candidates, selectedRange)
 	return rv
 }
 
@@ -125,6 +125,6 @@ func (t_ TextFieldDelegateObject) HasTextFieldTextViewCandidatesForSelectedRange
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstextfielddelegate/2539552-textfield?language=objc
 func (t_ TextFieldDelegateObject) TextFieldTextViewCandidatesForSelectedRange(textField TextField, textView TextView, selectedRange foundation.Range) []objc.Object {
-	rv := objc.Call[[]objc.Object](t_, objc.Sel("textField:textView:candidatesForSelectedRange:"), objc.Ptr(textField), objc.Ptr(textView), selectedRange)
+	rv := objc.Call[[]objc.Object](t_, objc.Sel("textField:textView:candidatesForSelectedRange:"), textField, textView, selectedRange)
 	return rv
 }

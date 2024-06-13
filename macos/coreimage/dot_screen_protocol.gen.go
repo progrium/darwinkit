@@ -28,27 +28,27 @@ type PDotScreen interface {
 	HasInputImage() bool
 
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
-	SetSharpness(value float64)
+	SetSharpness(value float32)
 	HasSetSharpness() bool
 
 	// optional
-	Sharpness() float64
+	Sharpness() float32
 	HasSharpness() bool
 }
 
@@ -91,7 +91,7 @@ func (d_ DotScreenObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228233-inputimage?language=objc
 func (d_ DotScreenObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setInputImage:"), value)
 }
 
 func (d_ DotScreenObject) HasInputImage() bool {
@@ -113,7 +113,7 @@ func (d_ DotScreenObject) HasSetWidth() bool {
 // The distance between dots in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
-func (d_ DotScreenObject) SetWidth(value float64) {
+func (d_ DotScreenObject) SetWidth(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setWidth:"), value)
 }
 
@@ -124,8 +124,8 @@ func (d_ DotScreenObject) HasWidth() bool {
 // The distance between dots in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228235-width?language=objc
-func (d_ DotScreenObject) Width() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("width"))
+func (d_ DotScreenObject) Width() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("width"))
 	return rv
 }
 
@@ -136,7 +136,7 @@ func (d_ DotScreenObject) HasSetAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228231-angle?language=objc
-func (d_ DotScreenObject) SetAngle(value float64) {
+func (d_ DotScreenObject) SetAngle(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setAngle:"), value)
 }
 
@@ -147,8 +147,8 @@ func (d_ DotScreenObject) HasAngle() bool {
 // The angle of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228231-angle?language=objc
-func (d_ DotScreenObject) Angle() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("angle"))
+func (d_ DotScreenObject) Angle() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("angle"))
 	return rv
 }
 
@@ -159,7 +159,7 @@ func (d_ DotScreenObject) HasSetSharpness() bool {
 // The sharpness of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
-func (d_ DotScreenObject) SetSharpness(value float64) {
+func (d_ DotScreenObject) SetSharpness(value float32) {
 	objc.Call[objc.Void](d_, objc.Sel("setSharpness:"), value)
 }
 
@@ -170,7 +170,7 @@ func (d_ DotScreenObject) HasSharpness() bool {
 // The sharpness of the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cidotscreen/3228234-sharpness?language=objc
-func (d_ DotScreenObject) Sharpness() float64 {
-	rv := objc.Call[float64](d_, objc.Sel("sharpness"))
+func (d_ DotScreenObject) Sharpness() float32 {
+	rv := objc.Call[float32](d_, objc.Sel("sharpness"))
 	return rv
 }

@@ -54,7 +54,7 @@ func (n_ NNReductionFeatureChannelsArgumentMinNode) Init() NNReductionFeatureCha
 }
 
 func (nc _NNReductionFeatureChannelsArgumentMinNodeClass) NodeWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsArgumentMinNode {
-	rv := objc.Call[NNReductionFeatureChannelsArgumentMinNode](nc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsArgumentMinNode](nc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 
@@ -66,7 +66,7 @@ func NNReductionFeatureChannelsArgumentMinNode_NodeWithSource(sourceNode INNImag
 }
 
 func (n_ NNReductionFeatureChannelsArgumentMinNode) InitWithSource(sourceNode INNImageNode) NNReductionFeatureChannelsArgumentMinNode {
-	rv := objc.Call[NNReductionFeatureChannelsArgumentMinNode](n_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[NNReductionFeatureChannelsArgumentMinNode](n_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 

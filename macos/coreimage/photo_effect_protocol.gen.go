@@ -35,7 +35,7 @@ func (p_ PhotoEffectObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciphotoeffect/3228672-inputimage?language=objc
 func (p_ PhotoEffectObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](p_, objc.Sel("setInputImage:"), value)
 }
 
 func (p_ PhotoEffectObject) HasInputImage() bool {

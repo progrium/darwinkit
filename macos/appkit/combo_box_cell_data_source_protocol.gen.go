@@ -43,7 +43,7 @@ func (c_ ComboBoxCellDataSourceObject) HasNumberOfItemsInComboBoxCell() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410302-numberofitemsincomboboxcell?language=objc
 func (c_ ComboBoxCellDataSourceObject) NumberOfItemsInComboBoxCell(comboBoxCell ComboBoxCell) int {
-	rv := objc.Call[int](c_, objc.Sel("numberOfItemsInComboBoxCell:"), objc.Ptr(comboBoxCell))
+	rv := objc.Call[int](c_, objc.Sel("numberOfItemsInComboBoxCell:"), comboBoxCell)
 	return rv
 }
 
@@ -55,7 +55,7 @@ func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellObjectValueForItemAtIndex(
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410258-comboboxcell?language=objc
 func (c_ ComboBoxCellDataSourceObject) ComboBoxCellObjectValueForItemAtIndex(comboBoxCell ComboBoxCell, index int) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("comboBoxCell:objectValueForItemAtIndex:"), objc.Ptr(comboBoxCell), index)
+	rv := objc.Call[objc.Object](c_, objc.Sel("comboBoxCell:objectValueForItemAtIndex:"), comboBoxCell, index)
 	return rv
 }
 
@@ -67,7 +67,7 @@ func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellIndexOfItemWithStringValue
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410285-comboboxcell?language=objc
 func (c_ ComboBoxCellDataSourceObject) ComboBoxCellIndexOfItemWithStringValue(comboBoxCell ComboBoxCell, string_ string) uint {
-	rv := objc.Call[uint](c_, objc.Sel("comboBoxCell:indexOfItemWithStringValue:"), objc.Ptr(comboBoxCell), string_)
+	rv := objc.Call[uint](c_, objc.Sel("comboBoxCell:indexOfItemWithStringValue:"), comboBoxCell, string_)
 	return rv
 }
 
@@ -79,6 +79,6 @@ func (c_ ComboBoxCellDataSourceObject) HasComboBoxCellCompletedString() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscomboboxcelldatasource/1410250-comboboxcell?language=objc
 func (c_ ComboBoxCellDataSourceObject) ComboBoxCellCompletedString(comboBoxCell ComboBoxCell, uncompletedString string) string {
-	rv := objc.Call[string](c_, objc.Sel("comboBoxCell:completedString:"), objc.Ptr(comboBoxCell), uncompletedString)
+	rv := objc.Call[string](c_, objc.Sel("comboBoxCell:completedString:"), comboBoxCell, uncompletedString)
 	return rv
 }

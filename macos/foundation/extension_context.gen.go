@@ -74,7 +74,7 @@ func (e_ ExtensionContext) CompleteRequestReturningItemsCompletionHandler(items 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/2891095-completerequestwithbroadcasturl?language=objc
 func (e_ ExtensionContext) CompleteRequestWithBroadcastURLSetupInfo(broadcastURL IURL, setupInfo map[string]objc.IObject) {
-	objc.Call[objc.Void](e_, objc.Sel("completeRequestWithBroadcastURL:setupInfo:"), objc.Ptr(broadcastURL), setupInfo)
+	objc.Call[objc.Void](e_, objc.Sel("completeRequestWithBroadcastURL:setupInfo:"), broadcastURL, setupInfo)
 }
 
 //	[Full Topic]
@@ -116,14 +116,14 @@ func (e_ ExtensionContext) LoadBroadcastingApplicationInfoWithCompletion(handler
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1412773-cancelrequestwitherror?language=objc
 func (e_ ExtensionContext) CancelRequestWithError(error IError) {
-	objc.Call[objc.Void](e_, objc.Sel("cancelRequestWithError:"), objc.Ptr(error))
+	objc.Call[objc.Void](e_, objc.Sel("cancelRequestWithError:"), error)
 }
 
 // Asks the system to open a URL on behalf of the currently running app extension. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensioncontext/1416791-openurl?language=objc
 func (e_ ExtensionContext) OpenURLCompletionHandler(URL IURL, completionHandler func(success bool)) {
-	objc.Call[objc.Void](e_, objc.Sel("openURL:completionHandler:"), objc.Ptr(URL), completionHandler)
+	objc.Call[objc.Void](e_, objc.Sel("openURL:completionHandler:"), URL, completionHandler)
 }
 
 // The list of input NSExtensionItem objects associated with the context. [Full Topic]

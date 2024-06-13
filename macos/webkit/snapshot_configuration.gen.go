@@ -103,5 +103,5 @@ func (s_ SnapshotConfiguration) SnapshotWidth() foundation.Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/webkit/wksnapshotconfiguration/2873249-snapshotwidth?language=objc
 func (s_ SnapshotConfiguration) SetSnapshotWidth(value foundation.INumber) {
-	objc.Call[objc.Void](s_, objc.Sel("setSnapshotWidth:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSnapshotWidth:"), value)
 }

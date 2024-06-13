@@ -54,7 +54,7 @@ func (u_ UnitFuelEfficiency) Init() UnitFuelEfficiency {
 }
 
 func (u_ UnitFuelEfficiency) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitFuelEfficiency {
-	rv := objc.Call[UnitFuelEfficiency](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitFuelEfficiency](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

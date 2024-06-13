@@ -44,7 +44,7 @@ func PersistentContainerFrom(ptr unsafe.Pointer) PersistentContainer {
 }
 
 func (p_ PersistentContainer) InitWithNameManagedObjectModel(name string, model IManagedObjectModel) PersistentContainer {
-	rv := objc.Call[PersistentContainer](p_, objc.Sel("initWithName:managedObjectModel:"), name, objc.Ptr(model))
+	rv := objc.Call[PersistentContainer](p_, objc.Sel("initWithName:managedObjectModel:"), name, model)
 	return rv
 }
 
@@ -58,7 +58,7 @@ func NewPersistentContainerWithNameManagedObjectModel(name string, model IManage
 }
 
 func (pc _PersistentContainerClass) PersistentContainerWithNameManagedObjectModel(name string, model IManagedObjectModel) PersistentContainer {
-	rv := objc.Call[PersistentContainer](pc, objc.Sel("persistentContainerWithName:managedObjectModel:"), name, objc.Ptr(model))
+	rv := objc.Call[PersistentContainer](pc, objc.Sel("persistentContainerWithName:managedObjectModel:"), name, model)
 	return rv
 }
 

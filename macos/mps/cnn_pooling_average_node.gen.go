@@ -54,7 +54,7 @@ func (c_ CNNPoolingAverageNode) Init() CNNPoolingAverageNode {
 }
 
 func (c_ CNNPoolingAverageNode) InitWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewCNNPoolingAverageNodeWithSourceFilterSize(sourceNode INNImageNode, size 
 }
 
 func (cc _CNNPoolingAverageNodeClass) NodeWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), objc.Ptr(sourceNode), size, stride)
+	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:stride:"), sourceNode, size, stride)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func CNNPoolingAverageNode_NodeWithSourceFilterSizeStride(sourceNode INNImageNod
 }
 
 func (cc _CNNPoolingAverageNodeClass) NodeWithSourceFilterSize(sourceNode INNImageNode, size uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:"), objc.Ptr(sourceNode), size)
+	rv := objc.Call[CNNPoolingAverageNode](cc, objc.Sel("nodeWithSource:filterSize:"), sourceNode, size)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func CNNPoolingAverageNode_NodeWithSourceFilterSize(sourceNode INNImageNode, siz
 }
 
 func (c_ CNNPoolingAverageNode) InitWithSourceKernelWidthKernelHeightStrideInPixelsXStrideInPixelsY(sourceNode INNImageNode, kernelWidth uint, kernelHeight uint, strideInPixelsX uint, strideInPixelsY uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), objc.Ptr(sourceNode), kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
+	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:kernelWidth:kernelHeight:strideInPixelsX:strideInPixelsY:"), sourceNode, kernelWidth, kernelHeight, strideInPixelsX, strideInPixelsY)
 	return rv
 }
 
@@ -106,7 +106,7 @@ func NewCNNPoolingAverageNodeWithSourceKernelWidthKernelHeightStrideInPixelsXStr
 }
 
 func (c_ CNNPoolingAverageNode) InitWithSourceFilterSizeStride(sourceNode INNImageNode, size uint, stride uint) CNNPoolingAverageNode {
-	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:stride:"), objc.Ptr(sourceNode), size, stride)
+	rv := objc.Call[CNNPoolingAverageNode](c_, objc.Sel("initWithSource:filterSize:stride:"), sourceNode, size, stride)
 	return rv
 }
 

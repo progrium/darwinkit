@@ -19,11 +19,11 @@ type PTextImageGenerator interface {
 	HasFontName() bool
 
 	// optional
-	SetScaleFactor(value float64)
+	SetScaleFactor(value float32)
 	HasSetScaleFactor() bool
 
 	// optional
-	ScaleFactor() float64
+	ScaleFactor() float32
 	HasScaleFactor() bool
 
 	// optional
@@ -35,11 +35,11 @@ type PTextImageGenerator interface {
 	HasText() bool
 
 	// optional
-	SetFontSize(value float64)
+	SetFontSize(value float32)
 	HasSetFontSize() bool
 
 	// optional
-	FontSize() float64
+	FontSize() float32
 	HasFontSize() bool
 }
 
@@ -81,7 +81,7 @@ func (t_ TextImageGeneratorObject) HasSetScaleFactor() bool {
 // The scale of the font to use for the generated text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228787-scalefactor?language=objc
-func (t_ TextImageGeneratorObject) SetScaleFactor(value float64) {
+func (t_ TextImageGeneratorObject) SetScaleFactor(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setScaleFactor:"), value)
 }
 
@@ -92,8 +92,8 @@ func (t_ TextImageGeneratorObject) HasScaleFactor() bool {
 // The scale of the font to use for the generated text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228787-scalefactor?language=objc
-func (t_ TextImageGeneratorObject) ScaleFactor() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("scaleFactor"))
+func (t_ TextImageGeneratorObject) ScaleFactor() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("scaleFactor"))
 	return rv
 }
 
@@ -127,7 +127,7 @@ func (t_ TextImageGeneratorObject) HasSetFontSize() bool {
 // The size of the font to use for the generated text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228786-fontsize?language=objc
-func (t_ TextImageGeneratorObject) SetFontSize(value float64) {
+func (t_ TextImageGeneratorObject) SetFontSize(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setFontSize:"), value)
 }
 
@@ -138,7 +138,7 @@ func (t_ TextImageGeneratorObject) HasFontSize() bool {
 // The size of the font to use for the generated text. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citextimagegenerator/3228786-fontsize?language=objc
-func (t_ TextImageGeneratorObject) FontSize() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("fontSize"))
+func (t_ TextImageGeneratorObject) FontSize() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("fontSize"))
 	return rv
 }

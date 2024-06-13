@@ -61,7 +61,7 @@ func (l_ LayoutXAxisAnchor) Init() LayoutXAxisAnchor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866024-anchorwithoffsettoanchor?language=objc
 func (l_ LayoutXAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnchor) LayoutDimension {
-	rv := objc.Call[LayoutDimension](l_, objc.Sel("anchorWithOffsetToAnchor:"), objc.Ptr(otherAnchor))
+	rv := objc.Call[LayoutDimension](l_, objc.Sel("anchorWithOffsetToAnchor:"), otherAnchor)
 	return rv
 }
 
@@ -69,7 +69,7 @@ func (l_ LayoutXAxisAnchor) AnchorWithOffsetToAnchor(otherAnchor ILayoutXAxisAnc
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866018-constraintlessthanorequaltosyste?language=objc
 func (l_ LayoutXAxisAnchor) ConstraintLessThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.Ptr(anchor), multiplier)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintLessThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
@@ -77,7 +77,7 @@ func (l_ LayoutXAxisAnchor) ConstraintLessThanOrEqualToSystemSpacingAfterAnchorM
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2866112-constraintequaltosystemspacingaf?language=objc
 func (l_ LayoutXAxisAnchor) ConstraintEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToSystemSpacingAfterAnchor:multiplier:"), objc.Ptr(anchor), multiplier)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }
 
@@ -85,6 +85,6 @@ func (l_ LayoutXAxisAnchor) ConstraintEqualToSystemSpacingAfterAnchorMultiplier(
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nslayoutxaxisanchor/2865871-constraintgreaterthanorequaltosy?language=objc
 func (l_ LayoutXAxisAnchor) ConstraintGreaterThanOrEqualToSystemSpacingAfterAnchorMultiplier(anchor ILayoutXAxisAnchor, multiplier float64) LayoutConstraint {
-	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), objc.Ptr(anchor), multiplier)
+	rv := objc.Call[LayoutConstraint](l_, objc.Sel("constraintGreaterThanOrEqualToSystemSpacingAfterAnchor:multiplier:"), anchor, multiplier)
 	return rv
 }

@@ -131,7 +131,7 @@ func (c_ CIProfileResponderDelegateObject) HasConnectInitiatorWithDeviceInfo() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580328-connectinitiator?language=objc
 func (c_ CIProfileResponderDelegateObject) ConnectInitiatorWithDeviceInfo(initiatorMUID CIInitiatiorMUID, deviceInfo CIDeviceInfo) bool {
-	rv := objc.Call[bool](c_, objc.Sel("connectInitiator:withDeviceInfo:"), initiatorMUID, objc.Ptr(deviceInfo))
+	rv := objc.Call[bool](c_, objc.Sel("connectInitiator:withDeviceInfo:"), initiatorMUID, deviceInfo)
 	return rv
 }
 
@@ -143,7 +143,7 @@ func (c_ CIProfileResponderDelegateObject) HasWillSetProfileOnChannelEnabled() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580331-willsetprofile?language=objc
 func (c_ CIProfileResponderDelegateObject) WillSetProfileOnChannelEnabled(aProfile CIProfile, channel ChannelNumber, shouldEnable bool) bool {
-	rv := objc.Call[bool](c_, objc.Sel("willSetProfile:onChannel:enabled:"), objc.Ptr(aProfile), channel, shouldEnable)
+	rv := objc.Call[bool](c_, objc.Sel("willSetProfile:onChannel:enabled:"), aProfile, channel, shouldEnable)
 	return rv
 }
 
@@ -155,5 +155,5 @@ func (c_ CIProfileResponderDelegateObject) HasHandleDataForProfileOnChannelData(
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremidi/midiciprofileresponderdelegate/3580329-handledataforprofile?language=objc
 func (c_ CIProfileResponderDelegateObject) HandleDataForProfileOnChannelData(aProfile CIProfile, channel ChannelNumber, inData []byte) {
-	objc.Call[objc.Void](c_, objc.Sel("handleDataForProfile:onChannel:data:"), objc.Ptr(aProfile), channel, inData)
+	objc.Call[objc.Void](c_, objc.Sel("handleDataForProfile:onChannel:data:"), aProfile, channel, inData)
 }

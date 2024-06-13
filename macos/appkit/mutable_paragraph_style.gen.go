@@ -24,7 +24,7 @@ type IMutableParagraphStyle interface {
 	SetTextBlocks(value []ITextBlock)
 	SetTextLists(value []ITextList)
 	SetHeaderLevel(value int)
-	SetTighteningFactorForTruncation(value float64)
+	SetTighteningFactorForTruncation(value float32)
 	SetHeadIndent(value float64)
 	SetDefaultTabInterval(value float64)
 	SetBaseWritingDirection(value WritingDirection)
@@ -32,7 +32,7 @@ type IMutableParagraphStyle interface {
 	SetTailIndent(value float64)
 	SetTabStops(value []ITextTab)
 	SetAlignment(value TextAlignment)
-	SetHyphenationFactor(value float64)
+	SetHyphenationFactor(value float32)
 	SetAllowsDefaultTighteningForTruncation(value bool)
 	SetLineSpacing(value float64)
 	SetFirstLineHeadIndent(value float64)
@@ -81,21 +81,21 @@ func (m_ MutableParagraphStyle) Init() MutableParagraphStyle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsmutableparagraphstyle/1535084-removetabstop?language=objc
 func (m_ MutableParagraphStyle) RemoveTabStop(anObject ITextTab) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTabStop:"), objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("removeTabStop:"), anObject)
 }
 
 // Replaces the subattributes of the paragraph with those in the specified paragraph style object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsmutableparagraphstyle/1533980-setparagraphstyle?language=objc
 func (m_ MutableParagraphStyle) SetParagraphStyle(obj IParagraphStyle) {
-	objc.Call[objc.Void](m_, objc.Sel("setParagraphStyle:"), objc.Ptr(obj))
+	objc.Call[objc.Void](m_, objc.Sel("setParagraphStyle:"), obj)
 }
 
 // Adds the specified tab stop to the paragraph. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsmutableparagraphstyle/1525051-addtabstop?language=objc
 func (m_ MutableParagraphStyle) AddTabStop(anObject ITextTab) {
-	objc.Call[objc.Void](m_, objc.Sel("addTabStop:"), objc.Ptr(anObject))
+	objc.Call[objc.Void](m_, objc.Sel("addTabStop:"), anObject)
 }
 
 // The text blocks that contain the paragraph. [Full Topic]
@@ -122,7 +122,7 @@ func (m_ MutableParagraphStyle) SetHeaderLevel(value int) {
 // The threshold for using tightening as an alternative to truncation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsmutableparagraphstyle/1531383-tighteningfactorfortruncation?language=objc
-func (m_ MutableParagraphStyle) SetTighteningFactorForTruncation(value float64) {
+func (m_ MutableParagraphStyle) SetTighteningFactorForTruncation(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setTighteningFactorForTruncation:"), value)
 }
 
@@ -178,7 +178,7 @@ func (m_ MutableParagraphStyle) SetAlignment(value TextAlignment) {
 // The paragraph’s threshold for hyphenation. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nsmutableparagraphstyle/1535553-hyphenationfactor?language=objc
-func (m_ MutableParagraphStyle) SetHyphenationFactor(value float64) {
+func (m_ MutableParagraphStyle) SetHyphenationFactor(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setHyphenationFactor:"), value)
 }
 

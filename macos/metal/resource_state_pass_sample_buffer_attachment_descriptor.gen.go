@@ -80,7 +80,7 @@ func (r_ ResourceStatePassSampleBufferAttachmentDescriptor) SetSampleBuffer(valu
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlresourcestatepasssamplebufferattachmentdescriptor/3566567-samplebuffer?language=objc
 func (r_ ResourceStatePassSampleBufferAttachmentDescriptor) SetSampleBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setSampleBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setSampleBuffer:"), valueObject)
 }
 
 // The index the Metal device object should use to store GPU counters when ending the resource state pass. [Full Topic]

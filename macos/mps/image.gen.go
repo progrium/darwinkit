@@ -81,7 +81,7 @@ func NewImageWithTextureFeatureChannels(texture metal.PTexture, featureChannels 
 
 func (i_ Image) InitWithDeviceImageDescriptor(device metal.PDevice, imageDescriptor IImageDescriptor) Image {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[Image](i_, objc.Sel("initWithDevice:imageDescriptor:"), po0, objc.Ptr(imageDescriptor))
+	rv := objc.Call[Image](i_, objc.Sel("initWithDevice:imageDescriptor:"), po0, imageDescriptor)
 	return rv
 }
 
@@ -95,7 +95,7 @@ func NewImageWithDeviceImageDescriptor(device metal.PDevice, imageDescriptor IIm
 }
 
 func (i_ Image) InitWithParentImageSliceRangeFeatureChannels(parent IImage, sliceRange foundation.Range, featureChannels uint) Image {
-	rv := objc.Call[Image](i_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), objc.Ptr(parent), sliceRange, featureChannels)
+	rv := objc.Call[Image](i_, objc.Sel("initWithParentImage:sliceRange:featureChannels:"), parent, sliceRange, featureChannels)
 	return rv
 }
 
@@ -185,7 +185,7 @@ func (i_ Image) SynchronizeOnCommandBuffer(commandBuffer metal.PCommandBuffer) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimage/2942491-synchronizeoncommandbuffer?language=objc
 func (i_ Image) SynchronizeOnCommandBufferObject(commandBufferObject objc.IObject) {
-	objc.Call[objc.Void](i_, objc.Sel("synchronizeOnCommandBuffer:"), objc.Ptr(commandBufferObject))
+	objc.Call[objc.Void](i_, objc.Sel("synchronizeOnCommandBuffer:"), commandBufferObject)
 }
 
 //	[Full Topic]

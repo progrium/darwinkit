@@ -121,7 +121,7 @@ func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidScanToURLError(
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewdelegate/1504768-scannerdeviceview?language=objc
 func (s_ ScannerDeviceViewDelegateObject) ScannerDeviceViewDidScanToURLError(scannerDeviceView ScannerDeviceView, url foundation.URL, error foundation.Error) {
-	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToURL:error:"), objc.Ptr(scannerDeviceView), objc.Ptr(url), objc.Ptr(error))
+	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToURL:error:"), scannerDeviceView, url, error)
 }
 
 func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidEncounterError() bool {
@@ -132,7 +132,7 @@ func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidEncounterError(
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewdelegate/1503476-scannerdeviceview?language=objc
 func (s_ ScannerDeviceViewDelegateObject) ScannerDeviceViewDidEncounterError(scannerDeviceView ScannerDeviceView, error foundation.Error) {
-	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didEncounterError:"), objc.Ptr(scannerDeviceView), objc.Ptr(error))
+	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didEncounterError:"), scannerDeviceView, error)
 }
 
 func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidScanToURLFileDataError() bool {
@@ -143,7 +143,7 @@ func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidScanToURLFileDa
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewdelegate/1504462-scannerdeviceview?language=objc
 func (s_ ScannerDeviceViewDelegateObject) ScannerDeviceViewDidScanToURLFileDataError(scannerDeviceView ScannerDeviceView, url foundation.URL, data []byte, error foundation.Error) {
-	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToURL:fileData:error:"), objc.Ptr(scannerDeviceView), objc.Ptr(url), data, objc.Ptr(error))
+	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToURL:fileData:error:"), scannerDeviceView, url, data, error)
 }
 
 func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidScanToBandDataScanInfoError() bool {
@@ -154,5 +154,5 @@ func (s_ ScannerDeviceViewDelegateObject) HasScannerDeviceViewDidScanToBandDataS
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartz/ikscannerdeviceviewdelegate/1503867-scannerdeviceview?language=objc
 func (s_ ScannerDeviceViewDelegateObject) ScannerDeviceViewDidScanToBandDataScanInfoError(scannerDeviceView ScannerDeviceView, data objc.Object, scanInfo foundation.Dictionary, error foundation.Error) {
-	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToBandData:scanInfo:error:"), objc.Ptr(scannerDeviceView), objc.Ptr(data), scanInfo, objc.Ptr(error))
+	objc.Call[objc.Void](s_, objc.Sel("scannerDeviceView:didScanToBandData:scanInfo:error:"), scannerDeviceView, data, scanInfo, error)
 }

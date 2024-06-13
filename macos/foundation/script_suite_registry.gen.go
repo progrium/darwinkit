@@ -101,7 +101,7 @@ func (s_ ScriptSuiteRegistry) ClassDescriptionWithAppleEventCode(appleEventCode 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptsuiteregistry/1409955-setsharedscriptsuiteregistry?language=objc
 func (sc _ScriptSuiteRegistryClass) SetSharedScriptSuiteRegistry(registry IScriptSuiteRegistry) {
-	objc.Call[objc.Void](sc, objc.Sel("setSharedScriptSuiteRegistry:"), objc.Ptr(registry))
+	objc.Call[objc.Void](sc, objc.Sel("setSharedScriptSuiteRegistry:"), registry)
 }
 
 // Sets the single, shared instance of NSScriptSuiteRegistry to registry. [Full Topic]
@@ -131,7 +131,7 @@ func (s_ ScriptSuiteRegistry) ClassDescriptionsInSuite(suiteName string) map[str
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptsuiteregistry/1413397-loadsuitewithdictionary?language=objc
 func (s_ ScriptSuiteRegistry) LoadSuiteWithDictionaryFromBundle(suiteDeclaration Dictionary, bundle IBundle) {
-	objc.Call[objc.Void](s_, objc.Sel("loadSuiteWithDictionary:fromBundle:"), suiteDeclaration, objc.Ptr(bundle))
+	objc.Call[objc.Void](s_, objc.Sel("loadSuiteWithDictionary:fromBundle:"), suiteDeclaration, bundle)
 }
 
 // Returns the command descriptions contained in the suite identified by suiteName. [Full Topic]
@@ -154,7 +154,7 @@ func (s_ ScriptSuiteRegistry) SuiteForAppleEventCode(appleEventCode uint) string
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptsuiteregistry/1412869-registerclassdescription?language=objc
 func (s_ ScriptSuiteRegistry) RegisterClassDescription(classDescription IScriptClassDescription) {
-	objc.Call[objc.Void](s_, objc.Sel("registerClassDescription:"), objc.Ptr(classDescription))
+	objc.Call[objc.Void](s_, objc.Sel("registerClassDescription:"), classDescription)
 }
 
 // Returns an NSData object that contains data in 'aete' resource format describing the scriptability information currently known to the application. [Full Topic]
@@ -169,7 +169,7 @@ func (s_ ScriptSuiteRegistry) AeteResource(languageName string) []byte {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptsuiteregistry/1410575-loadsuitesfrombundle?language=objc
 func (s_ ScriptSuiteRegistry) LoadSuitesFromBundle(bundle IBundle) {
-	objc.Call[objc.Void](s_, objc.Sel("loadSuitesFromBundle:"), objc.Ptr(bundle))
+	objc.Call[objc.Void](s_, objc.Sel("loadSuitesFromBundle:"), bundle)
 }
 
 // Returns the bundle containing the suite-definition property list (extension .scriptSuite) identified by suiteName. [Full Topic]
@@ -184,7 +184,7 @@ func (s_ ScriptSuiteRegistry) BundleForSuite(suiteName string) Bundle {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptsuiteregistry/1408858-registercommanddescription?language=objc
 func (s_ ScriptSuiteRegistry) RegisterCommandDescription(commandDescription IScriptCommandDescription) {
-	objc.Call[objc.Void](s_, objc.Sel("registerCommandDescription:"), objc.Ptr(commandDescription))
+	objc.Call[objc.Void](s_, objc.Sel("registerCommandDescription:"), commandDescription)
 }
 
 // Returns the names of the suite definitions currently loaded by the application. [Full Topic]

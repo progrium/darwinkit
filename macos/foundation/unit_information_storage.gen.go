@@ -54,7 +54,7 @@ func (u_ UnitInformationStorage) Init() UnitInformationStorage {
 }
 
 func (u_ UnitInformationStorage) InitWithSymbolConverter(symbol string, converter IUnitConverter) UnitInformationStorage {
-	rv := objc.Call[UnitInformationStorage](u_, objc.Sel("initWithSymbol:converter:"), symbol, objc.Ptr(converter))
+	rv := objc.Call[UnitInformationStorage](u_, objc.Sel("initWithSymbol:converter:"), symbol, converter)
 	return rv
 }
 

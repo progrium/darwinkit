@@ -58,7 +58,7 @@ func (t_ Transaction) Init() Transaction {
 //
 // [Full Topic]: https://developer.apple.com/documentation/quartzcore/catransaction/1448279-setanimationtimingfunction?language=objc
 func (tc _TransactionClass) SetAnimationTimingFunction(function IMediaTimingFunction) {
-	objc.Call[objc.Void](tc, objc.Sel("setAnimationTimingFunction:"), objc.Ptr(function))
+	objc.Call[objc.Void](tc, objc.Sel("setAnimationTimingFunction:"), function)
 }
 
 // Sets the timing function used for all animations within this transaction group. [Full Topic]

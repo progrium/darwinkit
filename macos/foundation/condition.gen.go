@@ -84,7 +84,7 @@ func (c_ Condition) Wait() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscondition/1418307-waituntildate?language=objc
 func (c_ Condition) WaitUntilDate(limit IDate) bool {
-	rv := objc.Call[bool](c_, objc.Sel("waitUntilDate:"), objc.Ptr(limit))
+	rv := objc.Call[bool](c_, objc.Sel("waitUntilDate:"), limit)
 	return rv
 }
 

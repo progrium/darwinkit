@@ -36,7 +36,7 @@ func ImageDilateFrom(ptr unsafe.Pointer) ImageDilate {
 	}
 }
 
-func (i_ ImageDilate) InitWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float64) ImageDilate {
+func (i_ ImageDilate) InitWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float32) ImageDilate {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImageDilate](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:values:"), po0, kernelWidth, kernelHeight, values)
 	return rv
@@ -45,7 +45,7 @@ func (i_ ImageDilate) InitWithDeviceKernelWidthKernelHeightValues(device metal.P
 // Initializes the kernel with a specified width, height, and weight values. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagedilate/1618285-initwithdevice?language=objc
-func NewImageDilateWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float64) ImageDilate {
+func NewImageDilateWithDeviceKernelWidthKernelHeightValues(device metal.PDevice, kernelWidth uint, kernelHeight uint, values *float32) ImageDilate {
 	instance := ImageDilateClass.Alloc().InitWithDeviceKernelWidthKernelHeightValues(device, kernelWidth, kernelHeight, values)
 	instance.Autorelease()
 	return instance

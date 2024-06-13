@@ -31,5 +31,5 @@ func (e_ ExtensionRequestHandlingObject) HasBeginRequestWithExtensionContext() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsextensionrequesthandling/1413395-beginrequestwithextensioncontext?language=objc
 func (e_ ExtensionRequestHandlingObject) BeginRequestWithExtensionContext(context ExtensionContext) {
-	objc.Call[objc.Void](e_, objc.Sel("beginRequestWithExtensionContext:"), objc.Ptr(context))
+	objc.Call[objc.Void](e_, objc.Sel("beginRequestWithExtensionContext:"), context)
 }

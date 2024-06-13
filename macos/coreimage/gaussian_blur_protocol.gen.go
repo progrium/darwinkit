@@ -19,11 +19,11 @@ type PGaussianBlur interface {
 	HasInputImage() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 }
 
@@ -43,7 +43,7 @@ func (g_ GaussianBlurObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussianblur/3228464-inputimage?language=objc
 func (g_ GaussianBlurObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](g_, objc.Sel("setInputImage:"), value)
 }
 
 func (g_ GaussianBlurObject) HasInputImage() bool {
@@ -65,7 +65,7 @@ func (g_ GaussianBlurObject) HasSetRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussianblur/3228465-radius?language=objc
-func (g_ GaussianBlurObject) SetRadius(value float64) {
+func (g_ GaussianBlurObject) SetRadius(value float32) {
 	objc.Call[objc.Void](g_, objc.Sel("setRadius:"), value)
 }
 
@@ -76,7 +76,7 @@ func (g_ GaussianBlurObject) HasRadius() bool {
 // The radius of the blur, in pixels. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cigaussianblur/3228465-radius?language=objc
-func (g_ GaussianBlurObject) Radius() float64 {
-	rv := objc.Call[float64](g_, objc.Sel("radius"))
+func (g_ GaussianBlurObject) Radius() float32 {
+	rv := objc.Call[float32](g_, objc.Sel("radius"))
 	return rv
 }

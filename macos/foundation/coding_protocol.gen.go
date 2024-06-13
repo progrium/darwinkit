@@ -35,7 +35,7 @@ func (c_ CodingObject) HasEncodeWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoding/1413933-encodewithcoder?language=objc
 func (c_ CodingObject) EncodeWithCoder(coder Coder) {
-	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), objc.Ptr(coder))
+	objc.Call[objc.Void](c_, objc.Sel("encodeWithCoder:"), coder)
 }
 
 func (c_ CodingObject) HasInitWithCoder() bool {
@@ -46,6 +46,6 @@ func (c_ CodingObject) HasInitWithCoder() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nscoding/1416145-initwithcoder?language=objc
 func (c_ CodingObject) InitWithCoder(coder Coder) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), objc.Ptr(coder))
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithCoder:"), coder)
 	return rv
 }

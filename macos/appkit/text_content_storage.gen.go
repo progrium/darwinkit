@@ -76,7 +76,7 @@ func (t_ TextContentStorage) LocationFromLocationWithOffset(location PTextLocati
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852571-locationfromlocation?language=objc
 func (t_ TextContentStorage) LocationFromLocationObjectWithOffset(locationObject objc.IObject, offset int) TextLocationObject {
-	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), objc.Ptr(locationObject), offset)
+	rv := objc.Call[TextLocationObject](t_, objc.Sel("locationFromLocation:withOffset:"), locationObject, offset)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func (t_ TextContentStorage) LocationFromLocationObjectWithOffset(locationObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3809937-textelementforattributedstring?language=objc
 func (t_ TextContentStorage) TextElementForAttributedString(attributedString foundation.IAttributedString) TextElement {
-	rv := objc.Call[TextElement](t_, objc.Sel("textElementForAttributedString:"), objc.Ptr(attributedString))
+	rv := objc.Call[TextElement](t_, objc.Sel("textElementForAttributedString:"), attributedString)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func (t_ TextContentStorage) OffsetFromLocationToLocation(from PTextLocation, to
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852572-offsetfromlocation?language=objc
 func (t_ TextContentStorage) OffsetFromLocationObjectToLocationObject(fromObject objc.IObject, toObject objc.IObject) int {
-	rv := objc.Call[int](t_, objc.Sel("offsetFromLocation:toLocation:"), objc.Ptr(fromObject), objc.Ptr(toObject))
+	rv := objc.Call[int](t_, objc.Sel("offsetFromLocation:toLocation:"), fromObject, toObject)
 	return rv
 }
 
@@ -110,7 +110,7 @@ func (t_ TextContentStorage) OffsetFromLocationObjectToLocationObject(fromObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3809935-attributedstringfortextelement?language=objc
 func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextElement) foundation.AttributedString {
-	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedStringForTextElement:"), objc.Ptr(textElement))
+	rv := objc.Call[foundation.AttributedString](t_, objc.Sel("attributedStringForTextElement:"), textElement)
 	return rv
 }
 
@@ -118,7 +118,7 @@ func (t_ TextContentStorage) AttributedStringForTextElement(textElement ITextEle
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3852570-adjustedrangefromrange?language=objc
 func (t_ TextContentStorage) AdjustedRangeFromRangeForEditingTextSelection(textRange ITextRange, forEditingTextSelection bool) TextRange {
-	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), objc.Ptr(textRange), forEditingTextSelection)
+	rv := objc.Call[TextRange](t_, objc.Sel("adjustedRangeFromRange:forEditingTextSelection:"), textRange, forEditingTextSelection)
 	return rv
 }
 
@@ -134,5 +134,5 @@ func (t_ TextContentStorage) AttributedString() foundation.AttributedString {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextcontentstorage/3809934-attributedstring?language=objc
 func (t_ TextContentStorage) SetAttributedString(value foundation.IAttributedString) {
-	objc.Call[objc.Void](t_, objc.Sel("setAttributedString:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setAttributedString:"), value)
 }

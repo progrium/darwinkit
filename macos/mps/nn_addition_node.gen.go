@@ -66,7 +66,7 @@ func NNAdditionNode_NodeWithSources(sourceNodes []INNImageNode) NNAdditionNode {
 }
 
 func (n_ NNAdditionNode) InitWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNAdditionNode {
-	rv := objc.Call[NNAdditionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNAdditionNode](n_, objc.Sel("initWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 
@@ -80,7 +80,7 @@ func NewNNAdditionNodeWithLeftSourceRightSource(left INNImageNode, right INNImag
 }
 
 func (nc _NNAdditionNodeClass) NodeWithLeftSourceRightSource(left INNImageNode, right INNImageNode) NNAdditionNode {
-	rv := objc.Call[NNAdditionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[NNAdditionNode](nc, objc.Sel("nodeWithLeftSource:rightSource:"), left, right)
 	return rv
 }
 

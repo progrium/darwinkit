@@ -35,7 +35,7 @@ func (m_ MaximumComponentObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimaximumcomponent/3228555-inputimage?language=objc
 func (m_ MaximumComponentObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setInputImage:"), value)
 }
 
 func (m_ MaximumComponentObject) HasInputImage() bool {

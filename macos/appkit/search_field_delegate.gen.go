@@ -78,7 +78,7 @@ func (s_ SearchFieldDelegateObject) HasSearchFieldDidStartSearching() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfielddelegate/1535275-searchfielddidstartsearching?language=objc
 func (s_ SearchFieldDelegateObject) SearchFieldDidStartSearching(sender SearchField) {
-	objc.Call[objc.Void](s_, objc.Sel("searchFieldDidStartSearching:"), objc.Ptr(sender))
+	objc.Call[objc.Void](s_, objc.Sel("searchFieldDidStartSearching:"), sender)
 }
 
 func (s_ SearchFieldDelegateObject) HasSearchFieldDidEndSearching() bool {
@@ -89,5 +89,5 @@ func (s_ SearchFieldDelegateObject) HasSearchFieldDidEndSearching() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfielddelegate/1529867-searchfielddidendsearching?language=objc
 func (s_ SearchFieldDelegateObject) SearchFieldDidEndSearching(sender SearchField) {
-	objc.Call[objc.Void](s_, objc.Sel("searchFieldDidEndSearching:"), objc.Ptr(sender))
+	objc.Call[objc.Void](s_, objc.Sel("searchFieldDidEndSearching:"), sender)
 }

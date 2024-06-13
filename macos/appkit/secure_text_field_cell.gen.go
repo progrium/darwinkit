@@ -70,7 +70,7 @@ func NewSecureTextFieldCellTextCell(string_ string) SecureTextFieldCell {
 }
 
 func (s_ SecureTextFieldCell) InitImageCell(image IImage) SecureTextFieldCell {
-	rv := objc.Call[SecureTextFieldCell](s_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[SecureTextFieldCell](s_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 

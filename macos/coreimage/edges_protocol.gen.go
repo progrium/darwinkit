@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges?language=objc
 type PEdges interface {
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (e_ EdgesObject) HasSetIntensity() bool {
 // The intensity of the edges. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
-func (e_ EdgesObject) SetIntensity(value float64) {
+func (e_ EdgesObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](e_, objc.Sel("setIntensity:"), value)
 }
 
@@ -53,8 +53,8 @@ func (e_ EdgesObject) HasIntensity() bool {
 // The intensity of the edges. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228246-intensity?language=objc
-func (e_ EdgesObject) Intensity() float64 {
-	rv := objc.Call[float64](e_, objc.Sel("intensity"))
+func (e_ EdgesObject) Intensity() float32 {
+	rv := objc.Call[float32](e_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -66,7 +66,7 @@ func (e_ EdgesObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciedges/3228245-inputimage?language=objc
 func (e_ EdgesObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setInputImage:"), value)
 }
 
 func (e_ EdgesObject) HasInputImage() bool {

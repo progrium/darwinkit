@@ -12,19 +12,19 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition?language=objc
 type PFlashTransition interface {
 	// optional
-	SetStriationStrength(value float64)
+	SetStriationStrength(value float32)
 	HasSetStriationStrength() bool
 
 	// optional
-	StriationStrength() float64
+	StriationStrength() float32
 	HasStriationStrength() bool
 
 	// optional
-	SetMaxStriationRadius(value float64)
+	SetMaxStriationRadius(value float32)
 	HasSetMaxStriationRadius() bool
 
 	// optional
-	MaxStriationRadius() float64
+	MaxStriationRadius() float32
 	HasMaxStriationRadius() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PFlashTransition interface {
 	HasCenter() bool
 
 	// optional
-	SetFadeThreshold(value float64)
+	SetFadeThreshold(value float32)
 	HasSetFadeThreshold() bool
 
 	// optional
-	FadeThreshold() float64
+	FadeThreshold() float32
 	HasFadeThreshold() bool
 
 	// optional
@@ -52,11 +52,11 @@ type PFlashTransition interface {
 	HasExtent() bool
 
 	// optional
-	SetStriationContrast(value float64)
+	SetStriationContrast(value float32)
 	HasSetStriationContrast() bool
 
 	// optional
-	StriationContrast() float64
+	StriationContrast() float32
 	HasStriationContrast() bool
 
 	// optional
@@ -83,7 +83,7 @@ func (f_ FlashTransitionObject) HasSetStriationStrength() bool {
 // The strength of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
-func (f_ FlashTransitionObject) SetStriationStrength(value float64) {
+func (f_ FlashTransitionObject) SetStriationStrength(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setStriationStrength:"), value)
 }
 
@@ -94,8 +94,8 @@ func (f_ FlashTransitionObject) HasStriationStrength() bool {
 // The strength of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228442-striationstrength?language=objc
-func (f_ FlashTransitionObject) StriationStrength() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("striationStrength"))
+func (f_ FlashTransitionObject) StriationStrength() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("striationStrength"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (f_ FlashTransitionObject) HasSetMaxStriationRadius() bool {
 // The radius of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228440-maxstriationradius?language=objc
-func (f_ FlashTransitionObject) SetMaxStriationRadius(value float64) {
+func (f_ FlashTransitionObject) SetMaxStriationRadius(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setMaxStriationRadius:"), value)
 }
 
@@ -117,8 +117,8 @@ func (f_ FlashTransitionObject) HasMaxStriationRadius() bool {
 // The radius of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228440-maxstriationradius?language=objc
-func (f_ FlashTransitionObject) MaxStriationRadius() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("maxStriationRadius"))
+func (f_ FlashTransitionObject) MaxStriationRadius() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("maxStriationRadius"))
 	return rv
 }
 
@@ -152,7 +152,7 @@ func (f_ FlashTransitionObject) HasSetFadeThreshold() bool {
 // The amount of fade between the flash and the target image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228439-fadethreshold?language=objc
-func (f_ FlashTransitionObject) SetFadeThreshold(value float64) {
+func (f_ FlashTransitionObject) SetFadeThreshold(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setFadeThreshold:"), value)
 }
 
@@ -163,8 +163,8 @@ func (f_ FlashTransitionObject) HasFadeThreshold() bool {
 // The amount of fade between the flash and the target image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228439-fadethreshold?language=objc
-func (f_ FlashTransitionObject) FadeThreshold() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("fadeThreshold"))
+func (f_ FlashTransitionObject) FadeThreshold() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("fadeThreshold"))
 	return rv
 }
 
@@ -198,7 +198,7 @@ func (f_ FlashTransitionObject) HasSetStriationContrast() bool {
 // The contrast of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
-func (f_ FlashTransitionObject) SetStriationContrast(value float64) {
+func (f_ FlashTransitionObject) SetStriationContrast(value float32) {
 	objc.Call[objc.Void](f_, objc.Sel("setStriationContrast:"), value)
 }
 
@@ -209,8 +209,8 @@ func (f_ FlashTransitionObject) HasStriationContrast() bool {
 // The contrast of the light rays emanating from the flash. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228441-striationcontrast?language=objc
-func (f_ FlashTransitionObject) StriationContrast() float64 {
-	rv := objc.Call[float64](f_, objc.Sel("striationContrast"))
+func (f_ FlashTransitionObject) StriationContrast() float32 {
+	rv := objc.Call[float32](f_, objc.Sel("striationContrast"))
 	return rv
 }
 
@@ -222,7 +222,7 @@ func (f_ FlashTransitionObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciflashtransition/3228437-color?language=objc
 func (f_ FlashTransitionObject) SetColor(value Color) {
-	objc.Call[objc.Void](f_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](f_, objc.Sel("setColor:"), value)
 }
 
 func (f_ FlashTransitionObject) HasColor() bool {

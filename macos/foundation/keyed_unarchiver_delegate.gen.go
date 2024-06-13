@@ -142,7 +142,7 @@ func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1418067-unarchiverdidfinish?language=objc
 func (k_ KeyedUnarchiverDelegateObject) UnarchiverDidFinish(unarchiver KeyedUnarchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("unarchiverDidFinish:"), objc.Ptr(unarchiver))
+	objc.Call[objc.Void](k_, objc.Sel("unarchiverDidFinish:"), unarchiver)
 }
 
 func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverCannotDecodeObjectOfClassNameOriginalClasses() bool {
@@ -153,7 +153,7 @@ func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverCannotDecodeObjectOfClassNa
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1409948-unarchiver?language=objc
 func (k_ KeyedUnarchiverDelegateObject) UnarchiverCannotDecodeObjectOfClassNameOriginalClasses(unarchiver KeyedUnarchiver, name string, classNames []string) objc.Class {
-	rv := objc.Call[objc.Class](k_, objc.Sel("unarchiver:cannotDecodeObjectOfClassName:originalClasses:"), objc.Ptr(unarchiver), name, classNames)
+	rv := objc.Call[objc.Class](k_, objc.Sel("unarchiver:cannotDecodeObjectOfClassName:originalClasses:"), unarchiver, name, classNames)
 	return rv
 }
 
@@ -165,7 +165,7 @@ func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverWillFinish() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1415305-unarchiverwillfinish?language=objc
 func (k_ KeyedUnarchiverDelegateObject) UnarchiverWillFinish(unarchiver KeyedUnarchiver) {
-	objc.Call[objc.Void](k_, objc.Sel("unarchiverWillFinish:"), objc.Ptr(unarchiver))
+	objc.Call[objc.Void](k_, objc.Sel("unarchiverWillFinish:"), unarchiver)
 }
 
 func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidDecodeObject() bool {
@@ -176,7 +176,7 @@ func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverDidDecodeObject() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1414187-unarchiver?language=objc
 func (k_ KeyedUnarchiverDelegateObject) UnarchiverDidDecodeObject(unarchiver KeyedUnarchiver, object objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](k_, objc.Sel("unarchiver:didDecodeObject:"), objc.Ptr(unarchiver), object)
+	rv := objc.Call[objc.Object](k_, objc.Sel("unarchiver:didDecodeObject:"), unarchiver, object)
 	return rv
 }
 
@@ -188,5 +188,5 @@ func (k_ KeyedUnarchiverDelegateObject) HasUnarchiverWillReplaceObjectWithObject
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nskeyedunarchiverdelegate/1413012-unarchiver?language=objc
 func (k_ KeyedUnarchiverDelegateObject) UnarchiverWillReplaceObjectWithObject(unarchiver KeyedUnarchiver, object objc.Object, newObject objc.Object) {
-	objc.Call[objc.Void](k_, objc.Sel("unarchiver:willReplaceObject:withObject:"), objc.Ptr(unarchiver), object, newObject)
+	objc.Call[objc.Void](k_, objc.Sel("unarchiver:willReplaceObject:withObject:"), unarchiver, object, newObject)
 }

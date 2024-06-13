@@ -20,10 +20,10 @@ type IFormatter interface {
 	objc.IObject
 	StringForObjectValue(obj objc.IObject) string
 	EditingStringForObjectValue(obj objc.IObject) string
-	IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr string, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error string) bool
-	IsPartialStringValidNewEditingStringErrorDescription(partialString string, newString string, error string) bool
+	IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr unsafe.Pointer, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error unsafe.Pointer) bool
+	IsPartialStringValidNewEditingStringErrorDescription(partialString string, newString unsafe.Pointer, error unsafe.Pointer) bool
 	AttributedStringForObjectValueWithDefaultAttributes(obj objc.IObject, attrs map[AttributedStringKey]objc.IObject) AttributedString
-	GetObjectValueForStringErrorDescription(obj objc.IObject, string_ string, error string) bool
+	GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool
 }
 
 // An abstract class that declares an interface for objects that create, interpret, and validate the textual representation of values. [Full Topic]
@@ -78,7 +78,7 @@ func (f_ Formatter) EditingStringForObjectValue(obj objc.IObject) string {
 // This method should be implemented in subclasses that want to validate user changes to a string in a field, where the user changes are not necessarily at the end of the string, and preserve the selection (or set a different one, such as selecting the erroneous part of the string the user has typed). [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1415263-ispartialstringvalid?language=objc
-func (f_ Formatter) IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr string, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error string) bool {
+func (f_ Formatter) IsPartialStringValidProposedSelectedRangeOriginalStringOriginalSelectedRangeErrorDescription(partialStringPtr unsafe.Pointer, proposedSelRangePtr RangePointer, origString string, origSelRange Range, error unsafe.Pointer) bool {
 	rv := objc.Call[bool](f_, objc.Sel("isPartialStringValid:proposedSelectedRange:originalString:originalSelectedRange:errorDescription:"), partialStringPtr, proposedSelRangePtr, origString, origSelRange, error)
 	return rv
 }
@@ -86,7 +86,7 @@ func (f_ Formatter) IsPartialStringValidProposedSelectedRangeOriginalStringOrigi
 // Returns a Boolean value that indicates whether a partial string is valid. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1417993-ispartialstringvalid?language=objc
-func (f_ Formatter) IsPartialStringValidNewEditingStringErrorDescription(partialString string, newString string, error string) bool {
+func (f_ Formatter) IsPartialStringValidNewEditingStringErrorDescription(partialString string, newString unsafe.Pointer, error unsafe.Pointer) bool {
 	rv := objc.Call[bool](f_, objc.Sel("isPartialStringValid:newEditingString:errorDescription:"), partialString, newString, error)
 	return rv
 }
@@ -102,7 +102,7 @@ func (f_ Formatter) AttributedStringForObjectValueWithDefaultAttributes(obj objc
 // The default implementation of this method raises an exception. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsformatter/1408927-getobjectvalue?language=objc
-func (f_ Formatter) GetObjectValueForStringErrorDescription(obj objc.IObject, string_ string, error string) bool {
+func (f_ Formatter) GetObjectValueForStringErrorDescription(obj unsafe.Pointer, string_ string, error unsafe.Pointer) bool {
 	rv := objc.Call[bool](f_, objc.Sel("getObjectValue:forString:errorDescription:"), obj, string_, error)
 	return rv
 }

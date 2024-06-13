@@ -3,6 +3,8 @@
 package appkit
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -100,7 +102,7 @@ type PCollectionViewDelegate interface {
 	HasCollectionViewDidSelectItemsAtIndexPaths() bool
 
 	// optional
-	CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation
+	CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath unsafe.Pointer, proposedDropOperation *CollectionViewDropOperation) DragOperation
 	HasCollectionViewValidateDropProposedIndexPathDropOperation() bool
 
 	// optional
@@ -136,7 +138,7 @@ type CollectionViewDelegate struct {
 	_CollectionViewPasteboardWriterForItemAtIndexPath                           func(collectionView CollectionView, indexPath foundation.IndexPath) PasteboardWritingObject
 	_CollectionViewShouldSelectItemsAtIndexPaths                                func(collectionView CollectionView, indexPaths foundation.Set) foundation.Set
 	_CollectionViewDidSelectItemsAtIndexPaths                                   func(collectionView CollectionView, indexPaths foundation.Set)
-	_CollectionViewValidateDropProposedIndexPathDropOperation                   func(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation
+	_CollectionViewValidateDropProposedIndexPathDropOperation                   func(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath unsafe.Pointer, proposedDropOperation *CollectionViewDropOperation) DragOperation
 	_CollectionViewTransitionLayoutForOldLayoutNewLayout                        func(collectionView CollectionView, fromLayout CollectionViewLayout, toLayout CollectionViewLayout) CollectionViewTransitionLayout
 	_CollectionViewDidDeselectItemsAtIndexPaths                                 func(collectionView CollectionView, indexPaths foundation.Set)
 }
@@ -522,14 +524,14 @@ func (di *CollectionViewDelegate) HasCollectionViewValidateDropProposedIndexPath
 // Validates whether a drop operation is possible at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525471-collectionview?language=objc
-func (di *CollectionViewDelegate) SetCollectionViewValidateDropProposedIndexPathDropOperation(f func(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation) {
+func (di *CollectionViewDelegate) SetCollectionViewValidateDropProposedIndexPathDropOperation(f func(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath unsafe.Pointer, proposedDropOperation *CollectionViewDropOperation) DragOperation) {
 	di._CollectionViewValidateDropProposedIndexPathDropOperation = f
 }
 
 // Validates whether a drop operation is possible at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525471-collectionview?language=objc
-func (di *CollectionViewDelegate) CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation {
+func (di *CollectionViewDelegate) CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath unsafe.Pointer, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	return di._CollectionViewValidateDropProposedIndexPathDropOperation(collectionView, draggingInfo, proposedDropIndexPath, proposedDropOperation)
 }
 func (di *CollectionViewDelegate) HasCollectionViewTransitionLayoutForOldLayoutNewLayout() bool {
@@ -583,7 +585,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDidEndDisplayingItemForR
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528183-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDidEndDisplayingItemForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), objc.Ptr(collectionView), objc.Ptr(item), objc.Ptr(indexPath))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:didEndDisplayingItem:forRepresentedObjectAtIndexPath:"), collectionView, item, indexPath)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingImageForItemsAtIndexesWithEventOffset() bool {
@@ -594,7 +596,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingImageForItemsAtI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528138-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDraggingImageForItemsAtIndexesWithEventOffset(collectionView CollectionView, indexes foundation.IndexSet, event Event, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](c_, objc.Sel("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), objc.Ptr(collectionView), objc.Ptr(indexes), objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](c_, objc.Sel("collectionView:draggingImageForItemsAtIndexes:withEvent:offset:"), collectionView, indexes, event, dragImageOffset)
 	return rv
 }
 
@@ -606,7 +608,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewCanDragItemsAtIndexPaths
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525969-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewCanDragItemsAtIndexPathsWithEvent(collectionView CollectionView, indexPaths foundation.Set, event Event) bool {
-	rv := objc.Call[bool](c_, objc.Sel("collectionView:canDragItemsAtIndexPaths:withEvent:"), objc.Ptr(collectionView), objc.Ptr(indexPaths), objc.Ptr(event))
+	rv := objc.Call[bool](c_, objc.Sel("collectionView:canDragItemsAtIndexPaths:withEvent:"), collectionView, indexPaths, event)
 	return rv
 }
 
@@ -618,7 +620,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewPasteboardWriterForItemA
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528257-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewPasteboardWriterForItemAtIndex(collectionView CollectionView, index uint) PasteboardWritingObject {
-	rv := objc.Call[PasteboardWritingObject](c_, objc.Sel("collectionView:pasteboardWriterForItemAtIndex:"), objc.Ptr(collectionView), index)
+	rv := objc.Call[PasteboardWritingObject](c_, objc.Sel("collectionView:pasteboardWriterForItemAtIndex:"), collectionView, index)
 	return rv
 }
 
@@ -630,7 +632,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingImageForItemsAtI
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528175-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDraggingImageForItemsAtIndexPathsWithEventOffset(collectionView CollectionView, indexPaths foundation.Set, event Event, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](c_, objc.Sel("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), objc.Ptr(collectionView), objc.Ptr(indexPaths), objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](c_, objc.Sel("collectionView:draggingImageForItemsAtIndexPaths:withEvent:offset:"), collectionView, indexPaths, event, dragImageOffset)
 	return rv
 }
 
@@ -642,7 +644,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewShouldChangeItemsAtIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528178-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewShouldChangeItemsAtIndexPathsToHighlightState(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState) foundation.Set {
-	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), objc.Ptr(collectionView), objc.Ptr(indexPaths), highlightState)
+	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldChangeItemsAtIndexPaths:toHighlightState:"), collectionView, indexPaths, highlightState)
 	return rv
 }
 
@@ -654,7 +656,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewCanDragItemsAtIndexesWit
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528212-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewCanDragItemsAtIndexesWithEvent(collectionView CollectionView, indexes foundation.IndexSet, event Event) bool {
-	rv := objc.Call[bool](c_, objc.Sel("collectionView:canDragItemsAtIndexes:withEvent:"), objc.Ptr(collectionView), objc.Ptr(indexes), objc.Ptr(event))
+	rv := objc.Call[bool](c_, objc.Sel("collectionView:canDragItemsAtIndexes:withEvent:"), collectionView, indexes, event)
 	return rv
 }
 
@@ -666,7 +668,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDidEndDisplayingSuppleme
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528192-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDidEndDisplayingSupplementaryViewForElementOfKindAtIndexPath(collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), objc.Ptr(collectionView), objc.Ptr(view), elementKind, objc.Ptr(indexPath))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:didEndDisplayingSupplementaryView:forElementOfKind:atIndexPath:"), collectionView, view, elementKind, indexPath)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewAcceptDropIndexPathDropOperation() bool {
@@ -678,7 +680,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewAcceptDropIndexPathDropO
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525045-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewAcceptDropIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, indexPath foundation.IndexPath, dropOperation CollectionViewDropOperation) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.Call[bool](c_, objc.Sel("collectionView:acceptDrop:indexPath:dropOperation:"), objc.Ptr(collectionView), po1, objc.Ptr(indexPath), dropOperation)
+	rv := objc.Call[bool](c_, objc.Sel("collectionView:acceptDrop:indexPath:dropOperation:"), collectionView, po1, indexPath, dropOperation)
 	return rv
 }
 
@@ -691,7 +693,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewAcceptDropIndexDropOpera
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528242-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewAcceptDropIndexDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, index int, dropOperation CollectionViewDropOperation) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.Call[bool](c_, objc.Sel("collectionView:acceptDrop:index:dropOperation:"), objc.Ptr(collectionView), po1, index, dropOperation)
+	rv := objc.Call[bool](c_, objc.Sel("collectionView:acceptDrop:index:dropOperation:"), collectionView, po1, index, dropOperation)
 	return rv
 }
 
@@ -703,7 +705,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingSessionWillBegin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1524615-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDraggingSessionWillBeginAtPointForItemsAtIndexes(collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, indexes foundation.IndexSet) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), objc.Ptr(collectionView), objc.Ptr(session), screenPoint, objc.Ptr(indexes))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexes:"), collectionView, session, screenPoint, indexes)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewWillDisplaySupplementaryViewForElementKindAtIndexPath() bool {
@@ -714,7 +716,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewWillDisplaySupplementary
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525963-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewWillDisplaySupplementaryViewForElementKindAtIndexPath(collectionView CollectionView, view View, elementKind CollectionViewSupplementaryElementKind, indexPath foundation.IndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), objc.Ptr(collectionView), objc.Ptr(view), elementKind, objc.Ptr(indexPath))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:willDisplaySupplementaryView:forElementKind:atIndexPath:"), collectionView, view, elementKind, indexPath)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewShouldDeselectItemsAtIndexPaths() bool {
@@ -725,7 +727,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewShouldDeselectItemsAtInd
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525582-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewShouldDeselectItemsAtIndexPaths(collectionView CollectionView, indexPaths foundation.Set) foundation.Set {
-	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldDeselectItemsAtIndexPaths:"), objc.Ptr(collectionView), objc.Ptr(indexPaths))
+	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldDeselectItemsAtIndexPaths:"), collectionView, indexPaths)
 	return rv
 }
 
@@ -737,7 +739,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDidChangeItemsAtIndexPat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1526015-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDidChangeItemsAtIndexPathsToHighlightState(collectionView CollectionView, indexPaths foundation.Set, highlightState CollectionViewItemHighlightState) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), objc.Ptr(collectionView), objc.Ptr(indexPaths), highlightState)
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:didChangeItemsAtIndexPaths:toHighlightState:"), collectionView, indexPaths, highlightState)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingSessionEndedAtPointDragOperation() bool {
@@ -748,7 +750,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingSessionEndedAtPo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528224-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDraggingSessionEndedAtPointDragOperation(collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, operation DragOperation) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:endedAtPoint:dragOperation:"), objc.Ptr(collectionView), objc.Ptr(session), screenPoint, operation)
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:endedAtPoint:dragOperation:"), collectionView, session, screenPoint, operation)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingSessionWillBeginAtPointForItemsAtIndexPaths() bool {
@@ -759,7 +761,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDraggingSessionWillBegin
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1527718-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDraggingSessionWillBeginAtPointForItemsAtIndexPaths(collectionView CollectionView, session DraggingSession, screenPoint foundation.Point, indexPaths foundation.Set) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), objc.Ptr(collectionView), objc.Ptr(session), screenPoint, objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:draggingSession:willBeginAtPoint:forItemsAtIndexPaths:"), collectionView, session, screenPoint, indexPaths)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewWillDisplayItemForRepresentedObjectAtIndexPath() bool {
@@ -770,7 +772,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewWillDisplayItemForRepres
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1524266-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewWillDisplayItemForRepresentedObjectAtIndexPath(collectionView CollectionView, item CollectionViewItem, indexPath foundation.IndexPath) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), objc.Ptr(collectionView), objc.Ptr(item), objc.Ptr(indexPath))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:willDisplayItem:forRepresentedObjectAtIndexPath:"), collectionView, item, indexPath)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewValidateDropProposedIndexDropOperation() bool {
@@ -782,7 +784,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewValidateDropProposedInde
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528283-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewValidateDropProposedIndexDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndex *int, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.Call[DragOperation](c_, objc.Sel("collectionView:validateDrop:proposedIndex:dropOperation:"), objc.Ptr(collectionView), po1, proposedDropIndex, proposedDropOperation)
+	rv := objc.Call[DragOperation](c_, objc.Sel("collectionView:validateDrop:proposedIndex:dropOperation:"), collectionView, po1, proposedDropIndex, proposedDropOperation)
 	return rv
 }
 
@@ -795,7 +797,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewUpdateDraggingItemsForDr
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1526881-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewUpdateDraggingItemsForDrag(collectionView CollectionView, draggingInfo DraggingInfoObject) {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:updateDraggingItemsForDrag:"), objc.Ptr(collectionView), po1)
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:updateDraggingItemsForDrag:"), collectionView, po1)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewPasteboardWriterForItemAtIndexPath() bool {
@@ -806,7 +808,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewPasteboardWriterForItemA
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1527290-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewPasteboardWriterForItemAtIndexPath(collectionView CollectionView, indexPath foundation.IndexPath) PasteboardWritingObject {
-	rv := objc.Call[PasteboardWritingObject](c_, objc.Sel("collectionView:pasteboardWriterForItemAtIndexPath:"), objc.Ptr(collectionView), objc.Ptr(indexPath))
+	rv := objc.Call[PasteboardWritingObject](c_, objc.Sel("collectionView:pasteboardWriterForItemAtIndexPath:"), collectionView, indexPath)
 	return rv
 }
 
@@ -818,7 +820,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewShouldSelectItemsAtIndex
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528280-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewShouldSelectItemsAtIndexPaths(collectionView CollectionView, indexPaths foundation.Set) foundation.Set {
-	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldSelectItemsAtIndexPaths:"), objc.Ptr(collectionView), objc.Ptr(indexPaths))
+	rv := objc.Call[foundation.Set](c_, objc.Sel("collectionView:shouldSelectItemsAtIndexPaths:"), collectionView, indexPaths)
 	return rv
 }
 
@@ -830,7 +832,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDidSelectItemsAtIndexPat
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528236-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDidSelectItemsAtIndexPaths(collectionView CollectionView, indexPaths foundation.Set) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:didSelectItemsAtIndexPaths:"), objc.Ptr(collectionView), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:didSelectItemsAtIndexPaths:"), collectionView, indexPaths)
 }
 
 func (c_ CollectionViewDelegateObject) HasCollectionViewValidateDropProposedIndexPathDropOperation() bool {
@@ -840,9 +842,9 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewValidateDropProposedInde
 // Validates whether a drop operation is possible at the specified location. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1525471-collectionview?language=objc
-func (c_ CollectionViewDelegateObject) CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath foundation.IndexPath, proposedDropOperation *CollectionViewDropOperation) DragOperation {
+func (c_ CollectionViewDelegateObject) CollectionViewValidateDropProposedIndexPathDropOperation(collectionView CollectionView, draggingInfo DraggingInfoObject, proposedDropIndexPath unsafe.Pointer, proposedDropOperation *CollectionViewDropOperation) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", draggingInfo)
-	rv := objc.Call[DragOperation](c_, objc.Sel("collectionView:validateDrop:proposedIndexPath:dropOperation:"), objc.Ptr(collectionView), po1, objc.Ptr(proposedDropIndexPath), proposedDropOperation)
+	rv := objc.Call[DragOperation](c_, objc.Sel("collectionView:validateDrop:proposedIndexPath:dropOperation:"), collectionView, po1, proposedDropIndexPath, proposedDropOperation)
 	return rv
 }
 
@@ -854,7 +856,7 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewTransitionLayoutForOldLa
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528228-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewTransitionLayoutForOldLayoutNewLayout(collectionView CollectionView, fromLayout CollectionViewLayout, toLayout CollectionViewLayout) CollectionViewTransitionLayout {
-	rv := objc.Call[CollectionViewTransitionLayout](c_, objc.Sel("collectionView:transitionLayoutForOldLayout:newLayout:"), objc.Ptr(collectionView), objc.Ptr(fromLayout), objc.Ptr(toLayout))
+	rv := objc.Call[CollectionViewTransitionLayout](c_, objc.Sel("collectionView:transitionLayoutForOldLayout:newLayout:"), collectionView, fromLayout, toLayout)
 	return rv
 }
 
@@ -866,5 +868,5 @@ func (c_ CollectionViewDelegateObject) HasCollectionViewDidDeselectItemsAtIndexP
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdelegate/1528279-collectionview?language=objc
 func (c_ CollectionViewDelegateObject) CollectionViewDidDeselectItemsAtIndexPaths(collectionView CollectionView, indexPaths foundation.Set) {
-	objc.Call[objc.Void](c_, objc.Sel("collectionView:didDeselectItemsAtIndexPaths:"), objc.Ptr(collectionView), objc.Ptr(indexPaths))
+	objc.Call[objc.Void](c_, objc.Sel("collectionView:didDeselectItemsAtIndexPaths:"), collectionView, indexPaths)
 }

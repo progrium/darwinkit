@@ -75,7 +75,7 @@ func AssetDownloadStorageManager_SharedDownloadStorageManager() AssetDownloadSto
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadstoragemanager/2865562-storagemanagementpolicyforurl?language=objc
 func (a_ AssetDownloadStorageManager) StorageManagementPolicyForURL(downloadStorageURL foundation.IURL) AssetDownloadStorageManagementPolicy {
-	rv := objc.Call[AssetDownloadStorageManagementPolicy](a_, objc.Sel("storageManagementPolicyForURL:"), objc.Ptr(downloadStorageURL))
+	rv := objc.Call[AssetDownloadStorageManagementPolicy](a_, objc.Sel("storageManagementPolicyForURL:"), downloadStorageURL)
 	return rv
 }
 
@@ -83,5 +83,5 @@ func (a_ AssetDownloadStorageManager) StorageManagementPolicyForURL(downloadStor
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetdownloadstoragemanager/2865557-setstoragemanagementpolicy?language=objc
 func (a_ AssetDownloadStorageManager) SetStorageManagementPolicyForURL(storageManagementPolicy IAssetDownloadStorageManagementPolicy, downloadStorageURL foundation.IURL) {
-	objc.Call[objc.Void](a_, objc.Sel("setStorageManagementPolicy:forURL:"), objc.Ptr(storageManagementPolicy), objc.Ptr(downloadStorageURL))
+	objc.Call[objc.Void](a_, objc.Sel("setStorageManagementPolicy:forURL:"), storageManagementPolicy, downloadStorageURL)
 }

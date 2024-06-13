@@ -11,11 +11,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareahistogram?language=objc
 type PAreaHistogram interface {
 	// optional
-	SetScale(value float64)
+	SetScale(value float32)
 	HasSetScale() bool
 
 	// optional
-	Scale() float64
+	Scale() float32
 	HasScale() bool
 
 	// optional
@@ -42,7 +42,7 @@ func (a_ AreaHistogramObject) HasSetScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareahistogram/3547093-scale?language=objc
-func (a_ AreaHistogramObject) SetScale(value float64) {
+func (a_ AreaHistogramObject) SetScale(value float32) {
 	objc.Call[objc.Void](a_, objc.Sel("setScale:"), value)
 }
 
@@ -53,8 +53,8 @@ func (a_ AreaHistogramObject) HasScale() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/ciareahistogram/3547093-scale?language=objc
-func (a_ AreaHistogramObject) Scale() float64 {
-	rv := objc.Call[float64](a_, objc.Sel("scale"))
+func (a_ AreaHistogramObject) Scale() float32 {
+	rv := objc.Call[float32](a_, objc.Sel("scale"))
 	return rv
 }
 

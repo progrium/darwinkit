@@ -59,7 +59,7 @@ func ButtonTouchBarItem_ButtonTouchBarItemWithIdentifierTitleTargetAction(identi
 }
 
 func (bc _ButtonTouchBarItemClass) ButtonTouchBarItemWithIdentifierTitleImageTargetAction(identifier TouchBarItemIdentifier, title string, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:title:image:target:action:"), identifier, title, objc.Ptr(image), target, action)
+	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:title:image:target:action:"), identifier, title, image, target, action)
 	return rv
 }
 
@@ -71,7 +71,7 @@ func ButtonTouchBarItem_ButtonTouchBarItemWithIdentifierTitleImageTargetAction(i
 }
 
 func (bc _ButtonTouchBarItemClass) ButtonTouchBarItemWithIdentifierImageTargetAction(identifier TouchBarItemIdentifier, image IImage, target objc.IObject, action objc.Selector) ButtonTouchBarItem {
-	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:image:target:action:"), identifier, objc.Ptr(image), target, action)
+	rv := objc.Call[ButtonTouchBarItem](bc, objc.Sel("buttonTouchBarItemWithIdentifier:image:target:action:"), identifier, image, target, action)
 	return rv
 }
 
@@ -180,7 +180,7 @@ func (b_ ButtonTouchBarItem) Image() Image {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237182-image?language=objc
 func (b_ ButtonTouchBarItem) SetImage(value IImage) {
-	objc.Call[objc.Void](b_, objc.Sel("setImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setImage:"), value)
 }
 
 //	[Full Topic]
@@ -210,5 +210,5 @@ func (b_ ButtonTouchBarItem) BezelColor() Color {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbuttontouchbaritem/3237177-bezelcolor?language=objc
 func (b_ ButtonTouchBarItem) SetBezelColor(value IColor) {
-	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setBezelColor:"), value)
 }

@@ -472,7 +472,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundNotationDeclarationWithNamePubli
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411925-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundNotationDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundNotationDeclarationWithName:publicID:systemID:"), objc.Ptr(parser), name, publicID, systemID)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundNotationDeclarationWithName:publicID:systemID:"), parser, name, publicID, systemID)
 }
 
 func (x_ XMLParserDelegateObject) HasParserResolveExternalEntityNameSystemID() bool {
@@ -483,7 +483,7 @@ func (x_ XMLParserDelegateObject) HasParserResolveExternalEntityNameSystemID() b
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416221-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserResolveExternalEntityNameSystemID(parser XMLParser, name string, systemID string) []byte {
-	rv := objc.Call[[]byte](x_, objc.Sel("parser:resolveExternalEntityName:systemID:"), objc.Ptr(parser), name, systemID)
+	rv := objc.Call[[]byte](x_, objc.Sel("parser:resolveExternalEntityName:systemID:"), parser, name, systemID)
 	return rv
 }
 
@@ -495,7 +495,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundComment() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417651-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundComment(parser XMLParser, comment string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundComment:"), objc.Ptr(parser), comment)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundComment:"), parser, comment)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundInternalEntityDeclarationWithNameValue() bool {
@@ -506,7 +506,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundInternalEntityDeclarationWithNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1414803-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundInternalEntityDeclarationWithNameValue(parser XMLParser, name string, value string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundInternalEntityDeclarationWithName:value:"), objc.Ptr(parser), name, value)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundInternalEntityDeclarationWithName:value:"), parser, name, value)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidEndElementNamespaceURIQualifiedName() bool {
@@ -517,7 +517,7 @@ func (x_ XMLParserDelegateObject) HasParserDidEndElementNamespaceURIQualifiedNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417955-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserDidEndElementNamespaceURIQualifiedName(parser XMLParser, elementName string, namespaceURI string, qName string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didEndElement:namespaceURI:qualifiedName:"), objc.Ptr(parser), elementName, namespaceURI, qName)
+	objc.Call[objc.Void](x_, objc.Sel("parser:didEndElement:namespaceURI:qualifiedName:"), parser, elementName, namespaceURI, qName)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundElementDeclarationWithNameModel() bool {
@@ -528,7 +528,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundElementDeclarationWithNameModel(
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1411043-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundElementDeclarationWithNameModel(parser XMLParser, elementName string, model string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundElementDeclarationWithName:model:"), objc.Ptr(parser), elementName, model)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundElementDeclarationWithName:model:"), parser, elementName, model)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidStartElementNamespaceURIQualifiedNameAttributes() bool {
@@ -539,7 +539,7 @@ func (x_ XMLParserDelegateObject) HasParserDidStartElementNamespaceURIQualifiedN
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1415894-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserDidStartElementNamespaceURIQualifiedNameAttributes(parser XMLParser, elementName string, namespaceURI string, qName string, attributeDict map[string]string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didStartElement:namespaceURI:qualifiedName:attributes:"), objc.Ptr(parser), elementName, namespaceURI, qName, attributeDict)
+	objc.Call[objc.Void](x_, objc.Sel("parser:didStartElement:namespaceURI:qualifiedName:attributes:"), parser, elementName, namespaceURI, qName, attributeDict)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidEndDocument() bool {
@@ -550,7 +550,7 @@ func (x_ XMLParserDelegateObject) HasParserDidEndDocument() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1418172-parserdidenddocument?language=objc
 func (x_ XMLParserDelegateObject) ParserDidEndDocument(parser XMLParser) {
-	objc.Call[objc.Void](x_, objc.Sel("parserDidEndDocument:"), objc.Ptr(parser))
+	objc.Call[objc.Void](x_, objc.Sel("parserDidEndDocument:"), parser)
 }
 
 func (x_ XMLParserDelegateObject) HasParserValidationErrorOccurred() bool {
@@ -561,7 +561,7 @@ func (x_ XMLParserDelegateObject) HasParserValidationErrorOccurred() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1417838-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserValidationErrorOccurred(parser XMLParser, validationError Error) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:validationErrorOccurred:"), objc.Ptr(parser), objc.Ptr(validationError))
+	objc.Call[objc.Void](x_, objc.Sel("parser:validationErrorOccurred:"), parser, validationError)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName() bool {
@@ -572,7 +572,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundUnparsedEntityDeclarationWithNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412907-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundUnparsedEntityDeclarationWithNamePublicIDSystemIDNotationName(parser XMLParser, name string, publicID string, systemID string, notationName string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:"), objc.Ptr(parser), name, publicID, systemID, notationName)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundUnparsedEntityDeclarationWithName:publicID:systemID:notationName:"), parser, name, publicID, systemID, notationName)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundCDATA() bool {
@@ -583,7 +583,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundCDATA() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1407687-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundCDATA(parser XMLParser, CDATABlock []byte) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundCDATA:"), objc.Ptr(parser), CDATABlock)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundCDATA:"), parser, CDATABlock)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundProcessingInstructionWithTargetData() bool {
@@ -594,7 +594,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundProcessingInstructionWithTargetD
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412929-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundProcessingInstructionWithTargetData(parser XMLParser, target string, data string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundProcessingInstructionWithTarget:data:"), objc.Ptr(parser), target, data)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundProcessingInstructionWithTarget:data:"), parser, target, data)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundIgnorableWhitespace() bool {
@@ -605,7 +605,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundIgnorableWhitespace() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416470-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundIgnorableWhitespace(parser XMLParser, whitespaceString string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundIgnorableWhitespace:"), objc.Ptr(parser), whitespaceString)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundIgnorableWhitespace:"), parser, whitespaceString)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundExternalEntityDeclarationWithNamePublicIDSystemID() bool {
@@ -616,7 +616,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundExternalEntityDeclarationWithNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1408156-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundExternalEntityDeclarationWithNamePublicIDSystemID(parser XMLParser, name string, publicID string, systemID string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundExternalEntityDeclarationWithName:publicID:systemID:"), objc.Ptr(parser), name, publicID, systemID)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundExternalEntityDeclarationWithName:publicID:systemID:"), parser, name, publicID, systemID)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidStartDocument() bool {
@@ -627,7 +627,7 @@ func (x_ XMLParserDelegateObject) HasParserDidStartDocument() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412065-parserdidstartdocument?language=objc
 func (x_ XMLParserDelegateObject) ParserDidStartDocument(parser XMLParser) {
-	objc.Call[objc.Void](x_, objc.Sel("parserDidStartDocument:"), objc.Ptr(parser))
+	objc.Call[objc.Void](x_, objc.Sel("parserDidStartDocument:"), parser)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidStartMappingPrefixToURI() bool {
@@ -638,7 +638,7 @@ func (x_ XMLParserDelegateObject) HasParserDidStartMappingPrefixToURI() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416738-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserDidStartMappingPrefixToURI(parser XMLParser, prefix string, namespaceURI string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didStartMappingPrefix:toURI:"), objc.Ptr(parser), prefix, namespaceURI)
+	objc.Call[objc.Void](x_, objc.Sel("parser:didStartMappingPrefix:toURI:"), parser, prefix, namespaceURI)
 }
 
 func (x_ XMLParserDelegateObject) HasParserDidEndMappingPrefix() bool {
@@ -649,7 +649,7 @@ func (x_ XMLParserDelegateObject) HasParserDidEndMappingPrefix() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412878-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserDidEndMappingPrefix(parser XMLParser, prefix string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:didEndMappingPrefix:"), objc.Ptr(parser), prefix)
+	objc.Call[objc.Void](x_, objc.Sel("parser:didEndMappingPrefix:"), parser, prefix)
 }
 
 func (x_ XMLParserDelegateObject) HasParserParseErrorOccurred() bool {
@@ -660,7 +660,7 @@ func (x_ XMLParserDelegateObject) HasParserParseErrorOccurred() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412379-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserParseErrorOccurred(parser XMLParser, parseError Error) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:parseErrorOccurred:"), objc.Ptr(parser), objc.Ptr(parseError))
+	objc.Call[objc.Void](x_, objc.Sel("parser:parseErrorOccurred:"), parser, parseError)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue() bool {
@@ -671,7 +671,7 @@ func (x_ XMLParserDelegateObject) HasParserFoundAttributeDeclarationWithNameForE
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1416969-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundAttributeDeclarationWithNameForElementTypeDefaultValue(parser XMLParser, attributeName string, elementName string, type_ string, defaultValue string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundAttributeDeclarationWithName:forElement:type:defaultValue:"), objc.Ptr(parser), attributeName, elementName, type_, defaultValue)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundAttributeDeclarationWithName:forElement:type:defaultValue:"), parser, attributeName, elementName, type_, defaultValue)
 }
 
 func (x_ XMLParserDelegateObject) HasParserFoundCharacters() bool {
@@ -682,5 +682,5 @@ func (x_ XMLParserDelegateObject) HasParserFoundCharacters() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlparserdelegate/1412539-parser?language=objc
 func (x_ XMLParserDelegateObject) ParserFoundCharacters(parser XMLParser, string_ string) {
-	objc.Call[objc.Void](x_, objc.Sel("parser:foundCharacters:"), objc.Ptr(parser), string_)
+	objc.Call[objc.Void](x_, objc.Sel("parser:foundCharacters:"), parser, string_)
 }

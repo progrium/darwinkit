@@ -92,7 +92,7 @@ func NewCalendarDateWithTimeIntervalSince1970(secs TimeInterval) CalendarDate {
 }
 
 func (cc _CalendarDateClass) DateWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) CalendarDate {
-	rv := objc.Call[CalendarDate](cc, objc.Sel("dateWithTimeInterval:sinceDate:"), secsToBeAdded, objc.Ptr(date))
+	rv := objc.Call[CalendarDate](cc, objc.Sel("dateWithTimeInterval:sinceDate:"), secsToBeAdded, date)
 	return rv
 }
 
@@ -132,7 +132,7 @@ func NewCalendarDateWithTimeIntervalSinceNow(secs TimeInterval) CalendarDate {
 }
 
 func (c_ CalendarDate) InitWithTimeIntervalSinceDate(secsToBeAdded TimeInterval, date IDate) CalendarDate {
-	rv := objc.Call[CalendarDate](c_, objc.Sel("initWithTimeInterval:sinceDate:"), secsToBeAdded, objc.Ptr(date))
+	rv := objc.Call[CalendarDate](c_, objc.Sel("initWithTimeInterval:sinceDate:"), secsToBeAdded, date)
 	return rv
 }
 

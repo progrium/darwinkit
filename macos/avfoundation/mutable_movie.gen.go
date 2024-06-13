@@ -28,18 +28,18 @@ type IMutableMovie interface {
 	ScaleTimeRangeToDuration(timeRange coremedia.TimeRange, duration coremedia.Time)
 	RemoveTimeRange(timeRange coremedia.TimeRange)
 	RemoveTrack(track IMovieTrack)
-	InsertTimeRangeOfAssetAtTimeCopySampleDataError(timeRange coremedia.TimeRange, asset IAsset, startTime coremedia.Time, copySampleData bool, outError foundation.IError) bool
+	InsertTimeRangeOfAssetAtTimeCopySampleDataError(timeRange coremedia.TimeRange, asset IAsset, startTime coremedia.Time, copySampleData bool, outError unsafe.Pointer) bool
 	AddMutableTrackWithMediaTypeCopySettingsFromTrackOptions(mediaType MediaType, track IAssetTrack, options map[string]objc.IObject) MutableMovieTrack
 	AddMutableTracksCopyingSettingsFromTracksOptions(existingTracks []IAssetTrack, options map[string]objc.IObject) []MutableMovieTrack
 	InsertEmptyTimeRange(timeRange coremedia.TimeRange)
 	SetPreferredTransform(value coregraphics.AffineTransform)
 	SetDefaultMediaDataStorage(value IMediaDataStorage)
-	SetPreferredVolume(value float64)
+	SetPreferredVolume(value float32)
 	IsModified() bool
 	SetModified(value bool)
 	InterleavingPeriod() coremedia.Time
 	SetInterleavingPeriod(value coremedia.Time)
-	SetPreferredRate(value float64)
+	SetPreferredRate(value float32)
 	SetMetadata(value []IMetadataItem)
 	Timescale() coremedia.TimeScale
 	SetTimescale(value coremedia.TimeScale)
@@ -58,79 +58,79 @@ func MutableMovieFrom(ptr unsafe.Pointer) MutableMovie {
 	}
 }
 
-func (m_ MutableMovie) InitWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithSettingsFromMovie:options:error:"), objc.Ptr(movie), options, objc.Ptr(outError))
+func (m_ MutableMovie) InitWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithSettingsFromMovie:options:error:"), movie, options, outError)
 	return rv
 }
 
 // Creates a mutable movie object without tracks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1386408-initwithsettingsfrommovie?language=objc
-func NewMutableMovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func NewMutableMovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	instance := MutableMovieClass.Alloc().InitWithSettingsFromMovieOptionsError(movie, options, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (mc _MutableMovieClass) MovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithSettingsFromMovie:options:error:"), objc.Ptr(movie), options, objc.Ptr(outError))
+func (mc _MutableMovieClass) MovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithSettingsFromMovie:options:error:"), movie, options, outError)
 	return rv
 }
 
 // Returns a new mutable movie object without tracks. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1458238-moviewithsettingsfrommovie?language=objc
-func MutableMovie_MovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func MutableMovie_MovieWithSettingsFromMovieOptionsError(movie IMovie, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	return MutableMovieClass.MovieWithSettingsFromMovieOptionsError(movie, options, outError)
 }
 
-func (mc _MutableMovieClass) MovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithData:options:error:"), data, options, objc.Ptr(outError))
+func (mc _MutableMovieClass) MovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithData:options:error:"), data, options, outError)
 	return rv
 }
 
 // Returns a new mutable movie object from a movie stored in a data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1458234-moviewithdata?language=objc
-func MutableMovie_MovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func MutableMovie_MovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	return MutableMovieClass.MovieWithDataOptionsError(data, options, outError)
 }
 
-func (m_ MutableMovie) InitWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithURL:options:error:"), objc.Ptr(URL), options, objc.Ptr(outError))
+func (m_ MutableMovie) InitWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithURL:options:error:"), URL, options, outError)
 	return rv
 }
 
 // Creates a mutable movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1386052-initwithurl?language=objc
-func NewMutableMovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func NewMutableMovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	instance := MutableMovieClass.Alloc().InitWithURLOptionsError(URL, options, outError)
 	instance.Autorelease()
 	return instance
 }
 
-func (mc _MutableMovieClass) MovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithURL:options:error:"), objc.Ptr(URL), options, objc.Ptr(outError))
+func (mc _MutableMovieClass) MovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithURL:options:error:"), URL, options, outError)
 	return rv
 }
 
 // Returns a new mutable movie object from a movie header stored in a QuickTime movie file of ISO base media file. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1458226-moviewithurl?language=objc
-func MutableMovie_MovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func MutableMovie_MovieWithURLOptionsError(URL foundation.IURL, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	return MutableMovieClass.MovieWithURLOptionsError(URL, options, outError)
 }
 
-func (m_ MutableMovie) InitWithDataOptionsError(data []byte, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
-	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithData:options:error:"), data, options, objc.Ptr(outError))
+func (m_ MutableMovie) InitWithDataOptionsError(data []byte, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
+	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithData:options:error:"), data, options, outError)
 	return rv
 }
 
 // Creates a mutable movie object from a movie stored in a data object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1388442-initwithdata?language=objc
-func NewMutableMovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError foundation.IError) MutableMovie {
+func NewMutableMovieWithDataOptionsError(data []byte, options map[string]objc.IObject, outError unsafe.Pointer) MutableMovie {
 	instance := MutableMovieClass.Alloc().InitWithDataOptionsError(data, options, outError)
 	instance.Autorelease()
 	return instance
@@ -169,7 +169,7 @@ func MutableMovie_MovieWithDataOptions(data []byte, options map[string]objc.IObj
 }
 
 func (mc _MutableMovieClass) MovieWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) MutableMovie {
-	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[MutableMovie](mc, objc.Sel("movieWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -195,7 +195,7 @@ func NewMutableMovieWithDataOptions(data []byte, options map[string]objc.IObject
 }
 
 func (m_ MutableMovie) InitWithURLOptions(URL foundation.IURL, options map[string]objc.IObject) MutableMovie {
-	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithURL:options:"), objc.Ptr(URL), options)
+	rv := objc.Call[MutableMovie](m_, objc.Sel("initWithURL:options:"), URL, options)
 	return rv
 }
 
@@ -209,7 +209,7 @@ func NewMutableMovieWithURLOptions(URL foundation.IURL, options map[string]objc.
 }
 
 func (mc _MutableMovieClass) AssetWithURL(URL foundation.IURL) MutableMovie {
-	rv := objc.Call[MutableMovie](mc, objc.Sel("assetWithURL:"), objc.Ptr(URL))
+	rv := objc.Call[MutableMovie](mc, objc.Sel("assetWithURL:"), URL)
 	return rv
 }
 
@@ -224,7 +224,7 @@ func MutableMovie_AssetWithURL(URL foundation.IURL) MutableMovie {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1389467-trackwithtrackid?language=objc
 func (m_ MutableMovie) TrackWithTrackID(trackID objc.IObject) MutableMovieTrack {
-	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("trackWithTrackID:"), objc.Ptr(trackID))
+	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("trackWithTrackID:"), trackID)
 	return rv
 }
 
@@ -240,7 +240,7 @@ func (m_ MutableMovie) TracksWithMediaCharacteristic(mediaCharacteristic MediaCh
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1388669-mutabletrackcompatiblewithtrack?language=objc
 func (m_ MutableMovie) MutableTrackCompatibleWithTrack(track IAssetTrack) MutableMovieTrack {
-	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("mutableTrackCompatibleWithTrack:"), objc.Ptr(track))
+	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("mutableTrackCompatibleWithTrack:"), track)
 	return rv
 }
 
@@ -270,14 +270,14 @@ func (m_ MutableMovie) RemoveTimeRange(timeRange coremedia.TimeRange) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1386735-removetrack?language=objc
 func (m_ MutableMovie) RemoveTrack(track IMovieTrack) {
-	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), objc.Ptr(track))
+	objc.Call[objc.Void](m_, objc.Sel("removeTrack:"), track)
 }
 
 // Inserts all of the tracks in a specified time range of an asset into a movie. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1389598-inserttimerange?language=objc
-func (m_ MutableMovie) InsertTimeRangeOfAssetAtTimeCopySampleDataError(timeRange coremedia.TimeRange, asset IAsset, startTime coremedia.Time, copySampleData bool, outError foundation.IError) bool {
-	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofAsset:atTime:copySampleData:error:"), timeRange, objc.Ptr(asset), startTime, copySampleData, objc.Ptr(outError))
+func (m_ MutableMovie) InsertTimeRangeOfAssetAtTimeCopySampleDataError(timeRange coremedia.TimeRange, asset IAsset, startTime coremedia.Time, copySampleData bool, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](m_, objc.Sel("insertTimeRange:ofAsset:atTime:copySampleData:error:"), timeRange, asset, startTime, copySampleData, outError)
 	return rv
 }
 
@@ -285,7 +285,7 @@ func (m_ MutableMovie) InsertTimeRangeOfAssetAtTimeCopySampleDataError(timeRange
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1390063-addmutabletrackwithmediatype?language=objc
 func (m_ MutableMovie) AddMutableTrackWithMediaTypeCopySettingsFromTrackOptions(mediaType MediaType, track IAssetTrack, options map[string]objc.IObject) MutableMovieTrack {
-	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("addMutableTrackWithMediaType:copySettingsFromTrack:options:"), mediaType, objc.Ptr(track), options)
+	rv := objc.Call[MutableMovieTrack](m_, objc.Sel("addMutableTrackWithMediaType:copySettingsFromTrack:options:"), mediaType, track, options)
 	return rv
 }
 
@@ -315,13 +315,13 @@ func (m_ MutableMovie) SetPreferredTransform(value coregraphics.AffineTransform)
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1389320-defaultmediadatastorage?language=objc
 func (m_ MutableMovie) SetDefaultMediaDataStorage(value IMediaDataStorage) {
-	objc.Call[objc.Void](m_, objc.Sel("setDefaultMediaDataStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](m_, objc.Sel("setDefaultMediaDataStorage:"), value)
 }
 
 // The preferred volume for the audible medata data of the movie. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1388614-preferredvolume?language=objc
-func (m_ MutableMovie) SetPreferredVolume(value float64) {
+func (m_ MutableMovie) SetPreferredVolume(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setPreferredVolume:"), value)
 }
 
@@ -358,7 +358,7 @@ func (m_ MutableMovie) SetInterleavingPeriod(value coremedia.Time) {
 // The natural rate for playing the movie. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avmutablemovie/1387335-preferredrate?language=objc
-func (m_ MutableMovie) SetPreferredRate(value float64) {
+func (m_ MutableMovie) SetPreferredRate(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setPreferredRate:"), value)
 }
 

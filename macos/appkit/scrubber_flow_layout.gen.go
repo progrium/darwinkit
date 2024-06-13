@@ -63,7 +63,7 @@ func (s_ ScrubberFlowLayout) Init() ScrubberFlowLayout {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsscrubberflowlayout/2544642-invalidatelayoutforitemsatindexe?language=objc
 func (s_ ScrubberFlowLayout) InvalidateLayoutForItemsAtIndexes(invalidItemIndexes foundation.IIndexSet) {
-	objc.Call[objc.Void](s_, objc.Sel("invalidateLayoutForItemsAtIndexes:"), objc.Ptr(invalidItemIndexes))
+	objc.Call[objc.Void](s_, objc.Sel("invalidateLayoutForItemsAtIndexes:"), invalidItemIndexes)
 }
 
 // The frame size for each item in the scrubber. [Full Topic]

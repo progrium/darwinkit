@@ -35,7 +35,7 @@ func (p_ PasteboardItemDataProviderObject) HasPasteboardItemProvideDataForType()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider/1508503-pasteboard?language=objc
 func (p_ PasteboardItemDataProviderObject) PasteboardItemProvideDataForType(pasteboard Pasteboard, item PasteboardItem, type_ PasteboardType) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboard:item:provideDataForType:"), objc.Ptr(pasteboard), objc.Ptr(item), type_)
+	objc.Call[objc.Void](p_, objc.Sel("pasteboard:item:provideDataForType:"), pasteboard, item, type_)
 }
 
 func (p_ PasteboardItemDataProviderObject) HasPasteboardFinishedWithDataProvider() bool {
@@ -46,5 +46,5 @@ func (p_ PasteboardItemDataProviderObject) HasPasteboardFinishedWithDataProvider
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nspasteboarditemdataprovider/1508506-pasteboardfinishedwithdataprovid?language=objc
 func (p_ PasteboardItemDataProviderObject) PasteboardFinishedWithDataProvider(pasteboard Pasteboard) {
-	objc.Call[objc.Void](p_, objc.Sel("pasteboardFinishedWithDataProvider:"), objc.Ptr(pasteboard))
+	objc.Call[objc.Void](p_, objc.Sel("pasteboardFinishedWithDataProvider:"), pasteboard)
 }

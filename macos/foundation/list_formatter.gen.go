@@ -93,7 +93,7 @@ func (l_ ListFormatter) ItemFormatter() Formatter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130988-itemformatter?language=objc
 func (l_ ListFormatter) SetItemFormatter(value IFormatter) {
-	objc.Call[objc.Void](l_, objc.Sel("setItemFormatter:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setItemFormatter:"), value)
 }
 
 // The locale to use when formatting items in the list. [Full Topic]
@@ -108,5 +108,5 @@ func (l_ ListFormatter) Locale() Locale {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nslistformatter/3130989-locale?language=objc
 func (l_ ListFormatter) SetLocale(value ILocale) {
-	objc.Call[objc.Void](l_, objc.Sel("setLocale:"), objc.Ptr(value))
+	objc.Call[objc.Void](l_, objc.Sel("setLocale:"), value)
 }

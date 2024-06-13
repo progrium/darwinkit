@@ -39,7 +39,7 @@ func CollectionViewDiffableDataSourceFrom(ptr unsafe.Pointer) CollectionViewDiff
 }
 
 func (c_ CollectionViewDiffableDataSource) InitWithCollectionViewItemProvider(collectionView ICollectionView, itemProvider CollectionViewDiffableDataSourceItemProvider) CollectionViewDiffableDataSource {
-	rv := objc.Call[CollectionViewDiffableDataSource](c_, objc.Sel("initWithCollectionView:itemProvider:"), objc.Ptr(collectionView), itemProvider)
+	rv := objc.Call[CollectionViewDiffableDataSource](c_, objc.Sel("initWithCollectionView:itemProvider:"), collectionView, itemProvider)
 	return rv
 }
 
@@ -76,7 +76,7 @@ func (c_ CollectionViewDiffableDataSource) Init() CollectionViewDiffableDataSour
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdiffabledatasource/3281819-itemidentifierforindexpath?language=objc
 func (c_ CollectionViewDiffableDataSource) ItemIdentifierForIndexPath(indexPath foundation.IIndexPath) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("itemIdentifierForIndexPath:"), objc.Ptr(indexPath))
+	rv := objc.Call[objc.Object](c_, objc.Sel("itemIdentifierForIndexPath:"), indexPath)
 	return rv
 }
 
@@ -84,7 +84,7 @@ func (c_ CollectionViewDiffableDataSource) ItemIdentifierForIndexPath(indexPath 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscollectionviewdiffabledatasource/3281817-indexpathforitemidentifier?language=objc
 func (c_ CollectionViewDiffableDataSource) IndexPathForItemIdentifier(identifier objc.IObject) foundation.IndexPath {
-	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathForItemIdentifier:"), objc.Ptr(identifier))
+	rv := objc.Call[foundation.IndexPath](c_, objc.Sel("indexPathForItemIdentifier:"), identifier)
 	return rv
 }
 

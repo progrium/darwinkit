@@ -25,11 +25,11 @@ type IAtomicStore interface {
 	UpdateCacheNodeFromManagedObject(node IAtomicStoreCacheNode, managedObject IManagedObject)
 	ObjectIDForEntityReferenceObject(entity IEntityDescription, data objc.IObject) ManagedObjectID
 	AddCacheNodes(cacheNodes foundation.ISet)
-	Load(error foundation.IError) bool
+	Load(error unsafe.Pointer) bool
 	NewReferenceObjectForManagedObject(managedObject IManagedObject) objc.Object
 	WillRemoveCacheNodes(cacheNodes foundation.ISet)
 	NewCacheNodeForManagedObject(managedObject IManagedObject) AtomicStoreCacheNode
-	Save(error foundation.IError) bool
+	Save(error unsafe.Pointer) bool
 }
 
 // An abstract superclass that you subclass to create a Core Data atomic store. [Full Topic]
@@ -46,7 +46,7 @@ func AtomicStoreFrom(ptr unsafe.Pointer) AtomicStore {
 }
 
 func (a_ AtomicStore) InitWithPersistentStoreCoordinatorConfigurationNameURLOptions(coordinator IPersistentStoreCoordinator, configurationName string, url foundation.IURL, options foundation.Dictionary) AtomicStore {
-	rv := objc.Call[AtomicStore](a_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), objc.Ptr(coordinator), configurationName, objc.Ptr(url), options)
+	rv := objc.Call[AtomicStore](a_, objc.Sel("initWithPersistentStoreCoordinator:configurationName:URL:options:"), coordinator, configurationName, url, options)
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (a_ AtomicStore) Init() AtomicStore {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388040-cachenodeforobjectid?language=objc
 func (a_ AtomicStore) CacheNodeForObjectID(objectID IManagedObjectID) AtomicStoreCacheNode {
-	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("cacheNodeForObjectID:"), objc.Ptr(objectID))
+	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("cacheNodeForObjectID:"), objectID)
 	return rv
 }
 
@@ -99,7 +99,7 @@ func (a_ AtomicStore) CacheNodes() foundation.Set {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388046-referenceobjectforobjectid?language=objc
 func (a_ AtomicStore) ReferenceObjectForObjectID(objectID IManagedObjectID) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("referenceObjectForObjectID:"), objc.Ptr(objectID))
+	rv := objc.Call[objc.Object](a_, objc.Sel("referenceObjectForObjectID:"), objectID)
 	return rv
 }
 
@@ -107,14 +107,14 @@ func (a_ AtomicStore) ReferenceObjectForObjectID(objectID IManagedObjectID) objc
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388044-updatecachenode?language=objc
 func (a_ AtomicStore) UpdateCacheNodeFromManagedObject(node IAtomicStoreCacheNode, managedObject IManagedObject) {
-	objc.Call[objc.Void](a_, objc.Sel("updateCacheNode:fromManagedObject:"), objc.Ptr(node), objc.Ptr(managedObject))
+	objc.Call[objc.Void](a_, objc.Sel("updateCacheNode:fromManagedObject:"), node, managedObject)
 }
 
 // Returns a managed object ID from the reference data for a specified entity. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388058-objectidforentity?language=objc
 func (a_ AtomicStore) ObjectIDForEntityReferenceObject(entity IEntityDescription, data objc.IObject) ManagedObjectID {
-	rv := objc.Call[ManagedObjectID](a_, objc.Sel("objectIDForEntity:referenceObject:"), objc.Ptr(entity), data)
+	rv := objc.Call[ManagedObjectID](a_, objc.Sel("objectIDForEntity:referenceObject:"), entity, data)
 	return rv
 }
 
@@ -122,14 +122,14 @@ func (a_ AtomicStore) ObjectIDForEntityReferenceObject(entity IEntityDescription
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388062-addcachenodes?language=objc
 func (a_ AtomicStore) AddCacheNodes(cacheNodes foundation.ISet) {
-	objc.Call[objc.Void](a_, objc.Sel("addCacheNodes:"), objc.Ptr(cacheNodes))
+	objc.Call[objc.Void](a_, objc.Sel("addCacheNodes:"), cacheNodes)
 }
 
 // Loads the cache nodes for the receiver. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388060-load?language=objc
-func (a_ AtomicStore) Load(error foundation.IError) bool {
-	rv := objc.Call[bool](a_, objc.Sel("load:"), objc.Ptr(error))
+func (a_ AtomicStore) Load(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](a_, objc.Sel("load:"), error)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (a_ AtomicStore) Load(error foundation.IError) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388050-newreferenceobjectformanagedobje?language=objc
 func (a_ AtomicStore) NewReferenceObjectForManagedObject(managedObject IManagedObject) objc.Object {
-	rv := objc.Call[objc.Object](a_, objc.Sel("newReferenceObjectForManagedObject:"), objc.Ptr(managedObject))
+	rv := objc.Call[objc.Object](a_, objc.Sel("newReferenceObjectForManagedObject:"), managedObject)
 	return rv
 }
 
@@ -145,21 +145,21 @@ func (a_ AtomicStore) NewReferenceObjectForManagedObject(managedObject IManagedO
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388064-willremovecachenodes?language=objc
 func (a_ AtomicStore) WillRemoveCacheNodes(cacheNodes foundation.ISet) {
-	objc.Call[objc.Void](a_, objc.Sel("willRemoveCacheNodes:"), objc.Ptr(cacheNodes))
+	objc.Call[objc.Void](a_, objc.Sel("willRemoveCacheNodes:"), cacheNodes)
 }
 
 // Returns a new cache node for a given managed object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388052-newcachenodeformanagedobject?language=objc
 func (a_ AtomicStore) NewCacheNodeForManagedObject(managedObject IManagedObject) AtomicStoreCacheNode {
-	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("newCacheNodeForManagedObject:"), objc.Ptr(managedObject))
+	rv := objc.Call[AtomicStoreCacheNode](a_, objc.Sel("newCacheNodeForManagedObject:"), managedObject)
 	return rv
 }
 
 // Saves the cache nodes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsatomicstore/1388056-save?language=objc
-func (a_ AtomicStore) Save(error foundation.IError) bool {
-	rv := objc.Call[bool](a_, objc.Sel("save:"), objc.Ptr(error))
+func (a_ AtomicStore) Save(error unsafe.Pointer) bool {
+	rv := objc.Call[bool](a_, objc.Sel("save:"), error)
 	return rv
 }

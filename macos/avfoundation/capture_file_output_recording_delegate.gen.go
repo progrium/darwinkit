@@ -143,7 +143,7 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputWillFinishRec
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390625-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputWillFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willFinishRecordingToOutputFileAtURL:fromConnections:error:"), objc.Ptr(output), objc.Ptr(fileURL), connections, objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:willFinishRecordingToOutputFileAtURL:fromConnections:error:"), output, fileURL, connections, error)
 }
 
 func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections() bool {
@@ -154,7 +154,7 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidPauseRecor
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1388838-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidPauseRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didPauseRecordingToOutputFileAtURL:fromConnections:"), objc.Ptr(output), objc.Ptr(fileURL), connections)
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didPauseRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
 }
 
 func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidStartRecordingToOutputFileAtURLFromConnections() bool {
@@ -165,7 +165,7 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidStartRecor
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387301-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidStartRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didStartRecordingToOutputFileAtURL:fromConnections:"), objc.Ptr(output), objc.Ptr(fileURL), connections)
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didStartRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
 }
 
 func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections() bool {
@@ -176,7 +176,7 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidResumeReco
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1387653-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidResumeRecordingToOutputFileAtURLFromConnections(output CaptureFileOutput, fileURL foundation.URL, connections []CaptureConnection) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didResumeRecordingToOutputFileAtURL:fromConnections:"), objc.Ptr(output), objc.Ptr(fileURL), connections)
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didResumeRecordingToOutputFileAtURL:fromConnections:"), output, fileURL, connections)
 }
 
 func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError() bool {
@@ -187,5 +187,5 @@ func (c_ CaptureFileOutputRecordingDelegateObject) HasCaptureOutputDidFinishReco
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avcapturefileoutputrecordingdelegate/1390612-captureoutput?language=objc
 func (c_ CaptureFileOutputRecordingDelegateObject) CaptureOutputDidFinishRecordingToOutputFileAtURLFromConnectionsError(output CaptureFileOutput, outputFileURL foundation.URL, connections []CaptureConnection, error foundation.Error) {
-	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:"), objc.Ptr(output), objc.Ptr(outputFileURL), connections, objc.Ptr(error))
+	objc.Call[objc.Void](c_, objc.Sel("captureOutput:didFinishRecordingToOutputFileAtURL:fromConnections:error:"), output, outputFileURL, connections, error)
 }

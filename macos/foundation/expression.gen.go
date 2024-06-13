@@ -87,7 +87,7 @@ func (e_ Expression) Init() Expression {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1418004-expressionforconditional?language=objc
 func (ec _ExpressionClass) ExpressionForConditionalTrueExpressionFalseExpression(predicate IPredicate, trueExpression IExpression, falseExpression IExpression) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForConditional:trueExpression:falseExpression:"), objc.Ptr(predicate), objc.Ptr(trueExpression), objc.Ptr(falseExpression))
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForConditional:trueExpression:falseExpression:"), predicate, trueExpression, falseExpression)
 	return rv
 }
 
@@ -139,7 +139,7 @@ func Expression_ExpressionForAnyKey() Expression {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1409706-expressionforintersectset?language=objc
 func (ec _ExpressionClass) ExpressionForIntersectSetWith(left IExpression, right IExpression) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForIntersectSet:with:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForIntersectSet:with:"), left, right)
 	return rv
 }
 
@@ -199,7 +199,7 @@ func Expression_ExpressionForAggregate(subexpressions []IExpression) Expression 
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1417659-expressionforminusset?language=objc
 func (ec _ExpressionClass) ExpressionForMinusSetWith(left IExpression, right IExpression) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForMinusSet:with:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForMinusSet:with:"), left, right)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func Expression_ExpressionForMinusSetWith(left IExpression, right IExpression) E
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1410363-expressionvaluewithobject?language=objc
 func (e_ Expression) ExpressionValueWithObjectContext(object objc.IObject, context IMutableDictionary) objc.Object {
-	rv := objc.Call[objc.Object](e_, objc.Sel("expressionValueWithObject:context:"), object, objc.Ptr(context))
+	rv := objc.Call[objc.Object](e_, objc.Sel("expressionValueWithObject:context:"), object, context)
 	return rv
 }
 
@@ -222,7 +222,7 @@ func (e_ Expression) ExpressionValueWithObjectContext(object objc.IObject, conte
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1411585-expressionforunionset?language=objc
 func (ec _ExpressionClass) ExpressionForUnionSetWith(left IExpression, right IExpression) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForUnionSet:with:"), objc.Ptr(left), objc.Ptr(right))
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForUnionSet:with:"), left, right)
 	return rv
 }
 
@@ -237,7 +237,7 @@ func Expression_ExpressionForUnionSetWith(left IExpression, right IExpression) E
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1412905-expressionforfunction?language=objc
 func (ec _ExpressionClass) ExpressionForFunctionSelectorNameArguments(target IExpression, name string, parameters []objc.IObject) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForFunction:selectorName:arguments:"), objc.Ptr(target), name, parameters)
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForFunction:selectorName:arguments:"), target, name, parameters)
 	return rv
 }
 
@@ -252,7 +252,7 @@ func Expression_ExpressionForFunctionSelectorNameArguments(target IExpression, n
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsexpression/1411651-expressionforsubquery?language=objc
 func (ec _ExpressionClass) ExpressionForSubqueryUsingIteratorVariablePredicate(expression IExpression, variable string, predicate IPredicate) Expression {
-	rv := objc.Call[Expression](ec, objc.Sel("expressionForSubquery:usingIteratorVariable:predicate:"), objc.Ptr(expression), variable, objc.Ptr(predicate))
+	rv := objc.Call[Expression](ec, objc.Sel("expressionForSubquery:usingIteratorVariable:predicate:"), expression, variable, predicate)
 	return rv
 }
 

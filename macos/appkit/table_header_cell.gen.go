@@ -71,7 +71,7 @@ func NewTableHeaderCellTextCell(string_ string) TableHeaderCell {
 }
 
 func (t_ TableHeaderCell) InitImageCell(image IImage) TableHeaderCell {
-	rv := objc.Call[TableHeaderCell](t_, objc.Sel("initImageCell:"), objc.Ptr(image))
+	rv := objc.Call[TableHeaderCell](t_, objc.Sel("initImageCell:"), image)
 	return rv
 }
 
@@ -88,7 +88,7 @@ func NewTableHeaderCellImageCell(image IImage) TableHeaderCell {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheadercell/1526553-drawsortindicatorwithframe?language=objc
 func (t_ TableHeaderCell) DrawSortIndicatorWithFrameInViewAscendingPriority(cellFrame foundation.Rect, controlView IView, ascending bool, priority int) {
-	objc.Call[objc.Void](t_, objc.Sel("drawSortIndicatorWithFrame:inView:ascending:priority:"), cellFrame, objc.Ptr(controlView), ascending, priority)
+	objc.Call[objc.Void](t_, objc.Sel("drawSortIndicatorWithFrame:inView:ascending:priority:"), cellFrame, controlView, ascending, priority)
 }
 
 // Returns the location to display the sorting indicator given theRect. [Full Topic]

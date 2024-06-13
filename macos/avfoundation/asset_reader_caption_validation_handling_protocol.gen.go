@@ -31,5 +31,5 @@ func (a_ AssetReaderCaptionValidationHandlingObject) HasCaptionAdaptorDidVendCap
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreadercaptionvalidationhandling/3752792-captionadaptor?language=objc
 func (a_ AssetReaderCaptionValidationHandlingObject) CaptionAdaptorDidVendCaptionSkippingUnsupportedSourceSyntaxElements(adaptor AssetReaderOutputCaptionAdaptor, caption Caption, syntaxElements []string) {
-	objc.Call[objc.Void](a_, objc.Sel("captionAdaptor:didVendCaption:skippingUnsupportedSourceSyntaxElements:"), objc.Ptr(adaptor), objc.Ptr(caption), syntaxElements)
+	objc.Call[objc.Void](a_, objc.Sel("captionAdaptor:didVendCaption:skippingUnsupportedSourceSyntaxElements:"), adaptor, caption, syntaxElements)
 }

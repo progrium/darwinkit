@@ -759,7 +759,7 @@ func (b_ BrowserDelegateObject) HasBrowserNumberOfChildrenOfItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407755-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserNumberOfChildrenOfItem(browser Browser, item objc.Object) int {
-	rv := objc.Call[int](b_, objc.Sel("browser:numberOfChildrenOfItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[int](b_, objc.Sel("browser:numberOfChildrenOfItem:"), browser, item)
 	return rv
 }
 
@@ -771,7 +771,7 @@ func (b_ BrowserDelegateObject) HasBrowserTitleOfColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407677-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserTitleOfColumn(sender Browser, column int) string {
-	rv := objc.Call[string](b_, objc.Sel("browser:titleOfColumn:"), objc.Ptr(sender), column)
+	rv := objc.Call[string](b_, objc.Sel("browser:titleOfColumn:"), sender, column)
 	return rv
 }
 
@@ -783,7 +783,7 @@ func (b_ BrowserDelegateObject) HasBrowserHeightOfRowInColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407646-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserHeightOfRowInColumn(browser Browser, row int, columnIndex int) float64 {
-	rv := objc.Call[float64](b_, objc.Sel("browser:heightOfRow:inColumn:"), objc.Ptr(browser), row, columnIndex)
+	rv := objc.Call[float64](b_, objc.Sel("browser:heightOfRow:inColumn:"), browser, row, columnIndex)
 	return rv
 }
 
@@ -795,7 +795,7 @@ func (b_ BrowserDelegateObject) HasBrowserNumberOfRowsInColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407583-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserNumberOfRowsInColumn(sender Browser, column int) int {
-	rv := objc.Call[int](b_, objc.Sel("browser:numberOfRowsInColumn:"), objc.Ptr(sender), column)
+	rv := objc.Call[int](b_, objc.Sel("browser:numberOfRowsInColumn:"), sender, column)
 	return rv
 }
 
@@ -807,7 +807,7 @@ func (b_ BrowserDelegateObject) HasBrowserDidChangeLastColumnToColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407612-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserDidChangeLastColumnToColumn(browser Browser, oldLastColumn int, column int) {
-	objc.Call[objc.Void](b_, objc.Sel("browser:didChangeLastColumn:toColumn:"), objc.Ptr(browser), oldLastColumn, column)
+	objc.Call[objc.Void](b_, objc.Sel("browser:didChangeLastColumn:toColumn:"), browser, oldLastColumn, column)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserTypeSelectStringForRowInColumn() bool {
@@ -818,7 +818,7 @@ func (b_ BrowserDelegateObject) HasBrowserTypeSelectStringForRowInColumn() bool 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407762-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserTypeSelectStringForRowInColumn(browser Browser, row int, column int) string {
-	rv := objc.Call[string](b_, objc.Sel("browser:typeSelectStringForRow:inColumn:"), objc.Ptr(browser), row, column)
+	rv := objc.Call[string](b_, objc.Sel("browser:typeSelectStringForRow:inColumn:"), browser, row, column)
 	return rv
 }
 
@@ -831,7 +831,7 @@ func (b_ BrowserDelegateObject) HasBrowserAcceptDropAtRowColumnDropOperation() b
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407737-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserAcceptDropAtRowColumnDropOperation(browser Browser, info DraggingInfoObject, row int, column int, dropOperation BrowserDropOperation) bool {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[bool](b_, objc.Sel("browser:acceptDrop:atRow:column:dropOperation:"), objc.Ptr(browser), po1, row, column, dropOperation)
+	rv := objc.Call[bool](b_, objc.Sel("browser:acceptDrop:atRow:column:dropOperation:"), browser, po1, row, column, dropOperation)
 	return rv
 }
 
@@ -843,7 +843,7 @@ func (b_ BrowserDelegateObject) HasBrowserHeaderViewControllerForItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407782-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserHeaderViewControllerForItem(browser Browser, item objc.Object) ViewController {
-	rv := objc.Call[ViewController](b_, objc.Sel("browser:headerViewControllerForItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[ViewController](b_, objc.Sel("browser:headerViewControllerForItem:"), browser, item)
 	return rv
 }
 
@@ -855,7 +855,7 @@ func (b_ BrowserDelegateObject) HasBrowserCanDragRowsWithIndexesInColumnWithEven
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407768-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserCanDragRowsWithIndexesInColumnWithEvent(browser Browser, rowIndexes foundation.IndexSet, column int, event Event) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:canDragRowsWithIndexes:inColumn:withEvent:"), objc.Ptr(browser), objc.Ptr(rowIndexes), column, objc.Ptr(event))
+	rv := objc.Call[bool](b_, objc.Sel("browser:canDragRowsWithIndexes:inColumn:withEvent:"), browser, rowIndexes, column, event)
 	return rv
 }
 
@@ -867,7 +867,7 @@ func (b_ BrowserDelegateObject) HasBrowserNextTypeSelectMatchFromRowToRowInColum
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407553-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserNextTypeSelectMatchFromRowToRowInColumnForString(browser Browser, startRow int, endRow int, column int, searchString string) int {
-	rv := objc.Call[int](b_, objc.Sel("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:"), objc.Ptr(browser), startRow, endRow, column, searchString)
+	rv := objc.Call[int](b_, objc.Sel("browser:nextTypeSelectMatchFromRow:toRow:inColumn:forString:"), browser, startRow, endRow, column, searchString)
 	return rv
 }
 
@@ -879,7 +879,7 @@ func (b_ BrowserDelegateObject) HasBrowserSizeToFitWidthOfColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407524-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserSizeToFitWidthOfColumn(browser Browser, columnIndex int) float64 {
-	rv := objc.Call[float64](b_, objc.Sel("browser:sizeToFitWidthOfColumn:"), objc.Ptr(browser), columnIndex)
+	rv := objc.Call[float64](b_, objc.Sel("browser:sizeToFitWidthOfColumn:"), browser, columnIndex)
 	return rv
 }
 
@@ -891,7 +891,7 @@ func (b_ BrowserDelegateObject) HasBrowserDidScroll() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407566-browserdidscroll?language=objc
 func (b_ BrowserDelegateObject) BrowserDidScroll(sender Browser) {
-	objc.Call[objc.Void](b_, objc.Sel("browserDidScroll:"), objc.Ptr(sender))
+	objc.Call[objc.Void](b_, objc.Sel("browserDidScroll:"), sender)
 }
 
 func (b_ BrowserDelegateObject) HasRootItemForBrowser() bool {
@@ -902,7 +902,7 @@ func (b_ BrowserDelegateObject) HasRootItemForBrowser() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407526-rootitemforbrowser?language=objc
 func (b_ BrowserDelegateObject) RootItemForBrowser(browser Browser) objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("rootItemForBrowser:"), objc.Ptr(browser))
+	rv := objc.Call[objc.Object](b_, objc.Sel("rootItemForBrowser:"), browser)
 	return rv
 }
 
@@ -914,7 +914,7 @@ func (b_ BrowserDelegateObject) HasBrowserIsColumnValid() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407540-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserIsColumnValid(sender Browser, column int) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:isColumnValid:"), objc.Ptr(sender), column)
+	rv := objc.Call[bool](b_, objc.Sel("browser:isColumnValid:"), sender, column)
 	return rv
 }
 
@@ -926,7 +926,7 @@ func (b_ BrowserDelegateObject) HasBrowserIsLeafItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407786-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserIsLeafItem(browser Browser, item objc.Object) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:isLeafItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[bool](b_, objc.Sel("browser:isLeafItem:"), browser, item)
 	return rv
 }
 
@@ -938,7 +938,7 @@ func (b_ BrowserDelegateObject) HasBrowserShouldSizeColumnForUserResizeToWidth()
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407557-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserShouldSizeColumnForUserResizeToWidth(browser Browser, columnIndex int, forUserResize bool, suggestedWidth float64) float64 {
-	rv := objc.Call[float64](b_, objc.Sel("browser:shouldSizeColumn:forUserResize:toWidth:"), objc.Ptr(browser), columnIndex, forUserResize, suggestedWidth)
+	rv := objc.Call[float64](b_, objc.Sel("browser:shouldSizeColumn:forUserResize:toWidth:"), browser, columnIndex, forUserResize, suggestedWidth)
 	return rv
 }
 
@@ -950,7 +950,7 @@ func (b_ BrowserDelegateObject) HasBrowserColumnConfigurationDidChange() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407542-browsercolumnconfigurationdidcha?language=objc
 func (b_ BrowserDelegateObject) BrowserColumnConfigurationDidChange(notification foundation.Notification) {
-	objc.Call[objc.Void](b_, objc.Sel("browserColumnConfigurationDidChange:"), objc.Ptr(notification))
+	objc.Call[objc.Void](b_, objc.Sel("browserColumnConfigurationDidChange:"), notification)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserDraggingImageForRowsWithIndexesInColumnWithEventOffset() bool {
@@ -961,7 +961,7 @@ func (b_ BrowserDelegateObject) HasBrowserDraggingImageForRowsWithIndexesInColum
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407598-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserDraggingImageForRowsWithIndexesInColumnWithEventOffset(browser Browser, rowIndexes foundation.IndexSet, column int, event Event, dragImageOffset foundation.PointPointer) Image {
-	rv := objc.Call[Image](b_, objc.Sel("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), objc.Ptr(browser), objc.Ptr(rowIndexes), column, objc.Ptr(event), dragImageOffset)
+	rv := objc.Call[Image](b_, objc.Sel("browser:draggingImageForRowsWithIndexes:inColumn:withEvent:offset:"), browser, rowIndexes, column, event, dragImageOffset)
 	return rv
 }
 
@@ -973,7 +973,7 @@ func (b_ BrowserDelegateObject) HasBrowserChildOfItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407572-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserChildOfItem(browser Browser, index int, item objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("browser:child:ofItem:"), objc.Ptr(browser), index, item)
+	rv := objc.Call[objc.Object](b_, objc.Sel("browser:child:ofItem:"), browser, index, item)
 	return rv
 }
 
@@ -985,7 +985,7 @@ func (b_ BrowserDelegateObject) HasBrowserShouldEditItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407634-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserShouldEditItem(browser Browser, item objc.Object) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:shouldEditItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[bool](b_, objc.Sel("browser:shouldEditItem:"), browser, item)
 	return rv
 }
 
@@ -997,7 +997,7 @@ func (b_ BrowserDelegateObject) HasBrowserCreateRowsForColumnInMatrix() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407666-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserCreateRowsForColumnInMatrix(sender Browser, column int, matrix Matrix) {
-	objc.Call[objc.Void](b_, objc.Sel("browser:createRowsForColumn:inMatrix:"), objc.Ptr(sender), column, objc.Ptr(matrix))
+	objc.Call[objc.Void](b_, objc.Sel("browser:createRowsForColumn:inMatrix:"), sender, column, matrix)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserSetObjectValueForItem() bool {
@@ -1008,7 +1008,7 @@ func (b_ BrowserDelegateObject) HasBrowserSetObjectValueForItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407756-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserSetObjectValueForItem(browser Browser, object objc.Object, item objc.Object) {
-	objc.Call[objc.Void](b_, objc.Sel("browser:setObjectValue:forItem:"), objc.Ptr(browser), object, item)
+	objc.Call[objc.Void](b_, objc.Sel("browser:setObjectValue:forItem:"), browser, object, item)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserShouldTypeSelectForEventWithCurrentSearchString() bool {
@@ -1019,7 +1019,7 @@ func (b_ BrowserDelegateObject) HasBrowserShouldTypeSelectForEventWithCurrentSea
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407804-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserShouldTypeSelectForEventWithCurrentSearchString(browser Browser, event Event, searchString string) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:shouldTypeSelectForEvent:withCurrentSearchString:"), objc.Ptr(browser), objc.Ptr(event), searchString)
+	rv := objc.Call[bool](b_, objc.Sel("browser:shouldTypeSelectForEvent:withCurrentSearchString:"), browser, event, searchString)
 	return rv
 }
 
@@ -1031,7 +1031,7 @@ func (b_ BrowserDelegateObject) HasBrowserPreviewViewControllerForLeafItem() boo
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407772-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserPreviewViewControllerForLeafItem(browser Browser, item objc.Object) ViewController {
-	rv := objc.Call[ViewController](b_, objc.Sel("browser:previewViewControllerForLeafItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[ViewController](b_, objc.Sel("browser:previewViewControllerForLeafItem:"), browser, item)
 	return rv
 }
 
@@ -1043,7 +1043,7 @@ func (b_ BrowserDelegateObject) HasBrowserWillScroll() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407721-browserwillscroll?language=objc
 func (b_ BrowserDelegateObject) BrowserWillScroll(sender Browser) {
-	objc.Call[objc.Void](b_, objc.Sel("browserWillScroll:"), objc.Ptr(sender))
+	objc.Call[objc.Void](b_, objc.Sel("browserWillScroll:"), sender)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserShouldShowCellExpansionForRowColumn() bool {
@@ -1054,7 +1054,7 @@ func (b_ BrowserDelegateObject) HasBrowserShouldShowCellExpansionForRowColumn() 
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407602-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserShouldShowCellExpansionForRowColumn(browser Browser, row int, column int) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:shouldShowCellExpansionForRow:column:"), objc.Ptr(browser), row, column)
+	rv := objc.Call[bool](b_, objc.Sel("browser:shouldShowCellExpansionForRow:column:"), browser, row, column)
 	return rv
 }
 
@@ -1066,7 +1066,7 @@ func (b_ BrowserDelegateObject) HasBrowserWriteRowsWithIndexesInColumnToPasteboa
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407657-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserWriteRowsWithIndexesInColumnToPasteboard(browser Browser, rowIndexes foundation.IndexSet, column int, pasteboard Pasteboard) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:writeRowsWithIndexes:inColumn:toPasteboard:"), objc.Ptr(browser), objc.Ptr(rowIndexes), column, objc.Ptr(pasteboard))
+	rv := objc.Call[bool](b_, objc.Sel("browser:writeRowsWithIndexes:inColumn:toPasteboard:"), browser, rowIndexes, column, pasteboard)
 	return rv
 }
 
@@ -1078,7 +1078,7 @@ func (b_ BrowserDelegateObject) HasBrowserSelectCellWithStringInColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407548-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserSelectCellWithStringInColumn(sender Browser, title string, column int) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:selectCellWithString:inColumn:"), objc.Ptr(sender), title, column)
+	rv := objc.Call[bool](b_, objc.Sel("browser:selectCellWithString:inColumn:"), sender, title, column)
 	return rv
 }
 
@@ -1090,7 +1090,7 @@ func (b_ BrowserDelegateObject) HasBrowserWillDisplayCellAtRowColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407705-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserWillDisplayCellAtRowColumn(sender Browser, cell objc.Object, row int, column int) {
-	objc.Call[objc.Void](b_, objc.Sel("browser:willDisplayCell:atRow:column:"), objc.Ptr(sender), cell, row, column)
+	objc.Call[objc.Void](b_, objc.Sel("browser:willDisplayCell:atRow:column:"), sender, cell, row, column)
 }
 
 func (b_ BrowserDelegateObject) HasBrowserSelectionIndexesForProposedSelectionInColumn() bool {
@@ -1101,7 +1101,7 @@ func (b_ BrowserDelegateObject) HasBrowserSelectionIndexesForProposedSelectionIn
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407660-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserSelectionIndexesForProposedSelectionInColumn(browser Browser, proposedSelectionIndexes foundation.IndexSet, column int) foundation.IndexSet {
-	rv := objc.Call[foundation.IndexSet](b_, objc.Sel("browser:selectionIndexesForProposedSelection:inColumn:"), objc.Ptr(browser), objc.Ptr(proposedSelectionIndexes), column)
+	rv := objc.Call[foundation.IndexSet](b_, objc.Sel("browser:selectionIndexesForProposedSelection:inColumn:"), browser, proposedSelectionIndexes, column)
 	return rv
 }
 
@@ -1113,7 +1113,7 @@ func (b_ BrowserDelegateObject) HasBrowserObjectValueForItem() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407594-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserObjectValueForItem(browser Browser, item objc.Object) objc.Object {
-	rv := objc.Call[objc.Object](b_, objc.Sel("browser:objectValueForItem:"), objc.Ptr(browser), item)
+	rv := objc.Call[objc.Object](b_, objc.Sel("browser:objectValueForItem:"), browser, item)
 	return rv
 }
 
@@ -1125,7 +1125,7 @@ func (b_ BrowserDelegateObject) HasBrowserSelectRowInColumn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407802-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserSelectRowInColumn(sender Browser, row int, column int) bool {
-	rv := objc.Call[bool](b_, objc.Sel("browser:selectRow:inColumn:"), objc.Ptr(sender), row, column)
+	rv := objc.Call[bool](b_, objc.Sel("browser:selectRow:inColumn:"), sender, row, column)
 	return rv
 }
 
@@ -1138,6 +1138,6 @@ func (b_ BrowserDelegateObject) HasBrowserValidateDropProposedRowColumnDropOpera
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbrowserdelegate/1407766-browser?language=objc
 func (b_ BrowserDelegateObject) BrowserValidateDropProposedRowColumnDropOperation(browser Browser, info DraggingInfoObject, row *int, column *int, dropOperation *BrowserDropOperation) DragOperation {
 	po1 := objc.WrapAsProtocol("NSDraggingInfo", info)
-	rv := objc.Call[DragOperation](b_, objc.Sel("browser:validateDrop:proposedRow:column:dropOperation:"), objc.Ptr(browser), po1, row, column, dropOperation)
+	rv := objc.Call[DragOperation](b_, objc.Sel("browser:validateDrop:proposedRow:column:dropOperation:"), browser, po1, row, column, dropOperation)
 	return rv
 }

@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion?language=objc
 type PVortexDistortion interface {
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
@@ -28,11 +28,11 @@ type PVortexDistortion interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 
 	// optional
@@ -59,7 +59,7 @@ func (v_ VortexDistortionObject) HasSetRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion/3600211-radius?language=objc
-func (v_ VortexDistortionObject) SetRadius(value float64) {
+func (v_ VortexDistortionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setRadius:"), value)
 }
 
@@ -70,8 +70,8 @@ func (v_ VortexDistortionObject) HasRadius() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion/3600211-radius?language=objc
-func (v_ VortexDistortionObject) Radius() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("radius"))
+func (v_ VortexDistortionObject) Radius() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("radius"))
 	return rv
 }
 
@@ -83,7 +83,7 @@ func (v_ VortexDistortionObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion/3600210-inputimage?language=objc
 func (v_ VortexDistortionObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](v_, objc.Sel("setInputImage:"), value)
 }
 
 func (v_ VortexDistortionObject) HasInputImage() bool {
@@ -105,7 +105,7 @@ func (v_ VortexDistortionObject) HasSetAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion/3600208-angle?language=objc
-func (v_ VortexDistortionObject) SetAngle(value float64) {
+func (v_ VortexDistortionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](v_, objc.Sel("setAngle:"), value)
 }
 
@@ -116,8 +116,8 @@ func (v_ VortexDistortionObject) HasAngle() bool {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/civortexdistortion/3600208-angle?language=objc
-func (v_ VortexDistortionObject) Angle() float64 {
-	rv := objc.Call[float64](v_, objc.Sel("angle"))
+func (v_ VortexDistortionObject) Angle() float32 {
+	rv := objc.Call[float32](v_, objc.Sel("angle"))
 	return rv
 }
 

@@ -131,7 +131,7 @@ func (a_ AccelerationStructureTriangleGeometryDescriptor) SetIndexBuffer(value P
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553870-indexbuffer?language=objc
 func (a_ AccelerationStructureTriangleGeometryDescriptor) SetIndexBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setIndexBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setIndexBuffer:"), valueObject)
 }
 
 // The offset, in bytes, to the first index in the buffer. [Full Topic]
@@ -199,5 +199,5 @@ func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBuffer(value 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlaccelerationstructuretrianglegeometrydescriptor/3553876-vertexbuffer?language=objc
 func (a_ AccelerationStructureTriangleGeometryDescriptor) SetVertexBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](a_, objc.Sel("setVertexBuffer:"), valueObject)
 }

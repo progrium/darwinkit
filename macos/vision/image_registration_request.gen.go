@@ -88,7 +88,7 @@ func NewImageRegistrationRequestWithTargetedCGImageOptions(cgImage coregraphics.
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedImageURLOptionsCompletionHandler(imageURL foundation.IURL, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), objc.Ptr(imageURL), options, completionHandler)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:options:completionHandler:"), imageURL, options, completionHandler)
 	return rv
 }
 
@@ -200,7 +200,7 @@ func NewImageRegistrationRequestWithTargetedImageDataOptionsCompletionHandler(im
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedCIImageOptionsCompletionHandler(ciImage coreimage.IImage, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), objc.Ptr(ciImage), options, completionHandler)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:options:completionHandler:"), ciImage, options, completionHandler)
 	return rv
 }
 
@@ -214,7 +214,7 @@ func NewImageRegistrationRequestWithTargetedCIImageOptionsCompletionHandler(ciIm
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedCIImageOrientationOptions(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:orientation:options:"), objc.Ptr(ciImage), orientation, options)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:orientation:options:"), ciImage, orientation, options)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func NewImageRegistrationRequestWithTargetedCIImageOrientationOptions(ciImage co
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedImageURLOrientationOptions(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:orientation:options:"), objc.Ptr(imageURL), orientation, options)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:orientation:options:"), imageURL, orientation, options)
 	return rv
 }
 
@@ -242,7 +242,7 @@ func NewImageRegistrationRequestWithTargetedImageURLOrientationOptions(imageURL 
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedCIImageOrientationOptionsCompletionHandler(ciImage coreimage.IImage, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), objc.Ptr(ciImage), orientation, options, completionHandler)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:orientation:options:completionHandler:"), ciImage, orientation, options, completionHandler)
 	return rv
 }
 
@@ -298,7 +298,7 @@ func NewImageRegistrationRequestWithTargetedCMSampleBufferOptions(sampleBuffer c
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedImageURLOrientationOptionsCompletionHandler(imageURL foundation.IURL, orientation imageio.ImagePropertyOrientation, options map[ImageOption]objc.IObject, completionHandler RequestCompletionHandler) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), objc.Ptr(imageURL), orientation, options, completionHandler)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:orientation:options:completionHandler:"), imageURL, orientation, options, completionHandler)
 	return rv
 }
 
@@ -326,7 +326,7 @@ func NewImageRegistrationRequestWithTargetedCMSampleBufferOrientationOptionsComp
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedCIImageOptions(ciImage coreimage.IImage, options map[ImageOption]objc.IObject) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:options:"), objc.Ptr(ciImage), options)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedCIImage:options:"), ciImage, options)
 	return rv
 }
 
@@ -382,7 +382,7 @@ func NewImageRegistrationRequestWithTargetedCVPixelBufferOrientationOptionsCompl
 }
 
 func (i_ ImageRegistrationRequest) InitWithTargetedImageURLOptions(imageURL foundation.IURL, options map[ImageOption]objc.IObject) ImageRegistrationRequest {
-	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:options:"), objc.Ptr(imageURL), options)
+	rv := objc.Call[ImageRegistrationRequest](i_, objc.Sel("initWithTargetedImageURL:options:"), imageURL, options)
 	return rv
 }
 

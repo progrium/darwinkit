@@ -85,5 +85,5 @@ func (e_ ExpressionDescription) Expression() foundation.Expression {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsexpressiondescription/1506817-expression?language=objc
 func (e_ ExpressionDescription) SetExpression(value foundation.IExpression) {
-	objc.Call[objc.Void](e_, objc.Sel("setExpression:"), objc.Ptr(value))
+	objc.Call[objc.Void](e_, objc.Sel("setExpression:"), value)
 }

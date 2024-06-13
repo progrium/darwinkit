@@ -121,7 +121,7 @@ func (c_ ContactPickerDelegateObject) HasContactPickerWillClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpickerdelegate/1522594-contactpickerwillclose?language=objc
 func (c_ ContactPickerDelegateObject) ContactPickerWillClose(picker ContactPicker) {
-	objc.Call[objc.Void](c_, objc.Sel("contactPickerWillClose:"), objc.Ptr(picker))
+	objc.Call[objc.Void](c_, objc.Sel("contactPickerWillClose:"), picker)
 }
 
 func (c_ ContactPickerDelegateObject) HasContactPickerDidSelectContact() bool {
@@ -132,7 +132,7 @@ func (c_ ContactPickerDelegateObject) HasContactPickerDidSelectContact() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpickerdelegate/1522595-contactpicker?language=objc
 func (c_ ContactPickerDelegateObject) ContactPickerDidSelectContact(picker ContactPicker, contact contacts.Contact) {
-	objc.Call[objc.Void](c_, objc.Sel("contactPicker:didSelectContact:"), objc.Ptr(picker), objc.Ptr(contact))
+	objc.Call[objc.Void](c_, objc.Sel("contactPicker:didSelectContact:"), picker, contact)
 }
 
 func (c_ ContactPickerDelegateObject) HasContactPickerDidClose() bool {
@@ -143,7 +143,7 @@ func (c_ ContactPickerDelegateObject) HasContactPickerDidClose() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpickerdelegate/1522584-contactpickerdidclose?language=objc
 func (c_ ContactPickerDelegateObject) ContactPickerDidClose(picker ContactPicker) {
-	objc.Call[objc.Void](c_, objc.Sel("contactPickerDidClose:"), objc.Ptr(picker))
+	objc.Call[objc.Void](c_, objc.Sel("contactPickerDidClose:"), picker)
 }
 
 func (c_ ContactPickerDelegateObject) HasContactPickerDidSelectContactProperty() bool {
@@ -154,5 +154,5 @@ func (c_ ContactPickerDelegateObject) HasContactPickerDidSelectContactProperty()
 //
 // [Full Topic]: https://developer.apple.com/documentation/contactsui/cncontactpickerdelegate/1522593-contactpicker?language=objc
 func (c_ ContactPickerDelegateObject) ContactPickerDidSelectContactProperty(picker ContactPicker, contactProperty contacts.ContactProperty) {
-	objc.Call[objc.Void](c_, objc.Sel("contactPicker:didSelectContactProperty:"), objc.Ptr(picker), objc.Ptr(contactProperty))
+	objc.Call[objc.Void](c_, objc.Sel("contactPicker:didSelectContactProperty:"), picker, contactProperty)
 }

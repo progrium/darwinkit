@@ -105,5 +105,5 @@ func (m_ MotionKeyframeData) SetBuffer(value PBuffer) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlmotionkeyframedata/3750506-buffer?language=objc
 func (m_ MotionKeyframeData) SetBufferObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](m_, objc.Sel("setBuffer:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](m_, objc.Sel("setBuffer:"), valueObject)
 }

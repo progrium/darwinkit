@@ -5,7 +5,6 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -19,7 +18,7 @@ type _RecognizeAnimalsRequestClass struct {
 // An interface definition for the [RecognizeAnimalsRequest] class.
 type IRecognizeAnimalsRequest interface {
 	IImageBasedRequest
-	SupportedIdentifiersAndReturnError(error foundation.IError) []AnimalIdentifier
+	SupportedIdentifiersAndReturnError(error unsafe.Pointer) []AnimalIdentifier
 }
 
 // A request that recognizes animals in an image. [Full Topic]
@@ -72,7 +71,7 @@ func NewRecognizeAnimalsRequestWithCompletionHandler(completionHandler RequestCo
 // Returns the identifiers of the animals that the request detects. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/vision/vnrecognizeanimalsrequest/3751003-supportedidentifiersandreturnerr?language=objc
-func (r_ RecognizeAnimalsRequest) SupportedIdentifiersAndReturnError(error foundation.IError) []AnimalIdentifier {
-	rv := objc.Call[[]AnimalIdentifier](r_, objc.Sel("supportedIdentifiersAndReturnError:"), objc.Ptr(error))
+func (r_ RecognizeAnimalsRequest) SupportedIdentifiersAndReturnError(error unsafe.Pointer) []AnimalIdentifier {
+	rv := objc.Call[[]AnimalIdentifier](r_, objc.Sel("supportedIdentifiersAndReturnError:"), error)
 	return rv
 }

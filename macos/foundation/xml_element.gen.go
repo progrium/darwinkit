@@ -84,15 +84,15 @@ func NewXMLElementWithKindOptions(kind XMLNodeKind, options XMLNodeOptions) XMLE
 	return instance
 }
 
-func (x_ XMLElement) InitWithXMLStringError(string_ string, error IError) XMLElement {
-	rv := objc.Call[XMLElement](x_, objc.Sel("initWithXMLString:error:"), string_, objc.Ptr(error))
+func (x_ XMLElement) InitWithXMLStringError(string_ string, error unsafe.Pointer) XMLElement {
+	rv := objc.Call[XMLElement](x_, objc.Sel("initWithXMLString:error:"), string_, error)
 	return rv
 }
 
 // Returns an NSXMLElement object created from a specified string containing XML markup. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388325-initwithxmlstring?language=objc
-func NewXMLElementWithXMLStringError(string_ string, error IError) XMLElement {
+func NewXMLElementWithXMLStringError(string_ string, error unsafe.Pointer) XMLElement {
 	instance := XMLElementClass.Alloc().InitWithXMLStringError(string_, error)
 	instance.Autorelease()
 	return instance
@@ -202,7 +202,7 @@ func (x_ XMLElement) ElementsForLocalNameURI(localName string, URI string) []XML
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388340-addchild?language=objc
 func (x_ XMLElement) AddChild(child IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addChild:"), objc.Ptr(child))
+	objc.Call[objc.Void](x_, objc.Sel("addChild:"), child)
 }
 
 // Sets all child nodes of the receiver at once, replacing any existing children. [Full Topic]
@@ -224,7 +224,7 @@ func (x_ XMLElement) ResolveNamespaceForName(name string) XMLNode {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388332-insertchild?language=objc
 func (x_ XMLElement) InsertChildAtIndex(child IXMLNode, index uint) {
-	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), objc.Ptr(child), index)
+	objc.Call[objc.Void](x_, objc.Sel("insertChild:atIndex:"), child, index)
 }
 
 // Returns the attribute node of the receiver with the specified name. [Full Topic]
@@ -253,14 +253,14 @@ func (x_ XMLElement) RemoveChildAtIndex(index uint) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388336-addattribute?language=objc
 func (x_ XMLElement) AddAttribute(attribute IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addAttribute:"), objc.Ptr(attribute))
+	objc.Call[objc.Void](x_, objc.Sel("addAttribute:"), attribute)
 }
 
 // Replaces a child node at a specified location with another child node. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388317-replacechildatindex?language=objc
 func (x_ XMLElement) ReplaceChildAtIndexWithNode(index uint, node IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, objc.Ptr(node))
+	objc.Call[objc.Void](x_, objc.Sel("replaceChildAtIndex:withNode:"), index, node)
 }
 
 // Removes a namespace node that is identified by a given prefix. [Full Topic]
@@ -274,7 +274,7 @@ func (x_ XMLElement) RemoveNamespaceForPrefix(name string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxmlelement/1388358-addnamespace?language=objc
 func (x_ XMLElement) AddNamespace(aNamespace IXMLNode) {
-	objc.Call[objc.Void](x_, objc.Sel("addNamespace:"), objc.Ptr(aNamespace))
+	objc.Call[objc.Void](x_, objc.Sel("addNamespace:"), aNamespace)
 }
 
 // Inserts an array of child nodes at a specified location in the receiver’s list of children. [Full Topic]

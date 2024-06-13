@@ -18,10 +18,10 @@ type _RatingCommandClass struct {
 // An interface definition for the [RatingCommand] class.
 type IRatingCommand interface {
 	IRemoteCommand
-	MaximumRating() float64
-	SetMaximumRating(value float64)
-	MinimumRating() float64
-	SetMinimumRating(value float64)
+	MaximumRating() float32
+	SetMaximumRating(value float32)
+	MinimumRating() float32
+	SetMinimumRating(value float32)
 }
 
 // An object that provides a detailed rating for the playing item. [Full Topic]
@@ -60,29 +60,29 @@ func (r_ RatingCommand) Init() RatingCommand {
 // The maximum rating for a command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpratingcommand/1622898-maximumrating?language=objc
-func (r_ RatingCommand) MaximumRating() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("maximumRating"))
+func (r_ RatingCommand) MaximumRating() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("maximumRating"))
 	return rv
 }
 
 // The maximum rating for a command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpratingcommand/1622898-maximumrating?language=objc
-func (r_ RatingCommand) SetMaximumRating(value float64) {
+func (r_ RatingCommand) SetMaximumRating(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setMaximumRating:"), value)
 }
 
 // The minimum rating for a command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpratingcommand/1622902-minimumrating?language=objc
-func (r_ RatingCommand) MinimumRating() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("minimumRating"))
+func (r_ RatingCommand) MinimumRating() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("minimumRating"))
 	return rv
 }
 
 // The minimum rating for a command. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/mediaplayer/mpratingcommand/1622902-minimumrating?language=objc
-func (r_ RatingCommand) SetMinimumRating(value float64) {
+func (r_ RatingCommand) SetMinimumRating(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setMinimumRating:"), value)
 }

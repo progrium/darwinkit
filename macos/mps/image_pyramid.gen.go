@@ -51,7 +51,7 @@ func NewImagePyramidWithDevice(device metal.PDevice) ImagePyramid {
 	return instance
 }
 
-func (i_ ImagePyramid) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float64) ImagePyramid {
+func (i_ ImagePyramid) InitWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImagePyramid {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImagePyramid](i_, objc.Sel("initWithDevice:centerWeight:"), po0, centerWeight)
 	return rv
@@ -60,13 +60,13 @@ func (i_ ImagePyramid) InitWithDeviceCenterWeight(device metal.PDevice, centerWe
 // Initialize a downwards 5-tap image pyramid with a central weight parameter and device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648889-initwithdevice?language=objc
-func NewImagePyramidWithDeviceCenterWeight(device metal.PDevice, centerWeight float64) ImagePyramid {
+func NewImagePyramidWithDeviceCenterWeight(device metal.PDevice, centerWeight float32) ImagePyramid {
 	instance := ImagePyramidClass.Alloc().InitWithDeviceCenterWeight(device, centerWeight)
 	instance.Autorelease()
 	return instance
 }
 
-func (i_ ImagePyramid) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImagePyramid {
+func (i_ ImagePyramid) InitWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImagePyramid {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
 	rv := objc.Call[ImagePyramid](i_, objc.Sel("initWithDevice:kernelWidth:kernelHeight:weights:"), po0, kernelWidth, kernelHeight, kernelWeights)
 	return rv
@@ -75,7 +75,7 @@ func (i_ ImagePyramid) InitWithDeviceKernelWidthKernelHeightWeights(device metal
 // Initialize a downwards n-tap image pyramid with a custom filter kernel and device. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsimagepyramid/1648821-initwithdevice?language=objc
-func NewImagePyramidWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float64) ImagePyramid {
+func NewImagePyramidWithDeviceKernelWidthKernelHeightWeights(device metal.PDevice, kernelWidth uint, kernelHeight uint, kernelWeights *float32) ImagePyramid {
 	instance := ImagePyramidClass.Alloc().InitWithDeviceKernelWidthKernelHeightWeights(device, kernelWidth, kernelHeight, kernelWeights)
 	instance.Autorelease()
 	return instance

@@ -62,7 +62,7 @@ func NNGraphFrom(ptr unsafe.Pointer) NNGraph {
 
 func (n_ NNGraph) InitWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](n_, objc.Sel("initWithDevice:resultImage:resultImageIsNeeded:"), po0, objc.Ptr(resultImage), resultIsNeeded)
+	rv := objc.Call[NNGraph](n_, objc.Sel("initWithDevice:resultImage:resultImageIsNeeded:"), po0, resultImage, resultIsNeeded)
 	return rv
 }
 
@@ -90,7 +90,7 @@ func NNGraph_GraphWithDeviceResultImagesResultsAreNeeded(device metal.PDevice, r
 
 func (nc _NNGraphClass) GraphWithDeviceResultImageResultImageIsNeeded(device metal.PDevice, resultImage INNImageNode, resultIsNeeded bool) NNGraph {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNGraph](nc, objc.Sel("graphWithDevice:resultImage:resultImageIsNeeded:"), po0, objc.Ptr(resultImage), resultIsNeeded)
+	rv := objc.Call[NNGraph](nc, objc.Sel("graphWithDevice:resultImage:resultImageIsNeeded:"), po0, resultImage, resultIsNeeded)
 	return rv
 }
 
@@ -179,7 +179,7 @@ func (n_ NNGraph) EncodeToCommandBufferSourceImages(commandBuffer metal.PCommand
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867036-encodetocommandbuffer?language=objc
 func (n_ NNGraph) EncodeToCommandBufferObjectSourceImages(commandBufferObject objc.IObject, sourceImages []IImage) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), objc.Ptr(commandBufferObject), sourceImages)
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:"), commandBufferObject, sourceImages)
 	return rv
 }
 
@@ -196,7 +196,7 @@ func (n_ NNGraph) EncodeBatchToCommandBufferSourceImagesSourceStates(commandBuff
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2953952-encodebatchtocommandbuffer?language=objc
 func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStates(commandBufferObject objc.IObject, sourceImages []*foundation.Array, sourceStates []*foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:"), objc.Ptr(commandBufferObject), sourceImages, sourceStates)
+	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:"), commandBufferObject, sourceImages, sourceStates)
 	return rv
 }
 
@@ -205,7 +205,7 @@ func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStates(comma
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867011-encodetocommandbuffer?language=objc
 func (n_ NNGraph) EncodeToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, objc.Ptr(intermediateImages), objc.Ptr(destinationStates))
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, intermediateImages, destinationStates)
 	return rv
 }
 
@@ -213,7 +213,7 @@ func (n_ NNGraph) EncodeToCommandBufferSourceImagesSourceStatesIntermediateImage
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2867011-encodetocommandbuffer?language=objc
 func (n_ NNGraph) EncodeToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []IImage, sourceStates []IState, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) Image {
-	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), objc.Ptr(commandBufferObject), sourceImages, sourceStates, objc.Ptr(intermediateImages), objc.Ptr(destinationStates))
+	rv := objc.Call[Image](n_, objc.Sel("encodeToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), commandBufferObject, sourceImages, sourceStates, intermediateImages, destinationStates)
 	return rv
 }
 
@@ -253,7 +253,7 @@ func (n_ NNGraph) ReadCountForSourceImageAtIndex(index uint) uint {
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2942459-encodebatchtocommandbuffer?language=objc
 func (n_ NNGraph) EncodeBatchToCommandBufferSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBuffer metal.PCommandBuffer, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array {
 	po0 := objc.WrapAsProtocol("MTLCommandBuffer", commandBuffer)
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, objc.Ptr(intermediateImages), objc.Ptr(destinationStates))
+	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), po0, sourceImages, sourceStates, intermediateImages, destinationStates)
 	return rv
 }
 
@@ -261,7 +261,7 @@ func (n_ NNGraph) EncodeBatchToCommandBufferSourceImagesSourceStatesIntermediate
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2942459-encodebatchtocommandbuffer?language=objc
 func (n_ NNGraph) EncodeBatchToCommandBufferObjectSourceImagesSourceStatesIntermediateImagesDestinationStates(commandBufferObject objc.IObject, sourceImages []*foundation.Array, sourceStates []*foundation.Array, intermediateImages foundation.IMutableArray, destinationStates foundation.IMutableArray) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), objc.Ptr(commandBufferObject), sourceImages, sourceStates, objc.Ptr(intermediateImages), objc.Ptr(destinationStates))
+	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceImages:sourceStates:intermediateImages:destinationStates:"), commandBufferObject, sourceImages, sourceStates, intermediateImages, destinationStates)
 	return rv
 }
 
@@ -293,7 +293,7 @@ func (n_ NNGraph) SetDestinationImageAllocator(value PImageAllocator) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnngraph/2866998-destinationimageallocator?language=objc
 func (n_ NNGraph) SetDestinationImageAllocatorObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](n_, objc.Sel("setDestinationImageAllocator:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](n_, objc.Sel("setDestinationImageAllocator:"), valueObject)
 }
 
 //	[Full Topic]

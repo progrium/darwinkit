@@ -56,7 +56,7 @@ type IGraph interface {
 	RandomTensorWithShapeDescriptorStateTensorName(shape *foundation.Array, descriptor IRandomOpDescriptor, state ITensor, name string) []Tensor
 	SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradientZStateStateGradientInputWeightBiasInitStateMaskDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, stateGradient ITensor, inputWeight ITensor, bias ITensor, initState ITensor, mask ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor
 	Convolution2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeTensorForwardConvolutionDescriptorName(gradient ITensor, weights ITensor, outputShapeTensor ITensor, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor
-	NormalizationGammaGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, axes []foundation.INumber, epsilon float64, name string) Tensor
+	NormalizationGammaGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, axes []foundation.INumber, epsilon float32, name string) Tensor
 	CompileWithDeviceFeedsTargetTensorsTargetOperationsCompilationDescriptor(device IDevice, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, compilationDescriptor ICompilationDescriptor) Executable
 	Flatten2DTensorAxisName(tensor ITensor, axis int, name string) Tensor
 	LogicalXNORWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor
@@ -171,7 +171,7 @@ type IGraph interface {
 	ForLoopWithNumberOfIterationsInitialBodyArgumentsBodyName(numberOfIterations ITensor, initialBodyArguments []ITensor, body ForLoopBodyBlock, name string) []Tensor
 	EncodeToCommandBufferFeedsTargetOperationsResultsDictionaryExecutionDescriptor(commandBuffer mps.ICommandBuffer, feeds *foundation.Dictionary, targetOperations []IOperation, resultsDictionary *foundation.Dictionary, executionDescriptor IExecutionDescriptor)
 	LogarithmWithTensorName(tensor ITensor, name string) Tensor
-	NormalizationGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorGammaTensorGammaGradientTensorBetaGradientTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, gamma ITensor, gammaGradient ITensor, betaGradient ITensor, axes []foundation.INumber, epsilon float64, name string) Tensor
+	NormalizationGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorGammaTensorGammaGradientTensorBetaGradientTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, gamma ITensor, gammaGradient ITensor, betaGradient ITensor, axes []foundation.INumber, epsilon float32, name string) Tensor
 	ConcatTensorWithTensorDimensionName(tensor ITensor, tensor2 ITensor, dimensionIndex int, name string) Tensor
 	ConstantWithScalarDataType(scalar float64, dataType mps.DataType) Tensor
 	ReductionMinimumPropagateNaNWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor
@@ -243,7 +243,7 @@ type IGraph interface {
 	AcoshWithTensorName(tensor ITensor, name string) Tensor
 	RandomUniformTensorWithShapeTensorSeedName(shapeTensor ITensor, seed uint, name string) Tensor
 	RandomTensorWithShapeDescriptorSeedName(shape *foundation.Array, descriptor IRandomOpDescriptor, seed uint, name string) Tensor
-	NormalizationWithTensorMeanTensorVarianceTensorGammaTensorBetaTensorEpsilonName(tensor ITensor, mean ITensor, variance ITensor, gamma ITensor, beta ITensor, epsilon float64, name string) Tensor
+	NormalizationWithTensorMeanTensorVarianceTensorGammaTensorBetaTensorEpsilonName(tensor ITensor, mean ITensor, variance ITensor, gamma ITensor, beta ITensor, epsilon float32, name string) Tensor
 	CoordinateAlongAxisWithShapeName(axis int, shape *foundation.Array, name string) Tensor
 	ReciprocalWithTensorName(tensor ITensor, name string) Tensor
 	RandomUniformTensorWithShapeSeedName(shape *foundation.Array, seed uint, name string) Tensor
@@ -325,7 +325,7 @@ func (gc _GraphClass) Alloc() Graph {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564582-roundwithtensor?language=objc
 func (g_ Graph) RoundWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("roundWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("roundWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -333,7 +333,7 @@ func (g_ Graph) RoundWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750679-depthwiseconvolution3ddatagradie?language=objc
 func (g_ Graph) DepthwiseConvolution3DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeDescriptorName(incomingGradient ITensor, weights ITensor, outputShape *foundation.Array, descriptor IDepthwiseConvolution3DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:descriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(weights), outputShape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:descriptor:name:"), incomingGradient, weights, outputShape, descriptor, name)
 	return rv
 }
 
@@ -341,7 +341,7 @@ func (g_ Graph) DepthwiseConvolution3DDataGradientWithIncomingGradientTensorWeig
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580387-softmaxwithtensor?language=objc
 func (g_ Graph) SoftMaxWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("softMaxWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("softMaxWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -349,7 +349,7 @@ func (g_ Graph) SoftMaxWithTensorAxisName(tensor ITensor, axis int, name string)
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867084-topkwithsourcetensor?language=objc
 func (g_ Graph) TopKWithSourceTensorKTensorName(source ITensor, kTensor ITensor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("topKWithSourceTensor:kTensor:name:"), objc.Ptr(source), objc.Ptr(kTensor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("topKWithSourceTensor:kTensor:name:"), source, kTensor, name)
 	return rv
 }
 
@@ -357,7 +357,7 @@ func (g_ Graph) TopKWithSourceTensorKTensorName(source ITensor, kTensor ITensor,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867078-casttensor?language=objc
 func (g_ Graph) CastTensorToTypeName(tensor ITensor, type_ mps.DataType, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("castTensor:toType:name:"), objc.Ptr(tensor), type_, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("castTensor:toType:name:"), tensor, type_, name)
 	return rv
 }
 
@@ -365,7 +365,7 @@ func (g_ Graph) CastTensorToTypeName(tensor ITensor, type_ mps.DataType, name st
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656159-atanwithtensor?language=objc
 func (g_ Graph) AtanWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("atanWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("atanWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -373,7 +373,7 @@ func (g_ Graph) AtanWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564705-avgpooling2dgradientwithgradient?language=objc
 func (g_ Graph) AvgPooling2DGradientWithGradientTensorSourceTensorDescriptorName(gradient ITensor, source ITensor, descriptor IPooling2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling2DGradientWithGradientTensor:sourceTensor:descriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling2DGradientWithGradientTensor:sourceTensor:descriptor:name:"), gradient, source, descriptor, name)
 	return rv
 }
 
@@ -381,7 +381,7 @@ func (g_ Graph) AvgPooling2DGradientWithGradientTensorSourceTensorDescriptorName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564555-identitywithtensor?language=objc
 func (g_ Graph) IdentityWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("identityWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("identityWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -397,7 +397,7 @@ func (g_ Graph) PlaceholderWithShapeDataTypeName(shape *foundation.Array, dataTy
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901508-reductionmaximumpropagatenanwith?language=objc
 func (g_ Graph) ReductionMaximumPropagateNaNWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumPropagateNaNWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumPropagateNaNWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -405,7 +405,7 @@ func (g_ Graph) ReductionMaximumPropagateNaNWithTensorAxesName(tensor ITensor, a
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3667487-depthwiseconvolution2ddatagradie?language=objc
 func (g_ Graph) DepthwiseConvolution2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeDescriptorName(incomingGradient ITensor, weights ITensor, outputShape *foundation.Array, descriptor IDepthwiseConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:descriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(weights), outputShape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:descriptor:name:"), incomingGradient, weights, outputShape, descriptor, name)
 	return rv
 }
 
@@ -413,7 +413,7 @@ func (g_ Graph) DepthwiseConvolution2DDataGradientWithIncomingGradientTensorWeig
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867075-scatterwithupdatestensor?language=objc
 func (g_ Graph) ScatterWithUpdatesTensorIndicesTensorShapeAxisModeName(updatesTensor ITensor, indicesTensor ITensor, shape *foundation.Array, axis int, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterWithUpdatesTensor:indicesTensor:shape:axis:mode:name:"), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), shape, axis, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterWithUpdatesTensor:indicesTensor:shape:axis:mode:name:"), updatesTensor, indicesTensor, shape, axis, mode, name)
 	return rv
 }
 
@@ -421,7 +421,7 @@ func (g_ Graph) ScatterWithUpdatesTensorIndicesTensorShapeAxisModeName(updatesTe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564470-sigmoidgradientwithincominggradi?language=objc
 func (g_ Graph) SigmoidGradientWithIncomingGradientSourceTensorName(gradient ITensor, source ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sigmoidGradientWithIncomingGradient:sourceTensor:name:"), objc.Ptr(gradient), objc.Ptr(source), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sigmoidGradientWithIncomingGradient:sourceTensor:name:"), gradient, source, name)
 	return rv
 }
 
@@ -429,7 +429,7 @@ func (g_ Graph) SigmoidGradientWithIncomingGradientSourceTensorName(gradient ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564552-floorwithtensor?language=objc
 func (g_ Graph) FloorWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("floorWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("floorWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -437,7 +437,7 @@ func (g_ Graph) FloorWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901509-reductionmaximumpropagatenanwith?language=objc
 func (g_ Graph) ReductionMaximumPropagateNaNWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumPropagateNaNWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumPropagateNaNWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -445,7 +445,7 @@ func (g_ Graph) ReductionMaximumPropagateNaNWithTensorAxisName(tensor ITensor, a
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656158-atan2withprimarytensor?language=objc
 func (g_ Graph) Atan2WithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("atan2WithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("atan2WithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -453,7 +453,7 @@ func (g_ Graph) Atan2WithPrimaryTensorSecondaryTensorName(primaryTensor ITensor,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564553-greaterthanorequaltowithprimaryt?language=objc
 func (g_ Graph) GreaterThanOrEqualToWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("greaterThanOrEqualToWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("greaterThanOrEqualToWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -461,7 +461,7 @@ func (g_ Graph) GreaterThanOrEqualToWithPrimaryTensorSecondaryTensorName(primary
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580451-gradientforprimarytensor?language=objc
 func (g_ Graph) GradientForPrimaryTensorWithTensorsName(primaryTensor ITensor, tensors []ITensor, name string) foundation.Dictionary {
-	rv := objc.Call[foundation.Dictionary](g_, objc.Sel("gradientForPrimaryTensor:withTensors:name:"), objc.Ptr(primaryTensor), tensors, name)
+	rv := objc.Call[foundation.Dictionary](g_, objc.Sel("gradientForPrimaryTensor:withTensors:name:"), primaryTensor, tensors, name)
 	return rv
 }
 
@@ -470,21 +470,21 @@ func (g_ Graph) GradientForPrimaryTensorWithTensorsName(primaryTensor ITensor, t
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564619-runasyncwithmtlcommandqueue?language=objc
 func (g_ Graph) RunAsyncWithMTLCommandQueueFeedsTargetOperationsResultsDictionaryExecutionDescriptor(commandQueue metal.PCommandQueue, feeds *foundation.Dictionary, targetOperations []IOperation, resultsDictionary *foundation.Dictionary, executionDescriptor IExecutionDescriptor) {
 	po0 := objc.WrapAsProtocol("MTLCommandQueue", commandQueue)
-	objc.Call[objc.Void](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:executionDescriptor:"), po0, feeds, targetOperations, resultsDictionary, objc.Ptr(executionDescriptor))
+	objc.Call[objc.Void](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:executionDescriptor:"), po0, feeds, targetOperations, resultsDictionary, executionDescriptor)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564619-runasyncwithmtlcommandqueue?language=objc
 func (g_ Graph) RunAsyncWithMTLCommandQueueObjectFeedsTargetOperationsResultsDictionaryExecutionDescriptor(commandQueueObject objc.IObject, feeds *foundation.Dictionary, targetOperations []IOperation, resultsDictionary *foundation.Dictionary, executionDescriptor IExecutionDescriptor) {
-	objc.Call[objc.Void](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:executionDescriptor:"), objc.Ptr(commandQueueObject), feeds, targetOperations, resultsDictionary, objc.Ptr(executionDescriptor))
+	objc.Call[objc.Void](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:executionDescriptor:"), commandQueueObject, feeds, targetOperations, resultsDictionary, executionDescriptor)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564546-divisionwithprimarytensor?language=objc
 func (g_ Graph) DivisionWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("divisionWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("divisionWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -492,7 +492,7 @@ func (g_ Graph) DivisionWithPrimaryTensorSecondaryTensorName(primaryTensor ITens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564578-powerwithprimarytensor?language=objc
 func (g_ Graph) PowerWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("powerWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("powerWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -500,7 +500,7 @@ func (g_ Graph) PowerWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928154-gatheralongaxistensor?language=objc
 func (g_ Graph) GatherAlongAxisTensorWithUpdatesTensorIndicesTensorName(axisTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("gatherAlongAxisTensor:withUpdatesTensor:indicesTensor:name:"), objc.Ptr(axisTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("gatherAlongAxisTensor:withUpdatesTensor:indicesTensor:name:"), axisTensor, updatesTensor, indicesTensor, name)
 	return rv
 }
 
@@ -508,7 +508,7 @@ func (g_ Graph) GatherAlongAxisTensorWithUpdatesTensorIndicesTensorName(axisTens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618927-convolution2ddatagradientwithinc?language=objc
 func (g_ Graph) Convolution2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeForwardConvolutionDescriptorName(incomingGradient ITensor, weights ITensor, outputShape *foundation.Array, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(weights), outputShape, objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:forwardConvolutionDescriptor:name:"), incomingGradient, weights, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -516,7 +516,7 @@ func (g_ Graph) Convolution2DDataGradientWithIncomingGradientTensorWeightsTensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656154-acoswithtensor?language=objc
 func (g_ Graph) AcosWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("acosWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("acosWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -524,7 +524,7 @@ func (g_ Graph) AcosWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656162-meanoftensor?language=objc
 func (g_ Graph) MeanOfTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("meanOfTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("meanOfTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -532,7 +532,7 @@ func (g_ Graph) MeanOfTensorAxesName(tensor ITensor, axes []foundation.INumber, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564559-lessthanorequaltowithprimarytens?language=objc
 func (g_ Graph) LessThanOrEqualToWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("lessThanOrEqualToWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("lessThanOrEqualToWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -540,7 +540,7 @@ func (g_ Graph) LessThanOrEqualToWithPrimaryTensorSecondaryTensorName(primaryTen
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919760-singlegaternngradientswithsource?language=objc
 func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradientZStateInputWeightBiasInitStateMaskDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, inputWeight ITensor, bias ITensor, initState ITensor, mask ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:inputWeight:bias:initState:mask:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(mask), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:inputWeight:bias:initState:mask:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, inputWeight, bias, initState, mask, descriptor, name)
 	return rv
 }
 
@@ -548,7 +548,7 @@ func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564733-slicetensor?language=objc
 func (g_ Graph) SliceTensorDimensionStartLengthName(tensor ITensor, dimensionIndex uint, start int, length int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:dimension:start:length:name:"), objc.Ptr(tensor), dimensionIndex, start, length, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:dimension:start:length:name:"), tensor, dimensionIndex, start, length, name)
 	return rv
 }
 
@@ -556,7 +556,7 @@ func (g_ Graph) SliceTensorDimensionStartLengthName(tensor ITensor, dimensionInd
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3728136-slicetensor?language=objc
 func (g_ Graph) SliceTensorStartsEndsStridesStartMaskEndMaskSqueezeMaskName(tensor ITensor, starts []foundation.INumber, ends []foundation.INumber, strides []foundation.INumber, startMask uint32, endMask uint32, squeezeMask uint32, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:starts:ends:strides:startMask:endMask:squeezeMask:name:"), objc.Ptr(tensor), starts, ends, strides, startMask, endMask, squeezeMask, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:starts:ends:strides:startMask:endMask:squeezeMask:name:"), tensor, starts, ends, strides, startMask, endMask, squeezeMask, name)
 	return rv
 }
 
@@ -564,7 +564,7 @@ func (g_ Graph) SliceTensorStartsEndsStridesStartMaskEndMaskSqueezeMaskName(tens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618933-normalizationbetagradientwithinc?language=objc
 func (g_ Graph) NormalizationBetaGradientWithIncomingGradientTensorSourceTensorReductionAxesName(incomingGradientTensor ITensor, sourceTensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("normalizationBetaGradientWithIncomingGradientTensor:sourceTensor:reductionAxes:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(sourceTensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("normalizationBetaGradientWithIncomingGradientTensor:sourceTensor:reductionAxes:name:"), incomingGradientTensor, sourceTensor, axes, name)
 	return rv
 }
 
@@ -572,7 +572,7 @@ func (g_ Graph) NormalizationBetaGradientWithIncomingGradientTensorSourceTensorR
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925453-expanddimsoftensor?language=objc
 func (g_ Graph) ExpandDimsOfTensorAxesTensorName(tensor ITensor, axesTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axesTensor:name:"), objc.Ptr(tensor), objc.Ptr(axesTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axesTensor:name:"), tensor, axesTensor, name)
 	return rv
 }
 
@@ -580,7 +580,7 @@ func (g_ Graph) ExpandDimsOfTensorAxesTensorName(tensor ITensor, axesTensor ITen
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901480-randomtensorwithshape?language=objc
 func (g_ Graph) RandomTensorWithShapeDescriptorStateTensorName(shape *foundation.Array, descriptor IRandomOpDescriptor, state ITensor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:stateTensor:name:"), shape, objc.Ptr(descriptor), objc.Ptr(state), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:stateTensor:name:"), shape, descriptor, state, name)
 	return rv
 }
 
@@ -588,7 +588,7 @@ func (g_ Graph) RandomTensorWithShapeDescriptorStateTensorName(shape *foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919761-singlegaternngradientswithsource?language=objc
 func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradientZStateStateGradientInputWeightBiasInitStateMaskDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, stateGradient ITensor, inputWeight ITensor, bias ITensor, initState ITensor, mask ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:stateGradient:inputWeight:bias:initState:mask:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(stateGradient), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(mask), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:stateGradient:inputWeight:bias:initState:mask:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, stateGradient, inputWeight, bias, initState, mask, descriptor, name)
 	return rv
 }
 
@@ -596,15 +596,15 @@ func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867067-convolution2ddatagradientwithinc?language=objc
 func (g_ Graph) Convolution2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeTensorForwardConvolutionDescriptorName(gradient ITensor, weights ITensor, outputShapeTensor ITensor, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), objc.Ptr(gradient), objc.Ptr(weights), objc.Ptr(outputShapeTensor), objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), gradient, weights, outputShapeTensor, forwardConvolutionDescriptor, name)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618934-normalizationgammagradientwithin?language=objc
-func (g_ Graph) NormalizationGammaGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, axes []foundation.INumber, epsilon float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("normalizationGammaGradientWithIncomingGradientTensor:sourceTensor:meanTensor:varianceTensor:reductionAxes:epsilon:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(sourceTensor), objc.Ptr(meanTensor), objc.Ptr(varianceTensor), axes, epsilon, name)
+func (g_ Graph) NormalizationGammaGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, axes []foundation.INumber, epsilon float32, name string) Tensor {
+	rv := objc.Call[Tensor](g_, objc.Sel("normalizationGammaGradientWithIncomingGradientTensor:sourceTensor:meanTensor:varianceTensor:reductionAxes:epsilon:name:"), incomingGradientTensor, sourceTensor, meanTensor, varianceTensor, axes, epsilon, name)
 	return rv
 }
 
@@ -612,7 +612,7 @@ func (g_ Graph) NormalizationGammaGradientWithIncomingGradientTensorSourceTensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3787575-compilewithdevice?language=objc
 func (g_ Graph) CompileWithDeviceFeedsTargetTensorsTargetOperationsCompilationDescriptor(device IDevice, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, compilationDescriptor ICompilationDescriptor) Executable {
-	rv := objc.Call[Executable](g_, objc.Sel("compileWithDevice:feeds:targetTensors:targetOperations:compilationDescriptor:"), objc.Ptr(device), feeds, targetTensors, targetOperations, objc.Ptr(compilationDescriptor))
+	rv := objc.Call[Executable](g_, objc.Sel("compileWithDevice:feeds:targetTensors:targetOperations:compilationDescriptor:"), device, feeds, targetTensors, targetOperations, compilationDescriptor)
 	return rv
 }
 
@@ -620,7 +620,7 @@ func (g_ Graph) CompileWithDeviceFeedsTargetTensorsTargetOperationsCompilationDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750711-flatten2dtensor?language=objc
 func (g_ Graph) Flatten2DTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("flatten2DTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("flatten2DTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -628,7 +628,7 @@ func (g_ Graph) Flatten2DTensorAxisName(tensor ITensor, axis int, name string) T
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564568-logicalxnorwithprimarytensor?language=objc
 func (g_ Graph) LogicalXNORWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalXNORWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalXNORWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -660,7 +660,7 @@ func (g_ Graph) ControlDependencyWithOperationsDependentBlockName(operations []I
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750714-reversetensor?language=objc
 func (g_ Graph) ReverseTensorAxesTensorName(tensor ITensor, axesTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:axesTensor:name:"), objc.Ptr(tensor), objc.Ptr(axesTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:axesTensor:name:"), tensor, axesTensor, name)
 	return rv
 }
 
@@ -668,7 +668,7 @@ func (g_ Graph) ReverseTensorAxesTensorName(tensor ITensor, axesTensor ITensor, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564706-avgpooling2dwithsourcetensor?language=objc
 func (g_ Graph) AvgPooling2DWithSourceTensorDescriptorName(source ITensor, descriptor IPooling2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling2DWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling2DWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -676,7 +676,7 @@ func (g_ Graph) AvgPooling2DWithSourceTensorDescriptorName(source ITensor, descr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580483-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthAxisName(indicesTensor ITensor, depth uint, axis uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:name:"), objc.Ptr(indicesTensor), depth, axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:name:"), indicesTensor, depth, axis, name)
 	return rv
 }
 
@@ -684,7 +684,7 @@ func (g_ Graph) OneHotWithIndicesTensorDepthAxisName(indicesTensor ITensor, dept
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564584-signwithtensor?language=objc
 func (g_ Graph) SignWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("signWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("signWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -692,7 +692,7 @@ func (g_ Graph) SignWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925451-coordinatealongaxistensor?language=objc
 func (g_ Graph) CoordinateAlongAxisTensorWithShapeTensorName(axisTensor ITensor, shapeTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxisTensor:withShapeTensor:name:"), objc.Ptr(axisTensor), objc.Ptr(shapeTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxisTensor:withShapeTensor:name:"), axisTensor, shapeTensor, name)
 	return rv
 }
 
@@ -700,7 +700,7 @@ func (g_ Graph) CoordinateAlongAxisTensorWithShapeTensorName(axisTensor ITensor,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564550-exponentbase2withtensor?language=objc
 func (g_ Graph) ExponentBase2WithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("exponentBase2WithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("exponentBase2WithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -708,7 +708,7 @@ func (g_ Graph) ExponentBase2WithTensorName(tensor ITensor, name string) Tensor 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589367-reductionminimumwithtensor?language=objc
 func (g_ Graph) ReductionMinimumWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -716,7 +716,7 @@ func (g_ Graph) ReductionMinimumWithTensorAxesName(tensor ITensor, axes []founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750681-depthwiseconvolution3dwithsource?language=objc
 func (g_ Graph) DepthwiseConvolution3DWithSourceTensorWeightsTensorDescriptorName(source ITensor, weights ITensor, descriptor IDepthwiseConvolution3DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DWithSourceTensor:weightsTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DWithSourceTensor:weightsTensor:descriptor:name:"), source, weights, descriptor, name)
 	return rv
 }
 
@@ -724,7 +724,7 @@ func (g_ Graph) DepthwiseConvolution3DWithSourceTensorWeightsTensorDescriptorNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564558-isnanwithtensor?language=objc
 func (g_ Graph) IsNaNWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("isNaNWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("isNaNWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -732,7 +732,7 @@ func (g_ Graph) IsNaNWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564567-logicalorwithprimarytensor?language=objc
 func (g_ Graph) LogicalORWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalORWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalORWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -740,7 +740,7 @@ func (g_ Graph) LogicalORWithPrimaryTensorSecondaryTensorName(primaryTensor ITen
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3816769-forloopwithlowerbound?language=objc
 func (g_ Graph) ForLoopWithLowerBoundUpperBoundStepInitialBodyArgumentsBodyName(lowerBound ITensor, upperBound ITensor, step ITensor, initialBodyArguments []ITensor, body ForLoopBodyBlock, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("forLoopWithLowerBound:upperBound:step:initialBodyArguments:body:name:"), objc.Ptr(lowerBound), objc.Ptr(upperBound), objc.Ptr(step), initialBodyArguments, body, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("forLoopWithLowerBound:upperBound:step:initialBodyArguments:body:name:"), lowerBound, upperBound, step, initialBodyArguments, body, name)
 	return rv
 }
 
@@ -748,7 +748,7 @@ func (g_ Graph) ForLoopWithLowerBoundUpperBoundStepInitialBodyArgumentsBodyName(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919780-reductionorwithtensor?language=objc
 func (g_ Graph) ReductionOrWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionOrWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionOrWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -764,7 +764,7 @@ func (g_ Graph) RandomPhiloxStateTensorWithSeedName(seed uint, name string) Tens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901482-randomtensorwithshapetensor?language=objc
 func (g_ Graph) RandomTensorWithShapeTensorDescriptorSeedName(shapeTensor ITensor, descriptor IRandomOpDescriptor, seed uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:seed:name:"), objc.Ptr(shapeTensor), objc.Ptr(descriptor), seed, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:seed:name:"), shapeTensor, descriptor, seed, name)
 	return rv
 }
 
@@ -772,7 +772,7 @@ func (g_ Graph) RandomTensorWithShapeTensorDescriptorSeedName(shapeTensor ITenso
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564708-maxpooling2dwithsourcetensor?language=objc
 func (g_ Graph) MaxPooling2DWithSourceTensorDescriptorName(source ITensor, descriptor IPooling2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling2DWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling2DWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -780,7 +780,7 @@ func (g_ Graph) MaxPooling2DWithSourceTensorDescriptorName(source ITensor, descr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564469-reluwithtensor?language=objc
 func (g_ Graph) ReLUWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reLUWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reLUWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -788,7 +788,7 @@ func (g_ Graph) ReLUWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564735-tiletensor?language=objc
 func (g_ Graph) TileTensorWithMultiplierName(tensor ITensor, multiplier *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("tileTensor:withMultiplier:name:"), objc.Ptr(tensor), multiplier, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("tileTensor:withMultiplier:name:"), tensor, multiplier, name)
 	return rv
 }
 
@@ -796,7 +796,7 @@ func (g_ Graph) TileTensorWithMultiplierName(tensor ITensor, multiplier *foundat
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564564-logicalandwithprimarytensor?language=objc
 func (g_ Graph) LogicalANDWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalANDWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalANDWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -804,7 +804,7 @@ func (g_ Graph) LogicalANDWithPrimaryTensorSecondaryTensorName(primaryTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618937-stochasticgradientdescentwithlea?language=objc
 func (g_ Graph) StochasticGradientDescentWithLearningRateTensorValuesTensorGradientTensorName(learningRateTensor ITensor, valuesTensor ITensor, gradientTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("stochasticGradientDescentWithLearningRateTensor:valuesTensor:gradientTensor:name:"), objc.Ptr(learningRateTensor), objc.Ptr(valuesTensor), objc.Ptr(gradientTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("stochasticGradientDescentWithLearningRateTensor:valuesTensor:gradientTensor:name:"), learningRateTensor, valuesTensor, gradientTensor, name)
 	return rv
 }
 
@@ -812,7 +812,7 @@ func (g_ Graph) StochasticGradientDescentWithLearningRateTensorValuesTensorGradi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867083-topkwithsourcetensor?language=objc
 func (g_ Graph) TopKWithSourceTensorKName(source ITensor, k uint, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("topKWithSourceTensor:k:name:"), objc.Ptr(source), k, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("topKWithSourceTensor:k:name:"), source, k, name)
 	return rv
 }
 
@@ -820,7 +820,7 @@ func (g_ Graph) TopKWithSourceTensorKName(source ITensor, k uint, name string) [
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564547-equalwithprimarytensor?language=objc
 func (g_ Graph) EqualWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("equalWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("equalWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -828,7 +828,7 @@ func (g_ Graph) EqualWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750692-avgpooling4dgradientwithgradient?language=objc
 func (g_ Graph) AvgPooling4DGradientWithGradientTensorSourceTensorDescriptorName(gradient ITensor, source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), gradient, source, descriptor, name)
 	return rv
 }
 
@@ -836,7 +836,7 @@ func (g_ Graph) AvgPooling4DGradientWithGradientTensorSourceTensorDescriptorName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564560-lessthanwithprimarytensor?language=objc
 func (g_ Graph) LessThanWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("lessThanWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("lessThanWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -853,7 +853,7 @@ func (g_ Graph) RunWithMTLCommandQueueFeedsTargetTensorsTargetOperations(command
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564623-runwithmtlcommandqueue?language=objc
 func (g_ Graph) RunWithMTLCommandQueueObjectFeedsTargetTensorsTargetOperations(commandQueueObject objc.IObject, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation) *foundation.Dictionary {
-	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runWithMTLCommandQueue:feeds:targetTensors:targetOperations:"), objc.Ptr(commandQueueObject), feeds, targetTensors, targetOperations)
+	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runWithMTLCommandQueue:feeds:targetTensors:targetOperations:"), commandQueueObject, feeds, targetTensors, targetOperations)
 	return rv
 }
 
@@ -861,7 +861,7 @@ func (g_ Graph) RunWithMTLCommandQueueObjectFeedsTargetTensorsTargetOperations(c
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564726-reductionmaximumwithtensor?language=objc
 func (g_ Graph) ReductionMaximumWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -869,7 +869,7 @@ func (g_ Graph) ReductionMaximumWithTensorAxisName(tensor ITensor, axis int, nam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867065-leakyreluwithtensor?language=objc
 func (g_ Graph) LeakyReLUWithTensorAlphaName(tensor ITensor, alpha float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUWithTensor:alpha:name:"), objc.Ptr(tensor), alpha, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUWithTensor:alpha:name:"), tensor, alpha, name)
 	return rv
 }
 
@@ -877,7 +877,7 @@ func (g_ Graph) LeakyReLUWithTensorAlphaName(tensor ITensor, alpha float64, name
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925432-lstmwithsourcetensor?language=objc
 func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInitStateInitCellDescriptorName(source ITensor, recurrentWeight ITensor, initState ITensor, initCell ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:initState:initCell:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:initState:initCell:descriptor:name:"), source, recurrentWeight, initState, initCell, descriptor, name)
 	return rv
 }
 
@@ -885,7 +885,7 @@ func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInitStateInitCellDescriptorNa
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564589-squarewithtensor?language=objc
 func (g_ Graph) SquareWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squareWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squareWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -893,7 +893,7 @@ func (g_ Graph) SquareWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564548-erfwithtensor?language=objc
 func (g_ Graph) ErfWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("erfWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("erfWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -901,7 +901,7 @@ func (g_ Graph) ErfWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589366-reductionmaximumwithtensor?language=objc
 func (g_ Graph) ReductionMaximumWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMaximumWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -909,7 +909,7 @@ func (g_ Graph) ReductionMaximumWithTensorAxesName(tensor ITensor, axes []founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925454-expanddimsoftensor?language=objc
 func (g_ Graph) ExpandDimsOfTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -917,7 +917,7 @@ func (g_ Graph) ExpandDimsOfTensorAxisName(tensor ITensor, axis int, name string
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580485-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthDataTypeOnValueOffValueName(indicesTensor ITensor, depth uint, dataType mps.DataType, onValue float64, offValue float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:dataType:onValue:offValue:name:"), objc.Ptr(indicesTensor), depth, dataType, onValue, offValue, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:dataType:onValue:offValue:name:"), indicesTensor, depth, dataType, onValue, offValue, name)
 	return rv
 }
 
@@ -925,7 +925,7 @@ func (g_ Graph) OneHotWithIndicesTensorDepthDataTypeOnValueOffValueName(indicesT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656157-asinhwithtensor?language=objc
 func (g_ Graph) AsinhWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("asinhWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("asinhWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -933,7 +933,7 @@ func (g_ Graph) AsinhWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564574-multiplicationwithprimarytensor?language=objc
 func (g_ Graph) MultiplicationWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("multiplicationWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("multiplicationWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -941,7 +941,7 @@ func (g_ Graph) MultiplicationWithPrimaryTensorSecondaryTensorName(primaryTensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3667489-depthwiseconvolution2dwithsource?language=objc
 func (g_ Graph) DepthwiseConvolution2DWithSourceTensorWeightsTensorDescriptorName(source ITensor, weights ITensor, descriptor IDepthwiseConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DWithSourceTensor:weightsTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DWithSourceTensor:weightsTensor:descriptor:name:"), source, weights, descriptor, name)
 	return rv
 }
 
@@ -949,7 +949,7 @@ func (g_ Graph) DepthwiseConvolution2DWithSourceTensorWeightsTensorDescriptorNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901487-randomuniformtensorwithshapetens?language=objc
 func (g_ Graph) RandomUniformTensorWithShapeTensorName(shapeTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:name:"), objc.Ptr(shapeTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:name:"), shapeTensor, name)
 	return rv
 }
 
@@ -965,7 +965,7 @@ func (g_ Graph) WhileWithInitialInputsBeforeAfterName(initialInputs []ITensor, b
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3787605-stencilwithsourcetensor?language=objc
 func (g_ Graph) StencilWithSourceTensorWeightsTensorDescriptorName(source ITensor, weights ITensor, descriptor IStencilOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("stencilWithSourceTensor:weightsTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("stencilWithSourceTensor:weightsTensor:descriptor:name:"), source, weights, descriptor, name)
 	return rv
 }
 
@@ -973,7 +973,7 @@ func (g_ Graph) StencilWithSourceTensorWeightsTensorDescriptorName(source ITenso
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3728133-slicegradienttensor?language=objc
 func (g_ Graph) SliceGradientTensorFwdInShapeTensorStartsEndsStridesName(inputGradientTensor ITensor, fwdInShapeTensor ITensor, starts []foundation.INumber, ends []foundation.INumber, strides []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sliceGradientTensor:fwdInShapeTensor:starts:ends:strides:name:"), objc.Ptr(inputGradientTensor), objc.Ptr(fwdInShapeTensor), starts, ends, strides, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sliceGradientTensor:fwdInShapeTensor:starts:ends:strides:name:"), inputGradientTensor, fwdInShapeTensor, starts, ends, strides, name)
 	return rv
 }
 
@@ -981,7 +981,7 @@ func (g_ Graph) SliceGradientTensorFwdInShapeTensorStartsEndsStridesName(inputGr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925457-squeezetensor?language=objc
 func (g_ Graph) SqueezeTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -989,7 +989,7 @@ func (g_ Graph) SqueezeTensorAxisName(tensor ITensor, axis int, name string) Ten
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901481-randomtensorwithshapetensor?language=objc
 func (g_ Graph) RandomTensorWithShapeTensorDescriptorName(shapeTensor ITensor, descriptor IRandomOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:name:"), objc.Ptr(shapeTensor), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:name:"), shapeTensor, descriptor, name)
 	return rv
 }
 
@@ -1005,7 +1005,7 @@ func (g_ Graph) ConstantWithScalarShapeDataType(scalar float64, shape *foundatio
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589369-scatterndwithupdatestensor?language=objc
 func (g_ Graph) ScatterNDWithUpdatesTensorIndicesTensorShapeBatchDimensionsName(updatesTensor ITensor, indicesTensor ITensor, shape *foundation.Array, batchDimensions uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithUpdatesTensor:indicesTensor:shape:batchDimensions:name:"), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), shape, batchDimensions, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithUpdatesTensor:indicesTensor:shape:batchDimensions:name:"), updatesTensor, indicesTensor, shape, batchDimensions, name)
 	return rv
 }
 
@@ -1013,7 +1013,7 @@ func (g_ Graph) ScatterNDWithUpdatesTensorIndicesTensorShapeBatchDimensionsName(
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618939-tilegradientwithincominggradient?language=objc
 func (g_ Graph) TileGradientWithIncomingGradientTensorSourceTensorWithMultiplierName(incomingGradientTensor ITensor, sourceTensor ITensor, multiplier *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("tileGradientWithIncomingGradientTensor:sourceTensor:withMultiplier:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(sourceTensor), multiplier, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("tileGradientWithIncomingGradientTensor:sourceTensor:withMultiplier:name:"), incomingGradientTensor, sourceTensor, multiplier, name)
 	return rv
 }
 
@@ -1021,7 +1021,7 @@ func (g_ Graph) TileGradientWithIncomingGradientTensorSourceTensorWithMultiplier
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564727-reductionminimumwithtensor?language=objc
 func (g_ Graph) ReductionMinimumWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1029,7 +1029,7 @@ func (g_ Graph) ReductionMinimumWithTensorAxisName(tensor ITensor, axis int, nam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656163-varianceoftensor?language=objc
 func (g_ Graph) VarianceOfTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("varianceOfTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("varianceOfTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1037,7 +1037,7 @@ func (g_ Graph) VarianceOfTensorAxesName(tensor ITensor, axes []foundation.INumb
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564543-clampwithtensor?language=objc
 func (g_ Graph) ClampWithTensorMinValueTensorMaxValueTensorName(tensor ITensor, minValueTensor ITensor, maxValueTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("clampWithTensor:minValueTensor:maxValueTensor:name:"), objc.Ptr(tensor), objc.Ptr(minValueTensor), objc.Ptr(maxValueTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("clampWithTensor:minValueTensor:maxValueTensor:name:"), tensor, minValueTensor, maxValueTensor, name)
 	return rv
 }
 
@@ -1045,7 +1045,7 @@ func (g_ Graph) ClampWithTensorMinValueTensorMaxValueTensorName(tensor ITensor, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564471-sigmoidwithtensor?language=objc
 func (g_ Graph) SigmoidWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sigmoidWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sigmoidWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1053,7 +1053,7 @@ func (g_ Graph) SigmoidWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564587-sinhwithtensor?language=objc
 func (g_ Graph) SinhWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sinhWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sinhWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1061,7 +1061,7 @@ func (g_ Graph) SinhWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750694-maxpooling4dgradientwithgradient?language=objc
 func (g_ Graph) MaxPooling4DGradientWithGradientTensorSourceTensorDescriptorName(gradient ITensor, source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), gradient, source, descriptor, name)
 	return rv
 }
 
@@ -1069,7 +1069,7 @@ func (g_ Graph) MaxPooling4DGradientWithGradientTensorSourceTensorDescriptorName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867074-scatterwithdatatensor?language=objc
 func (g_ Graph) ScatterWithDataTensorUpdatesTensorIndicesTensorAxisModeName(dataTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, axis int, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterWithDataTensor:updatesTensor:indicesTensor:axis:mode:name:"), objc.Ptr(dataTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), axis, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterWithDataTensor:updatesTensor:indicesTensor:axis:mode:name:"), dataTensor, updatesTensor, indicesTensor, axis, mode, name)
 	return rv
 }
 
@@ -1077,7 +1077,7 @@ func (g_ Graph) ScatterWithDataTensorUpdatesTensorIndicesTensorAxisModeName(data
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750716-spacetodepth2dtensor?language=objc
 func (g_ Graph) SpaceToDepth2DTensorWidthAxisHeightAxisDepthAxisBlockSizeUsePixelShuffleOrderName(tensor ITensor, widthAxis uint, heightAxis uint, depthAxis uint, blockSize uint, usePixelShuffleOrder bool, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("spaceToDepth2DTensor:widthAxis:heightAxis:depthAxis:blockSize:usePixelShuffleOrder:name:"), objc.Ptr(tensor), widthAxis, heightAxis, depthAxis, blockSize, usePixelShuffleOrder, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("spaceToDepth2DTensor:widthAxis:heightAxis:depthAxis:blockSize:usePixelShuffleOrder:name:"), tensor, widthAxis, heightAxis, depthAxis, blockSize, usePixelShuffleOrder, name)
 	return rv
 }
 
@@ -1085,7 +1085,7 @@ func (g_ Graph) SpaceToDepth2DTensorWidthAxisHeightAxisDepthAxisBlockSizeUsePixe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564565-logicalnandwithprimarytensor?language=objc
 func (g_ Graph) LogicalNANDWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalNANDWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalNANDWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1093,7 +1093,7 @@ func (g_ Graph) LogicalNANDWithPrimaryTensorSecondaryTensorName(primaryTensor IT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564686-assignvariable?language=objc
 func (g_ Graph) AssignVariableWithValueOfTensorName(variable ITensor, tensor ITensor, name string) Operation {
-	rv := objc.Call[Operation](g_, objc.Sel("assignVariable:withValueOfTensor:name:"), objc.Ptr(variable), objc.Ptr(tensor), name)
+	rv := objc.Call[Operation](g_, objc.Sel("assignVariable:withValueOfTensor:name:"), variable, tensor, name)
 	return rv
 }
 
@@ -1101,7 +1101,7 @@ func (g_ Graph) AssignVariableWithValueOfTensorName(variable ITensor, tensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580494-reductionsumwithtensor?language=objc
 func (g_ Graph) ReductionSumWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionSumWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionSumWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1109,7 +1109,7 @@ func (g_ Graph) ReductionSumWithTensorAxesName(tensor ITensor, axes []foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928156-scatteralongaxis?language=objc
 func (g_ Graph) ScatterAlongAxisWithUpdatesTensorIndicesTensorShapeModeName(axis int, updatesTensor ITensor, indicesTensor ITensor, shape *foundation.Array, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxis:withUpdatesTensor:indicesTensor:shape:mode:name:"), axis, objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), shape, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxis:withUpdatesTensor:indicesTensor:shape:mode:name:"), axis, updatesTensor, indicesTensor, shape, mode, name)
 	return rv
 }
 
@@ -1117,7 +1117,7 @@ func (g_ Graph) ScatterAlongAxisWithUpdatesTensorIndicesTensorShapeModeName(axis
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3923673-splittensor?language=objc
 func (g_ Graph) SplitTensorNumSplitsAxisName(tensor ITensor, numSplits uint, axis int, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:numSplits:axis:name:"), objc.Ptr(tensor), numSplits, axis, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:numSplits:axis:name:"), tensor, numSplits, axis, name)
 	return rv
 }
 
@@ -1125,7 +1125,7 @@ func (g_ Graph) SplitTensorNumSplitsAxisName(tensor ITensor, numSplits uint, axi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618931-convolutiontranspose2dwithsource?language=objc
 func (g_ Graph) ConvolutionTranspose2DWithSourceTensorWeightsTensorOutputShapeDescriptorName(source ITensor, weights ITensor, outputShape *foundation.Array, descriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWithSourceTensor:weightsTensor:outputShape:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), outputShape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWithSourceTensor:weightsTensor:outputShape:descriptor:name:"), source, weights, outputShape, descriptor, name)
 	return rv
 }
 
@@ -1133,7 +1133,7 @@ func (g_ Graph) ConvolutionTranspose2DWithSourceTensorWeightsTensorOutputShapeDe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564585-signbitwithtensor?language=objc
 func (g_ Graph) SignbitWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("signbitWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("signbitWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1141,7 +1141,7 @@ func (g_ Graph) SignbitWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3626199-dropouttensor?language=objc
 func (g_ Graph) DropoutTensorRateTensorName(tensor ITensor, rate ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("dropoutTensor:rateTensor:name:"), objc.Ptr(tensor), objc.Ptr(rate), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("dropoutTensor:rateTensor:name:"), tensor, rate, name)
 	return rv
 }
 
@@ -1149,7 +1149,7 @@ func (g_ Graph) DropoutTensorRateTensorName(tensor ITensor, rate ITensor, name s
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564576-notequalwithprimarytensor?language=objc
 func (g_ Graph) NotEqualWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("notEqualWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("notEqualWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1157,7 +1157,7 @@ func (g_ Graph) NotEqualWithPrimaryTensorSecondaryTensorName(primaryTensor ITens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3675594-floormodulowithprimarytensor?language=objc
 func (g_ Graph) FloorModuloWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("floorModuloWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("floorModuloWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1165,7 +1165,7 @@ func (g_ Graph) FloorModuloWithPrimaryTensorSecondaryTensorName(primaryTensor IT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925450-coordinatealongaxistensor?language=objc
 func (g_ Graph) CoordinateAlongAxisTensorWithShapeName(axisTensor ITensor, shape *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxisTensor:withShape:name:"), objc.Ptr(axisTensor), shape, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxisTensor:withShape:name:"), axisTensor, shape, name)
 	return rv
 }
 
@@ -1173,7 +1173,7 @@ func (g_ Graph) CoordinateAlongAxisTensorWithShapeName(axisTensor ITensor, shape
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564577-notwithtensor?language=objc
 func (g_ Graph) NotWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("notWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("notWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1181,7 +1181,7 @@ func (g_ Graph) NotWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867071-convolutiontranspose2dwithsource?language=objc
 func (g_ Graph) ConvolutionTranspose2DWithSourceTensorWeightsTensorOutputShapeTensorDescriptorName(source ITensor, weights ITensor, outputShape ITensor, descriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWithSourceTensor:weightsTensor:outputShapeTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), objc.Ptr(outputShape), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWithSourceTensor:weightsTensor:outputShapeTensor:descriptor:name:"), source, weights, outputShape, descriptor, name)
 	return rv
 }
 
@@ -1189,7 +1189,7 @@ func (g_ Graph) ConvolutionTranspose2DWithSourceTensorWeightsTensorOutputShapeTe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750709-depthtospace2dtensor?language=objc
 func (g_ Graph) DepthToSpace2DTensorWidthAxisHeightAxisDepthAxisBlockSizeUsePixelShuffleOrderName(tensor ITensor, widthAxis uint, heightAxis uint, depthAxis uint, blockSize uint, usePixelShuffleOrder bool, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthToSpace2DTensor:widthAxis:heightAxis:depthAxis:blockSize:usePixelShuffleOrder:name:"), objc.Ptr(tensor), widthAxis, heightAxis, depthAxis, blockSize, usePixelShuffleOrder, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthToSpace2DTensor:widthAxis:heightAxis:depthAxis:blockSize:usePixelShuffleOrder:name:"), tensor, widthAxis, heightAxis, depthAxis, blockSize, usePixelShuffleOrder, name)
 	return rv
 }
 
@@ -1197,7 +1197,7 @@ func (g_ Graph) DepthToSpace2DTensorWidthAxisHeightAxisDepthAxisBlockSizeUsePixe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564596-convolution2dwithsourcetensor?language=objc
 func (g_ Graph) Convolution2DWithSourceTensorWeightsTensorDescriptorName(source ITensor, weights ITensor, descriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWithSourceTensor:weightsTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(weights), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWithSourceTensor:weightsTensor:descriptor:name:"), source, weights, descriptor, name)
 	return rv
 }
 
@@ -1205,7 +1205,7 @@ func (g_ Graph) Convolution2DWithSourceTensorWeightsTensorDescriptorName(source 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564468-relugradientwithincominggradient?language=objc
 func (g_ Graph) ReLUGradientWithIncomingGradientSourceTensorName(gradient ITensor, source ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reLUGradientWithIncomingGradient:sourceTensor:name:"), objc.Ptr(gradient), objc.Ptr(source), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reLUGradientWithIncomingGradient:sourceTensor:name:"), gradient, source, name)
 	return rv
 }
 
@@ -1221,14 +1221,14 @@ func (g_ Graph) RunWithMTLCommandQueueFeedsTargetOperationsResultsDictionary(com
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564622-runwithmtlcommandqueue?language=objc
 func (g_ Graph) RunWithMTLCommandQueueObjectFeedsTargetOperationsResultsDictionary(commandQueueObject objc.IObject, feeds *foundation.Dictionary, targetOperations []IOperation, resultsDictionary *foundation.Dictionary) {
-	objc.Call[objc.Void](g_, objc.Sel("runWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:"), objc.Ptr(commandQueueObject), feeds, targetOperations, resultsDictionary)
+	objc.Call[objc.Void](g_, objc.Sel("runWithMTLCommandQueue:feeds:targetOperations:resultsDictionary:"), commandQueueObject, feeds, targetOperations, resultsDictionary)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867064-leakyrelugradientwithincominggra?language=objc
 func (g_ Graph) LeakyReLUGradientWithIncomingGradientSourceTensorAlphaTensorName(gradient ITensor, source ITensor, alphaTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUGradientWithIncomingGradient:sourceTensor:alphaTensor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(alphaTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUGradientWithIncomingGradient:sourceTensor:alphaTensor:name:"), gradient, source, alphaTensor, name)
 	return rv
 }
 
@@ -1236,7 +1236,7 @@ func (g_ Graph) LeakyReLUGradientWithIncomingGradientSourceTensorAlphaTensorName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580486-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthName(indicesTensor ITensor, depth uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:name:"), objc.Ptr(indicesTensor), depth, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:name:"), indicesTensor, depth, name)
 	return rv
 }
 
@@ -1244,7 +1244,7 @@ func (g_ Graph) OneHotWithIndicesTensorDepthName(indicesTensor ITensor, depth ui
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750695-maxpooling4dwithsourcetensor?language=objc
 func (g_ Graph) MaxPooling4DWithSourceTensorDescriptorName(source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling4DWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling4DWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -1252,7 +1252,7 @@ func (g_ Graph) MaxPooling4DWithSourceTensorDescriptorName(source ITensor, descr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589362-gatherndwithupdatestensor?language=objc
 func (g_ Graph) GatherNDWithUpdatesTensorIndicesTensorBatchDimensionsName(updatesTensor ITensor, indicesTensor ITensor, batchDimensions uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("gatherNDWithUpdatesTensor:indicesTensor:batchDimensions:name:"), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), batchDimensions, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("gatherNDWithUpdatesTensor:indicesTensor:batchDimensions:name:"), updatesTensor, indicesTensor, batchDimensions, name)
 	return rv
 }
 
@@ -1260,7 +1260,7 @@ func (g_ Graph) GatherNDWithUpdatesTensorIndicesTensorBatchDimensionsName(update
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580502-padtensor?language=objc
 func (g_ Graph) PadTensorWithPaddingModeLeftPaddingRightPaddingConstantValueName(tensor ITensor, paddingMode PaddingMode, leftPadding *foundation.Array, rightPadding *foundation.Array, constantValue float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("padTensor:withPaddingMode:leftPadding:rightPadding:constantValue:name:"), objc.Ptr(tensor), paddingMode, leftPadding, rightPadding, constantValue, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("padTensor:withPaddingMode:leftPadding:rightPadding:constantValue:name:"), tensor, paddingMode, leftPadding, rightPadding, constantValue, name)
 	return rv
 }
 
@@ -1268,7 +1268,7 @@ func (g_ Graph) PadTensorWithPaddingModeLeftPaddingRightPaddingConstantValueName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750706-reductionargmaximumwithtensor?language=objc
 func (g_ Graph) ReductionArgMaximumWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionArgMaximumWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionArgMaximumWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1276,7 +1276,7 @@ func (g_ Graph) ReductionArgMaximumWithTensorAxisName(tensor ITensor, axis int, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564561-logarithmbase10withtensor?language=objc
 func (g_ Graph) LogarithmBase10WithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logarithmBase10WithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logarithmBase10WithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1284,7 +1284,7 @@ func (g_ Graph) LogarithmBase10WithTensorName(tensor ITensor, name string) Tenso
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564566-logicalnorwithprimarytensor?language=objc
 func (g_ Graph) LogicalNORWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalNORWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalNORWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1292,7 +1292,7 @@ func (g_ Graph) LogicalNORWithPrimaryTensorSecondaryTensorName(primaryTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919742-maxpooling2dreturnindiceswithsou?language=objc
 func (g_ Graph) MaxPooling2DReturnIndicesWithSourceTensorDescriptorName(source ITensor, descriptor IPooling2DOpDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("maxPooling2DReturnIndicesWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("maxPooling2DReturnIndicesWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -1300,7 +1300,7 @@ func (g_ Graph) MaxPooling2DReturnIndicesWithSourceTensorDescriptorName(source I
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564707-maxpooling2dgradientwithgradient?language=objc
 func (g_ Graph) MaxPooling2DGradientWithGradientTensorSourceTensorDescriptorName(gradient ITensor, source ITensor, descriptor IPooling2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling2DGradientWithGradientTensor:sourceTensor:descriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maxPooling2DGradientWithGradientTensor:sourceTensor:descriptor:name:"), gradient, source, descriptor, name)
 	return rv
 }
 
@@ -1308,7 +1308,7 @@ func (g_ Graph) MaxPooling2DGradientWithGradientTensorSourceTensorDescriptorName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867072-resizetensor?language=objc
 func (g_ Graph) ResizeTensorSizeTensorModeCenterResultAlignCornersLayoutName(imagesTensor ITensor, size ITensor, mode ResizeMode, centerResult bool, alignCorners bool, layout TensorNamedDataLayout, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("resizeTensor:sizeTensor:mode:centerResult:alignCorners:layout:name:"), objc.Ptr(imagesTensor), objc.Ptr(size), mode, centerResult, alignCorners, layout, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("resizeTensor:sizeTensor:mode:centerResult:alignCorners:layout:name:"), imagesTensor, size, mode, centerResult, alignCorners, layout, name)
 	return rv
 }
 
@@ -1316,7 +1316,7 @@ func (g_ Graph) ResizeTensorSizeTensorModeCenterResultAlignCornersLayoutName(ima
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3763057-sparsetensorwithdescriptor?language=objc
 func (g_ Graph) SparseTensorWithDescriptorTensorsShapeName(sparseDescriptor ICreateSparseOpDescriptor, inputTensorArray []ITensor, shape *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sparseTensorWithDescriptor:tensors:shape:name:"), objc.Ptr(sparseDescriptor), inputTensorArray, shape, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sparseTensorWithDescriptor:tensors:shape:name:"), sparseDescriptor, inputTensorArray, shape, name)
 	return rv
 }
 
@@ -1324,7 +1324,7 @@ func (g_ Graph) SparseTensorWithDescriptorTensorsShapeName(sparseDescriptor ICre
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564569-logicalxorwithprimarytensor?language=objc
 func (g_ Graph) LogicalXORWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logicalXORWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logicalXORWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1332,7 +1332,7 @@ func (g_ Graph) LogicalXORWithPrimaryTensorSecondaryTensorName(primaryTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867079-reshapetensor?language=objc
 func (g_ Graph) ReshapeTensorWithShapeTensorName(tensor ITensor, shapeTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reshapeTensor:withShapeTensor:name:"), objc.Ptr(tensor), objc.Ptr(shapeTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reshapeTensor:withShapeTensor:name:"), tensor, shapeTensor, name)
 	return rv
 }
 
@@ -1340,7 +1340,7 @@ func (g_ Graph) ReshapeTensorWithShapeTensorName(tensor ITensor, shapeTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925426-bandpartwithtensor?language=objc
 func (g_ Graph) BandPartWithTensorNumLowerNumUpperName(inputTensor ITensor, numLower int, numUpper int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("bandPartWithTensor:numLower:numUpper:name:"), objc.Ptr(inputTensor), numLower, numUpper, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("bandPartWithTensor:numLower:numUpper:name:"), inputTensor, numLower, numUpper, name)
 	return rv
 }
 
@@ -1348,7 +1348,7 @@ func (g_ Graph) BandPartWithTensorNumLowerNumUpperName(inputTensor ITensor, numL
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867081-topkwithgradienttensor?language=objc
 func (g_ Graph) TopKWithGradientTensorSourceKName(gradient ITensor, source ITensor, k uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("topKWithGradientTensor:source:k:name:"), objc.Ptr(gradient), objc.Ptr(source), k, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("topKWithGradientTensor:source:k:name:"), gradient, source, k, name)
 	return rv
 }
 
@@ -1356,7 +1356,7 @@ func (g_ Graph) TopKWithGradientTensorSourceKName(gradient ITensor, source ITens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925458-squeezetensor?language=objc
 func (g_ Graph) SqueezeTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1364,7 +1364,7 @@ func (g_ Graph) SqueezeTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564540-absolutewithtensor?language=objc
 func (g_ Graph) AbsoluteWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("absoluteWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("absoluteWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1372,7 +1372,7 @@ func (g_ Graph) AbsoluteWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564588-squarerootwithtensor?language=objc
 func (g_ Graph) SquareRootWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squareRootWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squareRootWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1380,7 +1380,7 @@ func (g_ Graph) SquareRootWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580496-resizetensor?language=objc
 func (g_ Graph) ResizeTensorSizeModeCenterResultAlignCornersLayoutName(imagesTensor ITensor, size *foundation.Array, mode ResizeMode, centerResult bool, alignCorners bool, layout TensorNamedDataLayout, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("resizeTensor:size:mode:centerResult:alignCorners:layout:name:"), objc.Ptr(imagesTensor), size, mode, centerResult, alignCorners, layout, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("resizeTensor:size:mode:centerResult:alignCorners:layout:name:"), imagesTensor, size, mode, centerResult, alignCorners, layout, name)
 	return rv
 }
 
@@ -1388,7 +1388,7 @@ func (g_ Graph) ResizeTensorSizeModeCenterResultAlignCornersLayoutName(imagesTen
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750707-reductionargminimumwithtensor?language=objc
 func (g_ Graph) ReductionArgMinimumWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionArgMinimumWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionArgMinimumWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1396,7 +1396,7 @@ func (g_ Graph) ReductionArgMinimumWithTensorAxisName(tensor ITensor, axis int, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925455-squeezetensor?language=objc
 func (g_ Graph) SqueezeTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1404,7 +1404,7 @@ func (g_ Graph) SqueezeTensorAxesName(tensor ITensor, axes []foundation.INumber,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564551-exponentwithtensor?language=objc
 func (g_ Graph) ExponentWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("exponentWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("exponentWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1412,7 +1412,7 @@ func (g_ Graph) ExponentWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564554-greaterthanwithprimarytensor?language=objc
 func (g_ Graph) GreaterThanWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("greaterThanWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("greaterThanWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1420,7 +1420,7 @@ func (g_ Graph) GreaterThanWithPrimaryTensorSecondaryTensorName(primaryTensor IT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901483-randomtensorwithshapetensor?language=objc
 func (g_ Graph) RandomTensorWithShapeTensorDescriptorStateTensorName(shapeTensor ITensor, descriptor IRandomOpDescriptor, state ITensor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:stateTensor:name:"), objc.Ptr(shapeTensor), objc.Ptr(descriptor), objc.Ptr(state), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("randomTensorWithShapeTensor:descriptor:stateTensor:name:"), shapeTensor, descriptor, state, name)
 	return rv
 }
 
@@ -1428,7 +1428,7 @@ func (g_ Graph) RandomTensorWithShapeTensorDescriptorStateTensorName(shapeTensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925434-lstmwithsourcetensor?language=objc
 func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInputWeightBiasInitStateInitCellMaskPeepholeDescriptorName(source ITensor, recurrentWeight ITensor, inputWeight ITensor, bias ITensor, initState ITensor, initCell ITensor, mask ITensor, peephole ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:inputWeight:bias:initState:initCell:mask:peephole:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(mask), objc.Ptr(peephole), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:inputWeight:bias:initState:initCell:mask:peephole:descriptor:name:"), source, recurrentWeight, inputWeight, bias, initState, initCell, mask, peephole, descriptor, name)
 	return rv
 }
 
@@ -1436,7 +1436,7 @@ func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInputWeightBiasInitStateInitC
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919762-singlegaternnwithsourcetensor?language=objc
 func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInitStateDescriptorName(source ITensor, recurrentWeight ITensor, initState ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:initState:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(initState), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:initState:descriptor:name:"), source, recurrentWeight, initState, descriptor, name)
 	return rv
 }
 
@@ -1444,7 +1444,7 @@ func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInitStateDescriptorN
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867080-shapeoftensor?language=objc
 func (g_ Graph) ShapeOfTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("shapeOfTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("shapeOfTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1452,7 +1452,7 @@ func (g_ Graph) ShapeOfTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919778-reductionandwithtensor?language=objc
 func (g_ Graph) ReductionAndWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionAndWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionAndWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1460,7 +1460,7 @@ func (g_ Graph) ReductionAndWithTensorAxisName(tensor ITensor, axis int, name st
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3923674-splittensor?language=objc
 func (g_ Graph) SplitTensorSplitSizesAxisName(tensor ITensor, splitSizes []foundation.INumber, axis int, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:splitSizes:axis:name:"), objc.Ptr(tensor), splitSizes, axis, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:splitSizes:axis:name:"), tensor, splitSizes, axis, name)
 	return rv
 }
 
@@ -1468,7 +1468,7 @@ func (g_ Graph) SplitTensorSplitSizesAxisName(tensor ITensor, splitSizes []found
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3626198-dropouttensor?language=objc
 func (g_ Graph) DropoutTensorRateName(tensor ITensor, rate float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("dropoutTensor:rate:name:"), objc.Ptr(tensor), rate, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("dropoutTensor:rate:name:"), tensor, rate, name)
 	return rv
 }
 
@@ -1476,7 +1476,7 @@ func (g_ Graph) DropoutTensorRateName(tensor ITensor, rate float64, name string)
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867082-topkwithgradienttensor?language=objc
 func (g_ Graph) TopKWithGradientTensorSourceKTensorName(gradient ITensor, source ITensor, kTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("topKWithGradientTensor:source:kTensor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(kTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("topKWithGradientTensor:source:kTensor:name:"), gradient, source, kTensor, name)
 	return rv
 }
 
@@ -1484,7 +1484,7 @@ func (g_ Graph) TopKWithGradientTensorSourceKTensorName(gradient ITensor, source
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564545-coshwithtensor?language=objc
 func (g_ Graph) CoshWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("coshWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("coshWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1500,7 +1500,7 @@ func (g_ Graph) RandomUniformTensorWithShapeName(shape *foundation.Array, name s
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3816770-forloopwithnumberofiterations?language=objc
 func (g_ Graph) ForLoopWithNumberOfIterationsInitialBodyArgumentsBodyName(numberOfIterations ITensor, initialBodyArguments []ITensor, body ForLoopBodyBlock, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("forLoopWithNumberOfIterations:initialBodyArguments:body:name:"), objc.Ptr(numberOfIterations), initialBodyArguments, body, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("forLoopWithNumberOfIterations:initialBodyArguments:body:name:"), numberOfIterations, initialBodyArguments, body, name)
 	return rv
 }
 
@@ -1508,22 +1508,22 @@ func (g_ Graph) ForLoopWithNumberOfIterationsInitialBodyArgumentsBodyName(number
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580383-encodetocommandbuffer?language=objc
 func (g_ Graph) EncodeToCommandBufferFeedsTargetOperationsResultsDictionaryExecutionDescriptor(commandBuffer mps.ICommandBuffer, feeds *foundation.Dictionary, targetOperations []IOperation, resultsDictionary *foundation.Dictionary, executionDescriptor IExecutionDescriptor) {
-	objc.Call[objc.Void](g_, objc.Sel("encodeToCommandBuffer:feeds:targetOperations:resultsDictionary:executionDescriptor:"), objc.Ptr(commandBuffer), feeds, targetOperations, resultsDictionary, objc.Ptr(executionDescriptor))
+	objc.Call[objc.Void](g_, objc.Sel("encodeToCommandBuffer:feeds:targetOperations:resultsDictionary:executionDescriptor:"), commandBuffer, feeds, targetOperations, resultsDictionary, executionDescriptor)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564563-logarithmwithtensor?language=objc
 func (g_ Graph) LogarithmWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logarithmWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logarithmWithTensor:name:"), tensor, name)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618935-normalizationgradientwithincomin?language=objc
-func (g_ Graph) NormalizationGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorGammaTensorGammaGradientTensorBetaGradientTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, gamma ITensor, gammaGradient ITensor, betaGradient ITensor, axes []foundation.INumber, epsilon float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("normalizationGradientWithIncomingGradientTensor:sourceTensor:meanTensor:varianceTensor:gammaTensor:gammaGradientTensor:betaGradientTensor:reductionAxes:epsilon:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(sourceTensor), objc.Ptr(meanTensor), objc.Ptr(varianceTensor), objc.Ptr(gamma), objc.Ptr(gammaGradient), objc.Ptr(betaGradient), axes, epsilon, name)
+func (g_ Graph) NormalizationGradientWithIncomingGradientTensorSourceTensorMeanTensorVarianceTensorGammaTensorGammaGradientTensorBetaGradientTensorReductionAxesEpsilonName(incomingGradientTensor ITensor, sourceTensor ITensor, meanTensor ITensor, varianceTensor ITensor, gamma ITensor, gammaGradient ITensor, betaGradient ITensor, axes []foundation.INumber, epsilon float32, name string) Tensor {
+	rv := objc.Call[Tensor](g_, objc.Sel("normalizationGradientWithIncomingGradientTensor:sourceTensor:meanTensor:varianceTensor:gammaTensor:gammaGradientTensor:betaGradientTensor:reductionAxes:epsilon:name:"), incomingGradientTensor, sourceTensor, meanTensor, varianceTensor, gamma, gammaGradient, betaGradient, axes, epsilon, name)
 	return rv
 }
 
@@ -1531,7 +1531,7 @@ func (g_ Graph) NormalizationGradientWithIncomingGradientTensorSourceTensorMeanT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564731-concattensor?language=objc
 func (g_ Graph) ConcatTensorWithTensorDimensionName(tensor ITensor, tensor2 ITensor, dimensionIndex int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("concatTensor:withTensor:dimension:name:"), objc.Ptr(tensor), objc.Ptr(tensor2), dimensionIndex, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("concatTensor:withTensor:dimension:name:"), tensor, tensor2, dimensionIndex, name)
 	return rv
 }
 
@@ -1547,7 +1547,7 @@ func (g_ Graph) ConstantWithScalarDataType(scalar float64, dataType mps.DataType
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901510-reductionminimumpropagatenanwith?language=objc
 func (g_ Graph) ReductionMinimumPropagateNaNWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumPropagateNaNWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumPropagateNaNWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1555,7 +1555,7 @@ func (g_ Graph) ReductionMinimumPropagateNaNWithTensorAxesName(tensor ITensor, a
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750669-ifwithpredicatetensor?language=objc
 func (g_ Graph) IfWithPredicateTensorThenBlockElseBlockName(predicateTensor ITensor, thenBlock IfThenElseBlock, elseBlock IfThenElseBlock, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("ifWithPredicateTensor:thenBlock:elseBlock:name:"), objc.Ptr(predicateTensor), thenBlock, elseBlock, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("ifWithPredicateTensor:thenBlock:elseBlock:name:"), predicateTensor, thenBlock, elseBlock, name)
 	return rv
 }
 
@@ -1563,7 +1563,7 @@ func (g_ Graph) IfWithPredicateTensorThenBlockElseBlockName(predicateTensor ITen
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919759-singlegaternngradientswithsource?language=objc
 func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradientZStateInputWeightBiasInitStateDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, inputWeight ITensor, bias ITensor, initState ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:inputWeight:bias:initState:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:inputWeight:bias:initState:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, inputWeight, bias, initState, descriptor, name)
 	return rv
 }
 
@@ -1571,7 +1571,7 @@ func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564575-negativewithtensor?language=objc
 func (g_ Graph) NegativeWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("negativeWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("negativeWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1579,7 +1579,7 @@ func (g_ Graph) NegativeWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919758-singlegaternngradientswithsource?language=objc
 func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradientZStateInitStateDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, initState ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:initState:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(initState), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:initState:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, initState, descriptor, name)
 	return rv
 }
 
@@ -1587,7 +1587,7 @@ func (g_ Graph) SingleGateRNNGradientsWithSourceTensorRecurrentWeightSourceGradi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656161-softmaxcrossentropywithsourceten?language=objc
 func (g_ Graph) SoftMaxCrossEntropyWithSourceTensorLabelsTensorAxisReductionTypeName(sourceTensor ITensor, labelsTensor ITensor, axis int, reductionType LossReductionType, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("softMaxCrossEntropyWithSourceTensor:labelsTensor:axis:reductionType:name:"), objc.Ptr(sourceTensor), objc.Ptr(labelsTensor), axis, reductionType, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("softMaxCrossEntropyWithSourceTensor:labelsTensor:axis:reductionType:name:"), sourceTensor, labelsTensor, axis, reductionType, name)
 	return rv
 }
 
@@ -1595,7 +1595,7 @@ func (g_ Graph) SoftMaxCrossEntropyWithSourceTensorLabelsTensorAxisReductionType
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3728124-scatterndwithupdatestensor?language=objc
 func (g_ Graph) ScatterNDWithUpdatesTensorIndicesTensorShapeBatchDimensionsModeName(updatesTensor ITensor, indicesTensor ITensor, shape *foundation.Array, batchDimensions uint, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithUpdatesTensor:indicesTensor:shape:batchDimensions:mode:name:"), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), shape, batchDimensions, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithUpdatesTensor:indicesTensor:shape:batchDimensions:mode:name:"), updatesTensor, indicesTensor, shape, batchDimensions, mode, name)
 	return rv
 }
 
@@ -1603,7 +1603,7 @@ func (g_ Graph) ScatterNDWithUpdatesTensorIndicesTensorShapeBatchDimensionsModeN
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901511-reductionminimumpropagatenanwith?language=objc
 func (g_ Graph) ReductionMinimumPropagateNaNWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumPropagateNaNWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionMinimumPropagateNaNWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1611,7 +1611,7 @@ func (g_ Graph) ReductionMinimumPropagateNaNWithTensorAxisName(tensor ITensor, a
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656156-asinwithtensor?language=objc
 func (g_ Graph) AsinWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("asinWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("asinWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1619,7 +1619,7 @@ func (g_ Graph) AsinWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925452-expanddimsoftensor?language=objc
 func (g_ Graph) ExpandDimsOfTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("expandDimsOfTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1627,7 +1627,7 @@ func (g_ Graph) ExpandDimsOfTensorAxesName(tensor ITensor, axes []foundation.INu
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589364-gatherwithupdatestensor?language=objc
 func (g_ Graph) GatherWithUpdatesTensorIndicesTensorAxisBatchDimensionsName(updatesTensor ITensor, indicesTensor ITensor, axis uint, batchDimensions uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("gatherWithUpdatesTensor:indicesTensor:axis:batchDimensions:name:"), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), axis, batchDimensions, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("gatherWithUpdatesTensor:indicesTensor:axis:batchDimensions:name:"), updatesTensor, indicesTensor, axis, batchDimensions, name)
 	return rv
 }
 
@@ -1635,7 +1635,7 @@ func (g_ Graph) GatherWithUpdatesTensorIndicesTensorAxisBatchDimensionsName(upda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618938-padgradientwithincominggradientt?language=objc
 func (g_ Graph) PadGradientWithIncomingGradientTensorSourceTensorPaddingModeLeftPaddingRightPaddingName(incomingGradientTensor ITensor, sourceTensor ITensor, paddingMode PaddingMode, leftPadding *foundation.Array, rightPadding *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("padGradientWithIncomingGradientTensor:sourceTensor:paddingMode:leftPadding:rightPadding:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(sourceTensor), paddingMode, leftPadding, rightPadding, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("padGradientWithIncomingGradientTensor:sourceTensor:paddingMode:leftPadding:rightPadding:name:"), incomingGradientTensor, sourceTensor, paddingMode, leftPadding, rightPadding, name)
 	return rv
 }
 
@@ -1643,7 +1643,7 @@ func (g_ Graph) PadGradientWithIncomingGradientTensorSourceTensorPaddingModeLeft
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564557-isinfinitewithtensor?language=objc
 func (g_ Graph) IsInfiniteWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("isInfiniteWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("isInfiniteWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1651,7 +1651,7 @@ func (g_ Graph) IsInfiniteWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750717-spacetodepth2dtensor?language=objc
 func (g_ Graph) SpaceToDepth2DTensorWidthAxisTensorHeightAxisTensorDepthAxisTensorBlockSizeUsePixelShuffleOrderName(tensor ITensor, widthAxisTensor ITensor, heightAxisTensor ITensor, depthAxisTensor ITensor, blockSize uint, usePixelShuffleOrder bool, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("spaceToDepth2DTensor:widthAxisTensor:heightAxisTensor:depthAxisTensor:blockSize:usePixelShuffleOrder:name:"), objc.Ptr(tensor), objc.Ptr(widthAxisTensor), objc.Ptr(heightAxisTensor), objc.Ptr(depthAxisTensor), blockSize, usePixelShuffleOrder, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("spaceToDepth2DTensor:widthAxisTensor:heightAxisTensor:depthAxisTensor:blockSize:usePixelShuffleOrder:name:"), tensor, widthAxisTensor, heightAxisTensor, depthAxisTensor, blockSize, usePixelShuffleOrder, name)
 	return rv
 }
 
@@ -1659,7 +1659,7 @@ func (g_ Graph) SpaceToDepth2DTensorWidthAxisTensorHeightAxisTensorDepthAxisTens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564690-readvariable?language=objc
 func (g_ Graph) ReadVariableName(variable ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("readVariable:name:"), objc.Ptr(variable), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("readVariable:name:"), variable, name)
 	return rv
 }
 
@@ -1667,7 +1667,7 @@ func (g_ Graph) ReadVariableName(variable ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580484-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthDataTypeName(indicesTensor ITensor, depth uint, dataType mps.DataType, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:dataType:name:"), objc.Ptr(indicesTensor), depth, dataType, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:dataType:name:"), indicesTensor, depth, dataType, name)
 	return rv
 }
 
@@ -1675,7 +1675,7 @@ func (g_ Graph) OneHotWithIndicesTensorDepthDataTypeName(indicesTensor ITensor, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901486-randomuniformtensorwithshape?language=objc
 func (g_ Graph) RandomUniformTensorWithShapeStateTensorName(shape *foundation.Array, state ITensor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("randomUniformTensorWithShape:stateTensor:name:"), shape, objc.Ptr(state), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("randomUniformTensorWithShape:stateTensor:name:"), shape, state, name)
 	return rv
 }
 
@@ -1683,7 +1683,7 @@ func (g_ Graph) RandomUniformTensorWithShapeStateTensorName(shape *foundation.Ar
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564684-matrixmultiplicationwithprimaryt?language=objc
 func (g_ Graph) MatrixMultiplicationWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("matrixMultiplicationWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("matrixMultiplicationWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1691,7 +1691,7 @@ func (g_ Graph) MatrixMultiplicationWithPrimaryTensorSecondaryTensorName(primary
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867076-broadcasttensor?language=objc
 func (g_ Graph) BroadcastTensorToShapeName(tensor ITensor, shape *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("broadcastTensor:toShape:name:"), objc.Ptr(tensor), shape, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("broadcastTensor:toShape:name:"), tensor, shape, name)
 	return rv
 }
 
@@ -1699,7 +1699,7 @@ func (g_ Graph) BroadcastTensorToShapeName(tensor ITensor, shape *foundation.Arr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750680-depthwiseconvolution3dweightsgra?language=objc
 func (g_ Graph) DepthwiseConvolution3DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeDescriptorName(incomingGradient ITensor, source ITensor, outputShape *foundation.Array, descriptor IDepthwiseConvolution3DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:descriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(source), outputShape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution3DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:descriptor:name:"), incomingGradient, source, outputShape, descriptor, name)
 	return rv
 }
 
@@ -1707,7 +1707,7 @@ func (g_ Graph) DepthwiseConvolution3DWeightsGradientWithIncomingGradientTensorS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564542-ceilwithtensor?language=objc
 func (g_ Graph) CeilWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("ceilWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("ceilWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1715,7 +1715,7 @@ func (g_ Graph) CeilWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564580-reversesquarerootwithtensor?language=objc
 func (g_ Graph) ReverseSquareRootWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reverseSquareRootWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reverseSquareRootWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1723,7 +1723,7 @@ func (g_ Graph) ReverseSquareRootWithTensorName(tensor ITensor, name string) Ten
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580384-encodetocommandbuffer?language=objc
 func (g_ Graph) EncodeToCommandBufferFeedsTargetTensorsTargetOperationsExecutionDescriptor(commandBuffer mps.ICommandBuffer, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, executionDescriptor IExecutionDescriptor) *foundation.Dictionary {
-	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("encodeToCommandBuffer:feeds:targetTensors:targetOperations:executionDescriptor:"), objc.Ptr(commandBuffer), feeds, targetTensors, targetOperations, objc.Ptr(executionDescriptor))
+	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("encodeToCommandBuffer:feeds:targetTensors:targetOperations:executionDescriptor:"), commandBuffer, feeds, targetTensors, targetOperations, executionDescriptor)
 	return rv
 }
 
@@ -1731,7 +1731,7 @@ func (g_ Graph) EncodeToCommandBufferFeedsTargetTensorsTargetOperationsExecution
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564591-tanwithtensor?language=objc
 func (g_ Graph) TanWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("tanWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("tanWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1739,7 +1739,7 @@ func (g_ Graph) TanWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919777-reductionandwithtensor?language=objc
 func (g_ Graph) ReductionAndWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionAndWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionAndWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1747,7 +1747,7 @@ func (g_ Graph) ReductionAndWithTensorAxesName(tensor ITensor, axes []foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580468-softmaxcrossentropygradientwithi?language=objc
 func (g_ Graph) SoftMaxCrossEntropyGradientWithIncomingGradientTensorSourceTensorLabelsTensorAxisReductionTypeName(gradientTensor ITensor, sourceTensor ITensor, labelsTensor ITensor, axis int, reductionType LossReductionType, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("softMaxCrossEntropyGradientWithIncomingGradientTensor:sourceTensor:labelsTensor:axis:reductionType:name:"), objc.Ptr(gradientTensor), objc.Ptr(sourceTensor), objc.Ptr(labelsTensor), axis, reductionType, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("softMaxCrossEntropyGradientWithIncomingGradientTensor:sourceTensor:labelsTensor:axis:reductionType:name:"), gradientTensor, sourceTensor, labelsTensor, axis, reductionType, name)
 	return rv
 }
 
@@ -1763,7 +1763,7 @@ func (g_ Graph) ConcatTensorsDimensionName(tensors []ITensor, dimensionIndex int
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750713-reversetensor?language=objc
 func (g_ Graph) ReverseTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -1771,7 +1771,7 @@ func (g_ Graph) ReverseTensorAxesName(tensor ITensor, axes []foundation.INumber,
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901478-randomtensorwithshape?language=objc
 func (g_ Graph) RandomTensorWithShapeDescriptorName(shape *foundation.Array, descriptor IRandomOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:name:"), shape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:name:"), shape, descriptor, name)
 	return rv
 }
 
@@ -1779,7 +1779,7 @@ func (g_ Graph) RandomTensorWithShapeDescriptorName(shape *foundation.Array, des
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925428-lstmgradientswithsourcetensor?language=objc
 func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZStateCellOutputFwdDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, cellOutputFwd ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(cellOutputFwd), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, cellOutputFwd, descriptor, name)
 	return rv
 }
 
@@ -1787,7 +1787,7 @@ func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZState
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656164-varianceoftensor?language=objc
 func (g_ Graph) VarianceOfTensorMeanTensorAxesName(tensor ITensor, meanTensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("varianceOfTensor:meanTensor:axes:name:"), objc.Ptr(tensor), objc.Ptr(meanTensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("varianceOfTensor:meanTensor:axes:name:"), tensor, meanTensor, axes, name)
 	return rv
 }
 
@@ -1795,7 +1795,7 @@ func (g_ Graph) VarianceOfTensorMeanTensorAxesName(tensor ITensor, meanTensor IT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564728-reductionproductwithtensor?language=objc
 func (g_ Graph) ReductionProductWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionProductWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionProductWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1803,7 +1803,7 @@ func (g_ Graph) ReductionProductWithTensorAxisName(tensor ITensor, axis int, nam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564729-reductionsumwithtensor?language=objc
 func (g_ Graph) ReductionSumWithTensorAxisName(tensor ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionSumWithTensor:axis:name:"), objc.Ptr(tensor), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionSumWithTensor:axis:name:"), tensor, axis, name)
 	return rv
 }
 
@@ -1811,7 +1811,7 @@ func (g_ Graph) ReductionSumWithTensorAxisName(tensor ITensor, axis int, name st
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925433-lstmwithsourcetensor?language=objc
 func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInputWeightBiasInitStateInitCellDescriptorName(source ITensor, recurrentWeight ITensor, inputWeight ITensor, bias ITensor, initState ITensor, initCell ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:inputWeight:bias:initState:initCell:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMWithSourceTensor:recurrentWeight:inputWeight:bias:initState:initCell:descriptor:name:"), source, recurrentWeight, inputWeight, bias, initState, initCell, descriptor, name)
 	return rv
 }
 
@@ -1819,7 +1819,7 @@ func (g_ Graph) LSTMWithSourceTensorRecurrentWeightInputWeightBiasInitStateInitC
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919743-maxpooling4dreturnindiceswithsou?language=objc
 func (g_ Graph) MaxPooling4DReturnIndicesWithSourceTensorDescriptorName(source ITensor, descriptor IPooling4DOpDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("maxPooling4DReturnIndicesWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("maxPooling4DReturnIndicesWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -1827,7 +1827,7 @@ func (g_ Graph) MaxPooling4DReturnIndicesWithSourceTensorDescriptorName(source I
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925456-squeezetensor?language=objc
 func (g_ Graph) SqueezeTensorAxesTensorName(tensor ITensor, axesTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axesTensor:name:"), objc.Ptr(tensor), objc.Ptr(axesTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("squeezeTensor:axesTensor:name:"), tensor, axesTensor, name)
 	return rv
 }
 
@@ -1835,7 +1835,7 @@ func (g_ Graph) SqueezeTensorAxesTensorName(tensor ITensor, axesTensor ITensor, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867073-scatterndwithdatatensor?language=objc
 func (g_ Graph) ScatterNDWithDataTensorUpdatesTensorIndicesTensorBatchDimensionsModeName(dataTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, batchDimensions uint, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithDataTensor:updatesTensor:indicesTensor:batchDimensions:mode:name:"), objc.Ptr(dataTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), batchDimensions, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterNDWithDataTensor:updatesTensor:indicesTensor:batchDimensions:mode:name:"), dataTensor, updatesTensor, indicesTensor, batchDimensions, mode, name)
 	return rv
 }
 
@@ -1843,7 +1843,7 @@ func (g_ Graph) ScatterNDWithDataTensorUpdatesTensorIndicesTensorBatchDimensions
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3857573-maximumwithnanpropagationwithpri?language=objc
 func (g_ Graph) MaximumWithNaNPropagationWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maximumWithNaNPropagationWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maximumWithNaNPropagationWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1851,7 +1851,7 @@ func (g_ Graph) MaximumWithNaNPropagationWithPrimaryTensorSecondaryTensorName(pr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919764-singlegaternnwithsourcetensor?language=objc
 func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInputWeightBiasInitStateMaskDescriptorName(source ITensor, recurrentWeight ITensor, inputWeight ITensor, bias ITensor, initState ITensor, mask ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:inputWeight:bias:initState:mask:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(mask), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:inputWeight:bias:initState:mask:descriptor:name:"), source, recurrentWeight, inputWeight, bias, initState, mask, descriptor, name)
 	return rv
 }
 
@@ -1859,7 +1859,7 @@ func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInputWeightBiasInitS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3857574-minimumwithnanpropagationwithpri?language=objc
 func (g_ Graph) MinimumWithNaNPropagationWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("minimumWithNaNPropagationWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("minimumWithNaNPropagationWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -1867,7 +1867,7 @@ func (g_ Graph) MinimumWithNaNPropagationWithPrimaryTensorSecondaryTensorName(pr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925449-coordinatealongaxis?language=objc
 func (g_ Graph) CoordinateAlongAxisWithShapeTensorName(axis int, shapeTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxis:withShapeTensor:name:"), axis, objc.Ptr(shapeTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("coordinateAlongAxis:withShapeTensor:name:"), axis, shapeTensor, name)
 	return rv
 }
 
@@ -1875,7 +1875,7 @@ func (g_ Graph) CoordinateAlongAxisWithShapeTensorName(axis int, shapeTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925431-lstmgradientswithsourcetensor?language=objc
 func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZStateCellOutputFwdStateGradientCellGradientInputWeightBiasInitStateInitCellMaskPeepholeDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, cellOutputFwd ITensor, stateGradient ITensor, cellGradient ITensor, inputWeight ITensor, bias ITensor, initState ITensor, initCell ITensor, mask ITensor, peephole ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:stateGradient:cellGradient:inputWeight:bias:initState:initCell:mask:peephole:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(cellOutputFwd), objc.Ptr(stateGradient), objc.Ptr(cellGradient), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(mask), objc.Ptr(peephole), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:stateGradient:cellGradient:inputWeight:bias:initState:initCell:mask:peephole:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, cellOutputFwd, stateGradient, cellGradient, inputWeight, bias, initState, initCell, mask, peephole, descriptor, name)
 	return rv
 }
 
@@ -1883,7 +1883,7 @@ func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZState
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564592-tanhwithtensor?language=objc
 func (g_ Graph) TanhWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("tanhWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("tanhWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1891,7 +1891,7 @@ func (g_ Graph) TanhWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564581-rintwithtensor?language=objc
 func (g_ Graph) RintWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("rintWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("rintWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1899,7 +1899,7 @@ func (g_ Graph) RintWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928153-gatheralongaxis?language=objc
 func (g_ Graph) GatherAlongAxisWithUpdatesTensorIndicesTensorName(axis int, updatesTensor ITensor, indicesTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("gatherAlongAxis:withUpdatesTensor:indicesTensor:name:"), axis, objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("gatherAlongAxis:withUpdatesTensor:indicesTensor:name:"), axis, updatesTensor, indicesTensor, name)
 	return rv
 }
 
@@ -1907,7 +1907,7 @@ func (g_ Graph) GatherAlongAxisWithUpdatesTensorIndicesTensorName(axis int, upda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564562-logarithmbase2withtensor?language=objc
 func (g_ Graph) LogarithmBase2WithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("logarithmBase2WithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("logarithmBase2WithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1923,7 +1923,7 @@ func (g_ Graph) SparseTensorWithTypeTensorsShapeDataTypeName(sparseStorageType S
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867069-convolutiontranspose2ddatagradie?language=objc
 func (g_ Graph) ConvolutionTranspose2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeTensorForwardConvolutionDescriptorName(incomingGradient ITensor, weights ITensor, outputShape ITensor, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(weights), objc.Ptr(outputShape), objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), incomingGradient, weights, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -1931,7 +1931,7 @@ func (g_ Graph) ConvolutionTranspose2DDataGradientWithIncomingGradientTensorWeig
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750715-reversetensor?language=objc
 func (g_ Graph) ReverseTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reverseTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -1939,7 +1939,7 @@ func (g_ Graph) ReverseTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928157-scatteralongaxistensor?language=objc
 func (g_ Graph) ScatterAlongAxisTensorWithDataTensorUpdatesTensorIndicesTensorModeName(axisTensor ITensor, dataTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxisTensor:withDataTensor:updatesTensor:indicesTensor:mode:name:"), objc.Ptr(axisTensor), objc.Ptr(dataTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxisTensor:withDataTensor:updatesTensor:indicesTensor:mode:name:"), axisTensor, dataTensor, updatesTensor, indicesTensor, mode, name)
 	return rv
 }
 
@@ -1947,7 +1947,7 @@ func (g_ Graph) ScatterAlongAxisTensorWithDataTensorUpdatesTensorIndicesTensorMo
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925427-bandpartwithtensor?language=objc
 func (g_ Graph) BandPartWithTensorNumLowerTensorNumUpperTensorName(inputTensor ITensor, numLowerTensor ITensor, numUpperTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("bandPartWithTensor:numLowerTensor:numUpperTensor:name:"), objc.Ptr(inputTensor), objc.Ptr(numLowerTensor), objc.Ptr(numUpperTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("bandPartWithTensor:numLowerTensor:numUpperTensor:name:"), inputTensor, numLowerTensor, numUpperTensor, name)
 	return rv
 }
 
@@ -1955,7 +1955,7 @@ func (g_ Graph) BandPartWithTensorNumLowerTensorNumUpperTensorName(inputTensor I
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564618-runasyncwithfeeds?language=objc
 func (g_ Graph) RunAsyncWithFeedsTargetTensorsTargetOperationsExecutionDescriptor(feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, executionDescriptor IExecutionDescriptor) *foundation.Dictionary {
-	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithFeeds:targetTensors:targetOperations:executionDescriptor:"), feeds, targetTensors, targetOperations, objc.Ptr(executionDescriptor))
+	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithFeeds:targetTensors:targetOperations:executionDescriptor:"), feeds, targetTensors, targetOperations, executionDescriptor)
 	return rv
 }
 
@@ -1963,7 +1963,7 @@ func (g_ Graph) RunAsyncWithFeedsTargetTensorsTargetOperationsExecutionDescripto
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3923675-splittensor?language=objc
 func (g_ Graph) SplitTensorSplitSizesTensorAxisName(tensor ITensor, splitSizesTensor ITensor, axis int, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:splitSizesTensor:axis:name:"), objc.Ptr(tensor), objc.Ptr(splitSizesTensor), axis, name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("splitTensor:splitSizesTensor:axis:name:"), tensor, splitSizesTensor, axis, name)
 	return rv
 }
 
@@ -1971,7 +1971,7 @@ func (g_ Graph) SplitTensorSplitSizesTensorAxisName(tensor ITensor, splitSizesTe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564583-selectwithpredicatetensor?language=objc
 func (g_ Graph) SelectWithPredicateTensorTruePredicateTensorFalsePredicateTensorName(predicateTensor ITensor, truePredicateTensor ITensor, falseSelectTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("selectWithPredicateTensor:truePredicateTensor:falsePredicateTensor:name:"), objc.Ptr(predicateTensor), objc.Ptr(truePredicateTensor), objc.Ptr(falseSelectTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("selectWithPredicateTensor:truePredicateTensor:falsePredicateTensor:name:"), predicateTensor, truePredicateTensor, falseSelectTensor, name)
 	return rv
 }
 
@@ -1979,7 +1979,7 @@ func (g_ Graph) SelectWithPredicateTensorTruePredicateTensorFalsePredicateTensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919763-singlegaternnwithsourcetensor?language=objc
 func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInputWeightBiasInitStateDescriptorName(source ITensor, recurrentWeight ITensor, inputWeight ITensor, bias ITensor, initState ITensor, descriptor ISingleGateRNNDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:inputWeight:bias:initState:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("singleGateRNNWithSourceTensor:recurrentWeight:inputWeight:bias:initState:descriptor:name:"), source, recurrentWeight, inputWeight, bias, initState, descriptor, name)
 	return rv
 }
 
@@ -1987,7 +1987,7 @@ func (g_ Graph) SingleGateRNNWithSourceTensorRecurrentWeightInputWeightBiasInitS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580482-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthAxisDataTypeOnValueOffValueName(indicesTensor ITensor, depth uint, axis uint, dataType mps.DataType, onValue float64, offValue float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:dataType:onValue:offValue:name:"), objc.Ptr(indicesTensor), depth, axis, dataType, onValue, offValue, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:dataType:onValue:offValue:name:"), indicesTensor, depth, axis, dataType, onValue, offValue, name)
 	return rv
 }
 
@@ -1995,7 +1995,7 @@ func (g_ Graph) OneHotWithIndicesTensorDepthAxisDataTypeOnValueOffValueName(indi
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564541-additionwithprimarytensor?language=objc
 func (g_ Graph) AdditionWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("additionWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("additionWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2003,7 +2003,7 @@ func (g_ Graph) AdditionWithPrimaryTensorSecondaryTensorName(primaryTensor ITens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3675593-divisionnonanwithprimarytensor?language=objc
 func (g_ Graph) DivisionNoNaNWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("divisionNoNaNWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("divisionNoNaNWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2011,7 +2011,7 @@ func (g_ Graph) DivisionNoNaNWithPrimaryTensorSecondaryTensorName(primaryTensor 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3728135-slicetensor?language=objc
 func (g_ Graph) SliceTensorStartsEndsStridesName(tensor ITensor, starts []foundation.INumber, ends []foundation.INumber, strides []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:starts:ends:strides:name:"), objc.Ptr(tensor), starts, ends, strides, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sliceTensor:starts:ends:strides:name:"), tensor, starts, ends, strides, name)
 	return rv
 }
 
@@ -2019,7 +2019,7 @@ func (g_ Graph) SliceTensorStartsEndsStridesName(tensor ITensor, starts []founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901489-randomuniformtensorwithshapetens?language=objc
 func (g_ Graph) RandomUniformTensorWithShapeTensorStateTensorName(shapeTensor ITensor, state ITensor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:stateTensor:name:"), objc.Ptr(shapeTensor), objc.Ptr(state), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:stateTensor:name:"), shapeTensor, state, name)
 	return rv
 }
 
@@ -2027,7 +2027,7 @@ func (g_ Graph) RandomUniformTensorWithShapeTensorStateTensorName(shapeTensor IT
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618936-applystochasticgradientdescentwi?language=objc
 func (g_ Graph) ApplyStochasticGradientDescentWithLearningRateTensorVariableGradientTensorName(learningRateTensor ITensor, variable IVariableOp, gradientTensor ITensor, name string) Operation {
-	rv := objc.Call[Operation](g_, objc.Sel("applyStochasticGradientDescentWithLearningRateTensor:variable:gradientTensor:name:"), objc.Ptr(learningRateTensor), objc.Ptr(variable), objc.Ptr(gradientTensor), name)
+	rv := objc.Call[Operation](g_, objc.Sel("applyStochasticGradientDescentWithLearningRateTensor:variable:gradientTensor:name:"), learningRateTensor, variable, gradientTensor, name)
 	return rv
 }
 
@@ -2035,7 +2035,7 @@ func (g_ Graph) ApplyStochasticGradientDescentWithLearningRateTensorVariableGrad
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656160-atanhwithtensor?language=objc
 func (g_ Graph) AtanhWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("atanhWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("atanhWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2043,7 +2043,7 @@ func (g_ Graph) AtanhWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564573-modulowithprimarytensor?language=objc
 func (g_ Graph) ModuloWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("moduloWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("moduloWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2051,7 +2051,7 @@ func (g_ Graph) ModuloWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3667488-depthwiseconvolution2dweightsgra?language=objc
 func (g_ Graph) DepthwiseConvolution2DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeDescriptorName(incomingGradient ITensor, source ITensor, outputShape *foundation.Array, descriptor IDepthwiseConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:descriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(source), outputShape, objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthwiseConvolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:descriptor:name:"), incomingGradient, source, outputShape, descriptor, name)
 	return rv
 }
 
@@ -2059,7 +2059,7 @@ func (g_ Graph) DepthwiseConvolution2DWeightsGradientWithIncomingGradientTensorS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618929-convolutiontranspose2ddatagradie?language=objc
 func (g_ Graph) ConvolutionTranspose2DDataGradientWithIncomingGradientTensorWeightsTensorOutputShapeForwardConvolutionDescriptorName(incomingGradient ITensor, weights ITensor, outputShape *foundation.Array, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(weights), outputShape, objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DDataGradientWithIncomingGradientTensor:weightsTensor:outputShape:forwardConvolutionDescriptor:name:"), incomingGradient, weights, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -2067,7 +2067,7 @@ func (g_ Graph) ConvolutionTranspose2DDataGradientWithIncomingGradientTensorWeig
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3589368-reductionproductwithtensor?language=objc
 func (g_ Graph) ReductionProductWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionProductWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionProductWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 
@@ -2075,7 +2075,7 @@ func (g_ Graph) ReductionProductWithTensorAxesName(tensor ITensor, axes []founda
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3656155-acoshwithtensor?language=objc
 func (g_ Graph) AcoshWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("acoshWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("acoshWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2083,7 +2083,7 @@ func (g_ Graph) AcoshWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901488-randomuniformtensorwithshapetens?language=objc
 func (g_ Graph) RandomUniformTensorWithShapeTensorSeedName(shapeTensor ITensor, seed uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:seed:name:"), objc.Ptr(shapeTensor), seed, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomUniformTensorWithShapeTensor:seed:name:"), shapeTensor, seed, name)
 	return rv
 }
 
@@ -2091,15 +2091,15 @@ func (g_ Graph) RandomUniformTensorWithShapeTensorSeedName(shapeTensor ITensor, 
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3901479-randomtensorwithshape?language=objc
 func (g_ Graph) RandomTensorWithShapeDescriptorSeedName(shape *foundation.Array, descriptor IRandomOpDescriptor, seed uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:seed:name:"), shape, objc.Ptr(descriptor), seed, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("randomTensorWithShape:descriptor:seed:name:"), shape, descriptor, seed, name)
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564699-normalizationwithtensor?language=objc
-func (g_ Graph) NormalizationWithTensorMeanTensorVarianceTensorGammaTensorBetaTensorEpsilonName(tensor ITensor, mean ITensor, variance ITensor, gamma ITensor, beta ITensor, epsilon float64, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("normalizationWithTensor:meanTensor:varianceTensor:gammaTensor:betaTensor:epsilon:name:"), objc.Ptr(tensor), objc.Ptr(mean), objc.Ptr(variance), objc.Ptr(gamma), objc.Ptr(beta), epsilon, name)
+func (g_ Graph) NormalizationWithTensorMeanTensorVarianceTensorGammaTensorBetaTensorEpsilonName(tensor ITensor, mean ITensor, variance ITensor, gamma ITensor, beta ITensor, epsilon float32, name string) Tensor {
+	rv := objc.Call[Tensor](g_, objc.Sel("normalizationWithTensor:meanTensor:varianceTensor:gammaTensor:betaTensor:epsilon:name:"), tensor, mean, variance, gamma, beta, epsilon, name)
 	return rv
 }
 
@@ -2115,7 +2115,7 @@ func (g_ Graph) CoordinateAlongAxisWithShapeName(axis int, shape *foundation.Arr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564579-reciprocalwithtensor?language=objc
 func (g_ Graph) ReciprocalWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reciprocalWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reciprocalWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2131,7 +2131,7 @@ func (g_ Graph) RandomUniformTensorWithShapeSeedName(shape *foundation.Array, se
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618928-convolution2dweightsgradientwith?language=objc
 func (g_ Graph) Convolution2DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeForwardConvolutionDescriptorName(incomingGradient ITensor, source ITensor, outputShape *foundation.Array, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradient), objc.Ptr(source), outputShape, objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:forwardConvolutionDescriptor:name:"), incomingGradient, source, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -2147,7 +2147,7 @@ func (g_ Graph) RandomPhiloxStateTensorWithCounterLowCounterHighKeyName(counterL
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750712-flatten2dtensor?language=objc
 func (g_ Graph) Flatten2DTensorAxisTensorName(tensor ITensor, axisTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("flatten2DTensor:axisTensor:name:"), objc.Ptr(tensor), objc.Ptr(axisTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("flatten2DTensor:axisTensor:name:"), tensor, axisTensor, name)
 	return rv
 }
 
@@ -2155,7 +2155,7 @@ func (g_ Graph) Flatten2DTensorAxisTensorName(tensor ITensor, axisTensor ITensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867068-convolution2dweightsgradientwith?language=objc
 func (g_ Graph) Convolution2DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeTensorForwardConvolutionDescriptorName(gradient ITensor, source ITensor, outputShapeTensor ITensor, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(outputShapeTensor), objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolution2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), gradient, source, outputShapeTensor, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -2163,7 +2163,7 @@ func (g_ Graph) Convolution2DWeightsGradientWithIncomingGradientTensorSourceTens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928155-scatteralongaxis?language=objc
 func (g_ Graph) ScatterAlongAxisWithDataTensorUpdatesTensorIndicesTensorModeName(axis int, dataTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxis:withDataTensor:updatesTensor:indicesTensor:mode:name:"), axis, objc.Ptr(dataTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxis:withDataTensor:updatesTensor:indicesTensor:mode:name:"), axis, dataTensor, updatesTensor, indicesTensor, mode, name)
 	return rv
 }
 
@@ -2171,7 +2171,7 @@ func (g_ Graph) ScatterAlongAxisWithDataTensorUpdatesTensorIndicesTensorModeName
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3618930-convolutiontranspose2dweightsgra?language=objc
 func (g_ Graph) ConvolutionTranspose2DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeForwardConvolutionDescriptorName(incomingGradientTensor ITensor, source ITensor, outputShape *foundation.Array, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(source), outputShape, objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShape:forwardConvolutionDescriptor:name:"), incomingGradientTensor, source, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -2179,7 +2179,7 @@ func (g_ Graph) ConvolutionTranspose2DWeightsGradientWithIncomingGradientTensorS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3667506-resizewithgradienttensor?language=objc
 func (g_ Graph) ResizeWithGradientTensorInputModeCenterResultAlignCornersLayoutName(gradient ITensor, input ITensor, mode ResizeMode, centerResult bool, alignCorners bool, layout TensorNamedDataLayout, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("resizeWithGradientTensor:input:mode:centerResult:alignCorners:layout:name:"), objc.Ptr(gradient), objc.Ptr(input), mode, centerResult, alignCorners, layout, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("resizeWithGradientTensor:input:mode:centerResult:alignCorners:layout:name:"), gradient, input, mode, centerResult, alignCorners, layout, name)
 	return rv
 }
 
@@ -2188,7 +2188,7 @@ func (g_ Graph) ResizeWithGradientTensorInputModeCenterResultAlignCornersLayoutN
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564620-runasyncwithmtlcommandqueue?language=objc
 func (g_ Graph) RunAsyncWithMTLCommandQueueFeedsTargetTensorsTargetOperationsExecutionDescriptor(commandQueue metal.PCommandQueue, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, executionDescriptor IExecutionDescriptor) *foundation.Dictionary {
 	po0 := objc.WrapAsProtocol("MTLCommandQueue", commandQueue)
-	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetTensors:targetOperations:executionDescriptor:"), po0, feeds, targetTensors, targetOperations, objc.Ptr(executionDescriptor))
+	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetTensors:targetOperations:executionDescriptor:"), po0, feeds, targetTensors, targetOperations, executionDescriptor)
 	return rv
 }
 
@@ -2196,7 +2196,7 @@ func (g_ Graph) RunAsyncWithMTLCommandQueueFeedsTargetTensorsTargetOperationsExe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564620-runasyncwithmtlcommandqueue?language=objc
 func (g_ Graph) RunAsyncWithMTLCommandQueueObjectFeedsTargetTensorsTargetOperationsExecutionDescriptor(commandQueueObject objc.IObject, feeds *foundation.Dictionary, targetTensors []ITensor, targetOperations []IOperation, executionDescriptor IExecutionDescriptor) *foundation.Dictionary {
-	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetTensors:targetOperations:executionDescriptor:"), objc.Ptr(commandQueueObject), feeds, targetTensors, targetOperations, objc.Ptr(executionDescriptor))
+	rv := objc.Call[*foundation.Dictionary](g_, objc.Sel("runAsyncWithMTLCommandQueue:feeds:targetTensors:targetOperations:executionDescriptor:"), commandQueueObject, feeds, targetTensors, targetOperations, executionDescriptor)
 	return rv
 }
 
@@ -2204,7 +2204,7 @@ func (g_ Graph) RunAsyncWithMTLCommandQueueObjectFeedsTargetTensorsTargetOperati
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564590-subtractionwithprimarytensor?language=objc
 func (g_ Graph) SubtractionWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("subtractionWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("subtractionWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2220,7 +2220,7 @@ func (g_ Graph) ConstantWithDataShapeDataType(data []byte, shape *foundation.Arr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750690-l2normpooling4dgradientwithgradi?language=objc
 func (g_ Graph) L2NormPooling4DGradientWithGradientTensorSourceTensorDescriptorName(gradient ITensor, source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("L2NormPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), objc.Ptr(gradient), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("L2NormPooling4DGradientWithGradientTensor:sourceTensor:descriptor:name:"), gradient, source, descriptor, name)
 	return rv
 }
 
@@ -2228,7 +2228,7 @@ func (g_ Graph) L2NormPooling4DGradientWithGradientTensorSourceTensorDescriptorN
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580386-softmaxgradientwithincominggradi?language=objc
 func (g_ Graph) SoftMaxGradientWithIncomingGradientSourceTensorAxisName(gradient ITensor, source ITensor, axis int, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("softMaxGradientWithIncomingGradient:sourceTensor:axis:name:"), objc.Ptr(gradient), objc.Ptr(source), axis, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("softMaxGradientWithIncomingGradient:sourceTensor:axis:name:"), gradient, source, axis, name)
 	return rv
 }
 
@@ -2236,7 +2236,7 @@ func (g_ Graph) SoftMaxGradientWithIncomingGradientSourceTensorAxisName(gradient
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564549-exponentbase10withtensor?language=objc
 func (g_ Graph) ExponentBase10WithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("exponentBase10WithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("exponentBase10WithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2244,7 +2244,7 @@ func (g_ Graph) ExponentBase10WithTensorName(tensor ITensor, name string) Tensor
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867070-convolutiontranspose2dweightsgra?language=objc
 func (g_ Graph) ConvolutionTranspose2DWeightsGradientWithIncomingGradientTensorSourceTensorOutputShapeTensorForwardConvolutionDescriptorName(incomingGradientTensor ITensor, source ITensor, outputShape ITensor, forwardConvolutionDescriptor IConvolution2DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), objc.Ptr(incomingGradientTensor), objc.Ptr(source), objc.Ptr(outputShape), objc.Ptr(forwardConvolutionDescriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("convolutionTranspose2DWeightsGradientWithIncomingGradientTensor:sourceTensor:outputShapeTensor:forwardConvolutionDescriptor:name:"), incomingGradientTensor, source, outputShape, forwardConvolutionDescriptor, name)
 	return rv
 }
 
@@ -2252,7 +2252,7 @@ func (g_ Graph) ConvolutionTranspose2DWeightsGradientWithIncomingGradientTensorS
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564586-sinwithtensor?language=objc
 func (g_ Graph) SinWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sinWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sinWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2260,7 +2260,7 @@ func (g_ Graph) SinWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564736-transposetensor?language=objc
 func (g_ Graph) TransposeTensorDimensionWithDimensionName(tensor ITensor, dimensionIndex uint, dimensionIndex2 uint, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("transposeTensor:dimension:withDimension:name:"), objc.Ptr(tensor), dimensionIndex, dimensionIndex2, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("transposeTensor:dimension:withDimension:name:"), tensor, dimensionIndex, dimensionIndex2, name)
 	return rv
 }
 
@@ -2268,7 +2268,7 @@ func (g_ Graph) TransposeTensorDimensionWithDimensionName(tensor ITensor, dimens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564556-isfinitewithtensor?language=objc
 func (g_ Graph) IsFiniteWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("isFiniteWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("isFiniteWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2276,7 +2276,7 @@ func (g_ Graph) IsFiniteWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564571-maximumwithprimarytensor?language=objc
 func (g_ Graph) MaximumWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("maximumWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("maximumWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2284,7 +2284,7 @@ func (g_ Graph) MaximumWithPrimaryTensorSecondaryTensorName(primaryTensor ITenso
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750691-l2normpooling4dwithsourcetensor?language=objc
 func (g_ Graph) L2NormPooling4DWithSourceTensorDescriptorName(source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("L2NormPooling4DWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("L2NormPooling4DWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -2300,7 +2300,7 @@ func (g_ Graph) VariableWithDataShapeDataTypeName(data []byte, shape *foundation
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564544-coswithtensor?language=objc
 func (g_ Graph) CosWithTensorName(tensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("cosWithTensor:name:"), objc.Ptr(tensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("cosWithTensor:name:"), tensor, name)
 	return rv
 }
 
@@ -2308,7 +2308,7 @@ func (g_ Graph) CosWithTensorName(tensor ITensor, name string) Tensor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3580481-onehotwithindicestensor?language=objc
 func (g_ Graph) OneHotWithIndicesTensorDepthAxisDataTypeName(indicesTensor ITensor, depth uint, axis uint, dataType mps.DataType, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:dataType:name:"), objc.Ptr(indicesTensor), depth, axis, dataType, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("oneHotWithIndicesTensor:depth:axis:dataType:name:"), indicesTensor, depth, axis, dataType, name)
 	return rv
 }
 
@@ -2324,7 +2324,7 @@ func (g_ Graph) PlaceholderWithShapeName(shape *foundation.Array, name string) T
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867066-leakyreluwithtensor?language=objc
 func (g_ Graph) LeakyReLUWithTensorAlphaTensorName(tensor ITensor, alphaTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUWithTensor:alphaTensor:name:"), objc.Ptr(tensor), objc.Ptr(alphaTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("leakyReLUWithTensor:alphaTensor:name:"), tensor, alphaTensor, name)
 	return rv
 }
 
@@ -2332,7 +2332,7 @@ func (g_ Graph) LeakyReLUWithTensorAlphaTensorName(tensor ITensor, alphaTensor I
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3728134-slicegradienttensor?language=objc
 func (g_ Graph) SliceGradientTensorFwdInShapeTensorStartsEndsStridesStartMaskEndMaskSqueezeMaskName(inputGradientTensor ITensor, fwdInShapeTensor ITensor, starts []foundation.INumber, ends []foundation.INumber, strides []foundation.INumber, startMask uint32, endMask uint32, squeezeMask uint32, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("sliceGradientTensor:fwdInShapeTensor:starts:ends:strides:startMask:endMask:squeezeMask:name:"), objc.Ptr(inputGradientTensor), objc.Ptr(fwdInShapeTensor), starts, ends, strides, startMask, endMask, squeezeMask, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("sliceGradientTensor:fwdInShapeTensor:starts:ends:strides:startMask:endMask:squeezeMask:name:"), inputGradientTensor, fwdInShapeTensor, starts, ends, strides, startMask, endMask, squeezeMask, name)
 	return rv
 }
 
@@ -2348,7 +2348,7 @@ func (g_ Graph) StackTensorsAxisName(inputTensors []ITensor, axis int, name stri
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925429-lstmgradientswithsourcetensor?language=objc
 func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZStateCellOutputFwdInputWeightBiasInitStateInitCellDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, cellOutputFwd ITensor, inputWeight ITensor, bias ITensor, initState ITensor, initCell ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:inputWeight:bias:initState:initCell:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(cellOutputFwd), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:inputWeight:bias:initState:initCell:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, cellOutputFwd, inputWeight, bias, initState, initCell, descriptor, name)
 	return rv
 }
 
@@ -2356,7 +2356,7 @@ func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZState
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3925430-lstmgradientswithsourcetensor?language=objc
 func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZStateCellOutputFwdInputWeightBiasInitStateInitCellMaskDescriptorName(source ITensor, recurrentWeight ITensor, sourceGradient ITensor, zState ITensor, cellOutputFwd ITensor, inputWeight ITensor, bias ITensor, initState ITensor, initCell ITensor, mask ITensor, descriptor ILSTMDescriptor, name string) []Tensor {
-	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:inputWeight:bias:initState:initCell:mask:descriptor:name:"), objc.Ptr(source), objc.Ptr(recurrentWeight), objc.Ptr(sourceGradient), objc.Ptr(zState), objc.Ptr(cellOutputFwd), objc.Ptr(inputWeight), objc.Ptr(bias), objc.Ptr(initState), objc.Ptr(initCell), objc.Ptr(mask), objc.Ptr(descriptor), name)
+	rv := objc.Call[[]Tensor](g_, objc.Sel("LSTMGradientsWithSourceTensor:recurrentWeight:sourceGradient:zState:cellOutputFwd:inputWeight:bias:initState:initCell:mask:descriptor:name:"), source, recurrentWeight, sourceGradient, zState, cellOutputFwd, inputWeight, bias, initState, initCell, mask, descriptor, name)
 	return rv
 }
 
@@ -2364,7 +2364,7 @@ func (g_ Graph) LSTMGradientsWithSourceTensorRecurrentWeightSourceGradientZState
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3928158-scatteralongaxistensor?language=objc
 func (g_ Graph) ScatterAlongAxisTensorWithUpdatesTensorIndicesTensorShapeModeName(axisTensor ITensor, updatesTensor ITensor, indicesTensor ITensor, shape *foundation.Array, mode ScatterMode, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxisTensor:withUpdatesTensor:indicesTensor:shape:mode:name:"), objc.Ptr(axisTensor), objc.Ptr(updatesTensor), objc.Ptr(indicesTensor), shape, mode, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("scatterAlongAxisTensor:withUpdatesTensor:indicesTensor:shape:mode:name:"), axisTensor, updatesTensor, indicesTensor, shape, mode, name)
 	return rv
 }
 
@@ -2372,7 +2372,7 @@ func (g_ Graph) ScatterAlongAxisTensorWithUpdatesTensorIndicesTensorShapeModeNam
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3867077-broadcasttensor?language=objc
 func (g_ Graph) BroadcastTensorToShapeTensorName(tensor ITensor, shapeTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("broadcastTensor:toShapeTensor:name:"), objc.Ptr(tensor), objc.Ptr(shapeTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("broadcastTensor:toShapeTensor:name:"), tensor, shapeTensor, name)
 	return rv
 }
 
@@ -2380,7 +2380,7 @@ func (g_ Graph) BroadcastTensorToShapeTensorName(tensor ITensor, shapeTensor ITe
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750693-avgpooling4dwithsourcetensor?language=objc
 func (g_ Graph) AvgPooling4DWithSourceTensorDescriptorName(source ITensor, descriptor IPooling4DOpDescriptor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling4DWithSourceTensor:descriptor:name:"), objc.Ptr(source), objc.Ptr(descriptor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("avgPooling4DWithSourceTensor:descriptor:name:"), source, descriptor, name)
 	return rv
 }
 
@@ -2388,7 +2388,7 @@ func (g_ Graph) AvgPooling4DWithSourceTensorDescriptorName(source ITensor, descr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564572-minimumwithprimarytensor?language=objc
 func (g_ Graph) MinimumWithPrimaryTensorSecondaryTensorName(primaryTensor ITensor, secondaryTensor ITensor, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("minimumWithPrimaryTensor:secondaryTensor:name:"), objc.Ptr(primaryTensor), objc.Ptr(secondaryTensor), name)
+	rv := objc.Call[Tensor](g_, objc.Sel("minimumWithPrimaryTensor:secondaryTensor:name:"), primaryTensor, secondaryTensor, name)
 	return rv
 }
 
@@ -2396,7 +2396,7 @@ func (g_ Graph) MinimumWithPrimaryTensorSecondaryTensorName(primaryTensor ITenso
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3564732-reshapetensor?language=objc
 func (g_ Graph) ReshapeTensorWithShapeName(tensor ITensor, shape *foundation.Array, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reshapeTensor:withShape:name:"), objc.Ptr(tensor), shape, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reshapeTensor:withShape:name:"), tensor, shape, name)
 	return rv
 }
 
@@ -2404,7 +2404,7 @@ func (g_ Graph) ReshapeTensorWithShapeName(tensor ITensor, shape *foundation.Arr
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3750710-depthtospace2dtensor?language=objc
 func (g_ Graph) DepthToSpace2DTensorWidthAxisTensorHeightAxisTensorDepthAxisTensorBlockSizeUsePixelShuffleOrderName(tensor ITensor, widthAxisTensor ITensor, heightAxisTensor ITensor, depthAxisTensor ITensor, blockSize uint, usePixelShuffleOrder bool, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("depthToSpace2DTensor:widthAxisTensor:heightAxisTensor:depthAxisTensor:blockSize:usePixelShuffleOrder:name:"), objc.Ptr(tensor), objc.Ptr(widthAxisTensor), objc.Ptr(heightAxisTensor), objc.Ptr(depthAxisTensor), blockSize, usePixelShuffleOrder, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("depthToSpace2DTensor:widthAxisTensor:heightAxisTensor:depthAxisTensor:blockSize:usePixelShuffleOrder:name:"), tensor, widthAxisTensor, heightAxisTensor, depthAxisTensor, blockSize, usePixelShuffleOrder, name)
 	return rv
 }
 
@@ -2412,7 +2412,7 @@ func (g_ Graph) DepthToSpace2DTensorWidthAxisTensorHeightAxisTensorDepthAxisTens
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshadersgraph/mpsgraph/3919779-reductionorwithtensor?language=objc
 func (g_ Graph) ReductionOrWithTensorAxesName(tensor ITensor, axes []foundation.INumber, name string) Tensor {
-	rv := objc.Call[Tensor](g_, objc.Sel("reductionOrWithTensor:axes:name:"), objc.Ptr(tensor), axes, name)
+	rv := objc.Call[Tensor](g_, objc.Sel("reductionOrWithTensor:axes:name:"), tensor, axes, name)
 	return rv
 }
 

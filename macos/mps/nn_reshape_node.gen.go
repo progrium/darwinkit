@@ -34,7 +34,7 @@ func NNReshapeNodeFrom(ptr unsafe.Pointer) NNReshapeNode {
 }
 
 func (nc _NNReshapeNodeClass) NodeWithSourceResultWidthResultHeightResultFeatureChannels(source INNImageNode, resultWidth uint, resultHeight uint, resultFeatureChannels uint) NNReshapeNode {
-	rv := objc.Call[NNReshapeNode](nc, objc.Sel("nodeWithSource:resultWidth:resultHeight:resultFeatureChannels:"), objc.Ptr(source), resultWidth, resultHeight, resultFeatureChannels)
+	rv := objc.Call[NNReshapeNode](nc, objc.Sel("nodeWithSource:resultWidth:resultHeight:resultFeatureChannels:"), source, resultWidth, resultHeight, resultFeatureChannels)
 	return rv
 }
 
@@ -46,7 +46,7 @@ func NNReshapeNode_NodeWithSourceResultWidthResultHeightResultFeatureChannels(so
 }
 
 func (n_ NNReshapeNode) InitWithSourceResultWidthResultHeightResultFeatureChannels(source INNImageNode, resultWidth uint, resultHeight uint, resultFeatureChannels uint) NNReshapeNode {
-	rv := objc.Call[NNReshapeNode](n_, objc.Sel("initWithSource:resultWidth:resultHeight:resultFeatureChannels:"), objc.Ptr(source), resultWidth, resultHeight, resultFeatureChannels)
+	rv := objc.Call[NNReshapeNode](n_, objc.Sel("initWithSource:resultWidth:resultHeight:resultFeatureChannels:"), source, resultWidth, resultHeight, resultFeatureChannels)
 	return rv
 }
 

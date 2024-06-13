@@ -57,7 +57,7 @@ func ScriptCommandFrom(ptr unsafe.Pointer) ScriptCommand {
 }
 
 func (s_ ScriptCommand) InitWithCommandDescription(commandDef IScriptCommandDescription) ScriptCommand {
-	rv := objc.Call[ScriptCommand](s_, objc.Sel("initWithCommandDescription:"), objc.Ptr(commandDef))
+	rv := objc.Call[ScriptCommand](s_, objc.Sel("initWithCommandDescription:"), commandDef)
 	return rv
 }
 
@@ -162,7 +162,7 @@ func (s_ ScriptCommand) ScriptErrorOffendingObjectDescriptor() AppleEventDescrip
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417217-scripterroroffendingobjectdescri?language=objc
 func (s_ ScriptCommand) SetScriptErrorOffendingObjectDescriptor(value IAppleEventDescriptor) {
-	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorOffendingObjectDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorOffendingObjectDescriptor:"), value)
 }
 
 // Sets a script error string that is associated with execution of the command. [Full Topic]
@@ -230,7 +230,7 @@ func (s_ ScriptCommand) ReceiversSpecifier() ScriptObjectSpecifier {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1417016-receiversspecifier?language=objc
 func (s_ ScriptCommand) SetReceiversSpecifier(value IScriptObjectSpecifier) {
-	objc.Call[objc.Void](s_, objc.Sel("setReceiversSpecifier:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setReceiversSpecifier:"), value)
 }
 
 // Sets a descriptor for the expected type that will be put in the reply Apple event if the sender requested a reply, execution of the receiver completes, and an error number was set. [Full Topic]
@@ -245,7 +245,7 @@ func (s_ ScriptCommand) ScriptErrorExpectedTypeDescriptor() AppleEventDescriptor
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsscriptcommand/1411714-scripterrorexpectedtypedescripto?language=objc
 func (s_ ScriptCommand) SetScriptErrorExpectedTypeDescriptor(value IAppleEventDescriptor) {
-	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorExpectedTypeDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setScriptErrorExpectedTypeDescriptor:"), value)
 }
 
 // Returns a dictionary containing the arguments of the command, evaluated from object specifiers to objects if necessary. The keys in the dictionary are the argument names. [Full Topic]

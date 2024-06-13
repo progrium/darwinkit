@@ -3,6 +3,8 @@
 package metal
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,7 +14,7 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvisiblefunctiontable?language=objc
 type PVisibleFunctionTable interface {
 	// optional
-	SetFunctionsWithRange(functions FunctionHandleObject, range_ foundation.Range)
+	SetFunctionsWithRange(functions unsafe.Pointer, range_ foundation.Range)
 	HasSetFunctionsWithRange() bool
 
 	// optional
@@ -35,7 +37,7 @@ func (v_ VisibleFunctionTableObject) HasSetFunctionsWithRange() bool {
 // Sets a range of table entries to point to an array of callable functions. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlvisiblefunctiontable/3554057-setfunctions?language=objc
-func (v_ VisibleFunctionTableObject) SetFunctionsWithRange(functions FunctionHandleObject, range_ foundation.Range) {
+func (v_ VisibleFunctionTableObject) SetFunctionsWithRange(functions unsafe.Pointer, range_ foundation.Range) {
 	po0 := objc.WrapAsProtocol("MTLFunctionHandle", functions)
 	objc.Call[objc.Void](v_, objc.Sel("setFunctions:withRange:"), po0, range_)
 }

@@ -19,17 +19,17 @@ type _ContactStoreClass struct {
 // An interface definition for the [ContactStore] class.
 type IContactStore interface {
 	objc.IObject
-	UnifiedContactWithIdentifierKeysToFetchError(identifier string, keys []objc.IObject, error foundation.IError) Contact
+	UnifiedContactWithIdentifierKeysToFetchError(identifier string, keys []objc.IObject, error unsafe.Pointer) Contact
 	RequestAccessForEntityTypeCompletionHandler(entityType EntityType, completionHandler func(granted bool, error foundation.Error))
-	ExecuteSaveRequestError(saveRequest ISaveRequest, error foundation.IError) bool
+	ExecuteSaveRequestError(saveRequest ISaveRequest, error unsafe.Pointer) bool
 	DefaultContainerIdentifier() string
-	EnumeratorForContactFetchRequestError(request IContactFetchRequest, error foundation.IError) FetchResult
-	ContainersMatchingPredicateError(predicate foundation.IPredicate, error foundation.IError) []Container
-	EnumerateContactsWithFetchRequestErrorUsingBlock(fetchRequest IContactFetchRequest, error foundation.IError, block func(contact Contact, stop *bool)) bool
-	UnifiedContactsMatchingPredicateKeysToFetchError(predicate foundation.IPredicate, keys []objc.IObject, error foundation.IError) []Contact
-	UnifiedMeContactWithKeysToFetchError(keys []objc.IObject, error foundation.IError) Contact
-	GroupsMatchingPredicateError(predicate foundation.IPredicate, error foundation.IError) []Group
-	EnumeratorForChangeHistoryFetchRequestError(request IChangeHistoryFetchRequest, error foundation.IError) FetchResult
+	EnumeratorForContactFetchRequestError(request IContactFetchRequest, error unsafe.Pointer) FetchResult
+	ContainersMatchingPredicateError(predicate foundation.IPredicate, error unsafe.Pointer) []Container
+	EnumerateContactsWithFetchRequestErrorUsingBlock(fetchRequest IContactFetchRequest, error unsafe.Pointer, block func(contact Contact, stop *bool)) bool
+	UnifiedContactsMatchingPredicateKeysToFetchError(predicate foundation.IPredicate, keys []objc.IObject, error unsafe.Pointer) []Contact
+	UnifiedMeContactWithKeysToFetchError(keys []objc.IObject, error unsafe.Pointer) Contact
+	GroupsMatchingPredicateError(predicate foundation.IPredicate, error unsafe.Pointer) []Group
+	EnumeratorForChangeHistoryFetchRequestError(request IChangeHistoryFetchRequest, error unsafe.Pointer) FetchResult
 	CurrentHistoryToken() []byte
 }
 
@@ -69,8 +69,8 @@ func (c_ ContactStore) Init() ContactStore {
 // Fetches a unified contact for the specified contact identifier. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1403256-unifiedcontactwithidentifier?language=objc
-func (c_ ContactStore) UnifiedContactWithIdentifierKeysToFetchError(identifier string, keys []objc.IObject, error foundation.IError) Contact {
-	rv := objc.Call[Contact](c_, objc.Sel("unifiedContactWithIdentifier:keysToFetch:error:"), identifier, keys, objc.Ptr(error))
+func (c_ ContactStore) UnifiedContactWithIdentifierKeysToFetchError(identifier string, keys []objc.IObject, error unsafe.Pointer) Contact {
+	rv := objc.Call[Contact](c_, objc.Sel("unifiedContactWithIdentifier:keysToFetch:error:"), identifier, keys, error)
 	return rv
 }
 
@@ -84,8 +84,8 @@ func (c_ ContactStore) RequestAccessForEntityTypeCompletionHandler(entityType En
 // Executes a save request and returns success or failure. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1403230-executesaverequest?language=objc
-func (c_ ContactStore) ExecuteSaveRequestError(saveRequest ISaveRequest, error foundation.IError) bool {
-	rv := objc.Call[bool](c_, objc.Sel("executeSaveRequest:error:"), objc.Ptr(saveRequest), objc.Ptr(error))
+func (c_ ContactStore) ExecuteSaveRequestError(saveRequest ISaveRequest, error unsafe.Pointer) bool {
+	rv := objc.Call[bool](c_, objc.Sel("executeSaveRequest:error:"), saveRequest, error)
 	return rv
 }
 
@@ -115,56 +115,56 @@ func (c_ ContactStore) DefaultContainerIdentifier() string {
 // Enumerates a contact fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/3294191-enumeratorforcontactfetchrequest?language=objc
-func (c_ ContactStore) EnumeratorForContactFetchRequestError(request IContactFetchRequest, error foundation.IError) FetchResult {
-	rv := objc.Call[FetchResult](c_, objc.Sel("enumeratorForContactFetchRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (c_ ContactStore) EnumeratorForContactFetchRequestError(request IContactFetchRequest, error unsafe.Pointer) FetchResult {
+	rv := objc.Call[FetchResult](c_, objc.Sel("enumeratorForContactFetchRequest:error:"), request, error)
 	return rv
 }
 
 // Fetches all containers matching the specified predicate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1403238-containersmatchingpredicate?language=objc
-func (c_ ContactStore) ContainersMatchingPredicateError(predicate foundation.IPredicate, error foundation.IError) []Container {
-	rv := objc.Call[[]Container](c_, objc.Sel("containersMatchingPredicate:error:"), objc.Ptr(predicate), objc.Ptr(error))
+func (c_ ContactStore) ContainersMatchingPredicateError(predicate foundation.IPredicate, error unsafe.Pointer) []Container {
+	rv := objc.Call[[]Container](c_, objc.Sel("containersMatchingPredicate:error:"), predicate, error)
 	return rv
 }
 
 // Returns a Boolean value that indicates whether the enumeration of all contacts matching a contact fetch request executes successfully. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1402849-enumeratecontactswithfetchreques?language=objc
-func (c_ ContactStore) EnumerateContactsWithFetchRequestErrorUsingBlock(fetchRequest IContactFetchRequest, error foundation.IError, block func(contact Contact, stop *bool)) bool {
-	rv := objc.Call[bool](c_, objc.Sel("enumerateContactsWithFetchRequest:error:usingBlock:"), objc.Ptr(fetchRequest), objc.Ptr(error), block)
+func (c_ ContactStore) EnumerateContactsWithFetchRequestErrorUsingBlock(fetchRequest IContactFetchRequest, error unsafe.Pointer, block func(contact Contact, stop *bool)) bool {
+	rv := objc.Call[bool](c_, objc.Sel("enumerateContactsWithFetchRequest:error:usingBlock:"), fetchRequest, error, block)
 	return rv
 }
 
 // Fetches all unified contacts matching the specified predicate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1403266-unifiedcontactsmatchingpredicate?language=objc
-func (c_ ContactStore) UnifiedContactsMatchingPredicateKeysToFetchError(predicate foundation.IPredicate, keys []objc.IObject, error foundation.IError) []Contact {
-	rv := objc.Call[[]Contact](c_, objc.Sel("unifiedContactsMatchingPredicate:keysToFetch:error:"), objc.Ptr(predicate), keys, objc.Ptr(error))
+func (c_ ContactStore) UnifiedContactsMatchingPredicateKeysToFetchError(predicate foundation.IPredicate, keys []objc.IObject, error unsafe.Pointer) []Contact {
+	rv := objc.Call[[]Contact](c_, objc.Sel("unifiedContactsMatchingPredicate:keysToFetch:error:"), predicate, keys, error)
 	return rv
 }
 
 // Fetches the unified contact that’s the me card. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1402987-unifiedmecontactwithkeystofetch?language=objc
-func (c_ ContactStore) UnifiedMeContactWithKeysToFetchError(keys []objc.IObject, error foundation.IError) Contact {
-	rv := objc.Call[Contact](c_, objc.Sel("unifiedMeContactWithKeysToFetch:error:"), keys, objc.Ptr(error))
+func (c_ ContactStore) UnifiedMeContactWithKeysToFetchError(keys []objc.IObject, error unsafe.Pointer) Contact {
+	rv := objc.Call[Contact](c_, objc.Sel("unifiedMeContactWithKeysToFetch:error:"), keys, error)
 	return rv
 }
 
 // Fetches all groups matching the specified predicate. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/1403121-groupsmatchingpredicate?language=objc
-func (c_ ContactStore) GroupsMatchingPredicateError(predicate foundation.IPredicate, error foundation.IError) []Group {
-	rv := objc.Call[[]Group](c_, objc.Sel("groupsMatchingPredicate:error:"), objc.Ptr(predicate), objc.Ptr(error))
+func (c_ ContactStore) GroupsMatchingPredicateError(predicate foundation.IPredicate, error unsafe.Pointer) []Group {
+	rv := objc.Call[[]Group](c_, objc.Sel("groupsMatchingPredicate:error:"), predicate, error)
 	return rv
 }
 
 // Enumerates a change history fetch request. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/contacts/cncontactstore/3294190-enumeratorforchangehistoryfetchr?language=objc
-func (c_ ContactStore) EnumeratorForChangeHistoryFetchRequestError(request IChangeHistoryFetchRequest, error foundation.IError) FetchResult {
-	rv := objc.Call[FetchResult](c_, objc.Sel("enumeratorForChangeHistoryFetchRequest:error:"), objc.Ptr(request), objc.Ptr(error))
+func (c_ ContactStore) EnumeratorForChangeHistoryFetchRequestError(request IChangeHistoryFetchRequest, error unsafe.Pointer) FetchResult {
+	rv := objc.Call[FetchResult](c_, objc.Sel("enumeratorForChangeHistoryFetchRequest:error:"), request, error)
 	return rv
 }
 

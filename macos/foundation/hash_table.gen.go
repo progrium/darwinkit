@@ -65,7 +65,7 @@ func NewHashTableWithOptionsCapacity(options PointerFunctionsOptions, initialCap
 }
 
 func (h_ HashTable) InitWithPointerFunctionsCapacity(functions IPointerFunctions, initialCapacity uint) HashTable {
-	rv := objc.Call[HashTable](h_, objc.Sel("initWithPointerFunctions:capacity:"), objc.Ptr(functions), initialCapacity)
+	rv := objc.Call[HashTable](h_, objc.Sel("initWithPointerFunctions:capacity:"), functions, initialCapacity)
 	return rv
 }
 
@@ -102,7 +102,7 @@ func (h_ HashTable) Init() HashTable {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1410816-isequaltohashtable?language=objc
 func (h_ HashTable) IsEqualToHashTable(other IHashTable) bool {
-	rv := objc.Call[bool](h_, objc.Sel("isEqualToHashTable:"), objc.Ptr(other))
+	rv := objc.Call[bool](h_, objc.Sel("isEqualToHashTable:"), other)
 	return rv
 }
 
@@ -117,7 +117,7 @@ func (h_ HashTable) RemoveAllObjects() {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1417518-issubsetofhashtable?language=objc
 func (h_ HashTable) IsSubsetOfHashTable(other IHashTable) bool {
-	rv := objc.Call[bool](h_, objc.Sel("isSubsetOfHashTable:"), objc.Ptr(other))
+	rv := objc.Call[bool](h_, objc.Sel("isSubsetOfHashTable:"), other)
 	return rv
 }
 
@@ -125,21 +125,21 @@ func (h_ HashTable) IsSubsetOfHashTable(other IHashTable) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1408509-intersecthashtable?language=objc
 func (h_ HashTable) IntersectHashTable(other IHashTable) {
-	objc.Call[objc.Void](h_, objc.Sel("intersectHashTable:"), objc.Ptr(other))
+	objc.Call[objc.Void](h_, objc.Sel("intersectHashTable:"), other)
 }
 
 // Adds each element in another given hash table to the receiving hash table, if not present. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1413481-unionhashtable?language=objc
 func (h_ HashTable) UnionHashTable(other IHashTable) {
-	objc.Call[objc.Void](h_, objc.Sel("unionHashTable:"), objc.Ptr(other))
+	objc.Call[objc.Void](h_, objc.Sel("unionHashTable:"), other)
 }
 
 // Determines whether the hash table contains a given object, and returns that object if it is present [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1417991-member?language=objc
 func (h_ HashTable) Member(object objc.IObject) objc.Object {
-	rv := objc.Call[objc.Object](h_, objc.Sel("member:"), objc.Ptr(object))
+	rv := objc.Call[objc.Object](h_, objc.Sel("member:"), object)
 	return rv
 }
 
@@ -155,7 +155,7 @@ func (h_ HashTable) ObjectEnumerator() Enumerator {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1416474-intersectshashtable?language=objc
 func (h_ HashTable) IntersectsHashTable(other IHashTable) bool {
-	rv := objc.Call[bool](h_, objc.Sel("intersectsHashTable:"), objc.Ptr(other))
+	rv := objc.Call[bool](h_, objc.Sel("intersectsHashTable:"), other)
 	return rv
 }
 
@@ -163,14 +163,14 @@ func (h_ HashTable) IntersectsHashTable(other IHashTable) bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1414557-minushashtable?language=objc
 func (h_ HashTable) MinusHashTable(other IHashTable) {
-	objc.Call[objc.Void](h_, objc.Sel("minusHashTable:"), objc.Ptr(other))
+	objc.Call[objc.Void](h_, objc.Sel("minusHashTable:"), other)
 }
 
 // Removes a given object from the hash table. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1415369-removeobject?language=objc
 func (h_ HashTable) RemoveObject(object objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("removeObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](h_, objc.Sel("removeObject:"), object)
 }
 
 // Returns a new hash table for storing weak references to its contents. [Full Topic]
@@ -192,14 +192,14 @@ func HashTable_WeakObjectsHashTable() HashTable {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1411690-addobject?language=objc
 func (h_ HashTable) AddObject(object objc.IObject) {
-	objc.Call[objc.Void](h_, objc.Sel("addObject:"), objc.Ptr(object))
+	objc.Call[objc.Void](h_, objc.Sel("addObject:"), object)
 }
 
 // Returns a Boolean value that indicates whether the hash table contains a given object. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nshashtable/1415113-containsobject?language=objc
 func (h_ HashTable) ContainsObject(anObject objc.IObject) bool {
-	rv := objc.Call[bool](h_, objc.Sel("containsObject:"), objc.Ptr(anObject))
+	rv := objc.Call[bool](h_, objc.Sel("containsObject:"), anObject)
 	return rv
 }
 

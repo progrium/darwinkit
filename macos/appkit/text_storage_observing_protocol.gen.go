@@ -44,7 +44,7 @@ func (t_ TextStorageObservingObject) HasProcessEditingForTextStorageEditedRangeC
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorageobserving/3810050-processeditingfortextstorage?language=objc
 func (t_ TextStorageObservingObject) ProcessEditingForTextStorageEditedRangeChangeInLengthInvalidatedRange(textStorage TextStorage, editMask TextStorageEditActions, newCharRange foundation.Range, delta int, invalidatedCharRange foundation.Range) {
-	objc.Call[objc.Void](t_, objc.Sel("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), objc.Ptr(textStorage), editMask, newCharRange, delta, invalidatedCharRange)
+	objc.Call[objc.Void](t_, objc.Sel("processEditingForTextStorage:edited:range:changeInLength:invalidatedRange:"), textStorage, editMask, newCharRange, delta, invalidatedCharRange)
 }
 
 func (t_ TextStorageObservingObject) HasPerformEditingTransactionForTextStorageUsingBlock() bool {
@@ -55,7 +55,7 @@ func (t_ TextStorageObservingObject) HasPerformEditingTransactionForTextStorageU
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorageobserving/3852588-performeditingtransactionfortext?language=objc
 func (t_ TextStorageObservingObject) PerformEditingTransactionForTextStorageUsingBlock(textStorage TextStorage, transaction func()) {
-	objc.Call[objc.Void](t_, objc.Sel("performEditingTransactionForTextStorage:usingBlock:"), objc.Ptr(textStorage), transaction)
+	objc.Call[objc.Void](t_, objc.Sel("performEditingTransactionForTextStorage:usingBlock:"), textStorage, transaction)
 }
 
 func (t_ TextStorageObservingObject) HasSetTextStorage() bool {
@@ -66,7 +66,7 @@ func (t_ TextStorageObservingObject) HasSetTextStorage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/uikit/nstextstorageobserving/3810051-textstorage?language=objc
 func (t_ TextStorageObservingObject) SetTextStorage(value TextStorage) {
-	objc.Call[objc.Void](t_, objc.Sel("setTextStorage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTextStorage:"), value)
 }
 
 func (t_ TextStorageObservingObject) HasTextStorage() bool {

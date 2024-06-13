@@ -36,7 +36,7 @@ func CNNCrossChannelNormalizationNodeFrom(ptr unsafe.Pointer) CNNCrossChannelNor
 }
 
 func (cc _CNNCrossChannelNormalizationNodeClass) NodeWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNCrossChannelNormalizationNode {
-	rv := objc.Call[CNNCrossChannelNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNCrossChannelNormalizationNode](cc, objc.Sel("nodeWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -48,7 +48,7 @@ func CNNCrossChannelNormalizationNode_NodeWithSourceKernelSize(sourceNode INNIma
 }
 
 func (c_ CNNCrossChannelNormalizationNode) InitWithSource(sourceNode INNImageNode) CNNCrossChannelNormalizationNode {
-	rv := objc.Call[CNNCrossChannelNormalizationNode](c_, objc.Sel("initWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNCrossChannelNormalizationNode](c_, objc.Sel("initWithSource:"), sourceNode)
 	return rv
 }
 
@@ -62,7 +62,7 @@ func NewCNNCrossChannelNormalizationNodeWithSource(sourceNode INNImageNode) CNNC
 }
 
 func (c_ CNNCrossChannelNormalizationNode) InitWithSourceKernelSize(sourceNode INNImageNode, kernelSize uint) CNNCrossChannelNormalizationNode {
-	rv := objc.Call[CNNCrossChannelNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), objc.Ptr(sourceNode), kernelSize)
+	rv := objc.Call[CNNCrossChannelNormalizationNode](c_, objc.Sel("initWithSource:kernelSize:"), sourceNode, kernelSize)
 	return rv
 }
 
@@ -96,7 +96,7 @@ func (c_ CNNCrossChannelNormalizationNode) Init() CNNCrossChannelNormalizationNo
 }
 
 func (cc _CNNCrossChannelNormalizationNodeClass) NodeWithSource(sourceNode INNImageNode) CNNCrossChannelNormalizationNode {
-	rv := objc.Call[CNNCrossChannelNormalizationNode](cc, objc.Sel("nodeWithSource:"), objc.Ptr(sourceNode))
+	rv := objc.Call[CNNCrossChannelNormalizationNode](cc, objc.Sel("nodeWithSource:"), sourceNode)
 	return rv
 }
 

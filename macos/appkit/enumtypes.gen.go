@@ -591,7 +591,7 @@ const (
 // The animation progress, as a floating-point number between 0.0 and 1.0. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsanimationprogress?language=objc
-type AnimationProgress float64
+type AnimationProgress float32
 
 // Constants for determining which version of AppKit is available. [Full Topic]
 //
@@ -599,7 +599,7 @@ type AnimationProgress float64
 type AppKitVersion float64
 
 const (
-	AppKitVersionNumber                                 AppKitVersion = 2113.600098
+	AppKitVersionNumber                                 AppKitVersion = 2487.500000
 	AppKitVersionNumber10_0                             AppKitVersion = 577.000000
 	AppKitVersionNumber10_1                             AppKitVersion = 620.000000
 	AppKitVersionNumber10_10                            AppKitVersion = 1343.000000
@@ -1851,6 +1851,7 @@ const (
 type DragOperation uint
 
 const (
+	DragOperationAll          DragOperation = 15
 	DragOperationAll_Obsolete DragOperation = 15
 	DragOperationCopy         DragOperation = 1
 	DragOperationDelete       DragOperation = 32
@@ -3004,7 +3005,7 @@ const (
 // Layout priority used to indicate the relative importance of constraints, allowing Auto Layout to make appropriate tradeoffs when satisfying the constraints of the system as a whole. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nslayoutpriority?language=objc
-type LayoutPriority float64
+type LayoutPriority float32
 
 const (
 	LayoutPriorityDefaultHigh                LayoutPriority = 750.000000
@@ -4298,7 +4299,7 @@ const (
 // The various Auto Layout priorities for a view in the stack view to remain attached. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsstackviewvisibilitypriority?language=objc
-type StackViewVisibilityPriority float64
+type StackViewVisibilityPriority float32
 
 const (
 	StackViewVisibilityPriorityDetachOnlyIfNecessary StackViewVisibilityPriority = 900.000000
@@ -5165,7 +5166,7 @@ const (
 // Priorities for the visibility of a Touch Bar item. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbaritempriority?language=objc
-type TouchBarItemPriority float64
+type TouchBarItemPriority float32
 
 const (
 	TouchBarItemPriorityHigh   TouchBarItemPriority = 1000.000000
@@ -5494,9 +5495,10 @@ const (
 type VoiceGenderName string
 
 const (
-	VoiceGenderFemale VoiceGenderName = "VoiceGenderFemale"
-	VoiceGenderMale   VoiceGenderName = "VoiceGenderMale"
-	VoiceGenderNeuter VoiceGenderName = "VoiceGenderNeuter"
+	VoiceGenderFemale  VoiceGenderName = "VoiceGenderFemale"
+	VoiceGenderMale    VoiceGenderName = "VoiceGenderMale"
+	VoiceGenderNeuter  VoiceGenderName = "VoiceGenderNeuter"
+	VoiceGenderNeutral VoiceGenderName = "VoiceGenderNeutral"
 )
 
 // Constants that specify the winding rule a Bézier path uses. [Full Topic]

@@ -107,7 +107,7 @@ func (u_ UUID) GetUUIDBytes(uuid *uint8) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsuuid/3746978-compare?language=objc
 func (u_ UUID) Compare(otherUUID IUUID) ComparisonResult {
-	rv := objc.Call[ComparisonResult](u_, objc.Sel("compare:"), objc.Ptr(otherUUID))
+	rv := objc.Call[ComparisonResult](u_, objc.Sel("compare:"), otherUUID)
 	return rv
 }
 

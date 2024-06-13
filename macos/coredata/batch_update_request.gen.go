@@ -45,7 +45,7 @@ func BatchUpdateRequestFrom(ptr unsafe.Pointer) BatchUpdateRequest {
 }
 
 func (b_ BatchUpdateRequest) InitWithEntity(entity IEntityDescription) BatchUpdateRequest {
-	rv := objc.Call[BatchUpdateRequest](b_, objc.Sel("initWithEntity:"), objc.Ptr(entity))
+	rv := objc.Call[BatchUpdateRequest](b_, objc.Sel("initWithEntity:"), entity)
 	return rv
 }
 
@@ -177,5 +177,5 @@ func (b_ BatchUpdateRequest) Predicate() foundation.Predicate {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coredata/nsbatchupdaterequest/1506659-predicate?language=objc
 func (b_ BatchUpdateRequest) SetPredicate(value foundation.IPredicate) {
-	objc.Call[objc.Void](b_, objc.Sel("setPredicate:"), objc.Ptr(value))
+	objc.Call[objc.Void](b_, objc.Sel("setPredicate:"), value)
 }

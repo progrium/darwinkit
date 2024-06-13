@@ -31,7 +31,7 @@ type INumber interface {
 	InitWithUnsignedShort(value int) Number
 	InitWithBool(value bool) Number
 	InitWithUnsignedLongLong(value int64) Number
-	InitWithFloat(value float64) Number
+	InitWithFloat(value float32) Number
 	InitWithShort(value int) Number
 	InitWithUnsignedLong(value int32) Number
 	DescriptionWithLocale(locale objc.IObject) string
@@ -41,7 +41,7 @@ type INumber interface {
 	StringValue() string
 	CharValue() uint8
 	ShortValue() int
-	FloatValue() float64
+	FloatValue() float32
 	BoolValue() bool
 	DecimalValue() Decimal
 	UnsignedShortValue() int
@@ -129,7 +129,7 @@ func (n_ Number) InitWithUnsignedChar(value uint8) Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1411315-isequaltonumber?language=objc
 func (n_ Number) IsEqualToNumber(number INumber) bool {
-	rv := objc.Call[bool](n_, objc.Sel("isEqualToNumber:"), objc.Ptr(number))
+	rv := objc.Call[bool](n_, objc.Sel("isEqualToNumber:"), number)
 	return rv
 }
 
@@ -228,7 +228,7 @@ func (n_ Number) InitWithDouble(value float64) Number {
 // Creates and returns an NSNumber object containing a given value, treating it as a float. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551471-numberwithfloat?language=objc
-func (nc _NumberClass) NumberWithFloat(value float64) Number {
+func (nc _NumberClass) NumberWithFloat(value float32) Number {
 	rv := objc.Call[Number](nc, objc.Sel("numberWithFloat:"), value)
 	return rv
 }
@@ -236,7 +236,7 @@ func (nc _NumberClass) NumberWithFloat(value float64) Number {
 // Creates and returns an NSNumber object containing a given value, treating it as a float. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1551471-numberwithfloat?language=objc
-func Number_NumberWithFloat(value float64) Number {
+func Number_NumberWithFloat(value float32) Number {
 	return NumberClass.NumberWithFloat(value)
 }
 
@@ -328,7 +328,7 @@ func Number_NumberWithBool(value bool) Number {
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1413562-compare?language=objc
 func (n_ Number) Compare(otherNumber INumber) ComparisonResult {
-	rv := objc.Call[ComparisonResult](n_, objc.Sel("compare:"), objc.Ptr(otherNumber))
+	rv := objc.Call[ComparisonResult](n_, objc.Sel("compare:"), otherNumber)
 	return rv
 }
 
@@ -389,7 +389,7 @@ func (n_ Number) InitWithUnsignedLongLong(value int64) Number {
 // Returns an NSNumber object initialized to contain a given value, treated as a float. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1412999-initwithfloat?language=objc
-func (n_ Number) InitWithFloat(value float64) Number {
+func (n_ Number) InitWithFloat(value float32) Number {
 	rv := objc.Call[Number](n_, objc.Sel("initWithFloat:"), value)
 	return rv
 }
@@ -514,8 +514,8 @@ func (n_ Number) ShortValue() int {
 // The number object's value expressed as a float, converted as necessary. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsnumber/1418317-floatvalue?language=objc
-func (n_ Number) FloatValue() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("floatValue"))
+func (n_ Number) FloatValue() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("floatValue"))
 	return rv
 }
 

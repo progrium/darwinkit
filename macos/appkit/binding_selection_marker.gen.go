@@ -57,7 +57,7 @@ func (b_ BindingSelectionMarker) Init() BindingSelectionMarker {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindingselectionmarker/3088801-defaultplaceholderformarker?language=objc
 func (bc _BindingSelectionMarkerClass) DefaultPlaceholderForMarkerOnClassWithBinding(marker IBindingSelectionMarker, objectClass objc.IClass, binding BindingName) objc.Object {
-	rv := objc.Call[objc.Object](bc, objc.Sel("defaultPlaceholderForMarker:onClass:withBinding:"), objc.Ptr(marker), objc.Ptr(objectClass), binding)
+	rv := objc.Call[objc.Object](bc, objc.Sel("defaultPlaceholderForMarker:onClass:withBinding:"), marker, objectClass, binding)
 	return rv
 }
 
@@ -72,7 +72,7 @@ func BindingSelectionMarker_DefaultPlaceholderForMarkerOnClassWithBinding(marker
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsbindingselectionmarker/3088802-setdefaultplaceholder?language=objc
 func (bc _BindingSelectionMarkerClass) SetDefaultPlaceholderForMarkerOnClassWithBinding(placeholder objc.IObject, marker IBindingSelectionMarker, objectClass objc.IClass, binding BindingName) {
-	objc.Call[objc.Void](bc, objc.Sel("setDefaultPlaceholder:forMarker:onClass:withBinding:"), placeholder, objc.Ptr(marker), objc.Ptr(objectClass), binding)
+	objc.Call[objc.Void](bc, objc.Sel("setDefaultPlaceholder:forMarker:onClass:withBinding:"), placeholder, marker, objectClass, binding)
 }
 
 //	[Full Topic]

@@ -75,7 +75,7 @@ func (c_ CommandQueueObject) HasCommandBufferWithDescriptor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlcommandqueue/3553957-commandbufferwithdescriptor?language=objc
 func (c_ CommandQueueObject) CommandBufferWithDescriptor(descriptor CommandBufferDescriptor) CommandBufferObject {
-	rv := objc.Call[CommandBufferObject](c_, objc.Sel("commandBufferWithDescriptor:"), objc.Ptr(descriptor))
+	rv := objc.Call[CommandBufferObject](c_, objc.Sel("commandBufferWithDescriptor:"), descriptor)
 	return rv
 }
 

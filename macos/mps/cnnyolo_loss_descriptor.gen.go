@@ -22,18 +22,18 @@ type ICNNYOLOLossDescriptor interface {
 	SetConfidenceLossDescriptor(value ICNNLossDescriptor)
 	XYLossDescriptor() CNNLossDescriptor
 	SetXYLossDescriptor(value ICNNLossDescriptor)
-	ScaleXY() float64
-	SetScaleXY(value float64)
-	ScaleWH() float64
-	SetScaleWH(value float64)
-	MaxIOUForObjectAbsence() float64
-	SetMaxIOUForObjectAbsence(value float64)
-	ScaleClass() float64
-	SetScaleClass(value float64)
-	MinIOUForObjectPresence() float64
-	SetMinIOUForObjectPresence(value float64)
-	ScaleObject() float64
-	SetScaleObject(value float64)
+	ScaleXY() float32
+	SetScaleXY(value float32)
+	ScaleWH() float32
+	SetScaleWH(value float32)
+	MaxIOUForObjectAbsence() float32
+	SetMaxIOUForObjectAbsence(value float32)
+	ScaleClass() float32
+	SetScaleClass(value float32)
+	MinIOUForObjectPresence() float32
+	SetMinIOUForObjectPresence(value float32)
+	ScaleObject() float32
+	SetScaleObject(value float32)
 	AnchorBoxes() []byte
 	SetAnchorBoxes(value []byte)
 	NumberOfAnchorBoxes() uint
@@ -42,8 +42,8 @@ type ICNNYOLOLossDescriptor interface {
 	SetWHLossDescriptor(value ICNNLossDescriptor)
 	ReductionType() CNNReductionType
 	SetReductionType(value CNNReductionType)
-	ScaleNoObject() float64
-	SetScaleNoObject(value float64)
+	ScaleNoObject() float32
+	SetScaleNoObject(value float32)
 	ReduceAcrossBatch() bool
 	SetReduceAcrossBatch(value bool)
 	Rescore() bool
@@ -112,7 +112,7 @@ func (c_ CNNYOLOLossDescriptor) ConfidenceLossDescriptor() CNNLossDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976501-confidencelossdescriptor?language=objc
 func (c_ CNNYOLOLossDescriptor) SetConfidenceLossDescriptor(value ICNNLossDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setConfidenceLossDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setConfidenceLossDescriptor:"), value)
 }
 
 //	[Full Topic]
@@ -127,96 +127,96 @@ func (c_ CNNYOLOLossDescriptor) XYLossDescriptor() CNNLossDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976497-xylossdescriptor?language=objc
 func (c_ CNNYOLOLossDescriptor) SetXYLossDescriptor(value ICNNLossDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setXYLossDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setXYLossDescriptor:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976511-scalexy?language=objc
-func (c_ CNNYOLOLossDescriptor) ScaleXY() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleXY"))
+func (c_ CNNYOLOLossDescriptor) ScaleXY() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleXY"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976511-scalexy?language=objc
-func (c_ CNNYOLOLossDescriptor) SetScaleXY(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetScaleXY(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleXY:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976510-scalewh?language=objc
-func (c_ CNNYOLOLossDescriptor) ScaleWH() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleWH"))
+func (c_ CNNYOLOLossDescriptor) ScaleWH() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleWH"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976510-scalewh?language=objc
-func (c_ CNNYOLOLossDescriptor) SetScaleWH(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetScaleWH(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleWH:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976502-maxiouforobjectabsence?language=objc
-func (c_ CNNYOLOLossDescriptor) MaxIOUForObjectAbsence() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("maxIOUForObjectAbsence"))
+func (c_ CNNYOLOLossDescriptor) MaxIOUForObjectAbsence() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("maxIOUForObjectAbsence"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976502-maxiouforobjectabsence?language=objc
-func (c_ CNNYOLOLossDescriptor) SetMaxIOUForObjectAbsence(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetMaxIOUForObjectAbsence(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setMaxIOUForObjectAbsence:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976507-scaleclass?language=objc
-func (c_ CNNYOLOLossDescriptor) ScaleClass() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleClass"))
+func (c_ CNNYOLOLossDescriptor) ScaleClass() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleClass"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976507-scaleclass?language=objc
-func (c_ CNNYOLOLossDescriptor) SetScaleClass(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetScaleClass(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleClass:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976503-miniouforobjectpresence?language=objc
-func (c_ CNNYOLOLossDescriptor) MinIOUForObjectPresence() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("minIOUForObjectPresence"))
+func (c_ CNNYOLOLossDescriptor) MinIOUForObjectPresence() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("minIOUForObjectPresence"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976503-miniouforobjectpresence?language=objc
-func (c_ CNNYOLOLossDescriptor) SetMinIOUForObjectPresence(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetMinIOUForObjectPresence(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setMinIOUForObjectPresence:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976509-scaleobject?language=objc
-func (c_ CNNYOLOLossDescriptor) ScaleObject() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleObject"))
+func (c_ CNNYOLOLossDescriptor) ScaleObject() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleObject"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976509-scaleobject?language=objc
-func (c_ CNNYOLOLossDescriptor) SetScaleObject(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetScaleObject(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleObject:"), value)
 }
 
@@ -262,7 +262,7 @@ func (c_ CNNYOLOLossDescriptor) WHLossDescriptor() CNNLossDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976496-whlossdescriptor?language=objc
 func (c_ CNNYOLOLossDescriptor) SetWHLossDescriptor(value ICNNLossDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setWHLossDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setWHLossDescriptor:"), value)
 }
 
 //	[Full Topic]
@@ -283,15 +283,15 @@ func (c_ CNNYOLOLossDescriptor) SetReductionType(value CNNReductionType) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976508-scalenoobject?language=objc
-func (c_ CNNYOLOLossDescriptor) ScaleNoObject() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("scaleNoObject"))
+func (c_ CNNYOLOLossDescriptor) ScaleNoObject() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("scaleNoObject"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976508-scalenoobject?language=objc
-func (c_ CNNYOLOLossDescriptor) SetScaleNoObject(value float64) {
+func (c_ CNNYOLOLossDescriptor) SetScaleNoObject(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setScaleNoObject:"), value)
 }
 
@@ -337,5 +337,5 @@ func (c_ CNNYOLOLossDescriptor) ClassesLossDescriptor() CNNLossDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnnyololossdescriptor/2976499-classeslossdescriptor?language=objc
 func (c_ CNNYOLOLossDescriptor) SetClassesLossDescriptor(value ICNNLossDescriptor) {
-	objc.Call[objc.Void](c_, objc.Sel("setClassesLossDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setClassesLossDescriptor:"), value)
 }

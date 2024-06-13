@@ -128,5 +128,5 @@ func (a_ AssetReaderAudioMixOutput) AudioMix() AudioMix {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avassetreaderaudiomixoutput/1387074-audiomix?language=objc
 func (a_ AssetReaderAudioMixOutput) SetAudioMix(value IAudioMix) {
-	objc.Call[objc.Void](a_, objc.Sel("setAudioMix:"), objc.Ptr(value))
+	objc.Call[objc.Void](a_, objc.Sel("setAudioMix:"), value)
 }

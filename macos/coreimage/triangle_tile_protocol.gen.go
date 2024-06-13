@@ -12,11 +12,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile?language=objc
 type PTriangleTile interface {
 	// optional
-	SetWidth(value float64)
+	SetWidth(value float32)
 	HasSetWidth() bool
 
 	// optional
-	Width() float64
+	Width() float32
 	HasWidth() bool
 
 	// optional
@@ -36,11 +36,11 @@ type PTriangleTile interface {
 	HasInputImage() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -59,7 +59,7 @@ func (t_ TriangleTileObject) HasSetWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228812-width?language=objc
-func (t_ TriangleTileObject) SetWidth(value float64) {
+func (t_ TriangleTileObject) SetWidth(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setWidth:"), value)
 }
 
@@ -70,8 +70,8 @@ func (t_ TriangleTileObject) HasWidth() bool {
 // The width of a tile. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228812-width?language=objc
-func (t_ TriangleTileObject) Width() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("width"))
+func (t_ TriangleTileObject) Width() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("width"))
 	return rv
 }
 
@@ -106,7 +106,7 @@ func (t_ TriangleTileObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228811-inputimage?language=objc
 func (t_ TriangleTileObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setInputImage:"), value)
 }
 
 func (t_ TriangleTileObject) HasInputImage() bool {
@@ -128,7 +128,7 @@ func (t_ TriangleTileObject) HasSetAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228809-angle?language=objc
-func (t_ TriangleTileObject) SetAngle(value float64) {
+func (t_ TriangleTileObject) SetAngle(value float32) {
 	objc.Call[objc.Void](t_, objc.Sel("setAngle:"), value)
 }
 
@@ -139,7 +139,7 @@ func (t_ TriangleTileObject) HasAngle() bool {
 // The angle, in radians, of the tiled pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/citriangletile/3228809-angle?language=objc
-func (t_ TriangleTileObject) Angle() float64 {
-	rv := objc.Call[float64](t_, objc.Sel("angle"))
+func (t_ TriangleTileObject) Angle() float32 {
+	rv := objc.Call[float32](t_, objc.Sel("angle"))
 	return rv
 }

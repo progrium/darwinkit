@@ -19,12 +19,12 @@ type _CNNCrossChannelNormalizationGradientClass struct {
 // An interface definition for the [CNNCrossChannelNormalizationGradient] class.
 type ICNNCrossChannelNormalizationGradient interface {
 	ICNNGradientKernel
-	Alpha() float64
-	SetAlpha(value float64)
-	Beta() float64
-	SetBeta(value float64)
-	Delta() float64
-	SetDelta(value float64)
+	Alpha() float32
+	SetAlpha(value float32)
+	Beta() float32
+	SetBeta(value float32)
+	Delta() float32
+	SetDelta(value float32)
 	KernelSize() uint
 }
 
@@ -109,45 +109,45 @@ func CNNCrossChannelNormalizationGradient_CopyWithZoneDevice(zone unsafe.Pointer
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942464-alpha?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) Alpha() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("alpha"))
+func (c_ CNNCrossChannelNormalizationGradient) Alpha() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("alpha"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942464-alpha?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) SetAlpha(value float64) {
+func (c_ CNNCrossChannelNormalizationGradient) SetAlpha(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setAlpha:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942477-beta?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) Beta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("beta"))
+func (c_ CNNCrossChannelNormalizationGradient) Beta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("beta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942477-beta?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) SetBeta(value float64) {
+func (c_ CNNCrossChannelNormalizationGradient) SetBeta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setBeta:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942465-delta?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) Delta() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("delta"))
+func (c_ CNNCrossChannelNormalizationGradient) Delta() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpscnncrosschannelnormalizationgradient/2942465-delta?language=objc
-func (c_ CNNCrossChannelNormalizationGradient) SetDelta(value float64) {
+func (c_ CNNCrossChannelNormalizationGradient) SetDelta(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setDelta:"), value)
 }
 

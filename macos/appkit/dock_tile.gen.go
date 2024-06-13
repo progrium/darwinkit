@@ -128,5 +128,5 @@ func (d_ DockTile) ContentView() View {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsdocktile/1525995-contentview?language=objc
 func (d_ DockTile) SetContentView(value IView) {
-	objc.Call[objc.Void](d_, objc.Sel("setContentView:"), objc.Ptr(value))
+	objc.Call[objc.Void](d_, objc.Sel("setContentView:"), value)
 }

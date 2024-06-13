@@ -3,6 +3,8 @@
 package coremediaio
 
 import (
+	"unsafe"
+
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -12,11 +14,11 @@ import (
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource?language=objc
 type PExtensionDeviceSource interface {
 	// optional
-	DevicePropertiesForPropertiesError(properties foundation.Set, outError foundation.Error) ExtensionDeviceProperties
+	DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties
 	HasDevicePropertiesForPropertiesError() bool
 
 	// optional
-	SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError foundation.Error) bool
+	SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError unsafe.Pointer) bool
 	HasSetDevicePropertiesError() bool
 
 	// optional
@@ -39,8 +41,8 @@ func (e_ ExtensionDeviceSourceObject) HasDevicePropertiesForPropertiesError() bo
 // Retrieves the state of device properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource/3915849-devicepropertiesforproperties?language=objc
-func (e_ ExtensionDeviceSourceObject) DevicePropertiesForPropertiesError(properties foundation.Set, outError foundation.Error) ExtensionDeviceProperties {
-	rv := objc.Call[ExtensionDeviceProperties](e_, objc.Sel("devicePropertiesForProperties:error:"), objc.Ptr(properties), objc.Ptr(outError))
+func (e_ ExtensionDeviceSourceObject) DevicePropertiesForPropertiesError(properties foundation.Set, outError unsafe.Pointer) ExtensionDeviceProperties {
+	rv := objc.Call[ExtensionDeviceProperties](e_, objc.Sel("devicePropertiesForProperties:error:"), properties, outError)
 	return rv
 }
 
@@ -51,8 +53,8 @@ func (e_ ExtensionDeviceSourceObject) HasSetDevicePropertiesError() bool {
 // Sets the state of device properties. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensiondevicesource/3915850-setdeviceproperties?language=objc
-func (e_ ExtensionDeviceSourceObject) SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError foundation.Error) bool {
-	rv := objc.Call[bool](e_, objc.Sel("setDeviceProperties:error:"), objc.Ptr(deviceProperties), objc.Ptr(outError))
+func (e_ ExtensionDeviceSourceObject) SetDevicePropertiesError(deviceProperties ExtensionDeviceProperties, outError unsafe.Pointer) bool {
+	rv := objc.Call[bool](e_, objc.Sel("setDeviceProperties:error:"), deviceProperties, outError)
 	return rv
 }
 

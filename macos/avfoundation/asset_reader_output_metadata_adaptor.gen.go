@@ -36,7 +36,7 @@ func AssetReaderOutputMetadataAdaptorFrom(ptr unsafe.Pointer) AssetReaderOutputM
 }
 
 func (a_ AssetReaderOutputMetadataAdaptor) InitWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputMetadataAdaptor {
-	rv := objc.Call[AssetReaderOutputMetadataAdaptor](a_, objc.Sel("initWithAssetReaderTrackOutput:"), objc.Ptr(trackOutput))
+	rv := objc.Call[AssetReaderOutputMetadataAdaptor](a_, objc.Sel("initWithAssetReaderTrackOutput:"), trackOutput)
 	return rv
 }
 
@@ -50,7 +50,7 @@ func NewAssetReaderOutputMetadataAdaptorWithAssetReaderTrackOutput(trackOutput I
 }
 
 func (ac _AssetReaderOutputMetadataAdaptorClass) AssetReaderOutputMetadataAdaptorWithAssetReaderTrackOutput(trackOutput IAssetReaderTrackOutput) AssetReaderOutputMetadataAdaptor {
-	rv := objc.Call[AssetReaderOutputMetadataAdaptor](ac, objc.Sel("assetReaderOutputMetadataAdaptorWithAssetReaderTrackOutput:"), objc.Ptr(trackOutput))
+	rv := objc.Call[AssetReaderOutputMetadataAdaptor](ac, objc.Sel("assetReaderOutputMetadataAdaptorWithAssetReaderTrackOutput:"), trackOutput)
 	return rv
 }
 

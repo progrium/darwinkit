@@ -82,7 +82,7 @@ func SearchField_LabelWithString(stringValue string) SearchField {
 }
 
 func (sc _SearchFieldClass) LabelWithAttributedString(attributedStringValue foundation.IAttributedString) SearchField {
-	rv := objc.Call[SearchField](sc, objc.Sel("labelWithAttributedString:"), objc.Ptr(attributedStringValue))
+	rv := objc.Call[SearchField](sc, objc.Sel("labelWithAttributedString:"), attributedStringValue)
 	return rv
 }
 
@@ -212,7 +212,7 @@ func (s_ SearchField) SearchMenuTemplate() Menu {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nssearchfield/1529467-searchmenutemplate?language=objc
 func (s_ SearchField) SetSearchMenuTemplate(value IMenu) {
-	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), objc.Ptr(value))
+	objc.Call[objc.Void](s_, objc.Sel("setSearchMenuTemplate:"), value)
 }
 
 // The name under which the search field automatically archives the list of recent search strings. [Full Topic]

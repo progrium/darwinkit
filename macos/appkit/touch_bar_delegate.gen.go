@@ -54,6 +54,6 @@ func (t_ TouchBarDelegateObject) HasTouchBarMakeItemForIdentifier() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstouchbardelegate/2544851-touchbar?language=objc
 func (t_ TouchBarDelegateObject) TouchBarMakeItemForIdentifier(touchBar TouchBar, identifier TouchBarItemIdentifier) TouchBarItem {
-	rv := objc.Call[TouchBarItem](t_, objc.Sel("touchBar:makeItemForIdentifier:"), objc.Ptr(touchBar), identifier)
+	rv := objc.Call[TouchBarItem](t_, objc.Sel("touchBar:makeItemForIdentifier:"), touchBar, identifier)
 	return rv
 }

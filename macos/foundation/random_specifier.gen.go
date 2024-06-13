@@ -54,7 +54,7 @@ func (r_ RandomSpecifier) Init() RandomSpecifier {
 }
 
 func (r_ RandomSpecifier) InitWithContainerClassDescriptionContainerSpecifierKey(classDesc IScriptClassDescription, container IScriptObjectSpecifier, property string) RandomSpecifier {
-	rv := objc.Call[RandomSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), objc.Ptr(classDesc), objc.Ptr(container), property)
+	rv := objc.Call[RandomSpecifier](r_, objc.Sel("initWithContainerClassDescription:containerSpecifier:key:"), classDesc, container, property)
 	return rv
 }
 
@@ -68,7 +68,7 @@ func NewRandomSpecifierWithContainerClassDescriptionContainerSpecifierKey(classD
 }
 
 func (r_ RandomSpecifier) InitWithContainerSpecifierKey(container IScriptObjectSpecifier, property string) RandomSpecifier {
-	rv := objc.Call[RandomSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), objc.Ptr(container), property)
+	rv := objc.Call[RandomSpecifier](r_, objc.Sel("initWithContainerSpecifier:key:"), container, property)
 	return rv
 }
 

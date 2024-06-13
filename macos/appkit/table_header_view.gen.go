@@ -103,7 +103,7 @@ func (t_ TableHeaderView) TableView() TableView {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nstableheaderview/1535730-tableview?language=objc
 func (t_ TableHeaderView) SetTableView(value ITableView) {
-	objc.Call[objc.Void](t_, objc.Sel("setTableView:"), objc.Ptr(value))
+	objc.Call[objc.Void](t_, objc.Sel("setTableView:"), value)
 }
 
 // The horizontal distance that the user has dragged a column. [Full Topic]

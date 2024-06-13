@@ -27,67 +27,67 @@ type IRAWFilter interface {
 	PortraitEffectsMatte() Image
 	SemanticSegmentationGlassesMatte() Image
 	SemanticSegmentationTeethMatte() Image
-	Exposure() float64
-	SetExposure(value float64)
-	SharpnessAmount() float64
-	SetSharpnessAmount(value float64)
-	LuminanceNoiseReductionAmount() float64
-	SetLuminanceNoiseReductionAmount(value float64)
-	BoostShadowAmount() float64
-	SetBoostShadowAmount(value float64)
+	Exposure() float32
+	SetExposure(value float32)
+	SharpnessAmount() float32
+	SetSharpnessAmount(value float32)
+	LuminanceNoiseReductionAmount() float32
+	SetLuminanceNoiseReductionAmount(value float32)
+	BoostShadowAmount() float32
+	SetBoostShadowAmount(value float32)
 	IsDetailSupported() bool
-	ExtendedDynamicRangeAmount() float64
-	SetExtendedDynamicRangeAmount(value float64)
+	ExtendedDynamicRangeAmount() float32
+	SetExtendedDynamicRangeAmount(value float32)
 	SupportedDecoderVersions() []RAWDecoderVersion
 	NeutralLocation() coregraphics.Point
 	SetNeutralLocation(value coregraphics.Point)
 	NativeSize() coregraphics.Size
 	IsColorNoiseReductionSupported() bool
-	NeutralTint() float64
-	SetNeutralTint(value float64)
-	BaselineExposure() float64
-	SetBaselineExposure(value float64)
-	ShadowBias() float64
-	SetShadowBias(value float64)
+	NeutralTint() float32
+	SetNeutralTint(value float32)
+	BaselineExposure() float32
+	SetBaselineExposure(value float32)
+	ShadowBias() float32
+	SetShadowBias(value float32)
 	IsLuminanceNoiseReductionSupported() bool
 	IsLocalToneMapSupported() bool
 	NeutralChromaticity() coregraphics.Point
 	SetNeutralChromaticity(value coregraphics.Point)
-	NeutralTemperature() float64
-	SetNeutralTemperature(value float64)
+	NeutralTemperature() float32
+	SetNeutralTemperature(value float32)
 	SemanticSegmentationSkyMatte() Image
 	IsGamutMappingEnabled() bool
 	SetGamutMappingEnabled(value bool)
 	LinearSpaceFilter() Filter
 	SetLinearSpaceFilter(value IFilter)
-	LocalToneMapAmount() float64
-	SetLocalToneMapAmount(value float64)
-	BoostAmount() float64
-	SetBoostAmount(value float64)
+	LocalToneMapAmount() float32
+	SetLocalToneMapAmount(value float32)
+	BoostAmount() float32
+	SetBoostAmount(value float32)
 	DecoderVersion() RAWDecoderVersion
 	SetDecoderVersion(value RAWDecoderVersion)
-	ColorNoiseReductionAmount() float64
-	SetColorNoiseReductionAmount(value float64)
+	ColorNoiseReductionAmount() float32
+	SetColorNoiseReductionAmount(value float32)
 	IsSharpnessSupported() bool
 	IsMoireReductionSupported() bool
-	ScaleFactor() float64
-	SetScaleFactor(value float64)
+	ScaleFactor() float32
+	SetScaleFactor(value float32)
 	SemanticSegmentationSkinMatte() Image
 	Properties() foundation.Dictionary
 	PreviewImage() Image
-	DetailAmount() float64
-	SetDetailAmount(value float64)
+	DetailAmount() float32
+	SetDetailAmount(value float32)
 	IsLensCorrectionSupported() bool
 	Orientation() imageio.ImagePropertyOrientation
 	SetOrientation(value imageio.ImagePropertyOrientation)
 	IsLensCorrectionEnabled() bool
 	SetLensCorrectionEnabled(value bool)
 	SemanticSegmentationHairMatte() Image
-	MoireReductionAmount() float64
-	SetMoireReductionAmount(value float64)
+	MoireReductionAmount() float32
+	SetMoireReductionAmount(value float32)
 	IsContrastSupported() bool
-	ContrastAmount() float64
-	SetContrastAmount(value float64)
+	ContrastAmount() float32
+	SetContrastAmount(value float32)
 }
 
 // A filter subclass that produces an image by manipulating RAW image sensor data from a digital camera or scanner. [Full Topic]
@@ -116,7 +116,7 @@ func RAWFilter_FilterWithImageDataIdentifierHint(data []byte, identifierHint str
 }
 
 func (rc _RAWFilterClass) FilterWithImageURL(url foundation.IURL) RAWFilter {
-	rv := objc.Call[RAWFilter](rc, objc.Sel("filterWithImageURL:"), objc.Ptr(url))
+	rv := objc.Call[RAWFilter](rc, objc.Sel("filterWithImageURL:"), url)
 	return rv
 }
 
@@ -216,60 +216,60 @@ func RAWFilter_SupportedCameraModels() []string {
 // A value that indicates the amount of exposure to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801626-exposure?language=objc
-func (r_ RAWFilter) Exposure() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("exposure"))
+func (r_ RAWFilter) Exposure() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("exposure"))
 	return rv
 }
 
 // A value that indicates the amount of exposure to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801626-exposure?language=objc
-func (r_ RAWFilter) SetExposure(value float64) {
+func (r_ RAWFilter) SetExposure(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setExposure:"), value)
 }
 
 // A value that indicates the amount of sharpness to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801657-sharpnessamount?language=objc
-func (r_ RAWFilter) SharpnessAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("sharpnessAmount"))
+func (r_ RAWFilter) SharpnessAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("sharpnessAmount"))
 	return rv
 }
 
 // A value that indicates the amount of sharpness to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801657-sharpnessamount?language=objc
-func (r_ RAWFilter) SetSharpnessAmount(value float64) {
+func (r_ RAWFilter) SetSharpnessAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setSharpnessAmount:"), value)
 }
 
 // A value that indicates the amount of luminance noise reduction to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801637-luminancenoisereductionamount?language=objc
-func (r_ RAWFilter) LuminanceNoiseReductionAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("luminanceNoiseReductionAmount"))
+func (r_ RAWFilter) LuminanceNoiseReductionAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("luminanceNoiseReductionAmount"))
 	return rv
 }
 
 // A value that indicates the amount of luminance noise reduction to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801637-luminancenoisereductionamount?language=objc
-func (r_ RAWFilter) SetLuminanceNoiseReductionAmount(value float64) {
+func (r_ RAWFilter) SetLuminanceNoiseReductionAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setLuminanceNoiseReductionAmount:"), value)
 }
 
 // A value that indicates the amount to boost the shadow areas of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801617-boostshadowamount?language=objc
-func (r_ RAWFilter) BoostShadowAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("boostShadowAmount"))
+func (r_ RAWFilter) BoostShadowAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("boostShadowAmount"))
 	return rv
 }
 
 // A value that indicates the amount to boost the shadow areas of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801617-boostshadowamount?language=objc
-func (r_ RAWFilter) SetBoostShadowAmount(value float64) {
+func (r_ RAWFilter) SetBoostShadowAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setBoostShadowAmount:"), value)
 }
 
@@ -284,15 +284,15 @@ func (r_ RAWFilter) IsDetailSupported() bool {
 // A value that indicates the amount of extended dynamic range (EDR) to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3820998-extendeddynamicrangeamount?language=objc
-func (r_ RAWFilter) ExtendedDynamicRangeAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("extendedDynamicRangeAmount"))
+func (r_ RAWFilter) ExtendedDynamicRangeAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("extendedDynamicRangeAmount"))
 	return rv
 }
 
 // A value that indicates the amount of extended dynamic range (EDR) to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3820998-extendeddynamicrangeamount?language=objc
-func (r_ RAWFilter) SetExtendedDynamicRangeAmount(value float64) {
+func (r_ RAWFilter) SetExtendedDynamicRangeAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setExtendedDynamicRangeAmount:"), value)
 }
 
@@ -338,45 +338,45 @@ func (r_ RAWFilter) IsColorNoiseReductionSupported() bool {
 // A value that indicates the amount of white balance based on tint values to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801645-neutraltint?language=objc
-func (r_ RAWFilter) NeutralTint() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("neutralTint"))
+func (r_ RAWFilter) NeutralTint() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("neutralTint"))
 	return rv
 }
 
 // A value that indicates the amount of white balance based on tint values to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801645-neutraltint?language=objc
-func (r_ RAWFilter) SetNeutralTint(value float64) {
+func (r_ RAWFilter) SetNeutralTint(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setNeutralTint:"), value)
 }
 
 // A value that indicates the baseline exposure to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801615-baselineexposure?language=objc
-func (r_ RAWFilter) BaselineExposure() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("baselineExposure"))
+func (r_ RAWFilter) BaselineExposure() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("baselineExposure"))
 	return rv
 }
 
 // A value that indicates the baseline exposure to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801615-baselineexposure?language=objc
-func (r_ RAWFilter) SetBaselineExposure(value float64) {
+func (r_ RAWFilter) SetBaselineExposure(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setBaselineExposure:"), value)
 }
 
 // A value that indicates the amount to subtract from the shadows in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801656-shadowbias?language=objc
-func (r_ RAWFilter) ShadowBias() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("shadowBias"))
+func (r_ RAWFilter) ShadowBias() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("shadowBias"))
 	return rv
 }
 
 // A value that indicates the amount to subtract from the shadows in the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801656-shadowbias?language=objc
-func (r_ RAWFilter) SetShadowBias(value float64) {
+func (r_ RAWFilter) SetShadowBias(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setShadowBias:"), value)
 }
 
@@ -414,15 +414,15 @@ func (r_ RAWFilter) SetNeutralChromaticity(value coregraphics.Point) {
 // A value that indicates the amount of white balance based on temperature values to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801644-neutraltemperature?language=objc
-func (r_ RAWFilter) NeutralTemperature() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("neutralTemperature"))
+func (r_ RAWFilter) NeutralTemperature() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("neutralTemperature"))
 	return rv
 }
 
 // A value that indicates the amount of white balance based on temperature values to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801644-neutraltemperature?language=objc
-func (r_ RAWFilter) SetNeutralTemperature(value float64) {
+func (r_ RAWFilter) SetNeutralTemperature(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setNeutralTemperature:"), value)
 }
 
@@ -461,36 +461,36 @@ func (r_ RAWFilter) LinearSpaceFilter() Filter {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801634-linearspacefilter?language=objc
 func (r_ RAWFilter) SetLinearSpaceFilter(value IFilter) {
-	objc.Call[objc.Void](r_, objc.Sel("setLinearSpaceFilter:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setLinearSpaceFilter:"), value)
 }
 
 // A value that indicates the amount of local tone curve to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801635-localtonemapamount?language=objc
-func (r_ RAWFilter) LocalToneMapAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("localToneMapAmount"))
+func (r_ RAWFilter) LocalToneMapAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("localToneMapAmount"))
 	return rv
 }
 
 // A value that indicates the amount of local tone curve to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801635-localtonemapamount?language=objc
-func (r_ RAWFilter) SetLocalToneMapAmount(value float64) {
+func (r_ RAWFilter) SetLocalToneMapAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setLocalToneMapAmount:"), value)
 }
 
 // A value that indicates the amount of global tone curve to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801616-boostamount?language=objc
-func (r_ RAWFilter) BoostAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("boostAmount"))
+func (r_ RAWFilter) BoostAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("boostAmount"))
 	return rv
 }
 
 // A value that indicates the amount of global tone curve to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801616-boostamount?language=objc
-func (r_ RAWFilter) SetBoostAmount(value float64) {
+func (r_ RAWFilter) SetBoostAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setBoostAmount:"), value)
 }
 
@@ -512,15 +512,15 @@ func (r_ RAWFilter) SetDecoderVersion(value RAWDecoderVersion) {
 // A value that indicates the amount of chroma noise reduction to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801618-colornoisereductionamount?language=objc
-func (r_ RAWFilter) ColorNoiseReductionAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("colorNoiseReductionAmount"))
+func (r_ RAWFilter) ColorNoiseReductionAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("colorNoiseReductionAmount"))
 	return rv
 }
 
 // A value that indicates the amount of chroma noise reduction to apply to the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801618-colornoisereductionamount?language=objc
-func (r_ RAWFilter) SetColorNoiseReductionAmount(value float64) {
+func (r_ RAWFilter) SetColorNoiseReductionAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setColorNoiseReductionAmount:"), value)
 }
 
@@ -543,15 +543,15 @@ func (r_ RAWFilter) IsMoireReductionSupported() bool {
 // A value that indicates the desired scale factor to draw the output image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801650-scalefactor?language=objc
-func (r_ RAWFilter) ScaleFactor() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("scaleFactor"))
+func (r_ RAWFilter) ScaleFactor() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("scaleFactor"))
 	return rv
 }
 
 // A value that indicates the desired scale factor to draw the output image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801650-scalefactor?language=objc
-func (r_ RAWFilter) SetScaleFactor(value float64) {
+func (r_ RAWFilter) SetScaleFactor(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setScaleFactor:"), value)
 }
 
@@ -582,15 +582,15 @@ func (r_ RAWFilter) PreviewImage() Image {
 // A value that indicates the amount of detail enhancement to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801623-detailamount?language=objc
-func (r_ RAWFilter) DetailAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("detailAmount"))
+func (r_ RAWFilter) DetailAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("detailAmount"))
 	return rv
 }
 
 // A value that indicates the amount of detail enhancement to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801623-detailamount?language=objc
-func (r_ RAWFilter) SetDetailAmount(value float64) {
+func (r_ RAWFilter) SetDetailAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setDetailAmount:"), value)
 }
 
@@ -643,15 +643,15 @@ func (r_ RAWFilter) SemanticSegmentationHairMatte() Image {
 // A value that indicates the amount of moire artifact reduction to apply to high frequency areas of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801639-moirereductionamount?language=objc
-func (r_ RAWFilter) MoireReductionAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("moireReductionAmount"))
+func (r_ RAWFilter) MoireReductionAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("moireReductionAmount"))
 	return rv
 }
 
 // A value that indicates the amount of moire artifact reduction to apply to high frequency areas of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801639-moirereductionamount?language=objc
-func (r_ RAWFilter) SetMoireReductionAmount(value float64) {
+func (r_ RAWFilter) SetMoireReductionAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setMoireReductionAmount:"), value)
 }
 
@@ -666,14 +666,14 @@ func (r_ RAWFilter) IsContrastSupported() bool {
 // A value that indicates the amount of local contrast to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801620-contrastamount?language=objc
-func (r_ RAWFilter) ContrastAmount() float64 {
-	rv := objc.Call[float64](r_, objc.Sel("contrastAmount"))
+func (r_ RAWFilter) ContrastAmount() float32 {
+	rv := objc.Call[float32](r_, objc.Sel("contrastAmount"))
 	return rv
 }
 
 // A value that indicates the amount of local contrast to apply to the edges of the image. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cirawfilter/3801620-contrastamount?language=objc
-func (r_ RAWFilter) SetContrastAmount(value float64) {
+func (r_ RAWFilter) SetContrastAmount(value float32) {
 	objc.Call[objc.Void](r_, objc.Sel("setContrastAmount:"), value)
 }

@@ -98,7 +98,7 @@ func (u_ URLConnectionDownloadDelegateObject) HasConnectionDidWriteDataTotalByte
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondownloaddelegate/1418304-connection?language=objc
 func (u_ URLConnectionDownloadDelegateObject) ConnectionDidWriteDataTotalBytesWrittenExpectedTotalBytes(connection URLConnection, bytesWritten int64, totalBytesWritten int64, expectedTotalBytes int64) {
-	objc.Call[objc.Void](u_, objc.Sel("connection:didWriteData:totalBytesWritten:expectedTotalBytes:"), objc.Ptr(connection), bytesWritten, totalBytesWritten, expectedTotalBytes)
+	objc.Call[objc.Void](u_, objc.Sel("connection:didWriteData:totalBytesWritten:expectedTotalBytes:"), connection, bytesWritten, totalBytesWritten, expectedTotalBytes)
 }
 
 func (u_ URLConnectionDownloadDelegateObject) HasConnectionDidResumeDownloadingTotalBytesWrittenExpectedTotalBytes() bool {
@@ -109,7 +109,7 @@ func (u_ URLConnectionDownloadDelegateObject) HasConnectionDidResumeDownloadingT
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondownloaddelegate/1418157-connectiondidresumedownloading?language=objc
 func (u_ URLConnectionDownloadDelegateObject) ConnectionDidResumeDownloadingTotalBytesWrittenExpectedTotalBytes(connection URLConnection, totalBytesWritten int64, expectedTotalBytes int64) {
-	objc.Call[objc.Void](u_, objc.Sel("connectionDidResumeDownloading:totalBytesWritten:expectedTotalBytes:"), objc.Ptr(connection), totalBytesWritten, expectedTotalBytes)
+	objc.Call[objc.Void](u_, objc.Sel("connectionDidResumeDownloading:totalBytesWritten:expectedTotalBytes:"), connection, totalBytesWritten, expectedTotalBytes)
 }
 
 func (u_ URLConnectionDownloadDelegateObject) HasConnectionDidFinishDownloadingDestinationURL() bool {
@@ -120,5 +120,5 @@ func (u_ URLConnectionDownloadDelegateObject) HasConnectionDidFinishDownloadingD
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsurlconnectiondownloaddelegate/1412126-connectiondidfinishdownloading?language=objc
 func (u_ URLConnectionDownloadDelegateObject) ConnectionDidFinishDownloadingDestinationURL(connection URLConnection, destinationURL URL) {
-	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishDownloading:destinationURL:"), objc.Ptr(connection), objc.Ptr(destinationURL))
+	objc.Call[objc.Void](u_, objc.Sel("connectionDidFinishDownloading:destinationURL:"), connection, destinationURL)
 }

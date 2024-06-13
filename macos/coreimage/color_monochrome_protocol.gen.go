@@ -19,11 +19,11 @@ type PColorMonochrome interface {
 	HasColor() bool
 
 	// optional
-	SetIntensity(value float64)
+	SetIntensity(value float32)
 	HasSetIntensity() bool
 
 	// optional
-	Intensity() float64
+	Intensity() float32
 	HasIntensity() bool
 
 	// optional
@@ -51,7 +51,7 @@ func (c_ ColorMonochromeObject) HasSetColor() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228167-color?language=objc
 func (c_ ColorMonochromeObject) SetColor(value Color) {
-	objc.Call[objc.Void](c_, objc.Sel("setColor:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setColor:"), value)
 }
 
 func (c_ ColorMonochromeObject) HasColor() bool {
@@ -73,7 +73,7 @@ func (c_ ColorMonochromeObject) HasSetIntensity() bool {
 // The intensity of the monochrome effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
-func (c_ ColorMonochromeObject) SetIntensity(value float64) {
+func (c_ ColorMonochromeObject) SetIntensity(value float32) {
 	objc.Call[objc.Void](c_, objc.Sel("setIntensity:"), value)
 }
 
@@ -84,8 +84,8 @@ func (c_ ColorMonochromeObject) HasIntensity() bool {
 // The intensity of the monochrome effect. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228169-intensity?language=objc
-func (c_ ColorMonochromeObject) Intensity() float64 {
-	rv := objc.Call[float64](c_, objc.Sel("intensity"))
+func (c_ ColorMonochromeObject) Intensity() float32 {
+	rv := objc.Call[float32](c_, objc.Sel("intensity"))
 	return rv
 }
 
@@ -97,7 +97,7 @@ func (c_ ColorMonochromeObject) HasSetInputImage() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cicolormonochrome/3228168-inputimage?language=objc
 func (c_ ColorMonochromeObject) SetInputImage(value Image) {
-	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), objc.Ptr(value))
+	objc.Call[objc.Void](c_, objc.Sel("setInputImage:"), value)
 }
 
 func (c_ ColorMonochromeObject) HasInputImage() bool {

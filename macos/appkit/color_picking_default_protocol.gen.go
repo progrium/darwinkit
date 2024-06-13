@@ -91,7 +91,7 @@ func (c_ ColorPickingDefaultObject) HasInitWithPickerMaskColorPanel() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1528432-initwithpickermask?language=objc
 func (c_ ColorPickingDefaultObject) InitWithPickerMaskColorPanel(mask uint, owningColorPanel ColorPanel) objc.Object {
-	rv := objc.Call[objc.Object](c_, objc.Sel("initWithPickerMask:colorPanel:"), mask, objc.Ptr(owningColorPanel))
+	rv := objc.Call[objc.Object](c_, objc.Sel("initWithPickerMask:colorPanel:"), mask, owningColorPanel)
 	return rv
 }
 
@@ -137,7 +137,7 @@ func (c_ ColorPickingDefaultObject) HasDetachColorList() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1532761-detachcolorlist?language=objc
 func (c_ ColorPickingDefaultObject) DetachColorList(colorList ColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), objc.Ptr(colorList))
+	objc.Call[objc.Void](c_, objc.Sel("detachColorList:"), colorList)
 }
 
 func (c_ ColorPickingDefaultObject) HasAttachColorList() bool {
@@ -148,7 +148,7 @@ func (c_ ColorPickingDefaultObject) HasAttachColorList() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1531650-attachcolorlist?language=objc
 func (c_ ColorPickingDefaultObject) AttachColorList(colorList ColorList) {
-	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), objc.Ptr(colorList))
+	objc.Call[objc.Void](c_, objc.Sel("attachColorList:"), colorList)
 }
 
 func (c_ ColorPickingDefaultObject) HasButtonToolTip() bool {
@@ -171,5 +171,5 @@ func (c_ ColorPickingDefaultObject) HasInsertNewButtonImageIn() bool {
 //
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nscolorpickingdefault/1525078-insertnewbuttonimage?language=objc
 func (c_ ColorPickingDefaultObject) InsertNewButtonImageIn(newButtonImage Image, buttonCell ButtonCell) {
-	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), objc.Ptr(newButtonImage), objc.Ptr(buttonCell))
+	objc.Call[objc.Void](c_, objc.Sel("insertNewButtonImage:in:"), newButtonImage, buttonCell)
 }

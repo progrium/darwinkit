@@ -40,7 +40,7 @@ func FragmentedAssetMinderFrom(ptr unsafe.Pointer) FragmentedAssetMinder {
 }
 
 func (fc _FragmentedAssetMinderClass) FragmentedAssetMinderWithAssetMindingInterval(asset IAsset, mindingInterval foundation.TimeInterval) FragmentedAssetMinder {
-	rv := objc.Call[FragmentedAssetMinder](fc, objc.Sel("fragmentedAssetMinderWithAsset:mindingInterval:"), objc.Ptr(asset), mindingInterval)
+	rv := objc.Call[FragmentedAssetMinder](fc, objc.Sel("fragmentedAssetMinderWithAsset:mindingInterval:"), asset, mindingInterval)
 	return rv
 }
 
@@ -52,7 +52,7 @@ func FragmentedAssetMinder_FragmentedAssetMinderWithAssetMindingInterval(asset I
 }
 
 func (f_ FragmentedAssetMinder) InitWithAssetMindingInterval(asset IAsset, mindingInterval foundation.TimeInterval) FragmentedAssetMinder {
-	rv := objc.Call[FragmentedAssetMinder](f_, objc.Sel("initWithAsset:mindingInterval:"), objc.Ptr(asset), mindingInterval)
+	rv := objc.Call[FragmentedAssetMinder](f_, objc.Sel("initWithAsset:mindingInterval:"), asset, mindingInterval)
 	return rv
 }
 
@@ -89,14 +89,14 @@ func (f_ FragmentedAssetMinder) Init() FragmentedAssetMinder {
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1387483-addfragmentedasset?language=objc
 func (f_ FragmentedAssetMinder) AddFragmentedAsset(asset IAsset) {
-	objc.Call[objc.Void](f_, objc.Sel("addFragmentedAsset:"), objc.Ptr(asset))
+	objc.Call[objc.Void](f_, objc.Sel("addFragmentedAsset:"), asset)
 }
 
 // Removes a fragmented asset from the array of minded assets. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avfragmentedassetminder/1389856-removefragmentedasset?language=objc
 func (f_ FragmentedAssetMinder) RemoveFragmentedAsset(asset IAsset) {
-	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedAsset:"), objc.Ptr(asset))
+	objc.Call[objc.Void](f_, objc.Sel("removeFragmentedAsset:"), asset)
 }
 
 // The minded array of fragmented assets. [Full Topic]

@@ -40,7 +40,7 @@ func QuerySubscriptionFrom(ptr unsafe.Pointer) QuerySubscription {
 }
 
 func (q_ QuerySubscription) InitWithRecordTypePredicateSubscriptionIDOptions(recordType RecordType, predicate foundation.IPredicate, subscriptionID SubscriptionID, querySubscriptionOptions QuerySubscriptionOptions) QuerySubscription {
-	rv := objc.Call[QuerySubscription](q_, objc.Sel("initWithRecordType:predicate:subscriptionID:options:"), recordType, objc.Ptr(predicate), subscriptionID, querySubscriptionOptions)
+	rv := objc.Call[QuerySubscription](q_, objc.Sel("initWithRecordType:predicate:subscriptionID:options:"), recordType, predicate, subscriptionID, querySubscriptionOptions)
 	return rv
 }
 
@@ -101,7 +101,7 @@ func (q_ QuerySubscription) ZoneID() RecordZoneID {
 //
 // [Full Topic]: https://developer.apple.com/documentation/cloudkit/ckquerysubscription/1640390-zoneid?language=objc
 func (q_ QuerySubscription) SetZoneID(value IRecordZoneID) {
-	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), objc.Ptr(value))
+	objc.Call[objc.Void](q_, objc.Sel("setZoneID:"), value)
 }
 
 // The type of record that the subscription queries. [Full Topic]

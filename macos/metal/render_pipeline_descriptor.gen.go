@@ -136,7 +136,7 @@ func (r_ RenderPipelineDescriptor) VertexLinkedFunctions() LinkedFunctions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinedescriptor/3750576-vertexlinkedfunctions?language=objc
 func (r_ RenderPipelineDescriptor) SetVertexLinkedFunctions(value ILinkedFunctions) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexLinkedFunctions:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setVertexLinkedFunctions:"), value)
 }
 
 // The pixel format of the attachment that stores depth data. [Full Topic]
@@ -294,7 +294,7 @@ func (r_ RenderPipelineDescriptor) SetFragmentFunction(value PFunction) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinedescriptor/1514600-fragmentfunction?language=objc
 func (r_ RenderPipelineDescriptor) SetFragmentFunctionObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentFunction:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentFunction:"), valueObject)
 }
 
 // Functions that you can specify as function arguments for the fragment shader when encoding commands that use the pipeline. [Full Topic]
@@ -309,7 +309,7 @@ func (r_ RenderPipelineDescriptor) FragmentLinkedFunctions() LinkedFunctions {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinedescriptor/3750569-fragmentlinkedfunctions?language=objc
 func (r_ RenderPipelineDescriptor) SetFragmentLinkedFunctions(value ILinkedFunctions) {
-	objc.Call[objc.Void](r_, objc.Sel("setFragmentLinkedFunctions:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setFragmentLinkedFunctions:"), value)
 }
 
 // The pixel format of the attachment that stores stencil data. [Full Topic]
@@ -536,7 +536,7 @@ func (r_ RenderPipelineDescriptor) SetVertexFunction(value PFunction) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinedescriptor/1514679-vertexfunction?language=objc
 func (r_ RenderPipelineDescriptor) SetVertexFunctionObject(valueObject objc.IObject) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexFunction:"), objc.Ptr(valueObject))
+	objc.Call[objc.Void](r_, objc.Sel("setVertexFunction:"), valueObject)
 }
 
 // The partitioning mode that the tessellator uses to derive the number and spacing of segments for subdividing a corresponding edge. [Full Topic]
@@ -596,5 +596,5 @@ func (r_ RenderPipelineDescriptor) VertexDescriptor() VertexDescriptor {
 //
 // [Full Topic]: https://developer.apple.com/documentation/metal/mtlrenderpipelinedescriptor/1514681-vertexdescriptor?language=objc
 func (r_ RenderPipelineDescriptor) SetVertexDescriptor(value IVertexDescriptor) {
-	objc.Call[objc.Void](r_, objc.Sel("setVertexDescriptor:"), objc.Ptr(value))
+	objc.Call[objc.Void](r_, objc.Sel("setVertexDescriptor:"), value)
 }

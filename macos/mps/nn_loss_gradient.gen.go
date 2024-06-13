@@ -25,18 +25,18 @@ type INNLossGradient interface {
 	EncodeBatchToCommandBufferSourceGradientsSourceImagesLabelsWeightsSourceStates(commandBuffer metal.PCommandBuffer, sourceGradients *foundation.Array, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, sourceStates *foundation.Array) *foundation.Array
 	EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesLabelsWeightsSourceStates(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, sourceStates *foundation.Array) *foundation.Array
 	LossType() CNNLossType
-	Weight() float64
-	SetWeight(value float64)
+	Weight() float32
+	SetWeight(value float32)
 	NumberOfClasses() uint
 	ReductionType() CNNReductionType
 	ComputeLabelGradients() bool
 	SetComputeLabelGradients(value bool)
-	LabelSmoothing() float64
-	SetLabelSmoothing(value float64)
-	Delta() float64
-	SetDelta(value float64)
-	Epsilon() float64
-	SetEpsilon(value float64)
+	LabelSmoothing() float32
+	SetLabelSmoothing(value float32)
+	Delta() float32
+	SetDelta(value float32)
+	Epsilon() float32
+	SetEpsilon(value float32)
 	ReduceAcrossBatch() bool
 }
 
@@ -55,7 +55,7 @@ func NNLossGradientFrom(ptr unsafe.Pointer) NNLossGradient {
 
 func (n_ NNLossGradient) InitWithDeviceLossDescriptor(device metal.PDevice, lossDescriptor ICNNLossDescriptor) NNLossGradient {
 	po0 := objc.WrapAsProtocol("MTLDevice", device)
-	rv := objc.Call[NNLossGradient](n_, objc.Sel("initWithDevice:lossDescriptor:"), po0, objc.Ptr(lossDescriptor))
+	rv := objc.Call[NNLossGradient](n_, objc.Sel("initWithDevice:lossDescriptor:"), po0, lossDescriptor)
 	return rv
 }
 
@@ -130,7 +130,7 @@ func (n_ NNLossGradient) EncodeBatchToCommandBufferSourceGradientsSourceImagesLa
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131814-encodebatchtocommandbuffer?language=objc
 func (n_ NNLossGradient) EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesLabelsWeightsSourceStatesDestinationGradients(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, sourceStates *foundation.Array, destinationGradients *foundation.Array) {
-	objc.Call[objc.Void](n_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:labels:weights:sourceStates:destinationGradients:"), objc.Ptr(commandBufferObject), sourceGradients, sourceImages, labels, weights, sourceStates, destinationGradients)
+	objc.Call[objc.Void](n_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:labels:weights:sourceStates:destinationGradients:"), commandBufferObject, sourceGradients, sourceImages, labels, weights, sourceStates, destinationGradients)
 }
 
 //	[Full Topic]
@@ -146,7 +146,7 @@ func (n_ NNLossGradient) EncodeBatchToCommandBufferSourceGradientsSourceImagesLa
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131813-encodebatchtocommandbuffer?language=objc
 func (n_ NNLossGradient) EncodeBatchToCommandBufferObjectSourceGradientsSourceImagesLabelsWeightsSourceStates(commandBufferObject objc.IObject, sourceGradients *foundation.Array, sourceImages *foundation.Array, labels *foundation.Array, weights *foundation.Array, sourceStates *foundation.Array) *foundation.Array {
-	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:labels:weights:sourceStates:"), objc.Ptr(commandBufferObject), sourceGradients, sourceImages, labels, weights, sourceStates)
+	rv := objc.Call[*foundation.Array](n_, objc.Sel("encodeBatchToCommandBuffer:sourceGradients:sourceImages:labels:weights:sourceStates:"), commandBufferObject, sourceGradients, sourceImages, labels, weights, sourceStates)
 	return rv
 }
 
@@ -161,15 +161,15 @@ func (n_ NNLossGradient) LossType() CNNLossType {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131822-weight?language=objc
-func (n_ NNLossGradient) Weight() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("weight"))
+func (n_ NNLossGradient) Weight() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("weight"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131822-weight?language=objc
-func (n_ NNLossGradient) SetWeight(value float64) {
+func (n_ NNLossGradient) SetWeight(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setWeight:"), value)
 }
 
@@ -207,45 +207,45 @@ func (n_ NNLossGradient) SetComputeLabelGradients(value bool) {
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131818-labelsmoothing?language=objc
-func (n_ NNLossGradient) LabelSmoothing() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("labelSmoothing"))
+func (n_ NNLossGradient) LabelSmoothing() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("labelSmoothing"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131818-labelsmoothing?language=objc
-func (n_ NNLossGradient) SetLabelSmoothing(value float64) {
+func (n_ NNLossGradient) SetLabelSmoothing(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setLabelSmoothing:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131812-delta?language=objc
-func (n_ NNLossGradient) Delta() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("delta"))
+func (n_ NNLossGradient) Delta() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("delta"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131812-delta?language=objc
-func (n_ NNLossGradient) SetDelta(value float64) {
+func (n_ NNLossGradient) SetDelta(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setDelta:"), value)
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131815-epsilon?language=objc
-func (n_ NNLossGradient) Epsilon() float64 {
-	rv := objc.Call[float64](n_, objc.Sel("epsilon"))
+func (n_ NNLossGradient) Epsilon() float32 {
+	rv := objc.Call[float32](n_, objc.Sel("epsilon"))
 	return rv
 }
 
 //	[Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/metalperformanceshaders/mpsnnlossgradient/3131815-epsilon?language=objc
-func (n_ NNLossGradient) SetEpsilon(value float64) {
+func (n_ NNLossGradient) SetEpsilon(value float32) {
 	objc.Call[objc.Void](n_, objc.Sel("setEpsilon:"), value)
 }
 

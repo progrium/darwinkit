@@ -50,7 +50,7 @@ func NewInvocationOperationWithTargetSelectorObject(target objc.IObject, sel obj
 }
 
 func (i_ InvocationOperation) InitWithInvocation(inv IInvocation) InvocationOperation {
-	rv := objc.Call[InvocationOperation](i_, objc.Sel("initWithInvocation:"), objc.Ptr(inv))
+	rv := objc.Call[InvocationOperation](i_, objc.Sel("initWithInvocation:"), inv)
 	return rv
 }
 

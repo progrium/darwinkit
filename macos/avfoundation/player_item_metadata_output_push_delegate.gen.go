@@ -54,5 +54,5 @@ func (p_ PlayerItemMetadataOutputPushDelegateObject) HasMetadataOutputDidOutputT
 //
 // [Full Topic]: https://developer.apple.com/documentation/avfoundation/avplayeritemmetadataoutputpushdelegate/1388071-metadataoutput?language=objc
 func (p_ PlayerItemMetadataOutputPushDelegateObject) MetadataOutputDidOutputTimedMetadataGroupsFromPlayerItemTrack(output PlayerItemMetadataOutput, groups []TimedMetadataGroup, track PlayerItemTrack) {
-	objc.Call[objc.Void](p_, objc.Sel("metadataOutput:didOutputTimedMetadataGroups:fromPlayerItemTrack:"), objc.Ptr(output), groups, objc.Ptr(track))
+	objc.Call[objc.Void](p_, objc.Sel("metadataOutput:didOutputTimedMetadataGroups:fromPlayerItemTrack:"), output, groups, track)
 }

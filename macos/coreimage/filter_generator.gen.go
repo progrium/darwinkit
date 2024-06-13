@@ -84,7 +84,7 @@ func (f_ FilterGenerator) RegisterFilterName(name string) {
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltergenerator/1438179-writetourl?language=objc
 func (f_ FilterGenerator) WriteToURLAtomically(aURL foundation.IURL, flag bool) bool {
-	rv := objc.Call[bool](f_, objc.Sel("writeToURL:atomically:"), objc.Ptr(aURL), flag)
+	rv := objc.Call[bool](f_, objc.Sel("writeToURL:atomically:"), aURL, flag)
 	return rv
 }
 
@@ -92,7 +92,7 @@ func (f_ FilterGenerator) WriteToURLAtomically(aURL foundation.IURL, flag bool) 
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltergenerator/1525950-filtergeneratorwithcontentsofurl?language=objc
 func (fc _FilterGeneratorClass) FilterGeneratorWithContentsOfURL(aURL foundation.IURL) FilterGenerator {
-	rv := objc.Call[FilterGenerator](fc, objc.Sel("filterGeneratorWithContentsOfURL:"), objc.Ptr(aURL))
+	rv := objc.Call[FilterGenerator](fc, objc.Sel("filterGeneratorWithContentsOfURL:"), aURL)
 	return rv
 }
 
@@ -107,7 +107,7 @@ func FilterGenerator_FilterGeneratorWithContentsOfURL(aURL foundation.IURL) Filt
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cifiltergenerator/1437742-initwithcontentsofurl?language=objc
 func (f_ FilterGenerator) InitWithContentsOfURL(aURL foundation.IURL) objc.Object {
-	rv := objc.Call[objc.Object](f_, objc.Sel("initWithContentsOfURL:"), objc.Ptr(aURL))
+	rv := objc.Call[objc.Object](f_, objc.Sel("initWithContentsOfURL:"), aURL)
 	return rv
 }
 

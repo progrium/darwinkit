@@ -20,27 +20,27 @@ type PModTransition interface {
 	HasCenter() bool
 
 	// optional
-	SetRadius(value float64)
+	SetRadius(value float32)
 	HasSetRadius() bool
 
 	// optional
-	Radius() float64
+	Radius() float32
 	HasRadius() bool
 
 	// optional
-	SetCompression(value float64)
+	SetCompression(value float32)
 	HasSetCompression() bool
 
 	// optional
-	Compression() float64
+	Compression() float32
 	HasCompression() bool
 
 	// optional
-	SetAngle(value float64)
+	SetAngle(value float32)
 	HasSetAngle() bool
 
 	// optional
-	Angle() float64
+	Angle() float32
 	HasAngle() bool
 }
 
@@ -82,7 +82,7 @@ func (m_ ModTransitionObject) HasSetRadius() bool {
 // The radius of the undistorted mod holes in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228572-radius?language=objc
-func (m_ ModTransitionObject) SetRadius(value float64) {
+func (m_ ModTransitionObject) SetRadius(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setRadius:"), value)
 }
 
@@ -93,8 +93,8 @@ func (m_ ModTransitionObject) HasRadius() bool {
 // The radius of the undistorted mod holes in the pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228572-radius?language=objc
-func (m_ ModTransitionObject) Radius() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("radius"))
+func (m_ ModTransitionObject) Radius() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("radius"))
 	return rv
 }
 
@@ -105,7 +105,7 @@ func (m_ ModTransitionObject) HasSetCompression() bool {
 // The amount of stretching applied to the mod hole pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
-func (m_ ModTransitionObject) SetCompression(value float64) {
+func (m_ ModTransitionObject) SetCompression(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setCompression:"), value)
 }
 
@@ -116,8 +116,8 @@ func (m_ ModTransitionObject) HasCompression() bool {
 // The amount of stretching applied to the mod hole pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228571-compression?language=objc
-func (m_ ModTransitionObject) Compression() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("compression"))
+func (m_ ModTransitionObject) Compression() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("compression"))
 	return rv
 }
 
@@ -128,7 +128,7 @@ func (m_ ModTransitionObject) HasSetAngle() bool {
 // The angle of the mod hole pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228569-angle?language=objc
-func (m_ ModTransitionObject) SetAngle(value float64) {
+func (m_ ModTransitionObject) SetAngle(value float32) {
 	objc.Call[objc.Void](m_, objc.Sel("setAngle:"), value)
 }
 
@@ -139,7 +139,7 @@ func (m_ ModTransitionObject) HasAngle() bool {
 // The angle of the mod hole pattern. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/coreimage/cimodtransition/3228569-angle?language=objc
-func (m_ ModTransitionObject) Angle() float64 {
-	rv := objc.Call[float64](m_, objc.Sel("angle"))
+func (m_ ModTransitionObject) Angle() float32 {
+	rv := objc.Call[float32](m_, objc.Sel("angle"))
 	return rv
 }
