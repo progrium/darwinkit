@@ -21,3 +21,9 @@ type Matrix_float3x3 unsafe.Pointer
 type Matrix_float4x4 unsafe.Pointer
 type Matrix_float4x3 unsafe.Pointer
 type Matrix_double4x4 unsafe.Pointer
+
+// https://developer.apple.com/documentation/kernel/kernel_data_types?language=objc
+// https://github.com/apple/darwin-xnu/blob/main/bsd/sys/_types.h
+type Pid = int32
+type Gid = uint32
+type Uid = uint32

@@ -1,6 +1,7 @@
 package typing
 
 import (
+	"strings"
 	"unicode"
 
 	"github.com/progrium/macdriver/generate/modules"
@@ -23,6 +24,9 @@ func GetKernelType(typeName string) (Type, bool) {
 		"matrix_float4x3",
 		"matrix_double4x4",
 		"vector_uchar16",
+		"pid_t",
+		"gid_t",
+		"uid_t",
 	} {
 		if typeName == name {
 			return &KernelType{ObjcName_: typeName}, true
@@ -42,7 +46,8 @@ func (k *KernelType) GoImports() set.Set[string] {
 func (k *KernelType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {
 	r := []rune(k.ObjcName_)
 	r[0] = unicode.ToUpper(r[0])
-	return FullGoName(*k.DeclareModule(), string(r), *currentModule)
+	name := strings.TrimSuffix(string(r), "_t")
+	return FullGoName(*k.DeclareModule(), name, *currentModule)
 }
 
 func (k *KernelType) ObjcName() string {
