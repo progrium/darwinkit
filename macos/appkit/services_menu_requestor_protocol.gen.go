@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that support interaction with items users can share through a sharing service. [Full Topic]

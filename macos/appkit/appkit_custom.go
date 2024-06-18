@@ -3,9 +3,9 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/helper/action"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/helper/action"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // todo: generate?

@@ -1,6 +1,6 @@
 package coremidi
 
-import "github.com/progrium/macdriver/macos/corefoundation"
+import "github.com/progrium/darwinkit/macos/corefoundation"
 
 // A 96-bit MIDI message. [Full Topic]
 //

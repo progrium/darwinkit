@@ -25,7 +25,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc/ffi"
+	"github.com/progrium/darwinkit/objc/ffi"
 )
 
 type IProtocol interface {

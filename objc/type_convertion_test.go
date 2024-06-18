@@ -10,7 +10,7 @@ import (
 
 	"unsafe"
 
-	"github.com/progrium/macdriver/internal/assert"
+	"github.com/progrium/darwinkit/internal/assert"
 )
 
 // for more array/dict tests, see foundation/foundation_custom_test.go

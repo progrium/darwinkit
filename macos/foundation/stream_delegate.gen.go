@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that delegates of a stream instance use to handle events on the stream. [Full Topic]

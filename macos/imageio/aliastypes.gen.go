@@ -3,8 +3,8 @@
 package imageio
 
 import (
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 )
 
 // The block to execute when enumerating the tags of a metadata object. [Full Topic]

@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A completion handler signature a method calls when it finishes creating a compute pipeline and reflection information. [Full Topic]

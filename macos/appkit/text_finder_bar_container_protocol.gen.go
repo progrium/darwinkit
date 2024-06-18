@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that provides a container in which the find bar is displayed. [Full Topic]

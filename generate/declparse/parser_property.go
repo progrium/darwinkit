@@ -3,8 +3,8 @@ package declparse
 import (
 	"fmt"
 
-	"github.com/progrium/macdriver/generate/declparse/keywords"
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/keywords"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func parseProperty(p *Parser) (next stateFn, node Node, err error) {

@@ -3,9 +3,9 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The IKImageEditPanelDataSource protocol describes the methods that an IKImageEditPanel object uses to access the contents of its data source object. [Full Topic]

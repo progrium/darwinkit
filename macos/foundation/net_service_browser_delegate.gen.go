@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface a net service browser uses to inform a delegate about the state of service discovery. [Full Topic]

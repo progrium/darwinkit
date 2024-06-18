@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/progrium/macdriver/generate"
+	"github.com/progrium/darwinkit/generate"
 )
 
 // go run ./generate/tools/type.go [symbol, ex: nswindow]

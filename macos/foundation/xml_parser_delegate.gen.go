@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface an XML parser uses to inform its delegate about the content of the parsed document. [Full Topic]

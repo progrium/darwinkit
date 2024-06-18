@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*SelectorType)(nil)
@@ -12,7 +12,7 @@ type SelectorType struct {
 }
 
 func (s *SelectorType) GoImports() set.Set[string] {
-	return set.New("github.com/progrium/macdriver/objc")
+	return set.New("github.com/progrium/darwinkit/objc")
 }
 
 func (s *SelectorType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {

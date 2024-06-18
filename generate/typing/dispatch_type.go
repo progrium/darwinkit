@@ -4,8 +4,8 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 func GetDispatchType(typeName string) (Type, bool) {
@@ -30,7 +30,7 @@ type DispatchType struct {
 }
 
 func (d *DispatchType) GoImports() set.Set[string] {
-	return set.New("github.com/progrium/macdriver/dispatch")
+	return set.New("github.com/progrium/darwinkit/dispatch")
 }
 
 func (d *DispatchType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {

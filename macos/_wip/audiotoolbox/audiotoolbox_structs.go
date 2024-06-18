@@ -1,9 +1,9 @@
 package audiotoolbox
 
 import (
-	"github.com/progrium/macdriver/macos/coreaudiotypes"
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/macos/coremidi"
+	"github.com/progrium/darwinkit/macos/coreaudiotypes"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/coremidi"
 )
 
 // A data structure for describing SMPTE (Society of Motion Picture and Television Engineers) time. [Full Topic]

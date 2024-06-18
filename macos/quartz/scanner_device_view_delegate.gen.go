@@ -3,8 +3,8 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The IKScannerDeviceViewDelegate protocol defines the delegate protocol that the IKScannerDeviceView delegate must conform to. [Full Topic]

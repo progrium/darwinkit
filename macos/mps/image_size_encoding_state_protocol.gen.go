@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for objects that contain information about an image size elsewhere in the graph. [Full Topic]

@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object representing a function that you can add to a visible function table. [Full Topic]

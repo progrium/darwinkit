@@ -3,7 +3,7 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The IKSlideshowDataSource protocol describes the methods that an IKSlideshow object uses to access the contents of its data source object. [Full Topic]

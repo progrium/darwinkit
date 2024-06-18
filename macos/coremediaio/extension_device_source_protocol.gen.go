@@ -5,8 +5,8 @@ package coremediaio
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for objects that act as device sources. [Full Topic]

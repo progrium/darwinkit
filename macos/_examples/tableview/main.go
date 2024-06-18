@@ -3,13 +3,14 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
 	"runtime"
 	"sync"
 	"time"
+
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 const (

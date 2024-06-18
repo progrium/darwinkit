@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol that provides resource identification. [Full Topic]

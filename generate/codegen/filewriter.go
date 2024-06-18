@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
-	"github.com/progrium/macdriver/internal/stringx"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
+	"github.com/progrium/darwinkit/internal/stringx"
 )
 
 // TypeWriter write codes for a go file
@@ -42,10 +42,10 @@ func (w *FileWriter) WriteCode() {
 	for _, tc := range w.typeCodes {
 		imports.AddSet(tc.GoImports())
 	}
-	selfPackage := "github.com/progrium/macdriver/macos/" + w.Module.Package
+	selfPackage := "github.com/progrium/darwinkit/macos/" + w.Module.Package
 	cw.Indent()
 	imports.ForEach(func(value string) {
-		if value != selfPackage && value != "github.com/progrium/macdriver/macos/objc" {
+		if value != selfPackage && value != "github.com/progrium/darwinkit/macos/objc" {
 			cw.WriteLine("\"" + value + "\"")
 		}
 	})

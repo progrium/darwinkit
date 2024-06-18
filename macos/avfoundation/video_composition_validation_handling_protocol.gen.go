@@ -3,8 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods you can implement to indicate whether validation of a video composition should continue after specific errors are found. [Full Topic]

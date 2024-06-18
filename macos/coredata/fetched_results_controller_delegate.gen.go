@@ -3,8 +3,8 @@
 package coredata
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A delegate protocol that describes the methods that will be called by the associated fetched results controller when the fetch results have changed. [Full Topic]

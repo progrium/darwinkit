@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A collection of logged messages, created when a Metal device runs a command buffer. [Full Topic]

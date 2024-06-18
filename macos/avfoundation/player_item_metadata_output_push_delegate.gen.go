@@ -3,7 +3,7 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods you can implement to provide additional metadata. [Full Topic]

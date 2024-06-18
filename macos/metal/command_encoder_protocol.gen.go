@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An encoder that writes GPU commands into a command buffer. [Full Topic]

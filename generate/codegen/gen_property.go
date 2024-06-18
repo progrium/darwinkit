@@ -3,8 +3,8 @@ package codegen
 import (
 	"strings"
 
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/stringx"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/stringx"
 )
 
 // Property is code generator for objective-c property

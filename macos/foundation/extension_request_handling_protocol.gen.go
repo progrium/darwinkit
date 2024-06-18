@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface an app extension uses to respond to a request from a host app. [Full Topic]

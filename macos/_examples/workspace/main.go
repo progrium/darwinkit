@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/objc"
 )
 
 func main() {

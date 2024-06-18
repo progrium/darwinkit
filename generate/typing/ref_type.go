@@ -2,8 +2,8 @@ package typing
 
 import "C"
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 // for weird struct refs like those ending in "Ref"

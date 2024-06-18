@@ -3,8 +3,8 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that defines the interface to text attachment objects from a layout manager. [Full Topic]

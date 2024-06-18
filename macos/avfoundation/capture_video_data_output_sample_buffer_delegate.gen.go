@@ -3,8 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods for receiving sample buffers from, and monitoring the status of, a video data output. [Full Topic]

@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A container that provides additional information about a runtime failure a GPU encounters as it runs the commands in a command buffer. [Full Topic]

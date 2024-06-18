@@ -3,7 +3,7 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for enumerating items and changes. [Full Topic]

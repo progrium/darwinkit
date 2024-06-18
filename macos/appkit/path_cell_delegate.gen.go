@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that enable the delegate of a path cell object to customize the Open panel or pop-up menu of a path whose style is set to NSPathStylePopUp. [Full Topic]

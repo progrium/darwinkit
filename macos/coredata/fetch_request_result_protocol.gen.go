@@ -3,7 +3,7 @@
 package coredata
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An abstract protocol used with parameterized fetch requests. [Full Topic]

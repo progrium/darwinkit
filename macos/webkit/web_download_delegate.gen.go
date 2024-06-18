@@ -3,7 +3,7 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The WebDownloadDelegate protocol declares one additional method for delegates of WebDownload. [Full Topic]

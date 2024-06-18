@@ -3,7 +3,7 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // WebDocumentSearching is an optional protocol for document view objects that support searching. Classes that adopt this protocol should also adopt WebDocumentView and inherit from NSView. [Full Topic]

@@ -3,8 +3,8 @@
 package quartzcore
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods your app can implement to respond to layer-related events. [Full Topic]

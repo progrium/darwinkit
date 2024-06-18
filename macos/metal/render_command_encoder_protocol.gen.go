@@ -5,8 +5,8 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that encodes a render pass into a command buffer, including all its draw calls and configuration. [Full Topic]

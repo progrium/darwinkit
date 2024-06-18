@@ -5,8 +5,8 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A table of intersection functions that Metal calls to perform ray-tracing intersection tests. [Full Topic]

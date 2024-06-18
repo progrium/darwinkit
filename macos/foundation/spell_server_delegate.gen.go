@@ -5,7 +5,7 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The optional methods implemented by the delegate of a spell server. [Full Topic]

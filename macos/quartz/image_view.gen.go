@@ -5,12 +5,12 @@ package quartz
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/coreimage"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/quartzcore"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/coreimage"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/quartzcore"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [ImageView] class.

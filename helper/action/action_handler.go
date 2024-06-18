@@ -9,7 +9,7 @@ import (
 	"runtime/cgo"
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Handler is a callback function for an ActionTarget.

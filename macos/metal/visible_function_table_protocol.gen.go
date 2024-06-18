@@ -5,8 +5,8 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A table of shader functions visible to your app that you can pass into compute commands to customize the behavior of a shader. [Full Topic]

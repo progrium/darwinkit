@@ -3,8 +3,8 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The optional methods that delegates of text storage objects implement to handle text-edit processing. [Full Topic]

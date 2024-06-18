@@ -3,7 +3,7 @@
 package coreml
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that represents a collection of feature providers. [Full Topic]

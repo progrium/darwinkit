@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object that splits up a single render pass so that it can be simultaneously encoded from multiple threads. [Full Topic]

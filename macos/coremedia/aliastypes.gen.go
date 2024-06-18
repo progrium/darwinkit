@@ -5,7 +5,7 @@ package coremedia
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/corefoundation"
 )
 
 //	[Full Topic]

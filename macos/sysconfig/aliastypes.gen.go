@@ -5,7 +5,7 @@ package sysconfig
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/corefoundation"
 )
 
 // Type of the callback function used when the preferences have been updated or applied. [Full Topic]

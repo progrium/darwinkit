@@ -3,8 +3,8 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/quartzcore"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/quartzcore"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An optional layer delegate method for handling resolution changes. [Full Topic]

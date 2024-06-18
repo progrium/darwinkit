@@ -5,9 +5,9 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/iosurface"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/iosurface"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A resource that holds formatted image data. [Full Topic]

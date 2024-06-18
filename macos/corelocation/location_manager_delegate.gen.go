@@ -3,8 +3,8 @@
 package corelocation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The methods that you use to receive events from an associated location-manager object. [Full Topic]

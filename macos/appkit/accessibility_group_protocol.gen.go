@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A role-based protocol that declares the minimum interface necessary to act as a container for other user interface elements. [Full Topic]

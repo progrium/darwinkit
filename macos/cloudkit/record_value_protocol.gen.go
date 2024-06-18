@@ -3,7 +3,7 @@
 package cloudkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol that provides strong type-checking for objects that the CloudKit framework stores on the server. [Full Topic]

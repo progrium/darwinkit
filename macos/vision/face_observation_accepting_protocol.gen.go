@@ -3,7 +3,7 @@
 package vision
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An image analysis request that operates on face observations. [Full Topic]

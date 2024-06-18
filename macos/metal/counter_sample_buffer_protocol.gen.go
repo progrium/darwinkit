@@ -3,8 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A specialized memory buffer that stores a GPU’s counter set data. [Full Topic]

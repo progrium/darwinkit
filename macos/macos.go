@@ -6,8 +6,8 @@ package macos
 import (
 	"runtime"
 
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // RunApp builds a delegate, sets it on the shared application, and runs the event loop.

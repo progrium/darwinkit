@@ -3,8 +3,8 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The NSPageControllerDelegate protocol allows you to customize the behavior of instances of the NSPageController class. [Full Topic]

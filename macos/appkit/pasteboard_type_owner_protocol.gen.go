@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object that serves as a data provider for data types that use lazy data fulfillment from a pasteboard request. [Full Topic]

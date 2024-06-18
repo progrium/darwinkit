@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An instance you use to create, submit, and schedule command buffers to a specific GPU device to run the commands within those buffers. [Full Topic]

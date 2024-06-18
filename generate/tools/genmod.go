@@ -8,8 +8,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/progrium/macdriver/generate"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 // TODO: replace with env var

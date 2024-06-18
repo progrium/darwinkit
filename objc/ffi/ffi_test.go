@@ -10,7 +10,7 @@ import (
 	"time"
 	"unsafe"
 
-	"github.com/progrium/macdriver/internal/assert"
+	"github.com/progrium/darwinkit/internal/assert"
 )
 
 func Test_closure(t *testing.T) {

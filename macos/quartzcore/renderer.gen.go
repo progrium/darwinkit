@@ -5,12 +5,12 @@ package quartzcore
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/corevideo"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/corevideo"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [Renderer] class.

@@ -1,7 +1,7 @@
 package keywords
 
 import (
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func init() {

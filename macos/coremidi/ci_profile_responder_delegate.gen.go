@@ -3,7 +3,7 @@
 package coremidi
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the methods to respond to MIDI-CI responder life-cycle events. [Full Topic]

@@ -3,7 +3,7 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 //	[Full Topic]

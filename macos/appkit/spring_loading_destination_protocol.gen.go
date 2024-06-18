@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that the destination object (or recipient) of a dragged object can implement to support spring-loading. [Full Topic]

@@ -3,7 +3,7 @@
 package coremedia
 
 import (
-	"github.com/progrium/macdriver/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/corefoundation"
 )
 
 // A type for mask bits that represent parts of an audio format description. [Full Topic]

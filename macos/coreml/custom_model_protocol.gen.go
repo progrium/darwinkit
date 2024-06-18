@@ -5,7 +5,7 @@ package coreml
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that defines the behavior of a custom model. [Full Topic]

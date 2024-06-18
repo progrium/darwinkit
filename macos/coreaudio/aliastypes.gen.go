@@ -5,7 +5,7 @@ package coreaudio
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coreaudiotypes"
+	"github.com/progrium/darwinkit/macos/coreaudiotypes"
 )
 
 //	[Full Topic]

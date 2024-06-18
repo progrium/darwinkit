@@ -5,11 +5,11 @@ import (
 	"log"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/codegen"
-	"github.com/progrium/macdriver/generate/declparse"
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/codegen"
+	"github.com/progrium/darwinkit/generate/declparse"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 type Generator struct {

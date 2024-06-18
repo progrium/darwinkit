@@ -3,7 +3,7 @@
 package mpsgraph
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 //	[Full Topic]

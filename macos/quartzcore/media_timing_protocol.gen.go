@@ -3,8 +3,8 @@
 package quartzcore
 
 import (
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods that model a hierarchical timing system, allowing objects to map time between their parent and local time. [Full Topic]

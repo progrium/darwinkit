@@ -3,8 +3,8 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that you use to customize the position and animation of a share sheet, and to be notified whether the item is successfully shared. [Full Topic]

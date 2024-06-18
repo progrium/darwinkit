@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*ProtocolType)(nil)
@@ -27,7 +27,7 @@ func (p *ProtocolType) ObjcName() string {
 }
 
 func (p *ProtocolType) GoImports() set.Set[string] {
-	return set.New("github.com/progrium/macdriver/objc", "github.com/progrium/macdriver/macos/"+p.Module.Package)
+	return set.New("github.com/progrium/darwinkit/objc", "github.com/progrium/darwinkit/macos/"+p.Module.Package)
 }
 
 func (p *ProtocolType) DeclareModule() *modules.Module {

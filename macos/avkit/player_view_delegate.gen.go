@@ -3,7 +3,7 @@
 package avkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the methods to implement to participate in the player view’s full-screen presentation life cycle. [Full Topic]

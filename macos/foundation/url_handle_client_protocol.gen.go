@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface implemented by URL handle clients. [Full Topic]

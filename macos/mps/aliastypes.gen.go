@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A notification when an asynchronous graph execution has finished. [Full Topic]

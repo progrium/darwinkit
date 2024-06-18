@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that defines the interface for retrieving a representation of an object that can be written to a pasteboard. [Full Topic]

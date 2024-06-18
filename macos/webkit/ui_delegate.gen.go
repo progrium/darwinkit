@@ -3,8 +3,8 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The methods for presenting native user interface elements on behalf of a webpage. [Full Topic]

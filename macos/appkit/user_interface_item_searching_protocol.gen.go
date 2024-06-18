@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods an app can implement to provide Spotlight for Help for its own custom help data. [Full Topic]

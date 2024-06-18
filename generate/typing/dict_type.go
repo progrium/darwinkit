@@ -2,8 +2,8 @@ package typing
 
 import "C"
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*DictType)(nil)
@@ -15,7 +15,7 @@ type DictType struct {
 }
 
 func (d *DictType) GoImports() set.Set[string] {
-	var imports = set.New("github.com/progrium/macdriver/macos/foundation")
+	var imports = set.New("github.com/progrium/darwinkit/macos/foundation")
 	imports.AddSet(d.KeyType.GoImports())
 	imports.AddSet(d.ValueType.GoImports())
 	return imports

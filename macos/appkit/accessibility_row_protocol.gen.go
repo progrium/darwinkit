@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A role-based protocol that declares the minimum interface necessary for an accessibility element to act as a row for a table, list, or outline view. [Full Topic]

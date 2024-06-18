@@ -5,9 +5,9 @@ package coregraphics
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/macos/iosurface"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/iosurface"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A callback function that returns a generic pointer to the provider data. [Full Topic]

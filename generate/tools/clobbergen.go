@@ -5,7 +5,7 @@ package main
 import (
 	"os"
 
-	"github.com/progrium/macdriver/generate"
+	"github.com/progrium/darwinkit/generate"
 )
 
 // go run ./generate/tools/clobbergen.go [dir, ex: ./macos/appkit]

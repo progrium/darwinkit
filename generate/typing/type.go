@@ -1,9 +1,9 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
-	"github.com/progrium/macdriver/internal/stringx"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
+	"github.com/progrium/darwinkit/internal/stringx"
 )
 
 // Type interface for all type

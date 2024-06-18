@@ -5,7 +5,7 @@ package fileprovider
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Support for enumerating the file provider’s contents. [Full Topic]

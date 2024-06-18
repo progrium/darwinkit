@@ -3,7 +3,7 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The methods to adopt in an object that monitors changes to a webpage’s cookies. [Full Topic]

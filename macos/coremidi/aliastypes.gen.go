@@ -5,7 +5,7 @@ package coremidi
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A block the system calls to indicate it has enabled or disabled a profile. [Full Topic]

@@ -7,7 +7,7 @@ package objc
 import (
 	"testing"
 
-	"github.com/progrium/macdriver/internal/assert"
+	"github.com/progrium/darwinkit/internal/assert"
 )
 
 func TestGetClass(t *testing.T) {

@@ -3,10 +3,10 @@ package generate
 import (
 	"strings"
 
-	"github.com/progrium/macdriver/generate/codegen"
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/stringx"
+	"github.com/progrium/darwinkit/generate/codegen"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/stringx"
 )
 
 func (db *Generator) ToEnumInfo(fw string, sym Symbol) *codegen.AliasInfo {

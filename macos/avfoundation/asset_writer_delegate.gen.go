@@ -3,7 +3,7 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A delegate protocol that defines the methods to implement to respond to asset-writing events. [Full Topic]

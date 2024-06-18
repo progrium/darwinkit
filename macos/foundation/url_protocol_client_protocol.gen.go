@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface used by NSURLProtocol subclasses to communicate with the URL Loading System. [Full Topic]

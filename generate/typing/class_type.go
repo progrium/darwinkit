@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*ClassType)(nil)
@@ -28,7 +28,7 @@ var Class = &ClassType{
 }
 
 func (c *ClassType) GoImports() set.Set[string] {
-	return set.New("github.com/progrium/macdriver/macos/" + c.Module.Package)
+	return set.New("github.com/progrium/darwinkit/macos/" + c.Module.Package)
 }
 
 func (c *ClassType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {

@@ -3,9 +3,9 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 //	[Full Topic]

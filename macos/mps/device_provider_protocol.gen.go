@@ -3,8 +3,8 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that enables the setting of a Metal device for unarchived objects. [Full Topic]

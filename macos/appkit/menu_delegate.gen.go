@@ -5,8 +5,8 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The optional methods implemented by delegates of NSMenu objects to manage menu display and handle some events. [Full Topic]

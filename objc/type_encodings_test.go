@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/progrium/macdriver/internal/assert"
+	"github.com/progrium/darwinkit/internal/assert"
 )
 
 type myInnerStruct struct {

@@ -5,7 +5,7 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the interface to load media data asynchronously. [Full Topic]

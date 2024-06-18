@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*AliasType)(nil)
@@ -18,7 +18,7 @@ type AliasType struct {
 func (a *AliasType) GoImports() set.Set[string] {
 	var imports = set.New[string]()
 	if a.Module != nil {
-		imports.Add("github.com/progrium/macdriver/macos/" + a.Module.Package)
+		imports.Add("github.com/progrium/darwinkit/macos/" + a.Module.Package)
 	}
 	imports.AddSet(a.Type.GoImports())
 	return imports

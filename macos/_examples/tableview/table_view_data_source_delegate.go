@@ -1,9 +1,9 @@
 package main
 
 import (
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 type TableViewDataSourceDelegate struct {

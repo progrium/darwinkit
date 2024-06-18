@@ -1,8 +1,8 @@
 package codegen
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
 )
 
 // Param is code generator for objective-c method param

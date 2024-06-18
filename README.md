@@ -1,29 +1,29 @@
-<img src="https://github.com/progrium/macdriver/raw/main/macdriver.gif" alt="MacDriver Logo">
+<img src="https://github.com/progrium/darwinkit/raw/main/macdriver.gif" alt="DarwinKit Logo">
 
 Native Apple APIs for Golang!
 
-[![GoDoc](https://godoc.org/github.com/progrium/macdriver?status.svg)](https://pkg.go.dev/github.com/progrium/macdriver@main)
-[![Go Report Card](https://goreportcard.com/badge/github.com/progrium/macdriver)](https://goreportcard.com/report/github.com/progrium/macdriver)
+[![GoDoc](https://godoc.org/github.com/progrium/darwinkit?status.svg)](https://pkg.go.dev/github.com/progrium/darwinkit@main)
+[![Go Report Card](https://goreportcard.com/badge/github.com/progrium/darwinkit)](https://goreportcard.com/report/github.com/progrium/darwinkit)
 <a href="https://twitter.com/progrium" title="@progrium on Twitter"><img src="https://img.shields.io/badge/twitter-@progrium-55acee.svg" alt="@progrium on Twitter"></a>
-<a href="https://github.com/progrium/macdriver/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
+<a href="https://github.com/progrium/darwinkit/discussions" title="Project Forum"><img src="https://img.shields.io/badge/community-forum-ff69b4.svg" alt="Project Forum"></a>
 <a href="https://github.com/sponsors/progrium" title="Sponsor Project"><img src="https://img.shields.io/static/v1?label=sponsor&message=%E2%9D%A4&logo=GitHub" alt="Sponsor Project" /></a>
 
 > [!IMPORTANT]
-> June 13, 2024: **MacDriver is now DarwinKit and we're about to release 0.5.0!** The [legacy branch](https://github.com/progrium/macdriver/tree/legacy) and [previous releases](https://github.com/progrium/macdriver/releases) are still available for existing code to work against. Use `main` until 0.5.0 is released.
+> June 13, 2024: **MacDriver is now DarwinKit and we're about to release 0.5.0!** The [legacy branch](https://github.com/progrium/darwinkit/tree/legacy) and [previous releases](https://github.com/progrium/darwinkit/releases) are still available for existing code to work against. Use `main` until 0.5.0 is released.
 
 ------
 
-DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/github.com/progrium/macdriver/macos@main#section-directories) and build native applications using Go. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
+DarwinKit lets you work with [supported Apple frameworks](https://pkg.go.dev/github.com/progrium/darwinkit/macos@main#section-directories) and build native applications using Go. With XCode and Go 1.18+ installed, you can write this program in a `main.go` file:
 
 ```go
 package main
 
 import (
-	"github.com/progrium/macdriver/objc"
-	"github.com/progrium/macdriver/macos"
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/webkit"
+	"github.com/progrium/darwinkit/objc"
+	"github.com/progrium/darwinkit/macos"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/webkit"
 )
 
 func main() {
@@ -60,7 +60,7 @@ Then in this directory run:
 
 ```
 go mod init helloworld
-go get github.com/progrium/macdriver@main
+go get github.com/progrium/darwinkit@main
 go run main.go
 ```
 
@@ -74,7 +74,7 @@ Although currently outside the scope of this project, if you wanted you could pu
 * Your programs link against the actual Apple frameworks using [cgo](https://pkg.go.dev/cmd/cgo), so XCode needs to be installed for the framework headers.
 * You will be using two memory management systems. Framework objects are managed by [Objective-C memory management](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html#//apple_ref/doc/uid/10000011-SW1), so be sure to read our docs on [memory management](docs/memorymanagement.md) with DarwinKit.
 * Exceptions in frameworks will segfault, giving you both an Objective-C stacktrace and a Go panic stacktrace. You will be debugging a hybrid Go and Objective-C program.
-* Goroutines that interact with GUI objects need to [dispatch](https://pkg.go.dev/github.com/progrium/macdriver@main/dispatch) operations on the main thread otherwise it will segfault.
+* Goroutines that interact with GUI objects need to [dispatch](https://pkg.go.dev/github.com/progrium/darwinkit@main/dispatch) operations on the main thread otherwise it will segfault.
 
 This is all tenable for simple programs, but these are the reasons we don't *recommend* large/complex programs using DarwinKit.
 
@@ -131,7 +131,7 @@ call in Go, the `objc` package receives it as a raw pointer, which it first puts
 bindings for a class define a struct type that embeds an `objc.Object` struct, which contains a single
 field to hold the `unsafe.Pointer`. So unless working with a primitive type, you're working with an `unsafe.Pointer` wrapped in an `objc.Object` wrapped in a struct type that has the methods for the class of the object of the pointer. Be sure to read our documentation on [memory management](docs/memorymanagement.md).
 
-If you have questions, feel free to ask in the [discussion forums](https://github.com/progrium/macdriver/discussions).
+If you have questions, feel free to ask in the [discussion forums](https://github.com/progrium/darwinkit/discussions).
 
 ## Thanks
 

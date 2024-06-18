@@ -5,9 +5,9 @@ package mps
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/kernel"
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/kernel"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol that provides convolution filter weights and bias terms. [Full Topic]

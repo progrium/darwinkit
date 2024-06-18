@@ -3,8 +3,8 @@
 package contactsui
 
 import (
-	"github.com/progrium/macdriver/macos/contacts"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/contacts"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The methods that you implement to respond to contact-picker user events. [Full Topic]

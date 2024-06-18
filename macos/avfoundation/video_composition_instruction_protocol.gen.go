@@ -3,10 +3,10 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the interface for a video composition instruction. [Full Topic]

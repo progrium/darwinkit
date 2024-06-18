@@ -5,9 +5,9 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/kernel"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/kernel"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [RunningApplication] class.

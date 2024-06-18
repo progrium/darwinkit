@@ -5,8 +5,8 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/kernel"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/kernel"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [AppleEventDescriptor] class.

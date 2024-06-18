@@ -1,8 +1,8 @@
 package layout
 
 import (
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 func AliginAnchors(anchor appkit.ILayoutAnchor, targetAncor appkit.ILayoutAnchor) {

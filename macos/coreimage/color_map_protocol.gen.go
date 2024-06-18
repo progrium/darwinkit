@@ -3,7 +3,7 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The properties you use to configure a color map filter. [Full Topic]

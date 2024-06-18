@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 // Class is code generator for objc class
@@ -116,9 +116,9 @@ func (c *Class) Init() {
 }
 
 func (c *Class) GoImports() set.Set[string] {
-	imports := set.New("github.com/progrium/macdriver/objc")
+	imports := set.New("github.com/progrium/darwinkit/objc")
 	if c.Super != nil {
-		imports.Add("github.com/progrium/macdriver/macos/" + c.Super.Type.Module.Package)
+		imports.Add("github.com/progrium/darwinkit/macos/" + c.Super.Type.Module.Package)
 	}
 	for _, m := range c.InstanceTypeMethods {
 		im := m.NormalizeInstanceTypeMethod(c.Type)

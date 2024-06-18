@@ -6,7 +6,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/darwinkit/generate/modules"
 )
 
 // go run ./generate/tools/constant.go <platform> <framework> <constant>

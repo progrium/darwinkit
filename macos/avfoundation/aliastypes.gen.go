@@ -3,9 +3,9 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A type alias for a closure that provides the result of an image generation request. [Full Topic]

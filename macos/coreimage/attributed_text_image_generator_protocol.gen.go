@@ -3,8 +3,8 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The properties you use to configure an attributed-text image generator filter. [Full Topic]

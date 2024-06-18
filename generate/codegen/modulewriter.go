@@ -9,9 +9,9 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 // ModuleWriter mantains module level auto-generated code source files
@@ -71,7 +71,7 @@ func (m *ModuleWriter) WriteTypeAliases() {
 	}
 	cw.Indent()
 	imports.ForEach(func(value string) {
-		if value != "github.com/progrium/macdriver/macos/objc" {
+		if value != "github.com/progrium/darwinkit/macos/objc" {
 			cw.WriteLine("\"" + value + "\"")
 		}
 	})
@@ -150,7 +150,7 @@ func (m *ModuleWriter) WriteEnumAliases() {
 	cw.WriteLine("import (")
 	cw.Indent()
 	imports.ForEach(func(value string) {
-		if value != "github.com/progrium/macdriver/macos/objc" {
+		if value != "github.com/progrium/darwinkit/macos/objc" {
 			cw.WriteLine("\"" + value + "\"")
 		}
 	})

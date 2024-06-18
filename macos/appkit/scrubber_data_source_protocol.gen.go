@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that a scrubber data source object implements to provide items to the scrubber from an associated data collection in your app. [Full Topic]

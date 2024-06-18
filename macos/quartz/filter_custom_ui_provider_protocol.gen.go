@@ -3,8 +3,8 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The IKFilterCustomUIProvider protocol is an addition to the CIFilter class that defines a method for providing a view for a filter. This protocol is implemented by any filter that provides its own user interface. [Full Topic]

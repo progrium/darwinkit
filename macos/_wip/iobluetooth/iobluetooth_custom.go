@@ -4,7 +4,7 @@
 // * Issue where there is both OBEXSession and IOBluetoothOBEXSession, which inherits from OBEXSession, except the prefix is trimmed so both cannot exist
 package iobluetooth
 
-import "github.com/progrium/macdriver/objc"
+import "github.com/progrium/darwinkit/objc"
 
 // this guy was generated with Autorelease on OBEXError (an int) because of starting with Copy... todo: fix?
 

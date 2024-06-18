@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The delegate of an NSCache object implements this protocol to perform specialized actions when an object is about to be evicted or removed from the cache. [Full Topic]

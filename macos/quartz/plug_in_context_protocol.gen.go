@@ -3,7 +3,7 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The QCPlugInContext protocol defines methods that you use only from within the execution method ([quartz/qcplugin/execute]) of a QCPlugIn object. [Full Topic]

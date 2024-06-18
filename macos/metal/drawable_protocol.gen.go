@@ -3,8 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A displayable resource that can be rendered or written to. [Full Topic]

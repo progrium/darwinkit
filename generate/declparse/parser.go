@@ -6,8 +6,8 @@ import (
 	"io"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/declparse/keywords"
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/keywords"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 type Hint int

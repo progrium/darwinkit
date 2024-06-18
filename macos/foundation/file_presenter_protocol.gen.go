@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface a file coordinator uses to inform an object presenting a file about changes to that file made elsewhere in the system. [Full Topic]

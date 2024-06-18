@@ -5,8 +5,8 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [CaptureAudioDataOutput] class.

@@ -3,7 +3,7 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Support for suppressing user-interaction alerts. [Full Topic]

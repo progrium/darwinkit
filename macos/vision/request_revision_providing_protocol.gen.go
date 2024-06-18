@@ -3,7 +3,7 @@
 package vision
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for specifying the revision number of Vision algorithms. [Full Topic]

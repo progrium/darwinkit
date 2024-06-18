@@ -3,7 +3,7 @@ package declparse
 import (
 	"strings"
 
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func parseVariable(p *Parser) (next stateFn, node Node, err error) {

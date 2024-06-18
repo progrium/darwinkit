@@ -5,7 +5,7 @@ package iosurface
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [IOSurface] class.

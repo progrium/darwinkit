@@ -3,9 +3,9 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods you can implement to enqueue sample buffers for presentation. [Full Topic]

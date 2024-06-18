@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of optional methods implemented by delegates of NSSpeechSynthesizer objects. [Full Topic]

@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods implemented by plug-ins that allow an app’s Dock tile to be customized while the app is not running. [Full Topic]

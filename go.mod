@@ -1,4 +1,4 @@
-module github.com/progrium/macdriver
+module github.com/progrium/darwinkit
 
 go 1.18
 

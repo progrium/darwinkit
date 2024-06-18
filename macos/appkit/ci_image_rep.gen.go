@@ -5,8 +5,8 @@ package appkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coreimage"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coreimage"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [CIImageRep] class.

@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol used to provide information about the layout’s container and environment traits, such as size classes and display scale factor. [Full Topic]

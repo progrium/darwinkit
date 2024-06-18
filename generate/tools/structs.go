@@ -10,8 +10,8 @@ import (
 	"os/exec"
 	"strings"
 
-	"github.com/progrium/macdriver/generate"
-	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/darwinkit/generate"
+	"github.com/progrium/darwinkit/generate/modules"
 )
 
 const TargetPlatform = "macos"

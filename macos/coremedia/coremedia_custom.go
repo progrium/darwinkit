@@ -1,6 +1,6 @@
 package coremedia
 
-import "github.com/progrium/macdriver/macos/corefoundation"
+import "github.com/progrium/darwinkit/macos/corefoundation"
 
 type BufferRef corefoundation.TypeRef
 type MetadataFormatDescriptionRef FormatDescriptionRef

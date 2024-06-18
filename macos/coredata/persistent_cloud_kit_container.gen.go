@@ -5,9 +5,9 @@ package coredata
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/cloudkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/cloudkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [PersistentCloudKitContainer] class.

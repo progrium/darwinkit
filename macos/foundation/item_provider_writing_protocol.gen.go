@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol for implementing a class to allow an item provider to retrieve data from an instance of the class. [Full Topic]

@@ -3,7 +3,7 @@ package declparse
 import (
 	"fmt"
 
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func (p *Parser) expectFuncType(returnType *TypeInfo, isTopLevel bool) (fn *FunctionDecl, err error) {

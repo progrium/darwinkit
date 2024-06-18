@@ -5,8 +5,8 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [CaptureOutput] class.

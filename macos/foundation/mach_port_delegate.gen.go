@@ -5,7 +5,7 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface for handling incoming Mach messages. [Full Topic]

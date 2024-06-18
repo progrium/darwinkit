@@ -1,7 +1,7 @@
 package declparse
 
 import (
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func (p *Parser) expectType(parens bool) (ti *TypeInfo, err error) {

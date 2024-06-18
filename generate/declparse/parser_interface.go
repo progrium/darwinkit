@@ -1,8 +1,8 @@
 package declparse
 
 import (
-	"github.com/progrium/macdriver/generate/declparse/keywords"
-	"github.com/progrium/macdriver/generate/declparse/lexer"
+	"github.com/progrium/darwinkit/generate/declparse/keywords"
+	"github.com/progrium/darwinkit/generate/declparse/lexer"
 )
 
 func parseInterface(p *Parser) (next stateFn, node Node, err error) {

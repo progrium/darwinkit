@@ -6,7 +6,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 func TestFoundationValid(t *testing.T) {}

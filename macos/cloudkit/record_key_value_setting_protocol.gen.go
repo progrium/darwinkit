@@ -3,7 +3,7 @@
 package cloudkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for managing the key-value pairs of a CloudKit record. [Full Topic]

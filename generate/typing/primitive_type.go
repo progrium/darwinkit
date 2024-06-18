@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var Bool = &PrimitiveType{GoName_: "bool", ObjcName_: "BOOL"}

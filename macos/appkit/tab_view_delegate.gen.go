@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The NSTabViewDelegate protocol defines the optional methods implemented by delegates of NSTabView objects. [Full Topic]

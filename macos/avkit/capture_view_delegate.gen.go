@@ -3,8 +3,8 @@
 package avkit
 
 import (
-	"github.com/progrium/macdriver/macos/avfoundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/avfoundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol that defines the methods you can implement to respond to capture view events. [Full Topic]

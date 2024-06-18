@@ -3,7 +3,7 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A general interface for objects that produce CIFilter instances. [Full Topic]

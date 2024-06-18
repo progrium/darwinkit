@@ -9,7 +9,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/progrium/macdriver/generate"
+	"github.com/progrium/darwinkit/generate"
 )
 
 // go run ./generate/tools/lookup.go [framework/symbol, ex: appkit/nswindow]

@@ -3,8 +3,8 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods for accepting or rejecting navigation changes, and for tracking the progress of navigation requests. [Full Topic]

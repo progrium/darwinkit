@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A compiled read-only object that determines how to apply variable rasterization rates when rendering. [Full Topic]

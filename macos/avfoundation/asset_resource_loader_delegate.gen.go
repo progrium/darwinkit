@@ -3,8 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods you can implement to handle resource-loading requests coming from a URL asset. [Full Topic]

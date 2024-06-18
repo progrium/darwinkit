@@ -3,8 +3,8 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol you implement to track download progress and handle redirects, authentication challenges, and failures. [Full Topic]

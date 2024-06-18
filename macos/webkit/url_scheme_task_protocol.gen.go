@@ -3,8 +3,8 @@
 package webkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that WebKit uses to request custom resources from your app. [Full Topic]

@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that delegates of a URL connection implement to receive status about and provide feedback to the connection object. [Full Topic]

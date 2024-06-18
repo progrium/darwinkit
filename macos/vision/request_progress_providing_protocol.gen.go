@@ -3,7 +3,7 @@
 package vision
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for providing progress information on long-running tasks in Vision. [Full Topic]

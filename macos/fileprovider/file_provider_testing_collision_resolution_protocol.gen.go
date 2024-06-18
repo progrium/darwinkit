@@ -3,7 +3,7 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An operation that resolves a collision by renaming the new item. [Full Topic]

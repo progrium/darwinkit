@@ -1,8 +1,8 @@
 package typing
 
 import (
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*ArrayType)(nil)
@@ -13,7 +13,7 @@ type ArrayType struct {
 }
 
 func (a *ArrayType) GoImports() set.Set[string] {
-	imports := set.New("github.com/progrium/macdriver/macos/foundation")
+	imports := set.New("github.com/progrium/darwinkit/macos/foundation")
 	imports.AddSet(a.Type.GoImports())
 	return imports
 }

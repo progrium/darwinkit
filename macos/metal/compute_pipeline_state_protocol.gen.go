@@ -5,7 +5,7 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object that contains a compiled compute pipeline. [Full Topic]

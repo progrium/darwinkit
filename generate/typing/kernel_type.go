@@ -4,8 +4,8 @@ import (
 	"strings"
 	"unicode"
 
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 func GetKernelType(typeName string) (Type, bool) {
@@ -40,7 +40,7 @@ type KernelType struct {
 }
 
 func (k *KernelType) GoImports() set.Set[string] {
-	return set.New("github.com/progrium/macdriver/kernel")
+	return set.New("github.com/progrium/darwinkit/kernel")
 }
 
 func (k *KernelType) GoName(currentModule *modules.Module, receiveFromObjc bool) string {

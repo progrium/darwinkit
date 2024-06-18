@@ -1,7 +1,7 @@
 package widgets
 
 import (
-	"github.com/progrium/macdriver/macos/appkit"
+	"github.com/progrium/darwinkit/macos/appkit"
 )
 
 type LabelAlignment int

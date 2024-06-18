@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object you use to synchronize access to Metal resources across multiple CPUs, GPUs, and processes. [Full Topic]

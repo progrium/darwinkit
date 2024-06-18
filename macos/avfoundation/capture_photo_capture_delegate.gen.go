@@ -3,8 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods for monitoring progress and receiving results from a photo capture output. [Full Topic]

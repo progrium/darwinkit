@@ -5,7 +5,7 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that represents a graphics pipeline configuration for a render pass, which the pass applies to the draw commands you encode. [Full Topic]

@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ CodeGen = (*Protocol)(nil)
@@ -92,9 +92,9 @@ func (p *Protocol) Init() {
 }
 
 func (p *Protocol) GoImports() set.Set[string] {
-	imports := set.New("github.com/progrium/macdriver/objc")
+	imports := set.New("github.com/progrium/darwinkit/objc")
 	for _, parent := range p.Supers {
-		imports.Add("github.com/progrium/macdriver/macos/" + parent.Type.Module.Package)
+		imports.Add("github.com/progrium/darwinkit/macos/" + parent.Type.Module.Package)
 	}
 	for _, m := range p.Methods {
 		imports.AddSet(m.GoImports())

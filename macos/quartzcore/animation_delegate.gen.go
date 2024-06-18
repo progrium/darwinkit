@@ -3,7 +3,7 @@
 package quartzcore
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods your app can implement to respond when animations start and stop. [Full Topic]

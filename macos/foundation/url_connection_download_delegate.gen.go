@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that delegates of a URL connection created with Newsstand Kit implement to receive data associated with a download. [Full Topic]

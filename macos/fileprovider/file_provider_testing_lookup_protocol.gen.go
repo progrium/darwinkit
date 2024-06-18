@@ -3,7 +3,7 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An operation that looks up an item. [Full Topic]

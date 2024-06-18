@@ -5,7 +5,7 @@ package foundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that objects adopt to support fast enumeration. [Full Topic]

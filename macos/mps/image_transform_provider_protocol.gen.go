@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A general interface for objects that provide image resampling. [Full Topic]

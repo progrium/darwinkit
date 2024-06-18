@@ -1,6 +1,6 @@
 package coremedia
 
-import "github.com/progrium/macdriver/macos/corefoundation"
+import "github.com/progrium/darwinkit/macos/corefoundation"
 
 // A structure that maps a segment of a source time range to a target time range. [Full Topic]
 //

@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines methods that determine whether and when neural network training parameters are updated. [Full Topic]

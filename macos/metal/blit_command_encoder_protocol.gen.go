@@ -3,8 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface you can use to encode GPU commands that copy and modify the underlying memory of various Metal resources. [Full Topic]

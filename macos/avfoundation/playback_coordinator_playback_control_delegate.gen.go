@@ -3,7 +3,7 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the method to implement to respond to playback commands from the playback coordinator. [Full Topic]

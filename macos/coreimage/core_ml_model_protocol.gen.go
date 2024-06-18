@@ -3,8 +3,8 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/macos/coreml"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coreml"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The properties you use to configure a Core ML model filter. [Full Topic]

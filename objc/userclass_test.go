@@ -3,7 +3,7 @@ package objc
 import (
 	"testing"
 
-	"github.com/progrium/macdriver/internal/assert"
+	"github.com/progrium/darwinkit/internal/assert"
 )
 
 // uses NSObject as super without struct tag, regardless of embedded type.

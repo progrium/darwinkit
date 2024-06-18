@@ -5,10 +5,10 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/iosurface"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/iosurface"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The main Metal interface to a GPU that apps use to draw graphics and run computations in parallel. [Full Topic]

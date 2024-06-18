@@ -3,7 +3,7 @@
 package corelocation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A block to be called when a geocoding request is complete. [Full Topic]

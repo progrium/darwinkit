@@ -6,7 +6,7 @@ import (
 	"strings"
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc/ffi"
+	"github.com/progrium/darwinkit/objc/ffi"
 )
 
 // Call sends a message to the Handle and returns a value

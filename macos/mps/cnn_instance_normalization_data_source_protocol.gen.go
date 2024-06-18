@@ -5,9 +5,9 @@ package mps
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines methods that an instance normalization uses to initialize scale factors and bias terms. [Full Topic]

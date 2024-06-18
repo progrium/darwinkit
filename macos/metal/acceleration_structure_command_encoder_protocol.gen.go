@@ -5,7 +5,7 @@ package metal
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An object for encoding commands that build or refit acceleration structures. [Full Topic]

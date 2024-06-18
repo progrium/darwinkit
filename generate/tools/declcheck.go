@@ -8,8 +8,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/progrium/macdriver/generate"
-	"github.com/progrium/macdriver/generate/declparse"
+	"github.com/progrium/darwinkit/generate"
+	"github.com/progrium/darwinkit/generate/declparse"
 )
 
 // go run ./generate/tools/declcheck.go [optional symbol prefix, ex: appkit]

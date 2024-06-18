@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // Methods that responder subclasses implement to support key binding commands, such as inserting tabs and newlines, or moving the insertion point. [Full Topic]

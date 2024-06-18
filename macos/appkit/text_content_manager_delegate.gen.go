@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The optional methods that delegates of content manager objects implement for customizing or validating text elements. [Full Topic]

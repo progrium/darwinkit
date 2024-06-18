@@ -8,7 +8,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/darwinkit/generate/modules"
 )
 
 // go run ./generate/tools/initmod.go [platform] [framework]

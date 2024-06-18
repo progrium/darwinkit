@@ -3,7 +3,7 @@
 package vision
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A block executed at intervals during the processing of a Vision request. [Full Topic]

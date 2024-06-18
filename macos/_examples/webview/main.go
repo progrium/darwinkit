@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"io/fs"
 
-	"github.com/progrium/macdriver/macos"
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/webkit"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/webkit"
+	"github.com/progrium/darwinkit/objc"
 )
 
 //go:embed assets

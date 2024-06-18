@@ -3,7 +3,7 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A depth and stencil state object that specifies the depth and stencil configuration and operations used in a render pass. [Full Topic]

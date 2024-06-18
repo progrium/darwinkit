@@ -5,11 +5,11 @@ package coreimage
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/corevideo"
-	"github.com/progrium/macdriver/macos/iosurface"
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/corevideo"
+	"github.com/progrium/darwinkit/macos/iosurface"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A container for writing image data and information produced by a custom image processor. [Full Topic]

@@ -3,7 +3,7 @@
 package mps
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The protocol that provides a description of how kernels should pad images. [Full Topic]

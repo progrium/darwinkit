@@ -5,10 +5,10 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [Player] class.

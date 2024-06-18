@@ -5,8 +5,8 @@ package fileprovider
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A service that provides a custom communication channel between the host app and the File Provider extension. [Full Topic]

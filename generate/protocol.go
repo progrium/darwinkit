@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/progrium/macdriver/generate/codegen"
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
+	"github.com/progrium/darwinkit/generate/codegen"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
 )
 
 func (db *Generator) ToProtocolGen(fw string, sym Symbol) *codegen.Protocol {

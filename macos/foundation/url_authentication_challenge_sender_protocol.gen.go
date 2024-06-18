@@ -3,7 +3,7 @@
 package foundation
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The URLAuthenticationChallengeSender protocol represents the interface that the sender of an authentication challenge must implement. [Full Topic]

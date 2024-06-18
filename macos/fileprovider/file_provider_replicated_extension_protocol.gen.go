@@ -3,8 +3,8 @@
 package fileprovider
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A File Provider extension in which the system replicates the contents on disk. [Full Topic]

@@ -3,8 +3,8 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The properties you use to configure a color curves filter. [Full Topic]

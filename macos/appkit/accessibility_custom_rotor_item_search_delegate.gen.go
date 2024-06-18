@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A delegate for a custom rotor that finds the next item result after performing a search with the specified search parameters. [Full Topic]

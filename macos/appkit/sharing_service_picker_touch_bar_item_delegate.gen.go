@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that a sharing service picker item delegate uses to provide a list of items eligible for sharing. [Full Topic]

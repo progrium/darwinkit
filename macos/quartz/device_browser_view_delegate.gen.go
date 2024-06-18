@@ -3,8 +3,8 @@
 package quartz
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The IKDeviceBrowserViewDelegate defines the methods that the delegate of the IKDeviceBrowserView class can implement. All the methods are optional. [Full Topic]

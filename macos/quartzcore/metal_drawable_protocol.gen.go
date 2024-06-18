@@ -3,8 +3,8 @@
 package quartzcore
 
 import (
-	"github.com/progrium/macdriver/macos/metal"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/metal"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A Metal drawable associated with a Core Animation layer. [Full Topic]

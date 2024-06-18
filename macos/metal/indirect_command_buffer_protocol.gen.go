@@ -3,8 +3,8 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A command buffer containing reusable commands, encoded either on the CPU or GPU. [Full Topic]

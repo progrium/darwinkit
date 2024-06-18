@@ -3,7 +3,7 @@
 package coreimage
 
 import (
-	"github.com/progrium/macdriver/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/coregraphics"
 )
 
 // The signature for a block that computes the region of interest (ROI) for a given area of destination image pixels. Core Image calls this block when applying the kernel. You specify this block when using the [coreimage/cikernel/applywithextent] method. [Full Topic]

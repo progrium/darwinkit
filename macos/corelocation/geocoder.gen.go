@@ -5,9 +5,9 @@ package corelocation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/contacts"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/contacts"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [Geocoder] class.

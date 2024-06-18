@@ -3,9 +3,9 @@
 package metal
 
 import (
-	"github.com/progrium/macdriver/macos/corefoundation"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corefoundation"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A container that stores a sequence of GPU commands that you encode into it. [Full Topic]

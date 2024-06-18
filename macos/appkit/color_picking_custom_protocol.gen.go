@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods that provides a way to add color pickers—custom user interfaces for color selection—to an app’s color panel. [Full Topic]

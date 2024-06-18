@@ -5,9 +5,9 @@ package avfoundation
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/quartzcore"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/macos/quartzcore"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [SampleBufferDisplayLayer] class.

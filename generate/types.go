@@ -5,10 +5,10 @@ import (
 	"log"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/declparse"
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/generate/typing"
-	"github.com/progrium/macdriver/internal/stringx"
+	"github.com/progrium/darwinkit/generate/declparse"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/generate/typing"
+	"github.com/progrium/darwinkit/internal/stringx"
 )
 
 func (db *Generator) TypeFromSymbol(sym Symbol) typing.Type {

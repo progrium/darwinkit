@@ -5,9 +5,9 @@ package coreml
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/corevideo"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/corevideo"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [MultiArray] class.

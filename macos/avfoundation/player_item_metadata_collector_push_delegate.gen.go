@@ -3,8 +3,8 @@
 package avfoundation
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol you implement to receive metadata callbacks from a player item metadata collector. [Full Topic]

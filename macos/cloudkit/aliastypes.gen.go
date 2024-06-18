@@ -3,7 +3,7 @@
 package cloudkit
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
+	"github.com/progrium/darwinkit/macos/foundation"
 )
 
 // A block that processes the outcome of a permissions request. [Full Topic]

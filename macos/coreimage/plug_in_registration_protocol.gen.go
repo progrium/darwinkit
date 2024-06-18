@@ -5,7 +5,7 @@ package coreimage
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The interface for loading Core Image image units. [Full Topic]

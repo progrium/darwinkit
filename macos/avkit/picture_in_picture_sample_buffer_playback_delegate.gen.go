@@ -3,8 +3,8 @@
 package avkit
 
 import (
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol for controlling playback from a sample buffer display layer in Picture in Picture. [Full Topic]

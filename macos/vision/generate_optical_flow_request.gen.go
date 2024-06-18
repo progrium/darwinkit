@@ -5,13 +5,13 @@ package vision
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/coregraphics"
-	"github.com/progrium/macdriver/macos/coreimage"
-	"github.com/progrium/macdriver/macos/coremedia"
-	"github.com/progrium/macdriver/macos/corevideo"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/imageio"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/coregraphics"
+	"github.com/progrium/darwinkit/macos/coreimage"
+	"github.com/progrium/darwinkit/macos/coremedia"
+	"github.com/progrium/darwinkit/macos/corevideo"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/imageio"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [GenerateOpticalFlowRequest] class.

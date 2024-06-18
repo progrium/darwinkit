@@ -3,8 +3,8 @@
 package quartzcore
 
 import (
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // An interface that allows objects to respond to actions triggered by a CALayer change. [Full Topic]

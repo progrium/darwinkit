@@ -4,13 +4,13 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/progrium/macdriver/dispatch"
-	"github.com/progrium/macdriver/helper/action"
-	"github.com/progrium/macdriver/macos"
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/foundation"
-	"github.com/progrium/macdriver/macos/webkit"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/dispatch"
+	"github.com/progrium/darwinkit/helper/action"
+	"github.com/progrium/darwinkit/macos"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/foundation"
+	"github.com/progrium/darwinkit/macos/webkit"
+	"github.com/progrium/darwinkit/objc"
 )
 
 func main() {

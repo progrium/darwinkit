@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/modules"
-	"github.com/progrium/macdriver/internal/set"
+	"github.com/progrium/darwinkit/generate/modules"
+	"github.com/progrium/darwinkit/internal/set"
 )
 
 var _ Type = (*BlockType)(nil)
@@ -22,7 +22,7 @@ type BlockType struct {
 }
 
 func (a *BlockType) GoImports() set.Set[string] {
-	imports := set.New("github.com/progrium/macdriver/objc")
+	imports := set.New("github.com/progrium/darwinkit/objc")
 	imports.AddSet(a.ReturnType.GoImports())
 	for _, p := range a.Params {
 		imports.AddSet(p.Type.GoImports())

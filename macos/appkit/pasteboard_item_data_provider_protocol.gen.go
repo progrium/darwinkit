@@ -3,7 +3,7 @@
 package appkit
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A set of methods implemented by the data provider of a pasteboard item to provide the data for a particular UTI type. [Full Topic]

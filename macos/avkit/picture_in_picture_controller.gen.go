@@ -5,9 +5,9 @@ package avkit
 import (
 	"unsafe"
 
-	"github.com/progrium/macdriver/macos/appkit"
-	"github.com/progrium/macdriver/macos/avfoundation"
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/macos/appkit"
+	"github.com/progrium/darwinkit/macos/avfoundation"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // The class instance for the [PictureInPictureController] class.

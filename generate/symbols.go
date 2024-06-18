@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/progrium/macdriver/generate/declparse"
-	"github.com/progrium/macdriver/generate/modules"
+	"github.com/progrium/darwinkit/generate/declparse"
+	"github.com/progrium/darwinkit/generate/modules"
 )
 
 var blacklist = []string{

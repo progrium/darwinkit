@@ -3,7 +3,7 @@
 package coredata
 
 import (
-	"github.com/progrium/macdriver/objc"
+	"github.com/progrium/darwinkit/objc"
 )
 
 // A protocol that defines the interface for section objects vended by a fetched results controller. [Full Topic]
