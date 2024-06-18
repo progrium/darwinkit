@@ -5,6 +5,7 @@ package coremediaio
 import (
 	"unsafe"
 
+	"github.com/progrium/macdriver/kernel"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -20,6 +21,7 @@ type _ExtensionClientClass struct {
 type IExtensionClient interface {
 	objc.IObject
 	ClientID() foundation.UUID
+	Pid() kernel.Pid
 }
 
 // An object that represents a client of the extension. [Full Topic]
@@ -60,5 +62,13 @@ func (e_ ExtensionClient) Init() ExtensionClient {
 // [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionclient/3915852-clientid?language=objc
 func (e_ ExtensionClient) ClientID() foundation.UUID {
 	rv := objc.Call[foundation.UUID](e_, objc.Sel("clientID"))
+	return rv
+}
+
+// The process identifier of the client. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/coremediaio/cmioextensionclient/3915853-pid?language=objc
+func (e_ ExtensionClient) Pid() kernel.Pid {
+	rv := objc.Call[kernel.Pid](e_, objc.Sel("pid"))
 	return rv
 }

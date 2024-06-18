@@ -5,6 +5,7 @@ package foundation
 import (
 	"unsafe"
 
+	"github.com/progrium/macdriver/kernel"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -147,6 +148,21 @@ func AppleEventDescriptor_CurrentProcessDescriptor() AppleEventDescriptor {
 func (a_ AppleEventDescriptor) DescriptorAtIndex(index int) AppleEventDescriptor {
 	rv := objc.Call[AppleEventDescriptor](a_, objc.Sel("descriptorAtIndex:"), index)
 	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1416900-descriptorwithprocessidentifier?language=objc
+func (ac _AppleEventDescriptorClass) DescriptorWithProcessIdentifier(processIdentifier kernel.Pid) AppleEventDescriptor {
+	rv := objc.Call[AppleEventDescriptor](ac, objc.Sel("descriptorWithProcessIdentifier:"), processIdentifier)
+	return rv
+}
+
+//	[Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsappleeventdescriptor/1416900-descriptorwithprocessidentifier?language=objc
+func AppleEventDescriptor_DescriptorWithProcessIdentifier(processIdentifier kernel.Pid) AppleEventDescriptor {
+	return AppleEventDescriptorClass.DescriptorWithProcessIdentifier(processIdentifier)
 }
 
 //	[Full Topic]

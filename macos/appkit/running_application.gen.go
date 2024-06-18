@@ -5,6 +5,7 @@ package appkit
 import (
 	"unsafe"
 
+	"github.com/progrium/macdriver/kernel"
 	"github.com/progrium/macdriver/macos/foundation"
 	"github.com/progrium/macdriver/objc"
 )
@@ -32,6 +33,7 @@ type IRunningApplication interface {
 	LaunchDate() foundation.Date
 	IsActive() bool
 	IsHidden() bool
+	ProcessIdentifier() kernel.Pid
 	ExecutableURL() foundation.URL
 	IsTerminated() bool
 	ExecutableArchitecture() int
@@ -50,6 +52,18 @@ func RunningApplicationFrom(ptr unsafe.Pointer) RunningApplication {
 	return RunningApplication{
 		Object: objc.ObjectFrom(ptr),
 	}
+}
+
+func (rc _RunningApplicationClass) RunningApplicationWithProcessIdentifier(pid kernel.Pid) RunningApplication {
+	rv := objc.Call[RunningApplication](rc, objc.Sel("runningApplicationWithProcessIdentifier:"), pid)
+	return rv
+}
+
+// Returns the running application with the given process identifier, or nil if no application has that pid. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1530730-runningapplicationwithprocesside?language=objc
+func RunningApplication_RunningApplicationWithProcessIdentifier(pid kernel.Pid) RunningApplication {
+	return RunningApplicationClass.RunningApplicationWithProcessIdentifier(pid)
 }
 
 func (rc _RunningApplicationClass) Alloc() RunningApplication {
@@ -218,6 +232,14 @@ func (rc _RunningApplicationClass) CurrentApplication() RunningApplication {
 // [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1533604-currentapplication?language=objc
 func RunningApplication_CurrentApplication() RunningApplication {
 	return RunningApplicationClass.CurrentApplication()
+}
+
+// Indicates the process identifier (pid) of the application. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/appkit/nsrunningapplication/1526998-processidentifier?language=objc
+func (r_ RunningApplication) ProcessIdentifier() kernel.Pid {
+	rv := objc.Call[kernel.Pid](r_, objc.Sel("processIdentifier"))
+	return rv
 }
 
 // Indicates the URL to the application's executable. [Full Topic]

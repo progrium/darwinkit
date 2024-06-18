@@ -5,6 +5,7 @@ package foundation
 import (
 	"unsafe"
 
+	"github.com/progrium/macdriver/kernel"
 	"github.com/progrium/macdriver/objc"
 )
 
@@ -24,6 +25,8 @@ type IXPCConnection interface {
 	Invalidate()
 	Resume()
 	SynchronousRemoteObjectProxyWithErrorHandler(handler func(error Error)) objc.Object
+	EffectiveUserIdentifier() kernel.Uid
+	EffectiveGroupIdentifier() kernel.Gid
 	InterruptionHandler() func()
 	SetInterruptionHandler(value func())
 	RemoteObjectInterface() XPCInterface
@@ -32,6 +35,7 @@ type IXPCConnection interface {
 	SetExportedInterface(value IXPCInterface)
 	Endpoint() XPCListenerEndpoint
 	RemoteObjectProxy() objc.Object
+	ProcessIdentifier() kernel.Pid
 	InvalidationHandler() func()
 	SetInvalidationHandler(value func())
 	ServiceName() string
@@ -173,6 +177,22 @@ func (x_ XPCConnection) SynchronousRemoteObjectProxyWithErrorHandler(handler fun
 	return rv
 }
 
+// The effective user ID (EUID) of the connecting process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1408346-effectiveuseridentifier?language=objc
+func (x_ XPCConnection) EffectiveUserIdentifier() kernel.Uid {
+	rv := objc.Call[kernel.Uid](x_, objc.Sel("effectiveUserIdentifier"))
+	return rv
+}
+
+// The effective group ID (EGID) of the connecting process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1407793-effectivegroupidentifier?language=objc
+func (x_ XPCConnection) EffectiveGroupIdentifier() kernel.Gid {
+	rv := objc.Call[kernel.Gid](x_, objc.Sel("effectiveGroupIdentifier"))
+	return rv
+}
+
 // An interruption handler that is called if the remote process exits or crashes. [Full Topic]
 //
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1407915-interruptionhandler?language=objc
@@ -231,6 +251,14 @@ func (x_ XPCConnection) Endpoint() XPCListenerEndpoint {
 // [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411031-remoteobjectproxy?language=objc
 func (x_ XPCConnection) RemoteObjectProxy() objc.Object {
 	rv := objc.Call[objc.Object](x_, objc.Sel("remoteObjectProxy"))
+	return rv
+}
+
+// The process ID (PID) of the connecting process. [Full Topic]
+//
+// [Full Topic]: https://developer.apple.com/documentation/foundation/nsxpcconnection/1411428-processidentifier?language=objc
+func (x_ XPCConnection) ProcessIdentifier() kernel.Pid {
+	rv := objc.Call[kernel.Pid](x_, objc.Sel("processIdentifier"))
 	return rv
 }
 
